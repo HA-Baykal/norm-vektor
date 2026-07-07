@@ -355,46 +355,41 @@ function Header() {
     </header>
   );
 }
-unction Hero() {
+
+function Hero() {
   return (
-    <section
-      id="top"
-      className="relative flex min-h-[760px] items-end overflow-hidden bg-[#10263d] pt-24 text-white"
-    >
-      <div className="absolute inset-0 opacity-100">
-        <PhotoSlot
-          path="images/hero-bg.jpg"
-          hidePlaceholder
-          className="h-full w-full bg-transparent"
-          imageClassName="object-cover"
-        />
+    <section id="top" className="relative flex min-h-[760px] items-center overflow-hidden bg-[#10263d] pt-24 text-white">
+      <div className="absolute inset-0 opacity-105">
+        <PhotoSlot path="images/hero-bg.jpg" hidePlaceholder className="h-full w-full bg-transparent" imageClassName="object-cover" />
       </div>
+      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(16,38,61,0.78)_0%,rgba(26,58,92,0.58)_48%,rgba(16,38,61,0.25)_100%)]" />
+      <div className="absolute inset-0 soft-grid" />
 
-      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(16,38,61,0.35)_0%,rgba(26,58,92,0.25)_48%,rgba(16,38,61,0.15)_100%)]" />
+      <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+        <div className="max-w-3xl reveal">
+          
+          <div className="mt-138 flex flex-col gap-3 sm:mt-56 sm:flex-row lg:mt-150">
+            <a href="#calculator" className="inline-flex items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-base font-black text-white shadow-2xl shadow-orange-500/25 transition hover:-translate-y-1 hover:bg-[#e95620]">
+              Рассчитать стоимость
+              <LineIcon name="arrow" />
+            </a>
+            <a href="tel:+79149146606" className="inline-flex items-center justify-center gap-3 rounded-full border border-white/30 bg-white/10 px-7 py-4 text-base font-black text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/20">
+              Позвонить
+              <LineIcon name="phone" />
+            </a>
+          </div>
+        </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <a
-            href="#calculator"
-            className="inline-flex items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-base font-black text-white shadow-2xl shadow-orange-500/25 transition hover:-translate-y-1 hover:bg-[#e95620]"
-          >
-            Рассчитать стоимость
-            <LineIcon name="arrow" />
-          </a>
-
-          <a
-            href="tel:+79149146606"
-            className="inline-flex items-center justify-center gap-3 rounded-full border border-white/30 bg-white/10 px-7 py-4 text-base font-black text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/20"
-          >
-            Позвонить
-            <LineIcon name="phone" />
-          </a>
+        <div className="flex items-end justify-start lg:justify-end reveal">
+          <div className="max-w-md border-l-4 border-[#ff6b35] pl-6 text-slate-100">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-200">Фон Hero</p>
+            <p className="mt-3 text-lg leading-7">Чтобы добавить фото объекта в первый экран, загрузите файл в папку public/images с именем hero-bg.jpg. Путь на сайте: images/hero-bg.jpg.</p>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-      
 
 function CountUp({ end, suffix = "", label, text }: { end?: number; suffix?: string; label: string; text?: string }) {
   const [value, setValue] = useState(0);
