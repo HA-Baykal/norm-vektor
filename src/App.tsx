@@ -367,11 +367,7 @@ function Hero() {
 
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div className="max-w-3xl reveal">
-          <p className="mb-5 text-2xl font-black tracking-tight text-white sm:text-3xl">Вектор Комфорта</p>
-          <h1 className="text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">Комфорт в каждом направлении</h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-100 sm:text-xl">
-            Производство и монтаж окон, продажа и установка кондиционеров, вентиляция под ключ и алмазное бурение для домов, квартир, магазинов, офисов и коммерческих зданий.
-          </p>
+          
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a href="#calculator" className="inline-flex items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-base font-black text-white shadow-2xl shadow-orange-500/25 transition hover:-translate-y-1 hover:bg-[#e95620]">
               Рассчитать стоимость
