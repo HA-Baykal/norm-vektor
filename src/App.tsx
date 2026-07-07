@@ -383,7 +383,7 @@ function Hero() {
         <div className="flex items-end justify-start lg:justify-end reveal">
           <div className="max-w-md border-l-4 border-[#ff6b35] pl-6 text-slate-100">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-200">Фон Hero</p>
-            <p className="mt-3 text-lg leading-7">Чтобы добавить фото объекта в первый экран, загрузите файл в папку public/images с именем hero-bg.jpg. Путь на сайте: images/hero-bg.jpg.</p>
+            <p className="mt-3 text-lg leading-7"></p>
           </div>
         </div>
       </div>
