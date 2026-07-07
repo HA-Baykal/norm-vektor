@@ -359,7 +359,7 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative flex min-h-[760px] items-center overflow-hidden bg-[#10263d] pt-24 text-white">
-      <div className="absolute inset-0 opacity-70">
+      <div className="absolute inset-0 opacity-105">
         <PhotoSlot path="images/hero-bg.jpg" hidePlaceholder className="h-full w-full bg-transparent" imageClassName="object-cover" />
       </div>
       <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(16,38,61,0.96)_0%,rgba(26,58,92,0.86)_48%,rgba(16,38,61,0.56)_100%)]" />
