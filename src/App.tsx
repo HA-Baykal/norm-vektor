@@ -368,7 +368,7 @@ function Hero() {
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div className="max-w-3xl reveal">
           
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-32 flex flex-col gap-3 sm:mt-44 sm:flex-row lg:mt-56">
             <a href="#calculator" className="inline-flex items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-base font-black text-white shadow-2xl shadow-orange-500/25 transition hover:-translate-y-1 hover:bg-[#e95620]">
               Рассчитать стоимость
               <LineIcon name="arrow" />
