@@ -362,7 +362,7 @@ function Hero() {
       <div className="absolute inset-0 opacity-105">
         <PhotoSlot path="images/hero-bg.jpg" hidePlaceholder className="h-full w-full bg-transparent" imageClassName="object-cover" />
       </div>
-      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(16,38,61,0.96)_0%,rgba(26,58,92,0.86)_48%,rgba(16,38,61,0.56)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(16,38,61,0.78)_0%,rgba(26,58,92,0.58)_48%,rgba(16,38,61,0.25)_100%)]" />
       <div className="absolute inset-0 soft-grid" />
 
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
