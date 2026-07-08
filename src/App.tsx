@@ -2,12 +2,15 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 
 type CalculatorTab = "windows" | "conditioners" | "ventilation" | "drilling";
 type PortfolioCategory = "all" | "windows" | "conditioners" | "ventilation" | "drilling";
+type ConditionerArea = 20 | 30 | 40;
 
 interface CalculatorState {
   windowsCount: number;
   balcony: boolean;
   conditionerCount: number;
   conditionerMode: "sale-install" | "install" | "service";
+  conditionerArea: ConditionerArea;
+  conditionerInverter: boolean;
   rooms: number;
   ventType: "brizer" | "recuperator" | "duct";
   holes: number;
@@ -138,7 +141,11 @@ const calculatorLabels: Record<CalculatorTab, string> = {
   ventilation: "Вентиляция",
   drilling: "Бурение",
 };
-
+const conditionerPriceByArea: Record<ConditionerArea, { base: number; inverter: number }> = {
+  20: { base: 24950, inverter: 10000 },
+  30: { base: 28500, inverter: 8000 },
+  40: { base: 37000, inverter: 7000 },
+};
 const portfolioFilters: Array<{ key: PortfolioCategory; label: string }> = [
   { key: "all", label: "Все" },
   { key: "windows", label: "Окна" },
@@ -481,6 +488,8 @@ function Calculator() {
     balcony: false,
     conditionerCount: 1,
     conditionerMode: "sale-install",
+    conditionerArea: 20,
+    conditionerInverter: false,
     rooms: 2,
     ventType: "brizer",
     holes: 2,
@@ -491,9 +500,23 @@ function Calculator() {
  const estimate = useMemo(() => {
     if (tab === "windows") return calc.windowsCount * 19000 + (calc.balcony ? 52000 : 0);
     if (tab === "conditioners") {
-      const price = calc.conditionerMode === "sale-install" ? 48000 : calc.conditionerMode === "install" ? 18000 : 5500;
-      return calc.conditionerCount * price;
-    }
+  const areaPrice = conditionerPriceByArea[calc.conditionerArea];
+
+  const saleAndInstallPrice =
+    areaPrice.base + (calc.conditionerInverter ? areaPrice.inverter : 0);
+
+  const installOnlyPrice = 18000;
+  const servicePrice = 5500;
+
+  const price =
+    calc.conditionerMode === "sale-install"
+      ? saleAndInstallPrice
+      : calc.conditionerMode === "install"
+        ? installOnlyPrice
+        : servicePrice;
+
+  return calc.conditionerCount * price;
+}
     if (tab === "ventilation") {
       const typePrice = calc.ventType === "brizer" ? 38000 : calc.ventType === "recuperator" ? 52000 : 125000;
       return typePrice + calc.rooms * 6500;
@@ -543,20 +566,63 @@ function Calculator() {
               )}
 
               {tab === "conditioners" && (
-                <>
-                  <RangeField label="Количество кондиционеров" value={calc.conditionerCount} min={1} max={8} suffix="шт." onChange={(value) => setCalc({ ...calc, conditionerCount: value })} />
-                  <SelectField
-                    label="Тип работы"
-                    value={calc.conditionerMode}
-                    options={[
-                      { value: "sale-install", label: "Продажа + монтаж" },
-                      { value: "install", label: "Только монтаж" },
-                      { value: "service", label: "Обслуживание / чистка / фреон" },
-                    ]}
-                    onChange={(value) => setCalc({ ...calc, conditionerMode: value as CalculatorState["conditionerMode"] })}
-                  />
-                </>
-              )}
+  <>
+    <RangeField
+      label="Количество кондиционеров"
+      value={calc.conditionerCount}
+      min={1}
+      max={8}
+      suffix="шт."
+      onChange={(value) => setCalc({ ...calc, conditionerCount: value })}
+    />
+
+    <SelectField
+      label="Тип работы"
+      value={calc.conditionerMode}
+      options={[
+        { value: "sale-install", label: "Продажа + монтаж" },
+        { value: "install", label: "Только монтаж" },
+        { value: "service", label: "Обслуживание / чистка / фреон" },
+      ]}
+      onChange={(value) =>
+        setCalc({
+          ...calc,
+          conditionerMode: value as CalculatorState["conditionerMode"],
+        })
+      }
+    />
+
+    {calc.conditionerMode === "sale-install" && (
+      <>
+        <SelectField
+          label="Площадь помещения"
+          value={String(calc.conditionerArea)}
+          options={[
+            { value: "20", label: "До 20 кв.м — 24 950 руб." },
+            { value: "30", label: "До 30 кв.м — 28 500 руб." },
+            { value: "40", label: "До 40 кв.м — 37 000 руб." },
+          ]}
+          onChange={(value) =>
+            setCalc({
+              ...calc,
+              conditionerArea: Number(value) as ConditionerArea,
+            })
+          }
+        />
+
+        <ToggleField
+          label={`Инверторная технология +${formatRub(
+            conditionerPriceByArea[calc.conditionerArea].inverter
+          )}`}
+          checked={calc.conditionerInverter}
+          onChange={(value) =>
+            setCalc({ ...calc, conditionerInverter: value })
+          }
+        />
+      </>
+    )}
+  </>
+)}
 
               {tab === "ventilation" && (
                 <>
