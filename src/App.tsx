@@ -541,6 +541,7 @@ function Calculator() {
           ? priceUpTo160
           : priceUpTo250;
 
+
   return calc.holes * (diameterPrice + (calc.dryMethod ? dryDrillingExtra : 0));
 }, [calc, tab]);
 
