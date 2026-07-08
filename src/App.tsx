@@ -851,15 +851,16 @@ function MapSection() {
         <div className="max-w-3xl reveal">
           <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Карта</p>
           <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">Зона обслуживания до 50 км</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-600">Работаем в Иркутске, Ангарске, Шелехове, Хомутово и пригороде.</p>
+          <p className="mt-5 text-lg leading-8 text-slate-600">Работаем в Иркутске, Пивовариха, Ангарске, Шелехове, Хомутово и пригороде.</p>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="reveal overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-900/5">
-            <iframe title="Карта зоны обслуживания Вектор Комфорта" src="https://yandex.ru/map-widget/v1/?ll=104.296873%2C52.286974&z=10&pt=104.296873,52.286974,pm2rdm~104.145000,52.543000,pm2blm~104.098000,52.210000,pm2blm~104.200000,52.340000,pm2blm" width="100%" height="460" frameBorder="0" />
+            <iframe title="Карта зоны обслуживания Вектор Комфорта" src="https://yandex.ru/map-widget/v1/?ll=104.296873%2C52.286974&z=10&pt=104.296873,52.286974,pm2rdm~104.145000,52.543000,pm2blm~104.098000,52.210000,pm2blm~104.200000,52.340000,pm2blm~104.452778,52.272222,pm2blm"
           </div>
           <div className="reveal grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {[
               ["Иркутск", "основная зона выезда"],
+              ["Пивовариха", "выезд по маршруту"],
               ["Ангарск", "до 50 км"],
               ["Шелехов", "быстрый выезд"],
               ["Хомутово", "частый маршрут"],
