@@ -843,7 +843,98 @@ function Reviews() {
     </section>
   );
 }
+function YandexRadiusMap() {
+  useEffect(() => {
+    let mapInstance: any;
 
+    const initMap = () => {
+      const ymaps = (window as any).ymaps;
+      const mapElement = document.getElementById("service-map");
+
+      if (!ymaps || !mapElement) return;
+
+      ymaps.ready(() => {
+        mapInstance = new ymaps.Map("service-map", {
+          center: [52.286974, 104.296873],
+          zoom: 9,
+          controls: ["zoomControl", "fullscreenControl"],
+        });
+
+        const radiusCircle = new ymaps.Circle(
+          [[52.286974, 104.296873], 50000],
+          {
+            hintContent: "Зона обслуживания 50 км",
+            balloonContent: "Выезд до 50 км от Иркутска",
+          },
+          {
+            fillColor: "#ff6b3533",
+            strokeColor: "#ff6b35",
+            strokeOpacity: 0.9,
+            strokeWidth: 3,
+          }
+        );
+
+        const points = [
+          {
+            coords: [52.286974, 104.296873],
+            title: "Иркутск",
+          },
+          {
+            coords: [52.543, 104.145],
+            title: "Ангарск",
+          },
+          {
+            coords: [52.21, 104.098],
+            title: "Шелехов",
+          },
+          {
+            coords: [52.34, 104.2],
+            title: "Хомутово",
+          },
+          {
+            coords: [52.272222, 104.452778],
+            title: "Пивовариха",
+          },
+        ];
+
+        mapInstance.geoObjects.add(radiusCircle);
+
+        points.forEach((point) => {
+          mapInstance.geoObjects.add(
+            new ymaps.Placemark(
+              point.coords,
+              {
+                balloonContent: point.title,
+                hintContent: point.title,
+              },
+              {
+                preset: "islands#orangeDotIcon",
+              }
+            )
+          );
+        });
+      });
+    };
+
+    if ((window as any).ymaps) {
+      initMap();
+    } else {
+      const script = document.createElement("script");
+      script.src = "https://api-maps.yandex.ru/2.1/?lang=ru_RU";
+      script.async = true;
+      script.onload = initMap;
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      if (mapInstance) {
+        mapInstance.destroy();
+      }
+    };
+  }, []);
+
+  return <div id="service-map" className="h-[460px] w-full" />;
+}
 function MapSection() {
   return (
     <section id="map" className="bg-slate-50 py-20 sm:py-28">
@@ -855,19 +946,8 @@ function MapSection() {
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="reveal overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-900/5">
-            <iframe
-  title="Карта зоны обслуживания Вектор Комфорта"
-  src={
-    "https://yandex.ru/map-widget/v1/?ll=104.296873%2C52.286974&z=10&pt=" +
-    "104.296873,52.286974,pm2rdm~" +
-    "104.145000,52.543000,pm2blm~" +
-    "104.098000,52.210000,pm2blm~" +
-    "104.200000,52.340000,pm2blm~" +
-    "104.452778,52.272222,pm2blm"
-  }
-  width="100%"
-  height="460"
-  frameBorder="0"
+            <YandexRadiusMap />
+        </div>
 />
           </div>
           <div className="reveal grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
