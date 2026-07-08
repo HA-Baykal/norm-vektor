@@ -811,7 +811,6 @@ function Reviews() {
           <div className="reveal">
             <p className="text-sm font-black uppercase tracking-[0.2em] text-orange-200">Отзывы клиентов</p>
             <h2 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">Нам доверяют дома и бизнес</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-200">Фото клиентов можно добавить в public/images/clients. Если фото нет, показываются инициалы.</p>
             <button type="button" onClick={openJivoChat} className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620]">
               Оставить отзыв
               <LineIcon name="chat" />
