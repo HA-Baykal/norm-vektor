@@ -489,61 +489,22 @@ function Calculator() {
   });
 
  const estimate = useMemo(() => {
-  if (tab === "windows") {
-    const pricePerWindow = 22000;
-    const balconyPrice = 55000;
-    return calc.windowsCount * pricePerWindow + (calc.balcony ? balconyPrice : 0);
-  }
+    if (tab === "windows") return calc.windowsCount * 18000 + (calc.balcony ? 42000 : 0);
+    if (tab === "conditioners") {
+      const price = calc.conditionerMode === "sale-install" ? 46000 : calc.conditionerMode === "install" ? 16000 : 4500;
+      return calc.conditionerCount * price;
+    }
+    if (tab === "ventilation") {
+      const typePrice = calc.ventType === "brizer" ? 38000 : calc.ventType === "recuperator" ? 52000 : 125000;
+      return typePrice + calc.rooms * 6500;
+    }
+    const diameterPrice = calc.diameter <= 80 ? 1300 : calc.diameter <= 132 ? 2200 : calc.diameter <= 160 ? 2900 : 4800;
+    return calc.holes * (diameterPrice + (calc.dryMethod ? 700 : 0));
+  }, [calc, tab]);
 
-  if (tab === "conditioners") {
-    const saleAndInstallPrice = 52000;
-    const installOnlyPrice = 18000;
-    const servicePrice = 6000;
-
-    const price =
-      calc.conditionerMode === "sale-install"
-        ? saleAndInstallPrice
-        : calc.conditionerMode === "install"
-          ? installOnlyPrice
-          : servicePrice;
-
-    return calc.conditionerCount * price;
-  }
-
-  if (tab === "ventilation") {
-    const brizerPrice = 45000;
-    const recuperatorPrice = 60000;
-    const ductSystemPrice = 150000;
-    const roomPrice = 8000;
-
-    const typePrice =
-      calc.ventType === "brizer"
-        ? brizerPrice
-        : calc.ventType === "recuperator"
-          ? recuperatorPrice
-          : ductSystemPrice;
-
-    return typePrice + calc.rooms * roomPrice;
-  }
-
-  const priceUpTo80 = 1800;
-  const priceUpTo132 = 2800;
-  const priceUpTo160 = 3500;
-  const priceUpTo250 = 6000;
-  const dryDrillingExtra = 1000;
-
-  const diameterPrice =
-    calc.diameter <= 80
-      ? priceUpTo80
-      : calc.diameter <= 132
-        ? priceUpTo132
-        : calc.diameter <= 160
-          ? priceUpTo160
-          : priceUpTo250;
-
-
-  return calc.holes * (diameterPrice + (calc.dryMethod ? dryDrillingExtra : 0));
-}, [calc, tab]);
+  const requestLead = () => {
+    document.getElementById("contacts")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="calculator" className="bg-white py-20 sm:py-28">
