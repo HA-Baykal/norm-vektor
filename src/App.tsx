@@ -694,7 +694,6 @@ function Portfolio() {
             <div className="flex flex-col justify-between gap-4 p-6 sm:flex-row sm:items-center">
               <div>
                 <h3 className="text-2xl font-black text-[#1a3a5c]">{selected.title}</h3>
-                <p className="mt-1 text-sm font-semibold text-slate-500">{selected.path}</p>
               </div>
               <button type="button" onClick={() => setSelected(null)} className="rounded-full bg-[#1a3a5c] px-6 py-3 text-sm font-black text-white transition hover:bg-[#122943]">
                 Закрыть
