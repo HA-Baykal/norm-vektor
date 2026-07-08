@@ -960,7 +960,7 @@ function ContactForm() {
               </label>
               <label className="flex cursor-pointer items-start gap-3 rounded-2xl bg-white p-4 text-sm text-slate-600">
                 <input type="checkbox" required checked={form.consent} onChange={(event) => setForm({ ...form, consent: event.target.checked })} className="mt-1 h-4 w-4 accent-[#ff6b35]" />
-                <span>Согласен на обработку персональных данных. reCAPTCHA v3 поддерживается: добавьте site key в meta-тег recaptcha-site-key.</span>
+                <span>Согласен на обработку персональных данных. </span>
               </label>
               <button type="submit" className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-sm font-black text-white shadow-lg shadow-orange-500/20 transition hover:bg-[#e95620]">
                 Отправить заявку
