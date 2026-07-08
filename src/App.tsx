@@ -920,7 +920,7 @@ function ContactForm() {
         <div className="reveal">
           <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Контакты</p>
           <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">Оставьте заявку или позвоните</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-600">Перезвоним, уточним задачу и подготовим предварительный расчёт. Заявка также передаётся в Jivo-чат, если виджет уже загружен.</p>
+          <p className="mt-5 text-lg leading-8 text-slate-600">Перезвоним, уточним задачу и подготовим предварительный расчёт. </p>
           <div className="mt-8 space-y-3">
             <a href="tel:+79149146606" className="flex items-center gap-4 rounded-2xl bg-slate-50 p-5 font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35]"><LineIcon name="phone" /> +7 (914) 914-66-06</a>
             <a href="tel:+73952669930" className="flex items-center gap-4 rounded-2xl bg-slate-50 p-5 font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35]"><LineIcon name="phone" /> 66-99-30</a>
