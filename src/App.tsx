@@ -677,7 +677,6 @@ function Portfolio() {
               <div className="flex items-center justify-between gap-4 p-5">
                 <div>
                   <h3 className="font-black text-[#1a3a5c]">{item.title}</h3>
-                  <p className="mt-1 text-sm text-slate-500">{item.path}</p>
                 </div>
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-50 text-[#ff6b35] transition group-hover:bg-[#ff6b35] group-hover:text-white">
                   <LineIcon name="arrow" />
