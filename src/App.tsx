@@ -855,7 +855,7 @@ function MapSection() {
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="reveal overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-900/5">
-            <iframe title="Карта зоны обслуживания Вектор Комфорта" src="https://yandex.ru/map-widget/v1/?ll=104.296873%2C52.286974&z=10&pt=104.296873,52.286974,pm2rdm~104.145000,52.543000,pm2blm~104.098000,52.210000,pm2blm~104.200000,52.340000,pm2blm~104.452778,52.272222,pm2blm"
+            <iframe title="Карта зоны обслуживания Вектор Комфорта" src="https://yandex.ru/map-widget/v1/?ll=104.296873%2C52.286974&z=10&pt=104.296873,52.286974,pm2rdm~104.145000,52.543000,pm2blm~104.098000,52.210000,pm2blm~104.200000,52.340000,pm2blm~104.452778,52.272222,pm2blmwidth="100%" height="460" frameBorder="0" />"
           </div>
           <div className="reveal grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {[
