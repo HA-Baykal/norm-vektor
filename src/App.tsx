@@ -489,16 +489,16 @@ function Calculator() {
   });
 
  const estimate = useMemo(() => {
-    if (tab === "windows") return calc.windowsCount * 18000 + (calc.balcony ? 42000 : 0);
+    if (tab === "windows") return calc.windowsCount * 19000 + (calc.balcony ? 52000 : 0);
     if (tab === "conditioners") {
-      const price = calc.conditionerMode === "sale-install" ? 46000 : calc.conditionerMode === "install" ? 16000 : 4500;
+      const price = calc.conditionerMode === "sale-install" ? 48000 : calc.conditionerMode === "install" ? 18000 : 5500;
       return calc.conditionerCount * price;
     }
     if (tab === "ventilation") {
       const typePrice = calc.ventType === "brizer" ? 38000 : calc.ventType === "recuperator" ? 52000 : 125000;
       return typePrice + calc.rooms * 6500;
     }
-    const diameterPrice = calc.diameter <= 80 ? 1300 : calc.diameter <= 132 ? 2200 : calc.diameter <= 160 ? 2900 : 4800;
+    const diameterPrice = calc.diameter <= 80 ? 2000 : calc.diameter <= 132 ? 2500 : calc.diameter <= 160 ? 2900 : 4800;
     return calc.holes * (diameterPrice + (calc.dryMethod ? 700 : 0));
   }, [calc, tab]);
 
