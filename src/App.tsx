@@ -688,7 +688,7 @@ function Portfolio() {
       </div>
 
       {selected && (
-        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm" onClick={() => setSelected(null)}>
+        <div className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto bg-slate-950/80 px-4 pb-6 pt-28 backdrop-blur-sm" onClick={() => setSelected(null)}>
           <div className="w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl" onClick={(event) => event.stopPropagation()}>
             <PhotoSlot path={selected.path} label={selected.title} className="aspect-[16/10]" />
             <div className="flex flex-col justify-between gap-4 p-6 sm:flex-row sm:items-center">
