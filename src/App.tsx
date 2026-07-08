@@ -64,18 +64,18 @@ const services = [
 ];
 
 const portfolioItems = [
-  { category: "windows", path: "images/portfolio/okna-1.jpg", title: "Остекление балкона" },
-  { category: "windows", path: "images/portfolio/okna-2.jpg", title: "ПВХ окна в квартире" },
-  { category: "windows", path: "images/portfolio/okna-3.jpg", title: "Алюминиевые конструкции" },
-  { category: "conditioners", path: "images/portfolio/cond-1.jpg", title: "Монтаж сплит-системы" },
-  { category: "conditioners", path: "images/portfolio/cond-2.jpg", title: "Кондиционер в офисе" },
-  { category: "conditioners", path: "images/portfolio/cond-3.jpg", title: "Сервис кондиционера" },
-  { category: "ventilation", path: "images/portfolio/vent-1.jpg", title: "Бризер в квартире" },
-  { category: "ventilation", path: "images/portfolio/vent-2.jpg", title: "Вентиляция ресторана" },
-  { category: "ventilation", path: "images/portfolio/vent-3.jpg", title: "Воздуховоды на объекте" },
-  { category: "drilling", path: "images/portfolio/bur-1.jpg", title: "Отверстие под вентиляцию" },
-  { category: "drilling", path: "images/portfolio/bur-2.jpg", title: "Сухое бурение" },
-  { category: "drilling", path: "images/portfolio/bur-3.jpg", title: "Бурение под трубы" },
+  { category: "windows", path: "", title: "Остекление балкона" },
+  { category: "windows", path: "", title: "ПВХ окна в квартире" },
+  { category: "windows", path: "", title: "Алюминиевые конструкции" },
+  { category: "conditioners", path: "", title: "Монтаж сплит-системы" },
+  { category: "conditioners", path: "", title: "Кондиционер в офисе" },
+  { category: "conditioners", path: "", title: "Сервис кондиционера" },
+  { category: "ventilation", path: "", title: "Бризер в квартире" },
+  { category: "ventilation", path: "", title: "Вентиляция ресторана" },
+  { category: "ventilation", path: "", title: "Воздуховоды на объекте" },
+  { category: "drilling", path: "", title: "Отверстие под вентиляцию" },
+  { category: "drilling", path: "", title: "Сухое бурение" },
+  { category: "drilling", path: "", title: "Бурение под трубы" },
 ] as const;
 
 const reviews = [
@@ -658,8 +658,8 @@ function Portfolio() {
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div className="max-w-3xl reveal">
             <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Портфолио</p>
-            <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">Галерея работ с готовыми путями для фото</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">Замените файлы в public/images/portfolio, и изображения появятся на сайте автоматически.</p>
+            <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl"></h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600"></p>
           </div>
           <div className="reveal flex flex-wrap gap-2">
             {portfolioFilters.map((item) => (
