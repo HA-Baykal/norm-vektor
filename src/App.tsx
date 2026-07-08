@@ -447,7 +447,7 @@ function ServicesSection() {
         <div className="max-w-3xl reveal">
           <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Услуги</p>
           <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">Комплексные работы для комфорта и инженерии</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-600">Подберём решение, рассчитаем смету и выполним монтаж с гарантией. Фото в карточках можно заменить своими файлами в папке images.</p>
+          <p className="mt-5 text-lg leading-8 text-slate-600">Подберём решение, рассчитаем смету и выполним монтаж с гарантией.</p>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-4">
