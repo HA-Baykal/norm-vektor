@@ -64,9 +64,9 @@ const services = [
 ];
 
 const portfolioItems = [
-  { category: "windows", path: "", title: "Остекление балкона" },
-  { category: "windows", path: "", title: "ПВХ окна в квартире" },
-  { category: "windows", path: "", title: "Алюминиевые конструкции" },
+  { category: "windows", path: "11", title: "Остекление балкона" },
+  { category: "windows", path: "22", title: "ПВХ окна в квартире" },
+  { category: "windows", path: "33", title: "Алюминиевые конструкции" },
   { category: "conditioners", path: "", title: "Монтаж сплит-системы" },
   { category: "conditioners", path: "", title: "Кондиционер в офисе" },
   { category: "conditioners", path: "", title: "Сервис кондиционера" },
