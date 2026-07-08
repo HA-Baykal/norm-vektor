@@ -843,113 +843,29 @@ function Reviews() {
     </section>
   );
 }
-function YandexRadiusMap() {
-  useEffect(() => {
-    let mapInstance: any;
-
-    const initMap = () => {
-      const ymaps = (window as any).ymaps;
-      const mapElement = document.getElementById("service-map");
-
-      if (!ymaps || !mapElement) return;
-
-      ymaps.ready(() => {
-        mapInstance = new ymaps.Map("service-map", {
-          center: [52.286974, 104.296873],
-          zoom: 9,
-          controls: ["zoomControl", "fullscreenControl"],
-        });
-
-        const radiusCircle = new ymaps.Circle(
-          [[52.286974, 104.296873], 50000],
-          {
-            hintContent: "Зона обслуживания 50 км",
-            balloonContent: "Выезд до 50 км от Иркутска",
-          },
-          {
-            fillColor: "#ff6b3533",
-            strokeColor: "#ff6b35",
-            strokeOpacity: 0.9,
-            strokeWidth: 3,
-          }
-        );
-
-        const points = [
-          {
-            coords: [52.286974, 104.296873],
-            title: "Иркутск",
-          },
-          {
-            coords: [52.543, 104.145],
-            title: "Ангарск",
-          },
-          {
-            coords: [52.21, 104.098],
-            title: "Шелехов",
-          },
-          {
-            coords: [52.34, 104.2],
-            title: "Хомутово",
-          },
-          {
-            coords: [52.272222, 104.452778],
-            title: "Пивовариха",
-          },
-        ];
-
-        mapInstance.geoObjects.add(radiusCircle);
-
-        points.forEach((point) => {
-          mapInstance.geoObjects.add(
-            new ymaps.Placemark(
-              point.coords,
-              {
-                balloonContent: point.title,
-                hintContent: point.title,
-              },
-              {
-                preset: "islands#orangeDotIcon",
-              }
-            )
-          );
-        });
-      });
-    };
-
-    if ((window as any).ymaps) {
-      initMap();
-    } else {
-      const script = document.createElement("script");
-      script.src = "https://api-maps.yandex.ru/2.1/?lang=ru_RU";
-      script.async = true;
-      script.onload = initMap;
-      document.head.appendChild(script);
-    }
-
-    return () => {
-      if (mapInstance) {
-        mapInstance.destroy();
-      }
-    };
-  }, []);
-
-  return <div id="service-map" className="h-[460px] w-full" />;
-}
 function MapSection() {
   return (
     <section id="map" className="bg-slate-50 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl reveal">
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Карта</p>
-          <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">Зона обслуживания до 50 км</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-600">Работаем в Иркутске, Пивовариха, Ангарске, Шелехове, Хомутово и пригороде.</p>
+          <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">
+            Карта
+          </p>
+
+          <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">
+            Зона обслуживания до 50 км
+          </h2>
+
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            Работаем в Иркутске, Пивоварихе, Ангарске, Шелехове, Хомутово и пригороде.
+          </p>
         </div>
+
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="reveal overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-900/5">
             <YandexRadiusMap />
-        </div>
-/>
           </div>
+
           <div className="reveal grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {[
               ["Иркутск", "основная зона выезда"],
@@ -959,9 +875,16 @@ function MapSection() {
               ["Хомутово", "частый маршрут"],
               ["Пригород", "по согласованию"],
             ].map(([city, text]) => (
-              <div key={city} className="rounded-2xl bg-white p-5 shadow-lg shadow-slate-900/5">
-                <div className="text-lg font-black text-[#1a3a5c]">{city}</div>
-                <div className="mt-1 text-sm font-semibold text-slate-500">{text}</div>
+              <div
+                key={city}
+                className="rounded-2xl bg-white p-5 shadow-lg shadow-slate-900/5"
+              >
+                <div className="text-lg font-black text-[#1a3a5c]">
+                  {city}
+                </div>
+                <div className="mt-1 text-sm font-semibold text-slate-500">
+                  {text}
+                </div>
               </div>
             ))}
           </div>
@@ -970,7 +893,6 @@ function MapSection() {
     </section>
   );
 }
-
 function ChatSection() {
   return (
     <section className="bg-white py-16">
