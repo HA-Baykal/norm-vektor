@@ -142,9 +142,9 @@ const calculatorLabels: Record<CalculatorTab, string> = {
   drilling: "Бурение",
 };
 const conditionerPriceByArea: Record<ConditionerArea, { base: number; inverter: number }> = {
-  20: { base: 24950, inverter: 10000 },
-  30: { base: 28500, inverter: 8000 },
-  40: { base: 37000, inverter: 7000 },
+  20: { base: 42950, inverter: 10000 },
+  30: { base: 46500, inverter: 8000 },
+  40: { base: 55000, inverter: 7000 },
 };
 const portfolioFilters: Array<{ key: PortfolioCategory; label: string }> = [
   { key: "all", label: "Все" },
