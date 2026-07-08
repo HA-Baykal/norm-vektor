@@ -64,18 +64,18 @@ const services = [
 ];
 
 const portfolioItems = [
-  { category: "windows", path: "11", title: "Остекление балкона" },
-  { category: "windows", path: "22", title: "ПВХ окна в квартире" },
-  { category: "windows", path: "33", title: "Алюминиевые конструкции" },
-  { category: "conditioners", path: "", title: "Монтаж сплит-системы" },
-  { category: "conditioners", path: "", title: "Кондиционер в офисе" },
-  { category: "conditioners", path: "", title: "Сервис кондиционера" },
-  { category: "ventilation", path: "", title: "Бризер в квартире" },
-  { category: "ventilation", path: "", title: "Вентиляция ресторана" },
-  { category: "ventilation", path: "", title: "Воздуховоды на объекте" },
-  { category: "drilling", path: "", title: "Отверстие под вентиляцию" },
-  { category: "drilling", path: "", title: "Сухое бурение" },
-  { category: "drilling", path: "", title: "Бурение под трубы" },
+   { category: "windows", path: "images/portfolio/okna-1.jpg", title: "Остекление балкона" },
+  { category: "windows", path: "images/portfolio/okna-2.jpg", title: "ПВХ окна в квартире" },
+  { category: "windows", path: "images/portfolio/okna-3.jpg", title: "Алюминиевые конструкции" },
+  { category: "conditioners", path: "images/portfolio/cond-1.jpg", title: "Монтаж сплит-системы" },
+  { category: "conditioners", path: "images/portfolio/cond-2.jpg", title: "Кондиционер в офисе" },
+  { category: "conditioners", path: "images/portfolio/cond-3.jpg", title: "Сервис кондиционера" },
+  { category: "ventilation", path: "images/portfolio/vent-1.jpg", title: "Бризер в квартире" },
+  { category: "ventilation", path: "images/portfolio/vent-2.jpg", title: "Вентиляция ресторана" },
+  { category: "ventilation", path: "images/portfolio/vent-3.jpg", title: "Воздуховоды на объекте" },
+  { category: "drilling", path: "images/portfolio/bur-1.jpg", title: "Отверстие под вентиляцию" },
+  { category: "drilling", path: "images/portfolio/bur-2.jpg", title: "Сухое бурение" },
+  { category: "drilling", path: "images/portfolio/bur-3.jpg", title: "Бурение под трубы" },
 ] as const;
 
 const reviews = [
