@@ -34,6 +34,8 @@ declare global {
 const navItems = [
   { href: "#services", label: "Услуги" },
   { href: "#calculator", label: "Калькулятор" },
+  { href: "#partners", label: "Партнёры" },
+  { href: "#faq", label: "FAQ" },
   { href: "#portfolio", label: "Портфолио" },
   { href: "#reviews", label: "Отзывы" },
   { href: "#contacts", label: "Контакты" },
@@ -156,6 +158,60 @@ const portfolioFilters: Array<{ key: PortfolioCategory; label: string }> = [
   { key: "drilling", label: "Бурение" },
 ];
 
+const partnerBrands = [
+  { name: "Ballu", logo: "images/brands/ballu.svg" },
+  { name: "Electrolux", logo: "images/brands/electrolux.svg" },
+  { name: "Haier", logo: "images/brands/haier.svg" },
+  { name: "Daikin", logo: "images/brands/daikin.svg" },
+  { name: "Mitsubishi", logo: "images/brands/mitsubishi.svg" },
+  { name: "Royal Clima", logo: "images/brands/royal-clima.svg" },
+  { name: "Rehau", logo: "images/brands/rehau.svg" },
+  { name: "Veka", logo: "images/brands/veka.svg" },
+  { name: "Тион", logo: "images/brands/tion.svg" },
+  { name: "Vakio", logo: "images/brands/vakio.svg" },
+];
+
+const faqItems = [
+  {
+    question: "Сколько стоит выезд замерщика?",
+    answer: "Выезд замерщика бесплатный при условии заказа услуг. Если вы отказываетесь от заказа после замера — стоимость выезда 1000 ₽.",
+  },
+  {
+    question: "Какая гарантия на ваши работы?",
+    answer: "Мы даём гарантию до 5 лет на монтаж и оборудование. Гарантийный срок зависит от типа работ и указывается в договоре.",
+  },
+  {
+    question: "Вы работаете только в Иркутске?",
+    answer: "Нет, мы работаем в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км. Выезд в область обсуждается индивидуально.",
+  },
+  {
+    question: "Можно ли оплатить картой?",
+    answer: "Да, мы принимаем оплату наличными, банковской картой и безналичным расчётом для юридических лиц.",
+  },
+  {
+    question: "Сколько времени занимает монтаж кондиционера?",
+    answer: "Стандартный монтаж сплит-системы занимает 3-4 часа. В сложных случаях (высотные работы, длинная трасса) — до 8 часов.",
+  },
+  {
+    question: "Делаете ли вы сервисное обслуживание?",
+    answer: "Да, мы обслуживаем кондиционеры любых брендов: чистка, заправка фреоном, диагностика, ремонт.",
+  },
+];
+
+const notificationMessages = [
+  "Ирина, Иркутск — заказала расчёт кондиционера",
+  "Алексей, Ангарск — оставил заявку на окна",
+  "Мария, Шелехов — запросила бурение",
+  "Дмитрий, Хомутово — заказал вентиляцию",
+  "Ольга, Иркутск — оставила заявку на замер",
+];
+
+// НОВЫЕ КОНТАКТЫ
+const PHONE_MAIN = "+79149146606";
+const PHONE_CITY = "66-99-30";
+const WHATSAPP_PHONE = "79247116610";
+const MAX_APP_URL = "https://max.ru/u/f9LHodD0cOI5ldFKekwE_KM4jdDm8tReQpj7iGpqPxHBgROGT5syyP8nDwY";
+
 function candidatePaths(path: string) {
   const match = path.match(/^(.*)\.(jpg|jpeg|png)$/i);
   if (!match) return [path];
@@ -186,6 +242,17 @@ function openJivoChat() {
   document.getElementById("contacts")?.scrollIntoView({ behavior: "smooth" });
 }
 
+// ОБНОВЛЁННАЯ ФУНКЦИЯ: WhatsApp на правильный номер
+function openWhatsApp() {
+  const message = "Здравствуйте! Интересуют ваши услуги. Можно получить консультацию?";
+  window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`, "_blank");
+}
+
+// НОВАЯ ФУНКЦИЯ: Переход в Max
+function openMaxApp() {
+  window.open(MAX_APP_URL, "_blank");
+}
+
 function LogoMark({ className = "h-10 w-10 sm:h-11 sm:w-11" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -211,6 +278,9 @@ function LineIcon({ name }: { name: string }) {
       {name === "phone" && <path className={common} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M6.6 10.8c1.5 3 3.6 5.1 6.6 6.6l2.2-2.2 4.1 1.4V20c0 .6-.4 1-1 1C9.9 21 3 14.1 3 5.5c0-.6.4-1 1-1h3.4l1.4 4.1-2.2 2.2Z" />}
       {name === "chat" && <path className={common} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M4 5h16v11H8l-4 4V5Zm5 5h.01M12 10h.01M15 10h.01" />}
       {name === "arrow" && <path className={common} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />}
+      {name === "whatsapp" && <path className={common} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M21 11.5a9.5 9.5 0 1 1-9.5-9.5c1.8 0 3.5.5 5 1.4l2.8-.7-.7 2.7a9.4 9.4 0 0 1 2.4 6.1ZM8 9c0 2.5 2 5.5 5 7 1 .5 2 .5 2.5 0l1-1c.5-.5.5-1.5 0-2l-1.5-1.5c-.5-.5-1.5-.5-2 0l-1 1c-.5.5-1.5.5-2 0Z" />}
+      {name === "up" && <path className={common} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 19V5m-7 7 7-7 7 7" />}
+      {name === "max" && <path className={common} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />}
     </svg>
   );
 }
@@ -296,6 +366,72 @@ function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string
   );
 }
 
+function NotificationToast() {
+  const [visible, setVisible] = useState(false);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const showNotification = () => {
+      const randomMessage = notificationMessages[Math.floor(Math.random() * notificationMessages.length)];
+      setMessage(randomMessage);
+      setVisible(true);
+      setTimeout(() => setVisible(false), 4000);
+    };
+
+    const timer = setTimeout(showNotification, 8000);
+    const interval = setInterval(showNotification, 25000);
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <div className="fixed bottom-28 left-4 z-40 max-w-xs animate-fade-in-up rounded-2xl bg-white p-4 shadow-2xl shadow-slate-900/20 border border-slate-200 sm:bottom-32">
+      <div className="flex items-start gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <path d="M22 4 12 14.01l-3-3" />
+          </svg>
+        </div>
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-slate-900">{message}</p>
+          <p className="mt-1 text-xs text-slate-500">Только что</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ScrollToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setVisible(window.scrollY > 400);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      className="fixed bottom-28 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#1a3a5c] text-white shadow-lg shadow-slate-900/20 transition hover:bg-[#244b73] sm:bottom-36 sm:h-14 sm:w-14"
+      aria-label="Наверх"
+    >
+      <LineIcon name="up" />
+    </button>
+  );
+}
+
 function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -327,13 +463,13 @@ function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 xl:flex">
-          <a href="tel:+79149146606" className="text-sm font-bold text-[#1a3a5c] transition hover:text-[#ff6b35]">+7 (914) 914-66-06</a>
+          <a href={`tel:${PHONE_MAIN}`} className="text-sm font-bold text-[#1a3a5c] transition hover:text-[#ff6b35]">+7 (914) 914-66-06</a>
           <span className="h-4 w-px bg-slate-300" />
-          <a href="tel:+73952669930" className="text-sm font-bold text-[#1a3a5c] transition hover:text-[#ff6b35]">66-99-30</a>
+          <a href={`tel:${PHONE_CITY}`} className="text-sm font-bold text-[#1a3a5c] transition hover:text-[#ff6b35]">66-99-30</a>
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
-          <a href="tel:+79149146606" className="hidden items-center gap-2 rounded-full bg-[#ff6b35] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-[#e95620] md:inline-flex">
+          <a href={`tel:${PHONE_MAIN}`} className="hidden items-center gap-2 rounded-full bg-[#ff6b35] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-[#e95620] md:inline-flex">
             <LineIcon name="phone" />
             Позвонить
           </a>
@@ -359,9 +495,17 @@ function Header() {
               </a>
             ))}
             <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-              <a href="tel:+79149146606" className="rounded-2xl bg-[#1a3a5c] px-4 py-3 text-center text-sm font-bold text-white">+7 (914) 914-66-06</a>
-              <a href="tel:+73952669930" className="rounded-2xl bg-[#ff6b35] px-4 py-3 text-center text-sm font-bold text-white">66-99-30</a>
+              <a href={`tel:${PHONE_MAIN}`} className="rounded-2xl bg-[#1a3a5c] px-4 py-3 text-center text-sm font-bold text-white">+7 (914) 914-66-06</a>
+              <a href={`tel:${PHONE_CITY}`} className="rounded-2xl bg-[#ff6b35] px-4 py-3 text-center text-sm font-bold text-white">66-99-30</a>
             </div>
+            {/* Кнопка WhatsApp в мобильном меню */}
+            <button onClick={() => { openWhatsApp(); setMobileOpen(false); }} className="mt-2 rounded-2xl bg-[#25D366] px-4 py-3 text-center text-sm font-bold text-white">
+              💬 Написать в WhatsApp
+            </button>
+            {/* Кнопка Max в мобильном меню */}
+            <button onClick={() => { openMaxApp(); setMobileOpen(false); }} className="mt-2 rounded-2xl bg-[#0066FF] px-4 py-3 text-center text-sm font-bold text-white">
+              📱 Max Приложение
+            </button>
           </div>
         </div>
       )}
@@ -395,7 +539,7 @@ function Hero() {
             <LineIcon name="arrow" />
           </a>
           <a
-            href="tel:+79149146606"
+            href={`tel:${PHONE_MAIN}`}
             className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-white/30 bg-white/10 px-5 py-4 text-sm font-black text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/20 sm:w-auto sm:px-7 sm:text-base"
           >
             Позвонить
@@ -491,6 +635,73 @@ function ServicesSection() {
   );
 }
 
+function PartnersSection() {
+  return (
+    <section id="partners" className="bg-white py-14 sm:py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionTitle eyebrow="Партнёры" title="Работаем с проверенными брендами" text="Официальные дилеры ведущих производителей климатической техники и оконных систем." />
+        
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:mt-12 sm:grid-cols-3 lg:grid-cols-5 lg:gap-6">
+          {partnerBrands.map((brand, index) => (
+            <div
+              key={brand.name}
+              className="reveal flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-[#ff6b35] hover:shadow-lg sm:p-6"
+              style={{ transitionDelay: `${index * 50}ms` }}
+            >
+              <div className="h-12 w-full bg-slate-100 rounded-lg flex items-center justify-center text-xs font-semibold text-slate-500">
+                {brand.name}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <section id="faq" className="bg-slate-50 py-14 sm:py-20 lg:py-28">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <SectionTitle eyebrow="FAQ" title="Частые вопросы" text="Ответы на самые популярные вопросы о наших услугах." />
+        
+        <div className="mt-8 space-y-4 sm:mt-12">
+          {faqItems.map((item, index) => (
+            <div
+              key={index}
+              className="reveal overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-[#ff6b35]"
+              style={{ transitionDelay: `${index * 50}ms` }}
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6"
+              >
+                <span className="text-sm font-bold text-slate-900 sm:text-base">{item.question}</span>
+                <svg
+                  className={`h-5 w-5 shrink-0 text-[#ff6b35] transition-transform ${openIndex === index ? "rotate-180" : ""}`}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {openIndex === index && (
+                <div className="px-5 pb-5 sm:px-6 sm:pb-6">
+                  <p className="text-sm leading-7 text-slate-600 sm:text-base">{item.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Calculator() {
   const [tab, setTab] = useState<CalculatorTab>("windows");
   const [calc, setCalc] = useState<CalculatorState>({
@@ -576,7 +787,7 @@ function Calculator() {
                     value={calc.conditionerMode}
                     options={[
                       { value: "sale-install", label: "Продажа + монтаж" },
-                      { value: "install", label: "Монтаж вашего кондиционера + обслуэивание" },
+                      { value: "install", label: "Монтаж вашего кондиционера + обслуживание" },
                       { value: "service", label: "Обслуживание / чистка / фреон" },
                     ]}
                     onChange={(value) => setCalc({ ...calc, conditionerMode: value as CalculatorState["conditionerMode"] })}
@@ -869,10 +1080,20 @@ function ChatSection() {
             <h2 className="mt-3 text-2xl font-black tracking-tight sm:text-4xl">Напишите нам в чат</h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-200 sm:text-base">Ответим на вопрос, подскажем по услуге и поможем оставить заявку без CRM и лишних сервисов.</p>
           </div>
-          <button type="button" onClick={openJivoChat} className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-sm font-black text-white transition hover:bg-[#e95620] sm:w-auto">
-            Написать в чат
-            <LineIcon name="chat" />
-          </button>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <button type="button" onClick={openJivoChat} className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-sm font-black text-white transition hover:bg-[#e95620] sm:w-auto">
+              Написать в чат
+              <LineIcon name="chat" />
+            </button>
+            <button type="button" onClick={openWhatsApp} className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white transition hover:bg-[#1ebc57] sm:w-auto">
+              WhatsApp
+              <LineIcon name="whatsapp" />
+            </button>
+            <button type="button" onClick={openMaxApp} className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#0066FF] px-7 py-4 text-sm font-black text-white transition hover:bg-[#0055DD] sm:w-auto">
+              Max
+              <LineIcon name="max" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -904,8 +1125,16 @@ function ContactForm() {
           <h2 className="mt-3 text-3xl font-black tracking-tight text-[#1a3a5c] sm:mt-4 sm:text-4xl lg:text-5xl">Оставьте заявку или позвоните</h2>
           <p className="mt-4 text-base leading-7 text-slate-600 sm:mt-5 sm:text-lg sm:leading-8">Перезвоним, уточним задачу и подготовим предварительный расчёт.</p>
           <div className="mt-6 space-y-3 sm:mt-8">
-            <a href="tel:+79149146606" className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35] sm:gap-4 sm:p-5 sm:text-base"><LineIcon name="phone" /> +7 (914) 914-66-06</a>
-            <a href="tel:+73952669930" className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35] sm:gap-4 sm:p-5 sm:text-base"><LineIcon name="phone" /> 66-99-30</a>
+            <a href={`tel:${PHONE_MAIN}`} className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35] sm:gap-4 sm:p-5 sm:text-base"><LineIcon name="phone" /> +7 (914) 914-66-06</a>
+            <a href={`tel:${PHONE_CITY}`} className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35] sm:gap-4 sm:p-5 sm:text-base"><LineIcon name="phone" /> 66-99-30</a>
+            <button onClick={openWhatsApp} className="flex w-full items-center gap-3 rounded-2xl bg-[#25D366] p-4 text-sm font-black text-white transition hover:bg-[#1ebc57] sm:p-5 sm:text-base">
+              <LineIcon name="whatsapp" />
+              Написать в WhatsApp
+            </button>
+            <button onClick={openMaxApp} className="flex w-full items-center gap-3 rounded-2xl bg-[#0066FF] p-4 text-sm font-black text-white transition hover:bg-[#0055DD] sm:p-5 sm:text-base">
+              <LineIcon name="max" />
+              Max Приложение
+            </button>
           </div>
           <div className="mt-6 rounded-[1.5rem] bg-slate-50 p-5 text-slate-700 sm:mt-8 sm:rounded-[2rem] sm:p-6">
             <h3 className="text-lg font-black text-[#1a3a5c] sm:text-xl">Города</h3>
@@ -990,8 +1219,8 @@ function Footer() {
         <div>
           <h3 className="font-black">Контакты</h3>
           <div className="mt-4 grid gap-2 text-slate-300">
-            <a href="tel:+79149146606" className="transition hover:text-[#ff6b35]">+7 (914) 914-66-06</a>
-            <a href="tel:+73952669930" className="transition hover:text-[#ff6b35]">66-99-30</a>
+            <a href={`tel:${PHONE_MAIN}`} className="transition hover:text-[#ff6b35]">+7 (914) 914-66-06</a>
+            <a href={`tel:${PHONE_CITY}`} className="transition hover:text-[#ff6b35]">66-99-30</a>
             <span>Ежедневно 9:00-20:00</span>
             <span>Иркутск и пригород до 50 км</span>
           </div>
@@ -1032,7 +1261,9 @@ export default function App() {
         <Hero />
         <Counters />
         <ServicesSection />
+        <PartnersSection />
         <Calculator />
+        <FAQSection />
         <Portfolio />
         <Advantages />
         <Reviews />
@@ -1041,6 +1272,8 @@ export default function App() {
         <ContactForm />
       </main>
       <Footer />
+      <NotificationToast />
+      <ScrollToTop />
     </div>
   );
 }
