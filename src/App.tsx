@@ -513,7 +513,7 @@ function Calculator() {
     if (tab === "conditioners") {
       const areaPrice = conditionerPriceByArea[calc.conditionerArea];
       const saleAndInstallPrice = areaPrice.base + (calc.conditionerInverter ? areaPrice.inverter : 0);
-      const installOnlyPrice = 18000;
+      const installOnlyPrice = 22000;
       const servicePrice = 5500;
       const price = calc.conditionerMode === "sale-install" ? saleAndInstallPrice : calc.conditionerMode === "install" ? installOnlyPrice : servicePrice;
       return calc.conditionerCount * price;
@@ -576,7 +576,7 @@ function Calculator() {
                     value={calc.conditionerMode}
                     options={[
                       { value: "sale-install", label: "Продажа + монтаж" },
-                      { value: "install", label: "Только монтаж" },
+                      { value: "install", label: "Монтаж вашего кондиционера + обслуэивание" },
                       { value: "service", label: "Обслуживание / чистка / фреон" },
                     ]}
                     onChange={(value) => setCalc({ ...calc, conditionerMode: value as CalculatorState["conditionerMode"] })}
