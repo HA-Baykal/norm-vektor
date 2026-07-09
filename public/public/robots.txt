@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vektor-komforta.ru/sitemap.xml
+Host: https://vektor-komforta.ru
