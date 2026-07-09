@@ -520,8 +520,8 @@ function Calculator() {
     }
 
     if (tab === "ventilation") {
-      const typePrice = calc.ventType === "brizer" ? 38000 : calc.ventType === "recuperator" ? 52000 : 125000;
-      return typePrice + calc.rooms * 6500;
+      const typePrice = calc.ventType === "brizer" ? 19390 : calc.ventType === "recuperator" ? 33900 : 125000;
+      return typePrice + calc.rooms * 19390;
     }
 
     const diameterPrice = calc.diameter <= 80 ? 2000 : calc.diameter <= 132 ? 2500 : calc.diameter <= 160 ? 2900 : 4800;
