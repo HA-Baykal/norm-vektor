@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
 type CalculatorTab = "windows" | "conditioners" | "ventilation" | "drilling";
 type PortfolioCategory = "all" | "windows" | "conditioners" | "ventilation" | "drilling";
@@ -67,7 +67,7 @@ const services = [
 ];
 
 const portfolioItems = [
-   { category: "windows", path: "images/portfolio/okna-1.jpg", title: "Остекление балкона" },
+  { category: "windows", path: "images/portfolio/okna-1.jpg", title: "Остекление балкона" },
   { category: "windows", path: "images/portfolio/okna-2.jpg", title: "ПВХ окна в квартире" },
   { category: "windows", path: "images/portfolio/okna-3.jpg", title: "Алюминиевые конструкции" },
   { category: "conditioners", path: "images/portfolio/cond-1.jpg", title: "Монтаж сплит-системы" },
@@ -141,11 +141,13 @@ const calculatorLabels: Record<CalculatorTab, string> = {
   ventilation: "Вентиляция",
   drilling: "Бурение",
 };
+
 const conditionerPriceByArea: Record<ConditionerArea, { base: number; inverter: number }> = {
   20: { base: 42950, inverter: 10000 },
   30: { base: 46500, inverter: 8000 },
   40: { base: 55000, inverter: 7000 },
 };
+
 const portfolioFilters: Array<{ key: PortfolioCategory; label: string }> = [
   { key: "all", label: "Все" },
   { key: "windows", label: "Окна" },
@@ -184,7 +186,7 @@ function openJivoChat() {
   document.getElementById("contacts")?.scrollIntoView({ behavior: "smooth" });
 }
 
-function LogoMark({ className = "h-11 w-11" }: { className?: string }) {
+function LogoMark({ className = "h-10 w-10 sm:h-11 sm:w-11" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
       <rect x="3" y="3" width="42" height="42" rx="12" fill="#1a3a5c" />
@@ -199,7 +201,7 @@ function LogoMark({ className = "h-11 w-11" }: { className?: string }) {
 function LineIcon({ name }: { name: string }) {
   const common = "stroke-current";
   return (
-    <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       {name === "layers" && <path className={common} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="m12 3 8 4.5-8 4.5-8-4.5L12 3Zm-8 9 8 4.5 8-4.5M4 16.5 12 21l8-4.5" />}
       {name === "tools" && <path className={common} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M14.5 6.5 17 4l3 3-2.5 2.5M6 18l8.5-8.5m-7-4.5 3 3M4 7l3-3 13 13-3 3L4 7Z" />}
       {name === "spark" && <path className={common} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Zm7 12 1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1 1-2.5Z" />}
@@ -254,13 +256,7 @@ function PhotoSlot({
         />
       )}
 
-      {(!loaded || failed) && !hidePlaceholder && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-200 px-4 text-center text-slate-500">
-          <div className="h-10 w-10 rounded-full border-2 border-dashed border-slate-400" />
-          <span className="text-sm font-semibold">Вставьте фото: {path}</span>
-          <span className="text-xs">Поддерживаются .jpg, .jpeg, .png</span>
-        </div>
-      )}
+      {(!loaded || failed) && !hidePlaceholder && <div className="absolute inset-0 bg-slate-200" />}
     </div>
   );
 }
@@ -272,7 +268,7 @@ function AvatarPhoto({ path, initials }: { path: string; initials: string }) {
 
   if (failed) {
     return (
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#1a3a5c] text-sm font-black text-white">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1a3a5c] text-sm font-black text-white sm:h-14 sm:w-14">
         {initials}
       </div>
     );
@@ -285,8 +281,18 @@ function AvatarPhoto({ path, initials }: { path: string; initials: string }) {
       alt={initials}
       loading="lazy"
       onError={() => setCurrent((value) => value + 1)}
-      className="h-14 w-14 shrink-0 rounded-full object-cover"
+      className="h-12 w-12 shrink-0 rounded-full object-cover sm:h-14 sm:w-14"
     />
+  );
+}
+
+function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
+  return (
+    <div className="max-w-3xl reveal">
+      <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff6b35] sm:text-sm sm:tracking-[0.2em]">{eyebrow}</p>
+      <h2 className="mt-3 text-3xl font-black tracking-tight text-[#1a3a5c] sm:mt-4 sm:text-4xl lg:text-5xl">{title}</h2>
+      {text && <p className="mt-4 text-base leading-7 text-slate-600 sm:mt-5 sm:text-lg sm:leading-8">{text}</p>}
+    </div>
   );
 }
 
@@ -302,13 +308,13 @@ function Header() {
   }, []);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 shadow-lg shadow-slate-900/5 backdrop-blur-xl" : "bg-white/75 backdrop-blur-md"}`}>
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#top" className="flex items-center gap-3" aria-label="Вектор Комфорта">
-          <LogoMark />
-          <div className="leading-tight">
-            <div className="text-lg font-black tracking-tight text-[#1a3a5c]">Вектор Комфорта</div>
-            <div className="text-xs font-medium text-slate-500">Комфорт в каждом направлении</div>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 shadow-lg shadow-slate-900/5 backdrop-blur-xl" : "bg-white/80 backdrop-blur-md"}`}>
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:h-20 sm:px-6 lg:px-8">
+        <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3" aria-label="Вектор Комфорта">
+          <LogoMark className="h-9 w-9 sm:h-11 sm:w-11" />
+          <div className="min-w-0 leading-tight">
+            <div className="truncate text-base font-black tracking-tight text-[#1a3a5c] sm:text-lg">Вектор Комфорта</div>
+            <div className="hidden text-xs font-medium text-slate-500 sm:block">Комфорт в каждом направлении</div>
           </div>
         </a>
 
@@ -326,8 +332,8 @@ function Header() {
           <a href="tel:+73952669930" className="text-sm font-bold text-[#1a3a5c] transition hover:text-[#ff6b35]">66-99-30</a>
         </div>
 
-        <div className="flex items-center gap-2">
-          <a href="tel:+79149146606" className="hidden items-center gap-2 rounded-full bg-[#ff6b35] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-[#e95620] sm:inline-flex">
+        <div className="flex shrink-0 items-center gap-2">
+          <a href="tel:+79149146606" className="hidden items-center gap-2 rounded-full bg-[#ff6b35] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-[#e95620] md:inline-flex">
             <LineIcon name="phone" />
             Позвонить
           </a>
@@ -352,7 +358,7 @@ function Header() {
                 {item.label}
               </a>
             ))}
-            <div className="mt-2 grid grid-cols-2 gap-2">
+            <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
               <a href="tel:+79149146606" className="rounded-2xl bg-[#1a3a5c] px-4 py-3 text-center text-sm font-bold text-white">+7 (914) 914-66-06</a>
               <a href="tel:+73952669930" className="rounded-2xl bg-[#ff6b35] px-4 py-3 text-center text-sm font-bold text-white">66-99-30</a>
             </div>
@@ -365,33 +371,36 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative flex min-h-[760px] items-center overflow-hidden bg-[#10263d] pt-24 text-white">
-      <div className="absolute inset-0 opacity-105">
-        <PhotoSlot path="images/hero-bg.jpg" hidePlaceholder className="h-full w-full bg-transparent" imageClassName="object-cover" />
+    <section
+      id="top"
+      className="relative flex min-h-[560px] items-end overflow-hidden bg-[#10263d] pt-16 text-white sm:min-h-[650px] sm:pt-20 lg:min-h-[760px] lg:pt-24"
+    >
+      <div className="absolute inset-0 opacity-100">
+        <PhotoSlot
+          path="images/hero-bg.jpg"
+          hidePlaceholder
+          className="h-full w-full bg-transparent"
+          imageClassName="object-cover object-center"
+        />
       </div>
-      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(16,38,61,0.78)_0%,rgba(26,58,92,0.58)_48%,rgba(16,38,61,0.25)_100%)]" />
-      <div className="absolute inset-0 soft-grid" />
+      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(16,38,61,0.45)_0%,rgba(26,58,92,0.28)_48%,rgba(16,38,61,0.14)_100%)]" />
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-        <div className="max-w-3xl reveal">
-          
-          <div className="mt-138 flex flex-col gap-3 sm:mt-56 sm:flex-row lg:mt-150">
-            <a href="#calculator" className="inline-flex items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-base font-black text-white shadow-2xl shadow-orange-500/25 transition hover:-translate-y-1 hover:bg-[#e95620]">
-              Рассчитать стоимость
-              <LineIcon name="arrow" />
-            </a>
-            <a href="tel:+79149146606" className="inline-flex items-center justify-center gap-3 rounded-full border border-white/30 bg-white/10 px-7 py-4 text-base font-black text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/20">
-              Позвонить
-              <LineIcon name="phone" />
-            </a>
-          </div>
-        </div>
-
-        <div className="flex items-end justify-start lg:justify-end reveal">
-          <div className="max-w-md border-l-4 border-[#ff6b35] pl-6 text-slate-100">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-200"></p>
-            <p className="mt-3 text-lg leading-7"></p>
-          </div>
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl px-4 pb-8 sm:px-6 sm:pb-12 lg:px-8 lg:pb-16">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <a
+            href="#calculator"
+            className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-5 py-4 text-sm font-black text-white shadow-2xl shadow-orange-500/25 transition hover:-translate-y-1 hover:bg-[#e95620] sm:w-auto sm:px-7 sm:text-base"
+          >
+            Рассчитать стоимость
+            <LineIcon name="arrow" />
+          </a>
+          <a
+            href="tel:+79149146606"
+            className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-white/30 bg-white/10 px-5 py-4 text-sm font-black text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/20 sm:w-auto sm:px-7 sm:text-base"
+          >
+            Позвонить
+            <LineIcon name="phone" />
+          </a>
         </div>
       </div>
     </section>
@@ -401,6 +410,20 @@ function Hero() {
 function CountUp({ end, suffix = "", label, text }: { end?: number; suffix?: string; label: string; text?: string }) {
   const [value, setValue] = useState(0);
   const [started, setStarted] = useState(false);
+  const nodeRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const node = nodeRef.current;
+    if (!node || started) return;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setStarted(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.4 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [started]);
 
   useEffect(() => {
     if (!started || end === undefined) return;
@@ -418,18 +441,9 @@ function CountUp({ end, suffix = "", label, text }: { end?: number; suffix?: str
   }, [end, started]);
 
   return (
-    <div className="reveal border-b border-slate-200 py-7 sm:border-b-0 sm:border-r sm:px-8 last:border-0" ref={(node) => {
-      if (!node || started) return;
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      }, { threshold: 0.4 });
-      observer.observe(node);
-    }}>
-      <div className="text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">{text ?? `${value}${suffix}`}</div>
-      <div className="mt-2 text-sm font-bold uppercase tracking-[0.18em] text-slate-500">{label}</div>
+    <div ref={nodeRef} className="reveal border-b border-slate-200 px-4 py-6 text-center sm:border-b-0 sm:border-r sm:px-8 sm:py-7 last:border-0">
+      <div className="text-3xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">{text ?? `${value}${suffix}`}</div>
+      <div className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-500 sm:text-sm sm:tracking-[0.18em]">{label}</div>
     </div>
   );
 }
@@ -437,7 +451,7 @@ function CountUp({ end, suffix = "", label, text }: { end?: number; suffix?: str
 function Counters() {
   return (
     <section className="bg-white">
-      <div className="mx-auto grid max-w-7xl sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
         <CountUp end={10} suffix="+" label="лет опыта" />
         <CountUp end={500} suffix="+" label="проектов" />
         <CountUp text="4" label="направления" />
@@ -449,25 +463,21 @@ function Counters() {
 
 function ServicesSection() {
   return (
-    <section id="services" className="bg-slate-50 py-20 sm:py-28">
+    <section id="services" className="bg-slate-50 py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl reveal">
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Услуги</p>
-          <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">Комплексные работы для комфорта и инженерии</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-600">Подберём решение, рассчитаем смету и выполним монтаж с гарантией.</p>
-        </div>
+        <SectionTitle eyebrow="Услуги" title="Комплексные работы для комфорта и инженерии" text="Подберём решение, рассчитаем смету и выполним монтаж с гарантией." />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4 lg:gap-6">
           {services.map((service, index) => (
-            <article key={service.title} className="reveal group overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-900/5 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-slate-900/10" style={{ transitionDelay: `${index * 70}ms` }}>
+            <article key={service.title} className="reveal group overflow-hidden rounded-[1.5rem] bg-white shadow-xl shadow-slate-900/5 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-slate-900/10 sm:rounded-[2rem]" style={{ transitionDelay: `${index * 70}ms` }}>
               <PhotoSlot path={service.image} className="aspect-[4/3]" />
-              <div className="p-6">
-                <h3 className="text-xl font-black text-[#1a3a5c]">{service.title}</h3>
+              <div className="p-5 sm:p-6">
+                <h3 className="text-lg font-black text-[#1a3a5c] sm:text-xl">{service.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{service.text}</p>
                 <ul className="mt-5 space-y-2">
                   {service.points.map((point) => (
                     <li key={point} className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                      <span className="h-2 w-2 rounded-full bg-[#ff6b35]" />
+                      <span className="h-2 w-2 shrink-0 rounded-full bg-[#ff6b35]" />
                       {point}
                     </li>
                   ))}
@@ -497,30 +507,23 @@ function Calculator() {
     dryMethod: true,
   });
 
- const estimate = useMemo(() => {
+  const estimate = useMemo(() => {
     if (tab === "windows") return calc.windowsCount * 19000 + (calc.balcony ? 52000 : 0);
+
     if (tab === "conditioners") {
-  const areaPrice = conditionerPriceByArea[calc.conditionerArea];
+      const areaPrice = conditionerPriceByArea[calc.conditionerArea];
+      const saleAndInstallPrice = areaPrice.base + (calc.conditionerInverter ? areaPrice.inverter : 0);
+      const installOnlyPrice = 18000;
+      const servicePrice = 5500;
+      const price = calc.conditionerMode === "sale-install" ? saleAndInstallPrice : calc.conditionerMode === "install" ? installOnlyPrice : servicePrice;
+      return calc.conditionerCount * price;
+    }
 
-  const saleAndInstallPrice =
-    areaPrice.base + (calc.conditionerInverter ? areaPrice.inverter : 0);
-
-  const installOnlyPrice = 18000;
-  const servicePrice = 5500;
-
-  const price =
-    calc.conditionerMode === "sale-install"
-      ? saleAndInstallPrice
-      : calc.conditionerMode === "install"
-        ? installOnlyPrice
-        : servicePrice;
-
-  return calc.conditionerCount * price;
-}
     if (tab === "ventilation") {
       const typePrice = calc.ventType === "brizer" ? 38000 : calc.ventType === "recuperator" ? 52000 : 125000;
       return typePrice + calc.rooms * 6500;
     }
+
     const diameterPrice = calc.diameter <= 80 ? 2000 : calc.diameter <= 132 ? 2500 : calc.diameter <= 160 ? 2900 : 4800;
     return calc.holes * (diameterPrice + (calc.dryMethod ? 700 : 0));
   }, [calc, tab]);
@@ -530,16 +533,16 @@ function Calculator() {
   };
 
   return (
-    <section id="calculator" className="bg-white py-20 sm:py-28">
+    <section id="calculator" className="bg-white py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-10">
           <div className="reveal">
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Калькулятор</p>
-            <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">Предварительный расчёт стоимости</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">Стоимость меняется в реальном времени. Итоговая цена зависит от замера, материала, сложности монтажа и выбранного оборудования.</p>
-            <div className="mt-8 rounded-[2rem] bg-[#1a3a5c] p-7 text-white shadow-2xl shadow-slate-900/15">
-              <div className="text-sm font-bold uppercase tracking-[0.2em] text-orange-200">Ориентир</div>
-              <div className="mt-3 text-4xl font-black sm:text-5xl">{formatRub(estimate)}</div>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff6b35] sm:text-sm sm:tracking-[0.2em]">Калькулятор</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-[#1a3a5c] sm:mt-4 sm:text-4xl lg:text-5xl">Предварительный расчёт стоимости</h2>
+            <p className="mt-4 text-base leading-7 text-slate-600 sm:mt-5 sm:text-lg sm:leading-8">Стоимость меняется в реальном времени. Итоговая цена зависит от замера, материала, сложности монтажа и выбранного оборудования.</p>
+            <div className="mt-6 rounded-[1.5rem] bg-[#1a3a5c] p-5 text-white shadow-2xl shadow-slate-900/15 sm:mt-8 sm:rounded-[2rem] sm:p-7">
+              <div className="text-xs font-bold uppercase tracking-[0.18em] text-orange-200 sm:text-sm sm:tracking-[0.2em]">Ориентир</div>
+              <div className="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">{formatRub(estimate)}</div>
               <p className="mt-4 text-sm leading-6 text-slate-200">Это быстрый расчёт для понимания бюджета. Точную смету подготовим после уточнения деталей.</p>
               <button type="button" onClick={requestLead} className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620] sm:w-auto">
                 Оставить заявку
@@ -548,16 +551,16 @@ function Calculator() {
             </div>
           </div>
 
-          <div className="reveal rounded-[2rem] bg-slate-50 p-4 shadow-xl shadow-slate-900/5 sm:p-6">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div className="reveal rounded-[1.5rem] bg-slate-50 p-4 shadow-xl shadow-slate-900/5 sm:rounded-[2rem] sm:p-6">
+            <div className="flex gap-2 overflow-x-auto pb-2 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0">
               {(Object.keys(calculatorLabels) as CalculatorTab[]).map((key) => (
-                <button key={key} type="button" onClick={() => setTab(key)} className={`rounded-2xl px-4 py-3 text-sm font-black transition ${tab === key ? "bg-[#1a3a5c] text-white" : "bg-white text-slate-600 hover:bg-slate-100"}`}>
+                <button key={key} type="button" onClick={() => setTab(key)} className={`min-w-[145px] rounded-2xl px-4 py-3 text-sm font-black transition sm:min-w-0 ${tab === key ? "bg-[#1a3a5c] text-white" : "bg-white text-slate-600 hover:bg-slate-100"}`}>
                   {calculatorLabels[key]}
                 </button>
               ))}
             </div>
 
-            <div className="mt-8 space-y-7">
+            <div className="mt-6 space-y-6 sm:mt-8 sm:space-y-7">
               {tab === "windows" && (
                 <>
                   <RangeField label="Количество окон" value={calc.windowsCount} min={1} max={12} suffix="шт." onChange={(value) => setCalc({ ...calc, windowsCount: value })} />
@@ -566,63 +569,40 @@ function Calculator() {
               )}
 
               {tab === "conditioners" && (
-  <>
-    <RangeField
-      label="Количество кондиционеров"
-      value={calc.conditionerCount}
-      min={1}
-      max={8}
-      suffix="шт."
-      onChange={(value) => setCalc({ ...calc, conditionerCount: value })}
-    />
+                <>
+                  <RangeField label="Количество кондиционеров" value={calc.conditionerCount} min={1} max={8} suffix="шт." onChange={(value) => setCalc({ ...calc, conditionerCount: value })} />
+                  <SelectField
+                    label="Тип работы"
+                    value={calc.conditionerMode}
+                    options={[
+                      { value: "sale-install", label: "Продажа + монтаж" },
+                      { value: "install", label: "Только монтаж" },
+                      { value: "service", label: "Обслуживание / чистка / фреон" },
+                    ]}
+                    onChange={(value) => setCalc({ ...calc, conditionerMode: value as CalculatorState["conditionerMode"] })}
+                  />
 
-    <SelectField
-      label="Тип работы"
-      value={calc.conditionerMode}
-      options={[
-        { value: "sale-install", label: "Продажа + монтаж" },
-        { value: "install", label: "Только монтаж" },
-        { value: "service", label: "Обслуживание / чистка / фреон" },
-      ]}
-      onChange={(value) =>
-        setCalc({
-          ...calc,
-          conditionerMode: value as CalculatorState["conditionerMode"],
-        })
-      }
-    />
-
-    {calc.conditionerMode === "sale-install" && (
-      <>
-        <SelectField
-          label="Площадь помещения"
-          value={String(calc.conditionerArea)}
-          options={[
-            { value: "20", label: "До 20 кв.м — 24 950 руб." },
-            { value: "30", label: "До 30 кв.м — 28 500 руб." },
-            { value: "40", label: "До 40 кв.м — 37 000 руб." },
-          ]}
-          onChange={(value) =>
-            setCalc({
-              ...calc,
-              conditionerArea: Number(value) as ConditionerArea,
-            })
-          }
-        />
-
-        <ToggleField
-          label={`Инверторная технология +${formatRub(
-            conditionerPriceByArea[calc.conditionerArea].inverter
-          )}`}
-          checked={calc.conditionerInverter}
-          onChange={(value) =>
-            setCalc({ ...calc, conditionerInverter: value })
-          }
-        />
-      </>
-    )}
-  </>
-)}
+                  {calc.conditionerMode === "sale-install" && (
+                    <>
+                      <SelectField
+                        label="Площадь помещения"
+                        value={String(calc.conditionerArea)}
+                        options={[
+                          { value: "20", label: "До 20 кв.м" },
+                          { value: "30", label: "До 30 кв.м" },
+                          { value: "40", label: "До 40 кв.м" },
+                        ]}
+                        onChange={(value) => setCalc({ ...calc, conditionerArea: Number(value) as ConditionerArea })}
+                      />
+                      <ToggleField
+                        label={`Инверторная технология +${formatRub(conditionerPriceByArea[calc.conditionerArea].inverter)}`}
+                        checked={calc.conditionerInverter}
+                        onChange={(value) => setCalc({ ...calc, conditionerInverter: value })}
+                      />
+                    </>
+                  )}
+                </>
+              )}
 
               {tab === "ventilation" && (
                 <>
@@ -668,8 +648,8 @@ function Calculator() {
 function RangeField({ label, value, min, max, suffix, onChange }: { label: string; value: number; min: number; max: number; suffix: string; onChange: (value: number) => void }) {
   return (
     <label className="block">
-      <div className="mb-3 flex items-center justify-between gap-4">
-        <span className="text-sm font-black uppercase tracking-[0.16em] text-slate-500">{label}</span>
+      <div className="mb-3 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <span className="text-xs font-black uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em]">{label}</span>
         <span className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1a3a5c] shadow-sm">{value} {suffix}</span>
       </div>
       <input type="range" min={min} max={max} value={value} onChange={(event) => onChange(Number(event.target.value))} className="h-2 w-full cursor-pointer accent-[#ff6b35]" />
@@ -679,9 +659,9 @@ function RangeField({ label, value, min, max, suffix, onChange }: { label: strin
 
 function ToggleField({ label, checked, onChange }: { label: string; checked: boolean; onChange: (value: boolean) => void }) {
   return (
-    <label className="flex cursor-pointer items-center justify-between gap-4 rounded-2xl bg-white p-4 shadow-sm">
-      <span className="font-bold text-slate-700">{label}</span>
-      <input type="checkbox" checked={checked} onChange={(event) => onChange(event.target.checked)} className="h-5 w-5 accent-[#ff6b35]" />
+    <label className="flex cursor-pointer items-start justify-between gap-4 rounded-2xl bg-white p-4 shadow-sm">
+      <span className="text-sm font-bold leading-6 text-slate-700 sm:text-base">{label}</span>
+      <input type="checkbox" checked={checked} onChange={(event) => onChange(event.target.checked)} className="mt-1 h-5 w-5 shrink-0 accent-[#ff6b35]" />
     </label>
   );
 }
@@ -689,8 +669,8 @@ function ToggleField({ label, checked, onChange }: { label: string; checked: boo
 function SelectField({ label, value, options, onChange }: { label: string; value: string; options: Array<{ value: string; label: string }>; onChange: (value: string) => void }) {
   return (
     <label className="block">
-      <span className="mb-3 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">{label}</span>
-      <select value={value} onChange={(event) => onChange(event.target.value)} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 font-bold text-slate-700 outline-none transition focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100">
+      <span className="mb-3 block text-xs font-black uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em]">{label}</span>
+      <select value={value} onChange={(event) => onChange(event.target.value)} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-bold text-slate-700 outline-none transition focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100 sm:text-base">
         {options.map((option) => (
           <option key={option.value} value={option.value}>{option.label}</option>
         ))}
@@ -702,7 +682,6 @@ function SelectField({ label, value, options, onChange }: { label: string; value
 function Portfolio() {
   const [filter, setFilter] = useState<PortfolioCategory>("all");
   const [selected, setSelected] = useState<(typeof portfolioItems)[number] | null>(null);
-
   const filtered = filter === "all" ? portfolioItems : portfolioItems.filter((item) => item.category === filter);
 
   useEffect(() => {
@@ -719,32 +698,28 @@ function Portfolio() {
   }, [selected]);
 
   return (
-    <section id="portfolio" className="bg-slate-50 py-20 sm:py-28">
+    <section id="portfolio" className="bg-slate-50 py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end lg:gap-8">
           <div className="max-w-3xl reveal">
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Портфолио</p>
-            <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl"></h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600"></p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff6b35] sm:text-sm sm:tracking-[0.2em]">Портфолио</p>
           </div>
-          <div className="reveal flex flex-wrap gap-2">
+          <div className="reveal flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible sm:pb-0">
             {portfolioFilters.map((item) => (
-              <button key={item.key} type="button" onClick={() => setFilter(item.key)} className={`rounded-full px-5 py-3 text-sm font-black transition ${filter === item.key ? "bg-[#1a3a5c] text-white" : "bg-white text-slate-600 hover:bg-slate-100"}`}>
+              <button key={item.key} type="button" onClick={() => setFilter(item.key)} className={`shrink-0 rounded-full px-5 py-3 text-sm font-black transition ${filter === item.key ? "bg-[#1a3a5c] text-white" : "bg-white text-slate-600 hover:bg-slate-100"}`}>
                 {item.label}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((item, index) => (
-            <button key={item.path} type="button" onClick={() => setSelected(item)} className="reveal group overflow-hidden rounded-[1.75rem] bg-white text-left shadow-xl shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-900/10" style={{ transitionDelay: `${index * 45}ms` }}>
+            <button key={item.path} type="button" onClick={() => setSelected(item)} className="reveal group overflow-hidden rounded-[1.5rem] bg-white text-left shadow-xl shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-900/10 sm:rounded-[1.75rem]" style={{ transitionDelay: `${index * 45}ms` }}>
               <PhotoSlot path={item.path} className="aspect-[4/3]" />
-              <div className="flex items-center justify-between gap-4 p-5">
-                <div>
-                  <h3 className="font-black text-[#1a3a5c]">{item.title}</h3>
-                </div>
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-50 text-[#ff6b35] transition group-hover:bg-[#ff6b35] group-hover:text-white">
+              <div className="flex items-center justify-between gap-4 p-4 sm:p-5">
+                <h3 className="text-sm font-black text-[#1a3a5c] sm:text-base">{item.title}</h3>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-50 text-[#ff6b35] transition group-hover:bg-[#ff6b35] group-hover:text-white sm:h-10 sm:w-10">
                   <LineIcon name="arrow" />
                 </span>
               </div>
@@ -754,14 +729,12 @@ function Portfolio() {
       </div>
 
       {selected && (
-        <div className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto bg-slate-950/80 px-4 pb-6 pt-28 backdrop-blur-sm" onClick={() => setSelected(null)}>
-          <div className="w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl" onClick={(event) => event.stopPropagation()}>
-            <PhotoSlot path={selected.path} label={selected.title} className="aspect-[16/10]" />
-            <div className="flex flex-col justify-between gap-4 p-6 sm:flex-row sm:items-center">
-              <div>
-                <h3 className="text-2xl font-black text-[#1a3a5c]">{selected.title}</h3>
-              </div>
-              <button type="button" onClick={() => setSelected(null)} className="rounded-full bg-[#1a3a5c] px-6 py-3 text-sm font-black text-white transition hover:bg-[#122943]">
+        <div className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto bg-slate-950/80 px-3 pb-6 pt-20 backdrop-blur-sm sm:px-4 sm:pt-28" onClick={() => setSelected(null)}>
+          <div className="w-full max-w-5xl overflow-hidden rounded-[1.5rem] bg-white shadow-2xl sm:rounded-[2rem]" onClick={(event) => event.stopPropagation()}>
+            <PhotoSlot path={selected.path} label={selected.title} className="aspect-[4/3] sm:aspect-[16/10]" />
+            <div className="flex flex-col justify-between gap-4 p-5 sm:flex-row sm:items-center sm:p-6">
+              <h3 className="text-xl font-black text-[#1a3a5c] sm:text-2xl">{selected.title}</h3>
+              <button type="button" onClick={() => setSelected(null)} className="w-full rounded-full bg-[#1a3a5c] px-6 py-3 text-sm font-black text-white transition hover:bg-[#122943] sm:w-auto">
                 Закрыть
               </button>
             </div>
@@ -774,20 +747,17 @@ function Portfolio() {
 
 function Advantages() {
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="bg-white py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl reveal">
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Почему мы</p>
-          <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">Надёжный подрядчик для инженерных работ</h2>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <SectionTitle eyebrow="Почему мы" title="Надёжный подрядчик для инженерных работ" />
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {advantages.map((item, index) => (
-            <article key={item.title} className="reveal rounded-[1.75rem] border border-slate-200 bg-white p-7 transition hover:border-orange-200 hover:shadow-xl hover:shadow-slate-900/5" style={{ transitionDelay: `${index * 60}ms` }}>
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-50 text-[#ff6b35]">
+            <article key={item.title} className="reveal rounded-[1.5rem] border border-slate-200 bg-white p-5 transition hover:border-orange-200 hover:shadow-xl hover:shadow-slate-900/5 sm:rounded-[1.75rem] sm:p-7" style={{ transitionDelay: `${index * 60}ms` }}>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-[#ff6b35] sm:h-14 sm:w-14">
                 <LineIcon name={item.icon} />
               </div>
-              <h3 className="mt-6 text-xl font-black text-[#1a3a5c]">{item.title}</h3>
-              <p className="mt-3 leading-7 text-slate-600">{item.text}</p>
+              <h3 className="mt-5 text-lg font-black text-[#1a3a5c] sm:mt-6 sm:text-xl">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">{item.text}</p>
             </article>
           ))}
         </div>
@@ -800,41 +770,40 @@ function Reviews() {
   const [active, setActive] = useState(0);
   const review = reviews[active];
   const initials = review.name.split(" ").map((part) => part[0]).join("").slice(0, 2);
-
   const next = () => setActive((value) => (value + 1) % reviews.length);
   const prev = () => setActive((value) => (value - 1 + reviews.length) % reviews.length);
 
   return (
-    <section id="reviews" className="bg-[#1a3a5c] py-20 text-white sm:py-28">
+    <section id="reviews" className="bg-[#1a3a5c] py-14 text-white sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-10">
           <div className="reveal">
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-orange-200">Отзывы клиентов</p>
-            <h2 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">Нам доверяют дома и бизнес</h2>
-            <button type="button" onClick={openJivoChat} className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620]">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-orange-200 sm:text-sm sm:tracking-[0.2em]">Отзывы клиентов</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight sm:mt-4 sm:text-4xl lg:text-5xl">Нам доверяют дома и бизнес</h2>
+            <button type="button" onClick={openJivoChat} className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620] sm:mt-8 sm:w-auto">
               Оставить отзыв
               <LineIcon name="chat" />
             </button>
           </div>
 
-          <div className="reveal rounded-[2rem] bg-white p-6 text-slate-900 shadow-2xl shadow-slate-950/25 sm:p-8">
+          <div className="reveal rounded-[1.5rem] bg-white p-5 text-slate-900 shadow-2xl shadow-slate-950/25 sm:rounded-[2rem] sm:p-8">
             <div className="flex items-center gap-4">
               <AvatarPhoto path={review.photo} initials={initials} />
               <div>
-                <h3 className="text-xl font-black text-[#1a3a5c]">{review.name}</h3>
+                <h3 className="text-lg font-black text-[#1a3a5c] sm:text-xl">{review.name}</h3>
                 <p className="text-sm font-semibold text-slate-500">{review.city} · {review.service}</p>
               </div>
             </div>
-            <blockquote className="mt-8 text-xl font-semibold leading-9 text-slate-700">«{review.text}»</blockquote>
-            <div className="mt-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+            <blockquote className="mt-6 text-base font-semibold leading-7 text-slate-700 sm:mt-8 sm:text-xl sm:leading-9">«{review.text}»</blockquote>
+            <div className="mt-6 flex flex-col justify-between gap-4 sm:mt-8 sm:flex-row sm:items-center">
               <div className="flex gap-2">
                 {reviews.map((item, index) => (
                   <button key={item.name} type="button" onClick={() => setActive(index)} className={`h-2.5 rounded-full transition-all ${index === active ? "w-8 bg-[#ff6b35]" : "w-2.5 bg-slate-300"}`} aria-label={`Отзыв ${index + 1}`} />
                 ))}
               </div>
-              <div className="flex gap-2">
-                <button type="button" onClick={prev} className="rounded-full border border-slate-200 px-5 py-3 text-sm font-black text-[#1a3a5c] transition hover:bg-slate-50">Назад</button>
-                <button type="button" onClick={next} className="rounded-full bg-[#1a3a5c] px-5 py-3 text-sm font-black text-white transition hover:bg-[#122943]">Далее</button>
+              <div className="grid grid-cols-2 gap-2 sm:flex">
+                <button type="button" onClick={prev} className="w-full rounded-full border border-slate-200 px-5 py-3 text-sm font-black text-[#1a3a5c] transition hover:bg-slate-50 sm:w-auto">Назад</button>
+                <button type="button" onClick={next} className="w-full rounded-full bg-[#1a3a5c] px-5 py-3 text-sm font-black text-white transition hover:bg-[#122943] sm:w-auto">Далее</button>
               </div>
             </div>
           </div>
@@ -843,39 +812,27 @@ function Reviews() {
     </section>
   );
 }
+
 function MapSection() {
   return (
-    <section id="map" className="bg-slate-50 py-20 sm:py-28">
+    <section id="map" className="bg-slate-50 py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl reveal">
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">
-            Карта
-          </p>
+        <SectionTitle eyebrow="Карта" title="Зона обслуживания до 50 км" text="Работаем в Иркутске, Молодежном, Пивоварихе, Ангарске, Шелехове, Хомутово и пригороде." />
 
-          <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">
-            Зона обслуживания до 50 км
-          </h2>
-
-          <p className="mt-5 text-lg leading-8 text-slate-600">
-            Работаем в Иркутске, Молодежный, Пивоварихе, Ангарске, Шелехове, Хомутово и пригороде.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="reveal overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-900/5">
+        <div className="mt-8 grid grid-cols-1 gap-6 lg:mt-12 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="reveal overflow-hidden rounded-[1.5rem] bg-white shadow-xl shadow-slate-900/5 sm:rounded-[2rem]">
             <iframe
               title="Карта зоны обслуживания Вектор Комфорта"
               src={
-                  "https://yandex.ru/map-widget/v1/?ll=104.296873%2C52.286974&z=10&pt=" +
-                  "104.296873,52.286974,pm2rdm~" +
-                  "104.145000,52.543000,pm2blm~" +
-                  "104.098000,52.210000,pm2blm~" +
-                  "104.200000,52.340000,pm2blm~" +
-                  "104.452778,52.272222,pm2blm~" +
-                  "104.415000,52.228610,pm2gnm"
-                  }
-              width="100%"
-              height="460"
+                "https://yandex.ru/map-widget/v1/?ll=104.296873%2C52.286974&z=10&pt=" +
+                "104.296873,52.286974,pm2rdm~" +
+                "104.145000,52.543000,pm2blm~" +
+                "104.098000,52.210000,pm2blm~" +
+                "104.200000,52.340000,pm2blm~" +
+                "104.452778,52.272222,pm2blm~" +
+                "104.415000,52.228610,pm2rdm"
+              }
+              className="h-[340px] w-full sm:h-[460px]"
               frameBorder="0"
             />
           </div>
@@ -890,16 +847,9 @@ function MapSection() {
               ["Хомутово", "частый маршрут"],
               ["Пригород", "по согласованию"],
             ].map(([city, text]) => (
-              <div
-                key={city}
-                className="rounded-2xl bg-white p-5 shadow-lg shadow-slate-900/5"
-              >
-                <div className="text-lg font-black text-[#1a3a5c]">
-                  {city}
-                </div>
-                <div className="mt-1 text-sm font-semibold text-slate-500">
-                  {text}
-                </div>
+              <div key={city} className="rounded-2xl bg-white p-4 shadow-lg shadow-slate-900/5 sm:p-5">
+                <div className="text-base font-black text-[#1a3a5c] sm:text-lg">{city}</div>
+                <div className="mt-1 text-sm font-semibold text-slate-500">{text}</div>
               </div>
             ))}
           </div>
@@ -908,17 +858,18 @@ function MapSection() {
     </section>
   );
 }
+
 function ChatSection() {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="reveal flex flex-col justify-between gap-6 rounded-[2rem] bg-[#1a3a5c] p-8 text-white shadow-2xl shadow-slate-900/15 md:flex-row md:items-center md:p-10">
+        <div className="reveal flex flex-col justify-between gap-6 rounded-[1.5rem] bg-[#1a3a5c] p-5 text-white shadow-2xl shadow-slate-900/15 sm:rounded-[2rem] sm:p-8 md:flex-row md:items-center md:p-10">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-orange-200">Онлайн-чат Jivo</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Напишите нам в чат</h2>
-            <p className="mt-3 max-w-2xl text-slate-200">Ответим на вопрос, подскажем по услуге и поможем оставить заявку без CRM и лишних сервисов.</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-orange-200 sm:text-sm sm:tracking-[0.2em]">Онлайн-чат Jivo</p>
+            <h2 className="mt-3 text-2xl font-black tracking-tight sm:text-4xl">Напишите нам в чат</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-200 sm:text-base">Ответим на вопрос, подскажем по услуге и поможем оставить заявку без CRM и лишних сервисов.</p>
           </div>
-          <button type="button" onClick={openJivoChat} className="inline-flex items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-sm font-black text-white transition hover:bg-[#e95620]">
+          <button type="button" onClick={openJivoChat} className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-sm font-black text-white transition hover:bg-[#e95620] sm:w-auto">
             Написать в чат
             <LineIcon name="chat" />
           </button>
@@ -946,25 +897,25 @@ function ContactForm() {
   };
 
   return (
-    <section id="contacts" className="bg-white py-20 sm:py-28">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+    <section id="contacts" className="bg-white py-14 sm:py-20 lg:py-28">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10 lg:px-8">
         <div className="reveal">
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-[#ff6b35]">Контакты</p>
-          <h2 className="mt-4 text-4xl font-black tracking-tight text-[#1a3a5c] sm:text-5xl">Оставьте заявку или позвоните</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-600">Перезвоним, уточним задачу и подготовим предварительный расчёт. </p>
-          <div className="mt-8 space-y-3">
-            <a href="tel:+79149146606" className="flex items-center gap-4 rounded-2xl bg-slate-50 p-5 font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35]"><LineIcon name="phone" /> +7 (914) 914-66-06</a>
-            <a href="tel:+73952669930" className="flex items-center gap-4 rounded-2xl bg-slate-50 p-5 font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35]"><LineIcon name="phone" /> 66-99-30</a>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff6b35] sm:text-sm sm:tracking-[0.2em]">Контакты</p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-[#1a3a5c] sm:mt-4 sm:text-4xl lg:text-5xl">Оставьте заявку или позвоните</h2>
+          <p className="mt-4 text-base leading-7 text-slate-600 sm:mt-5 sm:text-lg sm:leading-8">Перезвоним, уточним задачу и подготовим предварительный расчёт.</p>
+          <div className="mt-6 space-y-3 sm:mt-8">
+            <a href="tel:+79149146606" className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35] sm:gap-4 sm:p-5 sm:text-base"><LineIcon name="phone" /> +7 (914) 914-66-06</a>
+            <a href="tel:+73952669930" className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35] sm:gap-4 sm:p-5 sm:text-base"><LineIcon name="phone" /> 66-99-30</a>
           </div>
-          <div className="mt-8 rounded-[2rem] bg-slate-50 p-6 text-slate-700">
-            <h3 className="text-xl font-black text-[#1a3a5c]">Города</h3>
-            <p className="mt-3 leading-7">Иркутск, Ангарск, Шелехов, Хомутово и пригород до 50 км. Режим работы: ежедневно с 9:00 до 20:00, срочные выезды по договорённости.</p>
+          <div className="mt-6 rounded-[1.5rem] bg-slate-50 p-5 text-slate-700 sm:mt-8 sm:rounded-[2rem] sm:p-6">
+            <h3 className="text-lg font-black text-[#1a3a5c] sm:text-xl">Города</h3>
+            <p className="mt-3 text-sm leading-7 sm:text-base">Иркутск, Ангарск, Шелехов, Хомутово и пригород до 50 км. Режим работы: ежедневно с 9:00 до 20:00, срочные выезды по договорённости.</p>
           </div>
         </div>
 
-        <form onSubmit={submit} className="reveal rounded-[2rem] bg-slate-50 p-5 shadow-xl shadow-slate-900/5 sm:p-8">
+        <form onSubmit={submit} className="reveal rounded-[1.5rem] bg-slate-50 p-4 shadow-xl shadow-slate-900/5 sm:rounded-[2rem] sm:p-8">
           {status === "sent" ? (
-            <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
+            <div className="flex min-h-[360px] flex-col items-center justify-center text-center sm:min-h-[420px]">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-[#ff6b35]">
                 <LineIcon name="doc" />
               </div>
@@ -977,8 +928,8 @@ function ContactForm() {
               <Input label="Имя" value={form.name} onChange={(value) => setForm({ ...form, name: value })} placeholder="Ваше имя" required />
               <Input label="Телефон" type="tel" value={form.phone} onChange={(value) => setForm({ ...form, phone: value })} placeholder="+7 (___) ___-__-__" required />
               <label className="block">
-                <span className="mb-2 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">Выбор услуги</span>
-                <select value={form.service} onChange={(event) => setForm({ ...form, service: event.target.value })} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 font-bold text-slate-700 outline-none transition focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100">
+                <span className="mb-2 block text-xs font-black uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em]">Выбор услуги</span>
+                <select value={form.service} onChange={(event) => setForm({ ...form, service: event.target.value })} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-bold text-slate-700 outline-none transition focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100 sm:text-base">
                   <option>Окна и остекление</option>
                   <option>Кондиционеры</option>
                   <option>Вентиляция</option>
@@ -986,12 +937,12 @@ function ContactForm() {
                 </select>
               </label>
               <label className="block">
-                <span className="mb-2 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">Сообщение</span>
-                <textarea value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} placeholder="Опишите задачу, объект или удобное время звонка" rows={5} className="w-full resize-none rounded-2xl border border-slate-200 bg-white px-4 py-4 font-medium text-slate-700 outline-none transition focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100" />
+                <span className="mb-2 block text-xs font-black uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em]">Сообщение</span>
+                <textarea value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} placeholder="Опишите задачу, объект или удобное время звонка" rows={5} className="w-full resize-none rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-medium text-slate-700 outline-none transition focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100 sm:text-base" />
               </label>
               <label className="flex cursor-pointer items-start gap-3 rounded-2xl bg-white p-4 text-sm text-slate-600">
-                <input type="checkbox" required checked={form.consent} onChange={(event) => setForm({ ...form, consent: event.target.checked })} className="mt-1 h-4 w-4 accent-[#ff6b35]" />
-                <span>Согласен на обработку персональных данных. </span>
+                <input type="checkbox" required checked={form.consent} onChange={(event) => setForm({ ...form, consent: event.target.checked })} className="mt-1 h-4 w-4 shrink-0 accent-[#ff6b35]" />
+                <span>Согласен на обработку персональных данных.</span>
               </label>
               <button type="submit" className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-7 py-4 text-sm font-black text-white shadow-lg shadow-orange-500/20 transition hover:bg-[#e95620]">
                 Отправить заявку
@@ -1008,8 +959,8 @@ function ContactForm() {
 function Input({ label, value, onChange, placeholder, type = "text", required = false }: { label: string; value: string; onChange: (value: string) => void; placeholder: string; type?: string; required?: boolean }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">{label}</span>
-      <input type={type} required={required} value={value} onChange={(event) => onChange(event.target.value)} placeholder={placeholder} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 font-bold text-slate-700 outline-none transition focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100" />
+      <span className="mb-2 block text-xs font-black uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em]">{label}</span>
+      <input type={type} required={required} value={value} onChange={(event) => onChange(event.target.value)} placeholder={placeholder} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-bold text-slate-700 outline-none transition focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100 sm:text-base" />
     </label>
   );
 }
@@ -1017,7 +968,7 @@ function Input({ label, value, onChange, placeholder, type = "text", required = 
 function Footer() {
   return (
     <footer className="bg-[#10263d] text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:gap-10 lg:px-8 lg:py-12">
         <div>
           <div className="flex items-center gap-3">
             <LogoMark />
@@ -1026,7 +977,7 @@ function Footer() {
               <div className="text-xs font-semibold text-slate-300">Комфорт в каждом направлении</div>
             </div>
           </div>
-          <p className="mt-5 max-w-md leading-7 text-slate-300">Окна, кондиционеры, вентиляция и алмазное бурение для Иркутска, Ангарска, Шелехова, Хомутово и пригорода до 50 км.</p>
+          <p className="mt-5 max-w-md text-sm leading-7 text-slate-300 sm:text-base">Окна, кондиционеры, вентиляция и алмазное бурение для Иркутска, Ангарска, Шелехова, Хомутово и пригорода до 50 км.</p>
         </div>
         <div>
           <h3 className="font-black">Навигация</h3>
@@ -1046,7 +997,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/10 py-5 text-center text-sm text-slate-400">© {new Date().getFullYear()} Вектор Комфорта. Все права защищены.</div>
+      <div className="border-t border-white/10 px-4 py-5 text-center text-sm text-slate-400">© {new Date().getFullYear()} Вектор Комфорта. Все права защищены.</div>
     </footer>
   );
 }
@@ -1075,7 +1026,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-900">
       <Header />
       <main>
         <Hero />
