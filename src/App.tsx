@@ -379,7 +379,7 @@ function Hero() {
         <PhotoSlot
           path="images/hero-bg.jpg"
           hidePlaceholder
-          className="h-full w-full bg-transparent"
+          className="h-full w-full bg-transparent p-6 sm:p-0"
           imageClassName="object-contain object-top sm:object-cover sm:object-center"
         />
       </div>
