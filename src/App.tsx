@@ -909,7 +909,7 @@ function ContactForm() {
           </div>
           <div className="mt-6 rounded-[1.5rem] bg-slate-50 p-5 text-slate-700 sm:mt-8 sm:rounded-[2rem] sm:p-6">
             <h3 className="text-lg font-black text-[#1a3a5c] sm:text-xl">Города</h3>
-            <p className="mt-3 text-sm leading-7 sm:text-base">Иркутск, Ангарск, Шелехов, Хомутово и пригород до 50 км. Режим работы: ежедневно с 9:00 до 20:00, срочные выезды по договорённости.</p>
+            <p className="mt-3 text-sm leading-7 sm:text-base">Иркутск, Молодежный, Пивовариха, Ангарск, Шелехов, Хомутово и пригород до 50 км. Режим работы: ежедневно с 9:00 до 20:00, срочные выезды по договорённости.</p>
           </div>
         </div>
 
