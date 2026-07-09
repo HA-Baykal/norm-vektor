@@ -380,7 +380,7 @@ function Hero() {
           path="images/hero-bg.jpg"
           hidePlaceholder
           className="h-full w-full bg-transparent"
-          imageClassName="object-cover object-center"
+          imageClassName="object-contain object-top sm:object-cover sm:object-center"
         />
       </div>
       <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(16,38,61,0.45)_0%,rgba(26,58,92,0.28)_48%,rgba(16,38,61,0.14)_100%)]" />
