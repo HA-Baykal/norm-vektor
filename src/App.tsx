@@ -3,9 +3,11 @@ import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 type CalculatorTab = "windows" | "conditioners" | "ventilation" | "drilling";
 type PortfolioCategory = "all" | "windows" | "conditioners" | "ventilation" | "drilling";
 type ConditionerArea = 20 | 30 | 40;
+type WindowType = "single" | "double" | "triple" | "balcony";
 
 interface CalculatorState {
   windowsCount: number;
+  windowType: WindowType;
   balcony: boolean;
   conditionerCount: number;
   conditionerMode: "sale-install" | "install" | "service";
@@ -46,7 +48,7 @@ const services = [
     title: "Окна и остекление",
     image: "images/service-windows.jpg",
     text: "ПВХ и алюминий, окна, двери, балконы, лоджии, витражи, стеклянные перегородки. Регулировка, ремонт, обслуживание.",
-    points: ["Собственное производство", "Монтаж по ГОСТ", "Ремонт и обслуживание"],
+    points: ["Собственное производство", "Монтаж по ГОСТ", "Замена стеклопакетов"],
   },
   {
     title: "Кондиционеры",
@@ -150,6 +152,44 @@ const conditionerPriceByArea: Record<ConditionerArea, { base: number; inverter: 
   40: { base: 55000, inverter: 7000 },
 };
 
+// НОВЫЕ ДАННЫЕ: Типы окон с ценами
+const windowTypes: Array<{
+  key: WindowType;
+  label: string;
+  price: number;
+  description: string;
+  sashes: number;
+}> = [
+  {
+    key: "single",
+    label: "Одностворчатое",
+    price: 7995,
+    description: "1 поворотно-откидная створка",
+    sashes: 1,
+  },
+  {
+    key: "double",
+    label: "Двухстворчатое",
+    price: 19255,
+    description: "1 поворотно-откидная + 1 глухая",
+    sashes: 2,
+  },
+  {
+    key: "triple",
+    label: "Трёхстворчатое",
+    price: 22534,
+    description: "2 поворотно-откидные + 1 глухая",
+    sashes: 2,
+  },
+  {
+    key: "balcony",
+    label: "Балконная группа",
+    price: 27642,
+    description: "Окно + балконная дверь",
+    sashes: 2,
+  },
+];
+
 const portfolioFilters: Array<{ key: PortfolioCategory; label: string }> = [
   { key: "all", label: "Все" },
   { key: "windows", label: "Окна" },
@@ -161,14 +201,10 @@ const portfolioFilters: Array<{ key: PortfolioCategory; label: string }> = [
 const partnerBrands = [
   { name: "Ballu", logo: "images/brands/ballu.svg" },
   { name: "Electrolux", logo: "images/brands/electrolux.svg" },
-  { name: "Midea", logo: "images/brands/midea.svg" },
-  { name: "Zanussi", logo: "images/brands/zanussi.svg" },
-  { name: "Axioma", logo: "images/brands/axioma.svg" },
-  { name: "SHUFT", logo: "images/brands/shuft.svg" },
   { name: "Haier", logo: "images/brands/haier.svg" },
   { name: "Daikin", logo: "images/brands/daikin.svg" },
   { name: "Mitsubishi", logo: "images/brands/mitsubishi.svg" },
-  { name: "Royal Thermo", logo: "images/brands/royal-thermo.svg" },
+  { name: "Royal Clima", logo: "images/brands/royal-clima.svg" },
   { name: "Rehau", logo: "images/brands/rehau.svg" },
   { name: "Veka", logo: "images/brands/veka.svg" },
   { name: "Тион", logo: "images/brands/tion.svg" },
@@ -190,7 +226,7 @@ const faqItems = [
   },
   {
     question: "Можно ли оплатить картой?",
-    answer: "Да, мы принимаем оплату наличными, банковской картой и безналичным расчётом для юридических лиц. оформление рассрочки, долями.",
+    answer: "Да, мы принимаем оплату наличными, банковской картой и безналичным расчётом для юридических лиц.",
   },
   {
     question: "Сколько времени занимает монтаж кондиционера?",
@@ -210,7 +246,6 @@ const notificationMessages = [
   "Ольга, Иркутск — оставила заявку на замер",
 ];
 
-// НОВЫЕ КОНТАКТЫ
 const PHONE_MAIN = "+79149146606";
 const PHONE_CITY = "66-99-30";
 const WHATSAPP_PHONE = "79247116610";
@@ -246,13 +281,11 @@ function openJivoChat() {
   document.getElementById("contacts")?.scrollIntoView({ behavior: "smooth" });
 }
 
-// ОБНОВЛЁННАЯ ФУНКЦИЯ: WhatsApp на правильный номер
 function openWhatsApp() {
   const message = "Здравствуйте! Интересуют ваши услуги. Можно получить консультацию?";
   window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`, "_blank");
 }
 
-// НОВАЯ ФУНКЦИЯ: Переход в Max
 function openMaxApp() {
   window.open(MAX_APP_URL, "_blank");
 }
@@ -285,7 +318,83 @@ function LineIcon({ name }: { name: string }) {
       {name === "whatsapp" && <path className={common} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M21 11.5a9.5 9.5 0 1 1-9.5-9.5c1.8 0 3.5.5 5 1.4l2.8-.7-.7 2.7a9.4 9.4 0 0 1 2.4 6.1ZM8 9c0 2.5 2 5.5 5 7 1 .5 2 .5 2.5 0l1-1c.5-.5.5-1.5 0-2l-1.5-1.5c-.5-.5-1.5-.5-2 0l-1 1c-.5.5-1.5.5-2 0Z" />}
       {name === "up" && <path className={common} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 19V5m-7 7 7-7 7 7" />}
       {name === "max" && <path className={common} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />}
+      {name === "check" && <path className={common} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M20 6L9 17l-5-5" />}
     </svg>
+  );
+}
+
+// НОВЫЙ КОМПОНЕНТ: Визуальная схема окна
+function WindowDiagram({ type }: { type: WindowType }) {
+  return (
+    <div className="relative h-40 w-full rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 p-4 border border-slate-200">
+      <svg viewBox="0 0 200 120" className="h-full w-full">
+        {/* Рама */}
+        <rect x="10" y="10" width="180" height="100" fill="none" stroke="#1a3a5c" strokeWidth="3" />
+        
+        {type === "single" && (
+          <>
+            {/* Одностворчатое */}
+            <rect x="15" y="15" width="80" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="55" y1="20" x2="55" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="20" y1="55" x2="90" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
+            <text x="55" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Поворотно-откидная</text>
+          </>
+        )}
+        
+        {type === "double" && (
+          <>
+            {/* Двухстворчатое */}
+            <rect x="15" y="15" width="75" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="52" y1="20" x2="52" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="20" y1="55" x2="85" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
+            
+            <rect x="95" y="15" width="90" height="90" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="140" y1="20" x2="140" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="100" y1="55" x2="180" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
+            
+            <text x="52" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Поворотно-откидная</text>
+            <text x="140" y="115" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
+          </>
+        )}
+        
+        {type === "triple" && (
+          <>
+            {/* Трёхстворчатое */}
+            <rect x="15" y="15" width="50" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="40" y1="20" x2="40" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="20" y1="55" x2="60" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
+            
+            <rect x="70" y="15" width="50" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="95" y1="20" x2="95" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="75" y1="55" x2="115" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
+            
+            <rect x="125" y="15" width="60" height="90" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="155" y1="20" x2="155" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="130" y1="55" x2="180" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
+            
+            <text x="40" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
+            <text x="95" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
+            <text x="155" y="115" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
+          </>
+        )}
+        
+        {type === "balcony" && (
+          <>
+            {/* Балконная группа */}
+            <rect x="15" y="15" width="70" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="50" y1="20" x2="50" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="20" y1="55" x2="80" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
+            
+            <rect x="95" y="15" width="90" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="140" y1="20" x2="140" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="100" y1="45" x2="180" y2="45" stroke="#1a3a5c" strokeWidth="1.5" />
+            
+            <text x="50" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Окно</text>
+            <text x="140" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Дверь</text>
+          </>
+        )}
+      </svg>
+    </div>
   );
 }
 
@@ -502,11 +611,9 @@ function Header() {
               <a href={`tel:${PHONE_MAIN}`} className="rounded-2xl bg-[#1a3a5c] px-4 py-3 text-center text-sm font-bold text-white">+7 (914) 914-66-06</a>
               <a href={`tel:${PHONE_CITY}`} className="rounded-2xl bg-[#ff6b35] px-4 py-3 text-center text-sm font-bold text-white">66-99-30</a>
             </div>
-            {/* Кнопка WhatsApp в мобильном меню */}
             <button onClick={() => { openWhatsApp(); setMobileOpen(false); }} className="mt-2 rounded-2xl bg-[#25D366] px-4 py-3 text-center text-sm font-bold text-white">
-              💬 Написать в WhatsApp
+               Написать в WhatsApp
             </button>
-            {/* Кнопка Max в мобильном меню */}
             <button onClick={() => { openMaxApp(); setMobileOpen(false); }} className="mt-2 rounded-2xl bg-[#0066FF] px-4 py-3 text-center text-sm font-bold text-white">
               📱 Max Приложение
             </button>
@@ -710,6 +817,7 @@ function Calculator() {
   const [tab, setTab] = useState<CalculatorTab>("windows");
   const [calc, setCalc] = useState<CalculatorState>({
     windowsCount: 3,
+    windowType: "double",
     balcony: false,
     conditionerCount: 1,
     conditionerMode: "sale-install",
@@ -723,7 +831,11 @@ function Calculator() {
   });
 
   const estimate = useMemo(() => {
-    if (tab === "windows") return calc.windowsCount * 19000 + (calc.balcony ? 52000 : 0);
+    if (tab === "windows") {
+      const windowTypeData = windowTypes.find(w => w.key === calc.windowType);
+      const basePrice = windowTypeData?.price || 0;
+      return calc.windowsCount * basePrice + (calc.balcony ? 52000 : 0);
+    }
 
     if (tab === "conditioners") {
       const areaPrice = conditionerPriceByArea[calc.conditionerArea];
@@ -746,6 +858,8 @@ function Calculator() {
   const requestLead = () => {
     document.getElementById("contacts")?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const selectedWindowType = windowTypes.find(w => w.key === calc.windowType);
 
   return (
     <section id="calculator" className="bg-white py-14 sm:py-20 lg:py-28">
@@ -778,7 +892,59 @@ function Calculator() {
             <div className="mt-6 space-y-6 sm:mt-8 sm:space-y-7">
               {tab === "windows" && (
                 <>
+                  {/* Выбор типа окна */}
+                  <div>
+                    <span className="mb-3 block text-xs font-black uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em]">Тип окна</span>
+                    <div className="grid grid-cols-2 gap-3">
+                      {windowTypes.map((windowType) => (
+                        <button
+                          key={windowType.key}
+                          type="button"
+                          onClick={() => setCalc({ ...calc, windowType: windowType.key })}
+                          className={`rounded-2xl border-2 p-4 text-left transition ${
+                            calc.windowType === windowType.key
+                              ? "border-[#ff6b35] bg-orange-50"
+                              : "border-slate-200 bg-white hover:border-slate-300"
+                          }`}
+                        >
+                          <div className="text-sm font-bold text-slate-900">{windowType.label}</div>
+                          <div className="mt-1 text-xs text-slate-500">{windowType.description}</div>
+                          <div className="mt-2 text-lg font-black text-[#ff6b35]">{formatRub(windowType.price)}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Визуальная схема окна */}
+                  <WindowDiagram type={calc.windowType} />
+
+                  {/* Характеристики профиля */}
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <div className="text-xs font-black uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em] mb-3">Характеристики профиля VEKA</div>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-sm text-slate-700">
+                        <LineIcon name="check" />
+                        <span>Профиль <strong>VEKA 62 мм</strong>, 4-камерный</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-slate-700">
+                        <LineIcon name="check" />
+                        <span>Фурнитура <strong>MACO</strong> с микропроветриванием</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-slate-700">
+                        <LineIcon name="check" />
+                        <span>Все створки <strong>поворотно-откидные</strong></span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-slate-700">
+                        <LineIcon name="check" />
+                        <span>Энергосберегающий стеклопакет</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Количество окон */}
                   <RangeField label="Количество окон" value={calc.windowsCount} min={1} max={12} suffix="шт." onChange={(value) => setCalc({ ...calc, windowsCount: value })} />
+                  
+                  {/* Балкон */}
                   <ToggleField label="Добавить остекление балкона или лоджии" checked={calc.balcony} onChange={(value) => setCalc({ ...calc, balcony: value })} />
                 </>
               )}
