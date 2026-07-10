@@ -166,7 +166,6 @@ const partnerBrands = [
   { name: "Axioma", logo: "images/brands/axioma.svg" },
   { name: "SHUFT", logo: "images/brands/shuft.svg" },
   { name: "Haier", logo: "images/brands/haier.svg" },
-  { name: "Haier", logo: "images/brands/haier.svg" },
   { name: "Daikin", logo: "images/brands/daikin.svg" },
   { name: "Mitsubishi", logo: "images/brands/mitsubishi.svg" },
   { name: "Royal Thermo", logo: "images/brands/royal-thermo.svg" },
