@@ -152,7 +152,6 @@ const conditionerPriceByArea: Record<ConditionerArea, { base: number; inverter: 
   40: { base: 55000, inverter: 7000 },
 };
 
-// НОВЫЕ ДАННЫЕ: Типы окон с ценами
 const windowTypes: Array<{
   key: WindowType;
   label: string;
@@ -323,77 +322,79 @@ function LineIcon({ name }: { name: string }) {
   );
 }
 
-// НОВЫЙ КОМПОНЕНТ: Визуальная схема окна
 function WindowDiagram({ type }: { type: WindowType }) {
   return (
-    <div className="relative h-40 w-full rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 p-4 border border-slate-200">
-      <svg viewBox="0 0 200 120" className="h-full w-full">
-        {/* Рама */}
-        <rect x="10" y="10" width="180" height="100" fill="none" stroke="#1a3a5c" strokeWidth="3" />
+    <div className="relative h-48 w-full rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 p-4 border border-slate-200">
+      <svg viewBox="0 0 200 150" className="h-full w-full">
+        <rect x="10" y="10" width="180" height="130" fill="none" stroke="#1a3a5c" strokeWidth="3" />
         
         {type === "single" && (
           <>
-            {/* Одностворчатое */}
-            <rect x="15" y="15" width="80" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="55" y1="20" x2="55" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="20" y1="55" x2="90" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
-            <text x="55" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Поворотно-откидная</text>
+            <rect x="15" y="15" width="170" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="15" y1="75" x2="185" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="100" y1="20" x2="100" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
+            <circle cx="95" cy="70" r="3" fill="#1a3a5c" />
+            <text x="100" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">600×1000 Поворотно-откидная</text>
           </>
         )}
         
         {type === "double" && (
           <>
-            {/* Двухстворчатое */}
-            <rect x="15" y="15" width="75" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="52" y1="20" x2="52" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="20" y1="55" x2="85" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
-            
-            <rect x="95" y="15" width="90" height="90" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="140" y1="20" x2="140" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="100" y1="55" x2="180" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
-            
-            <text x="52" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Поворотно-откидная</text>
-            <text x="140" y="115" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
+            <rect x="15" y="15" width="82" height="120" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="20" y1="75" x2="92" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="56" y1="20" x2="56" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="100" y1="15" x2="100" y2="135" stroke="#1a3a5c" strokeWidth="3" />
+            <rect x="105" y="15" width="82" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="110" y1="75" x2="182" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="146" y1="20" x2="146" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
+            <circle cx="115" cy="70" r="3" fill="#1a3a5c" />
+            <text x="56" y="145" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
+            <text x="146" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
           </>
         )}
         
         {type === "triple" && (
           <>
-            {/* Трёхстворчатое */}
-            <rect x="15" y="15" width="50" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="40" y1="20" x2="40" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="20" y1="55" x2="60" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
-            
-            <rect x="70" y="15" width="50" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="95" y1="20" x2="95" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="75" y1="55" x2="115" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
-            
-            <rect x="125" y="15" width="60" height="90" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="155" y1="20" x2="155" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="130" y1="55" x2="180" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
-            
-            <text x="40" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
-            <text x="95" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
-            <text x="155" y="115" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
+            <rect x="15" y="15" width="55" height="120" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="20" y1="75" x2="65" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="42" y1="20" x2="42" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="73" y1="15" x2="73" y2="135" stroke="#1a3a5c" strokeWidth="3" />
+            <rect x="78" y="15" width="55" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="83" y1="75" x2="128" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="105" y1="20" x2="105" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
+            <circle cx="88" cy="70" r="3" fill="#1a3a5c" />
+            <line x1="136" y1="15" x2="136" y2="135" stroke="#1a3a5c" strokeWidth="3" />
+            <rect x="141" y="15" width="55" height="120" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="146" y1="75" x2="191" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="168" y1="20" x2="168" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
+            <text x="42" y="145" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
+            <text x="105" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
+            <text x="168" y="145" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
           </>
         )}
         
         {type === "balcony" && (
           <>
-            {/* Балконная группа */}
-            <rect x="15" y="15" width="70" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="50" y1="20" x2="50" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="20" y1="55" x2="80" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
-            
-            <rect x="95" y="15" width="90" height="90" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="140" y1="20" x2="140" y2="100" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="100" y1="45" x2="180" y2="45" stroke="#1a3a5c" strokeWidth="1.5" />
-            
-            <text x="50" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Окно</text>
-            <text x="140" y="115" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Дверь</text>
+            <rect x="15" y="15" width="70" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="20" y1="75" x2="80" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="50" y1="20" x2="50" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="88" y1="15" x2="88" y2="135" stroke="#1a3a5c" strokeWidth="3" />
+            <rect x="95" y="15" width="90" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            <line x1="100" y1="55" x2="180" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
+            <line x1="140" y1="20" x2="140" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
+            <circle cx="105" cy="70" r="3" fill="#1a3a5c" />
+            <text x="50" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Окно</text>
+            <text x="140" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Дверь</text>
           </>
         )}
       </svg>
+      
+      <div className="mt-2 flex justify-center gap-4 text-xs text-slate-500">
+        {type === "single" && <span> 600 × 1000 мм</span>}
+        {type === "double" && <span>📐 1500 × 1500 мм</span>}
+        {type === "triple" && <span>📐 1800 × 1500 мм</span>}
+        {type === "balcony" && <span> Окно + Дверь</span>}
+      </div>
     </div>
   );
 }
@@ -612,7 +613,7 @@ function Header() {
               <a href={`tel:${PHONE_CITY}`} className="rounded-2xl bg-[#ff6b35] px-4 py-3 text-center text-sm font-bold text-white">66-99-30</a>
             </div>
             <button onClick={() => { openWhatsApp(); setMobileOpen(false); }} className="mt-2 rounded-2xl bg-[#25D366] px-4 py-3 text-center text-sm font-bold text-white">
-               Написать в WhatsApp
+              💬 Написать в WhatsApp
             </button>
             <button onClick={() => { openMaxApp(); setMobileOpen(false); }} className="mt-2 rounded-2xl bg-[#0066FF] px-4 py-3 text-center text-sm font-bold text-white">
               📱 Max Приложение
@@ -892,7 +893,6 @@ function Calculator() {
             <div className="mt-6 space-y-6 sm:mt-8 sm:space-y-7">
               {tab === "windows" && (
                 <>
-                  {/* Выбор типа окна */}
                   <div>
                     <span className="mb-3 block text-xs font-black uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em]">Тип окна</span>
                     <div className="grid grid-cols-2 gap-3">
@@ -915,10 +915,8 @@ function Calculator() {
                     </div>
                   </div>
 
-                  {/* Визуальная схема окна */}
                   <WindowDiagram type={calc.windowType} />
 
-                  {/* Характеристики профиля */}
                   <div className="rounded-2xl border border-slate-200 bg-white p-4">
                     <div className="text-xs font-black uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em] mb-3">Характеристики профиля VEKA</div>
                     <div className="space-y-2">
@@ -941,10 +939,7 @@ function Calculator() {
                     </div>
                   </div>
 
-                  {/* Количество окон */}
                   <RangeField label="Количество окон" value={calc.windowsCount} min={1} max={12} suffix="шт." onChange={(value) => setCalc({ ...calc, windowsCount: value })} />
-                  
-                  {/* Балкон */}
                   <ToggleField label="Добавить остекление балкона или лоджии" checked={calc.balcony} onChange={(value) => setCalc({ ...calc, balcony: value })} />
                 </>
               )}
