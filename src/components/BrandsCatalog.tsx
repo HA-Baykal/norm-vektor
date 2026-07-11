@@ -79,7 +79,7 @@ export default function BrandsCatalog() {
                       >
                         <div className="h-16 w-full flex items-center justify-center mb-3">
                           {/*  ЗАМЕНИТЬ НА ЛОГОТИП: Когда добавите SVG файлы */}
-                          {/* <img src={brand.logo} alt={brand.name} className="h-full w-full object-contain" /> */}
+                          <img src={brand.logo} alt={brand.name} className="h-full w-full object-contain" />
                           <div className="text-xs font-black text-slate-400 text-center">{brand.name}</div>
                         </div>
                         <div className="text-sm font-bold text-[#1a3a5c]">{brand.name}</div>
