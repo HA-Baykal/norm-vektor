@@ -163,22 +163,22 @@ const windowTypes: Array<{
     key: "single",
     label: "Одностворчатое",
     price: 7995,
-    description: "1 поворотно-откидная створка",
+    description: "600×1000 мм, 1 поворотно-откидная створка",
     sashes: 1,
   },
   {
     key: "double",
     label: "Двухстворчатое",
     price: 19255,
-    description: "1 поворотно-откидная + 1 глухая",
+    description: "1500×1500 мм, глухая + поворотно-откидная",
     sashes: 2,
   },
   {
     key: "triple",
     label: "Трёхстворчатое",
     price: 22534,
-    description: "2 поворотно-откидные + 1 глухая",
-    sashes: 2,
+    description: "1800×1500 мм, глухая + пов.-отк. + глухая",
+    sashes: 3,
   },
   {
     key: "balcony",
@@ -324,76 +324,162 @@ function LineIcon({ name }: { name: string }) {
 
 function WindowDiagram({ type }: { type: WindowType }) {
   return (
-    <div className="relative h-48 w-full rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 p-4 border border-slate-200">
-      <svg viewBox="0 0 200 150" className="h-full w-full">
-        <rect x="10" y="10" width="180" height="130" fill="none" stroke="#1a3a5c" strokeWidth="3" />
+    <div className="relative h-56 w-full rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 p-4 border border-slate-200">
+      <svg viewBox="0 0 220 160" className="h-full w-full">
+        {/* Внешняя рама */}
+        <rect x="10" y="10" width="200" height="140" fill="none" stroke="#1a3a5c" strokeWidth="4" />
         
         {type === "single" && (
           <>
-            <rect x="15" y="15" width="170" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="15" y1="75" x2="185" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="100" y1="20" x2="100" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
-            <circle cx="95" cy="70" r="3" fill="#1a3a5c" />
-            <text x="100" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">600×1000 Поворотно-откидная</text>
+            {/* Одностворчатое: 600×1000 мм */}
+            {/* Поворотно-откидная створка */}
+            <rect x="14" y="14" width="192" height="132" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Горизонтальный импост (середина) */}
+            <line x1="14" y1="80" x2="206" y2="80" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Вертикальный импост (середина) */}
+            <line x1="110" y1="14" x2="110" y2="146" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Ручка справа */}
+            <ellipse cx="195" cy="80" rx="4" ry="6" fill="#1a3a5c" />
+            
+            {/* Металлическая планка фурнитуры (визуальный элемент) */}
+            <line x1="190" y1="20" x2="190" y2="140" stroke="#475569" strokeWidth="1.5" opacity="0.5" />
+            
+            <text x="110" y="158" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">600 × 1000 мм</text>
           </>
         )}
         
         {type === "double" && (
           <>
-            <rect x="15" y="15" width="82" height="120" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="20" y1="75" x2="92" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="56" y1="20" x2="56" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="100" y1="15" x2="100" y2="135" stroke="#1a3a5c" strokeWidth="3" />
-            <rect x="105" y="15" width="82" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="110" y1="75" x2="182" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="146" y1="20" x2="146" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
-            <circle cx="115" cy="70" r="3" fill="#1a3a5c" />
-            <text x="56" y="145" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
-            <text x="146" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
+            {/* Двухстворчатое: 1500×1500 мм */}
+            {/* Импост по центру на 750мм */}
+            <line x1="110" y1="10" x2="110" y2="150" stroke="#1a3a5c" strokeWidth="4" />
+            
+            {/* Левая часть - глухая 750мм */}
+            <rect x="14" y="14" width="92" height="132" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Горизонтальный импост левой части */}
+            <line x1="14" y1="80" x2="106" y2="80" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Вертикальный импост левой части */}
+            <line x1="60" y1="14" x2="60" y2="146" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Правая часть - поворотно-откидная 750мм */}
+            <rect x="114" y="14" width="92" height="132" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Горизонтальный импост правой части */}
+            <line x1="114" y1="80" x2="206" y2="80" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Вертикальный импост правой части */}
+            <line x1="160" y1="14" x2="160" y2="146" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Ручка справа */}
+            <ellipse cx="200" cy="80" rx="4" ry="6" fill="#1a3a5c" />
+            
+            {/* Металлическая планка */}
+            <line x1="195" y1="20" x2="195" y2="140" stroke="#475569" strokeWidth="1.5" opacity="0.5" />
+            
+            <text x="60" y="158" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
+            <text x="160" y="158" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
           </>
         )}
         
         {type === "triple" && (
           <>
-            <rect x="15" y="15" width="55" height="120" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="20" y1="75" x2="65" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="42" y1="20" x2="42" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="73" y1="15" x2="73" y2="135" stroke="#1a3a5c" strokeWidth="3" />
-            <rect x="78" y="15" width="55" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="83" y1="75" x2="128" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="105" y1="20" x2="105" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
-            <circle cx="88" cy="70" r="3" fill="#1a3a5c" />
-            <line x1="136" y1="15" x2="136" y2="135" stroke="#1a3a5c" strokeWidth="3" />
-            <rect x="141" y="15" width="55" height="120" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="146" y1="75" x2="191" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="168" y1="20" x2="168" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
-            <text x="42" y="145" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
-            <text x="105" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
-            <text x="168" y="145" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
+            {/* Трёхстворчатое: 1800×1500 мм */}
+            {/* Импосты на 600мм слева и справа */}
+            <line x1="70" y1="10" x2="70" y2="150" stroke="#1a3a5c" strokeWidth="4" />
+            <line x1="150" y1="10" x2="150" y2="150" stroke="#1a3a5c" strokeWidth="4" />
+            
+            {/* Левая часть - глухая 600мм */}
+            <rect x="14" y="14" width="52" height="132" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Горизонтальный импост левой части */}
+            <line x1="14" y1="80" x2="66" y2="80" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Вертикальный импост левой части */}
+            <line x1="40" y1="14" x2="40" y2="146" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Средняя часть - поворотно-откидная 600мм */}
+            <rect x="74" y="14" width="72" height="132" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Горизонтальный импост средней части */}
+            <line x1="74" y1="80" x2="146" y2="80" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Вертикальный импост средней части */}
+            <line x1="110" y1="14" x2="110" y2="146" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Ручка справа */}
+            <ellipse cx="140" cy="80" rx="4" ry="6" fill="#1a3a5c" />
+            
+            {/* Металлическая планка */}
+            <line x1="135" y1="20" x2="135" y2="140" stroke="#475569" strokeWidth="1.5" opacity="0.5" />
+            
+            {/* Правая часть - глухая 600мм */}
+            <rect x="154" y="14" width="52" height="132" fill="#f1f5f9" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Горизонтальный импост правой части */}
+            <line x1="154" y1="80" x2="206" y2="80" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Вертикальный импост правой части */}
+            <line x1="180" y1="14" x2="180" y2="146" stroke="#1a3a5c" strokeWidth="2" />
+            
+            <text x="40" y="158" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
+            <text x="110" y="158" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Пов.-отк.</text>
+            <text x="180" y="158" textAnchor="middle" className="text-xs fill-slate-400 font-semibold">Глухая</text>
           </>
         )}
         
         {type === "balcony" && (
           <>
-            <rect x="15" y="15" width="70" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="20" y1="75" x2="80" y2="75" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="50" y1="20" x2="50" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="88" y1="15" x2="88" y2="135" stroke="#1a3a5c" strokeWidth="3" />
-            <rect x="95" y="15" width="90" height="120" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
-            <line x1="100" y1="55" x2="180" y2="55" stroke="#1a3a5c" strokeWidth="1.5" />
-            <line x1="140" y1="20" x2="140" y2="125" stroke="#1a3a5c" strokeWidth="1.5" />
-            <circle cx="105" cy="70" r="3" fill="#1a3a5c" />
-            <text x="50" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Окно</text>
-            <text x="140" y="145" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Дверь</text>
+            {/* Балконная группа: Окно + Дверь */}
+            {/* Импост между окном и дверью */}
+            <line x1="90" y1="10" x2="90" y2="150" stroke="#1a3a5c" strokeWidth="4" />
+            
+            {/* Окно слева */}
+            <rect x="14" y="14" width="72" height="132" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Горизонтальный импост окна */}
+            <line x1="14" y1="80" x2="86" y2="80" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Вертикальный импост окна */}
+            <line x1="50" y1="14" x2="50" y2="146" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Ручка окна */}
+            <ellipse cx="82" cy="80" rx="4" ry="6" fill="#1a3a5c" />
+            
+            {/* Дверь справа - более высокая визуально */}
+            <rect x="94" y="14" width="112" height="132" fill="#e0f2fe" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Горизонтальная перекладина двери (на уровне глаз) */}
+            <line x1="94" y1="60" x2="206" y2="60" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Вертикальный импост двери */}
+            <line x1="150" y1="14" x2="150" y2="146" stroke="#1a3a5c" strokeWidth="2" />
+            
+            {/* Ручка двери */}
+            <ellipse cx="102" cy="90" rx="4" ry="6" fill="#1a3a5c" />
+            
+            {/* Замочная скважина двери */}
+            <circle cx="102" cy="100" r="2" fill="#1a3a5c" />
+            
+            {/* Металлическая планка двери */}
+            <line x1="98" y1="20" x2="98" y2="140" stroke="#475569" strokeWidth="1.5" opacity="0.5" />
+            
+            <text x="50" y="158" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Окно</text>
+            <text x="150" y="158" textAnchor="middle" className="text-xs fill-slate-600 font-semibold">Дверь</text>
           </>
         )}
       </svg>
       
+      {/* Размеры под схемой */}
       <div className="mt-2 flex justify-center gap-4 text-xs text-slate-500">
-        {type === "single" && <span> 600 × 1000 мм</span>}
-        {type === "double" && <span>📐 1500 × 1500 мм</span>}
-        {type === "triple" && <span>📐 1800 × 1500 мм</span>}
-        {type === "balcony" && <span> Окно + Дверь</span>}
+        {type === "single" && <span className="flex items-center gap-1">📐 600 × 1000 мм</span>}
+        {type === "double" && <span className="flex items-center gap-1">📐 1500 × 1500 мм</span>}
+        {type === "triple" && <span className="flex items-center gap-1"> 1800 × 1500 мм</span>}
+        {type === "balcony" && <span className="flex items-center gap-1">🚪 Окно + Дверь</span>}
       </div>
     </div>
   );
