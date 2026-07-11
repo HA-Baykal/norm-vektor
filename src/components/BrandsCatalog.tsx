@@ -18,8 +18,7 @@ const brandCategories = [
       { name: "Daikin", logo: "/images/brands/daikin.svg", country: "" },
       { name: "Toshiba", logo: "/images/brands/toshiba.svg", country: "" },
     ],
-
- 
+  }
 ];
 
 export default function BrandsCatalog() {
