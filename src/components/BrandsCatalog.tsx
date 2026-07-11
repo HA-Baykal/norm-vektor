@@ -10,29 +10,16 @@ const brandCategories = [
       { name: "Royal Thermo", logo: "/images/brands/royal-thermo.svg", country: "Италия/Россия" },
       { name: "Axioma", logo: "/images/brands/axioma.svg", country: "Россия" },
       { name: "AC ELECTRIC", logo: "/images/brands/ac-electric.svg", country: "Россия" },
-    ],
-  },
-  {
-    category: "Средний класс",
-    description: "Надёжные системы с расширенным функционалом",
-    color: "from-blue-500 to-indigo-600",
-    brands: [
       { name: "Electrolux", logo: "/images/brands/electrolux.svg", country: "Швеция" },
       { name: "Zanussi", logo: "/images/brands/zanussi.svg", country: "Италия" },
       { name: "Midea", logo: "/images/brands/midea.svg", country: "Китай" },
       { name: "SHUFT", logo: "/images/brands/shuft.svg", country: "Дания/Китай" },
       { name: "AURUS", logo: "/images/brands/aurus.svg", country: "Россия" },
-    ],
-  },
-  {
-    category: "Премиум класс",
-    description: "Передовые технологии и максимальная надёжность",
-    color: "from-purple-500 to-pink-600",
-    brands: [
       { name: "Daikin", logo: "/images/brands/daikin.svg", country: "Япония" },
       { name: "Toshiba", logo: "/images/brands/toshiba.svg", country: "Япония" },
     ],
   },
+ 
 ];
 
 export default function BrandsCatalog() {
