@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import BrandsCatalog from "./components/BrandsCatalog";
 
 type CalculatorTab = "windows" | "conditioners" | "ventilation" | "drilling";
 type PortfolioCategory = "all" | "windows" | "conditioners" | "ventilation" | "drilling";
@@ -34,6 +35,7 @@ declare global {
 const navItems = [
   { href: "#services", label: "Услуги" },
   { href: "#calculator", label: "Калькулятор" },
+  { href: "#brands", label: "Бренды" },
   { href: "#portfolio", label: "Портфолио" },
   { href: "#reviews", label: "Отзывы" },
   { href: "#contacts", label: "Контакты" },
@@ -1259,6 +1261,7 @@ export default function App() {
         <Counters />
         <ServicesSection />
         <Calculator />
+        <BrandsCatalog />
         <Portfolio />
         <Advantages />
         <Reviews />
