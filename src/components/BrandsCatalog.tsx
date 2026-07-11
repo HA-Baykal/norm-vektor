@@ -18,18 +18,7 @@ const brandCategories = [
       { name: "Daikin", logo: "/images/brands/daikin.svg", country: "" },
       { name: "Toshiba", logo: "/images/brands/toshiba.svg", country: "" },
     ],
-      ],
-  },
-  {
-    category: "Премиум класс",
-    description: "Передовые технологии и максимальная надёжность",
-    color: "from-purple-500 to-pink-600",
-    brands: [
-      { name: "Daikin", logo: "/images/brands/daikin.svg", country: "Япония" },
-      { name: "Toshiba", logo: "/images/brands/toshiba.svg", country: "Япония" },
-    ],
-  },
-  },
+
  
 ];
 
