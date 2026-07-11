@@ -28,38 +28,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <!-- Ускорение hero -->
     <link rel="preload" as="image" href="images/hero-bg.jpg" />
-    <!-- Локальное SEO (Schema.org). Замените телефон, адрес и координаты на свои реальные данные. -->
+    <!-- Локальное SEO (Schema.org) с рейтингом на основе реальных оценок 2ГИС -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Вектор Комфорта",
+        "alternateName": "Вектор Комфорта, торгово-монтажная компания",
         "image": "https://vektor-komforta.ru/images/hero-bg.jpg",
         "description": "Производство и монтаж окон, кондиционеры, вентиляция и алмазное бурение в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км.",
         "@id": "https://vektor-komforta.ru",
         "url": "https://vektor-komforta.ru",
-        "telephone": "+7-914-914-66-06",
+        "telephone": "+7-3952-66-99-30",
+        "email": "montaj138@mail.ru",
         "priceRange": "₽₽",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "ул. Байкальская, д. 202/2",
+          "streetAddress": "Байкальская улица, 202/2, цокольный этаж",
           "addressLocality": "Иркутск",
           "addressRegion": "Иркутская область",
-          "postalCode": "664000",
+          "postalCode": "664075",
           "addressCountry": "RU"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 52.2566,
-          "longitude": 104.3238
+          "latitude": 52.256538,
+          "longitude": 104.324010
         },
         "areaServed": ["Иркутск", "Ангарск", "Шелехов", "Хомутово"],
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "08:00",
-          "closes": "20:00"
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "07:00",
+          "closes": "22:00"
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "6",
+          "reviewCount": "6"
+        },
+        "sameAs": [
+          "https://2gis.ru/irkutsk/firm/70000001115497655",
+          "https://vk.com/vektor_komforta",
+          "https://ok.ru/group/70000051483797"
+        ],
         "makesOffer": [
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Производство и монтаж окон" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Остекление балконов" } },
