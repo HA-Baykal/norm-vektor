@@ -2,8 +2,8 @@ import { LineIcon } from "./LineIcon";
 
 const brandCategories = [
   {
-    category: "Бюджетный вариант",
-    description: "Оптимальное соотношение цены и качества для дома и офиса",
+    category: "",
+    description: "",
     color: "from-emerald-500 to-teal-600",
     brands: [
       { name: "Ballu", logo: "/images/brands/ballu.svg", country: "Россия" },
