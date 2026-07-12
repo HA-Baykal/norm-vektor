@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import BrandsCatalog from "./components/BrandsCatalog";
 import DoubleGisWidget from "./components/DoubleGisWidget";  // ← добавьте эту строку
+import ReviewModal from "./components/ReviewModal";
 
 type CalculatorTab = "windows" | "conditioners" | "ventilation" | "drilling";
 type PortfolioCategory = "all" | "windows" | "conditioners" | "ventilation" | "drilling";
@@ -948,6 +949,7 @@ function Advantages() {
 
 function Reviews() {
   const [active, setActive] = useState(0);
+  const [reviewOpen, setReviewOpen] = useState(false);   // ← добавьте эту строку
   const review = reviews[active];
   const initials = review.name.split(" ").map((part) => part[0]).join("").slice(0, 2);
   const next = () => setActive((value) => (value + 1) % reviews.length);
@@ -960,7 +962,7 @@ function Reviews() {
           <div className="reveal">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-orange-200 sm:text-sm sm:tracking-[0.2em]">Отзывы клиентов</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight sm:mt-4 sm:text-4xl lg:text-5xl">Нам доверяют дома и бизнес</h2>
-            <button type="button" onClick={openJivoChat} className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620] sm:mt-8 sm:w-auto">
+            <button type="button" onClick={() => setReviewOpen(true)} className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620] sm:mt-8 sm:w-auto">
               Оставить отзыв
               <LineIcon name="chat" />
             </button>
@@ -1002,6 +1004,7 @@ function Reviews() {
             <DoubleGisWidget />
           </div>
         </div>
+      <ReviewModal open={reviewOpen} onClose={() => setReviewOpen(false)} />
     </section>
   );
 }
