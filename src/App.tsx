@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import BrandsCatalog from "./components/BrandsCatalog";
+import DoubleGisWidget from "./components/DoubleGisWidget";  // ← добавьте эту строку
 
 type CalculatorTab = "windows" | "conditioners" | "ventilation" | "drilling";
 type PortfolioCategory = "all" | "windows" | "conditioners" | "ventilation" | "drilling";
@@ -987,6 +988,20 @@ function Reviews() {
           </div>
         </div>
       </div>
+              {/* Виджет 2ГИС с рейтингом и отзывами */}
+        <div className="mt-10 sm:mt-14">
+          <div className="mb-6 text-center reveal">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-orange-200 sm:text-sm">
+              Наш рейтинг на 2ГИС
+            </p>
+            <h3 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl">
+              Реальные отзывы клиентов
+            </h3>
+          </div>
+          <div className="mx-auto max-w-xl reveal">
+            <DoubleGisWidget />
+          </div>
+        </div>
     </section>
   );
 }
