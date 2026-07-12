@@ -991,24 +991,6 @@ function Reviews() {
   );
 }
 
- {/* Блок 2ГИС — ОТДЕЛЬНО, ПОСЛЕ секции отзывов */}
-    <section className="py-16 bg-white">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold text-slate-900">
-            Наш рейтинг на 2ГИС
-          </h2>
-          <p className="text-slate-600 mt-2">
-            Реальные отзывы наших клиентов
-          </p>
-        </div>
-        <div className="max-w-[528px] mx-auto">
-          <DoubleGisWidget />
-        </div>
-      </div>
-    </section>
-  </>
-);
 
 function MapSection() {
   return (
