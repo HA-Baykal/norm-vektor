@@ -964,7 +964,19 @@ function Reviews() {
               <LineIcon name="chat" />
             </button>
           </div>
-
+          <section className="py-16 bg-white dark:bg-slate-950">
+  <div className="max-w-3xl mx-auto px-4">
+    <div className="text-center mb-8">
+      <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">
+        Наш рейтинг на 2ГИС
+      </h2>
+      <p className="text-slate-600 dark:text-slate-400 mt-2">
+        Реальные отзывы наших клиентов
+      </p>
+    </div>
+    <DoubleGisWidget />
+  </div>
+</section>
           <div className="reveal rounded-[1.5rem] bg-white p-5 text-slate-900 shadow-2xl shadow-slate-950/25 sm:rounded-[2rem] sm:p-8">
             <div className="flex items-center gap-4">
               <AvatarPhoto path={review.photo} initials={initials} />
