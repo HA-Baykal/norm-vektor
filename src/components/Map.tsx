@@ -1,3 +1,4 @@
+import DoubleGisWidget from "./DoubleGisWidget";
 export default function Map() {
   return (
     <section className="py-16 md:py-20 bg-slate-50 dark:bg-slate-900/50">
@@ -26,7 +27,7 @@ export default function Map() {
               style={{ display: "block" }}
             />
           </div>
-
+          <DoubleGisWidget />
           <div className="space-y-4">
             {[
               { city: "Иркутск", icon: "🏙️", note: "Основной офис, выезд в день обращения" },
