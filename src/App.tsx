@@ -131,12 +131,12 @@ const reviews = [
 ];
 
 const advantages = [
-  { title: "Один подрядчик", text: "Закрываем сразу четыре направления для квартиры, дома или бизнеса.", icon: "layers" },
-  { title: "Свой монтаж", text: "Работают постоянные бригады, которые отвечают за результат.", icon: "tools" },
-  { title: "Чистая работа", text: "Защищаем отделку, используем пылесос при бурении, убираем за собой.", icon: "spark" },
-  { title: "Понятная смета", text: "Объясняем состав работ до старта и фиксируем договорённости.", icon: "doc" },
-  { title: "Гарантия", text: "Даём гарантию на монтаж, оборудование и выполненные работы.", icon: "shield" },
-  { title: "Выезд до 50 км", text: "Иркутск, Ангарск, Шелехов, Хомутово и пригород.", icon: "map" },
+  { title: "4 направления в одной команде", text: "Кондиционеры, пластиковые окна, вентиляция и алмазное бурение — не нужно искать разных подрядчиков.", icon: "layers" },
+  { title: "Опыт более 10 лет", text: "Работаем в Иркутске более 10 лет, знаем все нюансы монтажа в местных условиях.", icon: "tools" },
+  { title: "Своё производство окон", text: "Пластиковые окна из профиля VEKA с фурнитурой MACO. Полный контроль качества.", icon: "spark" },
+  { title: "Бесплатный выезд и замер", text: "Замер, консультация и расчёт стоимости — абсолютно бесплатно, без обязательств.", icon: "doc" },
+  { title: "Гарантия на всё", text: "Гарантия на окна 3 года, на кондиционеры от завода 3–5 лет, на монтажные работы 1 год.", icon: "shield" },
+  { title: "Выезд до 50 км", text: "Иркутск, Ангарск, Шелехов, Хомутово и пригород — приедем к вам.", icon: "map" },
 ];
 
 const calculatorLabels: Record<CalculatorTab, string> = {
@@ -930,7 +930,7 @@ function Advantages() {
   return (
     <section className="bg-white py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle eyebrow="Почему мы" title="Надёжный подрядчик для инженерных работ" />
+        <SectionTitle eyebrow="Почему мы" title="Почему выбирают «Вектор Комфорта» в Иркутске" text="Опыт более 10 лет, собственное производство окон VEKA и только качественные материалы. Кондиционеры, окна, вентиляция и алмазное бурение — под ключ с гарантией." />
         <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {advantages.map((item, index) => (
             <article key={item.title} className="reveal rounded-[1.5rem] border border-slate-200 bg-white p-5 transition hover:border-orange-200 hover:shadow-xl hover:shadow-slate-900/5 sm:rounded-[1.75rem] sm:p-7" style={{ transitionDelay: `${index * 60}ms` }}>
