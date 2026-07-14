@@ -1196,7 +1196,7 @@ function Footer() {
               <div className="text-xs font-semibold text-slate-300">Комфорт в каждом направлении</div>
             </div>
           </div>
-          <p className="mt-5 max-w-md text-sm leading-7 text-slate-300 sm:text-base">Окна, кондиционеры, вентиляция и алмазное бурение для Иркутска, Ангарска, Шелехова, Хомутово и пригорода до 50 км.</p>
+          <p className="mt-5 max-w-md text-sm leading-7 text-slate-300 sm:text-base">Кондиционеры, пластиковые окна VEKA, вентиляция и алмазное бурение в Иркутске. Продажа, монтаж и обслуживание с гарантией. Работаем в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км.</p>
         </div>
         <div>
           <h3 className="font-black">Навигация</h3>
@@ -1208,11 +1208,12 @@ function Footer() {
         </div>
         <div>
           <h3 className="font-black">Контакты</h3>
-          <div className="mt-4 grid gap-2 text-slate-300">
-            <a href="tel:+79149146606" className="transition hover:text-[#ff6b35]">+7 (914) 914-66-06</a>
-            <a href="tel:+73952669930" className="transition hover:text-[#ff6b35]">66-99-30</a>
-            <span>Ежедневно 9:00-20:00</span>
-            <span>Иркутск и пригород до 50 км</span>
+            <div className="mt-4 grid gap-2 text-slate-300">
+             <a href="tel:+79149146606" className="transition hover:text-[#ff6b35]">+7 (914) 914-66-06</a>
+             <a href="tel:+73952669930" className="transition hover:text-[#ff6b35]">66-99-30</a>
+             <span>Ежедневно 9:00-20:00</span>
+             <span>Иркутск и пригород до 50 км</span>
+             <span className="mt-2 text-slate-400">Кондиционеры · Пластиковые окна · Вентиляция · Алмазное бурение</span>
           </div>
         </div>
       </div>
