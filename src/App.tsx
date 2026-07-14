@@ -139,6 +139,33 @@ const advantages = [
   { title: "Выезд до 50 км", text: "Иркутск, Ангарск, Шелехов, Хомутово и пригород — приедем к вам.", icon: "map" },
 ];
 
+const faqItems = [
+  {
+    q: "Сколько стоит установка кондиционера в Иркутске?",
+    a: "Стоимость установки кондиционера зависит от модели и сложности монтажа. Мы делаем бесплатный выезд и замер, после чего называем точную цену. Продажа и монтаж кондиционера выполняются за 1 день, с гарантией от завода от 3 до 5 лет.",
+  },
+  {
+    q: "За сколько дней изготавливают пластиковые окна?",
+    a: "Срок изготовления пластиковых окон — до 14 рабочих дней. Мы используем собственное производство, профиль VEKA и фурнитуру MACO с микропроветриванием. Гарантия на окна — 3 года, на монтажные работы — 1 год.",
+  },
+  {
+    q: "Выезжаете ли вы на замер бесплатно?",
+    a: "Да, выезд специалиста, замер и консультация абсолютно бесплатны и ни к чему вас не обязывают. Мы работаем в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км.",
+  },
+  {
+    q: "Какие окна вы делаете?",
+    a: "Изготавливаем любые пластиковые окна: обычные и панорамные окна ПВХ, остекление балконов и лоджий, крашеные окна, ламинацию под дерево или цвет, двери, витражи и стеклянные перегородки.",
+  },
+  {
+    q: "Делаете ли вентиляцию для квартиры и бизнеса?",
+    a: "Да, проектируем и монтируем приточную и вытяжную вентиляцию под ключ. Устанавливаем бризеры, рекуператоры и приточно-вытяжные системы Тион, Vakio для квартир, домов, кафе и офисов.",
+  },
+  {
+    q: "Что такое алмазное бурение и когда оно нужно?",
+    a: "Алмазное бурение — это аккуратное сверление отверстий в бетоне, железобетоне и кирпиче диаметром от 32 до 250 мм. Нужно под трубы, вентиляцию и кондиционеры. Работаем сухим способом с пылесосом (без пыли) и мокрым способом с водой — без трещин и сколов.",
+  },
+];
+
 const calculatorLabels: Record<CalculatorTab, string> = {
   windows: "Окна",
   conditioners: "Кондиционеры",
@@ -1184,6 +1211,39 @@ function Input({ label, value, onChange, placeholder, type = "text", required = 
   );
 }
 
+function FAQ() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section id="faq" className="bg-slate-50 py-14 sm:py-20 lg:py-28">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center reveal">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff6b35] sm:text-sm sm:tracking-[0.2em]">Вопросы и ответы</p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-[#1a3a5c] sm:mt-4 sm:text-4xl lg:text-5xl">Частые вопросы о наших услугах</h2>
+        </div>
+        <div className="mt-8 space-y-3 sm:mt-12 sm:space-y-4">
+          {faqItems.map((item, index) => (
+            <div key={item.q} className="reveal overflow-hidden rounded-2xl bg-white shadow-sm">
+              <button
+                type="button"
+                onClick={() => setOpen(open === index ? null : index)}
+                className="flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6"
+              >
+                <span className="text-base font-black text-[#1a3a5c] sm:text-lg">{item.q}</span>
+                <span className={`shrink-0 text-2xl font-black text-[#ff6b35] transition-transform ${open === index ? "rotate-45" : ""}`}>+</span>
+              </button>
+              {open === index && (
+                <div className="px-5 pb-5 text-sm leading-7 text-slate-600 sm:px-6 sm:pb-6 sm:text-base">
+                  {item.a}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="bg-[#10263d] text-white">
@@ -1286,6 +1346,7 @@ export default function App() {
         <Reviews />
         <MapSection />
         <ChatSection />
+        <FAQ />
         <ContactForm />
       </main>
       <Footer />
