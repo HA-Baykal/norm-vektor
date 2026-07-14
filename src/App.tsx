@@ -1098,8 +1098,8 @@ function ContactForm() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10 lg:px-8">
         <div className="reveal">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff6b35] sm:text-sm sm:tracking-[0.2em]">Контакты</p>
-          <h2 className="mt-3 text-3xl font-black tracking-tight text-[#1a3a5c] sm:mt-4 sm:text-4xl lg:text-5xl">Оставьте заявку или позвоните</h2>
-          <p className="mt-4 text-base leading-7 text-slate-600 sm:mt-5 sm:text-lg sm:leading-8">Перезвоним, уточним задачу и подготовим предварительный расчёт.</p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-[#1a3a5c] sm:mt-4 sm:text-4xl lg:text-5xl">Заказать окна или кондиционер в Иркутске</h2>
+<p className="mt-4 text-base leading-7 text-slate-600 sm:mt-5 sm:text-lg sm:leading-8">Оставьте заявку на пластиковые окна, кондиционер, вентиляцию или алмазное бурение. Перезвоним, уточним задачу, бесплатно выедем на замер и подготовим расчёт стоимости.</p>
           <div className="mt-6 space-y-3 sm:mt-8">
             <a href="tel:+79149146606" className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35] sm:gap-4 sm:p-5 sm:text-base"><LineIcon name="phone" /> +7 (914) 914-66-06</a>
             <a href="tel:+73952669930" className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-black text-[#1a3a5c] transition hover:bg-orange-50 hover:text-[#ff6b35] sm:gap-4 sm:p-5 sm:text-base"><LineIcon name="phone" /> 66-99-30</a>
@@ -1126,10 +1126,10 @@ function ContactForm() {
               MAX
             </a>
           </div>
-          <div className="mt-6 rounded-[1.5rem] bg-slate-50 p-5 text-slate-700 sm:mt-8 sm:rounded-[2rem] sm:p-6">
-            <h3 className="text-lg font-black text-[#1a3a5c] sm:text-xl">Города</h3>
-            <p className="mt-3 text-sm leading-7 sm:text-base">Иркутск, Ангарск, Шелехов, Хомутово и пригород до 50 км. Режим работы: ежедневно с 9:00 до 20:00, срочные выезды по договорённости.</p>
-          </div>
+         <div className="mt-6 rounded-[1.5rem] bg-slate-50 p-5 text-slate-700 sm:mt-8 sm:rounded-[2rem] sm:p-6">
+           <h3 className="text-lg font-black text-[#1a3a5c] sm:text-xl">Зона обслуживания</h3>
+           <p className="mt-3 text-sm leading-7 sm:text-base">Устанавливаем кондиционеры и пластиковые окна, делаем вентиляцию и алмазное бурение в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км. Работаем ежедневно, срочные выезды по договорённости.</p>
+         </div>
         </div>
 
         <form onSubmit={submit} className="reveal rounded-[1.5rem] bg-slate-50 p-4 shadow-xl shadow-slate-900/5 sm:rounded-[2rem] sm:p-8">
