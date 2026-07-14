@@ -485,7 +485,7 @@ function ServicesSection() {
   return (
     <section id="services" className="bg-slate-50 py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle eyebrow="Услуги" title="Кондиционеры, окна, вентиляция и бурение в Иркутске" text="Четыре направления в одной команде. Подберём решение, рассчитаем стоимость и выполним монтаж с гарантией. Бесплатный выезд и замер." /> />
+        <SectionTitle eyebrow="Услуги" title="Кондиционеры, окна, вентиляция и бурение в Иркутске" text="Четыре направления в одной команде. Подберём решение, рассчитаем стоимость и выполним монтаж с гарантией. Бесплатный выезд и замер." /> 
 
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4 lg:gap-6">
           {services.map((service, index) => (
