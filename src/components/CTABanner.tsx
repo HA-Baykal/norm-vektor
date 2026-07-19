@@ -20,27 +20,33 @@ export default function CTABanner() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="tel:+79149146606"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-brand-700 font-semibold hover:bg-accent-400 hover:text-white transition"
+                    href="tel:+79149146606"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-brand-700 font-semibold hover:bg-accent-400 hover:text-white transition"
                 >
                   📞 +7 (914) 914-66-06
                 </a>
                 <a
-                  href="tel:+73952669930"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-500 hover:bg-accent-600 text-white font-semibold transition"
+                    href="tel:+73952669930"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-500 hover:bg-accent-600 text-white font-semibold transition"
                 >
                   📞 66-99-30
                 </a>
+                <a
+                    href="tel:+79086401166"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-500 hover:bg-accent-600 text-white font-semibold transition"
+                >
+                  📞  +79086401166
+                </a>
                 <Link
-                  to="/kontakty"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-white/30 hover:border-white text-white font-semibold transition"
+                    to="/kontakty"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-white/30 hover:border-white text-white font-semibold transition"
                 >
                   Все контакты →
                 </Link>
               </div>
             </div>
             <div>
-              <QuoteForm compact />
+              <QuoteForm compact/>
             </div>
           </div>
         </div>

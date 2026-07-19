@@ -43,6 +43,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
           <div className="flex items-center gap-4">
             <a href="tel:+79149146606" className="hover:text-accent-400 transition">+7 (914) 914-66-06</a>
             <a href="tel:+73952669930" className="hover:text-accent-400 transition">66-99-30</a>
+            <a href="tel:+79086401166" className="hover:text-accent-400 transition">+7 (908) 640-11-66</a>
           </div>
         </div>
       </div>
