@@ -53,7 +53,7 @@ export default function Counters() {
   const stats = [
     { value: 15, suffix: "+", label: "лет опыта работы", icon: "🏆" },
     { value: 3500, suffix: "+", label: "выполненных проектов", icon: "✅" },
-    { value: 5, suffix: " лет", label: "гарантия на монтаж", icon: "🛡️" },
+    { value: 2, suffix: " года", label: "гарантия на монтаж", icon: "🛡️" },
     { value: 50, suffix: " км", label: "зона обслуживания", icon: "📍" },
   ];
 
