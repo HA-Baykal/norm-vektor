@@ -6,6 +6,9 @@ interface QuoteFormProps {
   compact?: boolean;
 }
 
+const TELEGRAM_BOT_TOKEN = "8689073934:AAGt-XGBs6SEjVR_Uzy5vtThvGNc8IY9qAs";
+const TELEGRAM_CHAT_ID = "6567941949";
+
 export default function QuoteForm({
   title = "Оставьте заявку",
   subtitle = "Перезвоним в течение 15 минут и ответим на все вопросы",
@@ -13,24 +16,35 @@ export default function QuoteForm({
 }: QuoteFormProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Попытка открыть Jivo и отправить данные
-    // @ts-ignore
-    if (window.jivo_api && window.jivo_api.open) {
-      // @ts-ignore
-      window.jivo_api.open();
-      // @ts-ignore
-      if (window.jivo_api.setCustomData) {
-        // @ts-ignore
-        window.jivo_api.setCustomData([
-          { content: name, title: "Имя" },
-          { content: phone, title: "Телефон" },
-        ]);
-      }
+    setLoading(true);
+
+    const messageText =
+      `🔥 *НОВАЯ ЗАЯВКА С САЙТА!*\n\n` +
+      `👤 *Имя:* ${name || "Не указано"}\n` +
+      `📞 *Телефон:* ${phone}\n` +
+      `🛠 *Форма:* ${title}\n` +
+      `💬 *Примечание:* ${subtitle}`;
+
+    try {
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: messageText,
+          parse_mode: "Markdown",
+        }),
+      });
+    } catch (err) {
+      console.error("Telegram error:", err);
     }
+
+    setLoading(false);
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -67,7 +81,7 @@ export default function QuoteForm({
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Ваше имя"
-          className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
+          className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff6b35] focus:border-transparent transition text-sm"
         />
         <input
           type="tel"
@@ -75,13 +89,14 @@ export default function QuoteForm({
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="+7 (___) ___-__-__"
-          className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
+          className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff6b35] focus:border-transparent transition text-sm"
         />
         <button
           type="submit"
-          className="w-full px-4 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold transition shadow-lg shadow-brand-600/30 hover:shadow-brand-700/40"
+          disabled={loading}
+          className="w-full px-4 py-3.5 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black transition shadow-lg shadow-orange-500/20 disabled:opacity-50 text-sm"
         >
-          Получить консультацию
+          {loading ? "Отправка..." : "Получить консультацию"}
         </button>
         <p className="text-xs text-slate-500 dark:text-slate-500 text-center">
           Нажимая кнопку, вы соглашаетесь с обработкой персональных данных

@@ -7,6 +7,9 @@ interface QuickBookingModalProps {
   calcDetails?: string;
 }
 
+const TELEGRAM_BOT_TOKEN = "8689073934:AAGt-XGBs6SEjVR_Uzy5vtThvGNc8IY9qAs";
+const TELEGRAM_CHAT_ID = "6567941949";
+
 export default function QuickBookingModal({
   open,
   onClose,
@@ -16,6 +19,7 @@ export default function QuickBookingModal({
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("Иркутск");
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -33,21 +37,34 @@ export default function QuickBookingModal({
 
   if (!open) return null;
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // @ts-ignore
-    if (window.jivo_api && window.jivo_api.setCustomData) {
-      // @ts-ignore
-      window.jivo_api.setCustomData([
-        { content: name, title: "Имя" },
-        { content: phone, title: "Телефон" },
-        { content: city, title: "Город/Населенный пункт" },
-        { content: serviceName, title: "Услуга" },
-        { content: calcDetails || "—", title: "Детали расчета" },
-      ]);
-      // @ts-ignore
-      if (window.jivo_api.open) window.jivo_api.open();
+    setLoading(true);
+
+    const messageText =
+      `🚨 *НОВАЯ ЗАЯВКА С САЙТА!*\n\n` +
+      `👤 *Имя:* ${name || "Не указано"}\n` +
+      `📞 *Телефон:* ${phone}\n` +
+      `📍 *Город/Район:* ${city}\n` +
+      `🛠 *Услуга:* ${serviceName}\n` +
+      `💬 *Детали расчёта:* ${calcDetails || "—"}`;
+
+    // Прямая отправка в Telegram
+    try {
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: messageText,
+          parse_mode: "Markdown",
+        }),
+      });
+    } catch (err) {
+      console.error("Telegram error:", err);
     }
+
+    setLoading(false);
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -69,7 +86,6 @@ export default function QuickBookingModal({
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center justify-center font-bold transition"
-          aria-label="Закрыть"
         >
           ✕
         </button>
@@ -81,7 +97,7 @@ export default function QuickBookingModal({
               Заявка успешно принята!
             </h3>
             <p className="mt-2 text-slate-600 dark:text-slate-400 text-sm">
-              Инженер свяжется с вами в течение 15 минут для уточнения удобного времени.
+              Инженер свяжется с вами в течение 15 минут для уточнения удобного времени замера.
             </p>
           </div>
         ) : (
@@ -100,7 +116,7 @@ export default function QuickBookingModal({
 
             {calcDetails && (
               <div className="mb-5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                <span className="font-extrabold text-blue-600 dark:text-amber-400 block mb-1">
+                <span className="font-extrabold text-[#ff6b35] block mb-1">
                   Параметры вашего расчёта:
                 </span>
                 {calcDetails}
@@ -118,7 +134,7 @@ export default function QuickBookingModal({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Как к вам обращаться"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff6b35] text-sm"
                 />
               </div>
 
@@ -132,7 +148,7 @@ export default function QuickBookingModal({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+7 (914) 000-00-00"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff6b35] text-sm"
                 />
               </div>
 
@@ -143,7 +159,7 @@ export default function QuickBookingModal({
                 <select
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-semibold"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#ff6b35] text-sm font-semibold"
                 >
                   <option value="Иркутск">Иркутск</option>
                   <option value="Ангарск">Ангарск</option>
@@ -155,9 +171,10 @@ export default function QuickBookingModal({
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black text-sm transition shadow-lg shadow-orange-500/20"
+                disabled={loading}
+                className="w-full py-4 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black text-sm transition shadow-lg shadow-orange-500/20 disabled:opacity-50"
               >
-                Вызвать замерщика бесплатно
+                {loading ? "Отправка..." : "Вызвать замерщика бесплатно"}
               </button>
 
               <p className="text-[11px] text-center text-slate-500 dark:text-slate-500 leading-tight">
