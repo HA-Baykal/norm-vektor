@@ -1,20 +1,10 @@
 import { useMemo, useState } from "react";
+import QuickBookingModal from "./QuickBookingModal";
 
-// ============================================================================
-// ОНЛАЙН-КАЛЬКУЛЯТОР ОКОН с живой визуализацией
-// ============================================================================
-// Логика типа окна по ширине:
-//   до 1000 мм        → одностворчатое (1 поворотно-откидная створка)
-//   1001–1500 мм      → двухчастное (створка + глухое, импост по центру)
-//   больше 1500 мм    → трёхчастное (глухое + створка + глухое)
-// Высота: максимум 2100 мм
-// ============================================================================
-
-// --- ЦЕНЫ (можно менять) ---
-const PRICE_WINDOW_M2 = 11000; // цена окна за 1 м²
-const PRICE_INSTALL_M2 = 2100; // монтаж окна за 1 м²
-const PRICE_SLOPES_SILL_MM = 1900; // откосы + подоконник за 1 пог.м (материал 1100 + монтаж 800)
-const PRICE_DELIVERY = 3000; // доставка (фикс)
+const PRICE_WINDOW_M2 = 11000;
+const PRICE_INSTALL_M2 = 2100;
+const PRICE_SLOPES_SILL_MM = 1900;
+const PRICE_DELIVERY = 3000;
 
 const MIN_WIDTH = 400;
 const MAX_WIDTH = 3000;
@@ -51,6 +41,7 @@ export default function WindowCalculator() {
   const [withInstall, setWithInstall] = useState(true);
   const [withSlopesSill, setWithSlopesSill] = useState(true);
   const [withDelivery, setWithDelivery] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const kind = getWindowKind(width);
 
@@ -68,6 +59,8 @@ export default function WindowCalculator() {
     return { areaM2, perimeterM, windowPrice, installPrice, slopesSillPrice, onePiece, total };
   }, [width, height, quantity, withInstall, withSlopesSill, withDelivery]);
 
+  const calcDetailsText = `Размер: ${width}×${height} мм (${calc.areaM2.toFixed(2)} м²), Кол-во: ${quantity} шт., Монтаж: ${withInstall ? "Да" : "Нет"}, Откосы/Подоконник: ${withSlopesSill ? "Да" : "Нет"}, Сумма: ${formatRub(calc.total)}`;
+
   return (
     <section id="calculator" className="bg-white py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -84,7 +77,6 @@ export default function WindowCalculator() {
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-6 lg:mt-12 lg:grid-cols-2 lg:gap-8">
-          {/* ЛЕВО — настройки */}
           <div className="rounded-[1.5rem] bg-slate-50 p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
             <SizeField
               label="Ширина"
@@ -116,7 +108,6 @@ export default function WindowCalculator() {
               inputWidth="w-12"
             />
 
-            {/* Опции */}
             <div className="space-y-3">
               <CheckOption
                 label="Монтаж окна"
@@ -139,9 +130,7 @@ export default function WindowCalculator() {
             </div>
           </div>
 
-          {/* ПРАВО — визуализация и цена */}
           <div className="flex flex-col gap-6">
-            {/* Рисунок окна */}
             <div className="rounded-[1.5rem] bg-slate-50 p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
               <div className="mb-4 flex items-center justify-center rounded-2xl bg-white p-6">
                 <WindowDrawing width={width} height={height} kind={kind} />
@@ -152,7 +141,6 @@ export default function WindowCalculator() {
               </div>
             </div>
 
-            {/* Цена */}
             <div className="rounded-[1.5rem] bg-[#1a3a5c] p-5 text-white shadow-2xl shadow-slate-900/15 sm:rounded-[2rem] sm:p-7">
               <div className="text-xs font-bold uppercase tracking-[0.18em] text-orange-200">Итого</div>
               <div className="mt-2 text-3xl font-black sm:text-4xl">{formatRub(calc.total)}</div>
@@ -189,24 +177,31 @@ export default function WindowCalculator() {
                 )}
               </ul>
 
-              <a
-                href="tel:+79149146606"
+              <button
+                type="button"
+                onClick={() => setModalOpen(true)}
                 className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620]"
               >
-                Заказать окно
-              </a>
+                Отправить этот расчёт менеджеру
+              </button>
               <p className="mt-3 text-center text-xs text-slate-400">
-                Это предварительный расчёт. Точную цену назовём после бесплатного замера.
+                Предварительный расчёт. Точную цену назовём после бесплатного замера.
               </p>
             </div>
           </div>
         </div>
       </div>
+
+      <QuickBookingModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        serviceName="Расчет пластикового окна"
+        calcDetails={calcDetailsText}
+      />
     </section>
   );
 }
 
-// Поле размера: ползунок + поле ввода с клавиатуры (ограничение применяется при уходе из поля)
 function SizeField({
   label,
   unit,
@@ -228,7 +223,6 @@ function SizeField({
   hint?: string;
   inputWidth?: string;
 }) {
-  // Текст, который печатает пользователь (может быть временно пустым или неполным)
   const [text, setText] = useState(String(value));
 
   return (
@@ -242,16 +236,13 @@ function SizeField({
             data-size-input={label}
             value={text}
             onChange={(e) => {
-              // Разрешаем печатать что угодно — просто запоминаем текст
               setText(e.target.value);
               const num = Number(e.target.value);
-              // Обновляем значение только если это корректное число в диапазоне
               if (e.target.value !== "" && !Number.isNaN(num) && num >= min && num <= max) {
                 onChange(num);
               }
             }}
             onBlur={(e) => {
-              // Когда убрали курсор — приводим к допустимому значению
               const fixed = clamp(Number(e.target.value), min, max);
               onChange(fixed);
               setText(String(fixed));
@@ -306,7 +297,6 @@ function CheckOption({
   );
 }
 
-// Живой рисунок окна
 function WindowDrawing({ width, height, kind }: { width: number; height: number; kind: WindowKind }) {
   const frame = "#1a3a5c";
   const frameInner = "#2d587b";

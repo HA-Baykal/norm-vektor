@@ -1,22 +1,10 @@
 import { useMemo, useState } from "react";
-
-// ============================================================================
-// КАЛЬКУЛЯТОР АЛМАЗНОГО БУРЕНИЯ
-// ============================================================================
-// Цена за 1 отверстие зависит от количества точек (чем больше — тем дешевле):
-//   1 точка      → 4500 ₽ за точку
-//   2 точки      → 4000 ₽ за точку
-//   3 точки      → 3500 ₽ за точку
-//   4–10 точек   → 3000 ₽ за точку
-//   11–20 точек  → 2500 ₽ за точку
-//   больше 20    → 2000 ₽ за точку
-// ============================================================================
+import QuickBookingModal from "./QuickBookingModal";
 
 function formatRub(value: number) {
   return `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
 }
 
-// Возвращает цену за одну точку в зависимости от количества
 function pricePerPoint(count: number): number {
   if (count <= 1) return 4500;
   if (count === 2) return 4000;
@@ -28,9 +16,12 @@ function pricePerPoint(count: number): number {
 
 export default function DrillingCalculator() {
   const [points, setPoints] = useState(1);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const perPoint = useMemo(() => pricePerPoint(points), [points]);
   const total = perPoint * points;
+
+  const calcDetailsText = `Алмазное бурение: ${points} шт. (${formatRub(perPoint)}/шт.), Итого: ${formatRub(total)}`;
 
   return (
     <section id="calculator" className="bg-white py-14 sm:py-20 lg:py-28">
@@ -47,7 +38,6 @@ export default function DrillingCalculator() {
           </p>
         </div>
 
-        {/* Описание: для чего нужно алмазное бурение */}
         <div className="mt-8 rounded-[1.5rem] bg-slate-50 p-6 shadow-sm sm:rounded-[2rem] sm:p-8 lg:mt-10">
           <h3 className="text-xl font-black text-[#1a3a5c] sm:text-2xl">Что такое алмазное бурение и для чего оно нужно</h3>
           <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
@@ -103,7 +93,6 @@ export default function DrillingCalculator() {
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-6 lg:mt-12 lg:grid-cols-2 lg:gap-8">
-          {/* ЛЕВО — выбор количества */}
           <div className="rounded-[1.5rem] bg-slate-50 p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
             <div className="mb-3 flex items-center justify-between">
               <span className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Количество отверстий</span>
@@ -132,7 +121,6 @@ export default function DrillingCalculator() {
               className="h-2 w-full cursor-pointer accent-[#ff6b35]"
             />
 
-            {/* Таблица цен */}
             <div className="mt-6 rounded-2xl bg-white p-4 shadow-sm">
               <div className="mb-3 text-xs font-black uppercase tracking-wider text-slate-500">Цена за отверстие</div>
               <ul className="space-y-2 text-sm">
@@ -158,7 +146,6 @@ export default function DrillingCalculator() {
             </div>
           </div>
 
-          {/* ПРАВО — цена */}
           <div className="flex flex-col gap-6">
             <div className="rounded-[1.5rem] bg-slate-50 p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
               <div className="flex items-center justify-center rounded-2xl bg-white p-8">
@@ -181,12 +168,13 @@ export default function DrillingCalculator() {
               <div className="mt-1 text-xs text-slate-300">
                 {points} × {formatRub(perPoint)}
               </div>
-              <a
-                href="tel:+79149146606"
+              <button
+                type="button"
+                onClick={() => setModalOpen(true)}
                 className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620]"
               >
-                Заказать бурение
-              </a>
+                Отправить расчёт на замер
+              </button>
               <p className="mt-3 text-center text-xs text-slate-400">
                 Предварительный расчёт. Точную цену назовём после уточнения диаметра и материала стен.
               </p>
@@ -194,6 +182,13 @@ export default function DrillingCalculator() {
           </div>
         </div>
       </div>
+
+      <QuickBookingModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        serviceName="Расчет алмазного бурения"
+        calcDetails={calcDetailsText}
+      />
     </section>
   );
 }

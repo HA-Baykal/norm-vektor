@@ -1,22 +1,16 @@
 import { useMemo, useState } from "react";
-
-// ============================================================================
-// КАЛЬКУЛЯТОР ВЕНТИЛЯЦИИ
-// ============================================================================
-// Клиент выбирает оборудование и количество точек. Цена — за точку (с установкой).
-// ============================================================================
+import QuickBookingModal from "./QuickBookingModal";
 
 type VentProduct = {
   id: string;
   name: string;
-  pricePerPoint: number; // цена за 1 точку с установкой (0 = цена по замеру)
-  byQuote?: boolean; // true = цена рассчитывается после замера
-  short: string; // краткое описание
-  specs: string[]; // характеристики (список)
+  pricePerPoint: number;
+  byQuote?: boolean;
+  short: string;
+  specs: string[];
   badge?: string;
 };
 
-// ⬇️ Оборудование вентиляции (можно менять цены и добавлять модели) ⬇️
 const products: VentProduct[] = [
   {
     id: "asp100",
@@ -105,9 +99,14 @@ function formatRub(value: number) {
 export default function VentilationCalculator() {
   const [selectedId, setSelectedId] = useState(products[0].id);
   const [points, setPoints] = useState(1);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const product = products.find((p) => p.id === selectedId) ?? products[0];
   const total = useMemo(() => product.pricePerPoint * points, [product, points]);
+
+  const calcDetailsText = product.byQuote
+    ? `Модель: ${product.name} (Индивидуальный проект воздуховодов)`
+    : `Модель: ${product.name}, Точек: ${points} шт., Итого: ${formatRub(total)}`;
 
   return (
     <section id="calculator" className="bg-white py-14 sm:py-20 lg:py-28">
@@ -125,7 +124,6 @@ export default function VentilationCalculator() {
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-6 lg:mt-12 lg:grid-cols-2 lg:gap-8">
-          {/* ЛЕВО — выбор оборудования */}
           <div className="rounded-[1.5rem] bg-slate-50 p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
             <div className="mb-2 text-xs font-black uppercase tracking-[0.14em] text-slate-500">Выберите оборудование</div>
             <div className="space-y-3">
@@ -164,7 +162,6 @@ export default function VentilationCalculator() {
               ))}
             </div>
 
-            {/* Количество точек — только для товаров с фиксированной ценой */}
             {!product.byQuote && (
               <div className="mt-6">
                 <div className="mb-3 flex items-center justify-between">
@@ -186,9 +183,7 @@ export default function VentilationCalculator() {
             )}
           </div>
 
-          {/* ПРАВО — описание и цена */}
           <div className="flex flex-col gap-6">
-            {/* Описание выбранного */}
             <div className="rounded-[1.5rem] bg-slate-50 p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
               <h3 className="text-xl font-black text-[#1a3a5c]">{product.name}</h3>
               <p className="mt-3 text-sm leading-6 text-slate-600">{product.short}</p>
@@ -202,7 +197,6 @@ export default function VentilationCalculator() {
               </ul>
             </div>
 
-            {/* Цена */}
             <div className="rounded-[1.5rem] bg-[#1a3a5c] p-5 text-white shadow-2xl shadow-slate-900/15 sm:rounded-[2rem] sm:p-7">
               {product.byQuote ? (
                 <>
@@ -221,12 +215,13 @@ export default function VentilationCalculator() {
                   </div>
                 </>
               )}
-              <a
-                href="tel:+79149146606"
+              <button
+                type="button"
+                onClick={() => setModalOpen(true)}
                 className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620]"
               >
-                {product.byQuote ? "Заказать бесплатный замер" : "Заказать"}
-              </a>
+                {product.byQuote ? "Заказать бесплатный замер" : "Отправить расчёт менеджеру"}
+              </button>
               <p className="mt-3 text-center text-xs text-slate-400">
                 Предварительный расчёт. Точную цену назовём после бесплатного выезда.
               </p>
@@ -234,6 +229,13 @@ export default function VentilationCalculator() {
           </div>
         </div>
       </div>
+
+      <QuickBookingModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        serviceName="Расчет системы вентиляции"
+        calcDetails={calcDetailsText}
+      />
     </section>
   );
 }
