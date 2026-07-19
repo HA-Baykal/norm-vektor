@@ -1,20 +1,21 @@
 import { LineIcon } from "./LineIcon";
-// Логотипы брендов. Если файла логотипа нет — покажется название текстом.
+
 const brands = [
-  { name: "VEKA", logo: "/images/brands/veka.svg" },
-  { name: "Ballu", logo: "/images/brands/ballu.svg" },
-  { name: "Vakio", logo: "/images/brands/vakio.svg" },
-  { name: "Daikin", logo: "/images/brands/daikin.svg" },
-  { name: "Toshiba", logo: "/images/brands/toshiba.svg" },
-  { name: "Midea", logo: "/images/brands/midea.svg" },
-  { name: "Electrolux", logo: "/images/brands/electrolux.svg" },
-  { name: "Zanussi", logo: "/images/brands/zanussi.svg" },
-  { name: "Royal Thermo", logo: "/images/brands/royal-thermo.svg" },
-  { name: "AC ELECTRIC", logo: "/images/brands/ac-electric.svg" },
-  { name: "Axioma", logo: "/images/brands/axioma.svg" },
-  { name: "SHUFT", logo: "/images/brands/shuft.svg" },
-  { name: "AURUS", logo: "/images/brands/aurus.svg" },
+  { name: "VEKA", logo: "images/brands/veka.svg" },
+  { name: "Ballu", logo: "images/brands/ballu.svg" },
+  { name: "Vakio", logo: "images/brands/vakio.svg" },
+  { name: "Daikin", logo: "images/brands/daikin.svg" },
+  { name: "Toshiba", logo: "images/brands/toshiba.svg" },
+  { name: "Midea", logo: "images/brands/midea.svg" },
+  { name: "Electrolux", logo: "images/brands/electrolux.svg" },
+  { name: "Zanussi", logo: "images/brands/zanussi.svg" },
+  { name: "Royal Thermo", logo: "images/brands/royal-thermo.svg" },
+  { name: "AC ELECTRIC", logo: "images/brands/ac-electric.svg" },
+  { name: "Axioma", logo: "images/brands/axioma.svg" },
+  { name: "SHUFT", logo: "images/brands/shuft.svg" },
+  { name: "AURUS", logo: "images/brands/aurus.svg" },
 ];
+
 export default function BrandsCatalog() {
   return (
     <section id="brands" className="bg-white py-14 sm:py-20 lg:py-28">
@@ -31,42 +32,50 @@ export default function BrandsCatalog() {
             Toshiba, Midea и других. Только качественное оборудование с гарантией от производителя.
           </p>
         </div>
-        {/* Лента логотипов */}
+
         <div className="mt-10 grid grid-cols-2 gap-4 sm:mt-12 sm:grid-cols-3 lg:grid-cols-5">
           {brands.map((brand, index) => (
             <div
               key={brand.name}
-              className="reveal group flex h-24 flex-col items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 p-4 transition hover:-translate-y-1 hover:border-[#ff6b35] hover:shadow-lg"
-              style={{ transitionDelay: `${index * 40}ms` }}
+              className="group flex h-24 flex-col items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 p-4 transition duration-300 hover:-translate-y-1 hover:border-[#ff6b35] hover:bg-white hover:shadow-xl"
+              style={{ transitionDelay: `${index * 25}ms` }}
             >
-              <div className="flex h-12 w-full items-center justify-center">
+              <div className="flex h-12 w-full items-center justify-center relative">
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="max-h-12 max-w-full object-contain"
+                  className="max-h-10 max-w-[85%] object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition duration-300"
                   onError={(e) => {
-                    // Если логотип не загрузился — показываем название текстом
-                    e.currentTarget.style.display = "none";
-                    const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                    if (fallback) fallback.style.display = "block";
+                    const target = e.currentTarget;
+                    if (!target.dataset.triedSlash) {
+                      target.dataset.triedSlash = "true";
+                      target.src = "/" + brand.logo;
+                    } else {
+                      target.style.display = "none";
+                      const fallback = target.parentElement?.querySelector(".fallback-text") as HTMLElement;
+                      if (fallback) fallback.style.display = "block";
+                    }
                   }}
                 />
-                <div className="hidden text-sm font-black text-[#1a3a5c]">{brand.name}</div>
+                <div className="fallback-text hidden text-center">
+                  <span className="text-base font-black tracking-wider text-[#1a3a5c] uppercase">
+                    {brand.name}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
         </div>
-        {/* Гарантия */}
-        <div className="mt-10 rounded-2xl bg-slate-50 p-6 sm:mt-12 sm:p-8">
+
+        <div className="mt-10 rounded-2xl bg-slate-50 p-6 sm:mt-12 sm:p-8 border border-slate-200/80">
           <div className="flex items-start gap-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ff6b35] text-white">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ff6b35] text-white shadow-md">
               <LineIcon name="check" />
             </div>
             <div>
-              <h4 className="text-lg font-black text-[#1a3a5c]">Официальная гарантия</h4>
-              <p className="mt-2 text-sm text-slate-600">
-                Всё оборудование имеет официальную гарантию производителя — от 2 до 5 лет.
-                На монтажные работы даём собственную гарантию.
+              <h4 className="text-lg font-black text-[#1a3a5c]">Официальная гарантия завода</h4>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                Всё поставляемое оборудование поставляется с официальным гарантийным талоном завода-изготовителя — от 2 до 5 лет. На все выполненные монтажные работы даём собственную гарантию до 5 лет.
               </p>
             </div>
           </div>
