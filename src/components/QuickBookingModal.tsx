@@ -10,6 +10,13 @@ interface QuickBookingModalProps {
 const TELEGRAM_BOT_TOKEN = "8689073934:AAGt-XGBs6SEjVR_Uzy5vtThvGNc8IY9qAs";
 const TELEGRAM_CHAT_ID = "6567941949";
 
+function escapeHtml(str: string) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 export default function QuickBookingModal({
   open,
   onClose,
@@ -41,27 +48,61 @@ export default function QuickBookingModal({
     e.preventDefault();
     setLoading(true);
 
-    const messageText =
-      `🚨 *НОВАЯ ЗАЯВКА С САЙТА!*\n\n` +
-      `👤 *Имя:* ${name || "Не указано"}\n` +
-      `📞 *Телефон:* ${phone}\n` +
-      `📍 *Город/Район:* ${city}\n` +
-      `🛠 *Услуга:* ${serviceName}\n` +
-      `💬 *Детали расчёта:* ${calcDetails || "—"}`;
+    const safeName = escapeHtml(name || "Не указано");
+    const safePhone = escapeHtml(phone);
+    const safeCity = escapeHtml(city);
+    const safeService = escapeHtml(serviceName);
+    const safeDetails = escapeHtml(calcDetails || "—");
 
-    // Прямая отправка в Telegram
+    const htmlMessage =
+      `🚨 <b>НОВАЯ ЗАЯВКА С САЙТА!</b>\n\n` +
+      `👤 <b>Имя:</b> ${safeName}\n` +
+      `📞 <b>Телефон:</b> ${safePhone}\n` +
+      `📍 <b>Город/Район:</b> ${safeCity}\n` +
+      `🛠 <b>Услуга:</b> ${safeService}\n` +
+      `💬 <b>Детали расчёта:</b> ${safeDetails}`;
+
+    // 1. Запрос на сервер Vercel
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          city,
+          service: serviceName,
+          details: calcDetails || "",
+        }),
+      });
+    } catch (err) {
+      console.error("Backend error:", err);
+    }
+
+    // 2. Прямой запрос в Telegram (HTML)
     try {
       await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: TELEGRAM_CHAT_ID,
-          text: messageText,
-          parse_mode: "Markdown",
+          text: htmlMessage,
+          parse_mode: "HTML",
         }),
       });
     } catch (err) {
-      console.error("Telegram error:", err);
+      console.error("Telegram HTML error:", err);
+    }
+
+    // 3. GET Image Beacon (Обход блокировщиков рекламы)
+    try {
+      const beaconText = encodeURIComponent(
+        `🚨 НОВАЯ ЗАЯВКА (Замер/Калькулятор)\nИмя: ${name || "Не указано"}\nТел: ${phone}\nГород: ${city}\nУслуга: ${serviceName}\nДетали: ${calcDetails || "—"}`
+      );
+      const beacon = new Image();
+      beacon.src = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${beaconText}`;
+    } catch (err) {
+      console.error("Beacon error:", err);
     }
 
     setLoading(false);

@@ -9,6 +9,13 @@ interface QuoteFormProps {
 const TELEGRAM_BOT_TOKEN = "8689073934:AAGt-XGBs6SEjVR_Uzy5vtThvGNc8IY9qAs";
 const TELEGRAM_CHAT_ID = "6567941949";
 
+function escapeHtml(str: string) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 export default function QuoteForm({
   title = "Оставьте заявку",
   subtitle = "Перезвоним в течение 15 минут и ответим на все вопросы",
@@ -23,25 +30,58 @@ export default function QuoteForm({
     e.preventDefault();
     setLoading(true);
 
-    const messageText =
-      `🔥 *НОВАЯ ЗАЯВКА С САЙТА!*\n\n` +
-      `👤 *Имя:* ${name || "Не указано"}\n` +
-      `📞 *Телефон:* ${phone}\n` +
-      `🛠 *Форма:* ${title}\n` +
-      `💬 *Примечание:* ${subtitle}`;
+    const safeName = escapeHtml(name || "Не указано");
+    const safePhone = escapeHtml(phone);
+    const safeTitle = escapeHtml(title);
+    const safeSub = escapeHtml(subtitle);
 
+    const htmlMessage =
+      `🔥 <b>НОВАЯ ЗАЯВКА С САЙТА!</b>\n\n` +
+      `👤 <b>Имя:</b> ${safeName}\n` +
+      `📞 <b>Телефон:</b> ${safePhone}\n` +
+      `🛠 <b>Форма:</b> ${safeTitle}\n` +
+      `💬 <b>Примечание:</b> ${safeSub}`;
+
+    // 1. Vercel Backend
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          service: title,
+          details: subtitle,
+        }),
+      });
+    } catch (err) {
+      console.error("Backend error:", err);
+    }
+
+    // 2. Direct Telegram HTML
     try {
       await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: TELEGRAM_CHAT_ID,
-          text: messageText,
-          parse_mode: "Markdown",
+          text: htmlMessage,
+          parse_mode: "HTML",
         }),
       });
     } catch (err) {
       console.error("Telegram error:", err);
+    }
+
+    // 3. Image Beacon GET
+    try {
+      const beaconText = encodeURIComponent(
+        `🔥 НОВАЯ ЗАЯВКА\nИмя: ${name || "Не указано"}\nТел: ${phone}\nФорма: ${title}`
+      );
+      const beacon = new Image();
+      beacon.src = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${beaconText}`;
+    } catch (err) {
+      console.error("Beacon error:", err);
     }
 
     setLoading(false);
