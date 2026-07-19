@@ -37,14 +37,14 @@ export default function BrandsCatalog() {
           {brands.map((brand, index) => (
             <div
               key={brand.name}
-              className="group flex h-24 flex-col items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 p-4 transition duration-300 hover:-translate-y-1 hover:border-[#ff6b35] hover:bg-white hover:shadow-xl"
-              style={{ transitionDelay: `${index * 25}ms` }}
+              className="group flex h-24 flex-col items-center justify-center rounded-2xl border border-slate-200 bg-slate-50/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-[#ff6b35] hover:bg-white hover:shadow-xl"
+              style={{ transitionDelay: `${index * 20}ms` }}
             >
               <div className="flex h-12 w-full items-center justify-center relative">
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="max-h-10 max-w-[85%] object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition duration-300"
+                  className="max-h-11 max-w-[90%] object-contain opacity-95 group-hover:scale-105 transition duration-300"
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (!target.dataset.triedSlash) {
