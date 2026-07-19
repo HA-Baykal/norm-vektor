@@ -1,10 +1,7 @@
 import { useMemo, useState } from "react";
-// ============================================================================
-// КАТАЛОГ КОНДИЦИОНЕРОВ
-// Как заполнять: копируйте объект в массиве conditioners и меняйте данные.
-// Фото: public/images/catalog/. Кассетные: type: "Полупромышленный".
-// ============================================================================
-const INSTALL_PRICE = 18000; // стандартный монтаж (для настенных)
+import QuickBookingModal from "./QuickBookingModal";
+
+const INSTALL_PRICE = 18000;
 type PowerVariant = {
   btu: number;
   area: number;
@@ -25,8 +22,8 @@ type Conditioner = {
   badge?: string;
   variants: PowerVariant[];
 };
+
 const conditioners: Conditioner[] = [
-  // ===== ОБЫЧНЫЕ (On/Off) =====
   { id: 201, name: "SHUFT Berg SFTO", brand: "SHUFT", type: "Обычный", smartHome: false, noise: "—", country: "КНР", image: "images/catalog/shuft-berg.jpg", badge: "Новинка", variants: [
     { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "2.2 кВт", price: 16636, oldPrice: 17888 },
     { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.7 кВт", price: 17566, oldPrice: 18888 },
@@ -125,7 +122,6 @@ const conditioners: Conditioner[] = [
     { btu: 12000, area: 35, cooling: "3.23 кВт", heating: "3.52 кВт", price: 30090, oldPrice: 31190 },
     { btu: 18000, area: 50, cooling: "4.99 кВт", heating: "5.13 кВт", price: 50390, oldPrice: 51490 },
   ] },
-  // ===== ИНВЕРТОРНЫЕ (DC Inverter) =====
   { id: 301, name: "SHUFT Berg DC SFTOI", brand: "SHUFT", type: "Инверторный", smartHome: false, noise: "—", country: "КНР", image: "images/catalog/shuft-berg-inv.jpg", badge: "Новинка", variants: [
     { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "2.2 кВт", price: 25471, oldPrice: 27388 },
     { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.7 кВт", price: 27238, oldPrice: 29288 },
@@ -183,9 +179,7 @@ const conditioners: Conditioner[] = [
   { id: 105, name: "Kentatsu Канами Инвертор Wi-Fi", brand: "Kentatsu", type: "Инверторный", smartHome: true, noise: "—", country: "КНР", image: "images/catalog/kentatsu-kanami-wifi.jpg", variants: [
     { btu: 9000, area: 25, cooling: "2.64 кВт", heating: "2.93 кВт", price: 39140, oldPrice: 39890 },
     { btu: 12000, area: 35, cooling: "3.52 кВт", heating: "3.66 кВт", price: 43590, oldPrice: 44790 },
-
   ] },
-  // ===== ПОЛУПРОМЫШЛЕННЫЕ (КАССЕТНЫЕ) =====
   { id: 401, name: "Ballu Machine BLC_C кассетная", brand: "Ballu", type: "Полупромышленный", smartHome: false, noise: "—", country: "КНР", image: "images/catalog/ballu-machine-cassette.jpg", badge: "Хит", variants: [
     { btu: 12000, area: 35, cooling: "3.5 кВт", heating: "3.8 кВт", price: 64728, oldPrice: 69600 },
     { btu: 18000, area: 50, cooling: "5.3 кВт", heating: "5.6 кВт", price: 70494, oldPrice: 75800 },
@@ -209,7 +203,6 @@ const conditioners: Conditioner[] = [
       { btu: 12000, area: 35, cooling: "3.5 кВт", heating: "4.2 кВт", price: 130000 },
     ],
   },
-  // ===== DAIKIN (Япония, премиум) =====
   {
     id: 511,
     name: "Daikin FTXF Sensira",
@@ -361,51 +354,96 @@ const conditioners: Conditioner[] = [
     ],
   },
 ];
-// Связь: выбор площади → мощность (BTU)
+
 const AREA_TO_BTU: Record<string, number> = {
   "20": 7000, "25": 9000, "35": 12000, "50": 18000,
   "60": 24000, "80": 30000, "100": 36000, "140": 48000, "180": 60000,
 };
+
 function formatRub(value: number) {
   return `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
 }
+
 export default function CatalogConditioners() {
+  const [search, setSearch] = useState("");
   const [brand, setBrand] = useState<string>("all");
   const [area, setArea] = useState<string>("all");
   const [type, setType] = useState<string>("all");
   const [smart, setSmart] = useState<string>("all");
   const [sort, setSort] = useState<string>("default");
   const [visibleCount, setVisibleCount] = useState(9);
+
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [orderServiceName, setOrderServiceName] = useState("Заказ кондиционера");
+  const [orderCalcDetails, setOrderCalcDetails] = useState("");
+
   const resetCount = () => setVisibleCount(9);
+
   const brands = useMemo(
     () => ["all", ...Array.from(new Set(conditioners.map((c) => c.brand)))],
     []
   );
+
   const minPrice = (c: Conditioner) => Math.min(...c.variants.map((v) => v.price));
+
   const filtered = useMemo(() => {
     let result = conditioners.filter((c) => {
+      const okSearch = search.trim() === "" || c.name.toLowerCase().includes(search.toLowerCase().trim()) || c.brand.toLowerCase().includes(search.toLowerCase().trim());
       const okBrand = brand === "all" || c.brand === brand;
       const okType = type === "all" || c.type === type;
       const okSmart = smart === "all" || (smart === "yes" ? c.smartHome : !c.smartHome);
       const okArea = area === "all" || c.variants.some((v) => v.btu === AREA_TO_BTU[area]);
-      return okBrand && okType && okSmart && okArea;
+      return okSearch && okBrand && okType && okSmart && okArea;
     });
     if (sort === "price-asc") result = [...result].sort((a, b) => minPrice(a) - minPrice(b));
     if (sort === "price-desc") result = [...result].sort((a, b) => minPrice(b) - minPrice(a));
     return result;
-  }, [brand, area, type, smart, sort]);
+  }, [search, brand, area, type, smart, sort]);
+
   const visible = filtered.slice(0, visibleCount);
+
+  const handleOrderCard = (item: Conditioner, btu: number, withInstall: boolean, totalPrice: number) => {
+    const variant = item.variants.find((v) => v.btu === btu) || item.variants[0];
+    const details = `Модель: ${item.name} (${item.brand}), Мощность: ${btu} BTU (до ${variant.area} м²), Монтаж (+18 000 ₽): ${withInstall ? "Да" : "Нет"}, Итоговая цена: ${formatRub(totalPrice)}`;
+
+    setOrderServiceName(`Заказ кондиционера: ${item.name}`);
+    setOrderCalcDetails(details);
+    setBookingModalOpen(true);
+  };
+
   const selectClass =
     "w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 outline-none transition focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100";
+
   return (
     <section id="catalog" className="bg-slate-50 py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff6b35] sm:text-sm sm:tracking-[0.2em]">Каталог</p>
           <h2 className="mt-3 text-3xl font-black tracking-tight text-[#1a3a5c] sm:mt-4 sm:text-4xl lg:text-5xl">Каталог кондиционеров в Иркутске</h2>
-          <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">Выберите площадь помещения — мы подберём подходящую мощность. Отметьте монтаж — стоимость посчитается автоматически. Не нашли нужную модель — позвоните, подберём под вашу задачу.</p>
+          <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">Выберите модель по названию, бренду или площади помещения. Стоимость стандартного монтажа под ключ можно отметить галочкой.</p>
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-3 rounded-[1.5rem] bg-white p-4 shadow-sm sm:grid-cols-2 sm:p-6 lg:grid-cols-5">
+
+        <div className="mt-8">
+          <div className="relative max-w-2xl">
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => { setSearch(e.target.value); resetCount(); }}
+              placeholder="🔍 Быстрый поиск по названию или бренду..."
+              className="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white text-sm font-semibold shadow-sm focus:outline-none focus:border-[#ff6b35] focus:ring-4 focus:ring-orange-100 pr-10"
+            />
+            {search && (
+              <button
+                onClick={() => setSearch("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 font-bold p-1"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-4 grid grid-cols-1 gap-3 rounded-[1.5rem] bg-white p-4 shadow-sm sm:grid-cols-2 sm:p-6 lg:grid-cols-5">
           <label className="block">
             <span className="mb-2 block text-xs font-black uppercase tracking-[0.14em] text-slate-500">Бренд</span>
             <select value={brand} onChange={(e) => { setBrand(e.target.value); resetCount(); }} className={selectClass}>
@@ -456,13 +494,18 @@ export default function CatalogConditioners() {
         <div className="mt-6 text-sm font-bold text-slate-500">Найдено моделей: {filtered.length}</div>
         {filtered.length === 0 ? (
           <div className="mt-8 rounded-[1.5rem] bg-white p-10 text-center text-slate-500 shadow-sm">
-            По выбранным фильтрам ничего не найдено. Попробуйте изменить параметры или позвоните нам — подберём модель.
+            По выбранным фильтрам ничего не найдено.
           </div>
         ) : (
           <>
             <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
               {visible.map((c) => (
-                <ConditionerCard key={c.id + "-" + area} item={c} areaFilter={area} />
+                <ConditionerCard
+                  key={c.id + "-" + area}
+                  item={c}
+                  areaFilter={area}
+                  onOrder={handleOrderCard}
+                />
               ))}
             </div>
             {visible.length < filtered.length && (
@@ -479,11 +522,26 @@ export default function CatalogConditioners() {
           </>
         )}
       </div>
+
+      <QuickBookingModal
+        open={bookingModalOpen}
+        onClose={() => setBookingModalOpen(false)}
+        serviceName={orderServiceName}
+        calcDetails={orderCalcDetails}
+      />
     </section>
   );
 }
 
-function ConditionerCard({item, areaFilter}: { item: Conditioner; areaFilter: string }) {
+function ConditionerCard({
+  item,
+  areaFilter,
+  onOrder,
+}: {
+  item: Conditioner;
+  areaFilter: string;
+  onOrder: (item: Conditioner, btu: number, withInstall: boolean, totalPrice: number) => void;
+}) {
   const [imgError, setImgError] = useState(false);
   const [selectedBtu, setSelectedBtu] = useState(() => {
     if (areaFilter !== "all" && AREA_TO_BTU[areaFilter]) {
@@ -497,6 +555,7 @@ function ConditionerCard({item, areaFilter}: { item: Conditioner; areaFilter: st
   const discount = variant.oldPrice ? variant.oldPrice - variant.price : 0;
   const isCassette = item.type === "Полупромышленный";
   const totalPrice = variant.price + (withInstall && !isCassette ? INSTALL_PRICE : 0);
+
   return (
     <article className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-xl shadow-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:rounded-[2rem]">
       <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
@@ -553,9 +612,13 @@ function ConditionerCard({item, areaFilter}: { item: Conditioner; areaFilter: st
           <div className="text-xs font-semibold text-slate-400">
             {isCassette ? "цена оборудования" : withInstall ? "кондиционер + монтаж" : "цена кондиционера"}
           </div>
-          <a href="tel:+79149146606" className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-6 py-3 text-sm font-black text-white transition hover:bg-[#e95620]">
+          <button
+            type="button"
+            onClick={() => onOrder(item, selectedBtu, withInstall, totalPrice)}
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-6 py-3 text-sm font-black text-white transition hover:bg-[#e95620]"
+          >
             Заказать
-          </a>
+          </button>
         </div>
       </div>
     </article>

@@ -24,7 +24,8 @@ export default function QuickBookingModal({
   calcDetails,
 }: QuickBookingModalProps) {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [rawPhone, setRawPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const [city, setCity] = useState("Иркутск");
   const [submitted, setSubmitted] = useState(false);
 
@@ -43,14 +44,37 @@ export default function QuickBookingModal({
 
   if (!open) return null;
 
+  const handlePhoneChange = (val: string) => {
+    let digits = val.replace(/\D/g, "");
+    if ((digits.startsWith("7") || digits.startsWith("8")) && digits.length > 10) {
+      digits = digits.slice(1);
+    } else if ((digits.startsWith("7") || digits.startsWith("8")) && digits.length === 11) {
+      digits = digits.slice(1);
+    }
+    const trimmed = digits.slice(0, 10);
+    setRawPhone(trimmed);
+
+    if (trimmed.length > 0 && trimmed.length < 10) {
+      setPhoneError("Введено меньше 10 цифр. Проверьте номер!");
+    } else {
+      setPhoneError("");
+    }
+  };
+
+  const formattedPhone = `+7 ${rawPhone}`;
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    // 1. Мгновенное обновление интерфейса (< 50мс)
+    if (rawPhone.length !== 10) {
+      setPhoneError("Проверьте номер! Введите ровно 10 цифр вашего номера (без +7)");
+      return;
+    }
+
     setSubmitted(true);
 
     const safeName = escapeHtml(name || "Не указано");
-    const safePhone = escapeHtml(phone);
+    const safePhone = escapeHtml(formattedPhone);
     const safeCity = escapeHtml(city);
     const safeService = escapeHtml(serviceName);
     const safeDetails = escapeHtml(calcDetails || "—");
@@ -63,10 +87,9 @@ export default function QuickBookingModal({
       `🛠 <b>Услуга:</b> ${safeService}\n` +
       `💬 <b>Детали расчёта:</b> ${safeDetails}`;
 
-    // 2. Быстрый маяк (GET-запрос)
     try {
       const beaconText = encodeURIComponent(
-        `🚨 НОВАЯ ЗАЯВКА\nИмя: ${name || "Не указано"}\nТел: ${phone}\nГород: ${city}\nУслуга: ${serviceName}\nДетали: ${calcDetails || "—"}`
+        `🚨 НОВАЯ ЗАЯВКА\nИмя: ${name || "Не указано"}\nТел: ${formattedPhone}\nГород: ${city}\nУслуга: ${serviceName}\nДетали: ${calcDetails || "—"}`
       );
       const beacon = new Image();
       beacon.src = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${beaconText}`;
@@ -74,7 +97,6 @@ export default function QuickBookingModal({
       console.error("Beacon error:", err);
     }
 
-    // 3. POST в Telegram в фоновом режиме
     fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -85,36 +107,23 @@ export default function QuickBookingModal({
       }),
     }).catch((err) => console.error("Telegram error:", err));
 
-    // 4. Запрос на сервер Vercel
     fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
-        phone,
+        phone: formattedPhone,
         city,
         service: serviceName,
         details: calcDetails || "",
       }),
     }).catch(() => {});
 
-    // 5. JivoChat
-    // @ts-ignore
-    if (window.jivo_api && window.jivo_api.setCustomData) {
-      // @ts-ignore
-      window.jivo_api.setCustomData([
-        { content: name, title: "Имя" },
-        { content: phone, title: "Телефон" },
-        { content: city, title: "Город/Населенный пункт" },
-        { content: serviceName, title: "Услуга" },
-        { content: calcDetails || "—", title: "Детали расчета" },
-      ]);
-    }
-
     setTimeout(() => {
       setSubmitted(false);
       setName("");
-      setPhone("");
+      setRawPhone("");
+      setPhoneError("");
       onClose();
     }, 3000);
   };
@@ -142,7 +151,7 @@ export default function QuickBookingModal({
               Заявка успешно принята!
             </h3>
             <p className="mt-2 text-slate-600 dark:text-slate-400 text-sm">
-              Инженер свяжется с вами в течение 15 минут для уточнения удобного времени замера.
+              Инженер свяжется с вами по номеру <span className="font-bold text-[#ff6b35]">{formattedPhone}</span> в течение 15 минут.
             </p>
           </div>
         ) : (
@@ -152,7 +161,7 @@ export default function QuickBookingModal({
                 Выезд 0 ₽
               </span>
               <h3 className="text-2xl font-black text-slate-900 dark:text-white">
-                Запись на бесплатный замер
+                Запись на замер / Заказ
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                 {serviceName}
@@ -162,7 +171,7 @@ export default function QuickBookingModal({
             {calcDetails && (
               <div className="mb-5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 text-xs font-semibold text-slate-700 dark:text-slate-300">
                 <span className="font-extrabold text-[#ff6b35] block mb-1">
-                  Параметры вашего расчёта:
+                  Параметры вашего заказа:
                 </span>
                 {calcDetails}
               </div>
@@ -184,17 +193,37 @@ export default function QuickBookingModal({
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
-                  Телефон для связи
-                </label>
-                <input
-                  type="tel"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+7 (914) 000-00-00"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff6b35] text-sm"
-                />
+                <div className="flex justify-between items-center mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    Номер телефона
+                  </label>
+                  <span className="text-[11px] text-slate-400 font-medium">Вводите 10 цифр без +7</span>
+                </div>
+
+                <div className="relative flex items-center">
+                  <div className="absolute left-3.5 font-bold text-sm text-slate-700 dark:text-slate-200 select-none bg-slate-100 dark:bg-slate-700/60 px-2 py-1 rounded-lg">
+                    +7
+                  </div>
+                  <input
+                    type="tel"
+                    required
+                    value={rawPhone}
+                    onChange={(e) => handlePhoneChange(e.target.value)}
+                    placeholder="914 000-00-00"
+                    maxLength={11}
+                    className={`w-full pl-16 pr-4 py-3 rounded-xl border ${
+                      phoneError
+                        ? "border-red-500 focus:ring-red-400"
+                        : "border-slate-300 dark:border-slate-700 focus:ring-[#ff6b35]"
+                    } bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base tracking-wider focus:outline-none focus:ring-2`}
+                  />
+                </div>
+
+                {phoneError && (
+                  <p className="mt-1.5 text-xs font-extrabold text-red-500 animate-pulse">
+                    ⚠️ {phoneError}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -218,11 +247,11 @@ export default function QuickBookingModal({
                 type="submit"
                 className="w-full py-4 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black text-sm transition shadow-lg shadow-orange-500/20"
               >
-                Вызвать замерщика бесплатно
+                Отправить заявку
               </button>
 
               <p className="text-[11px] text-center text-slate-500 dark:text-slate-500 leading-tight">
-                Замер и консультация ни к чему вас не обязывают. Нажимая кнопку, вы даёте согласие на обработку персональных данных.
+                Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
               </p>
             </form>
           </div>

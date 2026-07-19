@@ -22,16 +22,41 @@ export default function QuoteForm({
   compact = false,
 }: QuoteFormProps) {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [rawPhone, setRawPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const handlePhoneChange = (val: string) => {
+    let digits = val.replace(/\D/g, "");
+    if ((digits.startsWith("7") || digits.startsWith("8")) && digits.length > 10) {
+      digits = digits.slice(1);
+    } else if ((digits.startsWith("7") || digits.startsWith("8")) && digits.length === 11) {
+      digits = digits.slice(1);
+    }
+    const trimmed = digits.slice(0, 10);
+    setRawPhone(trimmed);
+
+    if (trimmed.length > 0 && trimmed.length < 10) {
+      setPhoneError("Введено меньше 10 цифр. Проверьте номер!");
+    } else {
+      setPhoneError("");
+    }
+  };
+
+  const formattedPhone = `+7 ${rawPhone}`;
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    if (rawPhone.length !== 10) {
+      setPhoneError("Проверьте номер! Введите ровно 10 цифр вашего номера (без +7)");
+      return;
+    }
+
     setSubmitted(true);
 
     const safeName = escapeHtml(name || "Не указано");
-    const safePhone = escapeHtml(phone);
+    const safePhone = escapeHtml(formattedPhone);
     const safeTitle = escapeHtml(title);
     const safeSub = escapeHtml(subtitle);
 
@@ -44,7 +69,7 @@ export default function QuoteForm({
 
     try {
       const beaconText = encodeURIComponent(
-        `🔥 НОВАЯ ЗАЯВКА\nИмя: ${name || "Не указано"}\nТел: ${phone}\nФорма: ${title}`
+        `🔥 НОВАЯ ЗАЯВКА\nИмя: ${name || "Не указано"}\nТел: ${formattedPhone}\nФорма: ${title}`
       );
       const beacon = new Image();
       beacon.src = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${beaconText}`;
@@ -67,7 +92,7 @@ export default function QuoteForm({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
-        phone,
+        phone: formattedPhone,
         service: title,
         details: subtitle,
       }),
@@ -76,7 +101,8 @@ export default function QuoteForm({
     setTimeout(() => {
       setSubmitted(false);
       setName("");
-      setPhone("");
+      setRawPhone("");
+      setPhoneError("");
     }, 4000);
   };
 
@@ -110,14 +136,33 @@ export default function QuoteForm({
           placeholder="Ваше имя"
           className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff6b35] focus:border-transparent transition text-sm"
         />
-        <input
-          type="tel"
-          required
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder="+7 (___) ___-__-__"
-          className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff6b35] focus:border-transparent transition text-sm"
-        />
+
+        <div>
+          <div className="relative flex items-center">
+            <div className="absolute left-3.5 font-bold text-sm text-slate-700 dark:text-slate-200 select-none bg-slate-100 dark:bg-slate-700/60 px-2 py-1 rounded-lg">
+              +7
+            </div>
+            <input
+              type="tel"
+              required
+              value={rawPhone}
+              onChange={(e) => handlePhoneChange(e.target.value)}
+              placeholder="914 000-00-00 (без +7)"
+              maxLength={11}
+              className={`w-full pl-16 pr-4 py-3 rounded-xl border ${
+                phoneError
+                  ? "border-red-500 focus:ring-red-400"
+                  : "border-slate-300 dark:border-slate-700 focus:ring-[#ff6b35]"
+              } bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-sm tracking-wider focus:outline-none focus:ring-2`}
+            />
+          </div>
+          {phoneError && (
+            <p className="mt-1 text-xs font-bold text-red-500">
+              ⚠️ {phoneError}
+            </p>
+          )}
+        </div>
+
         <button
           type="submit"
           className="w-full px-4 py-3.5 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black transition shadow-lg shadow-orange-500/20 text-sm"
@@ -125,7 +170,7 @@ export default function QuoteForm({
           Получить консультацию
         </button>
         <p className="text-xs text-slate-500 dark:text-slate-500 text-center">
-          Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+          Вводите 10 цифр номера (без +7)
         </p>
       </div>
     </form>
