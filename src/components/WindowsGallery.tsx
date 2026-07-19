@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 const windowPhotos = [
-  { src: "/images/windows/window-1.jpg", title: "Пластиковые окна в квартире" },
-  { src: "/images/windows/window-2.jpg", title: "Остекление балкона" },
-  { src: "/images/windows/window-3.jpg", title: "Монтаж окон VEKA" },
-  { src: "/images/windows/window-4.jpg", title: "Окна в частный дом" },
-  { src: "/images/windows/window-5.jpg", title: "Тёплое остекление лоджии" },
+  { src: "/images/windows/window-1.jpg", title: "Тёплое остекление лоджии" },
+  { src: "/images/windows/window-2.jpg", title: "Остекление в доме" },
+  { src: "/images/windows/window-3.jpg", title: "Монтаж окон и двери VEKA" },
+  { src: "/images/windows/window-4.jpg", title: "Алюминиевое остекление дома" },
+  { src: "/images/windows/window-5.jpg", title: "Окна в дом" },
   { src: "/images/windows/window-6.jpg", title: "Алюминиевые конструкции" },
 ];
 
