@@ -52,6 +52,11 @@ export default function Footer() {
                   📞 66-99-30
                 </a>
               </li>
+              <li>
+                <a href="tel:+79086401166" className="hover:text-accent-400 transition block">
+                  📞 +7 (909) 640-11-66
+                </a>
+              </li>
               <li className="text-slate-400">🕒 Пн–Сб 9:00–20:00</li>
               <li className="text-slate-400">📍 Иркутск, Ангарск, Шелехов, Хомутово</li>
               <li>
