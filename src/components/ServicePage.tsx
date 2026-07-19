@@ -44,31 +44,38 @@ export default function ServicePage({
             <p className="text-brand-100/90 mb-8 max-w-xl">{intro}</p>
             <div className="flex flex-wrap gap-3">
               {ctaLabel && (
-                <a
-                  href={ctaHref ?? "#catalog"}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-500 hover:bg-accent-600 text-white font-semibold transition shadow-lg"
-                >
-                  {ctaLabel}
-                </a>
+                  <a
+                      href={ctaHref ?? "#catalog"}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-500 hover:bg-accent-600 text-white font-semibold transition shadow-lg"
+                  >
+                    {ctaLabel}
+                  </a>
               )}
               <a
-                href="tel:+79149146606"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white font-semibold transition"
+                  href="tel:+79149146606"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white font-semibold transition"
               >
                 📞 +7 (914) 914-66-06
               </a>
               <a
-                href="tel:+73952669930"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white font-semibold transition"
+                  href="tel:+73952669930"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white font-semibold transition"
               >
                 📞 66-99-30
+              </a>
+              <a
+                  href="tel:+79086401166"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white font-semibold transition"
+              >
+                📞 +7 (908) 640-11-66
               </a>
             </div>
           </div>
           <div className="relative hidden lg:flex justify-center">
             <div className="relative w-80 h-80">
-              <div className="absolute inset-0 bg-accent-500/30 rounded-full blur-3xl animate-pulse" />
-              <div className="relative w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex items-center justify-center text-[12rem]">
+              <div className="absolute inset-0 bg-accent-500/30 rounded-full blur-3xl animate-pulse"/>
+              <div
+                  className="relative w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex items-center justify-center text-[12rem]">
                 {heroIcon}
               </div>
             </div>
