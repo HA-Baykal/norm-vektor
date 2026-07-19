@@ -23,12 +23,12 @@ export default function QuoteForm({
 }: QuoteFormProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+
+    setSubmitted(true);
 
     const safeName = escapeHtml(name || "Не указано");
     const safePhone = escapeHtml(phone);
@@ -42,38 +42,6 @@ export default function QuoteForm({
       `🛠 <b>Форма:</b> ${safeTitle}\n` +
       `💬 <b>Примечание:</b> ${safeSub}`;
 
-    // 1. Vercel Backend
-    try {
-      await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          phone,
-          service: title,
-          details: subtitle,
-        }),
-      });
-    } catch (err) {
-      console.error("Backend error:", err);
-    }
-
-    // 2. Direct Telegram HTML
-    try {
-      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: htmlMessage,
-          parse_mode: "HTML",
-        }),
-      });
-    } catch (err) {
-      console.error("Telegram error:", err);
-    }
-
-    // 3. Image Beacon GET
     try {
       const beaconText = encodeURIComponent(
         `🔥 НОВАЯ ЗАЯВКА\nИмя: ${name || "Не указано"}\nТел: ${phone}\nФорма: ${title}`
@@ -84,8 +52,27 @@ export default function QuoteForm({
       console.error("Beacon error:", err);
     }
 
-    setLoading(false);
-    setSubmitted(true);
+    fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: htmlMessage,
+        parse_mode: "HTML",
+      }),
+    }).catch(() => {});
+
+    fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        phone,
+        service: title,
+        details: subtitle,
+      }),
+    }).catch(() => {});
+
     setTimeout(() => {
       setSubmitted(false);
       setName("");
@@ -133,10 +120,9 @@ export default function QuoteForm({
         />
         <button
           type="submit"
-          disabled={loading}
-          className="w-full px-4 py-3.5 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black transition shadow-lg shadow-orange-500/20 disabled:opacity-50 text-sm"
+          className="w-full px-4 py-3.5 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black transition shadow-lg shadow-orange-500/20 text-sm"
         >
-          {loading ? "Отправка..." : "Получить консультацию"}
+          Получить консультацию
         </button>
         <p className="text-xs text-slate-500 dark:text-slate-500 text-center">
           Нажимая кнопку, вы соглашаетесь с обработкой персональных данных

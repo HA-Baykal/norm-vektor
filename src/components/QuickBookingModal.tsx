@@ -26,7 +26,6 @@ export default function QuickBookingModal({
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("Иркутск");
-  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -44,9 +43,11 @@ export default function QuickBookingModal({
 
   if (!open) return null;
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+
+    // 1. Мгновенное обновление интерфейса (< 50мс)
+    setSubmitted(true);
 
     const safeName = escapeHtml(name || "Не указано");
     const safePhone = escapeHtml(phone);
@@ -62,42 +63,10 @@ export default function QuickBookingModal({
       `🛠 <b>Услуга:</b> ${safeService}\n` +
       `💬 <b>Детали расчёта:</b> ${safeDetails}`;
 
-    // 1. Запрос на сервер Vercel
-    try {
-      await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          phone,
-          city,
-          service: serviceName,
-          details: calcDetails || "",
-        }),
-      });
-    } catch (err) {
-      console.error("Backend error:", err);
-    }
-
-    // 2. Прямой запрос в Telegram (HTML)
-    try {
-      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: htmlMessage,
-          parse_mode: "HTML",
-        }),
-      });
-    } catch (err) {
-      console.error("Telegram HTML error:", err);
-    }
-
-    // 3. GET Image Beacon (Обход блокировщиков рекламы)
+    // 2. Быстрый маяк (GET-запрос)
     try {
       const beaconText = encodeURIComponent(
-        `🚨 НОВАЯ ЗАЯВКА (Замер/Калькулятор)\nИмя: ${name || "Не указано"}\nТел: ${phone}\nГород: ${city}\nУслуга: ${serviceName}\nДетали: ${calcDetails || "—"}`
+        `🚨 НОВАЯ ЗАЯВКА\nИмя: ${name || "Не указано"}\nТел: ${phone}\nГород: ${city}\nУслуга: ${serviceName}\nДетали: ${calcDetails || "—"}`
       );
       const beacon = new Image();
       beacon.src = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${beaconText}`;
@@ -105,8 +74,43 @@ export default function QuickBookingModal({
       console.error("Beacon error:", err);
     }
 
-    setLoading(false);
-    setSubmitted(true);
+    // 3. POST в Telegram в фоновом режиме
+    fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: htmlMessage,
+        parse_mode: "HTML",
+      }),
+    }).catch((err) => console.error("Telegram error:", err));
+
+    // 4. Запрос на сервер Vercel
+    fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        phone,
+        city,
+        service: serviceName,
+        details: calcDetails || "",
+      }),
+    }).catch(() => {});
+
+    // 5. JivoChat
+    // @ts-ignore
+    if (window.jivo_api && window.jivo_api.setCustomData) {
+      // @ts-ignore
+      window.jivo_api.setCustomData([
+        { content: name, title: "Имя" },
+        { content: phone, title: "Телефон" },
+        { content: city, title: "Город/Населенный пункт" },
+        { content: serviceName, title: "Услуга" },
+        { content: calcDetails || "—", title: "Детали расчета" },
+      ]);
+    }
+
     setTimeout(() => {
       setSubmitted(false);
       setName("");
@@ -212,10 +216,9 @@ export default function QuickBookingModal({
 
               <button
                 type="submit"
-                disabled={loading}
-                className="w-full py-4 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black text-sm transition shadow-lg shadow-orange-500/20 disabled:opacity-50"
+                className="w-full py-4 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black text-sm transition shadow-lg shadow-orange-500/20"
               >
-                {loading ? "Отправка..." : "Вызвать замерщика бесплатно"}
+                Вызвать замерщика бесплатно
               </button>
 
               <p className="text-[11px] text-center text-slate-500 dark:text-slate-500 leading-tight">
