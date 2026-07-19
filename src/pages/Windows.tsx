@@ -2,6 +2,7 @@ import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";
 import WindowCalculator from "../components/WindowCalculator";
+import WindowsGallery from "../components/WindowsGallery";
 
 export default function Windows() {
   return (
@@ -37,6 +38,7 @@ export default function Windows() {
         photosIcon="🪟"
         photosTitle="Наши работы по остеклению"
       />
+        <WindowsGallery />
       <Counters />
         <WindowCalculator />
       <Reviews />
