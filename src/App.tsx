@@ -10,10 +10,12 @@ import PortfolioPage from "./pages/PortfolioPage";
 import Contact from "./pages/Contact";
 import BlogPage from "./pages/BlogPage";
 import BlogArticle from "./pages/BlogArticle";
+import MetrikaTracker from "./components/MetrikaTracker";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <MetrikaTracker />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -27,6 +29,7 @@ export default function App() {
           <Route path="/baza-znaniy" element={<BlogPage />} />
           <Route path="/baza-znaniy/:slug" element={<BlogArticle />} />
           <Route path="/kontakty" element={<Contact />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
