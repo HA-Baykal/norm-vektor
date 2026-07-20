@@ -305,14 +305,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      <BazaZnaniyBanner />
       <VideoGallery />
       <BrandsCatalog />
       <Counters />
       <Reviews />
       <FAQSection />
       <CTABanner />
-      <BazaZnaniyBanner />
+
       <Map />
 
       <QuickBookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
