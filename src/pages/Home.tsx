@@ -275,7 +275,7 @@ export default function Home() {
               </h2>
             </div>
             <Link
-              to="/standarty-montazha"
+              to="/standarty"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition"
             >
               Полные стандарты монтажа →
