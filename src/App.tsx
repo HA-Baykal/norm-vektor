@@ -22,8 +22,7 @@ export default function App() {
           <Route path="standarty-montazha" element={<StandartyPage />} />
           <Route path="portfolio" element={<PortfolioPage />} />
           <Route path="kontakty" element={<Contact />} />
-          <Route path="/baza-znaniy" element={<BlogPage />} />
-          <Route path="/baza-znaniy/:slug" element={<BlogArticle />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
