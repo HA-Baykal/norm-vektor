@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="bg-slate-900 text-slate-300 mt-20">
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <Link to="/baza-znaniy">База знаний</Link>
+
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
