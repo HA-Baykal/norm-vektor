@@ -15,6 +15,7 @@ const navItems = [
   { to: "/almaznoe-burenie", label: "Алмазное бурение" },
      { to: "/baza-znaniy", label: "База знаний" },
   { to: "/standarty", label: "Стандарты Монтажа" },
+    { to: "/baza-znaniy", label: "База знаний" },
   { to: "/kontakty", label: "Контакты" },
 ];
 

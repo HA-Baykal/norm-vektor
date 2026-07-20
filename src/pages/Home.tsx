@@ -9,6 +9,7 @@ import VideoGallery from "../components/VideoGallery";
 import FAQSection from "../components/FAQSection";
 import QuickBookingModal from "../components/QuickBookingModal";
 import MobileBottomBar from "../components/MobileBottomBar";
+import BazaZnaniyBanner from "../components/BazaZnaniyBanner";
 
 const directions = [
   {
@@ -311,6 +312,7 @@ export default function Home() {
       <Reviews />
       <FAQSection />
       <CTABanner />
+      <BazaZnaniyBanner />
       <Map />
 
       <QuickBookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
