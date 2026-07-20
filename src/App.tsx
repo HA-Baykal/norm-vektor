@@ -8,6 +8,8 @@ import Drilling from "./pages/Drilling";
 import StandartyPage from "./pages/StandartyPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import Contact from "./pages/Contact";
+import BlogPage from "./pages/BlogPage";
+import BlogArticle from "./pages/BlogArticle";
 
 export default function App() {
   return (
@@ -22,7 +24,9 @@ export default function App() {
           <Route path="standarty-montazha" element={<StandartyPage />} />
           <Route path="portfolio" element={<PortfolioPage />} />
           <Route path="kontakty" element={<Contact />} />
-
+          <Route path="/baza-znaniy" element={<BlogPage />} />
+          <Route path="/baza-znaniy/:slug" element={<BlogArticle />} />
+          <Route path="/kontakty" element={<Contact />} />
         </Route>
       </Routes>
     </BrowserRouter>
