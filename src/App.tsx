@@ -21,7 +21,7 @@ export default function App() {
           <Route path="kondicionery" element={<AC />} />
           <Route path="ventilyaciya" element={<Ventilation />} />
           <Route path="almaznoe-burenie" element={<Drilling />} />
-          <Route path="standarty-montazha" element={<StandartyPage />} />
+          <Route path="standarty" element={<StandartyPage />} />
           <Route path="portfolio" element={<PortfolioPage />} />
           <Route path="kontakty" element={<Contact />} />
           <Route path="/baza-znaniy" element={<BlogPage />} />
