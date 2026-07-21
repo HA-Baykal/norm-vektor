@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import MetrikaTracker from "./components/MetrikaTracker";
+import OtzyvPage from "./pages/OtzyvPage";
 
 // Ленивая загрузка страниц — каждая грузится только при переходе на неё
 const Home = lazy(() => import("./pages/Home"));
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="baza-znaniy" element={<BlogPage />} />
             <Route path="baza-znaniy/:slug" element={<BlogArticle />} />
             <Route path="kontakty" element={<Contact />} />
+            <Route path="otzyv" element={<OtzyvPage />} />
           </Route>
         </Routes>
       </Suspense>
