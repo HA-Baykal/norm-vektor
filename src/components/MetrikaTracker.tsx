@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 // ============================================================================
 
 // Ваш номер счётчика Яндекс.Метрики
-const YM_COUNTER_ID = 110548089;
+const YM_COUNTER_ID = 110599022;
 
 // Тип для window.ym (чтобы TypeScript не ругался)
 declare global {
