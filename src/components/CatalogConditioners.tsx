@@ -864,6 +864,46 @@ const AREA_TO_BTU: Record<string, number> = {
 function formatRub(value: number) {
   return `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
 }
+// Автоматически генерирует описание и особенности модели по её данным
+function getDescription(item: Conditioner): { intro: string; features: string[] } {
+  const isInverter = item.type === "Инверторный";
+  const isCassette = item.type === "Полупромышленный";
+
+  let intro = "";
+  if (isCassette) {
+    intro = `${item.name} — полупромышленная кассетная сплит-система ${item.brand}. Идеально подходит для офисов, магазинов, кафе и просторных помещений. Равномерно распределяет воздух по всем направлениям благодаря потолочному расположению.`;
+  } else if (isInverter) {
+    intro = `${item.name} — инверторная сплит-система ${item.brand}. Плавно регулирует мощность, поддерживая ровную температуру без перепадов. Экономит до 40% электроэнергии, работает тихо и служит дольше обычных моделей.`;
+  } else {
+    intro = `${item.name} — надёжная сплит-система ${item.brand} для дома, квартиры и офиса. Простое и доступное решение для охлаждения и обогрева помещения с хорошим соотношением цена-качество.`;
+  }
+
+  const features: string[] = [];
+  features.push("Режимы охлаждения и обогрева");
+  if (isInverter) {
+    features.push("Инверторный компрессор — экономия электроэнергии");
+    features.push("Тихая работа без резких включений");
+    features.push("Плавное поддержание температуры");
+    features.push("Работа на обогрев при низких температурах");
+  } else {
+    features.push("Проверенная технология, доступная цена");
+    features.push("Простое управление с пульта");
+  }
+  if (item.smartHome) {
+    features.push("Управление со смартфона и через умный дом (Алиса, Маруся)");
+  }
+  if (isCassette) {
+    features.push("Потолочный монтаж, равномерный обдув 360°");
+    features.push("Для коммерческих и больших помещений");
+  }
+  features.push("Режимы: авто, осушение, вентиляция, сон");
+  features.push("Многоступенчатая фильтрация воздуха");
+  features.push("Ночной режим для комфортного сна");
+  features.push("Авторестарт после отключения электричества");
+  features.push("Официальная гарантия и профессиональный монтаж");
+
+  return { intro, features };
+}
 
 export default function CatalogConditioners() {
   const [search, setSearch] = useState("");
@@ -1044,6 +1084,7 @@ function ConditionerCard({
   onOrder: (item: Conditioner, btu: number, withInstall: boolean, totalPrice: number) => void;
 }) {
   const [imgError, setImgError] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [selectedBtu, setSelectedBtu] = useState(() => {
     if (areaFilter !== "all" && AREA_TO_BTU[areaFilter]) {
       const wanted = AREA_TO_BTU[areaFilter];
@@ -1113,15 +1154,121 @@ function ConditionerCard({
           <div className="text-xs font-semibold text-slate-400">
             {isCassette ? "цена оборудования" : withInstall ? "кондиционер + монтаж" : "цена кондиционера"}
           </div>
+            <button
+            type="button"
+            onClick={() => setModalOpen(true)}
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#1a3a5c] px-6 py-2.5 text-sm font-black text-[#1a3a5c] transition hover:bg-[#1a3a5c] hover:text-white"
+          >
+            Подробнее
+          </button>
           <button
             type="button"
             onClick={() => onOrder(item, selectedBtu, withInstall, totalPrice)}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-6 py-3 text-sm font-black text-white transition hover:bg-[#e95620]"
+            className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-6 py-3 text-sm font-black text-white transition hover:bg-[#e95620]"
           >
             Заказать
           </button>
         </div>
       </div>
+
+      {/* Модальное окно с полным описанием */}
+      {modalOpen && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm"
+          onClick={() => setModalOpen(false)}
+        >
+          <div
+            className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-[1.5rem] bg-white shadow-2xl sm:rounded-[2rem]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Шапка модалки */}
+            <div className="sticky top-0 flex items-start justify-between gap-4 border-b border-slate-100 bg-white p-6 sm:p-8">
+              <div>
+                <div className="text-xs font-black uppercase tracking-wider text-[#ff6b35]">{item.brand}</div>
+                <h3 className="mt-1 text-xl font-black text-[#1a3a5c] sm:text-2xl">{item.name}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setModalOpen(false)}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-6 sm:p-8">
+              {/* Описание */}
+              <p className="text-sm leading-7 text-slate-600 sm:text-base">{getDescription(item).intro}</p>
+
+              {/* Выбор мощности */}
+              <div className="mt-6">
+                <div className="mb-2 text-xs font-black uppercase tracking-wider text-slate-500">Выберите мощность</div>
+                <div className="flex flex-wrap gap-2">
+                  {item.variants.map((v) => (
+                    <button
+                      key={v.btu}
+                      type="button"
+                      onClick={() => setSelectedBtu(v.btu)}
+                      className={`rounded-xl px-3 py-2 text-xs font-black transition ${
+                        selectedBtu === v.btu ? "bg-[#1a3a5c] text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                      }`}
+                    >
+                      {v.btu.toLocaleString("ru-RU")} BTU
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Характеристики */}
+              <div className="mt-6">
+                <div className="mb-3 text-sm font-black text-[#1a3a5c]">Характеристики</div>
+                <ul className="space-y-2.5 text-sm">
+                  <li className="flex justify-between border-b border-slate-100 pb-2.5"><span className="text-slate-500">Площадь помещения</span><span className="font-black text-slate-800">до {variant.area} м²</span></li>
+                  <li className="flex justify-between border-b border-slate-100 pb-2.5"><span className="text-slate-500">Мощность охлаждения</span><span className="font-black text-slate-800">{variant.cooling}</span></li>
+                  <li className="flex justify-between border-b border-slate-100 pb-2.5"><span className="text-slate-500">Мощность обогрева</span><span className="font-black text-slate-800">{variant.heating}</span></li>
+                  <li className="flex justify-between border-b border-slate-100 pb-2.5"><span className="text-slate-500">Мощность</span><span className="font-black text-slate-800">{selectedBtu.toLocaleString("ru-RU")} BTU</span></li>
+                  <li className="flex justify-between border-b border-slate-100 pb-2.5"><span className="text-slate-500">Уровень шума</span><span className="font-black text-slate-800">{item.noise}</span></li>
+                  <li className="flex justify-between border-b border-slate-100 pb-2.5"><span className="text-slate-500">Тип</span><span className="font-black text-slate-800">{item.type}</span></li>
+                  <li className="flex justify-between border-b border-slate-100 pb-2.5"><span className="text-slate-500">Умный дом</span><span className="font-black text-slate-800">{item.smartHome ? "Да" : "Нет"}</span></li>
+                  <li className="flex justify-between"><span className="text-slate-500">Страна производства</span><span className="font-black text-slate-800">{item.country}</span></li>
+                </ul>
+              </div>
+
+              {/* Возможности */}
+              <div className="mt-6">
+                <div className="mb-3 text-sm font-black text-[#1a3a5c]">Возможности и функции</div>
+                <ul className="space-y-2">
+                  {getDescription(item).features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
+                      <span className="mt-1 text-[#ff6b35]">✓</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Цена + кнопка */}
+              <div className="mt-6 rounded-2xl bg-slate-50 p-4">
+                <div className="flex items-end gap-2">
+                  <div className="text-2xl font-black text-[#1a3a5c]">{formatRub(variant.price)}</div>
+                  {variant.oldPrice && (<div className="mb-1 text-sm font-bold text-slate-400 line-through">{formatRub(variant.oldPrice)}</div>)}
+                </div>
+                <div className="text-xs font-semibold text-slate-400">
+                  {isCassette ? "цена оборудования (монтаж после осмотра)" : "цена кондиционера (без монтажа)"}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => { setModalOpen(false); onOrder(item, selectedBtu, withInstall, totalPrice); }}
+                className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e95620]"
+              >
+                Заказать эту модель
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </article>
   );
 }
