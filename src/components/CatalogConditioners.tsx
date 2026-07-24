@@ -122,6 +122,24 @@ const conditioners: Conditioner[] = [
     { btu: 12000, area: 35, cooling: "3.23 кВт", heating: "3.52 кВт", price: 30090, oldPrice: 31190 },
     { btu: 18000, area: 50, cooling: "4.99 кВт", heating: "5.13 кВт", price: 50390, oldPrice: 51490 },
   ] },
+      {
+    id: 502,
+    name: "Axioma Серия H Инвертор R32",
+    brand: "Axioma",
+    type: "Инверторный",
+    smartHome: false,
+    noise: "—",
+    country: "КНР",
+    image: "images/catalog/axioma-h-inv.jpg",
+    variants: [
+      { btu: 7000, area: 20, cooling: "2.2 кВт", heating: "2.29 кВт", price: 30090 },
+      { btu: 9000, area: 25, cooling: "2.64 кВт", heating: "2.78 кВт", price: 31890 },
+      { btu: 12000, area: 35, cooling: "3.52 кВт", heating: "3.66 кВт", price: 35090 },
+      { btu: 18000, area: 50, cooling: "5.28 кВт", heating: "5.42 кВт", price: 60890 },
+      { btu: 24000, area: 70, cooling: "7.03 кВт", heating: "7.18 кВт", price: 77990 },
+    ],
+  },
+
   { id: 301, name: "SHUFT Berg DC SFTOI", brand: "SHUFT", type: "Инверторный", smartHome: false, noise: "—", country: "КНР", image: "images/catalog/shuft-berg-inv.jpg", badge: "Новинка", variants: [
     { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "2.2 кВт", price: 25471, oldPrice: 27388 },
     { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.7 кВт", price: 27238, oldPrice: 29288 },
