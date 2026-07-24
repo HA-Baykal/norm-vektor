@@ -356,6 +356,80 @@ const conditioners: Conditioner[] = [
       { btu: 18000, area: 50, cooling: "5.0 кВт", heating: "5.8 кВт", price: 416986 },
     ],
   },
+   // ===== KENTATSU кассетные — инверторные =====
+  {
+    id: 601,
+    name: "Kentatsu кассетная KSVB Inverter (R32)",
+    brand: "Kentatsu",
+    type: "Полупромышленный",
+    smartHome: false,
+    noise: "—",
+    country: "КНР",
+    image: "images/catalog/kentatsu-cassette-inv.jpg",
+    badge: "Инвертор",
+    variants: [
+      { btu: 24000, area: 70, cooling: "7.03 кВт", heating: "7.5 кВт", price: 129190 },
+      { btu: 36000, area: 105, cooling: "10.55 кВт", heating: "11.0 кВт", price: 168690 },
+      { btu: 48000, area: 130, cooling: "13.14 кВт", heating: "13.5 кВт", price: 201490 },
+      { btu: 60000, area: 160, cooling: "16.12 кВт", heating: "16.5 кВт", price: 223290 },
+    ],
+  },
+
+  // ===== KENTATSU кассетные — обычные (On/Off) =====
+  {
+    id: 602,
+    name: "Kentatsu кассетная KSVT / KSVG (On/Off)",
+    brand: "Kentatsu",
+    type: "Полупромышленный",
+    smartHome: false,
+    noise: "—",
+    country: "КНР",
+    image: "images/catalog/kentatsu-cassette.jpg",
+    variants: [
+      { btu: 24000, area: 70, cooling: "7.0 кВт", heating: "7.3 кВт", price: 85990 },
+      { btu: 36000, area: 105, cooling: "10.55 кВт", heating: "11.0 кВт", price: 114090 },
+      { btu: 48000, area: 140, cooling: "14.1 кВт", heating: "14.5 кВт", price: 142290 },
+      { btu: 60000, area: 176, cooling: "16.12 кВт", heating: "16.5 кВт", price: 148290 },
+    ],
+  },
+
+  // ===== MIDEA кассетные — инверторные (Full DC / Inverter) =====
+  {
+    id: 603,
+    name: "Midea кассетная MCD Inverter (R32)",
+    brand: "Midea",
+    type: "Полупромышленный",
+    smartHome: false,
+    noise: "—",
+    country: "КНР",
+    image: "images/catalog/midea-cassette-inv.jpg",
+    badge: "Инвертор",
+    variants: [
+      { btu: 24000, area: 70, cooling: "7.03 кВт", heating: "7.5 кВт", price: 124239 },
+      { btu: 36000, area: 105, cooling: "10.55 кВт", heating: "11.0 кВт", price: 176790 },
+      { btu: 48000, area: 140, cooling: "14.07 кВт", heating: "14.5 кВт", price: 210990 },
+      { btu: 60000, area: 155, cooling: "15.24 кВт", heating: "15.7 кВт", price: 233890 },
+    ],
+  },
+
+  // ===== MIDEA кассетные — обычные (On/Off) =====
+  {
+    id: 604,
+    name: "Midea кассетная MCD (On/Off, R410A)",
+    brand: "Midea",
+    type: "Полупромышленный",
+    smartHome: false,
+    noise: "—",
+    country: "КНР",
+    image: "images/catalog/midea-cassette.jpg",
+    variants: [
+      { btu: 24000, area: 70, cooling: "7.03 кВт", heating: "7.3 кВт", price: 90290 },
+      { btu: 36000, area: 105, cooling: "10.55 кВт", heating: "11.0 кВт", price: 119790 },
+      { btu: 48000, area: 140, cooling: "14.07 кВт", heating: "14.5 кВт", price: 149390 },
+      { btu: 60000, area: 160, cooling: "16.12 кВт", heating: "16.5 кВт", price: 155690 },
+    ],
+  },
+
   {
     id: 520,
     name: "Daikin FDXM-F9 (канальная)",
