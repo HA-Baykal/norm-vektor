@@ -10,10 +10,17 @@ export default async function handler(req, res) {
 
   // Пытаемся подтянуть полную автоматически сгенерированную базу вариантов со сборки
   let generatedCatalog = [];
+  let generatedWindows = [];
   try {
     const dataPath = path.join(process.cwd(), "api", "catalog-data.json");
     if (fs.existsSync(dataPath)) {
-      generatedCatalog = JSON.parse(fs.readFileSync(dataPath, "utf-8"));
+      const parsed = JSON.parse(fs.readFileSync(dataPath, "utf-8"));
+      if (parsed && parsed.conditioners) {
+        generatedCatalog = parsed.conditioners;
+        generatedWindows = parsed.windows || [];
+      } else if (Array.isArray(parsed)) {
+        generatedCatalog = parsed;
+      }
     }
   } catch (e) { /* ignore */ }
 
@@ -99,8 +106,14 @@ export default async function handler(req, res) {
     c.name.toLowerCase().replace(/\s+/g, "-") === decodedSlug
   );
 
-  // Ищем в полной серверной базе со сборки, чтобы взять точную цену за выбранный BTU
-  let exactPrice = model ? model.price : 0;
+  const windowModel = generatedWindows.find(w =>
+    w.slug.toLowerCase() === decodedSlug ||
+    w.id.toLowerCase() === decodedSlug ||
+    w.title.toLowerCase().replace(/\s+/g, "-") === decodedSlug
+  );
+
+  // Ищем в полной серверной базе со сборки, чтобы взять точную цену
+  let exactPrice = model ? model.price : windowModel ? windowModel.basePrice : 0;
   let btuText = "";
   if (model && generatedCatalog && generatedCatalog.length > 0) {
     const genModel = generatedCatalog.find(g => g.id.toString() === model.id);
@@ -200,6 +213,65 @@ export default async function handler(req, res) {
     <div id="seo-parser-fallback" style="display:none;" itemscope itemtype="https://schema.org/Product">
       <h1 itemprop="name">${title}</h1>
       <span itemprop="brand">${model.brand}</span>
+      <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+        <span itemprop="price" class="price product-price">${priceStr}</span>
+        <span itemprop="priceCurrency">RUB</span>
+      </div>
+      <p class="price-text">${priceStr} ₽</p>
+    </div>`;
+    
+    html = html.replace(/<body>/i, bodyFallback);
+  } else if (windowModel) {
+    const title = `${windowModel.title}`;
+    const desc = `${windowModel.shortDesc} Собственное производство в Иркутске, цена от ${windowModel.basePrice} ₽ ${windowModel.priceUnit}. Монтаж по ГОСТу, гарантия 5 лет!`;
+    const pageUrl = `https://www.vektor-komforta.ru/okna/${encodeURIComponent(slug)}`;
+    const priceStr = windowModel.basePrice.toString();
+    const imgUrl = `https://www.vektor-komforta.ru${windowModel.image}`;
+
+    html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
+    html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${desc}" />`);
+    html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${title}" />`);
+    html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i, `<meta property="og:description" content="${desc}" />`);
+    html = html.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/i, `<meta property="og:image" content="${imgUrl}" />`);
+    html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${pageUrl}" />`);
+
+    const seoMetaTags = `
+    <!-- Товары и цены для парсеров (Авито, Яндекс Маркет, MAX, DNS, CRM) -->
+    <meta property="og:type" content="product" />
+    <meta property="product:price:amount" content="${priceStr}" />
+    <meta property="product:price:currency" content="RUB" />
+    <meta property="og:price:amount" content="${priceStr}" />
+    <meta property="og:price:currency" content="RUB" />
+    <meta itemprop="name" content="${title}" />
+    <meta itemprop="price" content="${priceStr}" />
+    <meta itemprop="priceCurrency" content="RUB" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "${title}",
+        "image": ["${imgUrl}"],
+        "description": "${desc}",
+        "sku": "VK-WIN-${windowModel.id}",
+        "brand": { "@type": "Brand", "name": "Вектор Комфорта (VEKA / Alutech)" },
+        "offers": {
+          "@type": "Offer",
+          "url": "${pageUrl}",
+          "priceCurrency": "RUB",
+          "price": "${priceStr}",
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    </script>
+</head>`;
+
+    html = html.replace("</head>", seoMetaTags);
+
+    const bodyFallback = `<body>
+    <div id="seo-parser-fallback" style="display:none;" itemscope itemtype="https://schema.org/Product">
+      <h1 itemprop="name">${title}</h1>
+      <span itemprop="brand">Вектор Комфорта</span>
       <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
         <span itemprop="price" class="price product-price">${priceStr}</span>
         <span itemprop="priceCurrency">RUB</span>
