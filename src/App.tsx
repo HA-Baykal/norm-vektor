@@ -52,10 +52,10 @@ const BlogArticle = lazy(() => import("./pages/BlogArticle"));
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTopAndMeta />
       <MetrikaTracker />
       <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
         <Routes>
-          <ScrollToTopAndMeta />
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="okna" element={<Windows />} />
