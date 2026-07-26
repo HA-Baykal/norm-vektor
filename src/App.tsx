@@ -55,6 +55,7 @@ export default function App() {
       <MetrikaTracker />
       <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
         <Routes>
+          <ScrollToTopAndMeta />
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="okna" element={<Windows />} />
