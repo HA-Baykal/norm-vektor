@@ -1,4 +1,5 @@
-mport path from "path";
+
+import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 import tailwindcss from "@tailwindcss/vite";
@@ -102,24 +103,10 @@ const seoSitemapAndApiGenerator = () => ({
     }
   }
 });
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import vitePrerender from 'vite-plugin-prerender'
-import path from 'path'
-
-export default defineConfig({
-  plugins: [react(), tailwindcss(), viteSingleFile(), seoSitemapAndApiGenerator()],
+ plugins: [react(), tailwindcss(), viteSingleFile(), seoSitemapAndApiGenerator()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
   },
 });
-  plugins: [
-    react(),
-    vitePrerender({
-      staticDir: path.join(__dirname, 'dist'),
-      routes: [ '/', '/okna', '/kondicionery', '/ventilyaciya', '/almaznoe-burenie', '/standarty', '/portfolio', '/blog', '/otzyvy', '/contact' ]
-    })
-  ]
-})
