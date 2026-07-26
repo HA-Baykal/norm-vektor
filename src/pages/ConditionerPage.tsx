@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { conditioners, formatRub, INSTALL_PRICE } from "../components/CatalogConditioners";
 import { getOfficialSpecification, getOfficialPhotosForModel, getMainCoverPhoto, getModelUrlSlug } from "../data/officialSpecsEngine";
@@ -37,6 +37,40 @@ export default function ConditionerPage() {
 
   // Получаем уникальные официальные фотографии конкретной серии без дублирования исходного фото!
   const allImages = getOfficialPhotosForModel(item);
+  const coverPhoto = getMainCoverPhoto(item);
+
+  // Динамический сброс SEO-заголовков и метатегов под модель и цену!
+  useEffect(() => {
+    const minP = Math.min(...item.variants.map(v => v.price));
+    const titleText = `${item.brand} ${item.name} — цена со склада от ${formatRub(minP)} | Вектор Комфорта (Иркутск)`;
+    const descText = `${item.type} сплит-система ${item.name} по оптовой цене со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия от завода до 5 лет. Профессиональный монтаж за 3 часа без пыли!`;
+
+    // 1. Меняем заголовок в браузере (для вкладок, закладок, поисковиков Яндекс и Google)
+    document.title = titleText;
+
+    // 2. Функция для обновления или создания meta тегов
+    const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
+      const attr = isProperty ? "property" : "name";
+      let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute(attr, nameOrProperty);
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    };
+
+    updateMeta("description", descText);
+    updateMeta("og:title", titleText, true);
+    updateMeta("og:description", descText, true);
+    updateMeta("og:image", coverPhoto.startsWith("http") ? coverPhoto : `https://www.vektor-komforta.ru/${coverPhoto}`, true);
+    updateMeta("og:url", window.location.href, true);
+
+    // При уходе со страницы карточки возвращаем заголовок каталога
+    return () => {
+      document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+    };
+  }, [item, officialSpecs, coverPhoto]);
 
   // Ссылка MAX по вашему техническому заданию
   const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
