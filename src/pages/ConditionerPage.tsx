@@ -146,6 +146,31 @@ export default function ConditionerPage() {
     window.open(MAX_LINK, "_blank", "noopener,noreferrer");
   };
 
+  // Функция для кнопки "Поделиться" — вызывает системное меню мессенджеров на телефоне и ПК
+  const handleShare = async () => {
+    const shareData = {
+      title: `${item.brand} ${item.name} (${selectedBtu} BTU)`,
+      text: `Сплит-система ${item.name} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене со склада: ${formatRub(variant.price)}. Вектор Комфорта Иркутск`,
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.log("Действие Поделиться отменено");
+      }
+    } else {
+      // Надежная защита для старых ПК без меню поделиться: копируем ссылку и показываем уведомление
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert(`🔗 Ссылка на модель ${item.name} скопирована! Теперь вы можете вставить и отправить её в любой чат.`);
+      } catch (err) {
+        alert(`Ваша ссылка для копирования:\n${window.location.href}`);
+      }
+    }
+  };
+
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* Шапка с навигационными ссылками */}
@@ -344,6 +369,16 @@ export default function ConditionerPage() {
                     >
                       <span className="text-lg">🔥</span>
                       <span>MAX</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleShare}
+                      title="Отправить ссылку в WhatsApp, Telegram или скопировать"
+                      className="w-full sm:w-auto px-6 py-4 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-sm active:scale-95 transition text-center shrink-0 flex items-center justify-center gap-2 border border-slate-200/80 shadow-sm"
+                    >
+                      <span className="text-base">↗️</span>
+                      <span>Поделиться</span>
                     </button>
                   </div>
                 </div>
