@@ -7,7 +7,6 @@ import OtzyvPage from "./pages/OtzyvPage";
 // Ленивая загрузка страниц — каждая грузится только при переходе на неё
 const Home = lazy(() => import("./pages/Home"));
 const Windows = lazy(() => import("./pages/Windows"));
-const Windows = lazy(() => import("./pages/Windows"));
 const AC = lazy(() => import("./pages/AC"));
 const ConditionerPage = lazy(() => import("./pages/ConditionerPage"));
 const Ventilation = lazy(() => import("./pages/Ventilation"));
