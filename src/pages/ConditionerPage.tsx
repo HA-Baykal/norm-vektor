@@ -241,7 +241,7 @@ export default function ConditionerPage() {
               {/* Текст про гарантию по вашим точным указаниям */}
               <div className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-200 shadow-sm text-xs text-slate-600 space-y-2 max-w-sm mx-auto">
                 <div className="flex items-center justify-between font-black text-[#1a3a5c] text-xs sm:text-sm">
-                  <span>Официальный партнер Русклимат и Daichi</span>
+                  <span>Официальный партнер производителей</span>
                   <span className="text-emerald-600 shrink-0 ml-1">✓ В наличии</span>
                 </div>
                 <p className="leading-relaxed">
@@ -403,10 +403,10 @@ export default function ConditionerPage() {
                     {specsOpen && (
                       <div className="p-6 pt-4 border-t border-slate-200 bg-white space-y-6 text-sm animate-fade-in-up">
                         
-                        {/* Официальное описание с каталогов Русклимат / Даичи */}
+                        {/* Официальное описание со спецификации завода */}
                         <div className="space-y-2">
                           <div className="text-xs font-black uppercase text-[#ff6b35] tracking-wider">
-                            Обзор модели (Дилерский каталог {officialSpecs.distributor})
+                            Официальная спецификация и обзор модели
                           </div>
                           <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
                             {officialSpecs.fullDescription}
@@ -419,7 +419,7 @@ export default function ConditionerPage() {
                             Технический паспорт кондиционера {item.name}:
                           </p>
                           <ul className="space-y-2 divide-y divide-slate-100 text-sm">
-                            <li className="flex justify-between pt-1"><span className="text-slate-500">Производитель и база</span><span className="font-black text-slate-800 text-right">{item.brand} ({officialSpecs.distributor})</span></li>
+                            <li className="flex justify-between pt-1"><span className="text-slate-500">Поставка и сервис</span><span className="font-black text-slate-800 text-right">{item.brand} (Сертифицированный дилер в Иркутске)</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Рекомендуемая площадь помещения</span><span className="font-black text-slate-800">до {variant.area} м²</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Тип и марка компрессора</span><span className="font-black text-blue-700 text-right max-w-[200px] sm:max-w-none truncate">{officialSpecs.compressorBrand}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Мощность охлаждения / обогрева</span><span className="font-black text-slate-800">{variant.cooling} / {variant.heating}</span></li>
