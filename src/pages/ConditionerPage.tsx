@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { conditioners, formatRub, INSTALL_PRICE } from "../components/CatalogConditioners";
-import { getOfficialSpecification, getOfficialPhotosForModel, getMainCoverPhoto } from "../data/officialSpecsEngine";
+import { getOfficialSpecification, getOfficialPhotosForModel, getMainCoverPhoto, getModelUrlSlug } from "../data/officialSpecsEngine";
 import QuickBookingModal from "../components/QuickBookingModal";
 import FAQSection from "../components/FAQSection";
 
 export default function ConditionerPage() {
   const { slug } = useParams<{ slug: string }>();
+  const decodedSlug = decodeURIComponent(slug || "");
 
-  // Находим оригинальную модель кондиционера по ID или названию
+  // Находим оригинальную модель кондиционера по красивому названию или ID
   const item = conditioners.find((c) => 
-    c.id.toString() === slug || 
-    c.name.toLowerCase().replace(/\s+/g, "-") === slug?.toLowerCase()
+    c.id.toString() === slug ||
+    getModelUrlSlug(c).toLowerCase() === decodedSlug.toLowerCase() ||
+    c.name.toLowerCase() === decodedSlug.toLowerCase() ||
+    c.name.toLowerCase().replace(/\s+/g, "-") === decodedSlug.toLowerCase()
   ) || conditioners[0];
 
   if (!item) return <Navigate to="/kondicionery" />;
@@ -360,7 +363,7 @@ export default function ConditionerPage() {
               return (
                 <Link
                   key={c.id}
-                  to={`/kondicionery/${c.id}`}
+                  to={`/kondicionery/${getModelUrlSlug(c)}`}
                   className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white border border-slate-200/80 shadow-md hover:-translate-y-1 hover:shadow-2xl transition duration-300"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden bg-white p-2 flex items-center justify-center border-b border-slate-100">
