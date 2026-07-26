@@ -3,7 +3,6 @@ export default async function handler(req, res) {
   const { slug = "", btu = "" } = req.query || {};
   const decodedSlug = decodeURIComponent(slug).toLowerCase().trim();
   const targetBtu = parseInt(btu || "0", 10);
-
   // Полная автономная база кондиционеров для облачного сервера Vercel Lambda
   const seoCatalog = [
     { id: "201", name: "SHUFT Berg SFTO", brand: "SHUFT", price: 16636, type: "Обычный", img: "https://rkcdn.ru/products/304ecea4-f226-11f0-b8e1-00505601218a/main_big.jpg" },
@@ -77,7 +76,6 @@ export default async function handler(req, res) {
     { id: "106", name: "Axioma Серия H R32 ASX-H1R", brand: "Axioma", price: 23900, type: "Обычный", img: "https://daichi.business/upload/iblock/b84/heea2h8mlifzpcvd4y5zjbsmexwg1e1b/av3uq0xb13cxqu5geve0ws15970ers72.jpg" },
     { id: "502", name: "Axioma Серия H Инвертор R32", brand: "Axioma", price: 32900, type: "Инверторный", img: "https://daichi.business/upload/iblock/7c8/fry4ctabd8tn9fq3i5ibtgutfvnovmfh/fzd2vdb5t7s35zyu7q2nwabq1zwpg376.jpg" }
   ];
-
   // Полная автономная база SEO-решений по остеклению
   const windowCatalog = [
     { slug: "teploe-osteklenie-lodjii", id: "win-1", title: "Тёплое остекление лоджии и балкона под ключ", price: 38000, unit: "под ключ", desc: "Тёплое остекление пятикамерным профилем VEKA Softline с мультифункциональным стеклопакетом Solar.", img: "/images/windows/window-1.jpg" },
@@ -87,7 +85,6 @@ export default async function handler(req, res) {
     { slug: "okna-v-dom-panoramy", id: "win-5", title: "Панорамные окна и крупноформатное остекление", price: 16200, unit: "за м²", desc: "Изготовление широкоформатных окон с мультифункциональными энергосберегающими стеклами для коттеджей.", img: "/images/windows/window-5.jpg" },
     { slug: "aluminievyie-konstruktsii", id: "win-6", title: "Алюминиевые входные группы, двери и перегородки", price: 15000, unit: "за м²", desc: "Износостойкие входные группы из теплого алюминия Alutech и усиленного профиля VEKA для бизнеса и коттеджей.", img: "/images/windows/window-6.jpg" }
   ];
-
   // Ищем модель в базе
   const model = seoCatalog.find(c => 
     c.id === slug ||
@@ -95,13 +92,11 @@ export default async function handler(req, res) {
     c.name.toLowerCase().replace(/\s+/g, "-").replace(/\//g, "-") === decodedSlug ||
     c.name.toLowerCase().replace(/\s+/g, "-") === decodedSlug
   );
-
   const windowModel = windowCatalog.find(w =>
     w.slug === decodedSlug ||
     w.id.toLowerCase() === decodedSlug ||
     w.title.toLowerCase().replace(/\s+/g, "-") === decodedSlug
   );
-
   let exactPrice = model ? model.price : windowModel ? windowModel.price : 0;
   let btuText = "";
   if (model && targetBtu > 0) {
@@ -112,7 +107,6 @@ export default async function handler(req, res) {
     else if (targetBtu >= 24000) exactPrice = Math.round(model.price * 2.1);
     btuText = ` (${targetBtu} BTU)`;
   }
-
   // Загружаем актуальный HTML с сервера по протоколу HTTP/HTTPS без опасного локального fs.readFileSync
   let html = "";
   try {
@@ -125,26 +119,22 @@ export default async function handler(req, res) {
   } catch (e) {
     console.error("Vercel seo fallback error:", e);
   }
-
   // Надежный запасной HTML-каркас
   if (!html) {
     html = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>Вектор Комфорта Иркутск</title></head><body><div id="root"></div></body></html>`;
   }
-
   // Если запрос на кондиционер — вшиваем теги для парсеров Авито, Яндекс и MAX
   if (model) {
     const title = `${model.name}${btuText}`.trim();
     const desc = `${model.type} сплит-система ${model.brand} ${model.name}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет!`;
     const pageUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURIComponent(slug)}${targetBtu > 0 ? `?btu=${targetBtu}` : ""}`;
     const priceStr = exactPrice.toString();
-
     html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
     html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${desc}" />`);
     html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${title}" />`);
     html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i, `<meta property="og:description" content="${desc}" />`);
     html = html.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/i, `<meta property="og:image" content="${model.img}" />`);
     html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${pageUrl}" />`);
-
     const seoMetaTags = `
     <!-- Товары и цены для парсеров (Авито, Яндекс Маркет, MAX, DNS, CRM) -->
     <meta property="og:type" content="product" />
@@ -175,9 +165,7 @@ export default async function handler(req, res) {
       }
     </script>
 </head>`;
-
     html = html.replace("</head>", seoMetaTags);
-
     const bodyFallback = `<body>
     <div id="seo-parser-fallback" style="display:none;" itemscope itemtype="https://schema.org/Product">
       <h1 itemprop="name">${title}</h1>
@@ -196,14 +184,12 @@ export default async function handler(req, res) {
     const pageUrl = `https://www.vektor-komforta.ru/okna/${encodeURIComponent(slug)}`;
     const priceStr = windowModel.price.toString();
     const imgUrl = `https://www.vektor-komforta.ru${windowModel.img}`;
-
     html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
     html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${desc}" />`);
     html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${title}" />`);
     html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i, `<meta property="og:description" content="${desc}" />`);
     html = html.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/i, `<meta property="og:image" content="${imgUrl}" />`);
     html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${pageUrl}" />`);
-
     const seoMetaTags = `
     <meta property="og:type" content="product" />
     <meta property="product:price:amount" content="${priceStr}" />
@@ -233,9 +219,7 @@ export default async function handler(req, res) {
       }
     </script>
 </head>`;
-
     html = html.replace("</head>", seoMetaTags);
-
     const bodyFallback = `<body>
     <div id="seo-parser-fallback" style="display:none;" itemscope itemtype="https://schema.org/Product">
       <h1 itemprop="name">${title}</h1>
@@ -249,7 +233,6 @@ export default async function handler(req, res) {
     
     html = html.replace(/<body>/i, bodyFallback);
   }
-
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   return res.status(200).send(html);
 }
