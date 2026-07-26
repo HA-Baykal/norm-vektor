@@ -1,4 +1,3 @@
-
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
@@ -103,7 +102,14 @@ const seoSitemapAndApiGenerator = () => ({
     }
   }
 });
- plugins: [react(), tailwindcss(), viteSingleFile(), seoSitemapAndApiGenerator()],
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+    viteSingleFile(),
+    seoSitemapAndApiGenerator(),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
