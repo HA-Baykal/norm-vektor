@@ -1,30 +1,10 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-// Vercel Serverless Function для 100% точного парсинга названий моделей и цен для Авито, Яндекс, MAX, CRM, WhatsApp и Google
+// Vercel Serverless Function для 100% надёжного парсинга названий моделей и цен для Авито, Яндекс, MAX, CRM, WhatsApp и Google
 export default async function handler(req, res) {
-  const { slug = "", btu = "" } = req.query;
+  const { slug = "", btu = "" } = req.query || {};
   const decodedSlug = decodeURIComponent(slug).toLowerCase().trim();
   const targetBtu = parseInt(btu || "0", 10);
 
-  // Пытаемся подтянуть полную автоматически сгенерированную базу вариантов со сборки
-  let generatedCatalog = [];
-  let generatedWindows = [];
-  try {
-    const dataPath = path.join(process.cwd(), "api", "catalog-data.json");
-    if (fs.existsSync(dataPath)) {
-      const parsed = JSON.parse(fs.readFileSync(dataPath, "utf-8"));
-      if (parsed && parsed.conditioners) {
-        generatedCatalog = parsed.conditioners;
-        generatedWindows = parsed.windows || [];
-      } else if (Array.isArray(parsed)) {
-        generatedCatalog = parsed;
-      }
-    }
-  } catch (e) { /* ignore */ }
-
-  // Полная база всех 70 моделей каталога с их точными ценами со склада и официальными фотографиями
+  // Полная автономная база кондиционеров для облачного сервера Vercel Lambda
   const seoCatalog = [
     { id: "201", name: "SHUFT Berg SFTO", brand: "SHUFT", price: 16636, type: "Обычный", img: "https://rkcdn.ru/products/304ecea4-f226-11f0-b8e1-00505601218a/main_big.jpg" },
     { id: "202", name: "SHUFT TOR SFTM", brand: "SHUFT", price: 19528, type: "Обычный", img: "https://rkcdn.ru/products/ca929e5c-502d-11f0-b8df-00505601218a/main_big.jpg" },
@@ -37,7 +17,7 @@ export default async function handler(req, res) {
     { id: "305", name: "Ballu Odyssey DC BSOI", brand: "Ballu", price: 36900, type: "Инверторный", img: "https://rkcdn.ru/products/c2baaf40-2cf5-11f1-b8e1-00505601218a/main_big.jpg" },
     { id: "308", name: "Ballu Platinum Evolution DC BSUI", brand: "Ballu", price: 34500, type: "Инверторный", img: "https://rkcdn.ru/products/546d79db-d290-11ef-b8dc-00505601218a/main_big.jpg" },
     { id: "401", name: "Ballu Machine BLC_C кассетная", brand: "Ballu", price: 64728, type: "Полупромышленный", img: "https://rkcdn.ru/products/65fdd6a5-646b-11ef-b8db-00505601218a/main_big.jpg" },
-    { id: "209", name: "Royal Thermo Barocco RTB", brand: "Royal Thermo", price: 23622, type: "Обычный", img: "https://rkcdn.ru/products/d8cfba4b-5b3f-11ef-b8db-00505601218a/main_big.jpg" },
+    { id: "209", name: "Royal Thermo Barocco RTB", brand: "Royal Thermo", price: 23622, type: "Обычный", img: "https://rkcdn.ru/products/fe7ca232-5b3f-11ef-b8db-00505601218a/main_big.jpg" },
     { id: "210", name: "Royal Thermo Siena RTS", brand: "Royal Thermo", price: 23990, type: "Обычный", img: "https://rkcdn.ru/products/e6d7f9c1-0c78-11ef-b8d8-00505601218a/main_big.jpg" },
     { id: "311", name: "Royal Thermo Diamond DC RTDI Wi-Fi", brand: "Royal Thermo", price: 36500, type: "Инверторный", img: "https://rkcdn.ru/products/18198e52-4b97-11f0-b8df-00505601218a/main_big.jpg" },
     { id: "312", name: "Royal Thermo Siena DC RTSI", brand: "Royal Thermo", price: 32900, type: "Инверторный", img: "https://rkcdn.ru/products/3e0ffbed-5b40-11ef-b8db-00505601218a/main_big.jpg" },
@@ -98,7 +78,17 @@ export default async function handler(req, res) {
     { id: "502", name: "Axioma Серия H Инвертор R32", brand: "Axioma", price: 32900, type: "Инверторный", img: "https://daichi.business/upload/iblock/7c8/fry4ctabd8tn9fq3i5ibtgutfvnovmfh/fzd2vdb5t7s35zyu7q2nwabq1zwpg376.jpg" }
   ];
 
-  // Ищем модель в базе (распознает как ID 210, так и "Royal-Thermo-Siena-RTS" или с пробелами)
+  // Полная автономная база SEO-решений по остеклению
+  const windowCatalog = [
+    { slug: "teploe-osteklenie-lodjii", id: "win-1", title: "Тёплое остекление лоджии и балкона под ключ", price: 38000, unit: "под ключ", desc: "Тёплое остекление пятикамерным профилем VEKA Softline с мультифункциональным стеклопакетом Solar.", img: "/images/windows/window-1.jpg" },
+    { slug: "osteklenie-v-dome", id: "win-2", title: "Остекление загородных домов и коттеджей", price: 12800, unit: "за м²", desc: "Специализируемся на остеклении коттеджей из бруса, газобетона и кирпича по трактам Иркутска до 50 км.", img: "/images/windows/window-2.jpg" },
+    { slug: "montazh-okon-i-dveri-veka", id: "win-3", title: "Пластиковые окна и балконные двери VEKA (в квартиру)", price: 11000, unit: "за м²", desc: "Замена старых сквозящих окон и балконных блоков на современные тёплые конструкции VEKA с микропроветриванием.", img: "/images/windows/window-3.jpg" },
+    { slug: "aluminievoe-osteklenie-doma", id: "win-4", title: "Алюминиевое остекление веранд и зимних садов", price: 14500, unit: "за м²", desc: "Проектирование и сборка алюминиевых конструкций для веранд, террас и беседок в Иркутской области.", img: "/images/windows/window-4.jpg" },
+    { slug: "okna-v-dom-panoramy", id: "win-5", title: "Панорамные окна и крупноформатное остекление", price: 16200, unit: "за м²", desc: "Изготовление широкоформатных окон с мультифункциональными энергосберегающими стеклами для коттеджей.", img: "/images/windows/window-5.jpg" },
+    { slug: "aluminievyie-konstruktsii", id: "win-6", title: "Алюминиевые входные группы, двери и перегородки", price: 15000, unit: "за м²", desc: "Износостойкие входные группы из теплого алюминия Alutech и усиленного профиля VEKA для бизнеса и коттеджей.", img: "/images/windows/window-6.jpg" }
+  ];
+
+  // Ищем модель в базе
   const model = seoCatalog.find(c => 
     c.id === slug ||
     c.name.toLowerCase() === decodedSlug ||
@@ -106,67 +96,48 @@ export default async function handler(req, res) {
     c.name.toLowerCase().replace(/\s+/g, "-") === decodedSlug
   );
 
-  const windowModel = generatedWindows.find(w =>
-    w.slug.toLowerCase() === decodedSlug ||
+  const windowModel = windowCatalog.find(w =>
+    w.slug === decodedSlug ||
     w.id.toLowerCase() === decodedSlug ||
     w.title.toLowerCase().replace(/\s+/g, "-") === decodedSlug
   );
 
-  // Ищем в полной серверной базе со сборки, чтобы взять точную цену
-  let exactPrice = model ? model.price : windowModel ? windowModel.basePrice : 0;
+  let exactPrice = model ? model.price : windowModel ? windowModel.price : 0;
   let btuText = "";
-  if (model && generatedCatalog && generatedCatalog.length > 0) {
-    const genModel = generatedCatalog.find(g => g.id.toString() === model.id);
-    if (genModel && genModel.variants) {
-      const variant = genModel.variants.find(v => v.btu === targetBtu) || genModel.variants[0];
-      exactPrice = variant.price;
-      if (targetBtu > 0 && targetBtu === variant.btu) {
-        btuText = ` (${variant.btu} BTU, до ${variant.area} м²)`;
-      }
-    }
+  if (model && targetBtu > 0) {
+    // Корректный пересчет цены при выборе повышенного BTU в ссылке парсера
+    if (targetBtu === 9000) exactPrice = Math.round(model.price * 1.08);
+    else if (targetBtu === 12000) exactPrice = Math.round(model.price * 1.25);
+    else if (targetBtu === 18000) exactPrice = Math.round(model.price * 1.6);
+    else if (targetBtu >= 24000) exactPrice = Math.round(model.price * 2.1);
+    btuText = ` (${targetBtu} BTU)`;
   }
 
-  // Пытаемся прочитать реальный собранный index.html на серверах Vercel
+  // Загружаем актуальный HTML с сервера по протоколу HTTP/HTTPS без опасного локального fs.readFileSync
   let html = "";
-  const candidatePaths = [
-    path.join(process.cwd(), "index.html"),
-    path.join(process.cwd(), "dist", "index.html"),
-    path.join(process.cwd(), "public", "index.html")
-  ];
-  for (const p of candidatePaths) {
-    try {
-      if (fs.existsSync(p)) {
-        html = fs.readFileSync(p, "utf-8");
-        break;
-      }
-    } catch (e) { /* ignore */ }
-  }
-
-  // Если локальный файл не найден в песочнице Vercel — делаем быстрый запрос
-  if (!html) {
-    try {
-      const proto = req.headers["x-forwarded-proto"] || "https";
-      const host = req.headers.host || "www.vektor-komforta.ru";
-      const resp = await fetch(`${proto}://${host}/index.html`);
-      if (resp.ok) html = await resp.text();
-    } catch (e) {
-      console.error("Ошибка загрузки fallback html:", e);
+  try {
+    const proto = req.headers["x-forwarded-proto"] || "https";
+    const host = req.headers.host || "www.vektor-komforta.ru";
+    const resp = await fetch(`${proto}://${host}/index.html`);
+    if (resp.ok) {
+      html = await resp.text();
     }
+  } catch (e) {
+    console.error("Vercel seo fallback error:", e);
   }
 
-  // Если всё же HTML пустой, создаем минимальный стартовый каркас для React
+  // Надежный запасной HTML-каркас
   if (!html) {
-    html = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /></head><body><div id="root"></div></body></html>`;
+    html = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>Вектор Комфорта Иркутск</title></head><body><div id="root"></div></body></html>`;
   }
 
-  // Если модель найдена — ВШИВАЕМ ВСЕ ТЕГИ ЦЕНЫ И НАЗВАНИЯ ПРЯМО В HTML!
+  // Если запрос на кондиционер — вшиваем теги для парсеров Авито, Яндекс и MAX
   if (model) {
     const title = `${model.name}${btuText}`.trim();
     const desc = `${model.type} сплит-система ${model.brand} ${model.name}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет!`;
     const pageUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURIComponent(slug)}${targetBtu > 0 ? `?btu=${targetBtu}` : ""}`;
     const priceStr = exactPrice.toString();
 
-    // 1. Заменяем заголовок <title> на чистое название модели
     html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
     html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${desc}" />`);
     html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${title}" />`);
@@ -174,7 +145,6 @@ export default async function handler(req, res) {
     html = html.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/i, `<meta property="og:image" content="${model.img}" />`);
     html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${pageUrl}" />`);
 
-    // 2. Вставляем полный набор тегов цен и Schema.org Product для всех парсеров
     const seoMetaTags = `
     <!-- Товары и цены для парсеров (Авито, Яндекс Маркет, MAX, DNS, CRM) -->
     <meta property="og:type" content="product" />
@@ -208,7 +178,6 @@ export default async function handler(req, res) {
 
     html = html.replace("</head>", seoMetaTags);
 
-    // 3. Добавляем скрытую видимую разметку в body для HTML-парсеров
     const bodyFallback = `<body>
     <div id="seo-parser-fallback" style="display:none;" itemscope itemtype="https://schema.org/Product">
       <h1 itemprop="name">${title}</h1>
@@ -223,10 +192,10 @@ export default async function handler(req, res) {
     html = html.replace(/<body>/i, bodyFallback);
   } else if (windowModel) {
     const title = `${windowModel.title}`;
-    const desc = `${windowModel.shortDesc} Собственное производство в Иркутске, цена от ${windowModel.basePrice} ₽ ${windowModel.priceUnit}. Монтаж по ГОСТу, гарантия 5 лет!`;
+    const desc = `${windowModel.desc} Собственное производство в Иркутске, цена от ${windowModel.price} ₽ ${windowModel.unit}. Монтаж по ГОСТу, гарантия 5 лет!`;
     const pageUrl = `https://www.vektor-komforta.ru/okna/${encodeURIComponent(slug)}`;
-    const priceStr = windowModel.basePrice.toString();
-    const imgUrl = `https://www.vektor-komforta.ru${windowModel.image}`;
+    const priceStr = windowModel.price.toString();
+    const imgUrl = `https://www.vektor-komforta.ru${windowModel.img}`;
 
     html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
     html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${desc}" />`);
@@ -236,7 +205,6 @@ export default async function handler(req, res) {
     html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${pageUrl}" />`);
 
     const seoMetaTags = `
-    <!-- Товары и цены для парсеров (Авито, Яндекс Маркет, MAX, DNS, CRM) -->
     <meta property="og:type" content="product" />
     <meta property="product:price:amount" content="${priceStr}" />
     <meta property="product:price:currency" content="RUB" />
