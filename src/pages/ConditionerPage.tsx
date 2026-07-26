@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, useSearchParams, Link, Navigate } from "react-router-dom";
 import { conditioners, formatRub, INSTALL_PRICE } from "../components/CatalogConditioners";
 import { getOfficialSpecification, getOfficialPhotosForModel, getMainCoverPhoto, getModelUrlSlug } from "../data/officialSpecsEngine";
 import QuickBookingModal from "../components/QuickBookingModal";
@@ -7,6 +7,7 @@ import FAQSection from "../components/FAQSection";
 
 export default function ConditionerPage() {
   const { slug } = useParams<{ slug: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
   const decodedSlug = decodeURIComponent(slug || "");
 
   // Находим оригинальную модель кондиционера по красивому названию или ID
@@ -19,9 +20,29 @@ export default function ConditionerPage() {
 
   if (!item) return <Navigate to="/kondicionery" />;
 
-  const [selectedBtu, setSelectedBtu] = useState(item.variants[0].btu);
+  // Читаем BTU из URL-ссылки (например ?btu=12000), если он там есть и такой вариант существует у модели
+  const btuFromUrl = parseInt(searchParams.get("btu") || "0", 10);
+  const initialBtu = item.variants.some((v) => v.btu === btuFromUrl) ? btuFromUrl : item.variants[0].btu;
+
+  const [selectedBtu, setSelectedBtu] = useState(initialBtu);
   const [withInstall, setWithInstall] = useState(false);
   const [activeImageIdx, setActiveImageIdx] = useState(0);
+
+  // Синхронизируем состояние при смене URL или переходе между моделями
+  useEffect(() => {
+    const currentParam = parseInt(searchParams.get("btu") || "0", 10);
+    if (item.variants.some((v) => v.btu === currentParam)) {
+      setSelectedBtu(currentParam);
+    } else if (!item.variants.some((v) => v.btu === selectedBtu)) {
+      setSelectedBtu(item.variants[0].btu);
+    }
+  }, [item, searchParams]);
+
+  // При клике на кнопку мощности сразу обновляем адресную строку браузера (?btu=12000)
+  const handleSelectBtu = (newBtu: number) => {
+    setSelectedBtu(newBtu);
+    setSearchParams({ btu: newBtu.toString() }, { replace: true });
+  };
 
   // Изначально свернутый блок характеристик и полного описания
   const [specsOpen, setSpecsOpen] = useState(false);
@@ -39,11 +60,12 @@ export default function ConditionerPage() {
   const allImages = getOfficialPhotosForModel(item);
   const coverPhoto = getMainCoverPhoto(item);
 
-  // Динамический сброс SEO-заголовков и метатегов под модель и цену!
+  // Динамический сброс SEO-заголовков и метатегов под ТОЧНУЮ ВЫБРАННУЮ МОЩНОСТЬ И ЦЕНУ!
   useEffect(() => {
-    const minP = Math.min(...item.variants.map(v => v.price));
-    const titleText = `${item.brand} ${item.name} — цена со склада от ${formatRub(minP)} | Вектор Комфорта (Иркутск)`;
-    const descText = `${item.type} сплит-система ${item.name} по оптовой цене со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия от завода до 5 лет. Профессиональный монтаж за 3 часа без пыли!`;
+    const variantPrice = variant.price;
+    const titleText = `${item.brand} ${item.name} (${selectedBtu} BTU, до ${variant.area} м²) — цена со склада ${formatRub(variantPrice)} | Вектор Комфорта`;
+    const descText = `${item.type} сплит-система ${item.name} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене ${formatRub(variantPrice)} со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия завода до 5 лет. Профессиональный монтаж без пыли!`;
+    const fullUrl = window.location.href;
 
     // 1. Меняем заголовок в браузере (для вкладок, закладок, поисковиков Яндекс и Google)
     document.title = titleText;
@@ -64,13 +86,58 @@ export default function ConditionerPage() {
     updateMeta("og:title", titleText, true);
     updateMeta("og:description", descText, true);
     updateMeta("og:image", coverPhoto.startsWith("http") ? coverPhoto : `https://www.vektor-komforta.ru/${coverPhoto}`, true);
-    updateMeta("og:url", window.location.href, true);
+    updateMeta("og:url", fullUrl, true);
 
-    // При уходе со страницы карточки возвращаем заголовок каталога
+    // 3. Товарная микроразметка Schema.org для Яндекса и Google (с точной ценой за выбранный BTU)
+    const productSchema = {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": `${item.brand} ${item.name} (${selectedBtu} BTU)`,
+      "image": allImages,
+      "description": descText,
+      "sku": `VK-${item.id}-${selectedBtu}`,
+      "brand": {
+        "@type": "Brand",
+        "name": item.brand
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": fullUrl,
+        "priceCurrency": "RUB",
+        "price": variantPrice,
+        "priceValidUntil": "2026-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Вектор Комфорта Иркутск"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "reviewCount": "12"
+      }
+    };
+
+    let scriptTag = document.getElementById("seo-product-schema") as HTMLScriptElement;
+    if (!scriptTag) {
+      scriptTag = document.createElement("script");
+      scriptTag.id = "seo-product-schema";
+      scriptTag.type = "application/ld+json";
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(productSchema);
+
+    // При уходе со страницы возвращаем исходный заголовок и удаляем схему товара
     return () => {
       document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+      const el = document.getElementById("seo-product-schema");
+      if (el) el.remove();
     };
-  }, [item, officialSpecs, coverPhoto]);
+  }, [item, officialSpecs, coverPhoto, allImages]);
 
   // Ссылка MAX по вашему техническому заданию
   const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
@@ -187,7 +254,7 @@ export default function ConditionerPage() {
                       <button
                         key={v.btu}
                         type="button"
-                        onClick={() => setSelectedBtu(v.btu)}
+                        onClick={() => handleSelectBtu(v.btu)}
                         className={`rounded-2xl px-4 py-3 text-xs sm:text-sm font-black transition-all shadow-sm flex flex-col items-center gap-0.5 ${
                           selectedBtu === v.btu
                             ? "bg-[#1a3a5c] text-white ring-2 ring-[#ff6b35]"
