@@ -443,6 +443,13 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
 };
 
 /**
+ * Генерирует чистый понятный URL на основе названия модели (например, Royal-Thermo-Barocco-RTB)
+ */
+export function getModelUrlSlug(item: Conditioner): string {
+  return item.name.replace(/\s+/g, "-").replace(/\//g, "-");
+}
+
+/**
  * Возвращает главную обложку для каталога — это строго ПЕРВАЯ ссылка из официального списка Русклимат и Даичи
  */
 export function getMainCoverPhoto(item: Conditioner): string {
