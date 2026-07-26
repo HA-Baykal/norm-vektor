@@ -4,8 +4,18 @@ import { fileURLToPath } from 'url';
 
 // Vercel Serverless Function для 100% точного парсинга названий моделей и цен для Авито, Яндекс, MAX, CRM, WhatsApp и Google
 export default async function handler(req, res) {
-  const { slug = "" } = req.query;
+  const { slug = "", btu = "" } = req.query;
   const decodedSlug = decodeURIComponent(slug).toLowerCase().trim();
+  const targetBtu = parseInt(btu || "0", 10);
+
+  // Пытаемся подтянуть полную автоматически сгенерированную базу вариантов со сборки
+  let generatedCatalog = [];
+  try {
+    const dataPath = path.join(process.cwd(), "api", "catalog-data.json");
+    if (fs.existsSync(dataPath)) {
+      generatedCatalog = JSON.parse(fs.readFileSync(dataPath, "utf-8"));
+    }
+  } catch (e) { /* ignore */ }
 
   // Полная база всех 70 моделей каталога с их точными ценами со склада и официальными фотографиями
   const seoCatalog = [
@@ -89,6 +99,20 @@ export default async function handler(req, res) {
     c.name.toLowerCase().replace(/\s+/g, "-") === decodedSlug
   );
 
+  // Ищем в полной серверной базе со сборки, чтобы взять точную цену за выбранный BTU
+  let exactPrice = model ? model.price : 0;
+  let btuText = "";
+  if (model && generatedCatalog && generatedCatalog.length > 0) {
+    const genModel = generatedCatalog.find(g => g.id.toString() === model.id);
+    if (genModel && genModel.variants) {
+      const variant = genModel.variants.find(v => v.btu === targetBtu) || genModel.variants[0];
+      exactPrice = variant.price;
+      if (targetBtu > 0 && targetBtu === variant.btu) {
+        btuText = ` (${variant.btu} BTU, до ${variant.area} м²)`;
+      }
+    }
+  }
+
   // Пытаемся прочитать реальный собранный index.html на серверах Vercel
   let html = "";
   const candidatePaths = [
@@ -124,10 +148,10 @@ export default async function handler(req, res) {
 
   // Если модель найдена — ВШИВАЕМ ВСЕ ТЕГИ ЦЕНЫ И НАЗВАНИЯ ПРЯМО В HTML!
   if (model) {
-    const title = `${model.name}`;
-    const desc = `${model.type} сплит-система ${model.brand} ${model.name} по оптовой цене со склада в Иркутске. Цена: от ${model.price.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет!`;
-    const pageUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURIComponent(slug)}`;
-    const priceStr = model.price.toString();
+    const title = `${model.name}${btuText}`.trim();
+    const desc = `${model.type} сплит-система ${model.brand} ${model.name}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет!`;
+    const pageUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURIComponent(slug)}${targetBtu > 0 ? `?btu=${targetBtu}` : ""}`;
+    const priceStr = exactPrice.toString();
 
     // 1. Заменяем заголовок <title> на чистое название модели
     html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
