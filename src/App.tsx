@@ -8,6 +8,7 @@ import OtzyvPage from "./pages/OtzyvPage";
 const Home = lazy(() => import("./pages/Home"));
 const Windows = lazy(() => import("./pages/Windows"));
 const AC = lazy(() => import("./pages/AC"));
+const ConditionerPage = lazy(() => import("./pages/ConditionerPage"));
 const Ventilation = lazy(() => import("./pages/Ventilation"));
 const Drilling = lazy(() => import("./pages/Drilling"));
 const StandartyPage = lazy(() => import("./pages/StandartyPage"));
@@ -26,6 +27,7 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="okna" element={<Windows />} />
             <Route path="kondicionery" element={<AC />} />
+            <Route path="kondicionery/:slug" element={<ConditionerPage />} />
             <Route path="ventilyaciya" element={<Ventilation />} />
             <Route path="almaznoe-burenie" element={<Drilling />} />
             <Route path="standarty" element={<StandartyPage />} />
