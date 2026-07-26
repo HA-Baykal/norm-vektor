@@ -7,6 +7,7 @@ import OtzyvPage from "./pages/OtzyvPage";
 // Ленивая загрузка страниц — каждая грузится только при переходе на неё
 const Home = lazy(() => import("./pages/Home"));
 const Windows = lazy(() => import("./pages/Windows"));
+const WindowPage = lazy(() => import("./pages/WindowPage"));
 const AC = lazy(() => import("./pages/AC"));
 const ConditionerPage = lazy(() => import("./pages/ConditionerPage"));
 const Ventilation = lazy(() => import("./pages/Ventilation"));
@@ -26,8 +27,8 @@ export default function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="okna" element={<Windows />} />
-            <Route path="okna/:slug" element={<Windows />} />
-            <Route path="windows/:slug" element={<Windows />} />
+            <Route path="okna/:slug" element={<WindowPage />} />
+            <Route path="windows/:slug" element={<WindowPage />} />
             <Route path="kondicionery" element={<AC />} />
             <Route path="kondicionery/:slug" element={<ConditionerPage />} />
             <Route path="ventilyaciya" element={<Ventilation />} />
