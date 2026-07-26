@@ -9,17 +9,38 @@ import { viteSingleFile } from "vite-plugin-singlefile";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Автоматический SEO-генератор карты сайта (Sitemap.xml)
-// Сам находит все 70+ моделей кондиционеров из кода и генерирует идеальную карту для Яндекса и Google
-const seoSitemapGenerator = () => ({
-  name: "seo-sitemap-generator",
+// Автоматический SEO-генератор карты сайта и базы для Vercel API
+const seoSitemapAndApiGenerator = () => ({
+  name: "seo-sitemap-and-api-generator",
   closeBundle() {
     try {
       const catPath = path.resolve(__dirname, "src/components/CatalogConditioners.tsx");
       if (!fs.existsSync(catPath)) return;
       const content = fs.readFileSync(catPath, "utf-8");
 
-      // Извлекаем все имена моделей из каталога
+      // 1. Экспорт всех моделей и всех вариантов мощности (BTU) в JSON для Vercel API (api/seo.js)
+      const startMarker = "export const conditioners: Conditioner[] = ";
+      const startIndex = content.indexOf(startMarker);
+      if (startIndex !== -1) {
+        const afterStart = content.slice(startIndex + startMarker.length);
+        const endIndex = afterStart.indexOf("];\n");
+        if (endIndex !== -1) {
+          const arrayCode = afterStart.slice(0, endIndex + 1);
+          // Преобразуем чистый код массива в JSON
+          try {
+            const parsedCatalog = eval(`(${arrayCode})`);
+            const apiDataPath = path.resolve(__dirname, "api/catalog-data.json");
+            if (fs.existsSync(path.dirname(apiDataPath))) {
+              fs.writeFileSync(apiDataPath, JSON.stringify(parsedCatalog, null, 2), "utf-8");
+              console.log(`[Vercel API Data] Успешно обновлена серверная база для парсеров (${parsedCatalog.length} моделей и вариантов BTU)!`);
+            }
+          } catch (e) {
+            console.error("[Vercel API Data] Ошибка экспорта данных для Vercel:", e);
+          }
+        }
+      }
+
+      // 2. Генерация карты сайта Sitemap.xml
       const modelNames: string[] = [];
       const regex = /name:\s*"(.*?)"/g;
       let match;
@@ -27,8 +48,7 @@ const seoSitemapGenerator = () => ({
         modelNames.push(match[1]);
       }
 
-      const dateStr = new Date().toISOString().split("T")[0]; // Например: 2026-04-01
-
+      const dateStr = new Date().toISOString().split("T")[0];
       const staticUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
         "portfolio", "standarty", "otzyv", "baza-znaniy", "kontakty"
@@ -37,7 +57,6 @@ const seoSitemapGenerator = () => ({
       let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
       xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-      // Добавляем основные страницы сайта
       for (const u of staticUrls) {
         xml += `  <url>\n`;
         xml += `    <loc>https://www.vektor-komforta.ru/${u}</loc>\n`;
@@ -47,7 +66,6 @@ const seoSitemapGenerator = () => ({
         xml += `  </url>\n`;
       }
 
-      // Добавляем все 70+ персональных страниц кондиционеров для быстрого поиска в Яндексе и Гугле
       for (const name of modelNames) {
         const slug = name.replace(/\s+/g, "-").replace(/\//g, "-");
         xml += `  <url>\n`;
@@ -75,9 +93,8 @@ const seoSitemapGenerator = () => ({
   }
 });
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), viteSingleFile(), seoSitemapGenerator()],
+  plugins: [react(), tailwindcss(), viteSingleFile(), seoSitemapAndApiGenerator()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
