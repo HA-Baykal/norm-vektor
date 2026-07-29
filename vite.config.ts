@@ -46,9 +46,13 @@ const seoSitemapAndApiGenerator = () => ({
 
       // 2. Генерация карты сайта Sitemap.xml (Яндекс и Google)
       const dateStr = new Date().toISOString().split("T")[0];
-      const staticUrls = [
+            const staticUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
-        "portfolio", "standarty", "otzyv", "baza-znaniy", "kontakty"
+        "portfolio", "standarty", "otzyv", "baza-znaniy", "kontakty",
+        "okna-v-homutovo", "kondicionery-v-homutovo",
+        "okna-v-molodezhnom", "kondicionery-v-molodezhnom",
+        "okna-v-angarske", "kondicionery-v-angarske",
+        "okna-v-shelehove", "kondicionery-v-shelehove"
       ];
 
       let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
