@@ -12,6 +12,14 @@
     { "source": "/otzyv", "destination": "/api/page?path=/otzyv" },
     { "source": "/baza-znaniy", "destination": "/api/page?path=/baza-znaniy" },
     { "source": "/portfolio", "destination": "/api/page?path=/portfolio" },
+    { "source": "/okna-v-homutovo", "destination": "/api/page?path=/okna-v-homutovo" },
+    { "source": "/kondicionery-v-homutovo", "destination": "/api/page?path=/kondicionery-v-homutovo" },
+    { "source": "/okna-v-molodezhnom", "destination": "/api/page?path=/okna-v-molodezhnom" },
+    { "source": "/kondicionery-v-molodezhnom", "destination": "/api/page?path=/kondicionery-v-molodezhnom" },
+    { "source": "/okna-v-angarske", "destination": "/api/page?path=/okna-v-angarske" },
+    { "source": "/kondicionery-v-angarske", "destination": "/api/page?path=/kondicionery-v-angarske" },
+    { "source": "/okna-v-shelehove", "destination": "/api/page?path=/okna-v-shelehove" },
+    { "source": "/kondicionery-v-shelehove", "destination": "/api/page?path=/kondicionery-v-shelehove" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
