@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import MetrikaTracker from "./components/MetrikaTracker";
 import OtzyvPage from "./pages/OtzyvPage";
+const LocalCityPage = lazy(() => import("./pages/LocalCityPage"));
 
 // Ленивая загрузка страниц — каждая грузится только при переходе на неё
 const Home = lazy(() => import("./pages/Home"));
@@ -30,6 +31,14 @@ export default function App() {
             <Route path="windows/:slug" element={<Windows />} />
             <Route path="kondicionery" element={<AC />} />
             <Route path="kondicionery/:slug" element={<ConditionerPage />} />
+            <Route path="/okna-v-homutovo" element={<LocalCityPage cityKey="homutovo" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-homutovo" element={<LocalCityPage cityKey="homutovo" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-molodezhnom" element={<LocalCityPage cityKey="molodezhnom" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-molodezhnom" element={<LocalCityPage cityKey="molodezhnom" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-angarske" element={<LocalCityPage cityKey="angarske" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-angarske" element={<LocalCityPage cityKey="angarske" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-shelehove" element={<LocalCityPage cityKey="shelehove" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-shelehove" element={<LocalCityPage cityKey="shelehove" serviceKey="kondicionery" />} />
             <Route path="ventilyaciya" element={<Ventilation />} />
             <Route path="almaznoe-burenie" element={<Drilling />} />
             <Route path="standarty" element={<StandartyPage />} />
