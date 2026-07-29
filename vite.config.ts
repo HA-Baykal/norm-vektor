@@ -99,12 +99,6 @@ const seoSitemapAndApiGenerator = () => ({
       if (fs.existsSync(path.resolve(__dirname, "dist"))) {
         fs.writeFileSync(distSitemap, xml, "utf-8");
       }
-
-      console.log(`[SEO SITEMAP] Успешно сгенерирована карта сайта: включено ${staticUrls.length} основных страниц, ${parsedCatalog.length} карточек кондиционеров и ${windowsCatalogData.length} страниц остекления!`);
-    } catch (err) {
-      console.error("[SEO SITEMAP] Ошибка при генерации sitemap:", err);
-    }
-  }
         // 3. Генерация vercel.json с маршрутами для SEO-функций
       const cityUrls = [
         "okna-v-homutovo", "kondicionery-v-homutovo",
@@ -129,6 +123,11 @@ const seoSitemapAndApiGenerator = () => ({
       rewrites.push({ source: "/((?!api/).*)", destination: "/index.html" });
       fs.writeFileSync(path.resolve(__dirname, "vercel.json"), JSON.stringify({ rewrites }, null, 2), "utf-8");
       console.log(`[Vercel Routes] Сгенерирован vercel.json (${rewrites.length} маршрутов)!`);
+      console.log(`[SEO SITEMAP] Успешно сгенерирована карта сайта: включено ${staticUrls.length} основных страниц, ${parsedCatalog.length} карточек кондиционеров и ${windowsCatalogData.length} страниц остекления!`);
+    } catch (err) {
+      console.error("[SEO SITEMAP] Ошибка при генерации sitemap:", err);
+    }
+  }
 });
 
 export default defineConfig({
