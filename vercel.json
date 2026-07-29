@@ -1,8 +1,16 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/kondicionery/(.*)", "destination": "/api/seo?slug=$1" },
-    { "source": "/ac/(.*)", "destination": "/api/seo?slug=$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/kondicionery/:slug", "destination": "/api/conditioner?slug=:slug" },
+    { "source": "/", "destination": "/api/page?path=/" },
+    { "source": "/okna", "destination": "/api/page?path=/okna" },
+    { "source": "/kondicionery", "destination": "/api/page?path=/kondicionery" },
+    { "source": "/ventilyaciya", "destination": "/api/page?path=/ventilyaciya" },
+    { "source": "/almaznoe-burenie", "destination": "/api/page?path=/almaznoe-burenie" },
+    { "source": "/kontakty", "destination": "/api/page?path=/kontakty" },
+    { "source": "/standarty", "destination": "/api/page?path=/standarty" },
+    { "source": "/otzyvy", "destination": "/api/page?path=/otzyvy" },
+    { "source": "/portfolio", "destination": "/api/page?path=/portfolio" },
+    { "source": "/blog", "destination": "/api/page?path=/blog" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
