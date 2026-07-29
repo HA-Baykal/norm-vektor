@@ -155,11 +155,16 @@ export default async function handler(req: Request): Promise<Response> {
       `<meta property="og:site_name" content="Вектор Комфорта"/>` +
       `<meta property="og:title" content="${esc(page.title)}"/>` +
       `<meta property="og:description" content="${esc(page.description)}"/>` +
-      `<meta property="og:url" content="https://www.vektor-komforta.ru${path}"/>`;
+      `<meta property="og:url" content="https://www.vektor-komforta.ru${path}"/>` +
+      `<meta property="og:image" content="https://www.vektor-komforta.ru/images/hero-bg.jpg"/>` +
+      `<meta name="twitter:card" content="summary_large_image"/>`;
     html = html
       .replace(/<title>[^<]*<\/title>/i, `<title>${esc(page.title)}</title>`)
       .replace(/<meta\s+name="description"[^>]*>/i, "")
-      .replace("</head>", `${og}</head>`)
+      .replace(/<meta\s+property="og:[^"]*"[^>]*>/gi, "")
+      .replace(/<meta\s+name="twitter:[^"]*"[^>]*>/gi, "")
+      .replace(/<link\s+rel="canonical"[^>]*>/i, "")
+      .replace("</head>", `<link rel="canonical" href="https://www.vektor-komforta.ru${path}"/>${og}</head>`)
       .replace(/<div id="root">\s*<\/div>/i, `<div id="root"></div><noscript>${page.body}</noscript>`);
   }
 
