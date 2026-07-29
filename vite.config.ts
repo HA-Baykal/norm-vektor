@@ -105,6 +105,30 @@ const seoSitemapAndApiGenerator = () => ({
       console.error("[SEO SITEMAP] Ошибка при генерации sitemap:", err);
     }
   }
+        // 3. Генерация vercel.json с маршрутами для SEO-функций
+      const cityUrls = [
+        "okna-v-homutovo", "kondicionery-v-homutovo",
+        "okna-v-molodezhnom", "kondicionery-v-molodezhnom",
+        "okna-v-angarske", "kondicionery-v-angarske",
+        "okna-v-shelehove", "kondicionery-v-shelehove"
+      ];
+      const mainUrls = [
+        "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
+        "kontakty", "standarty", "otzyv", "baza-znaniy", "portfolio"
+      ];
+      const rewrites: any[] = [
+        { source: "/kondicionery/:slug", destination: "/api/seo" },
+        { source: "/okna/:slug", destination: "/api/seo" }
+      ];
+      for (const u of mainUrls) {
+        rewrites.push({ source: u === "" ? "/" : `/${u}`, destination: `/api/page?path=/${u}` });
+      }
+      for (const c of cityUrls) {
+        rewrites.push({ source: `/${c}`, destination: `/api/page?path=/${c}` });
+      }
+      rewrites.push({ source: "/((?!api/).*)", destination: "/index.html" });
+      fs.writeFileSync(path.resolve(__dirname, "vercel.json"), JSON.stringify({ rewrites }, null, 2), "utf-8");
+      console.log(`[Vercel Routes] Сгенерирован vercel.json (${rewrites.length} маршрутов)!`);
 });
 
 export default defineConfig({
