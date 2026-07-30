@@ -8,7 +8,7 @@ interface CounterProps {
 }
 
 function Counter({ value, suffix = "", label, icon }: CounterProps) {
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value);
   const ref = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState(false);
 
@@ -18,7 +18,8 @@ function Counter({ value, suffix = "", label, icon }: CounterProps) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !started) {
-            setStarted(true);
+             setStarted(true);
+            setDisplay(0);
             let current = 0;
             const step = Math.max(1, Math.floor(value / 40));
             const interval = setInterval(() => {
