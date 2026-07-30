@@ -27,9 +27,9 @@ export default async function handler(req, res) {
     { id: "314", name: "Electrolux Smartline DC EACS/I-HSM/N8", brand: "Electrolux", price: 38900, type: "Инверторный", img: "https://rkcdn.ru/products/6e020624-6067-11ef-b8db-00505601218a/main_big.jpg" },
     { id: "315", name: "Electrolux Fusion Wave Super DC EACS/I-HFW/N8", brand: "Electrolux", price: 39500, type: "Инверторный", img: "https://rkcdn.ru/products/2f2b1e80-0b09-11f0-b8de-00505601218a/main_big.jpg" },
     { id: "316", name: "Electrolux Onix Super DC Black", brand: "Electrolux", price: 44900, type: "Инверторный", img: "https://rkcdn.ru/products/0c920006-5d3f-11ef-b8db-00505601218a/main_big.jpg" },
-    { id: "102", name: "Kentatsu Кумо KSGKU-HFRN1", brand: "Kentatsu", price: 24900, type: "Обычный", img: "https://daichi.business/upload/iblock/96c/bg2umx5kbfcb43hr78r1jxdeos2pc8s6/5qpuwnoyxh2zw46qmssf7tw9ukqxxj09.jpg" },
-    { id: "107", name: "Kentatsu Канами R32 KSGA-HFRN1", brand: "Kentatsu", price: 26900, type: "Обычный", img: "https://daichi.business/upload/iblock/691/j778l2zmqoo2epewkvpj7l17cc9mhl7z/79qkglryk4o5w3bimkgu6jzeoyotoo56.jpg" },
-    { id: "105", name: "Kentatsu Канами Инвертор Wi-Fi", brand: "Kentatsu", price: 35900, type: "Инверторный", img: "https://daichi.business/upload/iblock/417/skvyuzkhep5hihzjhelaijjhfszyfh3a/c6r8j5av0in9ub33y6ws3050vhgx7was.jpg" },
+    { id: "102", name: "Kentatsu Кумо KSGKU-HFRN1", brand: "Kentatsu", price: 24900, type: "Обычный", img: "https://daichi.business/upload/iblock/7b2/c5j10n4adp10em9pt66k5j0y8nax98gx/942finr4uomtf9rvijzjbgcw1qcqedqn.jpg" },
+    { id: "107", name: "Kentatsu Канами R32 KSGA-HFRN1", brand: "Kentatsu", price: 26900, type: "Обычный", img: "https://daichi.business/upload/iblock/c19/7jle33di9je4o802o87mddzu694wkwca/55507fb2c3118b5bec7567c436d6495c.jpg" },
+    { id: "105", name: "Kentatsu Канами Инвертор Wi-Fi", brand: "Kentatsu", price: 35900, type: "Инверторный", img: "https://daichi.business/upload/iblock/4bf/ag5ds74v33w169jd9kynxgegm84kbwbu/z8r82162uzfezborqxms4ic3i0foubc1.jpg" },
     { id: "701", name: "Kentatsu Атама (Atama)", brand: "Kentatsu", price: 25900, type: "Обычный", img: "https://daichi.business/upload/iblock/ee8/t7rexgtu91bnpnbfm31mgdysassd0pd6/vp9tk11z6erqnaf304ii24z0wdvys6qf.jpg" },
     { id: "702", name: "Kentatsu Атама Инвертор (Atama Inverter)", brand: "Kentatsu", price: 34900, type: "Инверторный", img: "https://daichi.business/upload/iblock/cd7/bi1qr0x2a7e8igc71sb95xy8o9w8k92t/xid6fh9daibmwnse37a00spgsov8q6m3.jpg" },
     { id: "703", name: "Kentatsu Харуки (Haruki)", brand: "Kentatsu", price: 26900, type: "Обычный", img: "https://daichi.business/upload/iblock/57b/38zsy200mt7iu0m3h8xgj4d20cubartk/fgm35i47w6bz5lfwjmluk2ylr6c4rfeh.jpg" },
@@ -71,10 +71,10 @@ export default async function handler(req, res) {
     { id: "732", name: "Bosch Climate 5000 Инвертор", brand: "Bosch", price: 44900, type: "Инверторный", img: "https://daichi.business/upload/iblock/653/v1z2i0rg7r2uwy1uh130b46n2stau7vo/65ad09a0d15c6d813071a62646dbf60c.jpg" },
     { id: "733", name: "Bosch Climate 6000i Инвертор", brand: "Bosch", price: 52900, type: "Инверторный", img: "https://daichi.business/upload/iblock/32b/0lptf46vnmv7fxubjlaarcvwjtnohd7a/64cf767e224d4b0547533a32da4198f3.jpg" },
     { id: "320", name: "Toshiba Seiya RAS-CVG", brand: "Toshiba", price: 52900, type: "Инверторный", img: "https://rkcdn.ru/products/e90e8f4c-6304-11ef-b8db-00505601218a/main_big.jpg" },
-    { id: "108", name: "Daichi Эверест R32 DA-EVQ1R", brand: "Daichi", price: 25900, type: "Обычный", img: "https://daichi.business/upload/iblock/18b/tn0kc79pi43vbeepz83fr5dvlu5njrny/lh1e31gvep7i5vp79lh9ll3zugninmwf.jpg" },
+    { id: "108", name: "Daichi Эверест R32 DA-EVQ1R", brand: "Daichi", price: 25900, type: "Обычный", img: "https://daichi.business/upload/iblock/7db/9345zuwtjj0x12p8i8h1hjc25p60kwx8/ffcceac8399e0f4dbb7c3f328a8e9963.jpg" },
     { id: "501", name: "AURUS A DC AAI", brand: "AURUS", price: 120000, type: "Инверторный", img: "https://rkcdn.ru/products/80073bb2-4ab0-11f1-b8e2-00505601218a/main_big.jpg" },
-    { id: "106", name: "Axioma Серия H R32 ASX-H1R", brand: "Axioma", price: 23900, type: "Обычный", img: "https://daichi.business/upload/iblock/b84/heea2h8mlifzpcvd4y5zjbsmexwg1e1b/av3uq0xb13cxqu5geve0ws15970ers72.jpg" },
-    { id: "502", name: "Axioma Серия H Инвертор R32", brand: "Axioma", price: 32900, type: "Инверторный", img: "https://daichi.business/upload/iblock/7c8/fry4ctabd8tn9fq3i5ibtgutfvnovmfh/fzd2vdb5t7s35zyu7q2nwabq1zwpg376.jpg" }
+    { id: "106", name: "Axioma Серия H R32 ASX-H1R", brand: "Axioma", price: 23900, type: "Обычный", img: "https://daichi.business/upload/iblock/729/2yazrrf7llnrycwn7ijzdm3ouy7j3426/ba5f0cb6ed2ca05713043cbbffe9a69e.jpg" },
+    { id: "502", name: "Axioma Серия H Инвертор R32", brand: "Axioma", price: 32900, type: "Инверторный", img: "https://daichi.business/upload/iblock/b83/5q4sm9gtisizi3ofygnqfn3k1qrgwec7/92e82058c26e611f09bf4655866960ef.jpg" }
   ];
   // Полная автономная база SEO-решений по остеклению
   const windowCatalog = [
