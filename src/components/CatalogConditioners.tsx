@@ -99,7 +99,7 @@ export const conditioners: Conditioner[] = [
   { id: 216, name: "Electrolux Nordic EACS-HT/N3", brand: "Electrolux", type: "Обычный", smartHome: false, noise: "—", country: "КНР", image: "images/catalog/electrolux-nordic.jpg", variants: [
     { btu: 30000, area: 80, cooling: "8.8 кВт", heating: "9.2 кВт", price: 103221, oldPrice: 110990 },
   ] },
-  { id: 102, name: "Kentatsu Кумо KSGKU-HFRN1", brand: "Kentatsu", type: "Обычный", smartHome: false, noise: "—", country: "КНР", image: "/api/img-proxy?url=https://daichi.business/upload/iblock/7b2/c5j10n4adp10em9pt66k5j0y8nax98gx/942finr4uomtf9rvijzjbgcw1qcqedqn.jpg", variants: [
+  { id: 102, name: "Kentatsu Кумо KSGKU-HFRN1", brand: "Kentatsu", type: "Обычный", smartHome: false, noise: "—", country: "КНР", image: "images/catalog/kentants-kumo.jpg", variants: [
     { btu: 7000, area: 20, cooling: "2.34 кВт", heating: "2.34 кВт", price: 25890, oldPrice: 27090 },
     { btu: 9000, area: 25, cooling: "2.64 кВт", heating: "2.78 кВт", price: 28590, oldPrice: 29690 },
     { btu: 12000, area: 35, cooling: "3.52 кВт", heating: "3.72 кВт", price: 36890, oldPrice: 37990 },
