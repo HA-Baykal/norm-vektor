@@ -19,6 +19,12 @@ export interface OfficialSpecification {
   officialFeatures: string[];
   officialModelPhotos: string[];
 }
+function proxyIfDaichi(url: string): string {
+  if (url.startsWith("https://daichi.business/")) {
+    return "/api/img-proxy?url=" + url;
+  }
+  return url;
+}
 
 // 100% ТОЧНАЯ БАЗА ОФИЦИАЛЬНЫХ ФОТОГРАФИЙ С СЕРВЕРОВ РУСКЛИМАТ (rkcdn.ru) И ДАИЧИ (daichi.business)
 // Каждая модель привязана строго к своему уникальному ID из вашего каталога. Никаких чужих или придуманных фото!
@@ -455,7 +461,7 @@ export function getModelUrlSlug(item: Conditioner): string {
 export function getMainCoverPhoto(item: Conditioner): string {
   const exactPhotos = EXACT_OFFICIAL_PHOTOS_BY_ID[item.id];
   if (exactPhotos && exactPhotos.length > 0) {
-    return exactPhotos[0];
+    return proxyIfDaichi(exactPhotos[0]);
   }
   return item.image;
 }
@@ -466,12 +472,9 @@ export function getMainCoverPhoto(item: Conditioner): string {
  */
 export function getOfficialPhotosForModel(item: Conditioner): string[] {
   const exactPhotos = EXACT_OFFICIAL_PHOTOS_BY_ID[item.id];
-  
   if (exactPhotos && exactPhotos.length > 0) {
-    // Возвращаем строго только ваши официальные ссылки с Русклимата и Даичи (старое фото удалено)
-    return Array.from(new Set(exactPhotos));
+    return Array.from(new Set(exactPhotos.map(proxyIfDaichi)));
   }
-
   return [item.image];
 }
 
