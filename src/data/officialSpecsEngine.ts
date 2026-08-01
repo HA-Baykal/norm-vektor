@@ -182,9 +182,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-kanami-4.jpg"
 ],
   701: [ // Kentatsu Атама (Atama) (Обычный)
-    "https://daichi.business/upload/iblock/ee8/t7rexgtu91bnpnbfm31mgdysassd0pd6/vp9tk11z6erqnaf304ii24z0wdvys6qf.jpg",
-    "https://daichi.business/upload/iblock/1a5/guwm3fr1yb4mym3rt88e8vsul1zehhzr/1fv8v8ozhqvm8ftccct5xv10msjev5zl.jpg",
-    "https://daichi.business/upload/iblock/f03/opxnkgchqi8n8vop7dreko2rxwgp13cc/z99xb7l66sb779d2umlvdivmplt3bdkz.jpg"
+  "/images/catalog/kentatsu-atama.jpg",
+  "/images/catalog/kentatsu-atama-2.jpg",
+  "/images/catalog/kentatsu-atama-3.jpg",
+  "/images/catalog/kentatsu-atama-4.jpg"
   ],
   702: [ // Kentatsu Атама Инвертор (Atama Inverter) (Инверторный)
     "https://daichi.business/upload/iblock/cd7/bi1qr0x2a7e8igc71sb95xy8o9w8k92t/xid6fh9daibmwnse37a00spgsov8q6m3.jpg",
