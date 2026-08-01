@@ -342,9 +342,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/midea-mcd-4.jpg"
   ],
   604: [ // Midea кассетная MCD (On/Off, R410A) (Полупромышленный)
-    "https://daichi.business/upload/iblock/917/j4iyoqyh6vr8qktarcgdf6ia6un21rf7/21988923e1f21957e0ec855c5c2ceb53.jpg",
-    "https://daichi.business/upload/iblock/e70/n3jbgjw8adobrjknesqw8cknjzanduy7/8cccc24f632259619776f3f8b7bd3e71.jpg",
-    "https://daichi.business/upload/iblock/d7c/cc0iznnj9xe0uenuv2ptyqtsq7i0s27c/60a56cfeed5b76b4e25e25c30de0b39a.jpg"
+      "/images/catalog/midea-mcd-ne.jpg",
+  "/images/catalog/midea-mcd-ne-2.jpg",
+  "/images/catalog/midea-mcd-ne-3.jpg",
+  "/images/catalog/midea-mcd-ne-4.jpg"
   ],
 
   // === DAIKIN (ДАИЧИ) ===
