@@ -443,11 +443,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/e90e8f5a-6304-11ef-b8db-00505601218a/main_big.jpg"
   ],
   108: [ // Daichi Эверест R32 DA-EVQ1R (Обычный)
-    "https://daichi.business/upload/iblock/18b/tn0kc79pi43vbeepz83fr5dvlu5njrny/lh1e31gvep7i5vp79lh9ll3zugninmwf.jpg",
-    "https://daichi.business/upload/iblock/12a/hw83zr3h9hvvs472bh5p2n5i7i3vwyw2/9bsyb443nqv8zj3c434dtkeeplmiv559.jpg",
-    "https://daichi.business/upload/iblock/0f8/naesn2h2k7x1p7q9bth4vvfvtp4ugrxf/236loqq4jxz914yj3p9nja2qagb3zd7u.jpg",
-    "https://daichi.business/upload/iblock/4f3/r0ldp95e71rqdht71l3ycnlv7bzijiuu/5aqddf3fonvb892ld0ngh2ae12khixtj.jpg",
-    "https://daichi.business/upload/iblock/ff3/5jlv3uxeup10w5sfsn1icc0y6xt29z3j/ewjd2verzyg0hkhsc0gskz1lcvcwhlsu.jpg"
+  "/images/catalog/daichi-ever.jpg",
+  "/images/catalog/daichi-ever-2.jpg",
+  "/images/catalog/daichi-ever-3.jpg",
+  "/images/catalog/daichi-ever-4.jpg"
   ],
   501: [ // AURUS A DC AAI (Инверторный)
     "https://rkcdn.ru/products/80073bb2-4ab0-11f1-b8e2-00505601218a/main_big.jpg",
