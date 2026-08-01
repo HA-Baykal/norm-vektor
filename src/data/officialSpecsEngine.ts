@@ -200,8 +200,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-haruki-4.jpg"
   ],
   704: [ // Kentatsu Харуки Инвертор (Haruki Inverter)
-    "https://daichi.business/upload/iblock/35d/i8gppb9juz0c6w2dktcvrdhspglldprk/kvkrs86cnqxa0jbj59057wkr8wq85v3c.jpg",
-    "https://daichi.business/upload/iblock/677/372q9c74sdslr5lmj1dj73lagi3t823l/lc322esckmq85e8h6pn3u80rmryiculm.jpg"
+    "/images/catalog/kentatsu-haruki-inv.jpg",
+  "/images/catalog/kentatsu-haruki-inv-2.jpg",
+  "/images/catalog/kentatsu-haruki-inv-3.jpg",
+  "/images/catalog/kentatsu-haruki-inv-4.jpg"
   ],
   705: [ // Kentatsu Юки Инвертор (Yuki) (Инверторный)
     "https://daichi.business/upload/iblock/182/nlwu2e0gjuhcwusny3nz12za1v5jjky8/3hqat1am2vrzrm3lqhxydg1erhr3biy6.jpg",
