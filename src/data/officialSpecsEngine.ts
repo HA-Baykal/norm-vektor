@@ -410,27 +410,28 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
 
   // === BOSCH (ДАИЧИ) ===
   730: [ // Bosch Climate Line 2000 (Обычный)
-    "https://daichi.business/upload/iblock/6f2/2pn2gt1eprib2ko14euxtjcgxkimqy6s/55j8bc0p9aul52jzpp7xa0o0p3ujc8ik.jpg",
-    "https://daichi.business/upload/iblock/d0a/95bpp5pwkt8lpskrmgdc39ay11c68nyy/7c846ac603425e40e11c1379053cdfcd.jpg",
-    "https://daichi.business/upload/iblock/36b/3mgjv52klp0yl1sy80nfjpvxywyqb277/ed28564eed0bddf7a90deb6a7974a898.jpg",
-    "https://daichi.business/upload/iblock/f57/hlht1xa292krs4jtmcdkilmwro6hxx07/pd4kg7mm7jfjwpz43b24clr58hqp18ol.jpg"
+    "/images/catalog/bosh-2000.jpg",
+  "/images/catalog/bosh-2000-2.jpg",
+  "/images/catalog/bosh-2000-3.jpg",
+  "/images/catalog/bosh-2000-4.jpg"
   ],
   731: [ // Bosch Climate Line 5000 Инвертор (Инверторный)
-    "https://daichi.business/upload/iblock/653/v1z2i0rg7r2uwy1uh130b46n2stau7vo/65ad09a0d15c6d813071a62646dbf60c.jpg",
-    "https://daichi.business/upload/iblock/93e/v6ix82i57vi1l1fz2t8djq1k9r7dwutm/5c727caf5acf1279f3b80f948a81e5b1.jpg",
-    "https://daichi.business/upload/iblock/dd2/n8qfuodw4epuplwv1hbbhtnuxkx0un9c/7d2673b74fe9023f343a64415b7ab915.jpg",
-    "https://daichi.business/upload/iblock/998/20l5l63xmpw1kpw9hlq83yoxjwe5yk6y/bf53460dc8e17135ec9c0dfdd205df53.jpg"
+  "/images/catalog/bosh-line-5000.jpg",
+  "/images/catalog/bosh-line-5000-2.jpg",
+  "/images/catalog/bosh-line-5000-3.jpg",
+  "/images/catalog/bosh-line-5000-4.jpg"
   ],
   732: [ // Bosch Climate 5000 Инвертор (Инверторный)
-    "https://daichi.business/upload/iblock/653/v1z2i0rg7r2uwy1uh130b46n2stau7vo/65ad09a0d15c6d813071a62646dbf60c.jpg",
-    "https://daichi.business/upload/iblock/93e/v6ix82i57vi1l1fz2t8djq1k9r7dwutm/5c727caf5acf1279f3b80f948a81e5b1.jpg",
-    "https://daichi.business/upload/iblock/dd2/n8qfuodw4epuplwv1hbbhtnuxkx0un9c/7d2673b74fe9023f343a64415b7ab915.jpg"
+    "/images/catalog/bosh-cline-5000.jpg",
+  "/images/catalog/bosh-cline-5000-2.jpg",
+  "/images/catalog/bosh-cline-5000-3.jpg",
+  "/images/catalog/bosh-cline-5000-4.jpg"
   ],
   733: [ // Bosch Climate 6000i Инвертор (Инверторный)
-    "https://daichi.business/upload/iblock/32b/0lptf46vnmv7fxubjlaarcvwjtnohd7a/64cf767e224d4b0547533a32da4198f3.jpg",
-    "https://daichi.business/upload/iblock/d19/t87r4t5e0n0zt3dri8j1npqpej89glbe/fd3f3a8611fa09dd686841a2ee0c19da.jpg",
-    "https://daichi.business/upload/iblock/09e/s6u1bui4rraex9p1mk3u42isgxu2g12h/4e6c42bae9dd0079ebe738e21f8a7da5.jpg",
-    "https://daichi.business/upload/iblock/38c/dxlcagqqz5bsmym076srbxt0p8zsnri2/fc77ba75ac3ffffebf18db60a2fca5d4.jpg"
+     "/images/catalog/bosh-cline-6000.jpg",
+  "/images/catalog/bosh-cline-6000-2.jpg",
+  "/images/catalog/bosh-cline-6000-3.jpg",
+  "/images/catalog/bosh-cline-6000-4.jpg"
   ],
 
   // === TOSHIBA & DAICHI EVEREST & AURUS & AXIOMA ===
