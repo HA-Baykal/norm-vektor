@@ -459,14 +459,14 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/e1b35564-2294-11ef-b8d8-00505601218a/main_big.jpg"
   ],
   106: [ // Axioma Серия H R32 ASX-H1R (Обычный)
-    "https://daichi.business/upload/iblock/b84/heea2h8mlifzpcvd4y5zjbsmexwg1e1b/av3uq0xb13cxqu5geve0ws15970ers72.jpg",
-    "https://daichi.business/upload/iblock/2e6/l4aqql15fydo0i7wcb5w1lldq5n3ktev/l3jeww3080kotip6vdptvk86004tmxa0.jpg",
-    "https://daichi.business/upload/iblock/473/xxab3gpc1zj2wcex2ni8q57h0s51z9c3/9qrvgdlh11p0fnid2pppqkr6w4b4tdlt.jpg"
+    "/images/catalog/axioma-h.jpg",
+  "/images/catalog/axioma-h-2.jpg",
+  "/images/catalog/axioma-h-3.jpg"
   ],
   502: [ // Axioma Серия H Инвертор R32 (Инверторный)
-    "https://daichi.business/upload/iblock/7c8/fry4ctabd8tn9fq3i5ibtgutfvnovmfh/fzd2vdb5t7s35zyu7q2nwabq1zwpg376.jpg",
-    "https://daichi.business/upload/iblock/7d6/ys6a4l0o5dolhlcvh648qm805fx75n75/hxy2b3ulapy0hsquel7i5aiigycxnq26.jpg",
-    "https://daichi.business/upload/iblock/f42/8jtdqil9877cr3nlw81vkup51awdgsup/pvs6ana7h3xye9gykecptwbbdk02ezni.jpg"
+    "/images/catalog/axioma-h-inv.jpg",
+  "/images/catalog/axioma-h-inv-2.jpg",
+  "/images/catalog/axioma-h-inv-3.jpg"
   ]
 };
 
