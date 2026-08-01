@@ -188,10 +188,11 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-atama-4.jpg"
   ],
   702: [ // Kentatsu Атама Инвертор (Atama Inverter) (Инверторный)
-    "https://daichi.business/upload/iblock/cd7/bi1qr0x2a7e8igc71sb95xy8o9w8k92t/xid6fh9daibmwnse37a00spgsov8q6m3.jpg",
-    "https://daichi.business/upload/iblock/753/vrqfevfmw2vtm29or9widl3s7y4sn984/z3vsvpaf3yhgtiqdlu9t35sbhr888m1t.jpg",
-    "https://daichi.business/upload/iblock/957/af7hby0cpgo777x6eyqk8j8vz6fxvbc6/6383taq2sqhv305o2u6s05m7wymjeb8y.jpg",
-    "https://daichi.business/upload/iblock/9b0/fm8hnssjc1mc7p2ehnpp2ut0waownvgq/d4mbie20uanaloee3t7o8riy0ji9vj1v.jpg"
+    "/images/catalog/kentatsu-atama-ivertor.jpg",
+  "/images/catalog/kentatsu-atama-invertor-2.jpg",
+  "/images/catalog/kentatsu-atama-invertor-3.jpg",
+  "/images/catalog/kentatsu-atama-invertor-4.jpg"
+  ],
   ],
   703: [ // Kentatsu Харуки (Haruki) (Обычный)
     "https://daichi.business/upload/iblock/57b/38zsy200mt7iu0m3h8xgj4d20cubartk/fgm35i47w6bz5lfwjmluk2ylr6c4rfeh.jpg",
