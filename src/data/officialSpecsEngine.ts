@@ -231,10 +231,11 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-otari-inv-4.jpg"
   ],
   709: [ // Kentatsu Семпай Инвертор (Sempai) (Инверторный)
-    "https://daichi.business/upload/iblock/5f7/cq4etos1axlspiy21prliijcaknurk3i/pt627l1g4wvgg977c8zlb9z836ln48eu.jpg",
-    "https://daichi.business/upload/iblock/f86/q8ps9ypccyjzvy2y51gtm0w7gf2sf81a/g9fkedp7hv0773vrmd32l4oik1n2t5pd.jpg",
-    "https://daichi.business/upload/iblock/4ef/thfq4i58r5st8rn1c1w3sf22zmgs8uuw/cjd42icyovsgob3h7yrwa48zmw1vsp5b.jpg",
-    "https://daichi.business/upload/iblock/63a/6ucizrrwqalyeft0r2vcwd9y93740iqb/ym5xleyerpnqih9frn58wfa9jg9w81q2.jpg"
+     "/images/catalog/kentatsu-sempai-inv.jpg",
+  "/images/catalog/kentatsu-sempai-inv-2.jpg",
+  "/images/catalog/kentatsu-sempai-inv-3.jpg",
+  "/images/catalog/kentatsu-sempai-inv-4.jpg",
+  "/images/catalog/kentatsu-sempai-inv-5.jpg"
   ],
   710: [ // Kentatsu Омори Инвертор (Omori) (Инверторный)
     "https://daichi.business/upload/iblock/20d/bnrk0pfjyycxogd34r5f6ibeeycq1qdz/s3ocdcm1goojpudn0p7o3zt50137vz3z.jpg",
