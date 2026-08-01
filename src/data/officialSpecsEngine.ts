@@ -161,12 +161,11 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   ],
 
   // === KENTATSU (ДАИЧИ) ===
-  102: [ // Kentatsu Кумо KSGKU-HFRN1 (Обычный)
-    "https://daichi.business/upload/iblock/96c/bg2umx5kbfcb43hr78r1jxdeos2pc8s6/5qpuwnoyxh2zw46qmssf7tw9ukqxxj09.jpg",
-    "https://daichi.business/upload/iblock/80d/b9pfwwpvdb7fd6nyaz91ofm9sk042vze/oetqgnurwwfqa95trx5draaa74p82jol.jpg",
-    "https://daichi.business/upload/iblock/f6a/2pdee55c0nee0hs62br4y2rsn913y1kw/lkizgu2mfukos36ani5qbzmj1grzoy8h.jpg",
-    "https://daichi.business/upload/iblock/140/kq5lku4gqu9ofq5s6xtmkusc1cofq1qr/xjyiv8m9ti12exp6ckm6czqoxggckz3o.jpg"
-  ],
+  102: [
+  "/images/catalog/kentatsu-kumo.jpg",
+  "/images/catalog/kentatsu-kumo-2.jpg",
+  "/images/catalog/kentatsu-kumo-3.jpg"
+],
   107: [ // Kentatsu Канами R32 KSGA-HFRN1 (Обычный)
     "https://daichi.business/upload/iblock/691/j778l2zmqoo2epewkvpj7l17cc9mhl7z/79qkglryk4o5w3bimkgu6jzeoyotoo56.jpg",
     "https://daichi.business/upload/iblock/e14/b1fvmsb07txzfpg51mnuqv0rsgk1wf4d/vr2rmxhz15am53zoni5rdat27fb8mz6k.jpg",
