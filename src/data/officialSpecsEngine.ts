@@ -336,9 +336,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/midea-easy-6.jpg"
   ],
   603: [ // Midea кассетная MCD Inverter (R32) (Полупромышленный)
-    "https://daichi.business/upload/iblock/9f5/mh1xbdjyf8dp09n44pa8gllpj2qvyoa6/0f20438fc20d0288aced2d224525178d.jpg",
-    "https://daichi.business/upload/iblock/144/pfmf6vbokxwuuza7d9u8hcwofjszvbrh/d72b8edf8919c83fb10d210ddf90c71a.jpg",
-    "https://daichi.business/upload/iblock/9a1/rc95q7zbhw7tq6w3o9x5lzxqh0zzleot/c1b201e5ee60f4954bfa51a8f3efce7e.jpg"
+     "/images/catalog/midea-mcd.jpg",
+  "/images/catalog/midea-mcd-2.jpg",
+  "/images/catalog/midea-mcd-3.jpg",
+  "/images/catalog/midea-mcd-4.jpg"
   ],
   604: [ // Midea кассетная MCD (On/Off, R410A) (Полупромышленный)
     "https://daichi.business/upload/iblock/917/j4iyoqyh6vr8qktarcgdf6ia6un21rf7/21988923e1f21957e0ec855c5c2ceb53.jpg",
