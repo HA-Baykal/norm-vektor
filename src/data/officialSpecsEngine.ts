@@ -193,7 +193,6 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-atama-invertor-3.jpg",
   "/images/catalog/kentatsu-atama-invertor-4.jpg"
   ],
-  ],
   703: [ // Kentatsu Харуки (Haruki) (Обычный)
     "https://daichi.business/upload/iblock/57b/38zsy200mt7iu0m3h8xgj4d20cubartk/fgm35i47w6bz5lfwjmluk2ylr6c4rfeh.jpg",
     "https://daichi.business/upload/iblock/2f9/30lzhmqpa4msdyb3b8fyd0i9cnt6d1ca/se30q8rvf3d0k8jwwcjrh2u0p186oa59.jpg",
