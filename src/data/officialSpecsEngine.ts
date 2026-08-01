@@ -166,7 +166,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-kumo-2.jpg",
   "/images/catalog/kentatsu-kumo-3.jpg"
 ],
-  107: [
+  105: [
     "/images/catalog/kentatsu-kanami-wifi.jpg",
     "/images/catalog/kentatsu-kanami-wifi-2.jpg",
     "/images/catalog/kentatsu-kanami-wifi-3.jpg",
@@ -175,7 +175,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "/images/catalog/kentatsu-kanami-wifi-6.jpg"
   ],
   
-  105: [ // Kentatsu Канами Инвертор Wi-Fi (Инверторный)
+  107: [ // Kentatsu Канами Инвертор Wi-Fi (Инверторный)
     "https://daichi.business/upload/iblock/417/skvyuzkhep5hihzjhelaijjhfszyfh3a/c6r8j5av0in9ub33y6ws3050vhgx7was.jpg",
     "https://daichi.business/upload/iblock/911/ihpzb2izsoik1w4kuanwd7sehkoqowbk/8tsql66raaevfjipx936cp3x0w4a6cb1.jpg",
     "https://daichi.business/upload/iblock/f43/kcoeix2rj3snrcviyvppi2a3qp7ef8vx/zp5behwxe0y3k9ofb8yuxlbo8vtr3npg.jpg",
