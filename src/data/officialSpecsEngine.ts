@@ -304,12 +304,16 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/midea-brezel-4.jpg"
   ],
   724: [ // Midea Breezeless Wi-Fi (Инверторный)
-    "https://daichi.business/upload/iblock/71e/qao0l5cxixhqgl1znmbwjpvrho9ch0f9/tah8bpmg2q34vv90ntd29vtf47kh1m3f.jpg",
-    "https://daichi.business/upload/iblock/47a/xxeek27lv93xtuydqb9v7za99r3j7aea/ca3mss5311emogi14htlq9jf0s2q16d4.jpg",
-    "https://daichi.business/upload/iblock/a7a/phj2q6d74ftm4s7w5txft4qfmr9fpw43/n67mnzx1ynkmint2ytov3qy8oxx03thp.jpg",
-    "https://daichi.business/upload/iblock/0ae/c5x97gtmumbr2al1g6x33mmbcv0sptv7/qf2guizxpn9mdv6zi7zhqe3ixqb5ljq4.jpg",
-    "https://daichi.business/upload/iblock/802/q7uecw7o03h602e3si4hnx4sfo0iqowq/t0xw79q3iw3eqjzf5n392irfhyas1087.jpg",
-    "https://daichi.business/upload/iblock/a01/w43zcanj8t2a7je22sjkvybmu6k79sbp/nbdcbsb3keh65c2odvaj40dgeb1of4p3.jpg"
+     "/images/catalog/midea-brezel-wifi.jpg",
+     "/images/catalog/midea-brezel-wifi-2.jpg",
+     "/images/catalog/midea-brezel-wifi-3.jpg",
+    "/images/catalog/midea-brezel-wifi-4.jpg",
+    "/images/catalog/midea-brezel-wifi-5.jpg",
+    "/images/catalog/midea-brezel-wifi-6.jpg",
+    "/images/catalog/midea-brezel-wifi-7.jpg",
+    "/images/catalog/midea-brezel-wifi-8.jpg",
+    "/images/catalog/midea-brezel-wifi-9.jpg",
+  "/images/catalog/midea-brezel-wifi-10.jpg"
   ],
   725: [ // Midea ХитФорс (HeatForce) (Инверторный - 100% подтверждено!)
     "https://daichi.business/upload/iblock/849/hy624qiggawuk84n3442mftfoiallyhk/a9fa6gs2f3js8wtif3kil0vtnami558j.jpg",
