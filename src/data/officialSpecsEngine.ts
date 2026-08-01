@@ -250,7 +250,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-tamahi-inv-4.jpg"
   ],
   712: [ // Kentatsu Токачи Инвертор (Tokachi) (Инверторный)
-    "https://daichi.business/upload/iblock/63a/np8k2wxvwdtysrt5m16mp1zn5l30xvup/662mnq4x7csfd7r0xs9st1e7441zc2h2.jpg"
+   "/images/catalog/kentatsu-tokahi-inv.jpg"
   ],
   713: [ // Kentatsu Ичи Инвертор R32 (Ichi) (Инверторный)
     "https://daichi.business/upload/iblock/629/47fh7nuvm89kjevtvus0veigy97ak817/1472051cafa413bc982fbc6f387cb4c6.jpg",
