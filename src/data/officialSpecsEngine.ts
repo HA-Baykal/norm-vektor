@@ -285,9 +285,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://daichi.business/upload/iblock/c16/vfuk236x52tx6gw932zc5illowq0b9g2/4d10325b401d67de6b11dfe8ee53ccf4.jpg"
   ],
   721: [ // Midea Персона (Persona) (Обычный)
-    "https://daichi.business/upload/iblock/8de/sw0yaovmpbbnsu4o07nvkabzsnaf2apd/uke0gs7af5e14gf13pwx45d1mr55hclg.jpg",
-    "https://daichi.business/upload/iblock/229/gcpmlosh4pz4kj0zz2m3721b5hixct03/2iyx9lql0y79err2rfwuwx6w9371g9ki.jpg",
-    "https://daichi.business/upload/iblock/9a9/qhd6d419yh2pjvwv6v11wk2f1442gzo4/52t8im4defrivlf4lv7xxbcfd978v3h2.jpg"
+    "/images/catalog/midea-persona.jpg",
+  "/images/catalog/midea-persona-2.jpg",
+  "/images/catalog/midea-persona-3.jpg",
+  "/images/catalog/midea-persona-4.jpg"
   ],
   722: [ // Midea Персона Инвертор Wi-Fi (Persona) (Инверторный)
     "https://daichi.business/upload/iblock/c20/8y6cdcyh37erhgwtkqchci26g3eg84qo/nms1q5nx2cwgs2z8sd91x89mm5w4xepc.jpg",
