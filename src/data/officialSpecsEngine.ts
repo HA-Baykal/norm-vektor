@@ -212,11 +212,11 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-yuki-inv-4.jpg"
   ],
   706: [ // Kentatsu Тиба (Tiba) (Обычный)
-    "https://daichi.business/upload/iblock/7b3/df23o7hj6c0h8t1kq06gi5e10f2ah7bj/5zmzzsbkyns0vccq040tffxxzfl4w7sb.jpg",
-    "https://daichi.business/upload/iblock/982/qho63m2lm9uv4b26wpuvwruyqyjnsb4o/1zhjf20krhp5k9940mk5dimbi5fcbawt.jpg",
-    "https://daichi.business/upload/iblock/943/qw1eaxbjntaya3sg6zb8itsbl1y5ikzh/yomyn4ru3f3k1lajdi2zgucrdfpt1xtb.jpg",
-    "https://daichi.business/upload/iblock/9fd/jzhrbsocc3w279qwoqazzxwymvr9msgd/x0bzf317cge5o9os7muvp9777sfzzwtq.jpg",
-    "https://daichi.business/upload/iblock/c29/4jk4bvalr462xl66va21xnziatw12un2/kvqd9oni1ybwn4usr2hhkelh89acftl6.jpg"
+    "/images/catalog/kentatsu-tiba.jpg",
+  "/images/catalog/kentatsu-tiba-2.jpg",
+  "/images/catalog/kentatsu-tiba-3.jpg",
+  "/images/catalog/kentatsu-tiba-4.jpg",
+  "/images/catalog/kentatsu-tiba-5.jpg"
   ],
   707: [ // Kentatsu Тиба Инвертор (Tiba Inverter) (Инверторный)
     "https://daichi.business/upload/iblock/a78/ytazgd597v41ilczdrmrrv4syrpuxx8o/d8l5w36v6cbhzzfe03w665m96vml3vml.jpg",
