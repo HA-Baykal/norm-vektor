@@ -175,13 +175,12 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "/images/catalog/kentatsu-kanami-wifi-6.jpg"
   ],
   
-  107: [ // Kentatsu Канами Инвертор Wi-Fi (Инверторный)
-    "https://daichi.business/upload/iblock/417/skvyuzkhep5hihzjhelaijjhfszyfh3a/c6r8j5av0in9ub33y6ws3050vhgx7was.jpg",
-    "https://daichi.business/upload/iblock/911/ihpzb2izsoik1w4kuanwd7sehkoqowbk/8tsql66raaevfjipx936cp3x0w4a6cb1.jpg",
-    "https://daichi.business/upload/iblock/f43/kcoeix2rj3snrcviyvppi2a3qp7ef8vx/zp5behwxe0y3k9ofb8yuxlbo8vtr3npg.jpg",
-    "https://daichi.business/upload/iblock/264/51jxae1oxdsmmjlge1jhj407raczdush/b3zkv5r0nmodsotp1zgumboj68w0w47w.jpg",
-    "https://daichi.business/upload/iblock/bcc/yhfuv15rwhr1lubnrse3jzprjldpdpn1/8w5hxy3661eea52pdmdib09f1jxqj4oy.jpg"
-  ],
+  107:  [
+  "/images/catalog/kentatsu-kanami.jpg",
+  "/images/catalog/kentatsu-kanami-2.jpg",
+  "/images/catalog/kentatsu-kanami-3.jpg",
+  "/images/catalog/kentatsu-kanami-4.jpg"
+],
   701: [ // Kentatsu Атама (Atama) (Обычный)
     "https://daichi.business/upload/iblock/ee8/t7rexgtu91bnpnbfm31mgdysassd0pd6/vp9tk11z6erqnaf304ii24z0wdvys6qf.jpg",
     "https://daichi.business/upload/iblock/1a5/guwm3fr1yb4mym3rt88e8vsul1zehhzr/1fv8v8ozhqvm8ftccct5xv10msjev5zl.jpg",
