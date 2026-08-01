@@ -244,9 +244,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-omori-inv-4.jpg"
   ],
   711: [ // Kentatsu Тамаши Инвертор (Tamashi) (Инверторный)
-    "https://daichi.business/upload/iblock/22c/8xen9zd3mi65cbjemfhrhumiwseerhwh/74tssw48ny4jx3nb0jdfn64u7j50fr98.jpg",
-    "https://daichi.business/upload/iblock/a74/nag0g26u1md0tt1usrl3sfn138zd6yg2/3frkrif6bsetmkm7nex59l820bj64xhi.jpg",
-    "https://daichi.business/upload/iblock/2ef/tjl9nl10bgevsolaak5icrtqqbe20gmq/5zb56o1ptfl3qq5tqe06cvnxtwepunek.jpg"
+    "/images/catalog/kentatsu-tamahi-inv.jpg",
+  "/images/catalog/kentatsu-tamahi-inv-2.jpg",
+  "/images/catalog/kentatsu-tamahi-inv-3.jpg",
+  "/images/catalog/kentatsu-tamahi-inv-4.jpg"
   ],
   712: [ // Kentatsu Токачи Инвертор (Tokachi) (Инверторный)
     "https://daichi.business/upload/iblock/63a/np8k2wxvwdtysrt5m16mp1zn5l30xvup/662mnq4x7csfd7r0xs9st1e7441zc2h2.jpg"
