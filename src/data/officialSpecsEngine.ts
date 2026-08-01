@@ -166,11 +166,15 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-kumo-2.jpg",
   "/images/catalog/kentatsu-kumo-3.jpg"
 ],
-  107: [ // Kentatsu Канами R32 KSGA-HFRN1 (Обычный)
-    "https://daichi.business/upload/iblock/691/j778l2zmqoo2epewkvpj7l17cc9mhl7z/79qkglryk4o5w3bimkgu6jzeoyotoo56.jpg",
-    "https://daichi.business/upload/iblock/e14/b1fvmsb07txzfpg51mnuqv0rsgk1wf4d/vr2rmxhz15am53zoni5rdat27fb8mz6k.jpg",
-    "https://daichi.business/upload/iblock/f32/202lj42omor3ka2ll3libvm6ve8x2p9i/95lp1bds0zqqxvh0l5jfzw51n61ou671.jpg"
+  107: [
+    "/images/catalog/kentatsu-kanami-wifi.jpg",
+    "/images/catalog/kentatsu-kanami-wifi-2.jpg",
+    "/images/catalog/kentatsu-kanami-wifi-3.jpg",
+    "/images/catalog/kentatsu-kanami-wifi-4.jpg",
+    "/images/catalog/kentatsu-kanami-wifi-5.jpg",
+    "/images/catalog/kentatsu-kanami-wifi-6.jpg"
   ],
+  
   105: [ // Kentatsu Канами Инвертор Wi-Fi (Инверторный)
     "https://daichi.business/upload/iblock/417/skvyuzkhep5hihzjhelaijjhfszyfh3a/c6r8j5av0in9ub33y6ws3050vhgx7was.jpg",
     "https://daichi.business/upload/iblock/911/ihpzb2izsoik1w4kuanwd7sehkoqowbk/8tsql66raaevfjipx936cp3x0w4a6cb1.jpg",
