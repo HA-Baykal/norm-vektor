@@ -206,9 +206,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-haruki-inv-4.jpg"
   ],
   705: [ // Kentatsu Юки Инвертор (Yuki) (Инверторный)
-    "https://daichi.business/upload/iblock/182/nlwu2e0gjuhcwusny3nz12za1v5jjky8/3hqat1am2vrzrm3lqhxydg1erhr3biy6.jpg",
-    "https://daichi.business/upload/iblock/f64/a1x8x0114619g9f7pp600f9p30tzbi1y/8it4w1l2a7gpzvei8pbmo2cpcz72dmx4.jpg",
-    "https://daichi.business/upload/iblock/cef/xrotlcp3tuqrumpo52ujkzcobg3vk3it/q305n6q7lma5c90o1xm927j6ptx8lq42.jpg"
+    "/images/catalog/kentatsu-yuki-inv.jpg",
+  "/images/catalog/kentatsu-yuki-inv-2.jpg",
+  "/images/catalog/kentatsu-yuki-inv-3.jpg",
+  "/images/catalog/kentatsu-yuki-inv-4.jpg"
   ],
   706: [ // Kentatsu Тиба (Tiba) (Обычный)
     "https://daichi.business/upload/iblock/7b3/df23o7hj6c0h8t1kq06gi5e10f2ah7bj/5zmzzsbkyns0vccq040tffxxzfl4w7sb.jpg",
