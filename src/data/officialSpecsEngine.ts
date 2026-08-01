@@ -225,9 +225,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-tiba-inv-4.jpg"
   ],
   708: [ // Kentatsu Отари Инвертор (Otari) (Инверторный)
-    "https://daichi.business/upload/iblock/bd1/btldz2xh2db6xcmfpkv2ky4ymd9dpepo/2n4j4slqymgf3f9a9vtlzvjn2snageuz.jpg",
-    "https://daichi.business/upload/iblock/934/wtma1pjt8n4iearbuzqdr06ldbtunfxr/5b727c29443679d7b994ede0a4f0174b.jpg",
-    "https://daichi.business/upload/iblock/ec4/ran96fk56f0qlzbc40f3k95rgbq0sj1l/fvs84zoacyoes4etcpj141evhzd4ucs9.jpg"
+     "/images/catalog/kentatsu-otari-inv.jpg",
+  "/images/catalog/kentatsu-otari-inv-2.jpg",
+  "/images/catalog/kentatsu-otari-inv-3.jpg",
+  "/images/catalog/kentatsu-otari-inv-4.jpg"
   ],
   709: [ // Kentatsu Семпай Инвертор (Sempai) (Инверторный)
     "https://daichi.business/upload/iblock/5f7/cq4etos1axlspiy21prliijcaknurk3i/pt627l1g4wvgg977c8zlb9z836ln48eu.jpg",
