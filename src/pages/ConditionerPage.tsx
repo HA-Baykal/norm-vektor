@@ -27,6 +27,7 @@ export default function ConditionerPage() {
   const [selectedBtu, setSelectedBtu] = useState(initialBtu);
   const [withInstall, setWithInstall] = useState(false);
   const [activeImageIdx, setActiveImageIdx] = useState(0);
+  const [zoomOpen, setZoomOpen] = useState(false);
 
   // Синхронизируем состояние при смене URL или переходе между моделями
   useEffect(() => {
@@ -192,7 +193,7 @@ export default function ConditionerPage() {
             
             {/* Левая колонка: Компактное фото модели с официальных сайтов (не перекрывает характеристики) */}
             <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-24">
-              <div className="relative max-w-sm mx-auto h-64 sm:h-72 rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-lg p-4 flex items-center justify-center">
+              <button type="button" onClick={() => setZoomOpen(true)} className="relative max-w-sm mx-auto w-full h-64 sm:h-72 rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-lg p-4 flex items-center justify-center cursor-zoom-in">
                 <div className="absolute left-3 top-3 z-10 flex flex-col gap-1.5">
                   {item.badge && (
                     <span className="rounded-full bg-[#ff6b35] px-3 py-1 text-[11px] font-black text-white shadow-sm w-fit">
@@ -216,7 +217,8 @@ export default function ConditionerPage() {
                   className="w-full h-full object-contain transition duration-300"
                   loading="eager"
                 />
-              </div>
+                <span className="absolute bottom-2 right-2 z-20 rounded-lg bg-black/50 px-2 py-1 text-[10px] text-white">🔍 Увеличить</span>
+              </button>
 
               {/* Миниатюры официальных ракурсов модели */}
               {allImages.length > 1 && (
@@ -540,12 +542,44 @@ export default function ConditionerPage() {
 
       <FAQSection />
 
-      <QuickBookingModal
+            <QuickBookingModal
         open={bookingOpen}
         onClose={() => setBookingOpen(false)}
         serviceName={`Заказ сплит-системы: ${item.brand} ${item.name}`}
         calcDetails={`Выбранная мощность: ${selectedBtu} BTU (до ${variant.area} м²), Стандартный монтаж: ${withInstall ? "Да (+18 000 ₽)" : "Нет"}, Итог: ${formatRub(totalPrice)}`}
       />
+
+      {zoomOpen && allImages.length > 0 && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90" onClick={() => setZoomOpen(false)}>
+          <button className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-2xl text-white hover:bg-white/20">✕</button>
+
+          {allImages.length > 1 && (
+            <>
+              <button
+                onClick={(e) => { e.stopPropagation(); setActiveImageIdx((activeImageIdx - 1 + allImages.length) % allImages.length); }}
+                className="absolute left-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-3xl text-white hover:bg-white/20"
+              >‹</button>
+              <button
+                onClick={(e) => { e.stopPropagation(); setActiveImageIdx((activeImageIdx + 1) % allImages.length); }}
+                className="absolute right-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-3xl text-white hover:bg-white/20"
+              >›</button>
+            </>
+          )}
+
+          <img
+            src={allImages[activeImageIdx]}
+            alt={`${item.brand} ${item.name}`}
+            className="max-h-[90vh] max-w-[95vw] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {allImages.length > 1 && (
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white">
+              {activeImageIdx + 1} / {allImages.length}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
