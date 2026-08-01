@@ -328,9 +328,12 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/midea-gaia-4.jpg"
   ],
   727: [ // Midea Изи Инвертор (Easy Inverter) (Инверторный)
-    "https://daichi.business/upload/iblock/0bd/6srwuc75bh2v76shtfllx87kwinxbrlh/2ncy0wxu52r3b5g0yzs5f32093tend2n.jpg",
-    "https://daichi.business/upload/iblock/17e/izo1uzdken14b3suwlfbs0ud4idmcem9/s8egk1vlcqxliuwzsid31qcnuub8c8ay.jpg",
-    "https://daichi.business/upload/iblock/168/7nfa3dr3hyc2fhohjca4te2f6z97vgrn/9rm5x9teyvm2dfjsamtu328sm20x1y0r.jpg"
+    "/images/catalog/midea-easy.jpg",
+  "/images/catalog/midea-easy-2.jpg",
+  "/images/catalog/midea-easy-3.jpg",
+    "/images/catalog/midea-easy-4.jpg",
+    "/images/catalog/midea-easy-5.jpg",
+  "/images/catalog/midea-easy-6.jpg"
   ],
   603: [ // Midea кассетная MCD Inverter (R32) (Полупромышленный)
     "https://daichi.business/upload/iblock/9f5/mh1xbdjyf8dp09n44pa8gllpj2qvyoa6/0f20438fc20d0288aced2d224525178d.jpg",
