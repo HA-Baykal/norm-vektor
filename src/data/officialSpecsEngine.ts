@@ -322,9 +322,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/midea-force-4.jpg"
   ],
   726: [ // Midea Гайа (Gaia) (Инверторный)
-    "https://daichi.business/upload/iblock/84f/ujkvgz3xq9zcfuuy4e7f1or1ramu3v0c/j3vyj3tlqrvu7gywlb87ic3q08aai9x9.png",
-    "https://daichi.business/upload/iblock/fa0/7w4fkcg1zva4lmege2nxlxv0jzo12h68/684xlf109bgeu6lh0srlyzekoa175uvx.jpg",
-    "https://daichi.business/upload/iblock/544/z763aonkhqtrm0iqbaml36l23ro8xd2k/4p80do3wzo372vsztsjkcyh21j21ydz4.png"
+   "/images/catalog/midea-gaia.jpg",
+  "/images/catalog/midea-gaia-2.jpg",
+  "/images/catalog/midea-gaia-3.jpg",
+  "/images/catalog/midea-gaia-4.jpg"
   ],
   727: [ // Midea Изи Инвертор (Easy Inverter) (Инверторный)
     "https://daichi.business/upload/iblock/0bd/6srwuc75bh2v76shtfllx87kwinxbrlh/2ncy0wxu52r3b5g0yzs5f32093tend2n.jpg",
