@@ -263,9 +263,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://daichi.business/upload/iblock/81b/div4s40uwrcmeiq6s1mynnsm60px4yrk/mv1mrsgh9r6pb18uprgghpio9hclpfgb.jpg"
   ],
   602: [ // Kentatsu кассетная KSVT / KSVG (On/Off) (Полупромышленный)
-    "https://daichi.business/upload/iblock/3a2/9iy11ffuroji91vylb0nqsjnpehio98q/2fcvtlh0tdui4hrr3vayrqqxv567oi3t.jpg",
-    "https://daichi.business/upload/iblock/2f5/lux9o35gg1wo52d2emwjq6rp1uhk51ba/0x1l7t9aomeewr2l1onjhkvvpnw3ayb3.jpg",
-    "https://daichi.business/upload/iblock/f6e/0m5j9l9vwdett4ybtc9560ncni5jk4k9/hg3pf770hgn3hhnwdzp1neh61tu0b8h0.jpg"
+    "/images/catalog/kentatsu-ksvt.jpg",
+  "/images/catalog/kentatsu-ksvt-2.jpg",
+  "/images/catalog/kentatsu-ksvt-3.jpg",
+  "/images/catalog/kentatsu-ksvt-4.jpg"
   ],
 
   // === MIDEA (ДАИЧИ) ===
