@@ -298,10 +298,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/midea-persona-inv-5.jpg"
   ],
   723: [ // Midea Breezeless E (Инверторный)
-    "https://daichi.business/upload/iblock/89a/im8aabeni1x8kr5nuun7tzf8go49k9tx/l0l0me23jov1jctumuj4d43o21ug99xh.jpg",
-    "https://daichi.business/upload/iblock/721/1ncub8tbezb4dzh5kzduolw6gbz2ts6v/8e1q3ey6gfpnp9mvyop5t5u3zit1tjyc.jpg",
-    "https://daichi.business/upload/iblock/eaa/dse7f9ublgeteauimdcdjzbo5yztqynk/4sh8j4pd4jdhum7zxoqeqxgaatxq28y3.jpg",
-    "https://daichi.business/upload/iblock/bba/p73plvit7yrgr6lt0ammewiigrkw0gsc/2dd5jw0qiw1eblt84cstzfhz0l5o7xli.jpg"
+    "/images/catalog/midea-brezel.jpg",
+  "/images/catalog/midea-brezel-2.jpg",
+  "/images/catalog/midea-brezel-3.jpg",
+  "/images/catalog/midea-brezel-4.jpg"
   ],
   724: [ // Midea Breezeless Wi-Fi (Инверторный)
     "https://daichi.business/upload/iblock/71e/qao0l5cxixhqgl1znmbwjpvrho9ch0f9/tah8bpmg2q34vv90ntd29vtf47kh1m3f.jpg",
