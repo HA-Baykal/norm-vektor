@@ -316,9 +316,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/midea-brezel-wifi-10.jpg"
   ],
   725: [ // Midea ХитФорс (HeatForce) (Инверторный - 100% подтверждено!)
-    "https://daichi.business/upload/iblock/849/hy624qiggawuk84n3442mftfoiallyhk/a9fa6gs2f3js8wtif3kil0vtnami558j.jpg",
-    "https://daichi.business/upload/iblock/4d8/w976d16680perp8d6g6hwic2rxrm0bq5/yxr20hx5zpxwlqmx5twvhfh4n062dr34.jpg",
-    "https://daichi.business/upload/iblock/18a/bo9o92z1ynps5iyjlcn603i559gxjb6w/ifnn25f8ycqq2s2ox16dx2wljx7d2wvs.jpg"
+   "/images/catalog/midea-force.jpg",
+  "/images/catalog/midea-force-2.jpg",
+  "/images/catalog/midea-force-3.jpg",
+  "/images/catalog/midea-force-4.jpg"
   ],
   726: [ // Midea Гайа (Gaia) (Инверторный)
     "https://daichi.business/upload/iblock/84f/ujkvgz3xq9zcfuuy4e7f1or1ramu3v0c/j3vyj3tlqrvu7gywlb87ic3q08aai9x9.png",
