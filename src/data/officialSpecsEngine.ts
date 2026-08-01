@@ -188,7 +188,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/kentatsu-atama-4.jpg"
   ],
   702: [ // Kentatsu Атама Инвертор (Atama Inverter) (Инверторный)
-    "/images/catalog/kentatsu-atama-ivertor.jpg",
+    "/images/catalog/kentatsu-atama-invertor.jpg",
   "/images/catalog/kentatsu-atama-invertor-2.jpg",
   "/images/catalog/kentatsu-atama-invertor-3.jpg",
   "/images/catalog/kentatsu-atama-invertor-4.jpg"
