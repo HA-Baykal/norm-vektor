@@ -291,11 +291,11 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   "/images/catalog/midea-persona-4.jpg"
   ],
   722: [ // Midea Персона Инвертор Wi-Fi (Persona) (Инверторный)
-    "https://daichi.business/upload/iblock/c20/8y6cdcyh37erhgwtkqchci26g3eg84qo/nms1q5nx2cwgs2z8sd91x89mm5w4xepc.jpg",
-    "https://daichi.business/upload/iblock/de5/1cf506p02gh4ufrdtm5k9303rtxluirz/viu90tk2gxnduzflk5lgjv061jseie05.jpg",
-    "https://daichi.business/upload/iblock/615/l6th2vx5e74q8vlskv16dwan4z4x2xz2/mr2y2sxs3n2c3vnxwee33k3ie7mt8t3w.jpg",
-    "https://daichi.business/upload/iblock/c7b/62jxmku2hguewrod7j15fvhcdne571n6/56c4bn64x34war8g9izc1on1gfv749qq.jpg",
-    "https://daichi.business/upload/iblock/7ce/da8c1ghngkstpyyi6c16s6u2ssndttcu/l2u16seedcc7d0kinyn4qg7rb5yohlly.jpg"
+    "/images/catalog/midea-persona-inv.jpg",
+  "/images/catalog/midea-persona-inv-2.jpg",
+  "/images/catalog/midea-persona-inv-3.jpg",
+  "/images/catalog/midea-persona-inv-4.jpg",
+  "/images/catalog/midea-persona-inv-5.jpg"
   ],
   723: [ // Midea Breezeless E (Инверторный)
     "https://daichi.business/upload/iblock/89a/im8aabeni1x8kr5nuun7tzf8go49k9tx/l0l0me23jov1jctumuj4d43o21ug99xh.jpg",
