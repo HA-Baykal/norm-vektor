@@ -100,7 +100,7 @@ export default function AC() {
                 Качество монтажа важнее марки кондиционера. Неправильная установка сокращает срок службы компрессора в 2–3 раза. Мы выполняем монтаж строго по технологии производителей:
               </p>
               <ul className="space-y-2 text-slate-600 mb-6">
-                /*<li className="flex items-start gap-2"><span className="text-emerald-500 font-bold">✓</span> <strong>Вакуумирование фреоновой магистрали</strong> — обязательный этап. Удаляем влагу и воздух из трассы, предотвращаем гидроудар и коррозию компрессора</li>*/
+                <li className="flex items-start gap-2"><span className="text-emerald-500 font-bold">✓</span> <strong>Вакуумирование фреоновой магистрали</strong> — обязательный этап. Удаляем влагу и воздух из трассы, предотвращаем гидроудар и коррозию компрессора</li>
                 <li className="flex items-start gap-2"><span className="text-emerald-500 font-bold">✓</span> Медная трасса нужного диаметра, без перегибов и деформаций</li>
                 <li className="flex items-start gap-2"><span className="text-emerald-500 font-bold">✓</span> Теплоизоляция магистрали без разрывов — предотвращаем потери холода и конденсат</li>
                 <li className="flex items-start gap-2"><span className="text-emerald-500 font-bold">✓</span> Дренажная линия с правильным уклоном — вода уходит самотёком, без застоев</li>
