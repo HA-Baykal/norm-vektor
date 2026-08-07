@@ -6,18 +6,17 @@ const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITH
 type Category = "all" | "windows" | "conditioners" | "ventilation" | "drilling";
 type PortfolioItem = { category: Exclude<Category, "all">; path: string; title: string; address: string; date: string; text: string; };
 const portfolioItems: PortfolioItem[] = [
-  { category: "windows", path: "images/windows/window-1.jpg", title: "Тёплое остекление лоджии 6м", address: "Иркутск, мкр Солнечный, ул. Байкальская 250", date: "Июнь 2025", text: "Была холодная лоджия. VEKA Softline 70 + Solar, утеплили и отделали под ключ. Теперь кабинет, зимой +22°." },
-  { category: "windows", path: "images/windows/window-2.jpg", title: "Коттедж 180м² — 22 окна", address: "Хомутово, КП Хрустальный", date: "Май 2025", text: "Дом из газобетона. VEKA 70 золотой дуб, пароизоляция по ГОСТу за 7 дней." },
-  { category: "windows", path: "images/windows/window-3.jpg", title: "Замена 3 окон в панельке", address: "Иркутск, Первомайский 75", date: "Апрель 2025", text: "Деревянные текли. VEKA + MACO, монтаж за 1 день с уборкой." },
-  { category: "conditioners", path: "images/conditioners/ac-1.jpg", title: "2 кондиционера в 2-комнатной", address: "Иркутск, Лермонтова 78", date: "Июль 2025", text: "09+12 на 50м², трасса 7м, вакуумирование, запуск за 4 часа." },
-  { category: "conditioners", path: "images/conditioners/ac-2.jpg", title: "Кассетный Ballu в офисе 80м²", address: "Ангарск, 182 квартал", date: "Июнь 2025", text: "Кассетник 36 BTU в Армстронг, тихо на весь офис." },
-  { category: "conditioners", path: "images/conditioners/ac-3.jpg", title: "Инвертор в спальне 18м²", address: "Шелехов, 3 мкр 25", date: "Май 2025", text: "Electrolux 07, 22 дБ — спим с закрытыми окнами." },
-  { category: "ventilation", path: "images/ventilation/vent-1.jpg", title: "Бризер Тион 4S в детской", address: "Иркутск, ЖК Символ", date: "Март 2025", text: "На дорогу окна, душно. Тион с HEPA и подогревом — свежий воздух." },
+  { category: "windows", path: "images/windows/window-1.jpg", title: "Тёплое остекление лоджии", address: "Иркутск, мкр Солнечный, ул. Байкальская 250", date: "Июнь 2025", text: "Была холодная лоджия. VEKA Softline 70 + Solar, утеплили и отделали под ключ. Теперь кабинет, зимой +22°." },
+  { category: "windows", path: "images/windows/window-2.jpg", title: "Окна под ключ-весь дом", address: "Иркутск - Новокшонова 25", date: "Май 2024", text: "Дом из бруса. VEKA WHS 60, пароизоляция по ГОСТу. откосы. за 2 дня." },
+  { category: "windows", path: "images/windows/window-3.jpg", title: "Установка 2 окон и входная дверь в беседку", address: "Иркутск, Байкальский тракт - Роял Парк", date: "Апрель 2025", text: "Черный рал(9005)  VEKA + MACO, монтаж за 1 день с уборкой." },
+  { category: "conditioners", path: "images/conditioners/ac-1.jpg", title: "2 кондиционера в 2-комнатной", address: "Иркутск, Багратиона 46/6", date: "Июль 2026", text: "09BTU+12BTU на 50м², трасса 7м, вакуумирование, запуск за 6 часов." },
+  { category: "conditioners", path: "images/conditioners/ac-2.jpg", title: "Кассетный Ballu в офисе 80м²", address: "Ангарск, 182 квартал", date: "Июнь 2026", text: "Кассетник 36 BTU в Армстронг, тихо на весь офис." },
+  { category: "conditioners", path: "images/conditioners/ac-3.jpg", title: "Чистка и обслуживание кондиционера²", address: "Шелехов, 3 мкр 25", date: "Май 2025", text: "Electrolux 07." },
+  { category: "ventilation", path: "images/ventilation/vent-1.jpg", title: "Приточно вытяжная вентиляция", address: "Иркутск, ЖК Сити Парк", date: "Июнь 2026", text: "Приточно вытяжная вентиляция по всей квартире + 2 прибора Vakio - Экономия на отоплении, проветривание без потери тепла." },
   { category: "ventilation", path: "images/ventilation/vent-4.jpg", title: "Вентиляция кафе 120м²", address: "Иркутск, К. Маркса 40", date: "Февраль 2025", text: "Приточно-вытяжная с рекуперацией, спрятали за потолком." },
-  { category: "ventilation", path: "images/ventilation/vent-2.jpg", title: "2 Vakio в доме", address: "Грановщина, Заречная", date: "Апрель 2025", text: "Экономия на отоплении, проветривание без потери тепла." },
   { category: "drilling", path: "images/drilling/drill-1.jpg", title: "Отверстие 132мм под бризер", address: "Иркутск, Радужный", date: "Июнь 2025", text: "Сухое 132мм в монолите 350мм с пылесосом — ни пылинки." },
-  { category: "drilling", path: "images/drilling/drill-2.jpg", title: "Отверстие 52мм под трассу", address: "Молодежный, ЖК Луговое", date: "Май 2025", text: "Безударное под кондиционер за 20 мин, стена целая." },
-  { category: "drilling", path: "images/drilling/drill-3.jpg", title: "Проход 250мм под вытяжку", address: "Иркутск, ТРЦ Карамель", date: "Апрель 2025", text: "Мокрое 250мм в железобетоне 300мм за час." },
+  { category: "drilling", path: "images/drilling/drill-2.jpg", title: "Отверстие 132мм под вытяжку", address: "Тункинская долина - отель", date: "Май 2026", text: "сухое под вентиляцию за 20 мин, стена целая." },
+  { category: "drilling", path: "images/drilling/drill-3.jpg", title: "Проход 200мм под вытяжку", address: "Иркутск, Карла Либнехта 202", date: "Апрель 2026", text: "Мокрое 250мм в железобетоне 200мм за час." },
 ];
 const filters: { key: Category; label: string }[] = [
   { key: "all", label: "Все работы" },
