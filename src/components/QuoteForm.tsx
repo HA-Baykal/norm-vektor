@@ -163,16 +163,22 @@ export default function QuoteForm({
           )}
         </div>
 
-        <button
+          <button
           type="submit"
           className="w-full px-4 py-3.5 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black transition shadow-lg shadow-orange-500/20 text-sm"
         >
           Получить консультацию
         </button>
+
+        <a
+          href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#1a3a5c] hover:bg-[#122943] text-white font-bold transition text-sm border border-transparent"
+        >
+          <span className="w-6 h-6 rounded bg-white text-[#1a3a5c] grid place-items-center text-[10px] font-black">MAX</span>
+          Написать в MAX — быстрее, чем ждать звонка
+        </a>
         <p className="text-xs text-slate-500 dark:text-slate-500 text-center">
-          Вводите 10 цифр номера (без +7)
+          Не любите звонки? Пишите, отвечаем за 5 минут
         </p>
-      </div>
-    </form>
-  );
-}
