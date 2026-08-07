@@ -13,11 +13,12 @@ const navItems = [
   { to: "/kondicionery", label: "Кондиционеры" },
   { to: "/ventilyaciya", label: "Вентиляция" },
   { to: "/almaznoe-burenie", label: "Алмазное бурение" },
-     { to: "/baza-znaniy", label: "База знаний" },
+  { to: "/baza-znaniy", label: "База знаний" },
   { to: "/standarty", label: "Стандарты Монтажа" },
-
   { to: "/kontakty", label: "Контакты" },
 ];
+
+const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
 
 export default function Header({ theme, toggleTheme }: HeaderProps) {
   const [open, setOpen] = useState(false);
@@ -104,6 +105,17 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
               )}
             </button>
 
+            {/* НОВОЕ: Кнопка MAX на компьютере */}
+            <a
+              href={MAX_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a3a5c] hover:bg-[#122943] text-white text-sm font-bold transition shadow-md border border-white/10"
+            >
+              <span className="w-6 h-6 rounded bg-white text-[#1a3a5c] grid place-items-center text-[10px] font-black leading-none">MAX</span>
+              Написать
+            </a>
+
             <a
               href="tel:+79149146606"
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold transition shadow-lg shadow-brand-600/20"
@@ -160,18 +172,28 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
                   {item.label}
                 </NavLink>
               ))}
-              <div className="flex gap-2 mt-3">
+              {/* НОВОЕ: Кнопка MAX в телефоне */}
+              <a
+                href={MAX_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#1a3a5c] text-white font-bold"
+              >
+                <span className="w-6 h-6 rounded bg-white text-[#1a3a5c] grid place-items-center text-[10px] font-black">MAX</span> Написать в MAX — отвечаем 5 мин
+              </a>
+              <div className="flex gap-2 mt-2">
                 <a
                   href="tel:+79149146606"
-                  className="flex-1 text-center px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold"
+                  className="flex-1 text-center px-4 py-3 rounded-xl bg-brand-600 text-white font-semibold"
                 >
                   📞 Позвонить
                 </a>
                 <button
                   onClick={openChat}
-                  className="flex-1 px-4 py-2 rounded-lg bg-accent-500 text-white font-semibold"
+                  className="flex-1 px-4 py-3 rounded-xl bg-accent-500 text-white font-semibold"
                 >
-                  💬 Написать
+                  💬 Чат
                 </button>
               </div>
             </div>
