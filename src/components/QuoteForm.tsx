@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 
 interface QuoteFormProps {
+  serviceDefault?: string;
   title?: string;
   subtitle?: string;
   compact?: boolean;
@@ -35,7 +36,6 @@ export default function QuoteForm({
     }
     const trimmed = digits.slice(0, 10);
     setRawPhone(trimmed);
-
     if (trimmed.length > 0 && trimmed.length < 10) {
       setPhoneError("Введено меньше 10 цифр. Проверьте номер!");
     } else {
@@ -47,57 +47,38 @@ export default function QuoteForm({
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
     if (rawPhone.length !== 10) {
       setPhoneError("Проверьте номер! Введите ровно 10 цифр вашего номера (без +7)");
       return;
     }
-
     setSubmitted(true);
-
     const safeName = escapeHtml(name || "Не указано");
     const safePhone = escapeHtml(formattedPhone);
     const safeTitle = escapeHtml(title);
     const safeSub = escapeHtml(subtitle);
-
     const htmlMessage =
       `🔥 <b>НОВАЯ ЗАЯВКА С САЙТА!</b>\n\n` +
       `👤 <b>Имя:</b> ${safeName}\n` +
       `📞 <b>Телефон:</b> ${safePhone}\n` +
       `🛠 <b>Форма:</b> ${safeTitle}\n` +
       `💬 <b>Примечание:</b> ${safeSub}`;
-
     try {
       const beaconText = encodeURIComponent(
         `🔥 НОВАЯ ЗАЯВКА\nИмя: ${name || "Не указано"}\nТел: ${formattedPhone}\nФорма: ${title}`
       );
       const beacon = new Image();
       beacon.src = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${beaconText}`;
-    } catch (err) {
-      console.error("Beacon error:", err);
-    }
-
+    } catch (err) {}
     fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text: htmlMessage,
-        parse_mode: "HTML",
-      }),
+      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: htmlMessage, parse_mode: "HTML" }),
     }).catch(() => {});
-
     fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        phone: formattedPhone,
-        service: title,
-        details: subtitle,
-      }),
+      body: JSON.stringify({ name, phone: formattedPhone, service: title, details: subtitle }),
     }).catch(() => {});
-
     setTimeout(() => {
       setSubmitted(false);
       setName("");
@@ -117,10 +98,7 @@ export default function QuoteForm({
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={`rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl ${compact ? "p-6" : "p-8 md:p-10"}`}
-    >
+    <form onSubmit={handleSubmit} className={`rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl ${compact ? "p-6" : "p-8 md:p-10"}`}>
       {!compact && (
         <div className="mb-6">
           <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{title}</h3>
@@ -128,57 +106,25 @@ export default function QuoteForm({
         </div>
       )}
       <div className="space-y-3">
-        <input
-          type="text"
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Ваше имя"
-          className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff6b35] focus:border-transparent transition text-sm"
-        />
-
+        <input type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Ваше имя" className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff6b35] focus:border-transparent transition text-sm" />
         <div>
           <div className="relative flex items-center">
-            <div className="absolute left-3.5 font-bold text-sm text-slate-700 dark:text-slate-200 select-none bg-slate-100 dark:bg-slate-700/60 px-2 py-1 rounded-lg">
-              +7
-            </div>
-            <input
-              type="tel"
-              required
-              value={rawPhone}
-              onChange={(e) => handlePhoneChange(e.target.value)}
-              placeholder="914 000-00-00 (без +7)"
-              maxLength={11}
-              className={`w-full pl-16 pr-4 py-3 rounded-xl border ${
-                phoneError
-                  ? "border-red-500 focus:ring-red-400"
-                  : "border-slate-300 dark:border-slate-700 focus:ring-[#ff6b35]"
-              } bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-sm tracking-wider focus:outline-none focus:ring-2`}
-            />
+            <div className="absolute left-3.5 font-bold text-sm text-slate-700 dark:text-slate-200 select-none bg-slate-100 dark:bg-slate-700/60 px-2 py-1 rounded-lg">+7</div>
+            <input type="tel" required value={rawPhone} onChange={(e) => handlePhoneChange(e.target.value)} placeholder="914 000-00-00 (без +7)" maxLength={11} className={`w-full pl-16 pr-4 py-3 rounded-xl border ${phoneError ? "border-red-500 focus:ring-red-400" : "border-slate-300 dark:border-slate-700 focus:ring-[#ff6b35]"} bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-sm tracking-wider focus:outline-none focus:ring-2`} />
           </div>
-          {phoneError && (
-            <p className="mt-1 text-xs font-bold text-red-500">
-              ⚠️ {phoneError}
-            </p>
-          )}
+          {phoneError && <p className="mt-1 text-xs font-bold text-red-500">⚠️ {phoneError}</p>}
         </div>
 
-          <button
-          type="submit"
-          className="w-full px-4 py-3.5 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black transition shadow-lg shadow-orange-500/20 text-sm"
-        >
+        <button type="submit" className="w-full px-4 py-3.5 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black transition shadow-lg shadow-orange-500/20 text-sm">
           Получить консультацию
         </button>
 
-        <a
-          href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#1a3a5c] hover:bg-[#122943] text-white font-bold transition text-sm border border-transparent"
-        >
+        <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#1a3a5c] hover:bg-[#122943] text-white font-bold transition text-sm border border-transparent">
           <span className="w-6 h-6 rounded bg-white text-[#1a3a5c] grid place-items-center text-[10px] font-black">MAX</span>
           Написать в MAX — быстрее, чем ждать звонка
         </a>
-        <p className="text-xs text-slate-500 dark:text-slate-500 text-center">
-          Не любите звонки? Пишите, отвечаем за 5 минут
-        </p>
+        <p className="text-xs text-slate-500 dark:text-slate-500 text-center">Не любите звонки? Пишите, отвечаем за 5 минут</p>
+      </div>
+    </form>
+  );
+}
