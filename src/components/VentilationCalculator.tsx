@@ -229,6 +229,40 @@ export default function VentilationCalculator() {
           </div>
         </div>
       </div>
+          <section className="bg-white py-10 sm:py-14 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#1a3a5c]">Вентиляция в Иркутске — бризеры Тион, рекуператоры Vakio от 25 000 ₽</h2>
+          <div className="mt-6 grid lg:grid-cols-3 gap-6 text-sm leading-7 text-slate-700">
+            <div className="space-y-3">
+              <p><strong>Вентиляция в Иркутске</strong> от «Вектор Комфорта» — проектирование, монтаж и обслуживание приточно-вытяжных систем. <strong>Бризеры Тион 4S, O2, Lite</strong> — приточная вентиляция с многоступенчатой очисткой воздуха от пыли, аллергенов и запахов. <strong>Рекуператоры Vakio</strong> — экономия на отоплении до 80%. Цена — <strong>от 25 000 ₽</strong> с монтажом. Гарантия 2 года.</p>
+              <p>Делаем: вентиляцию в квартирах, частных домах, офисах, ресторанах, кафе, магазинах, производственных помещениях. Проектирование по нормам СП 60.13330, подбор оборудования под объект, изготовление воздуховодов на собственном производстве.</p>
+            </div>
+            <div className="space-y-3">
+              <p><strong>Бризер Тион</strong> — компактная приточная вентиляция с HEPA-фильтром H11/H13. Подаёт свежий воздух с улицы, очищая от пыли, пыльцы, вирусов и запахов. Работает при закрытых окнах — без шума, пыли и сквозняков. Идеально для квартир на оживлённых улицах, аллергиков и семей с детьми.</p>
+              <p><strong>Рекуператор Vakio</strong> — приточно-вытяжная система с рекуперацией тепла. Зимой подогревает приточный воздух за счёт вытяжного, экономя до 80% на отоплении. Летом — охлаждает. Компактный, тихий, энергоэффективный.</p>
+            </div>
+            <div className="space-y-3">
+              <p><strong>Канальная вентиляция</strong> — комплексные системы для коттеджей, офисов, ресторанов. Приток, вытяжка, рекуперация, автоматика. Изготавливаем воздуховоды под размеры объекта на собственном производстве — точная подгонка, быстрый монтаж.</p>
+              <p><strong>География:</strong> Иркутск, Ангарск, Шелехов, Хомутово, Молодёжный — выезд инженера 0 ₽ до 50 км. Пн–Сб 9:00–20:00. Обследование — 1 час, проект — 2-5 дней, монтаж — 1-3 дня. Звоните +7 (914) 914-66-06 или пишите в MAX — отвечаем за 5 минут.</p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <a href="tel:+79149146606" className="px-5 py-2.5 rounded-full bg-[#ff6b35] text-white font-black text-xs hover:bg-[#e95620]">📞 Позвонить</a>
+                <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full bg-[#1a3a5c] text-white font-black text-xs border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[8px] font-black mr-1">MAX</span> Написать в MAX</a>
+              </div>
+            </div>
+          </div>
+          <div className="max-w-7xl mx-auto mt-8">
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
+              <h3 className="font-black text-[#1a3a5c]">Частые вопросы про вентиляцию в Иркутске</h3>
+              <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
+                <div><strong>Сколько стоит бризер Тион с установкой?</strong> Тион 4S — от 45 000 ₽, Тион O2 — от 35 000 ₽, Тион Lite — от 25 000 ₽. Цена включает монтаж, алмазное бурение и пуско-наладку.</div>
+                <div><strong>Чем бризер отличается от рекуператора?</strong> Бризер — только приток с очисткой. Рекуператор — приток + вытяжка с рекуперацией тепла (экономия на отоплении).</div>
+                <div><strong>Можно установить бризер в квартире с готовым ремонтом?</strong> Да, алмазное бурение 132 мм с пылесосом — без пыли и грязи. Монтаж за 2-3 часа.</div>
+                <div><strong>Как часто менять фильтры?</strong> Зависит от загрязнения воздуха. В среднем: G4 — раз в 3-6 месяцев, H11/H13 — раз в 6-12 месяцев.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>  
 
       <QuickBookingModal
         open={modalOpen}
