@@ -61,12 +61,15 @@ export default function ConditionerPage() {
   const allImages = getOfficialPhotosForModel(item);
   const coverPhoto = getMainCoverPhoto(item);
 
+  
   // Динамический сброс SEO-заголовков и метатегов под ТОЧНУЮ ВЫБРАННУЮ МОЩНОСТЬ И ЦЕНУ!
   useEffect(() => {
     const variantPrice = variant.price;
     const titleText = `${item.brand} ${item.name} (${selectedBtu} BTU, до ${variant.area} м²) — цена со склада ${formatRub(variantPrice)} | Вектор Комфорта`;
     const descText = `${item.type} сплит-система ${item.name} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене ${formatRub(variantPrice)} со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия завода до 5 лет. Профессиональный монтаж без пыли!`;
-    const fullUrl = window.location.href;
+    
+    // Canonical URL БЕЗ параметра ?btu= (чтобы не было дублей в поиске)
+    const cleanUrl = window.location.origin + window.location.pathname;
 
     // 1. Меняем заголовок в браузере (для вкладок, закладок, поисковиков Яндекс и Google)
     document.title = titleText;
@@ -87,7 +90,16 @@ export default function ConditionerPage() {
     updateMeta("og:title", titleText, true);
     updateMeta("og:description", descText, true);
     updateMeta("og:image", coverPhoto.startsWith("http") ? coverPhoto : `https://www.vektor-komforta.ru/${coverPhoto}`, true);
-    updateMeta("og:url", fullUrl, true);
+    updateMeta("og:url", cleanUrl, true);
+
+    // 2.1. Canonical URL (без ?btu=)
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!canonicalLink) {
+      canonicalLink = document.createElement("link");
+      canonicalLink.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.href = cleanUrl;
 
     // 3. Товарная микроразметка Schema.org для Яндекса и Google (с точной ценой за выбранный BTU)
     const productSchema = {
@@ -103,7 +115,7 @@ export default function ConditionerPage() {
       },
       "offers": {
         "@type": "Offer",
-        "url": fullUrl,
+        "url": cleanUrl,
         "priceCurrency": "RUB",
         "price": variantPrice,
         "priceValidUntil": "2026-12-31",
@@ -132,14 +144,36 @@ export default function ConditionerPage() {
     }
     scriptTag.textContent = JSON.stringify(productSchema);
 
-    // При уходе со страницы возвращаем исходный заголовок и удаляем схему товара
+    // 3.1. Хлебные крошки Schema.org (BreadcrumbList)
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://www.vektor-komforta.ru/" },
+        { "@type": "ListItem", "position": 2, "name": "Кондиционеры", "item": "https://www.vektor-komforta.ru/kondicionery" },
+        { "@type": "ListItem", "position": 3, "name": item.brand, "item": `https://www.vektor-komforta.ru/kondicionery?brand=${encodeURIComponent(item.brand)}` },
+        { "@type": "ListItem", "position": 4, "name": item.name }
+      ]
+    };
+
+    let breadcrumbTag = document.getElementById("seo-breadcrumb-schema") as HTMLScriptElement;
+    if (!breadcrumbTag) {
+      breadcrumbTag = document.createElement("script");
+      breadcrumbTag.id = "seo-breadcrumb-schema";
+      breadcrumbTag.type = "application/ld+json";
+      document.head.appendChild(breadcrumbTag);
+    }
+    breadcrumbTag.textContent = JSON.stringify(breadcrumbSchema);
+
+    // При уходе со страницы возвращаем исходный заголовок и удаляем схемы
     return () => {
       document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
       const el = document.getElementById("seo-product-schema");
       if (el) el.remove();
+      const el2 = document.getElementById("seo-breadcrumb-schema");
+      if (el2) el2.remove();
     };
   }, [item, officialSpecs, coverPhoto, allImages]);
-
   // Ссылка MAX по вашему техническому заданию
   const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
 
