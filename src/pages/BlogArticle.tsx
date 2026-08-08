@@ -283,19 +283,72 @@ export default function BlogArticle() {
           <div className="mt-12 rounded-[1.5rem] bg-[#1a3a5c] p-6 text-center text-white sm:rounded-[2rem] sm:p-8">
             <h3 className="text-xl font-black sm:text-2xl">Нужна консультация?</h3>
             <p className="mx-auto mt-2 max-w-lg text-sm text-slate-300 sm:text-base">
-              Бесплатно подберём решение и рассчитаем стоимость. Выезд на замер — бесплатно.
+              Бесплатно подберём решение и рассчитаем стоимость. Выезд на замер — 0 ₽ до 50 км. Отвечаем за 5 минут.
             </p>
-            <a
-              href="tel:+79149146606"
-              className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-7 py-3 text-sm font-black text-white transition hover:bg-[#e95620]"
-            >
-              Позвонить +7 (914) 914-66-06
-            </a>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              <a href="tel:+79149146606" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-7 py-3 text-sm font-black text-white transition hover:bg-[#e95620]">📞 Позвонить +7 (914) 914-66-06</a>
+              <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-black text-[#1a3a5c] transition hover:bg-slate-100"><span className="w-6 h-6 rounded bg-[#1a3a5c] text-white grid place-items-center text-[10px] font-black">MAX</span> Написать в MAX</a>
+            </div>
           </div>
-          <div className="mt-8 text-center">
-            <Link to="/baza-znaniy" className="font-black text-[#ff6b35] hover:underline">
-              ← Все статьи Базы знаний
-            </Link>
+
+          {/* Перелинковка — помогает Гуглу и людям */}
+          <div className="mt-8 rounded-[1.5rem] bg-white border border-slate-200 p-6 sm:rounded-[2rem] sm:p-8">
+            <h3 className="text-base font-black text-[#1a3a5c] sm:text-lg">Читайте также — полезно для Иркутска</h3>
+            <div className="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+              {(() => {
+                const allLinks: Record<string, {title: string, to: string}>[] = {
+                  "kak-vybrat-konditsioner-po-ploshchadi": [
+                    {title: "→ Инверторный или обычный — что выбрать", to: "/baza-znaniy/invertornyy-ili-obychnyy-konditsioner"},
+                    {title: "→ Сколько стоит установка кондиционера", to: "/baza-znaniy/skolko-stoit-ustanovka-konditsionera-irkutsk"},
+                    {title: "→ Каталог кондиционеров от 16 636 ₽", to: "/kondicionery"},
+                  ],
+                  "invertornyy-ili-obychnyy-konditsioner": [
+                    {title: "→ Как выбрать по площади (07,09,12...)", to: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi"},
+                    {title: "→ Нужно ли обслуживать кондиционер", to: "/baza-znaniy/nuzhno-li-obsluzhivat-konditsioner"},
+                    {title: "→ Каталог инверторных от 27 900 ₽", to: "/kondicionery"},
+                  ],
+                  "kakie-plastikovye-okna-vybrat": [
+                    {title: "→ Сколько стоят пластиковые окна", to: "/baza-znaniy/skolko-stoyat-plastikovye-okna-irkutsk"},
+                    {title: "→ Почему потеют окна и что делать", to: "/baza-znaniy/pochemu-poteyut-plastikovye-okna"},
+                    {title: "→ Окна VEKA в Иркутске от 11 000 ₽/м²", to: "/okna"},
+                  ],
+                  "zachem-nuzhna-ventilyatsiya": [
+                    {title: "→ Почему потеют окна — вентиляция", to: "/baza-znaniy/pochemu-poteyut-plastikovye-okna"},
+                    {title: "→ Какие окна выбрать с вентиляцией", to: "/baza-znaniy/kakie-plastikovye-okna-vybrat"},
+                    {title: "→ Вентиляция и бризеры Тион/Vakio", to: "/ventilyaciya"},
+                  ],
+                  "skolko-stoit-ustanovka-konditsionera-irkutsk": [
+                    {title: "→ Как выбрать по площади 07,09,12", to: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi"},
+                    {title: "→ Инвертор или обычный", to: "/baza-znaniy/invertornyy-ili-obychnyy-konditsioner"},
+                    {title: "→ Алмазное бурение 32–250 мм", to: "/almaznoe-burenie"},
+                  ],
+                  "skolko-stoyat-plastikovye-okna-irkutsk": [
+                    {title: "→ Какие окна выбрать для Иркутска", to: "/baza-znaniy/kakie-plastikovye-okna-vybrat"},
+                    {title: "→ Остекление балконов под ключ", to: "/okna/Teploe-osteklenie-lodjii"},
+                    {title: "→ Окна VEKA — каталог 6 товаров", to: "/okna"},
+                  ],
+                  "pochemu-poteyut-plastikovye-okna": [
+                    {title: "→ Какие окна выбрать чтобы не потели", to: "/baza-znaniy/kakie-plastikovye-okna-vybrat"},
+                    {title: "→ Зачем нужна вентиляция Vakio/Тион", to: "/baza-znaniy/zachem-nuzhna-ventilyatsiya"},
+                    {title: "→ Нужна вентиляция? От 6 000 ₽", to: "/ventilyaciya"},
+                  ],
+                  "nuzhno-li-obsluzhivat-konditsioner": [
+                    {title: "→ Сколько стоит установка", to: "/baza-znaniy/skolko-stoit-ustanovka-konditsionera-irkutsk"},
+                    {title: "→ Как выбрать по площади", to: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi"},
+                    {title: "→ Каталог кондиционеров — подобрать", to: "/kondicionery"},
+                  ],
+                };
+                const links = allLinks[slug || ""] || [
+                  {title: "→ Каталог кондиционеров Иркутск", to: "/kondicionery"},
+                  {title: "→ Окна VEKA Иркутск", to: "/okna"},
+                  {title: "→ Вентиляция и бризеры", to: "/ventilyaciya"},
+                ];
+                return links.map(l => <Link key={l.to} to={l.to} className="flex items-center gap-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-100 px-4 py-3 font-bold text-[#1a3a5c] transition">{l.title}</Link>);
+              })()}
+            </div>
+            <div className="mt-4 text-center">
+              <Link to="/baza-znaniy" className="text-sm font-black text-[#ff6b35] hover:underline">← Все 8 статей Базы знаний</Link>
+            </div>
           </div>
         </div>
       </article>
