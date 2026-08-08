@@ -1,4 +1,3 @@
-
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
@@ -53,3 +52,4 @@ export default function App() {
       </Suspense>
     </BrowserRouter>
   );
+}
