@@ -44,6 +44,8 @@ export default function BrandsCatalog() {
                 <img
                   src={brand.logo}
                   alt={brand.name}
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-11 max-w-[90%] object-contain opacity-95 group-hover:scale-105 transition duration-300"
                   onError={(e) => {
                     const target = e.currentTarget;
