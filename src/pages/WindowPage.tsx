@@ -133,6 +133,8 @@ export default function WindowPage() {
                 <img
                   src={item.gallery[activeImageIdx] || item.image}
                   alt={`${item.title} Иркутск`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
                 <span className="absolute left-3 top-3 z-10 rounded-full bg-[#ff6b35] px-3.5 py-1 text-xs font-black text-white shadow-md">
@@ -156,7 +158,7 @@ export default function WindowPage() {
                           : "border-slate-200 opacity-75 hover:opacity-100"
                       }`}
                     >
-                      <img src={imgUrl} alt="" className="w-full h-full object-cover" />
+                      <img src={imgUrl} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>
@@ -349,7 +351,7 @@ export default function WindowPage() {
                 className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white border border-slate-200/80 shadow-md hover:-translate-y-1 hover:shadow-2xl transition duration-300"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
-                  <img src={w.image} alt={w.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <img src={w.image} alt={w.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                   <span className="absolute left-3 top-3 z-10 rounded-full bg-[#ff6b35] px-3 py-1 text-xs font-black text-white shadow">
                     {w.badge}
                   </span>
