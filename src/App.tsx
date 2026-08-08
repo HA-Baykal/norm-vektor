@@ -1,11 +1,10 @@
+
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import MetrikaTracker from "./components/MetrikaTracker";
 import OtzyvPage from "./pages/OtzyvPage";
 const LocalCityPage = lazy(() => import("./pages/LocalCityPage"));
-
-// Ленивая загрузка страниц — каждая грузится только при переходе на неё
 const Home = lazy(() => import("./pages/Home"));
 const Windows = lazy(() => import("./pages/Windows"));
 const AC = lazy(() => import("./pages/AC"));
@@ -17,6 +16,7 @@ const PortfolioPage = lazy(() => import("./pages/PortfolioPage"));
 const Contact = lazy(() => import("./pages/Contact"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogArticle = lazy(() => import("./pages/BlogArticle"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
   return (
@@ -47,9 +47,9 @@ export default function App() {
             <Route path="baza-znaniy/:slug" element={<BlogArticle />} />
             <Route path="kontakty" element={<Contact />} />
             <Route path="otzyv" element={<OtzyvPage />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Suspense>
     </BrowserRouter>
   );
-}
