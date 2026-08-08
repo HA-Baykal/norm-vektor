@@ -214,6 +214,8 @@ export default function ConditionerPage() {
                 <img
                   src={allImages[activeImageIdx] || allImages[0]}
                   alt={`${item.brand} ${item.name}`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain transition duration-300"
                   loading="eager"
                 />
@@ -234,7 +236,7 @@ export default function ConditionerPage() {
                           : "border-slate-200 opacity-70 hover:opacity-100"
                       }`}
                     >
-                      <img src={imgUrl} alt="" className="w-full h-full object-contain" />
+                      <img src={imgUrl} alt="" loading="lazy" decoding="async" className="w-full h-full object-contain" />
                     </button>
                   ))}
                 </div>
@@ -515,7 +517,7 @@ export default function ConditionerPage() {
                         −{formatRub(cDiscount)}
                       </span>
                     )}
-                    <img src={getMainCoverPhoto(c)} alt={c.name} className="h-full w-full object-contain transition duration-500 group-hover:scale-105" />
+                    <img src={getMainCoverPhoto(c)} alt={c.name} loading="lazy" decoding="async" className="h-full w-full object-contain transition duration-500 group-hover:scale-105" />
                   </div>
                   <div className="flex flex-1 flex-col p-5">
                     <span className="text-xs font-black uppercase text-[#ff6b35]">{c.brand}</span>
@@ -569,6 +571,8 @@ export default function ConditionerPage() {
           <img
             src={allImages[activeImageIdx]}
             alt={`${item.brand} ${item.name}`}
+            loading="lazy"
+            decoding="async"
             className="max-h-[90vh] max-w-[95vw] object-contain"
             onClick={(e) => e.stopPropagation()}
           />
