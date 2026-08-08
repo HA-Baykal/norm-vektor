@@ -38,6 +38,40 @@ process={[
 photosIcon="🪟"
 photosTitle="Наши работы по остеклению"
 />
+<section className="bg-white py-10 sm:py-14 border-t border-slate-100">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-2xl sm:text-3xl font-black text-[#1a3a5c]">Пластиковые окна в Иркутске — цена, VEKA, монтаж по ГОСТу</h2>
+    <div className="mt-6 grid lg:grid-cols-3 gap-6 text-sm leading-7 text-slate-700">
+      <div className="space-y-3">
+        <p><strong>Пластиковые окна в Иркутске</strong> от «Вектор Комфорта» — собственное производство, немецкий профиль <strong>VEKA Softline / WHS 70 мм, 4–5 камер</strong>, замкнутое армирование 1.5 мм, фурнитура <strong>MACO с микропроветриванием</strong>. Цена — <strong>от 11 000 ₽/м²</strong>, балкон под ключ — от 38 000 ₽. Изготовление 5–7 дней, монтаж за 1 день.</p>
+        <p>Делаем: одно-, двух-, трёхстворчатые окна, панорамные системы, алюминиевое остекление, крашеные окна RAL 9005, ламинацию золотой дуб/махагон, остекление балконов и лоджий под ключ с утеплением, входные и межкомнатные двери ПВХ и алюминий, витражи и перегородки.</p>
+      </div>
+      <div className="space-y-3">
+        <p><strong>Почему наш монтаж стоит дороже дешёвых:</strong> ставим на пластиковые клинья (не бруски), шов — три слоя: пена + пароизоляция изнутри + паропроницаемая лента снаружи по ГОСТ 30971, откосы — тёплый сэндвич 10 мм, подоконник — глянцевый. Исключаем продувание и плесень на десятилетия. Бригады — стаж от 7 лет.</p>
+        <p><strong>Стеклопакет для Сибири:</strong> двухкамерный 40 мм с мультифункциональным Solar и аргоном, сопротивление 0.78 м²·°C/Вт (класс А+). Шумоизоляция до 38–42 дБ — улица не слышна. Зимой тепло, летом не жарко.</p>
+      </div>
+      <div className="space-y-3">
+        <p><strong>География:</strong> Иркутск, Ангарск, Шелехов, Хомутово, Молодёжный, Маркова, Грановщина, Карлук, Смоленщина — выезд замерщика 0 ₽ до 50 км. Пн–Сб 9:00–20:00. Замер — 30 минут, расчёт — 15 минут.</p>
+        <p><strong>Гарантия:</strong> 5 лет на профиль, стеклопакет и монтаж по договору. Постгарантийный сервис: регулировка, замена уплотнителей и стеклопакетов. Рассрочка. Звоните +7 (914) 914-66-06 или пишите в MAX — отвечаем за 5 минут.</p>
+        <div className="flex flex-wrap gap-2 pt-2">
+          <a href="tel:+79149146606" className="px-5 py-2.5 rounded-full bg-[#ff6b35] text-white font-black text-xs hover:bg-[#e95620]">📞 Позвонить</a>
+          <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full bg-[#1a3a5c] text-white font-black text-xs border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[8px] font-black mr-1">MAX</span> Написать в MAX</a>
+        </div>
+      </div>
+    </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+      <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
+        <h3 className="font-black text-[#1a3a5c]">Частые вопросы про окна в Иркутске</h3>
+        <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
+          <div><strong>Сколько стоят окна VEKA?</strong> От 11 000 ₽/м². Окно 1300×1400 с монтажем — от 14 900 ₽ под ключ после замера.</div>
+          <div><strong>За сколько делаете?</strong> 5–7 дней на своём цехе, ламинация +3 дня. Монтаж — 1 день с уборкой.</div>
+          <div><strong>Чем VEKA лучше?</strong> Класс А, стенка 3 мм, глянец из первичного ПВХ не желтеет 25 лет, замкнутое армирование не ведёт створку.</div>
+          <div><strong>Делаете в деревянном доме?</strong> Да, с обсадой (окосячкой), учётом усадки и гидроизоляцией.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <WindowsGallery />
 <Counters />
 <WindowCalculator />
