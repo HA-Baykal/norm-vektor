@@ -38,6 +38,32 @@ export default function App() {
             <Route path="/kondicionery-v-angarske" element={<LocalCityPage cityKey="angarske" serviceKey="kondicionery" />} />
             <Route path="/okna-v-shelehove" element={<LocalCityPage cityKey="shelehove" serviceKey="okna" />} />
             <Route path="/kondicionery-v-shelehove" element={<LocalCityPage cityKey="shelehove" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-solnechnom" element={<LocalCityPage cityKey="solnechnom" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-solnechnom" element={<LocalCityPage cityKey="solnechnom" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-pervomaiskom" element={<LocalCityPage cityKey="pervomaiskom" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-pervomaiskom" element={<LocalCityPage cityKey="pervomaiskom" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-novolenino" element={<LocalCityPage cityKey="novolenino" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-novolenino" element={<LocalCityPage cityKey="novolenino" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-yubileynom" element={<LocalCityPage cityKey="yubileyny" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-yubileynom" element={<LocalCityPage cityKey="yubileyny" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-akademgorodke" element={<LocalCityPage cityKey="akademgorodok" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-akademgorodke" element={<LocalCityPage cityKey="akademgorodok" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-raduzhnom" element={<LocalCityPage cityKey="raduzhny" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-raduzhnom" element={<LocalCityPage cityKey="raduzhny" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-universitetskom" element={<LocalCityPage cityKey="universitetsky" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-universitetskom" element={<LocalCityPage cityKey="universitetsky" serviceKey="kondicionery" />} />
+            <Route path="/okna-na-baikalskom-trakte" element={<LocalCityPage cityKey="baikalsky" serviceKey="okna" />} />
+            <Route path="/kondicionery-na-baikalskom-trakte" element={<LocalCityPage cityKey="baikalsky" serviceKey="kondicionery" />} />
+            <Route path="/okna-na-golooustnenskom-trakte" element={<LocalCityPage cityKey="golooustnensky" serviceKey="okna" />} />
+            <Route path="/kondicionery-na-golooustnenskom-trakte" element={<LocalCityPage cityKey="golooustnensky" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-pivovarikhe" element={<LocalCityPage cityKey="pivovarikha" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-pivovarikhe" element={<LocalCityPage cityKey="pivovarikha" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-urike" element={<LocalCityPage cityKey="urik" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-urike" element={<LocalCityPage cityKey="urik" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-stolbovo" element={<LocalCityPage cityKey="stolbovo" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-stolbovo" element={<LocalCityPage cityKey="stolbovo" serviceKey="kondicionery" />} />
+            <Route path="/okna-v-listvyanke" element={<LocalCityPage cityKey="listvyanka" serviceKey="okna" />} />
+            <Route path="/kondicionery-v-listvyanke" element={<LocalCityPage cityKey="listvyanka" serviceKey="kondicionery" />} />
             <Route path="ventilyaciya" element={<Ventilation />} />
             <Route path="almaznoe-burenie" element={<Drilling />} />
             <Route path="standarty" element={<StandartyPage />} />
