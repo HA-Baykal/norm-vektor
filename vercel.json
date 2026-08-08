@@ -1,7 +1,8 @@
 {
   "rewrites": [
-    { "source": "/kondicionery/:slug", "destination": "/api/seo" },
-    { "source": "/okna/:slug", "destination": "/api/seo" },
+    { "source": "/baza-znaniy/:slug", "destination": "/api/page?path=/baza-znaniy/:slug" },
+    { "source": "/kondicionery/:slug", "destination": "/api/seo?slug=:slug" },
+    { "source": "/okna/:slug", "destination": "/api/seo?slug=:slug" },
     { "source": "/", "destination": "/api/page?path=/" },
     { "source": "/okna", "destination": "/api/page?path=/okna" },
     { "source": "/kondicionery", "destination": "/api/page?path=/kondicionery" },
