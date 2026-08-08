@@ -183,6 +183,41 @@ export default function DrillingCalculator() {
         </div>
       </div>
 
+            <section className="bg-white py-10 sm:py-14 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#1a3a5c]">Алмазное бурение в Иркутске — отверстия от 2 000 ₽ за точку</h2>
+          <div className="mt-6 grid lg:grid-cols-3 gap-6 text-sm leading-7 text-slate-700">
+            <div className="space-y-3">
+              <p><strong>Алмазное бурение в Иркутске</strong> от «Вектор Комфорта» — безударное сверление отверстий диаметром от 32 до 250 мм в бетоне, железобетоне и кирпиче. Цена — <strong>от 2 000 ₽ за точку</strong> при заказе от 20 отверстий. Одно отверстие — 4 500 ₽, два — по 4 000 ₽, три — по 3 500 ₽. Чем больше точек — тем дешевле. Гарантия качества.</p>
+              <p>Бурим под кондиционеры, вентиляцию, бризеры, трубы водоснабжения и канализации, электрокабели, приточные клапаны. Работаем в квартирах, домах, офисах, магазинах, производственных помещениях. Сухое бурение с промышленным пылесосом — без пыли и грязи, идеально для готового ремонта.</p>
+            </div>
+            <div className="space-y-3">
+              <p><strong>Сухое бурение с пылесосом</strong> — используем промышленный пылесос, который собирает 99% пыли. Идеально для квартир с готовым ремонтом: обои, ламинат, мебель остаются чистыми. Бурим без ударов и вибрации — стена не трескается, арматура не повреждается.</p>
+              <p><strong>Мокрое бурение с водой</strong> — для сверхтвёрдых материалов и больших диаметров (200-250 мм). Вода охлаждает алмазную коронку, увеличивает скорость работы. Используем на черновых объектах, где пыль не критична.</p>
+            </div>
+            <div className="space-y-3">
+              <p><strong>Диаметры отверстий:</strong> 32, 42, 52, 62, 72, 82, 102, 112, 122, 132, 152, 162, 182, 200, 225, 250 мм. Под кондиционер — 55-80 мм, под бризер — 132 мм, под вентиляцию — 100-160 мм, под трубы — 32-250 мм.</p>
+              <p><strong>География:</strong> Иркутск, Ангарск, Шелехов, Хомутово, Молодёжный — выезд 0 ₽ до 50 км. Пн–Сб 9:00–20:00. Приезд в день обращения или на следующий день. Звоните +7 (914) 914-66-06 или пишите в MAX — отвечаем за 5 минут.</p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <a href="tel:+79149146606" className="px-5 py-2.5 rounded-full bg-[#ff6b35] text-white font-black text-xs hover:bg-[#e95620]">📞 Позвонить</a>
+                <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full bg-[#1a3a5c] text-white font-black text-xs border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[8px] font-black mr-1">MAX</span> Написать в MAX</a>
+              </div>
+            </div>
+          </div>
+          <div className="max-w-7xl mx-auto mt-8">
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
+              <h3 className="font-black text-[#1a3a5c]">Частые вопросы про алмазное бурение в Иркутске</h3>
+              <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
+                <div><strong>Сколько стоит одно отверстие?</strong> Одно отверстие — 4 500 ₽, два — по 4 000 ₽, три — по 3 500 ₽. От 4 до 10 — по 3 000 ₽, от 11 до 20 — по 2 500 ₽, больше 20 — по 2 000 ₽ за точку.</div>
+                <div><strong>Бурите в готовом ремонте?</strong> Да, используем сухое бурение с промышленным пылесосом — 99% пыли собирается сразу. Обои, ламинат, мебель остаются чистыми. Работаем аккуратно.</div>
+                <div><strong>Какой диаметр отверстия под кондиционер?</strong> Стандартное отверстие под трассу кондиционера — 55-80 мм. Под бризер — 132 мм. Под вентиляцию — 100-160 мм.</div>
+                <div><strong>Можно бурить в железобетоне?</strong> Да, алмазные коронки режут арматуру без проблем. Бурим в бетоне, железобетоне, кирпиче, блоках. Без трещин и сколов.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <QuickBookingModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
