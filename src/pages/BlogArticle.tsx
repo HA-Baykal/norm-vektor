@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 type Block =
@@ -1003,6 +1004,39 @@ const articleContent: Record<string, Article> = {
 export default function BlogArticle() {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? articleContent[slug] : undefined;
+  
+  // Динамические мета-теги для каждой статьи
+  useEffect(() => {
+    if (!article) return;
+    
+    // Устанавливаем уникальный title для каждой статьи
+    const titleText = `${article.title} | Вектор Комфорта`;
+    document.title = titleText;
+    
+    // Устанавливаем уникальный description
+    const descText = article.excerpt || article.title;
+    const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
+      const attr = isProperty ? "property" : "name";
+      let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute(attr, nameOrProperty);
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    };
+    
+    updateMeta("description", descText);
+    updateMeta("og:title", titleText, true);
+    updateMeta("og:description", descText, true);
+    updateMeta("og:url", window.location.href, true);
+    
+    // При уходе со страницы возвращаем исходный title
+    return () => {
+      document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+    };
+  }, [article]);
+  
   if (!article) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 text-center">
