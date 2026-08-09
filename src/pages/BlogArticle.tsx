@@ -629,7 +629,7 @@ export default function BlogArticle() {
               })()}
             </div>
             <div className="mt-4 text-center">
-              <Link to="/baza-znaniy" className="text-sm font-black text-[#ff6b35] hover:underline">← Все 8 статей Базы знаний</Link>
+              <Link to="/baza-znaniy" className="text-sm font-black text-[#ff6b35] hover:underline">← Все статьи Базы знаний</Link>
             </div>
           </div>
         </div>
