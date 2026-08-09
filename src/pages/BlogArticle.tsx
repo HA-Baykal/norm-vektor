@@ -1023,10 +1023,34 @@ export default function BlogArticle() {
             <p className="mx-auto mt-2 max-w-lg text-sm text-slate-300 sm:text-base">
               Бесплатно подберём решение и рассчитаем стоимость. Выезд на замер — 0 ₽ до 50 км. Отвечаем за 5 минут.
             </p>
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-              <a href="tel:+79149146606" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-7 py-3 text-sm font-black text-white transition hover:bg-[#e95620]">📞 Позвонить +7 (914) 914-66-06</a>
-              <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-black text-[#1a3a5c] transition hover:bg-slate-100"><span className="w-6 h-6 rounded bg-[#1a3a5c] text-white grid place-items-center text-[10px] font-black">MAX</span> Написать в MAX</a>
-            </div>
+           <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+  <a href="tel:+79149146606" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b35] px-7 py-3 text-sm font-black text-white transition hover:bg-[#e95620]">📞 Позвонить +7 (914) 914-66-06</a>
+  <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-black text-[#1a3a5c] transition hover:bg-slate-100"><span className="w-6 h-6 rounded bg-[#1a3a5c] text-white grid place-items-center text-[10px] font-black">MAX</span> Написать в MAX</a>
+  <button
+    onClick={() => {
+      if (navigator.share) {
+        navigator.share({
+          title: article.title,
+          text: article.excerpt || article.title,
+          url: window.location.href,
+        }).catch((err) => console.log('Ошибка при попытке поделиться:', err));
+      } else {
+        // Для браузеров без поддержки Web Share API
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('🔗 Ссылка скопирована! Вставьте её в любой мессенджер или соцсеть.');
+        }).catch(() => {
+          alert(`Ссылка на статью:\n${window.location.href}`);
+        });
+      }
+    }}
+    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1a3a5c] px-7 py-3 text-sm font-black text-white transition hover:bg-[#122943]"
+  >
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+    </svg>
+    Поделиться
+  </button>
+</div>
           </div>
 
           {/* Перелинковка — помогает Гуглу и людям */}
