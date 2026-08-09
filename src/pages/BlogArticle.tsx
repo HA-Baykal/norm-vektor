@@ -574,6 +574,11 @@ export default function BlogArticle() {
                     {title: "→ Сколько стоит установка кондиционера", to: "/baza-znaniy/skolko-stoit-ustanovka-konditsionera-irkutsk"},
                     {title: "→ Каталог кондиционеров от 16 636 ₽", to: "/kondicionery"},
                   ],
+                  "mozhno-li-zabolet-ot-konditsionera": [
+                    {title: "→ Нужно ли обслуживать кондиционер", to: "/baza-znaniy/nuzhno-li-obsluzhivat-konditsioner"},
+                    {title: "→ Зачем нужна вентиляция в квартире", to: "/baza-znaniy/zachem-nuzhna-ventilyatsiya"},
+                    {title: "→ Каталог кондиционеров в Иркутске", to: "/kondicionery"},
+                  ],
                   "top-10-konditsionerov-irkutsk-2026": [
                     {title: "→ Как выбрать кондиционер по площади (07,09,12)", to: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi"},
                     {title: "→ Инверторный или обычный — что выбрать", to: "/baza-znaniy/invertornyy-ili-obychnyy-konditsioner"},
