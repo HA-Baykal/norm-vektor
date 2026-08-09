@@ -77,6 +77,15 @@ export const articles = [
     icon: "❄️",
     readTime: "5 мин",
   },
+    {
+    slug: "top-10-konditsionerov-irkutsk-2026",
+    title: "ТОП-10 кондиционеров для квартиры в Иркутске 2026: экспертный рейтинг с техническим разбором",
+    excerpt:
+      "Разбираем не только цены, но и техническую начинку: компрессоры, теплообменники, электронику. Сравниваем Axioma и Midea, Ballu и Daikin — честный рейтинг от профессиональных монтажников.",
+    category: "Кондиционеры",
+    icon: "❄️",
+    readTime: "10 мин",
+  },
 ];
 export default function BlogPage() {
   return (
