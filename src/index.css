@@ -71,3 +71,16 @@ section {
 .animate-counter {
   animation: counter 0.8s ease-out both;
 }
+/* Скрываем плавающий виджет Jivo (значок письма), но оставляем чат рабочим */
+[class*="jivo-btn"],
+[class*="jivo_badge"],
+[class*="jivo_bubble"],
+.jivo-shadow,
+div[class*="jivo"] > div:first-child {
+  display: none !important;
+}
+
+/* Альтернативный способ - через iframe */
+iframe[src*="jivo"] {
+  pointer-events: none;
+}
