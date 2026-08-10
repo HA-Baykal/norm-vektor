@@ -390,7 +390,7 @@ const og =
   `<meta property="business:contact_data:postal_code" content="664075"/>` +
   `<meta property="business:contact_data:country_name" content="Россия"/>`;
     
-   // Article микроразметка для статей блога
+  // Article микроразметка для статей блога
 const articleSchema = isArticle ? `
 <script type="application/ld+json">
   {
@@ -415,7 +415,8 @@ const articleSchema = isArticle ? `
         "postalCode": "664075",
         "addressCountry": "RU"
       },
-      "telephone": "+7-3952-66-99-30"
+      "telephone": "+7-3952-66-99-30",
+      "priceRange": "₽₽"
     },
     "publisher": {
       "@type": "Organization",
@@ -432,7 +433,8 @@ const articleSchema = isArticle ? `
         "postalCode": "664075",
         "addressCountry": "RU"
       },
-      "telephone": "+7-3952-66-99-30"
+      "telephone": "+7-3952-66-99-30",
+      "priceRange": "₽₽"
     },
     "datePublished": "2026-01-15T08:00:00+08:00",
     "dateModified": "2026-08-08T08:00:00+08:00",
