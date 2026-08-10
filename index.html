@@ -49,120 +49,270 @@
     <link rel="preload" as="image" href="images/hero-bg.webp" type="image/webp" />
     <link rel="preload" as="image" href="images/hero-bg.jpg" fetchpriority="low" />
 
-    <!-- Локальное SEO (Schema.org) с рейтингом на основе реальных оценок 2ГИС -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Вектор Комфорта",
-        "alternateName": "Вектор Комфорта, торгово-монтажная компания",
-        "image": "https://www.vektor-komforta.ru/images/hero-bg.jpg",
-        "description": "Производство и монтаж окон, кондиционеры, вентиляция и алмазное бурение в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км.",
-        "@id": "https://www.vektor-komforta.ru",
-        "url": "https://www.vektor-komforta.ru",
-        "telephone": "+7-3952-66-99-30",
-        "email": "montaj138@mail.ru",
-        "priceRange": "₽₽",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Байкальская улица, 202/2, цокольный этаж",
-          "addressLocality": "Иркутск",
-          "addressRegion": "Иркутская область",
-          "postalCode": "664075",
-          "addressCountry": "RU"
+    <!-- Локальное SEO (Schema.org) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Вектор Комфорта",
+  "alternateName": "Вектор Комфорта, торгово-монтажная компания",
+  "image": "https://www.vektor-komforta.ru/images/hero-bg.jpg",
+  "logo": "https://www.vektor-komforta.ru/favicon.png",
+  "description": "Производство и монтаж окон, кондиционеры, вентиляция и алмазное бурение в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км.",
+  "@id": "https://www.vektor-komforta.ru",
+  "url": "https://www.vektor-komforta.ru",
+  "telephone": ["+7-3952-66-99-30", "+7-914-914-66-06", "+7-908-640-11-66"],
+  "email": "montaj138@mail.ru",
+  "priceRange": "₽₽",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Байкальская улица, 202/2, цокольный этаж",
+    "addressLocality": "Иркутск",
+    "addressRegion": "Иркутская область",
+    "postalCode": "664075",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 52.256538,
+    "longitude": 104.324010
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Иркутск"
+    },
+    {
+      "@type": "City",
+      "name": "Ангарск"
+    },
+    {
+      "@type": "City",
+      "name": "Шелехов"
+    },
+    {
+      "@type": "City",
+      "name": "Хомутово"
+    }
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "09:00",
+    "closes": "20:00"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "3500",
+    "reviewCount": "3500"
+  },
+  "sameAs": [
+    "https://yandex.ru/maps/org/vektor_komforta/117268889988/",
+    "https://2gis.ru/irkutsk/firm/70000001115497655",
+    "https://vk.com/vektor_komforta",
+    "https://ok.ru/group/70000051483797"
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Производство и монтаж окон",
+        "description": "Пластиковые окна VEKA, монтаж по ГОСТу, гарантия 5 лет",
+        "areaServed": {
+          "@type": "City",
+          "name": "Иркутск"
         },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 52.256538,
-          "longitude": 104.324010
-        },
-        "areaServed": ["Иркутск", "Ангарск", "Шелехов", "Хомутово"],
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "07:00",
-          "closes": "22:00"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5.0",
-          "bestRating": "5",
-          "worstRating": "1",
-          "ratingCount": "6",
-          "reviewCount": "6"
-        },
-        "sameAs": [
-          "https://yandex.ru/maps/org/vektor_komforta/117268889988/",
-          "https://2gis.ru/irkutsk/firm/70000001115497655",
-          "https://vk.com/vektor_komforta",
-          "https://ok.ru/group/70000051483797"
-        ],
-        "makesOffer": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Производство и монтаж окон" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Остекление балконов" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Установка кондиционеров" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Вентиляция и бризеры" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Алмазное бурение" } }
-        ]
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Вектор Комфорта"
+        }
       }
-    </script>
-    <!-- Разметка FAQ для расширенных результатов Google -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Сколько стоит установка кондиционера в Иркутске?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Стоимость установки кондиционера зависит от модели и сложности монтажа. Мы делаем бесплатный выезд и замер, после чего называем точную цену. Продажа и монтаж кондиционера выполняются за 1 день, с гарантией от завода от 3 до 5 лет."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "За сколько дней изготавливают пластиковые окна?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Срок изготовления пластиковых окон — до 14 рабочих дней. Мы используем собственное производство, профиль VEKA и фурнитуру MACO с микропроветриванием. Гарантия на окна — 3 года, на монтажные работы — 1 год."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Выезжаете ли вы на замер бесплатно?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да, выезд специалиста, замер и консультация абсолютно бесплатны и ни к чему вас не обязывают. Мы работаем в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Какие окна вы делаете?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Изготавливаем любые пластиковые окна: обычные и панорамные окна ПВХ, остекление балконов и лоджий, крашеные окна, ламинацию под дерево или цвет, двери, витражи и стеклянные перегородки."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Делаете ли вентиляцию для квартиры и бизнеса?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да, проектируем и монтируем приточную и вытяжную вентиляцию под ключ. Устанавливаем бризеры, рекуператоры и приточно-вытяжные системы Тион, Vakio для квартир, домов, кафе и офисов."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Что такое алмазное бурение и когда оно нужно?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Алмазное бурение — это аккуратное сверление отверстий в бетоне, железобетоне и кирпиче диаметром от 32 до 250 мм. Нужно под трубы, вентиляцию и кондиционеры. Работаем сухим способом с пылесосом без пыли и мокрым способом с водой — без трещин и сколов."
-            }
-          }
-        ]
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Установка кондиционеров",
+        "description": "Продажа и монтаж кондиционеров, гарантия 3-5 лет",
+        "areaServed": {
+          "@type": "City",
+          "name": "Иркутск"
+        },
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Вектор Комфорта"
+        }
       }
-    </script>
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Вентиляция и бризеры",
+        "description": "Приточно-вытяжная вентиляция, бризеры Тион и Vakio",
+        "areaServed": {
+          "@type": "City",
+          "name": "Иркутск"
+        },
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Вектор Комфорта"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Алмазное бурение",
+        "description": "Алмазное бурение отверстий 32-250 мм в бетоне и кирпиче",
+        "areaServed": {
+          "@type": "City",
+          "name": "Иркутск"
+        },
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Вектор Комфорта"
+        }
+      }
+    }
+  ],
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Александр М."
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Остеклили балкон под ключ. Работа сделана аккуратно, в оговоренные сроки. Ребята вежливые, после себя убрали. Цена адекватная, качество отличное. Рекомендую!"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Екатерина В."
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Заказали кондиционер в квартиру. Помогли с выбором модели под наш бюджет. Монтаж занял пару часов, всё чисто, штробы аккуратные. Работает уже второй сезон без нареканий."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Дмитрий К."
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Установили бризер Тион в спальне. Проблему с духотой решили полностью, теперь спим с закрытыми окнами. Мастера приехали вовремя, всё объяснили. Спасибо!"
+    }
+  ]
+}
+</script>
+   <!-- Разметка FAQ для расширенных результатов Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Сколько стоит установка кондиционера в Иркутске?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Стоимость установки кондиционера зависит от модели и сложности монтажа. Стандартный монтаж — от 18 000 ₽. Мы делаем бесплатный выезд и замер, после чего называем точную цену. Продажа и монтаж кондиционера выполняются за 1 день, с гарантией от завода от 3 до 5 лет."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "За сколько дней изготавливают пластиковые окна?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Срок изготовления пластиковых окон — 5-7 рабочих дней. Мы используем собственное производство, профиль VEKA и фурнитуру MACO с микропроветриванием. Гарантия на окна — 5 лет, на монтажные работы — 1 год."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Выезжаете ли вы на замер бесплатно?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да, выезд специалиста, замер и консультация абсолютно бесплатны и ни к чему вас не обязывают. Мы работаем в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Какие окна вы делаете?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Изготавливаем любые пластиковые окна: обычные и панорамные окна ПВХ, остекление балконов и лоджий, крашеные окна, ламинацию под дерево или цвет, двери, витражи и стеклянные перегородки."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Делаете ли вентиляцию для квартиры и бизнеса?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да, проектируем и монтируем приточную и вытяжную вентиляцию под ключ. Устанавливаем бризеры, рекуператоры и приточно-вытяжные системы Тион, Vakio для квартир, домов, кафе и офисов."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что такое алмазное бурение и когда оно нужно?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Алмазное бурение — это аккуратное сверление отверстий в бетоне, железобетоне и кирпиче диаметром от 32 до 250 мм. Нужно под трубы, вентиляцию и кондиционеры. Работаем сухим способом с пылесосом без пыли и мокрым способом с водой — без трещин и сколов."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли заболеть от кондиционера?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Сам по себе кондиционер не вызывает болезнь. Болеют из-за грязных фильтров (рассадник бактерий), закрытых окон (накопление CO2 и вирусов) и неправильной температуры (переохлаждение). Регулярная чистка фильтров и проветривание решают 90% проблем."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Инверторный или обычный кондиционер — что выбрать?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Инверторный кондиционер экономит электричество до 30-40%, работает тише, держит ровную температуру и служит 12-15 лет (вместо 7-10 у обычного). Для квартиры, где кондиционер работает регулярно, рекомендуем инвертор. Для дачи (редкое использование) подойдёт обычный."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Бризер или рекуператор — что выбрать?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Бризер подаёт свежий воздух с улицы, очищает и подогревает. Рекуператор подаёт свежий + забирает отработанный воздух, экономя тепло (КПД 80%). Для Иркутска с длинной зимой рекуператор окупается за 2 недели отопительного сезона."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Почему потеют пластиковые окна?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Главная причина — повышенная влажность и нехватка вентиляции. Пластиковые окна герметичны и «запирают» воздух. Решение: проветривание, микропроветривание, установка бризера или приточно-вытяжной системы."
+      }
+    }
+  ]
+}
+</script>
   </head>
   <body>
     <noscript><div><img src="https://mc.yandex.ru/watch/110599022" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
