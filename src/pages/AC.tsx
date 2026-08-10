@@ -5,6 +5,115 @@ import Reviews from "../components/Reviews";
 
 
 export default function AC() {
+    // Динамические мета-теги и Service микроразметка
+  useEffect(() => {
+    const titleText = "Кондиционеры в Иркутске — купить с установкой | Вектор Комфорта";
+    const descText = "Кондиционеры в Иркутске от 16 636 ₽. Инверторные и обычные сплит-системы Ballu, Electrolux, Royal Thermo, Daikin. Монтаж за 1 день, гарантия 3-5 лет.";
+    
+    document.title = titleText;
+    
+    const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
+      const attr = isProperty ? "property" : "name";
+      let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute(attr, nameOrProperty);
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    };
+    
+    updateMeta("description", descText);
+    updateMeta("og:title", titleText, true);
+    updateMeta("og:description", descText, true);
+    updateMeta("og:url", window.location.href, true);
+    updateMeta("og:type", "website", true);
+    
+    // Добавляем Service микроразметку Schema.org
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Установка кондиционеров в Иркутске",
+      "description": "Продажа и монтаж кондиционеров в Иркутске. Инверторные и обычные сплит-системы. Гарантия 3-5 лет.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Вектор Комфорта",
+        "url": "https://www.vektor-komforta.ru",
+        "telephone": "+7-3952-66-99-30",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Байкальская улица, 202/2, цокольный этаж",
+          "addressLocality": "Иркутск",
+          "addressRegion": "Иркутская область",
+          "postalCode": "664075",
+          "addressCountry": "RU"
+        }
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Иркутск"
+      },
+      "serviceType": "Продажа и монтаж кондиционеров",
+      "offers": {
+        "@type": "Offer",
+        "price": "16636",
+        "priceCurrency": "RUB",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Каталог кондиционеров",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Инверторные кондиционеры",
+              "description": "Экономия электричества до 30-40%, тихая работа, срок службы 12-15 лет"
+            },
+            "price": "27900",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Обычные кондиционеры (on/off)",
+              "description": "Доступные сплит-системы для дачи и редкого использования"
+            },
+            "price": "16636",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Полупромышленные кондиционеры",
+              "description": "Кассетные, канальные, мульти-сплит системы для офисов и магазинов"
+            },
+            "price": "64728",
+            "priceCurrency": "RUB"
+          }
+        ]
+      }
+    };
+    
+    let scriptTag = document.getElementById("seo-service-schema") as HTMLScriptElement;
+    if (!scriptTag) {
+      scriptTag = document.createElement("script");
+      scriptTag.id = "seo-service-schema";
+      scriptTag.type = "application/ld+json";
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(serviceSchema);
+    
+    return () => {
+      document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+      const el = document.getElementById("seo-service-schema");
+      if (el) el.remove();
+    };
+  }, []);
   return (
     <>
       <ServicePage
