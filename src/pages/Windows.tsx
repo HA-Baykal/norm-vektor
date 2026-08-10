@@ -5,6 +5,115 @@ import WindowCalculator from "../components/WindowCalculator";
 import WindowsGallery from "../components/WindowsGallery";
 
 export default function Windows() {
+    // Динамические мета-теги и Service микроразметка
+  useEffect(() => {
+    const titleText = "Пластиковые окна VEKA в Иркутске — купить с монтажом | Вектор Комфорта";
+    const descText = "Пластиковые окна VEKA в Иркутске от 11 000 ₽/м². Собственное производство, монтаж по ГОСТу, гарантия 5 лет. Бесплатный замер.";
+    
+    document.title = titleText;
+    
+    const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
+      const attr = isProperty ? "property" : "name";
+      let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute(attr, nameOrProperty);
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    };
+    
+    updateMeta("description", descText);
+    updateMeta("og:title", titleText, true);
+    updateMeta("og:description", descText, true);
+    updateMeta("og:url", window.location.href, true);
+    updateMeta("og:type", "website", true);
+    
+    // Добавляем Service микроразметку Schema.org
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Пластиковые окна VEKA в Иркутске",
+      "description": "Производство и монтаж пластиковых окон VEKA в Иркутске. Собственное производство, монтаж по ГОСТу, гарантия 5 лет.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Вектор Комфорта",
+        "url": "https://www.vektor-komforta.ru",
+        "telephone": "+7-3952-66-99-30",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Байкальская улица, 202/2, цокольный этаж",
+          "addressLocality": "Иркутск",
+          "addressRegion": "Иркутская область",
+          "postalCode": "664075",
+          "addressCountry": "RU"
+        }
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Иркутск"
+      },
+      "serviceType": "Производство и монтаж пластиковых окон",
+      "offers": {
+        "@type": "Offer",
+        "price": "11000",
+        "priceCurrency": "RUB",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Каталог окон VEKA",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Окна VEKA EuroLine 58",
+              "description": "3 камеры, 58 мм, эконом-вариант"
+            },
+            "price": "11000",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Окна VEKA SoftLine 70",
+              "description": "5 камер, 70 мм, оптимально для Иркутска"
+            },
+            "price": "14000",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Окна VEKA SoftLine 82",
+              "description": "7 камер, 82 мм, премиум"
+            },
+            "price": "18000",
+            "priceCurrency": "RUB"
+          }
+        ]
+      }
+    };
+    
+    let scriptTag = document.getElementById("seo-service-schema") as HTMLScriptElement;
+    if (!scriptTag) {
+      scriptTag = document.createElement("script");
+      scriptTag.id = "seo-service-schema";
+      scriptTag.type = "application/ld+json";
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(serviceSchema);
+    
+    return () => {
+      document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+      const el = document.getElementById("seo-service-schema");
+      if (el) el.remove();
+    };
+  }, []);
 return (
 <>
 <ServicePage
