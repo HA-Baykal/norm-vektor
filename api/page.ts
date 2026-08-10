@@ -373,16 +373,22 @@ export default async function handler(req: Request): Promise<Response> {
     // Определяем тип страницы (статья блога или обычная страница)
     const isArticle = path.startsWith("/baza-znaniy/") && path !== "/baza-znaniy";
     
-    // Базовые OpenGraph теги
-    const og =
-      `<meta name="description" content="${esc(page.description)}"/>` +
-      `<meta property="og:type" content="${isArticle ? 'article' : 'website'}"/>` +
-      `<meta property="og:site_name" content="Вектор Комфорта"/>` +
-      `<meta property="og:title" content="${esc(page.title)}"/>` +
-      `<meta property="og:description" content="${esc(page.description)}"/>` +
-      `<meta property="og:url" content="https://www.vektor-komforta.ru${path}"/>` +
-      `<meta property="og:image" content="https://www.vektor-komforta.ru/images/hero-bg.jpg"/>` +
-      `<meta name="twitter:card" content="summary_large_image"/>`;
+   // Базовые OpenGraph теги
+const og =
+  `<meta name="description" content="${esc(page.description)}"/>` +
+  `<meta property="og:type" content="${isArticle ? 'article' : 'website'}"/>` +
+  `<meta property="og:site_name" content="Вектор Комфорта"/>` +
+  `<meta property="og:title" content="${esc(page.title)}"/>` +
+  `<meta property="og:description" content="${esc(page.description)}"/>` +
+  `<meta property="og:url" content="https://www.vektor-komforta.ru${path}"/>` +
+  `<meta property="og:image" content="https://www.vektor-komforta.ru/images/hero-bg.jpg"/>` +
+  `<meta name="twitter:card" content="summary_large_image"/>` +
+  `<meta property="business:contact_data:phone_number" content="+7-3952-66-99-30"/>` +
+  `<meta property="business:contact_data:street_address" content="Байкальская улица, 202/2, цокольный этаж"/>` +
+  `<meta property="business:contact_data:locality" content="Иркутск"/>` +
+  `<meta property="business:contact_data:region" content="Иркутская область"/>` +
+  `<meta property="business:contact_data:postal_code" content="664075"/>` +
+  `<meta property="business:contact_data:country_name" content="Россия"/>`;
     
    // Article микроразметка для статей блога
 const articleSchema = isArticle ? `
