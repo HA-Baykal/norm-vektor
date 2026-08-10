@@ -4,40 +4,47 @@
   <!-- Главная -->
   <url>
     <loc>https://www.vektor-komforta.ru/</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Страницы услуг -->
   <url>
     <loc>https://www.vektor-komforta.ru/okna</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/kondicionery</loc>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/ventilyaciya</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/almaznoe-burenie</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Портфолио и стандарты -->
   <url>
     <loc>https://www.vektor-komforta.ru/portfolio</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/standarty</loc>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -45,70 +52,85 @@
   <!-- База знаний -->
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi</loc>
+    <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/invertornyy-ili-obychnyy-konditsioner</loc>
+    <lastmod>2026-02-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/kakie-plastikovye-okna-vybrat</loc>
+    <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/zachem-nuzhna-ventilyatsiya</loc>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/skolko-stoit-ustanovka-konditsionera-irkutsk</loc>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/skolko-stoyat-plastikovye-okna-irkutsk</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/pochemu-poteyut-plastikovye-okna</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/nuzhno-li-obsluzhivat-konditsioner</loc>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/top-10-konditsionerov-irkutsk-2026</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/mozhno-li-zabolet-ot-konditsionera</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/pochemu-ventilyatsiya-stoit-dorogo</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/baza-znaniy/invertornyy-konditsioner-stoit-li-pereplachivat</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/baza-znaniy/brizer-ili-rekuperator-chto-vybrat</loc>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -116,34 +138,167 @@
   <!-- Локальные страницы: Окна -->
   <url>
     <loc>https://www.vektor-komforta.ru/okna-v-solnechnom</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/kondicionery-v-solnechnom</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/okna-v-pervomaiskom</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/kondicionery-v-pervomaiskom</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/okna-v-novolenino</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vektor-komforta.ru/kondicionery-v-novolenino</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-v-yubileynom</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-v-yubileynom</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-v-akademgorodke</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-v-akademgorodke</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-v-raduzhnom</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-v-raduzhnom</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-v-universitetskom</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-v-universitetskom</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-na-baikalskom-trakte</loc>
     <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-na-baikalskom-trakte</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-na-golooustnenskom-trakte</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-na-golooustnenskom-trakte</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-v-pivovarikhe</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-v-pivovarikhe</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-v-urike</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-v-urike</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-v-stolbovo</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-v-stolbovo</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/okna-v-listvyanke</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/kondicionery-v-listvyanke</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Контакты -->
+  <url>
+    <loc>https://www.vektor-komforta.ru/kontakty</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
