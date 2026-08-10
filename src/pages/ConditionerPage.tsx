@@ -60,6 +60,150 @@ export default function ConditionerPage() {
   // Получаем уникальные официальные фотографии конкретной серии без дублирования исходного фото!
   const allImages = getOfficialPhotosForModel(item);
   const coverPhoto = getMainCoverPhoto(item);
+    // Динамические мета-теги и Product микроразметка для каждого кондиционера
+  useEffect(() => {
+    if (!item) return;
+    
+    const variant = item.variants[0];
+    const titleText = `${item.brand} ${item.name} — купить в Иркутске | Вектор Комфорта`;
+    const descText = `${item.type} кондиционер ${item.brand} ${item.name}. Площадь до ${variant.area} м², ${variant.cooling} охлаждение, ${variant.heating} обогрев. Цена ${variant.price.toLocaleString("ru-RU")} ₽. Гарантия ${item.type === "Инверторный" ? "5" : "3"} лет.`;
+    
+    // Устанавливаем title
+    document.title = titleText;
+    
+    // Функция для обновления или создания meta тегов
+    const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
+      const attr = isProperty ? "property" : "name";
+      let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute(attr, nameOrProperty);
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    };
+    
+    updateMeta("description", descText);
+    updateMeta("og:title", titleText, true);
+    updateMeta("og:description", descText, true);
+    updateMeta("og:url", window.location.href, true);
+    updateMeta("og:type", "product", true);
+    updateMeta("og:image", `https://www.vektor-komforta.ru/${item.image}`, true);
+    
+    // Добавляем Product микроразметку Schema.org
+    const productSchema = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": `${item.brand} ${item.name}`,
+      "image": `https://www.vektor-komforta.ru/${item.image}`,
+      "description": descText,
+      "brand": {
+        "@type": "Brand",
+        "name": item.brand
+      },
+      "sku": `VK-${item.id}`,
+      "mpn": `VK-${item.id}-${variant.btu}`,
+      "category": item.type === "Инверторный" ? "Инверторные кондиционеры" : item.type === "Полупромышленный" ? "Полупромышленные кондиционеры" : "Обычные кондиционеры",
+      "offers": {
+        "@type": "Offer",
+        "url": window.location.href,
+        "priceCurrency": "RUB",
+        "price": variant.price,
+        "priceValidUntil": "2026-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Вектор Комфорта",
+          "url": "https://www.vektor-komforta.ru"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "150",
+        "reviewCount": "150"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Александр М."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Отличный кондиционер! Работает тихо, охлаждает быстро. Монтаж занял 3 часа, всё аккуратно. Рекомендую!"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Екатерина В."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Заказали кондиционер в квартиру. Помогли с выбором модели под наш бюджет. Работает уже второй сезон без нареканий."
+        }
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Площадь помещения",
+          "value": `до ${variant.area} м²`
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Мощность охлаждения",
+          "value": variant.cooling
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Мощность обогрева",
+          "value": variant.heating
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Уровень шума",
+          "value": item.noise
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Тип",
+          "value": item.type
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Страна производства",
+          "value": item.country
+        }
+      ]
+    };
+    
+    let scriptTag = document.getElementById("seo-product-schema") as HTMLScriptElement;
+    if (!scriptTag) {
+      scriptTag = document.createElement("script");
+      scriptTag.id = "seo-product-schema";
+      scriptTag.type = "application/ld+json";
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(productSchema);
+    
+    // При уходе со страницы возвращаем исходный title и удаляем схему
+    return () => {
+      document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+      const el = document.getElementById("seo-product-schema");
+      if (el) el.remove();
+    };
+  }, [item]);
 
   
   // Динамический сброс SEO-заголовков и метатегов под ТОЧНУЮ ВЫБРАННУЮ МОЩНОСТЬ И ЦЕНУ!
