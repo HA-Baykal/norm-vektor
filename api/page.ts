@@ -384,38 +384,61 @@ export default async function handler(req: Request): Promise<Response> {
       `<meta property="og:image" content="https://www.vektor-komforta.ru/images/hero-bg.jpg"/>` +
       `<meta name="twitter:card" content="summary_large_image"/>`;
     
-    // Article микроразметка для статей блога
-    const articleSchema = isArticle ? `
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "${esc(page.title)}",
-        "description": "${esc(page.description)}",
-        "image": "https://www.vektor-komforta.ru/images/hero-bg.jpg",
-        "author": {
-          "@type": "Organization",
-          "name": "Вектор Комфорта",
-          "url": "https://www.vektor-komforta.ru"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Вектор Комфорта",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://www.vektor-komforta.ru/favicon.png"
-          }
-        },
-        "datePublished": "2026-01-15T08:00:00+08:00",
-        "dateModified": "2026-08-08T08:00:00+08:00",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://www.vektor-komforta.ru${path}"
-        },
-        "articleSection": "Экспертные советы"
-      }
-    </script>
-    ` : '';
+   // Article микроразметка для статей блога
+const articleSchema = isArticle ? `
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "${esc(page.title)}",
+    "description": "${esc(page.description)}",
+    "image": "https://www.vektor-komforta.ru/images/hero-bg.jpg",
+    "author": {
+      "@type": "Organization",
+      "name": "Вектор Комфорта",
+      "url": "https://www.vektor-komforta.ru",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.vektor-komforta.ru/favicon.png"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Байкальская улица, 202/2, цокольный этаж",
+        "addressLocality": "Иркутск",
+        "addressRegion": "Иркутская область",
+        "postalCode": "664075",
+        "addressCountry": "RU"
+      },
+      "telephone": "+7-3952-66-99-30"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Вектор Комфорта",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.vektor-komforta.ru/favicon.png"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Байкальская улица, 202/2, цокольный этаж",
+        "addressLocality": "Иркутск",
+        "addressRegion": "Иркутская область",
+        "postalCode": "664075",
+        "addressCountry": "RU"
+      },
+      "telephone": "+7-3952-66-99-30"
+    },
+    "datePublished": "2026-01-15T08:00:00+08:00",
+    "dateModified": "2026-08-08T08:00:00+08:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.vektor-komforta.ru${path}"
+    },
+    "articleSection": "Экспертные советы",
+    "keywords": "окна, кондиционеры, вентиляция, алмазное бурение, Иркутск"
+  }
+</script>
+` : '';
     
     html = html
       .replace(/<title>[^<]*<\/title>/i, `<title>${esc(page.title)}</title>`)
