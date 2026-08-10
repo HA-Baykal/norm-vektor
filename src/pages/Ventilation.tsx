@@ -4,6 +4,115 @@ import Reviews from "../components/Reviews";
 import VentilationCalculator from "../components/VentilationCalculator";
 
 export default function Ventilation() {
+    // Динамические мета-теги и Service микроразметка
+  useEffect(() => {
+    const titleText = "Вентиляция в Иркутске — бризеры и рекуператоры | Вектор Комфорта";
+    const descText = "Вентиляция в Иркутске от 6 000 ₽. Бризеры Тион, рекуператоры Vakio, приточно-вытяжные системы. Монтаж под ключ, гарантия 2 года.";
+    
+    document.title = titleText;
+    
+    const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
+      const attr = isProperty ? "property" : "name";
+      let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute(attr, nameOrProperty);
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    };
+    
+    updateMeta("description", descText);
+    updateMeta("og:title", titleText, true);
+    updateMeta("og:description", descText, true);
+    updateMeta("og:url", window.location.href, true);
+    updateMeta("og:type", "website", true);
+    
+    // Добавляем Service микроразметку Schema.org
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Вентиляция в Иркутске",
+      "description": "Приточно-вытяжная вентиляция, бризеры Тион и Vakio, рекуператоры. Монтаж под ключ, гарантия 2 года.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Вектор Комфорта",
+        "url": "https://www.vektor-komforta.ru",
+        "telephone": "+7-3952-66-99-30",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Байкальская улица, 202/2, цокольный этаж",
+          "addressLocality": "Иркутск",
+          "addressRegion": "Иркутская область",
+          "postalCode": "664075",
+          "addressCountry": "RU"
+        }
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Иркутск"
+      },
+      "serviceType": "Приточно-вытяжная вентиляция",
+      "offers": {
+        "@type": "Offer",
+        "price": "6000",
+        "priceCurrency": "RUB",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Каталог вентиляции",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Бризеры Тион",
+              "description": "Приточная вентиляция с HEPA-фильтрами, подогрев воздуха"
+            },
+            "price": "39000",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Рекуператоры Vakio",
+              "description": "Приточно-вытяжная вентиляция с рекуперацией тепла (КПД 80%)"
+            },
+            "price": "35000",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Приточные клапаны КИВ-125",
+              "description": "Естественный приток свежего воздуха, не требует электричества"
+            },
+            "price": "6000",
+            "priceCurrency": "RUB"
+          }
+        ]
+      }
+    };
+    
+    let scriptTag = document.getElementById("seo-service-schema") as HTMLScriptElement;
+    if (!scriptTag) {
+      scriptTag = document.createElement("script");
+      scriptTag.id = "seo-service-schema";
+      scriptTag.type = "application/ld+json";
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(serviceSchema);
+    
+    return () => {
+      document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+      const el = document.getElementById("seo-service-schema");
+      if (el) el.remove();
+    };
+  }, []);
   return (
     <>
       <ServicePage
