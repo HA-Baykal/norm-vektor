@@ -933,37 +933,83 @@ export default function BlogArticle() {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? articleContent[slug] : undefined;
   
-  // Динамические мета-теги для каждой статьи
-  useEffect(() => {
-    if (!article) return;
-    
-    // Устанавливаем уникальный title для каждой статьи
-    const titleText = `${article.title} | Вектор Комфорта`;
-    document.title = titleText;
-    
-    // Устанавливаем уникальный description
-    const descText = article.excerpt || article.title;
-    const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
-      const attr = isProperty ? "property" : "name";
-      let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
-      if (!meta) {
-        meta = document.createElement("meta");
-        meta.setAttribute(attr, nameOrProperty);
-        document.head.appendChild(meta);
+ // Динамические мета-теги для каждой статьи
+useEffect(() => {
+  if (!article) return;
+  
+  // Устанавливаем уникальный title для каждой статьи
+  const titleText = `${article.title} | Вектор Комфорта`;
+  document.title = titleText;
+  
+  // Устанавливаем уникальный description
+  const descText = article.excerpt || article.title;
+  const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
+    const attr = isProperty ? "property" : "name";
+    let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute(attr, nameOrProperty);
+      document.head.appendChild(meta);
+    }
+    meta.content = content;
+  };
+  
+  updateMeta("description", descText);
+  updateMeta("og:title", titleText, true);
+  updateMeta("og:description", descText, true);
+  updateMeta("og:url", window.location.href, true);
+  updateMeta("og:type", "article", true);
+  updateMeta("article:published_time", "2026-01-15T08:00:00+08:00", true);
+  updateMeta("article:modified_time", "2026-08-08T08:00:00+08:00", true);
+  updateMeta("article:author", "Вектор Комфорта", true);
+  updateMeta("article:section", article.category, true);
+  
+  // Добавляем Article микроразметку Schema.org
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "description": descText,
+    "image": "https://www.vektor-komforta.ru/images/hero-bg.jpg",
+    "author": {
+      "@type": "Organization",
+      "name": "Вектор Комфорта",
+      "url": "https://www.vektor-komforta.ru"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Вектор Комфорта",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.vektor-komforta.ru/favicon.png"
       }
-      meta.content = content;
-    };
-    
-    updateMeta("description", descText);
-    updateMeta("og:title", titleText, true);
-    updateMeta("og:description", descText, true);
-    updateMeta("og:url", window.location.href, true);
-    
-    // При уходе со страницы возвращаем исходный title
-    return () => {
-      document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
-    };
-  }, [article]);
+    },
+    "datePublished": "2026-01-15T08:00:00+08:00",
+    "dateModified": "2026-08-08T08:00:00+08:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": window.location.href
+    },
+    "articleSection": article.category,
+    "keywords": `${article.category}, Иркутск, Вектор Комфорта`
+  };
+  
+  let scriptTag = document.getElementById("seo-article-schema") as HTMLScriptElement;
+  if (!scriptTag) {
+    scriptTag = document.createElement("script");
+    scriptTag.id = "seo-article-schema";
+    scriptTag.type = "application/ld+json";
+    document.head.appendChild(scriptTag);
+  }
+  scriptTag.textContent = JSON.stringify(articleSchema);
+  
+  // При уходе со страницы возвращаем исходный title и удаляем схему
+  return () => {
+    document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+    const el = document.getElementById("seo-article-schema");
+    if (el) el.remove();
+  };
+}, [article]);
   
   if (!article) {
     return (
