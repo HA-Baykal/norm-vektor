@@ -370,22 +370,60 @@ export default async function handler(req: Request): Promise<Response> {
 
   const page = PAGES[path];
   if (page) {
+    // Определяем тип страницы (статья блога или обычная страница)
+    const isArticle = path.startsWith("/baza-znaniy/") && path !== "/baza-znaniy";
+    
+    // Базовые OpenGraph теги
     const og =
       `<meta name="description" content="${esc(page.description)}"/>` +
-      `<meta property="og:type" content="website"/>` +
+      `<meta property="og:type" content="${isArticle ? 'article' : 'website'}"/>` +
       `<meta property="og:site_name" content="Вектор Комфорта"/>` +
       `<meta property="og:title" content="${esc(page.title)}"/>` +
       `<meta property="og:description" content="${esc(page.description)}"/>` +
       `<meta property="og:url" content="https://www.vektor-komforta.ru${path}"/>` +
       `<meta property="og:image" content="https://www.vektor-komforta.ru/images/hero-bg.jpg"/>` +
       `<meta name="twitter:card" content="summary_large_image"/>`;
+    
+    // Article микроразметка для статей блога
+    const articleSchema = isArticle ? `
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "${esc(page.title)}",
+        "description": "${esc(page.description)}",
+        "image": "https://www.vektor-komforta.ru/images/hero-bg.jpg",
+        "author": {
+          "@type": "Organization",
+          "name": "Вектор Комфорта",
+          "url": "https://www.vektor-komforta.ru"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Вектор Комфорта",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.vektor-komforta.ru/favicon.png"
+          }
+        },
+        "datePublished": "2026-01-15T08:00:00+08:00",
+        "dateModified": "2026-08-08T08:00:00+08:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://www.vektor-komforta.ru${path}"
+        },
+        "articleSection": "Экспертные советы"
+      }
+    </script>
+    ` : '';
+    
     html = html
       .replace(/<title>[^<]*<\/title>/i, `<title>${esc(page.title)}</title>`)
       .replace(/<meta\s+name="description"[^>]*>/i, "")
       .replace(/<meta\s+property="og:[^"]*"[^>]*>/gi, "")
       .replace(/<meta\s+name="twitter:[^"]*"[^>]*>/gi, "")
       .replace(/<link\s+rel="canonical"[^>]*>/i, "")
-      .replace("</head>", `<link rel="canonical" href="https://www.vektor-komforta.ru${path}"/>${og}</head>`)
+      .replace("</head>", `<link rel="canonical" href="https://www.vektor-komforta.ru${path}"/>${og}${articleSchema}</head>`)
       .replace(/<div id="root">\s*<\/div>/i, `<div id="root"></div><noscript>${page.body}</noscript>`);
   } else {
     // Для любой другой страницы (на всякий случай) всё равно ставим правильный canonical
