@@ -1,10 +1,195 @@
+
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/favicon.ico", "destination": "/favicon.ico" },
-    { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/((?!api|sitemap|robots|favicon|assets).*)", "destination": "/api/page?path=/$1" }
-  ]
-}
+    {
+      "source": "/baza-znaniy/:slug",
+      "destination": "/api/page?path=/baza-znaniy/:slug"
+    },
+    {
+      "source": "/kondicionery/:slug",
+      "destination": "/api/seo?slug=:slug"
+    },
+    {
+      "source": "/okna/:slug",
+      "destination": "/api/seo?slug=:slug"
+    },
+    {
+      "source": "/",
+      "destination": "/api/page?path=/"
+    },
+    {
+      "source": "/okna",
+      "destination": "/api/page?path=/okna"
+    },
+    {
+      "source": "/kondicionery",
+      "destination": "/api/page?path=/kondicionery"
+    },
+    {
+      "source": "/ventilyaciya",
+      "destination": "/api/page?path=/ventilyaciya"
+    },
+    {
+      "source": "/almaznoe-burenie",
+      "destination": "/api/page?path=/almaznoe-burenie"
+    },
+    {
+      "source": "/kontakty",
+      "destination": "/api/page?path=/kontakty"
+    },
+    {
+      "source": "/standarty",
+      "destination": "/api/page?path=/standarty"
+    },
+    {
+      "source": "/otzyv",
+      "destination": "/api/page?path=/otzyv"
+    },
+    {
+      "source": "/baza-znaniy",
+      "destination": "/api/page?path=/baza-znaniy"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/api/page?path=/portfolio"
+    },
+    {
+      "source": "/okna-v-homutovo",
+      "destination": "/api/page?path=/okna-v-homutovo"
+    },
+    {
+      "source": "/kondicionery-v-homutovo",
+      "destination": "/api/page?path=/kondicionery-v-homutovo"
+    },
+    {
+      "source": "/okna-v-molodezhnom",
+      "destination": "/api/page?path=/okna-v-molodezhnom"
+    },
+    {
+      "source": "/kondicionery-v-molodezhnom",
+      "destination": "/api/page?path=/kondicionery-v-molodezhnom"
+    },
+    {
+      "source": "/okna-v-angarske",
+      "destination": "/api/page?path=/okna-v-angarske"
+    },
+    {
+      "source": "/kondicionery-v-angarske",
+      "destination": "/api/page?path=/kondicionery-v-angarske"
+    },
+    {
+      "source": "/okna-v-shelehove",
+      "destination": "/api/page?path=/okna-v-shelehove"
+    },
+    {
+      "source": "/kondicionery-v-shelehove",
+      "destination": "/api/page?path=/kondicionery-v-shelehove"
+    },
+    {
+      "source": "/okna-v-solnechnom",
+      "destination": "/api/page?path=/okna-v-solnechnom"
+    },
+    {
+      "source": "/kondicionery-v-solnechnom",
+      "destination": "/api/page?path=/kondicionery-v-solnechnom"
+    },
+    {
+      "source": "/okna-v-pervomaiskom",
+      "destination": "/api/page?path=/okna-v-pervomaiskom"
+    },
+    {
+      "source": "/kondicionery-v-pervomaiskom",
+      "destination": "/api/page?path=/kondicionery-v-pervomaiskom"
+    },
+    {
+      "source": "/okna-v-novolenino",
+      "destination": "/api/page?path=/okna-v-novolenino"
+    },
+    {
+      "source": "/kondicionery-v-novolenino",
+      "destination": "/api/page?path=/kondicionery-v-novolenino"
+    },
+    {
+      "source": "/okna-v-yubileynom",
+      "destination": "/api/page?path=/okna-v-yubileynom"
+    },
+    {
+      "source": "/kondicionery-v-yubileynom",
+      "destination": "/api/page?path=/kondicionery-v-yubileynom"
+    },
+    {
+      "source": "/okna-v-akademgorodke",
+      "destination": "/api/page?path=/okna-v-akademgorodke"
+    },
+    {
+      "source": "/kondicionery-v-akademgorodke",
+      "destination": "/api/page?path=/kondicionery-v-akademgorodke"
+    },
+    {
+      "source": "/okna-v-raduzhnom",
+      "destination": "/api/page?path=/okna-v-raduzhnom"
+    },
+    {
+      "source": "/kondicionery-v-raduzhnom",
+      "destination": "/api/page?path=/kondicionery-v-raduzhnom"
+    },
+    {
+      "source": "/okna-v-universitetskom",
+      "destination": "/api/page?path=/okna-v-universitetskom"
+    },
+    {
+      "source": "/kondicionery-v-universitetskom",
+      "destination": "/api/page?path=/kondicionery-v-universitetskom"
+    },
+    {
+      "source": "/okna-na-baikalskom-trakte",
+      "destination": "/api/page?path=/okna-na-baikalskom-trakte"
+    },
+    {
+      "source": "/kondicionery-na-baikalskom-trakte",
+      "destination": "/api/page?path=/kondicionery-na-baikalskom-trakte"
+    },
+    {
+      "source": "/okna-na-golooustnenskom-trakte",
+      "destination": "/api/page?path=/okna-na-golooustnenskom-trakte"
+    },
+    {
+      "source": "/kondicionery-na-golooustnenskom-trakte",
+      "destination": "/api/page?path=/kondicionery-na-golooustnenskom-trakte"
+    },
+    {
+      "source": "/okna-v-pivovarikhe",
+      "destination": "/api/page?path=/okna-v-pivovarikhe"
+    },
+    {
+      "source": "/kondicionery-v-pivovarikhe",
+      "destination": "/api/page?path=/kondicionery-v-pivovarikhe"
+    },
+    {
+      "source": "/okna-v-urike",
+      "destination": "/api/page?path=/okna-v-urike"
+    },
+    {
+      "source": "/kondicionery-v-urike",
+      "destination": "/api/page?path=/kondicionery-v-urike"
+    },
+    {
+      "source": "/okna-v-stolbovo",
+      "destination": "/api/page?path=/okna-v-stolbovo"
+    },
+    {
+      "source": "/kondicionery-v-stolbovo",
+      "destination": "/api/page?path=/kondicionery-v-stolbovo"
+    },
+    {
+      "source": "/okna-v-listvyanke",
+      "destination": "/api/page?path=/okna-v-listvyanke"
+    },
+    {
+      "source": "/kondicionery-v-listvyanke",
+      "destination": "/api/page?path=/kondicionery-v-listvyanke"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
