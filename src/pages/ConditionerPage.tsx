@@ -395,7 +395,6 @@ export default function ConditionerPage() {
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-contain transition duration-300"
-                  loading="eager"
                 />
                 <span className="absolute bottom-2 right-2 z-20 rounded-lg bg-black/50 px-2 py-1 text-[10px] text-white">🔍 Увеличить</span>
               </button>
