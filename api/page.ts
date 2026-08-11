@@ -398,7 +398,7 @@ export default async function handler(req: Request): Promise<Response> {
     .replace(/<meta\s+property="og:[^"]*"[^>]*>/gi, "")
     .replace(/<link\s+rel="canonical"[^>]*>/i, "")
     .replace("</head>", `${metaTags}</head>`)
-    .replace(/<div id="root"><\/div>/i, `<div id="root"></div>${seoContent}`);
+    .replace(/<div\s+id="root"[^>]*>[\s\S]*?<\/div>/i, `<div id="root"></div>${seoContent}`);
 
   return new Response(html, { headers: { "content-type": "text/html; charset=utf-8" } });
 }
