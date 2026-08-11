@@ -8,3 +8,4 @@
     { "source": "/((?!api|sitemap|robots|favicon|assets).*)", "destination": "/api/page?path=/:path*" }
   ]
 }
+ 
