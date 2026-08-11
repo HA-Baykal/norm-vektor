@@ -1,10 +1,11 @@
+import { useState, useEffect } from "react";
 import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";
 import DrillingCalculator from "../components/DrillingCalculator";
 
 export default function Drilling() {
-    // Динамические мета-теги и Service микроразметка
+  // Динамические мета-теги и Service микроразметка
   useEffect(() => {
     const titleText = "Алмазное бурение в Иркутске — отверстия 32-250 мм | Вектор Комфорта";
     const descText = "Алмазное бурение в Иркутске от 2 000 ₽/точка. Отверстия 32-250 мм в бетоне и кирпиче. Сухой способ с пылесосом, без пыли и трещин.";
@@ -113,6 +114,7 @@ export default function Drilling() {
       if (el) el.remove();
     };
   }, []);
+  
   return (
     <>
       <ServicePage
@@ -147,7 +149,7 @@ export default function Drilling() {
         photosTitle="Примеры выполненных отверстий"
       />
       <Counters />
-        <DrillingCalculator />
+      <DrillingCalculator />
       <Reviews />
     </>
   );
