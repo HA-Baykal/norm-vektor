@@ -1,10 +1,10 @@
 {
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/favicon.ico", "destination": "/favicon.ico" },
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/(images|assets|static)/(.*)", "destination": "/$1/$2" },
-    { "source": "/:path*", "destination": "/api/page?path=/:path*" }
+    { "source": "/favicon.ico", "destination": "/favicon.ico" },
+    { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/((?!api|sitemap|robots|favicon|assets).*)", "destination": "/api/page?path=/:path*" }
   ]
 }
