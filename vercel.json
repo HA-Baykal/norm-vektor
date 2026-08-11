@@ -5,8 +5,6 @@
     { "source": "/robots.txt", "destination": "/robots.txt" },
     { "source": "/favicon.ico", "destination": "/favicon.ico" },
     { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/((?!api|sitemap|robots|favicon|assets).*)", "destination": "/api/page?path=/:path*" }
+    { "source": "/((?!api|sitemap|robots|favicon|assets).*)", "destination": "/api/page?path=/$1" }
   ]
 }
-  
-  
