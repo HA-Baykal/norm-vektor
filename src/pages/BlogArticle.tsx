@@ -1179,6 +1179,11 @@ useEffect(() => {
                     {title: "→ ТОП-10 кондиционеров 2026", to: "/baza-znaniy/top-10-konditsionerov-irkutsk-2026"},
                     {title: "→ Каталог инверторных кондиционеров", to: "/kondicionery"},
                   ],
+                  "okna-veka-vs-rehau-chto-luchshe-dlya-irkutska": [
+                    {title: "→ Сколько стоят пластиковые окна", to: "/baza-znaniy/skolko-stoyat-plastikovye-okna-irkutsk"},
+                    {title: "→ Почему потеют окна и что делать", to: "/baza-znaniy/pochemu-poteyut-plastikovye-okna"},
+                    {title: "→ Окна VEKA в Иркутске от 11 000 ₽/м²", to: "/okna"},
+                  ],
                   "skolko-stoit-ustanovka-konditsionera-irkutsk": [
                     {title: "→ Как выбрать по площади 07,09,12", to: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi"},
                     {title: "→ Инвертор или обычный", to: "/baza-znaniy/invertornyy-ili-obychnyy-konditsioner"},
