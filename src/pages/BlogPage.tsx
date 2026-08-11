@@ -26,6 +26,14 @@ export const articles = [
     readTime: "6 мин",
   },
   {
+  slug: "okna-veka-vs-rehau-chto-luchshe-dlya-irkutska",
+  title: "Окна VEKA vs Rehau: что лучше для Иркутска? Честное сравнение от производителя",
+  excerpt: "Выбор между VEKA и Rehau — это выбор между двумя лучшими немецкими профилями для пластиковых окон. Разберём по пунктам, что лучше для сурового климата Иркутска.",
+  category: "Окна",
+  icon: "🪟",
+  readTime: "8 мин",
+},
+  {
     slug: "kakie-plastikovye-okna-vybrat",
     title: "Какие пластиковые окна выбрать для квартиры в Иркутске",
     excerpt:
