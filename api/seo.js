@@ -28,4 +28,10 @@ export default async function handler(req, res) {
     { id: "314", name: "Electrolux Smartline DC EACS/I-HSM/N8", brand: "Electrolux", price: 38900, type: "Инверторный", img: "https://rkcdn.ru/products/6e020624-6067-11ef-b8db-00505601218a/main_big.jpg" },
     { id: "315", name: "Electrolux Fusion Wave Super DC EACS/I-HFW/N8", brand: "Electrolux", price: 39500, type: "Инверторный", img: "https://rkcdn.ru/products/2f2b1e80-0b09-11f0-b8de-00505601218a/main_big.jpg" },
     { id: "316", name: "Electrolux Onix Super DC Black", brand: "Electrolux", price: 44900, type: "Инверторный", img: "https://rkcdn.ru/products/0c920006-5d3f-11ef-b8db-00505601218a/main_big.jpg" },
-    { id: "102", name: "Kentatsu
+    { id: "102", name: "Kentatsu Кумо KSGKU-HFRN1", brand: "Kentatsu", price: 24900, type: "Обычный", img: "/api/img-proxy?url=https://daichi.business/upload/iblock/7b2/c5j10n4adp10em9pt66k5j0y8nax98gx/942finr4uomtf9rvijzjbgcw1qcqedqn.jpg" },
+    { id: "107", name: "Kentatsu Канами R32 KSGA-HFRN1", brand: "Kentatsu", price: 26900, type: "Обычный", img: "/api/img-proxy?url=https://daichi.business/upload/iblock/c19/7jle33di9je4o802o87mddzu694wkwca/55507fb2c3118b5bec7567c436d6495c.jpg" },
+    { id: "105", name: "Kentatsu Канами Инвертор Wi-Fi", brand: "Kentatsu", price: 35900, type: "Инверторный", img: "/api/img-proxy?url=https://daichi.business/upload/iblock/4bf/ag5ds74v33w169jd9kynxgegm84kbwbu/z8r82162uzfezborqxms4ic3i0foubc1.jpg" },
+    { id: "701", name: "Kentatsu Атама (Atama)", brand: "Kentatsu", price: 25900, type: "Обычный", img: "/api/img-proxy?url=https://daichi.business/upload/iblock/ee8/t7rexgtu91bnpnbfm31mgdysassd0pd6/vp9tk11z6erqnaf304ii24z0wdvys6qf.jpg" },
+    { id: "702", name: "Kentatsu Атама Инвертор (Atama Inverter)", brand: "Kentatsu", price: 34900, type: "Инверторный", img: "/api/img-proxy?url=https://daichi.business/upload/iblock/cd7/bi1qr0x2a7e8igc71sb95xy8o9w8k92t/xid6fh9daibmwnse37a00spgsov8q6m3.jpg" },
+    { id: "703", name: "Kentatsu Харуки (Haruki)", brand: "Kentatsu", price: 26900, type: "Обычный", img: "/api/img-proxy?url=https://daichi.business/upload/iblock/57b/38zsy200mt7iu0m3h8xgj4d20cubartk/fgm35i47w6bz5lfwjmluk2ylr6c4rfeh.jpg" },
+    { id: "704", name: "Kentatsu Харуки Инвертор
