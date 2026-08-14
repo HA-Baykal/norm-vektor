@@ -4,6 +4,7 @@ import { windowsCatalogData, getWindowProductBySlug } from "../data/windowsCatal
 import QuickBookingModal from "../components/QuickBookingModal";
 import QuoteForm from "../components/QuoteForm";
 import FAQSection from "../components/FAQSection";
+import { useBreadcrumb } from "../utils/useSeo";
 
 export default function WindowPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -107,6 +108,13 @@ export default function WindowPage() {
       if (el) el.remove();
     };
   }, [item]);
+
+  // Хлебные крошки Schema.org (BreadcrumbList) — единый хук useBreadcrumb
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    { name: "Окна VEKA в Иркутске", path: "/okna" },
+    { name: item.title },
+  ]);
 
   return (
     <div className="bg-slate-50 min-h-screen">

@@ -32,3 +32,57 @@ export function useSeo(title: string, description: string) {
     };
   }, [title, description]);
 }
+
+const SITE_ORIGIN = "https://www.vektor-komforta.ru";
+
+export interface BreadcrumbItem {
+  /** Название пункта («Главная», «Кондиционеры», «Ballu Eclipse»…) */
+  name: string;
+  /** Путь от корня сайта («/», «/kondicionery»). У последнего пункта можно опустить. */
+  path?: string;
+}
+
+/**
+ * SEO-хук хлебных крошек: вставляет в <head> JSON-LD разметку
+ * Schema.org BreadcrumbList (P2-3 SEO-аудита). Принимает массив
+ * пунктов от главной до текущей страницы; у последнего пункта
+ * ссылку можно не указывать. При уходе со страницы разметка удаляется.
+ */
+export function useBreadcrumb(items: BreadcrumbItem[]) {
+  useEffect(() => {
+    if (!items.length) return;
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": items.map((item, i) => {
+        const listItem: Record<string, unknown> = {
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": item.name,
+        };
+        if (item.path) {
+          listItem.item = item.path.startsWith("http")
+            ? item.path
+            : `${SITE_ORIGIN}${item.path === "/" ? "/" : item.path}`;
+        }
+        return listItem;
+      }),
+    };
+
+    const SCRIPT_ID = "seo-breadcrumb-schema";
+    let script = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = SCRIPT_ID;
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(schema);
+
+    return () => {
+      const el = document.getElementById(SCRIPT_ID);
+      if (el) el.remove();
+    };
+  }, [JSON.stringify(items)]);
+}

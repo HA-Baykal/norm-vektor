@@ -12,6 +12,54 @@ interface Page {
   bodyHtml: string;
 }
 
+// ============================================================
+// Хлебные крошки (Schema.org BreadcrumbList) — P2-3 SEO-аудита.
+// Короткие названия пунктов для основных страниц; для остальных
+// (гео-страницы и т.п.) берётся h1 страницы.
+// ============================================================
+const BREADCRUMB_NAMES: Record<string, string> = {
+  "/okna": "Пластиковые окна",
+  "/kondicionery": "Кондиционеры",
+  "/ventilyaciya": "Вентиляция",
+  "/almaznoe-burenie": "Алмазное бурение",
+  "/kontakty": "Контакты",
+  "/standarty": "Стандарты монтажа",
+  "/otzyv": "Отзывы",
+  "/portfolio": "Портфолио",
+  "/baza-znaniy": "База знаний",
+};
+
+function buildBreadcrumbJsonLd(path: string, page: Page): string {
+  const items: { name: string; item?: string }[] = [
+    { name: "Главная", item: "https://www.vektor-komforta.ru/" },
+  ];
+  if (path !== "/") {
+    // Гео-страницы услуг вкладываем под родительский раздел
+    if (path.startsWith("/okna-")) {
+      items.push({ name: "Пластиковые окна", item: "https://www.vektor-komforta.ru/okna" });
+    } else if (path.startsWith("/kondicionery-")) {
+      items.push({ name: "Кондиционеры", item: "https://www.vektor-komforta.ru/kondicionery" });
+    }
+    items.push({ name: BREADCRUMB_NAMES[path] || page.h1 });
+  }
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((it, i) => {
+      const li: Record<string, unknown> = {
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": it.name,
+      };
+      if (it.item) li.item = it.item;
+      return li;
+    }),
+  };
+  // id совпадает с клиентским хуком useBreadcrumb — React перезапишет
+  // этот же тег, а не создаст дубль разметки
+  return `<script id="seo-breadcrumb-schema" type="application/ld+json">${JSON.stringify(schema)}</script>`;
+}
+
 const PAGES: Record<string, Page> = {
   "/": {
     title: "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта",
@@ -728,6 +776,10 @@ export default async function handler(req: Request): Promise<Response> {
   html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i, `<meta property="og:description" content="${esc(page.description)}" />`);
   html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${fullUrl}" />`);
   html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${fullUrl}" />`);
+
+  // Хлебные крошки Schema.org (BreadcrumbList) для краулеров
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(path, page);
+  html = html.replace(/<\/head>/i, `${breadcrumbJsonLd}\n</head>`);
 
   // Статический контент для краулеров без JS (клиентский React затем перерисует страницу)
   const seoBody = `<div id="root"><main><h1>${esc(page.h1)}</h1>${page.bodyHtml}</main></div>`;

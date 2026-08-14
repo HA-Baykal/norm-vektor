@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
+import { useBreadcrumb } from "../utils/useSeo";
 
 interface ServicePageProps {
   title: string;
@@ -10,6 +11,8 @@ interface ServicePageProps {
   services: { icon: string; title: string; text: string }[];
   process: { step: string; title: string; text: string }[];
   breadcrumb: string;
+  /** Путь страницы для JSON-LD BreadcrumbList, например "/kondicionery" */
+  breadcrumbPath?: string;
   ctaLabel?: string;
   ctaHref?: string;
 }
@@ -23,9 +26,16 @@ export default function ServicePage({
   services,
   process,
   breadcrumb,
+  breadcrumbPath,
   ctaLabel,
   ctaHref,
 }: ServicePageProps) {
+  // JSON-LD хлебные крошки (Schema.org BreadcrumbList) — P2-3 SEO-аудита
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    { name: breadcrumb, path: breadcrumbPath },
+  ]);
+
   return (
     <>
       {/* Hero */}
