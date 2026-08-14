@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useSearchParams, Link, Navigate } from "react-router-dom";
 import { conditioners, formatRub, INSTALL_PRICE } from "../components/CatalogConditioners";
 import { getOfficialSpecification, getOfficialPhotosForModel, getMainCoverPhoto, getModelUrlSlug } from "../data/officialSpecsEngine";
+import { useBreadcrumb } from "../utils/useSeo";
 import QuickBookingModal from "../components/QuickBookingModal";
 import FAQSection from "../components/FAQSection";
 
@@ -288,36 +289,21 @@ export default function ConditionerPage() {
     }
     scriptTag.textContent = JSON.stringify(productSchema);
 
-    // 3.1. Хлебные крошки Schema.org (BreadcrumbList)
-    const breadcrumbSchema = {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://www.vektor-komforta.ru/" },
-        { "@type": "ListItem", "position": 2, "name": "Кондиционеры", "item": "https://www.vektor-komforta.ru/kondicionery" },
-        { "@type": "ListItem", "position": 3, "name": item.brand, "item": `https://www.vektor-komforta.ru/kondicionery?brand=${encodeURIComponent(item.brand)}` },
-        { "@type": "ListItem", "position": 4, "name": item.name }
-      ]
-    };
-
-    let breadcrumbTag = document.getElementById("seo-breadcrumb-schema") as HTMLScriptElement;
-    if (!breadcrumbTag) {
-      breadcrumbTag = document.createElement("script");
-      breadcrumbTag.id = "seo-breadcrumb-schema";
-      breadcrumbTag.type = "application/ld+json";
-      document.head.appendChild(breadcrumbTag);
-    }
-    breadcrumbTag.textContent = JSON.stringify(breadcrumbSchema);
-
     // При уходе со страницы возвращаем исходный заголовок и удаляем схемы
     return () => {
       document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
       const el = document.getElementById("seo-product-schema");
       if (el) el.remove();
-      const el2 = document.getElementById("seo-breadcrumb-schema");
-      if (el2) el2.remove();
     };
   }, [item, officialSpecs, coverPhoto, allImages]);
+
+  // Хлебные крошки Schema.org (BreadcrumbList) — единый хук useBreadcrumb
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    { name: "Кондиционеры", path: "/kondicionery" },
+    { name: item.brand, path: `/kondicionery?brand=${encodeURIComponent(item.brand)}` },
+    { name: item.name },
+  ]);
   // Ссылка MAX по вашему техническому заданию
   const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
 
