@@ -146,12 +146,44 @@ export default function StandartyPage() {
           <div className="text-sm font-semibold text-orange-300">
             <Link to="/" className="hover:underline">Главная</Link> / Стандарты монтажа
           </div>
-          <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">Стандарты монтажа</h1>
+          <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">Монтаж окон и кондиционеров по ГОСТу в Иркутске</h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
             Почему наш монтаж служит десятилетиями. Честно рассказываем, с какими материалами
             работаем и как соблюдаем технологию до мелочей — чтобы окна, кондиционеры и вентиляция
             радовали вас долгие годы.
           </p>
+        </div>
+      </section>
+      {/* Монтаж по ГОСТ 30971 */}
+      <section className="bg-white px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="text-2xl font-black text-[#1a3a5c] sm:text-3xl">Из чего состоит монтаж по ГОСТ 30971-2012</h2>
+          <p className="mt-3 max-w-3xl text-base leading-7 text-slate-600">
+            Работаем строго по межгосударственному стандарту на монтажные швы оконных блоков. Вот что это значит на практике:
+          </p>
+          <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {[
+              "Установка окна на пластиковые клинья вдоль рамы, без деревянных брусков",
+              "Трёхслойный монтажный шов: монтажная пена + пароизоляция изнутри + паропроницаемая лента снаружи",
+              "Слой пены без пустот, клинья запениваются с двух сторон",
+              "Учёт линейного расширения профиля и правильный шаг крепления",
+              "Крепление, не передающее нагрузки на стеклопакет",
+              "Герметизация всех швов и стыков с проверкой на продувание",
+              "Правильный уклон дренажных отверстий и отливов",
+              "Проверка открывания, закрывания и прижима створок после монтажа",
+              "Кондиционеры: вакуумирование трассы и проверка на утечку фреона",
+              "Сдача по акту с гарантией на работы до 5 лет",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-700">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#ff6b35] text-[10px] font-black text-white">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="/okna" className="inline-flex items-center gap-2 rounded-full bg-[#ff6b35] px-6 py-3 text-sm font-black text-white transition hover:bg-[#e95620]">🪟 Цены на монтаж окон</a>
+            <a href="/kondicionery" className="inline-flex items-center gap-2 rounded-full bg-[#1a3a5c] px-6 py-3 text-sm font-black text-white transition hover:bg-[#10263d]">❄️ Цены на монтаж кондиционеров</a>
+          </div>
         </div>
       </section>
       {/* Разделы */}

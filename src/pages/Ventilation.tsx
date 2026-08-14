@@ -117,13 +117,13 @@ export default function Ventilation() {
   return (
     <>
       <ServicePage
-        title="Вентиляция"
+        title="Вентиляция в Иркутске — монтаж под ключ от 6 000 ₽"
         ctaLabel="🧮 Рассчитать вентиляцию"
         ctaHref="#calculator"
-        tagline="Бризеры, рекуператоры, приточно-вытяжные системы под ключ"
+        tagline="Бризеры Тион, рекуператоры Vakio, приточно-вытяжные системы. Гарантия 2 года"
         heroIcon="💨"
         intro="Системы приточно-вытяжной вентиляции: продажа и монтаж рекуператоров, бризеров, Тион, Vakio. Проектирование, изготовление воздуховодов, монтаж для квартир, домов, производственных помещений, ресторанов и офисов."
-        breadcrumb="Вентиляция"
+        breadcrumb="Вентиляция в Иркутске"
         advantages={[
           { icon: "🎯", title: "Проектирование", text: "Расчёт воздухообмена по нормам, подбор оборудования под объект" },
           { icon: "🏭", title: "Своё производство воздуховодов", text: "Изготавливаем воздуховоды под размеры объекта — точная подгонка" },
@@ -147,6 +147,43 @@ export default function Ventilation() {
         photosIcon="💨"
         photosTitle="Реализованные проекты вентиляции"
       />
+      <section className="bg-white py-10 sm:py-14 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#1a3a5c]">Вентиляция в Иркутске — бризеры Тион, рекуператоры Vakio, приточно-вытяжные системы под ключ</h2>
+          <div className="mt-6 grid lg:grid-cols-3 gap-6 text-sm leading-7 text-slate-700">
+            <div className="space-y-3">
+              <p><strong>Вентиляция в Иркутске</strong> от «Вектор Комфорта» — это свежий воздух круглый год без открывания окон. Ставим <strong>бризеры Тион</strong> с многоступенчатой очисткой (HEPA, фотокаталитический фильтр), <strong>рекуператоры Vakio</strong> с КПД до 80% и полноценные <strong>приточно-вытяжные системы</strong> с проектированием и пуско-наладкой. Цена — <strong>от 6 000 ₽</strong> за приточный клапан КИВ-125, бризер — от 39 000 ₽, рекуператор — от 35 000 ₽.</p>
+              <p>Работаем в квартирах, частных домах, офисах, ресторанах и на производстве. Воздуховоды изготавливаем на собственном производстве в Иркутске — точная подгонка под объект, минимум стыков и шума.</p>
+            </div>
+            <div className="space-y-3">
+              <p><strong>Монтаж вентиляции в Иркутске — цена:</strong> установка приточного клапана КИВ-125 — <strong>от 6 000 ₽</strong>; монтаж бризера — <strong>от 9 000 ₽</strong> с прокладкой трассы; рекуператор Vakio — <strong>от 12 000 ₽</strong>; монтаж приточной установки и воздуховодов — по проекту.</p>
+              <p>Что входит в монтаж: алмазное бурение без пыли, герметизация стыков, утепление холодных участков, балансировка системы, инструктаж. <strong>Гарантия 2 года</strong> на работы по договору.</p>
+              <p><strong>География:</strong> Иркутск, Ангарск, Шелехов, Хомутово, Молодёжный и пригород — выезд 0 ₽ до 50 км. Замер и расчёт — за 15 минут. Срок монтажа — 1 день.</p>
+            </div>
+            <div className="space-y-3">
+              <p><strong>Сроки и сервис:</strong> подберём систему под площадь и нормы воздухообмена (30 м³/ч на человека). Обслуживание — замена фильтров, чистка и антибактериальная обработка. Официальный партнёр <strong>Тион</strong> и <strong>Vakio</strong>.</p>
+              <p>Звоните +7 (914) 914-66-06 или пишите в MAX — отвечаем за 5 минут. Рассрочка.</p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <a href="tel:+79149146606" className="px-5 py-2.5 rounded-full bg-[#ff6b35] text-white font-black text-xs hover:bg-[#e95620]">📞 Позвонить</a>
+                <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full bg-[#1a3a5c] text-white font-black text-xs border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[8px] font-black mr-1">MAX</span> Написать в MAX</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="bg-white pb-10 sm:pb-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
+            <h3 className="font-black text-[#1a3a5c]">Частые вопросы про вентиляцию в Иркутске</h3>
+            <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
+              <div><strong>Сколько стоит установка бризера?</strong> Монтаж бризера — от 9 000 ₽ вместе с алмазным бурением. Сам бризер — от 39 000 ₽.</div>
+              <div><strong>Чем бризер отличается от кондиционера?</strong> Бризер подаёт свежий воздух с улицы с очисткой и подогревом, а кондиционер только охлаждает/нагревает воздух в помещении.</div>
+              <div><strong>Поможет ли вентиляция от конденсата на окнах?</strong> Да, именно недостаток вентиляции — главная причина конденсата и плесени на окнах. Приток свежего воздуха решает проблему.</div>
+              <div><strong>За сколько делаете монтаж?</strong> Монтаж КИВ-125 или бризера — 1 день. Приточно-вытяжную систему — от 2–3 дней по проекту.</div>
+            </div>
+          </div>
+        </div>
+      </section>
       <Counters />
         <VentilationCalculator />
       <Reviews />

@@ -117,14 +117,14 @@ export default function Windows() {
   }, []);
 return (
 <>
-<ServicePage
-title="Окна и остекление"
+  <ServicePage
+title="Пластиковые окна ПВХ в Иркутске — купить с установкой"
 ctaLabel="🧮 Расчёт окна онлайн"
 ctaHref="#calculator"
-tagline="Собственное производство. Монтаж по ГОСТу. Гарантия 5 лет."
+tagline="Собственное производство. Монтаж по ГОСТу. Гарантия 5 лет. Цена от 11 000 ₽/м²"
 heroIcon="🪟"
 intro="Изготавливаем и устанавливаем ПВХ и алюминиевые конструкции любой сложности: окна, двери, балконы, лоджии, витражи, стеклянные перегородки. Регулируем, ремонтируем, меняем стеклопакеты."
-breadcrumb="Окна и остекление"
+breadcrumb="Пластиковые окна ПВХ в Иркутске"
 advantages={[
 { icon: "🏭", title: "Свой цех", text: "Производство в Иркутске — контроль качества и сроки от 5 рабочих дней" },
 { icon: "👷", title: "Опытные монтажники", text: "Бригады со стажем от 7 лет. Монтаж строго по ГОСТ 30971-2012" },
@@ -166,6 +166,48 @@ photosTitle="Наши работы по остеклению"
         <div className="flex flex-wrap gap-2 pt-2">
           <a href="tel:+79149146606" className="px-5 py-2.5 rounded-full bg-[#ff6b35] text-white font-black text-xs hover:bg-[#e95620]">📞 Позвонить</a>
           <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full bg-[#1a3a5c] text-white font-black text-xs border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[8px] font-black mr-1">MAX</span> Написать в MAX</a>
+        </div>
+      </div>
+    </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+      <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
+        <h3 className="font-black text-[#1a3a5c]">Цены на монтаж окон в Иркутске</h3>
+        <p className="mt-1 text-xs leading-5 text-slate-500">Стоимость под ключ с материалами и работой. Точная цена — после бесплатного замера, выезд 0 ₽ до 50 км.</p>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full text-left text-xs sm:text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 text-[#1a3a5c]">
+                <th className="py-2 pr-4 font-black">Работа</th>
+                <th className="py-2 font-black">Цена</th>
+              </tr>
+            </thead>
+            <tbody className="text-slate-700">
+              <tr className="border-b border-slate-100">
+                <td className="py-2.5 pr-4">Монтаж пластикового окна</td>
+                <td className="py-2.5 font-semibold">от 2 400 ₽/шт</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="py-2.5 pr-4">Балконный блок с подоконником и отливом</td>
+                <td className="py-2.5 font-semibold">от 3 700 ₽</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="py-2.5 pr-4">Откосы (сэндвич / ПВХ)</td>
+                <td className="py-2.5 font-semibold">от 500 ₽/п.м</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="py-2.5 pr-4">Подоконник</td>
+                <td className="py-2.5 font-semibold">от 700 ₽/п.м</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="py-2.5 pr-4">Отлив</td>
+                <td className="py-2.5 font-semibold">от 200 ₽/п.м</td>
+              </tr>
+              <tr>
+                <td className="py-2.5 pr-4">Демонтаж старого окна</td>
+                <td className="py-2.5 font-semibold text-[#ff6b35]">0 ₽ при заказе</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
