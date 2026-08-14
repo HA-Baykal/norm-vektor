@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
-# Служебные и технические пути закрываем от индексации
-Disallow: /*?
-Disallow: /*.json$
+Disallow: /api/
+Disallow: /admin/
+
+Host: https://www.vektor-komforta.ru
 Sitemap: https://www.vektor-komforta.ru/sitemap.xml
