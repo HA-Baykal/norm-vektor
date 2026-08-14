@@ -10,6 +10,7 @@ import FAQSection from "../components/FAQSection";
 import QuickBookingModal from "../components/QuickBookingModal";
 import MobileBottomBar from "../components/MobileBottomBar";
 import BazaZnaniyBanner from "../components/BazaZnaniyBanner";
+import { useSeo } from "../utils/useSeo";
 
 const directions = [
   {
@@ -117,6 +118,10 @@ const standardHighlights = [
 ];
 
 export default function Home() {
+  useSeo(
+    "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта",
+    "Вектор Комфорта в Иркутске: производство и монтаж пластиковых окон VEKA, продажа и установка кондиционеров, вентиляция и бризеры, алмазное бурение. Гарантия до 5 лет, бесплатный замер, работаем в пригороде до 50 км."
+  );
   const [activeTab, setActiveTab] = useState("okna");
   const [bookingOpen, setBookingOpen] = useState(false);
   const activeTabData = quickTabs.find((t) => t.id === activeTab) || quickTabs[0];

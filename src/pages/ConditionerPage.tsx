@@ -199,7 +199,7 @@ export default function ConditionerPage() {
     
     // При уходе со страницы возвращаем исходный title и удаляем схему
     return () => {
-      document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
       const el = document.getElementById("seo-product-schema");
       if (el) el.remove();
     };
@@ -311,7 +311,7 @@ export default function ConditionerPage() {
 
     // При уходе со страницы возвращаем исходный заголовок и удаляем схемы
     return () => {
-      document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
       const el = document.getElementById("seo-product-schema");
       if (el) el.remove();
       const el2 = document.getElementById("seo-breadcrumb-schema");

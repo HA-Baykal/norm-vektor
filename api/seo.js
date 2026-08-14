@@ -101,6 +101,13 @@ export default async function handler(req, res) {
     w.id.toLowerCase() === decodedSlug ||
     w.title.toLowerCase().replace(/\s+/g, "-") === decodedSlug
   );
+
+  // Неизвестный slug → честный 404 с noindex (вместо мягкого 404 на index.html)
+  if (!model && !windowModel) {
+    const notFoundHtml = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>Страница не найдена (404) — Вектор Комфорта, Иркутск</title><meta name="robots" content="noindex" /><link rel="canonical" href="https://www.vektor-komforta.ru/" /></head><body><h1>404 — страница не найдена</h1><p>Перейдите на <a href="https://www.vektor-komforta.ru/">главную</a> — окна, кондиционеры и вентиляция в Иркутске.</p></body></html>`;
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    return res.status(404).send(notFoundHtml);
+  }
   
   let exactPrice = model ? model.price : windowModel ? windowModel.price : 0;
   let btuText = "";
