@@ -1036,7 +1036,7 @@ useEffect(() => {
   
   // При уходе со страницы возвращаем исходный title и удаляем схему
   return () => {
-    document.title = "Кондиционеры и пластиковые окна в Иркутске — Вектор Комфорта";
+    document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
     const el = document.getElementById("seo-article-schema");
     if (el) el.remove();
   };

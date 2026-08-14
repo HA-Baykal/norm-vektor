@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useSeo } from "../utils/useSeo";
 const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
 export default function NotFound() {
+  useSeo("Страница не найдена (404) — Вектор Комфорта, Иркутск", "Ошибка 404: страница не найдена. Перейдите на главную — окна, кондиционеры и вентиляция в Иркутске от компании Вектор Комфорта.");
+
+  // Не индексируем битые URL: поисковик должен получать 404/noindex, а не дубль главной
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex";
+    document.head.appendChild(meta);
+    return () => {
+      document.head.querySelectorAll('meta[name="robots"][content="noindex"]').forEach((el) => el.remove());
+    };
+  }, []);
+
   return (
     <div className="min-h-[70vh] bg-slate-50 flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-2xl text-center">

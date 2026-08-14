@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import QuickBookingModal from "../components/QuickBookingModal";
+import { useSeo } from "../utils/useSeo";
 
 interface LocalCityPageProps {
   cityKey: string;
@@ -62,6 +63,29 @@ export default function LocalCityPage({ cityKey, serviceKey }: LocalCityPageProp
   const city = CITIES[cityKey];
   const service = SERVICES[serviceKey];
   const [bookingOpen, setBookingOpen] = useState(false);
+
+  // Уникальные SEO-заголовки для каждой локальной страницы (34 URL):
+  // title и description содержат локацию + услугу + цену — исключает дубли
+  // и затачивает страницу под гео-запросы "окна/кондиционеры в <район>".
+  const seoData = (() => {
+    if (!city || !service) return null;
+    const loc = city.in; // "в Хомутово", "на Байкальском тракте" и т.д.
+    if (serviceKey === "okna") {
+      return {
+        title: `Пластиковые окна ${loc} — монтаж VEKA от 11 000 ₽/м² | Вектор Комфорта`,
+        description: `Производство и монтаж пластиковых окон ${loc}: профиль VEKA, фурнитура MACO, остекление балконов и лоджий под ключ. Бесплатный выезд замерщика, монтаж по ГОСТу, гарантия 5 лет. Цена от 11 000 ₽/м².`,
+      };
+    }
+    return {
+      title: `Кондиционеры ${loc} — продажа и монтаж от 16 636 ₽ | Вектор Комфорта`,
+      description: `Продажа и монтаж кондиционеров ${loc}: Daikin, Ballu, Electrolux, Midea, Kentatsu. Инверторные сплит-системы, монтаж за 1 день, гарантия до 5 лет. Цена от 16 636 ₽. Бесплатный замер.`,
+    };
+  })();
+
+  useSeo(
+    seoData?.title ?? "Пластиковые окна и кондиционеры в Иркутске — Вектор Комфорта",
+    seoData?.description ?? "Производство и монтаж окон, кондиционеров и вентиляции в Иркутске и пригороде."
+  );
 
   if (!city || !service) return null;
 

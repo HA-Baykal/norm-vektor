@@ -1,0 +1,3139 @@
+{
+  "conditioners": [
+    {
+      "id": 201,
+      "name": "SHUFT Berg SFTO",
+      "brand": "SHUFT",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/shuft-berg.jpg",
+      "badge": "Новинка",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 16636,
+          "oldPrice": 17888
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 17566,
+          "oldPrice": 18888
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 25006,
+          "oldPrice": 26888
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 43606,
+          "oldPrice": 46888
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 57556,
+          "oldPrice": 61888
+        },
+        {
+          "btu": 36000,
+          "area": 100,
+          "cooling": "10.5 кВт",
+          "heating": "11.0 кВт",
+          "price": 75226,
+          "oldPrice": 80888
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "name": "SHUFT TOR SFTM",
+      "brand": "SHUFT",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/shuft-tor.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 19528,
+          "oldPrice": 20998
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 22309,
+          "oldPrice": 23988
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 30586,
+          "oldPrice": 32888
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 51325,
+          "oldPrice": 55188
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 66670,
+          "oldPrice": 71688
+        }
+      ]
+    },
+    {
+      "id": 203,
+      "name": "SHUFT Soturai SFTH",
+      "brand": "SHUFT",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/shuft-soturai.jpg",
+      "badge": "Распродажа",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 22216,
+          "oldPrice": 23888
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 30586,
+          "oldPrice": 32888
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 56894,
+          "oldPrice": 59888
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "name": "Ballu Olympio Pro BSO",
+      "brand": "Ballu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "23 дБ",
+      "country": "КНР",
+      "image": "images/catalog/ballu-olympio-pro.jpg",
+      "badge": "Новинка",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 23,
+          "cooling": "2.34 кВт",
+          "heating": "2.34 кВт",
+          "price": 23204,
+          "oldPrice": 24950
+        },
+        {
+          "btu": 9000,
+          "area": 26,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 24747,
+          "oldPrice": 26610
+        }
+      ]
+    },
+    {
+      "id": 205,
+      "name": "Ballu Olympio Edge BSO",
+      "brand": "Ballu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "23 дБ",
+      "country": "КНР",
+      "image": "images/catalog/ballu-olympio-edge.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 24822,
+          "oldPrice": 26690
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 26403,
+          "oldPrice": 28390
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 36354,
+          "oldPrice": 39090
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 61929,
+          "oldPrice": 66590
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 77553,
+          "oldPrice": 83390
+        }
+      ]
+    },
+    {
+      "id": 207,
+      "name": "Ballu Tessey BST",
+      "brand": "Ballu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "20 дБ",
+      "country": "КНР",
+      "image": "images/catalog/ballu-tessey.jpg",
+      "badge": "Новинка",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 24822,
+          "oldPrice": 26690
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 36354,
+          "oldPrice": 39090
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 61929,
+          "oldPrice": 66590
+        }
+      ]
+    },
+    {
+      "id": 209,
+      "name": "Royal Thermo Barocco RTB",
+      "brand": "Royal Thermo",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/royal-barocco.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 23622,
+          "oldPrice": 25400
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 26598,
+          "oldPrice": 28600
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 36131,
+          "oldPrice": 38850
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 58730,
+          "oldPrice": 63150
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 74400,
+          "oldPrice": 80000
+        }
+      ]
+    },
+    {
+      "id": 210,
+      "name": "Royal Thermo Siena RTS",
+      "brand": "Royal Thermo",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/royal-siena.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 23990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 25990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 32541,
+          "oldPrice": 34990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 55847,
+          "oldPrice": 60050
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 70866,
+          "oldPrice": 76200
+        }
+      ]
+    },
+    {
+      "id": 211,
+      "name": "Electrolux Skandi EACS-HSK/N3",
+      "brand": "Electrolux",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/electrolux-skandi.jpg",
+      "badge": "Лучший",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 25101,
+          "oldPrice": 26990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 27891,
+          "oldPrice": 29990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 37191,
+          "oldPrice": 39990
+        }
+      ]
+    },
+    {
+      "id": 212,
+      "name": "Electrolux Smartline EACS-HSM/N8",
+      "brand": "Electrolux",
+      "type": "Обычный",
+      "smartHome": true,
+      "noise": "26 дБ",
+      "country": "КНР",
+      "image": "images/catalog/electrolux-smartline.jpg",
+      "badge": "Умный дом",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 23,
+          "cooling": "2.34 кВт",
+          "heating": "2.34 кВт",
+          "price": 26961,
+          "oldPrice": 28990
+        },
+        {
+          "btu": 9000,
+          "area": 26,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 29751,
+          "oldPrice": 31990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 40539,
+          "oldPrice": 43590
+        },
+        {
+          "btu": 18000,
+          "area": 52,
+          "cooling": "5.28 кВт",
+          "heating": "5.57 кВт",
+          "price": 64161,
+          "oldPrice": 68990
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 79971,
+          "oldPrice": 85990
+        }
+      ]
+    },
+    {
+      "id": 213,
+      "name": "Electrolux Fusion Wave EACS-HFW/N3",
+      "brand": "Electrolux",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/electrolux-fusion-wave.jpg",
+      "badge": "Лучший",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 29751,
+          "oldPrice": 31990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 33471,
+          "oldPrice": 35990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 45189,
+          "oldPrice": 48590
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 71601,
+          "oldPrice": 76990
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 88341,
+          "oldPrice": 94990
+        }
+      ]
+    },
+    {
+      "id": 216,
+      "name": "Electrolux Nordic EACS-HT/N3",
+      "brand": "Electrolux",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/electrolux-nordic.jpg",
+      "variants": [
+        {
+          "btu": 30000,
+          "area": 80,
+          "cooling": "8.8 кВт",
+          "heating": "9.2 кВт",
+          "price": 103221,
+          "oldPrice": 110990
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Kentatsu Кумо KSGKU-HFRN1",
+      "brand": "Kentatsu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentants-kumo.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.34 кВт",
+          "heating": "2.34 кВт",
+          "price": 25890,
+          "oldPrice": 27090
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 28590,
+          "oldPrice": 29690
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.72 кВт",
+          "price": 36890,
+          "oldPrice": 37990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.57 кВт",
+          "price": 63640,
+          "oldPrice": 64690
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "name": "Kentatsu Канами R32 KSGA-HFRN1",
+      "brand": "Kentatsu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-kanami.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.34 кВт",
+          "heating": "2.34 кВт",
+          "price": 25090,
+          "oldPrice": 26090
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 27390,
+          "oldPrice": 28390
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.56 кВт",
+          "price": 61090,
+          "oldPrice": 62190
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "name": "Midea Парамаунт R32 MSAG1",
+      "brand": "Midea",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-paramount.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.34 кВт",
+          "heating": "2.34 кВт",
+          "price": 27890,
+          "oldPrice": 28990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 39790,
+          "oldPrice": 40790
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.56 кВт",
+          "price": 67890,
+          "oldPrice": 68990
+        }
+      ]
+    },
+    {
+      "id": 108,
+      "name": "Daichi Эверест R32 DA-EVQ1R",
+      "brand": "Daichi",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/daichi-everest.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.49 кВт",
+          "heating": "2.65 кВт",
+          "price": 24140,
+          "oldPrice": 24990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.23 кВт",
+          "heating": "3.52 кВт",
+          "price": 34290,
+          "oldPrice": 35290
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Axioma Серия H R32 ASX-H1R",
+      "brand": "Axioma",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/axioma-h.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.05 кВт",
+          "heating": "2.2 кВт",
+          "price": 19690,
+          "oldPrice": 20790
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.49 кВт",
+          "heating": "2.65 кВт",
+          "price": 21790,
+          "oldPrice": 22890
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.23 кВт",
+          "heating": "3.52 кВт",
+          "price": 30090,
+          "oldPrice": 31190
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "4.99 кВт",
+          "heating": "5.13 кВт",
+          "price": 50390,
+          "oldPrice": 51490
+        }
+      ]
+    },
+    {
+      "id": 502,
+      "name": "Axioma Серия H Инвертор R32",
+      "brand": "Axioma",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/axioma-h-inv.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.29 кВт",
+          "price": 30090
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 31890
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 35090
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.42 кВт",
+          "price": 60890
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.18 кВт",
+          "price": 77990
+        }
+      ]
+    },
+    {
+      "id": 301,
+      "name": "SHUFT Berg DC SFTOI",
+      "brand": "SHUFT",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/shuft-berg-inv.jpg",
+      "badge": "Новинка",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 25471,
+          "oldPrice": 27388
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 27238,
+          "oldPrice": 29288
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 32539,
+          "oldPrice": 34988
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 56440,
+          "oldPrice": 60688
+        }
+      ]
+    },
+    {
+      "id": 304,
+      "name": "Ballu Tessey DC BSTI",
+      "brand": "Ballu",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "20 дБ",
+      "country": "КНР",
+      "image": "images/catalog/ballu-tessey-inv.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 30774,
+          "oldPrice": 33090
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 32169,
+          "oldPrice": 34590
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 39516,
+          "oldPrice": 42490
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 89364,
+          "oldPrice": 96090
+        }
+      ]
+    },
+    {
+      "id": 305,
+      "name": "Ballu Odyssey DC BSOI",
+      "brand": "Ballu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/ballu-odyssey.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 29844,
+          "oldPrice": 32090
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 40167,
+          "oldPrice": 43190
+        }
+      ]
+    },
+    {
+      "id": 308,
+      "name": "Ballu Platinum Evolution DC BSUI",
+      "brand": "Ballu",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/ballu-platinum-evo.jpg",
+      "badge": "Лучший",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 45747,
+          "oldPrice": 49190
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 51234,
+          "oldPrice": 55090
+        }
+      ]
+    },
+    {
+      "id": 311,
+      "name": "Royal Thermo Diamond DC RTDI Wi-Fi",
+      "brand": "Royal Thermo",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/royal-diamond.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 28900
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 31800
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 38490
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 82761,
+          "oldPrice": 88990
+        }
+      ]
+    },
+    {
+      "id": 312,
+      "name": "Royal Thermo Siena DC RTSI",
+      "brand": "Royal Thermo",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/royal-siena-inv.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 33387,
+          "oldPrice": 35900
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 36828,
+          "oldPrice": 39600
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 42501,
+          "oldPrice": 45700
+        }
+      ]
+    },
+    {
+      "id": 314,
+      "name": "Electrolux Smartline DC EACS/I-HSM/N8",
+      "brand": "Electrolux",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/electrolux-smartline-inv.jpg",
+      "badge": "Умный дом",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 39051,
+          "oldPrice": 41990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 41841,
+          "oldPrice": 44990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 48909,
+          "oldPrice": 52590
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 81831,
+          "oldPrice": 87990
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 100431,
+          "oldPrice": 107990
+        }
+      ]
+    },
+    {
+      "id": 315,
+      "name": "Electrolux Fusion Wave Super DC EACS/I-HFW/N8",
+      "brand": "Electrolux",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/electrolux-fusion-wave-inv.jpg",
+      "badge": "Лучший",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 46491,
+          "oldPrice": 49990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 49281,
+          "oldPrice": 52990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 56349,
+          "oldPrice": 60590
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 89271,
+          "oldPrice": 95990
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 110661,
+          "oldPrice": 118990
+        }
+      ]
+    },
+    {
+      "id": 316,
+      "name": "Electrolux Onix Super DC Black",
+      "brand": "Electrolux",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/electrolux-onix.jpg",
+      "badge": "Лучший",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 58581,
+          "oldPrice": 62990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 64161,
+          "oldPrice": 68990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 98571,
+          "oldPrice": 105990
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 119961,
+          "oldPrice": 128990
+        }
+      ]
+    },
+    {
+      "id": 320,
+      "name": "Toshiba Seiya RAS-CVG",
+      "brand": "Toshiba",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Таиланд",
+      "image": "images/catalog/toshiba-seiya.jpg",
+      "badge": "Премиум",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.0 кВт",
+          "heating": "2.2 кВт",
+          "price": 75900
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "name": "Kentatsu Канами Инвертор Wi-Fi",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-kanami-wifi.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.93 кВт",
+          "price": 39140,
+          "oldPrice": 39890
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 43590,
+          "oldPrice": 44790
+        }
+      ]
+    },
+    {
+      "id": 401,
+      "name": "Ballu Machine BLC_C кассетная",
+      "brand": "Ballu",
+      "type": "Полупромышленный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/ballu-machine-cassette.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.8 кВт",
+          "price": 64728,
+          "oldPrice": 69600
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.6 кВт",
+          "price": 70494,
+          "oldPrice": 75800
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.0 кВт",
+          "heating": "7.5 кВт",
+          "price": 92628,
+          "oldPrice": 99600
+        },
+        {
+          "btu": 36000,
+          "area": 100,
+          "cooling": "10.5 кВт",
+          "heating": "11.2 кВт",
+          "price": 123504,
+          "oldPrice": 132800
+        },
+        {
+          "btu": 48000,
+          "area": 140,
+          "cooling": "14.0 кВт",
+          "heating": "15.0 кВт",
+          "price": 151962,
+          "oldPrice": 163400
+        },
+        {
+          "btu": 60000,
+          "area": 180,
+          "cooling": "17.5 кВт",
+          "heating": "18.5 кВт",
+          "price": 159867,
+          "oldPrice": 171900
+        }
+      ]
+    },
+    {
+      "id": 501,
+      "name": "AURUS A DC AAI",
+      "brand": "AURUS",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "15 дБ",
+      "country": "КНР",
+      "image": "images/catalog/aurus-a.jpg",
+      "badge": "Гарантия 7 лет",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 26,
+          "cooling": "2.6 кВт",
+          "heating": "3.2 кВт",
+          "price": 120000
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.2 кВт",
+          "price": 130000
+        }
+      ]
+    },
+    {
+      "id": 511,
+      "name": "Daikin FTXF Sensira",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-sensira.jpg",
+      "badge": "Премиум",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.0 кВт",
+          "heating": "2.4 кВт",
+          "price": 79800
+        },
+        {
+          "btu": 12000,
+          "area": 40,
+          "cooling": "4.2 кВт",
+          "heating": "4.6 кВт",
+          "price": 216490
+        }
+      ]
+    },
+    {
+      "id": 512,
+      "name": "Daikin FTXF-F",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-ftxf-f.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.0 кВт",
+          "heating": "2.4 кВт",
+          "price": 119700
+        }
+      ]
+    },
+    {
+      "id": 513,
+      "name": "Daikin FTXS",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-ftxs.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.0 кВт",
+          "heating": "2.5 кВт",
+          "price": 101100
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "2.8 кВт",
+          "price": 103500
+        }
+      ]
+    },
+    {
+      "id": 514,
+      "name": "Daikin FTYN (On/Off)",
+      "brand": "Daikin",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-ftyn.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.65 кВт",
+          "heating": "2.8 кВт",
+          "price": 48600
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.25 кВт",
+          "heating": "5.55 кВт",
+          "price": 75800
+        }
+      ]
+    },
+    {
+      "id": 515,
+      "name": "Daikin FTXJ Emura",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-emura.jpg",
+      "badge": "Дизайн",
+      "variants": [
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.0 кВт",
+          "price": 205050
+        }
+      ]
+    },
+    {
+      "id": 516,
+      "name": "Daikin FTXM Perfera",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-perfera.jpg",
+      "badge": "Премиум",
+      "variants": [
+        {
+          "btu": 12000,
+          "area": 42,
+          "cooling": "4.2 кВт",
+          "heating": "5.4 кВт",
+          "price": 302700
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.0 кВт",
+          "heating": "5.8 кВт",
+          "price": 332800
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "6.0 кВт",
+          "heating": "7.0 кВт",
+          "price": 378900
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.1 кВт",
+          "heating": "8.2 кВт",
+          "price": 395600
+        }
+      ]
+    },
+    {
+      "id": 517,
+      "name": "Daikin FTXM-A Perfera",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-perfera-a.jpg",
+      "badge": "Премиум",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.0 кВт",
+          "heating": "2.5 кВт",
+          "price": 228900
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "2.8 кВт",
+          "price": 229300
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.4 кВт",
+          "heating": "4.0 кВт",
+          "price": 302300
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.0 кВт",
+          "heating": "5.8 кВт",
+          "price": 406300
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "6.0 кВт",
+          "heating": "7.0 кВт",
+          "price": 429400
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.1 кВт",
+          "heating": "8.2 кВт",
+          "price": 482000
+        }
+      ]
+    },
+    {
+      "id": 518,
+      "name": "Daikin FTXJ-AB9",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-ftxj-ab9.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.0 кВт",
+          "heating": "2.5 кВт",
+          "price": 305000
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "2.8 кВт",
+          "price": 331200
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.4 кВт",
+          "heating": "4.0 кВт",
+          "price": 400400
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.0 кВт",
+          "heating": "5.8 кВт",
+          "price": 516400
+        }
+      ]
+    },
+    {
+      "id": 519,
+      "name": "Daikin FVXM/RXM (напольная)",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-fvxm.jpg",
+      "variants": [
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.0 кВт",
+          "heating": "5.8 кВт",
+          "price": 416986
+        }
+      ]
+    },
+    {
+      "id": 601,
+      "name": "Kentatsu кассетная KSVB Inverter (R32)",
+      "brand": "Kentatsu",
+      "type": "Полупромышленный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-cassette-inv.jpg",
+      "badge": "Инвертор",
+      "variants": [
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.5 кВт",
+          "price": 129190
+        },
+        {
+          "btu": 36000,
+          "area": 105,
+          "cooling": "10.55 кВт",
+          "heating": "11.0 кВт",
+          "price": 168690
+        },
+        {
+          "btu": 48000,
+          "area": 130,
+          "cooling": "13.14 кВт",
+          "heating": "13.5 кВт",
+          "price": 201490
+        },
+        {
+          "btu": 60000,
+          "area": 160,
+          "cooling": "16.12 кВт",
+          "heating": "16.5 кВт",
+          "price": 223290
+        }
+      ]
+    },
+    {
+      "id": 602,
+      "name": "Kentatsu кассетная KSVT / KSVG (On/Off)",
+      "brand": "Kentatsu",
+      "type": "Полупромышленный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-cassette.jpg",
+      "variants": [
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 85990
+        },
+        {
+          "btu": 36000,
+          "area": 105,
+          "cooling": "10.55 кВт",
+          "heating": "11.0 кВт",
+          "price": 114090
+        },
+        {
+          "btu": 48000,
+          "area": 140,
+          "cooling": "14.1 кВт",
+          "heating": "14.5 кВт",
+          "price": 142290
+        },
+        {
+          "btu": 60000,
+          "area": 176,
+          "cooling": "16.12 кВт",
+          "heating": "16.5 кВт",
+          "price": 148290
+        }
+      ]
+    },
+    {
+      "id": 603,
+      "name": "Midea кассетная MCD Inverter (R32)",
+      "brand": "Midea",
+      "type": "Полупромышленный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-cassette-inv.jpg",
+      "badge": "Инвертор",
+      "variants": [
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.5 кВт",
+          "price": 124239
+        },
+        {
+          "btu": 36000,
+          "area": 105,
+          "cooling": "10.55 кВт",
+          "heating": "11.0 кВт",
+          "price": 176790
+        },
+        {
+          "btu": 48000,
+          "area": 140,
+          "cooling": "14.07 кВт",
+          "heating": "14.5 кВт",
+          "price": 210990
+        },
+        {
+          "btu": 60000,
+          "area": 155,
+          "cooling": "15.24 кВт",
+          "heating": "15.7 кВт",
+          "price": 233890
+        }
+      ]
+    },
+    {
+      "id": 604,
+      "name": "Midea кассетная MCD (On/Off, R410A)",
+      "brand": "Midea",
+      "type": "Полупромышленный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-cassette.jpg",
+      "variants": [
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.3 кВт",
+          "price": 90290
+        },
+        {
+          "btu": 36000,
+          "area": 105,
+          "cooling": "10.55 кВт",
+          "heating": "11.0 кВт",
+          "price": 119790
+        },
+        {
+          "btu": 48000,
+          "area": 140,
+          "cooling": "14.07 кВт",
+          "heating": "14.5 кВт",
+          "price": 149390
+        },
+        {
+          "btu": 60000,
+          "area": 160,
+          "cooling": "16.12 кВт",
+          "heating": "16.5 кВт",
+          "price": 155690
+        }
+      ]
+    },
+    {
+      "id": 701,
+      "name": "Kentatsu Атама (Atama)",
+      "brand": "Kentatsu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-atama.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.05 кВт",
+          "heating": "2.2 кВт",
+          "price": 25990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.49 кВт",
+          "heating": "2.65 кВт",
+          "price": 27990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.23 кВт",
+          "heating": "3.52 кВт",
+          "price": 36390
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "4.99 кВт",
+          "heating": "5.13 кВт",
+          "price": 61690
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.45 кВт",
+          "heating": "6.74 кВт",
+          "price": 77690
+        }
+      ]
+    },
+    {
+      "id": 702,
+      "name": "Kentatsu Атама Инвертор (Atama Inverter)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-atama-inv.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.29 кВт",
+          "price": 35490
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 38090
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 43790
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.42 кВт",
+          "price": 74290
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.18 кВт",
+          "price": 95190
+        }
+      ]
+    },
+    {
+      "id": 703,
+      "name": "Kentatsu Харуки (Haruki)",
+      "brand": "Kentatsu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-haruki.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.2 кВт",
+          "price": 25990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 27990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 36390
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.42 кВт",
+          "price": 61690
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.33 кВт",
+          "heating": "7.62 кВт",
+          "price": 77690
+        }
+      ]
+    },
+    {
+      "id": 704,
+      "name": "Kentatsu Харуки Инвертор (Haruki Inverter)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-haruki-inv.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.35 кВт",
+          "price": 35490
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 38090
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 43790
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.1 кВт",
+          "heating": "5.13 кВт",
+          "price": 74290
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.84 кВт",
+          "heating": "7.05 кВт",
+          "price": 95190
+        }
+      ]
+    },
+    {
+      "id": 705,
+      "name": "Kentatsu Юки Инвертор (Yuki)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-yuki.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.35 кВт",
+          "heating": "2.43 кВт",
+          "price": 33790
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.93 кВт",
+          "price": 36690
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.61 кВт",
+          "heating": "3.71 кВт",
+          "price": 43890
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.4 кВт",
+          "price": 77090
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.33 кВт",
+          "price": 97290
+        }
+      ]
+    },
+    {
+      "id": 706,
+      "name": "Kentatsu Тиба (Tiba)",
+      "brand": "Kentatsu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-tiba.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.3 кВт",
+          "heating": "2.35 кВт",
+          "price": 30590
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "2.6 кВт",
+          "price": 33190
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.3 кВт",
+          "heating": "3.4 кВт",
+          "price": 42990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.1 кВт",
+          "heating": "5.05 кВт",
+          "price": 72790
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.2 кВт",
+          "heating": "6.7 кВт",
+          "price": 91990
+        }
+      ]
+    },
+    {
+      "id": 707,
+      "name": "Kentatsu Тиба Инвертор (Tiba Inverter)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-tiba-inv.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.4 кВт",
+          "price": 44690
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "2.8 кВт",
+          "price": 48190
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.2 кВт",
+          "heating": "3.4 кВт",
+          "price": 53990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "4.6 кВт",
+          "heating": "5.2 кВт",
+          "price": 86990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.2 кВт",
+          "heating": "6.5 кВт",
+          "price": 115990
+        }
+      ]
+    },
+    {
+      "id": 708,
+      "name": "Kentatsu Отари Инвертор (Otari)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-otari.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.7 кВт",
+          "heating": "3.0 кВт",
+          "price": 57590
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.81 кВт",
+          "price": 62690
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.2 кВт",
+          "heating": "5.6 кВт",
+          "price": 100090
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.1 кВт",
+          "heating": "7.8 кВт",
+          "price": 125590
+        }
+      ]
+    },
+    {
+      "id": 709,
+      "name": "Kentatsu Семпай Инвертор (Sempai)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-sempai.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.7 кВт",
+          "heating": "3.14 кВт",
+          "price": 58090
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.96 кВт",
+          "price": 62590
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.57 кВт",
+          "price": 89590
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.33 кВт",
+          "price": 116790
+        }
+      ]
+    },
+    {
+      "id": 710,
+      "name": "Kentatsu Омори Инвертор (Omori)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-omori.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.93 кВт",
+          "price": 67190
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.81 кВт",
+          "price": 79090
+        }
+      ]
+    },
+    {
+      "id": 711,
+      "name": "Kentatsu Тамаши Инвертор (Tamashi)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-tamashi.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.7 кВт",
+          "heating": "3.0 кВт",
+          "price": 75590
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.51 кВт",
+          "heating": "3.81 кВт",
+          "price": 82490
+        }
+      ]
+    },
+    {
+      "id": 712,
+      "name": "Kentatsu Токачи Инвертор (Tokachi)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-tokachi.jpg",
+      "badge": "Премиум",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.7 кВт",
+          "heating": "3.5 кВт",
+          "price": 110190
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.53 кВт",
+          "heating": "4.2 кВт",
+          "price": 116790
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "6.2 кВт",
+          "price": 148790
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.03 кВт",
+          "price": 167490
+        }
+      ]
+    },
+    {
+      "id": 713,
+      "name": "Kentatsu Ичи Инвертор R32 (Ichi)",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/kentatsu-ichi-inv.jpg",
+      "variants": [
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "6.2 кВт",
+          "heating": "6.2 кВт",
+          "price": 79990
+        }
+      ]
+    },
+    {
+      "id": 720,
+      "name": "Midea Анлимитед (Unlimited)",
+      "brand": "Midea",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-unlimited.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.34 кВт",
+          "heating": "2.34 кВт",
+          "price": 27990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 30590
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 39590
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.28 кВт",
+          "price": 66890
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.33 кВт",
+          "price": 84690
+        }
+      ]
+    },
+    {
+      "id": 721,
+      "name": "Midea Персона (Persona)",
+      "brand": "Midea",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-persona.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.34 кВт",
+          "heating": "2.34 кВт",
+          "price": 32590
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 34990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 44790
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.28 кВт",
+          "price": 71290
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.33 кВт",
+          "price": 87490
+        }
+      ]
+    },
+    {
+      "id": 722,
+      "name": "Midea Персона Инвертор Wi-Fi (Persona)",
+      "brand": "Midea",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-persona-inv.jpg",
+      "badge": "Умный дом",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.35 кВт",
+          "heating": "2.43 кВт",
+          "price": 46990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.93 кВт",
+          "price": 53090
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 59090
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.57 кВт",
+          "price": 94890
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.33 кВт",
+          "price": 123690
+        }
+      ]
+    },
+    {
+      "id": 723,
+      "name": "Midea Breezeless E",
+      "brand": "Midea",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-breezeless-e.jpg",
+      "badge": "Без сквозняка",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.78 кВт",
+          "heating": "2.93 кВт",
+          "price": 53590
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.6 кВт",
+          "heating": "3.8 кВт",
+          "price": 57390
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.57 кВт",
+          "price": 79090
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.33 кВт",
+          "price": 106690
+        }
+      ]
+    },
+    {
+      "id": 724,
+      "name": "Midea Breezeless Wi-Fi",
+      "brand": "Midea",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-breezeless.jpg",
+      "badge": "Умный дом",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.93 кВт",
+          "price": 74690
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.81 кВт",
+          "price": 77890
+        }
+      ]
+    },
+    {
+      "id": 725,
+      "name": "Midea ХитФорс (HeatForce)",
+      "brand": "Midea",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-heatforce.jpg",
+      "badge": "Мощный обогрев",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.93 кВт",
+          "heating": "3.22 кВт",
+          "price": 71190
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.66 кВт",
+          "heating": "3.96 кВт",
+          "price": 74590
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.45 кВт",
+          "heating": "5.57 кВт",
+          "price": 141090
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "7.33 кВт",
+          "heating": "7.77 кВт",
+          "price": 178890
+        }
+      ]
+    },
+    {
+      "id": 726,
+      "name": "Midea Гайа (Gaia)",
+      "brand": "Midea",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-gaia.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "3.22 кВт",
+          "price": 78290
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.81 кВт",
+          "price": 82090
+        }
+      ]
+    },
+    {
+      "id": 727,
+      "name": "Midea Изи Инвертор (Easy Inverter)",
+      "brand": "Midea",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/midea-easy-inv.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.05 кВт",
+          "heating": "2.34 кВт",
+          "price": 37390
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.78 кВт",
+          "heating": "3.22 кВт",
+          "price": 40490
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.52 кВт",
+          "price": 48390
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.4 кВт",
+          "price": 85290
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.3 кВт",
+          "price": 107490
+        }
+      ]
+    },
+    {
+      "id": 730,
+      "name": "Bosch Climate Line 2000",
+      "brand": "Bosch",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/bosch-cl2000.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.3 кВт",
+          "heating": "2.3 кВт",
+          "price": 30990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.6 кВт",
+          "price": 34990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.7 кВт",
+          "price": 41990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.3 кВт",
+          "price": 53190
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 64890
+        }
+      ]
+    },
+    {
+      "id": 731,
+      "name": "Bosch Climate Line 5000 Инвертор",
+      "brand": "Bosch",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/bosch-cl5000.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 46990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.8 кВт",
+          "heating": "3.2 кВт",
+          "price": 49990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.4 кВт",
+          "heating": "3.5 кВт",
+          "price": 56990
+        }
+      ]
+    },
+    {
+      "id": 732,
+      "name": "Bosch Climate 5000 Инвертор",
+      "brand": "Bosch",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/bosch-climate5000.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.9 кВт",
+          "price": 40290
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.6 кВт",
+          "price": 77290
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 99690
+        }
+      ]
+    },
+    {
+      "id": 733,
+      "name": "Bosch Climate 6000i Инвертор",
+      "brand": "Bosch",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "КНР",
+      "image": "images/catalog/bosch-climate6000i.jpg",
+      "badge": "Премиум",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "3.0 кВт",
+          "price": 67900
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.5 кВт",
+          "price": 154490
+        }
+      ]
+    },
+    {
+      "id": 520,
+      "name": "Daikin FDXM-F9 (канальная)",
+      "brand": "Daikin",
+      "type": "Полупромышленный",
+      "smartHome": false,
+      "noise": "—",
+      "country": "Япония",
+      "image": "images/catalog/daikin-fdxm.jpg",
+      "badge": "Канальная",
+      "variants": [
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.0 кВт",
+          "heating": "5.8 кВт",
+          "price": 360300
+        },
+        {
+          "btu": 24000,
+          "area": 60,
+          "cooling": "6.0 кВт",
+          "heating": "7.0 кВт",
+          "price": 381800
+        }
+      ]
+    }
+  ],
+  "windows": [
+    {
+      "id": "win-1",
+      "slug": "Teploe-osteklenie-lodjii",
+      "title": "Тёплое остекление лоджии и балкона под ключ",
+      "subtitle": "Превращаем холодную лоджию в тёплую жилую комнату или кабинет",
+      "category": "Балконы и лоджии",
+      "basePrice": 38000,
+      "priceUnit": "под ключ",
+      "badge": "Хит в Иркутске",
+      "image": "/images/windows/window-1.jpg",
+      "gallery": [
+        "/images/windows/window-1.jpg",
+        "/images/portfolio/okna-1.png",
+        "/images/service-windows.jpg"
+      ],
+      "shortDesc": "Тёплое остекление пятикамерным профилем VEKA Softline с мультифункциональным стеклопакетом Solar. Полная герметизация швов, утепление и отделка.",
+      "fullDescription": "В условиях суровых сибирских морозов Иркутска (до -45°C) обычное остекление балкона от застройщика промерзает и покрывается льдом. Мы предлагаем тёплое остекление на базе немецкого 5-камерного профиля VEKA Softline (70 мм) со стальным замкнутым армированием. Благодаря специальному стеклопакету с теплоотражающим напылением Solar, температура на вашей лоджии будет такой же комфортной, как в спальне! Монтажные швы защищаются пароизоляционными лентами по ГОСТ 30971, что исключает промерзание и плесень.",
+      "profileName": "VEKA Softline 70 мм (5 камер, Германия / РФ)",
+      "glassType": "Двухкамерный 40 мм с мультифункциональным напылением Solar + Аргон",
+      "hardware": "MACO (Австрия) / Winkhaus с зимним микропроветриванием",
+      "installationStandard": "Строго по ГОСТ 30971-2012 с паро-влагоизоляционными лентами",
+      "warranty": "5 лет по официальному договору",
+      "productionTime": "от 5 рабочих дней на собственном цехе в Иркутске",
+      "features": [
+        "Замкнутое стальное армирование 1.5 мм (рама не провиснет)",
+        "Стеклопакет Solar (летом отражает жару, зимой бережет тепло)",
+        "Фурнитура MACO с защитой от ошибочного открывания и взлома",
+        "Установка на долговечные пластиковые клинья (не сгниют от влаги)",
+        "Высокая шумоизоляция от уличного трафика и ветра",
+        "Собственный сборочный цех — цена производителя без посредников"
+      ],
+      "specs": [
+        {
+          "label": "Тип конструкции",
+          "value": "Тёплое остекление балкона / лоджии"
+        },
+        {
+          "label": "Профильная система",
+          "value": "VEKA Softline (ширина 70 мм, 5 камер)"
+        },
+        {
+          "label": "Армирующий профиль",
+          "value": "Замкнутый квадратный (оцинкованная сталь 1.5 мм)"
+        },
+        {
+          "label": "Стеклопакет",
+          "value": "2-камерный (3 стекла), 40 мм, мультифункциональное напыление"
+        },
+        {
+          "label": "Фурнитура и ручки",
+          "value": "MACO Multi-Matic (Австрия) / Winkhaus Activ"
+        },
+        {
+          "label": "Контур уплотнения",
+          "value": "2-3 контура из морозостойкого каучука EPDM (черный / серый)"
+        },
+        {
+          "label": "Сопротивление теплопередаче",
+          "value": "0,78 м²·°C/Вт (класс А+ для Сибири)"
+        },
+        {
+          "label": "Стандарт монтажа",
+          "value": "ГОСТ 30971 с применением пены Illbruck и лент"
+        },
+        {
+          "label": "Гарантийный срок",
+          "value": "5 лет на конструкцию и монтаж"
+        },
+        {
+          "label": "География выезда замерщика",
+          "value": "Иркутск, Ангарск, Шелехов, Хомутово (0 ₽)"
+        }
+      ]
+    },
+    {
+      "id": "win-2",
+      "slug": "Osteklenie-v-dome",
+      "title": "Остекление загородных домов и коттеджей",
+      "subtitle": "Комплексное энергосберегающее остекление частного сектора (Хомутово, Грановщина, Карлук, Смоленщина)",
+      "category": "Загородное остекление",
+      "basePrice": 12800,
+      "priceUnit": "за м²",
+      "badge": "Идеально для Хомутово",
+      "image": "/images/windows/window-2.jpg",
+      "gallery": [
+        "/images/windows/window-2.jpg",
+        "/images/windows/window-5.jpg",
+        "/images/service-windows.jpg"
+      ],
+      "shortDesc": "Специализируемся на остеклении коттеджей из бруса, газобетона и кирпича по Байкальскому, Александровскому и Качугскому трактам до 50 км.",
+      "fullDescription": "В загородном доме площадь остекления велика, и через некачественные окна может уходить до 45% всего тепла от электрокотельной! Мы производим специализированные тёплые контура для частных домов в Иркутском пригороде (Хомутово, Урик, Грановщина, Шелехов, Маркова, Смоленщина). Применяем немецкий профиль VEKA WHS 72 мм или Softline 82 мм (6 камер). При остеклении деревянных домов выполняем чистовую обсаду (окосячку). По вашему желанию сделаем ламинацию под ценные породы дерева (Золотой дуб, Махагон, Антрацит) и тонировку стекол от посторонних глаз.",
+      "profileName": "VEKA Softline 70 / 82 мм, WHS 72 мм (6 камер)",
+      "glassType": "Энергосберегающий стеклопакет с аргоном (Low-E / Solar)",
+      "hardware": "MACO (Австрия) с повышенной защитой от провисания тяжелых сворок",
+      "installationStandard": "ГОСТ 30971 с учетом усадки бруса и гидроизоляции пенобетона",
+      "warranty": "5 лет на профиль, стеклопакет и монтаж по договору",
+      "productionTime": "от 5 до 10 дней с индивидуальной ламинацией в нашем цехе",
+      "features": [
+        "Экономят до 40% на затратах отопления электрокотелом зимой",
+        "Ламинация профиля в 30+ стилизированных цветов (под дерево и графит)",
+        "Спецмонтаж в деревянный сруб и газоблок (без промерзания швов)",
+        "Возможность установки трапециевидных и арочных окон любой формы",
+        "Москитные сетки «Пленсер» (Антикошка / Антипыльца) в подарок к смете",
+        "Бесплатный выезд инженера-консультанта по трактам до 50 км от Иркутска"
+      ],
+      "specs": [
+        {
+          "label": "Область установки",
+          "value": "Загородные коттеджи, дачи, таунхаусы в Иркутске и до 50 км"
+        },
+        {
+          "label": "Профильные системы",
+          "value": "VEKA WHS 72 (5 камер) / VEKA Softline 82 (6 камер)"
+        },
+        {
+          "label": "Ламинация и дизайн",
+          "value": "Односторонняя или двухсторонняя ламинация Renolit (Германия)"
+        },
+        {
+          "label": "Стеклопакет",
+          "value": "Двухкамерный энергосберегающий 40–52 мм с аргоном"
+        },
+        {
+          "label": "Фурнитура",
+          "value": "MACO / Winkhaus Pro (выдерживает створки до 130 кг)"
+        },
+        {
+          "label": "Замки безопасности",
+          "value": "Установка ручек с ключом и детской блокировкой (по запросу)"
+        },
+        {
+          "label": "Защита шва от ветра",
+          "value": "Трехслойная герметизация по ГОСТ с внешним паропроницаемым герметиком"
+        },
+        {
+          "label": "Срок изготовления",
+          "value": "5–10 рабочих дней на заводе в Иркутске"
+        },
+        {
+          "label": "Гарантия",
+          "value": "5 лет по договору с сервисным сопровождением"
+        }
+      ]
+    },
+    {
+      "id": "win-3",
+      "slug": "Montazh-okon-i-dveri-VEKA",
+      "title": "Пластиковые окна и балконные двери VEKA (в квартиру)",
+      "subtitle": "Эталонное немецкое качество для панельных и монолитных домов Иркутска",
+      "category": "Окна в квартиру",
+      "basePrice": 11000,
+      "priceUnit": "за м²",
+      "badge": "Собственный цех",
+      "image": "/images/windows/window-3.jpg",
+      "gallery": [
+        "/images/windows/window-3.jpg",
+        "/images/portfolio/okna-1.png"
+      ],
+      "shortDesc": "Замена старых сквозящих окон и балконных блоков на современные тёплые конструкции VEKA с микропроветриванием и австрийской фурнитурой MACO.",
+      "fullDescription": "Пластиковые окна VEKA от «Вектор Комфорта» — это безупречно ровная белоснежная глянцевая поверхность из первичного ПВХ (Класс А по ГОСТ 30673-99), которая не выцветет и не пожелтеет на ярком сибирском солнце даже через 25 лет! Наше главное отличие — использование замкнутого (квадратного в разрезе) стального армирования 1.5 мм. Многие дешевые фирмы ставят тонкий П-образный профиль 1 мм, из-за чего створки провисают через год. Мы гарантируем идеальную геометрию, мягкий бесшумный закрывающий механизм MACO и 100% герметичность без уличного шума.",
+      "profileName": "VEKA Softline / VEKA WHS 60–70 мм (4–5 камер)",
+      "glassType": "Теплошумозащитный двухкамерный стеклопакет 32–40 мм",
+      "hardware": "MACO Multi-Matic с многоступенчатым микропроветриванием",
+      "installationStandard": "Монтаж на пластиковые клинья с теплыми пластиковыми откосами и подоконником",
+      "warranty": "5 лет полной гарантии",
+      "productionTime": "от 5 рабочих дней",
+      "features": [
+        "Толщина внешней стенки 3 мм (Максимальный Класс А)",
+        "Собственное автоматизированное сварочное оборудование в Иркутске",
+        "Многоступенчатое зимнее проветривание встроено в ручку MACO",
+        "Шлифованные подоконники и тёплые сэндвич-откосы под ключ",
+        "Чистая работа с уборкой строительного мусора после монтажа",
+        "Гарантийное обслуживание и бесплатная регулировка по договору"
+      ],
+      "specs": [
+        {
+          "label": "Тип проёма",
+          "value": "Окна и балконные блоки в квартиры (хрущевки, панель, новостройки)"
+        },
+        {
+          "label": "Марка профиля",
+          "value": "VEKA (Немецкий стандарт Класс А)"
+        },
+        {
+          "label": "Армирование",
+          "value": "Замкнутая стальная труба 1.5 мм (по всему периметру)"
+        },
+        {
+          "label": "Стеклопакет",
+          "value": "3 стекла (2 камеры) с уплотнителем против продуваний"
+        },
+        {
+          "label": "Механизмы открывания",
+          "value": "Поворотные и поворотно-откидные с микролифтом MACO"
+        },
+        {
+          "label": "Звукоизоляция",
+          "value": "Снижение уличного шума до 38–42 дБ"
+        },
+        {
+          "label": "Откосы и подоконник",
+          "value": "Утепленные сэндвич-панели 10 мм + белый глянцевый подоконник"
+        },
+        {
+          "label": "Гарантия на окно",
+          "value": "5 лет на профиль, стекло и фурнитуру"
+        },
+        {
+          "label": "Выезд замерщика",
+          "value": "Иркутск и все пригороды — бесплатно в день обращения"
+        }
+      ]
+    },
+    {
+      "id": "win-4",
+      "slug": "Aluminievoe-osteklenie-doma",
+      "title": "Алюминиевое остекление веранд и зимних садов",
+      "subtitle": "Элегантные раздвижные и панорамные системы из теплого и холодного алюминия",
+      "category": "Алюминиевые системы",
+      "basePrice": 14500,
+      "priceUnit": "за м²",
+      "badge": "Панорамный обзор",
+      "image": "/images/windows/window-4.jpg",
+      "gallery": [
+        "/images/windows/window-4.jpg",
+        "/images/windows/window-6.jpg"
+      ],
+      "shortDesc": "Проектирование, сборка и установка алюминиевых конструкций для веранд, террас, беседок и летних площадок ресторанов в Иркутской области.",
+      "fullDescription": "Алюминиевые профильные системы обладают колоссальной жесткостью и долговечностью (срок службы от 50 лет!), позволяя остеклять огромные световые проёмы без громоздких пластиковых перемычек. Мы производим как холодное алюминиевое остекление (системы Provedal для летних беседок и террас с удобными раздвижными створками), так и премиальный тёплый алюминий (профили с полиамидным терморазрывом Alutech / Tatprof) для зимних садов и отапливаемых веранд.",
+      "profileName": "Alutech / Provedal / Tatprof (холодный и тёплый алюминий)",
+      "glassType": "Закаленное безопасное стекло 5–6 мм или ударопрочный стеклопакет",
+      "hardware": "Специализированная роликовая фурнитура из нержавеющей стали",
+      "installationStandard": "Спецкрепежи с виброгасящими прокладками и герметизацией стыков",
+      "warranty": "5 лет официальной гарантии",
+      "productionTime": "от 7 до 12 рабочих дней",
+      "features": [
+        "Максимальный световой проем — тонкие и прочные рамы",
+        "Раздвижные створки экономят пространство на узких верандах",
+        "Покраска рамы в абсолютно любой цвет по каталогу RAL (200+ оттенков)",
+        "Высокий ресурс устойчивости к ветровым и снеговым нагрузкам",
+        "Использование безопасного закаленного стекла (не бьётся в осколки)",
+        "Проект и расчёт нагрузок от наших опытных инженеров в Иркутске"
+      ],
+      "specs": [
+        {
+          "label": "Тип системы",
+          "value": "Алюминиевые раздвижные и витражные конструкции"
+        },
+        {
+          "label": "Профиль",
+          "value": "Alutech ALT / Provedal C-640 (терморазрыв или холодный)"
+        },
+        {
+          "label": "Покрытие рамы",
+          "value": "Порошково-полимерная окраска по шкале RAL"
+        },
+        {
+          "label": "Заполнение",
+          "value": "Стекло 5-6 мм (закаленное) или 2-х камерный стеклопакет Solar"
+        },
+        {
+          "label": "Створки",
+          "value": "Раздвижные (купе) / распашные / глухие панорамные"
+        },
+        {
+          "label": "Доверенная долговечность",
+          "value": "Срок службы конструкции более 50 лет"
+        },
+        {
+          "label": "Монтаж",
+          "value": "Бригады с профессиональным специнструментом"
+        },
+        {
+          "label": "Гарантия",
+          "value": "5 лет по договору с ООО / ИП или частным лицом"
+        }
+      ]
+    },
+    {
+      "id": "win-5",
+      "slug": "Okna-v-dom-panoramy",
+      "title": "Панорамные окна и крупноформатное остекление",
+      "subtitle": "Светопрозрачные конструкции от пола до потолка для современных вилл и загородных домов",
+      "category": "Панорамные окна",
+      "basePrice": 16200,
+      "priceUnit": "за м²",
+      "badge": "Тепло и эстетика",
+      "image": "/images/windows/window-5.jpg",
+      "gallery": [
+        "/images/windows/window-5.jpg",
+        "/images/windows/window-2.jpg"
+      ],
+      "shortDesc": "Изготовление широкоформатных окон с мультифункциональными энергосберегающими стеклами, выдерживающими сибирский мороз без запотевания.",
+      "fullDescription": "Панорамное окно в Иркутской области — это инженерный шедевр, требующий точного теплообменного расчёта. Чтобы огромное стекло не плакало зимой и не промерзало, мы собираем конструкции из флагманской 6-камерной серии VEKA Softline 82 мм с шириной стеклопакета до 52 мм. Внутрь устанавливаются стекла с низкоэмиссионным серебряным покрытием Low-E, а камеры заполняются инертным газом Аргон. Такое окно сохраняет тепло внутри дома лучше, чем кирпичная стена толщиной 70 см!",
+      "profileName": "VEKA Softline 82 мм (6 камер, ширина профиля 82 мм)",
+      "glassType": "Крупноформатный стеклопакет 44–52 мм с закаленным стеклом 6 мм + Low-E",
+      "hardware": "MACO Multi-Matic с силовыми петлями под нагрузку до 150 кг",
+      "installationStandard": "Монтаж с теплым подставочным профилем и терморазрывом",
+      "warranty": "5 лет официальной заводской гарантии",
+      "productionTime": "7–14 рабочих дней на нашей линии в Иркутске",
+      "features": [
+        "Флагманская теплоизоляция (6 камер, ширина профиля 82 мм)",
+        "Стеклопакеты до 52 мм с аргоном (сопротивление теплопередаче до 1,05 м²·°C/Вт)",
+        "Защита от ультрафиолета летом и максимальный дневной свет",
+        "Усиленные немецкие петли для безотказного открывания массивных сворок",
+        "Спецпрофиль от промерзания в нижней точке (теплый подставочник)",
+        "Гарантийный сервис от производителя в течение 5 лет"
+      ],
+      "specs": [
+        {
+          "label": "Назначение",
+          "value": "Панорамное остекление гостиных, веранд и эркеров в коттеджах"
+        },
+        {
+          "label": "Профильная система",
+          "value": "VEKA Softline 82 (Германия, Класс А)"
+        },
+        {
+          "label": "Монтажная глубина",
+          "value": "82 мм (3 контура герметичного уплотнения EPDM)"
+        },
+        {
+          "label": "Стеклопакет",
+          "value": "Энергоэффективный 44–52 мм (закаленное стекло 6 мм + Solar/Low-E)"
+        },
+        {
+          "label": "Усиление рамы",
+          "value": "Толстостенное стальное армирование 1.8–2.0 мм"
+        },
+        {
+          "label": "Фурнитура",
+          "value": "MACO усиленной серии с защитой от провисания"
+        },
+        {
+          "label": "Звукоизоляция",
+          "value": "Высший класс шумозащиты (до 45 дБ)"
+        },
+        {
+          "label": "Гарантия на объект",
+          "value": "5 лет по официальному договору"
+        }
+      ]
+    },
+    {
+      "id": "win-6",
+      "slug": "Aluminievyie-konstruktsii",
+      "title": "Алюминиевые входные группы, двери и перегородки",
+      "subtitle": "Износостойкие конструкции для магазинов, офисов, бизнес-центров и загородных резиденций",
+      "category": "Двери и витражи",
+      "basePrice": 15000,
+      "priceUnit": "за м²",
+      "badge": "Для бизнеса и дома",
+      "image": "/images/windows/window-6.jpg",
+      "gallery": [
+        "/images/windows/window-6.jpg",
+        "/images/windows/window-4.jpg"
+      ],
+      "shortDesc": "Проектирование и сборка алюминиевых и ПВХ входных групп, витражных стен и межкомнатных перегородок с надежными замками и доводчиками.",
+      "fullDescription": "Для помещений с высокой проходимостью (торговые центры Иркутска, магазины, офисы, рестораны, а также главные входы в загородные коттеджи) обычные балконные пластиковые двери не подходят. Мы изготавливаем мощные входные группы из специализированного алюминия или усиленного дверного ПВХ профиля VEKA с замком, нажимным гарнитуром и долговечным гидравлическим доводчиком. Такие двери рассчитаны на миллионы открываний и надежно сохраняют тепло в здании.",
+      "profileName": "Тёплый алюминий Alutech W72 / Усиленный дверной профиль VEKA",
+      "glassType": "Безопасный ударопрочный стеклопакет 32–44 мм (триплекс или закаленное)",
+      "hardware": "Надежная дверная фурнитура с замками-рейками и доводчиком Dorma",
+      "installationStandard": "Специализированый анкерный монтаж с проваркой металлокаркаса",
+      "warranty": "5 лет официальной гарантии",
+      "productionTime": "от 7 рабочих дней",
+      "features": [
+        "Колоссальный ресурс надежности для общественных и коммерческих объектов",
+        "Усиленные накладные петли и гидравлический доводчик в комплекте",
+        "Использование ударопрочного стекла или триплекса от взлома",
+        "Тёплый порог без промерзания в зимние холода",
+        "Остекление витрин и внутренних перегородок офисного типа",
+        "Работаем по договору с частными лицами, ИП и ООО (безналичное перечисление)"
+      ],
+      "specs": [
+        {
+          "label": "Тип продукции",
+          "value": "Входные двери, витражные фасады, офисные перегородки"
+        },
+        {
+          "label": "Профиль",
+          "value": "Alutech W72 (терморазрыв) / VEKA Дверная серия 70 мм"
+        },
+        {
+          "label": "Замки и ручки",
+          "value": "Многозапорный замок-рейка с ручкой скобой или нажимной"
+        },
+        {
+          "label": "Доводчик",
+          "value": "Морозостойкий гидравлический доводчик (до -45°C)"
+        },
+        {
+          "label": "Стеклопакет",
+          "value": "Ударопрочное бронированное стекло или закаленный триплекс"
+        },
+        {
+          "label": "Монтаж в Иркутске",
+          "value": "Профессиональная установка за 1 день"
+        },
+        {
+          "label": "Гарантийный договор",
+          "value": "5 лет на конструкцию, монтаж и регулировку"
+        }
+      ]
+    }
+  ]
+}

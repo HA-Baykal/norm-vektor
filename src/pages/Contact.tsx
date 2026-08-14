@@ -1,7 +1,12 @@
 import Map from "../components/Map";
 import QuoteForm from "../components/QuoteForm";
+import { useSeo } from "../utils/useSeo";
 
 export default function Contact() {
+  useSeo(
+    "Контакты — Вектор Комфорта в Иркутске | Окна, кондиционеры, вентиляция",
+    "Контакты компании Вектор Комфорта в Иркутске: ☎ +7 (914) 914-66-06, +7 (3952) 66-99-30. Окна, кондиционеры, вентиляция и алмазное бурение. Пн–Сб 9:00–20:00, выезд по Иркутску и пригороду до 50 км."
+  );
   const openChat = () => {
     // @ts-ignore
     if (window.jivo_api && window.jivo_api.open) window.jivo_api.open();

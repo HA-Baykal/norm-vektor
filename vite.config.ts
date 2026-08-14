@@ -46,13 +46,42 @@ const seoSitemapAndApiGenerator = () => ({
 
       // 2. Генерация карты сайта Sitemap.xml (Яндекс и Google)
       const dateStr = new Date().toISOString().split("T")[0];
-            const staticUrls = [
+
+      // Все локальные страницы: 17 локаций × (окна + кондиционеры) = 34 URL
+      const cityLocations = [
+        "homutovo", "molodezhnom", "angarske", "shelehove",
+        "solnechnom", "pervomaiskom", "novolenino", "yubileynom",
+        "akademgorodke", "raduzhnom", "universitetskom",
+        "baikalskom-trakte", "golooustnenskom-trakte",
+        "pivovarikhe", "urike", "stolbovo", "listvyanke"
+      ];
+      const cityPages = cityLocations.flatMap((loc) => {
+        const prep = loc.endsWith("-trakte") ? "na" : "v";
+        return [`okna-${prep}-${loc}`, `kondicionery-${prep}-${loc}`];
+      });
+
+      const staticUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
         "portfolio", "standarty", "otzyv", "baza-znaniy", "kontakty",
-        "okna-v-homutovo", "kondicionery-v-homutovo",
-        "okna-v-molodezhnom", "kondicionery-v-molodezhnom",
-        "okna-v-angarske", "kondicionery-v-angarske",
-        "okna-v-shelehove", "kondicionery-v-shelehove"
+        ...cityPages
+      ];
+
+      // Статьи базы знаний
+      const blogSlugs = [
+        "kak-vybrat-konditsioner-po-ploshchadi",
+        "invertornyy-ili-obychnyy-konditsioner",
+        "okna-veka-vs-rehau-chto-luchshe-dlya-irkutska",
+        "kakie-plastikovye-okna-vybrat",
+        "pochemu-ventilyatsiya-stoit-dorogo",
+        "zachem-nuzhna-ventilyatsiya",
+        "mozhno-li-zabolet-ot-konditsionera",
+        "invertornyy-konditsioner-stoit-li-pereplachivat",
+        "skolko-stoit-ustanovka-konditsionera-irkutsk",
+        "skolko-stoyat-plastikovye-okna-irkutsk",
+        "brizer-ili-rekuperator-chto-vybrat",
+        "pochemu-poteyut-plastikovye-okna",
+        "nuzhno-li-obsluzhivat-konditsioner",
+        "top-10-konditsionerov-irkutsk-2026"
       ];
 
       let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
@@ -90,6 +119,16 @@ const seoSitemapAndApiGenerator = () => ({
         xml += `  </url>\n`;
       }
 
+      // Добавляем статьи базы знаний в Sitemap
+      for (const b of blogSlugs) {
+        xml += `  <url>\n`;
+        xml += `    <loc>https://www.vektor-komforta.ru/baza-znaniy/${b}</loc>\n`;
+        xml += `    <lastmod>${dateStr}</lastmod>\n`;
+        xml += `    <changefreq>monthly</changefreq>\n`;
+        xml += `    <priority>0.7</priority>\n`;
+        xml += `  </url>\n`;
+      }
+
       xml += `</urlset>`;
 
       const publicSitemap = path.resolve(__dirname, "public/sitemap.xml");
@@ -100,12 +139,7 @@ const seoSitemapAndApiGenerator = () => ({
         fs.writeFileSync(distSitemap, xml, "utf-8");
       }
         // 3. Генерация vercel.json с маршрутами для SEO-функций
-      const cityUrls = [
-        "okna-v-homutovo", "kondicionery-v-homutovo",
-        "okna-v-molodezhnom", "kondicionery-v-molodezhnom",
-        "okna-v-angarske", "kondicionery-v-angarske",
-        "okna-v-shelehove", "kondicionery-v-shelehove"
-      ];
+      const cityUrls = cityPages;
       const mainUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
         "kontakty", "standarty", "otzyv", "baza-znaniy", "portfolio"
@@ -141,5 +175,9 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
+  },
+  server: {
+    host: true,
+    allowedHosts: true,
   },
 });
