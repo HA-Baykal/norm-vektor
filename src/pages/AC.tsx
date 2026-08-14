@@ -118,13 +118,13 @@ export default function AC() {
   return (
     <>
       <ServicePage
-        title="Кондиционеры"
+        title="Кондиционеры в Иркутске — купить с монтажом от 16 636 ₽"
         ctaLabel="🛒 Каталог моделей"
         ctaHref="#catalog"
-        tagline="Продажа, профессиональный монтаж, обслуживание, чистка и заправка фреона"
+        tagline="Продажа, профессиональный монтаж за 1 день, обслуживание, чистка и заправка фреона"
         heroIcon="❄️"
         intro="Продажа большого выбора моделей кондиционеров и профессиональный монтаж. Монтируем в квартирах, домах, магазинах, офисах и коммерческих зданиях. Выполняем обслуживание, чистку, диагностику и заправку фреона."
-        breadcrumb="Кондиционеры"
+        breadcrumb="Кондиционеры в Иркутске"
         advantages={[
           { icon: "🏅", title: "Подбор модели", text: "Поможем выбрать кондиционер по площади, уровню шума, бюджету и режимам работы" },
           { icon: "📦", title: "Большой выбор", text: "Настенные, кассетные, канальные, мульти-сплит, VRF/VRV. Под любой бюджет" },
@@ -169,15 +169,71 @@ export default function AC() {
               </div>
             </div>
           </div>
-          <div className="max-w-7xl mx-auto mt-8">
-            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
-              <h3 className="font-black text-[#1a3a5c]">Частые вопросы про кондиционеры в Иркутске</h3>
-              <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
+        </div>
+      </section>
+      <section className="bg-white pb-10 sm:pb-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
+            <h3 className="font-black text-[#1a3a5c]">Цены на монтаж кондиционера в Иркутске</h3>
+            <p className="mt-1 text-xs leading-5 text-slate-500">Стандартный монтаж под ключ с вакуумированием. Доп. трасса, штроба и зимний комплект — по замеру.</p>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-left text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-slate-200 text-[#1a3a5c]">
+                    <th className="py-2 pr-4 font-black">Мощность</th>
+                    <th className="py-2 pr-4 font-black">Площадь</th>
+                    <th className="py-2 font-black">Монтаж</th>
+                  </tr>
+                </thead>
+                <tbody className="text-slate-700">
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4 font-semibold">07–09 (2.5 кВт)</td>
+                    <td className="py-2.5 pr-4">до 25 м²</td>
+                    <td className="py-2.5 font-semibold">от 18 400 ₽</td>
+                  </tr>
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4 font-semibold">12 (3.5 кВт)</td>
+                    <td className="py-2.5 pr-4">до 35 м²</td>
+                    <td className="py-2.5 font-semibold">от 18 400 ₽</td>
+                  </tr>
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4 font-semibold">18–24 (5–7 кВт)</td>
+                    <td className="py-2.5 pr-4">до 60 м²</td>
+                    <td className="py-2.5 font-semibold">от 20 100 ₽</td>
+                  </tr>
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4">Трасса, доп. метр</td>
+                    <td className="py-2.5 pr-4">—</td>
+                    <td className="py-2.5 font-semibold">от 2 500 ₽</td>
+                  </tr>
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4">Зимний комплект</td>
+                    <td className="py-2.5 pr-4">—</td>
+                    <td className="py-2.5 font-semibold">по замеру</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2.5 pr-4">Демонтаж старого кондиционера</td>
+                    <td className="py-2.5 pr-4">—</td>
+                    <td className="py-2.5 font-semibold">от 2 000 ₽</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 text-xs leading-5 text-slate-500">
+              Что входит в монтаж: трасса 3 м, кронштейны, вакуумирование, пуско-наладка, инструктаж, гарантия 1 год на работы.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="bg-white pb-10 sm:pb-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
+            <h3 className="font-black text-[#1a3a5c]">Частые вопросы про кондиционеры в Иркутске</h3>
+            <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
                 <div><strong>Сколько стоит установка?</strong> 07–12 от 18 400 ₽, 18–24 от 20 100 ₽ под ключ — трасса 3 м и вакуумирование.</div>
                 <div><strong>Инвертор или обычный?</strong> В квартиру на каждый день — инвертор (тише на 40%, экономит свет). На дачу эпизодически — обычный дешевле.</div>
                 <div><strong>Что выбрать на 35 м²?</strong> Берите 12 (3.5 кВт) — поищите фильтр «до 35 м²» в каталоге.</div>
                 <div><strong>Быстрый монтаж?</strong> Да, за 3–4 часа, с пылесосом без пыли, гарантия по договору.</div>
-              </div>
             </div>
           </div>
         </div>
