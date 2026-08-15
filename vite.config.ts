@@ -99,7 +99,26 @@ const seoSitemapAndApiGenerator = () => ({
         "montazh-konditsionera-po-gostu-chek-list",
         "zapravka-konditsionera-freonom-kogda-i-skolko",
         "ventilyatsiya-v-chastnom-dome",
-        "okna-dlya-doma-iz-brusa"
+        "okna-dlya-doma-iz-brusa",
+        "duet-iz-plastikovogo-okna",
+        "okna-propyskayut-shum",
+        "zimniy-letniy-rezhim-okon",
+        "energosberegayushchiy-steklopaket-i-steklo",
+        "mozhno-li-obedinit-balkon-s-komnatoi",
+        "kuda-veshat-konditsioner",
+        "konditsioner-na-obogrev-zimoy",
+        "konditsioner-ploho-holodit",
+        "zapah-iz-konditsionera",
+        "kapaet-voda-iz-konditsionera",
+        "tipy-konditsionerov-split-kassetnyy-kanalnyy",
+        "mobilnyy-konditsioner-ili-split-sistema",
+        "pochemu-shumit-konditsioner",
+        "brizer-chto-eto",
+        "brizer-ili-konditsioner",
+        "klapan-brizer-ili-rekuperator",
+        "pochemu-v-kvartire-dushno-co2",
+        "vytyazhka-ne-rabotaet-i-zapahi-ot-sosedey",
+        "mozhno-li-sverlit-nesushchuyu-stenu"
       ];
 
       let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
