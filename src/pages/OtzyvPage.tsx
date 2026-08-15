@@ -28,7 +28,7 @@ const platforms = [
     desc: "Каталог компаний и услуг",
     color: "#5b6ee1",
     letter: "Z",
-    url: "https://zoon.ru/",
+    url: "https://zoon.ru/irkutsk/building/kompaniya_vektor_komforta_na_bajkalskoj_ulitse_d202_2/",
   },
   {
     name: "Flamp",
@@ -36,6 +36,20 @@ const platforms = [
     color: "#ff8a00",
     letter: "F",
     url: "https://irkutsk.flamp.ru/firm/vektor_komforta_torgovo_montazhnaya_kompaniya-70000001115497655",
+  },
+  {
+    name: "ВКонтакте",
+    desc: "Наше сообщество и отзывы",
+    color: "#0077ff",
+    letter: "VK",
+    url: "https://vk.com/vektor_komforta",
+  },
+  {
+    name: "Одноклассники",
+    desc: "Наша группа в ОК",
+    color: "#ee8208",
+    letter: "OK",
+    url: "https://ok.ru/vektor.komforta",
   },
 ];
 
