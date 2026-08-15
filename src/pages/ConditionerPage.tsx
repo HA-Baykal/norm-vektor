@@ -119,42 +119,6 @@ export default function ConditionerPage() {
           "url": "https://www.vektor-komforta.ru"
         }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "150",
-        "reviewCount": "150"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Александр М."
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "reviewBody": "Отличный кондиционер! Работает тихо, охлаждает быстро. Монтаж занял 3 часа, всё аккуратно. Рекомендую!"
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Екатерина В."
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "reviewBody": "Заказали кондиционер в квартиру. Помогли с выбором модели под наш бюджет. Работает уже второй сезон без нареканий."
-        }
-      ],
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -270,13 +234,6 @@ export default function ConditionerPage() {
           "@type": "Organization",
           "name": "Вектор Комфорта Иркутск"
         }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "bestRating": "5",
-        "worstRating": "1",
-        "reviewCount": "12"
       }
     };
 
