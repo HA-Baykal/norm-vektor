@@ -3,6 +3,12 @@
 /almaznaya-rezka               /almaznoe-burenie  301
 /almaznoe-burenie-irkutsk      /almaznoe-burenie  301
 /burenie-otverstij             /almaznoe-burenie  301
+# Мёртвые URL, уже заиндексированные Яндексом (из SEO-аудита)
+/burenie                       /almaznoe-burenie  301
+/standarty-montazha            /standarty         301
+# Старые гео-ссылки с префиксом /burenie-... → канонический раздел
+/burenie-v-*                   /almaznoe-burenie  301
+/burenie-na-*                  /almaznoe-burenie  301
 /ventilyatsiya                 /ventilyaciya      301
 /ventilyaciya-irkutsk          /ventilyaciya      301
 /konditsionery                 /kondicionery      301

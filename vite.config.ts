@@ -172,21 +172,27 @@ const seoSitemapAndApiGenerator = () => ({
       // этим правилам не мешает.
       const redirects = [
         // Транслитерационные варианты услуги «алмазное бурение» → канонический slug
-        { source: "/almaznoe-burenie-i-sverlenie", destination: "/almaznoe-burenie", permanent: true },
-        { source: "/almaznaya-rezka", destination: "/almaznoe-burenie", permanent: true },
-        { source: "/almaznoe-burenie-irkutsk", destination: "/almaznoe-burenie", permanent: true },
-        { source: "/burenie-otverstij", destination: "/almaznoe-burenie", permanent: true },
+        { source: "/almaznoe-burenie-i-sverlenie", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/almaznaya-rezka", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/almaznoe-burenie-irkutsk", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/burenie-otverstij", destination: "/almaznoe-burenie", statusCode: 301 },
+        // Мёртвые URL, уже заиндексированные Яндексом (из SEO-аудита)
+        { source: "/burenie", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/standarty-montazha", destination: "/standarty", statusCode: 301 },
+        // Старые гео-ссылки с префиксом /burenie-... → канонический раздел
+        { source: "/burenie-v-:slug*", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/burenie-na-:slug*", destination: "/almaznoe-burenie", statusCode: 301 },
         // Варианты написания «вентиляция»
-        { source: "/ventilyatsiya", destination: "/ventilyaciya", permanent: true },
-        { source: "/ventilyaciya-irkutsk", destination: "/ventilyaciya", permanent: true },
+        { source: "/ventilyatsiya", destination: "/ventilyaciya", statusCode: 301 },
+        { source: "/ventilyaciya-irkutsk", destination: "/ventilyaciya", statusCode: 301 },
         // Кондиционеры — варианты транслита
-        { source: "/konditsionery", destination: "/kondicionery", permanent: true },
-        { source: "/split-sistemy", destination: "/kondicionery", permanent: true },
+        { source: "/konditsionery", destination: "/kondicionery", statusCode: 301 },
+        { source: "/split-sistemy", destination: "/kondicionery", statusCode: 301 },
         // Окна — варианты
-        { source: "/plastikovye-okna", destination: "/okna", permanent: true },
-        { source: "/okna-pvh", destination: "/okna", permanent: true },
+        { source: "/plastikovye-okna", destination: "/okna", statusCode: 301 },
+        { source: "/okna-pvh", destination: "/okna", statusCode: 301 },
         // Старая статья блога переехала
-        { source: "/articles/kak-vybrat-kondicioner", destination: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi", permanent: true },
+        { source: "/articles/kak-vybrat-kondicioner", destination: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi", statusCode: 301 },
       ];
 
       rewrites.push({ source: "/((?!api/).*)", destination: "/index.html" });
