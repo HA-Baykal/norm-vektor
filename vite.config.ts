@@ -57,7 +57,12 @@ const seoSitemapAndApiGenerator = () => ({
       ];
       const cityPages = cityLocations.flatMap((loc) => {
         const prep = loc.endsWith("-trakte") ? "na" : "v";
-        return [`okna-${prep}-${loc}`, `kondicionery-${prep}-${loc}`];
+        return [
+          `okna-${prep}-${loc}`,
+          `kondicionery-${prep}-${loc}`,
+          `ventilyaciya-${prep}-${loc}`,
+          `almaznoe-burenie-${prep}-${loc}`,
+        ];
       });
 
       // Посадочные страницы под-услуг (P4 SEO)
@@ -162,8 +167,36 @@ const seoSitemapAndApiGenerator = () => ({
       for (const c of cityUrls) {
         rewrites.push({ source: `/${c}`, destination: `/api/page?path=/${c}` });
       }
+      // 301-редиректы: склейка дублей и старых адресов.
+      // Vercel применяет redirects ДО rewrites, поэтому catch-all rewrite
+      // этим правилам не мешает.
+      const redirects = [
+        // Транслитерационные варианты услуги «алмазное бурение» → канонический slug
+        { source: "/almaznoe-burenie-i-sverlenie", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/almaznaya-rezka", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/almaznoe-burenie-irkutsk", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/burenie-otverstij", destination: "/almaznoe-burenie", statusCode: 301 },
+        // Мёртвые URL, уже заиндексированные Яндексом (из SEO-аудита)
+        { source: "/burenie", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/standarty-montazha", destination: "/standarty", statusCode: 301 },
+        // Старые гео-ссылки с префиксом /burenie-... → канонический раздел
+        { source: "/burenie-v-:slug*", destination: "/almaznoe-burenie", statusCode: 301 },
+        { source: "/burenie-na-:slug*", destination: "/almaznoe-burenie", statusCode: 301 },
+        // Варианты написания «вентиляция»
+        { source: "/ventilyatsiya", destination: "/ventilyaciya", statusCode: 301 },
+        { source: "/ventilyaciya-irkutsk", destination: "/ventilyaciya", statusCode: 301 },
+        // Кондиционеры — варианты транслита
+        { source: "/konditsionery", destination: "/kondicionery", statusCode: 301 },
+        { source: "/split-sistemy", destination: "/kondicionery", statusCode: 301 },
+        // Окна — варианты
+        { source: "/plastikovye-okna", destination: "/okna", statusCode: 301 },
+        { source: "/okna-pvh", destination: "/okna", statusCode: 301 },
+        // Старая статья блога переехала
+        { source: "/articles/kak-vybrat-kondicioner", destination: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi", statusCode: 301 },
+      ];
+
       rewrites.push({ source: "/((?!api/).*)", destination: "/index.html" });
-      fs.writeFileSync(path.resolve(__dirname, "vercel.json"), JSON.stringify({ rewrites }, null, 2), "utf-8");
+      fs.writeFileSync(path.resolve(__dirname, "vercel.json"), JSON.stringify({ redirects, rewrites }, null, 2), "utf-8");
       console.log(`[Vercel Routes] Сгенерирован vercel.json (${rewrites.length} маршрутов)!`);
       console.log(`[SEO SITEMAP] Успешно сгенерирована карта сайта: включено ${staticUrls.length} основных страниц, ${parsedCatalog.length} карточек кондиционеров и ${windowsCatalogData.length} страниц остекления!`);
     } catch (err) {
