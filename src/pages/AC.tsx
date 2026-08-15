@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import CatalogConditioners from "../components/CatalogConditioners";
@@ -236,6 +237,16 @@ export default function AC() {
                 <div><strong>Что выбрать на 35 м²?</strong> Берите 12 (3.5 кВт) — поищите фильтр «до 35 м²» в каталоге.</div>
                 <div><strong>Быстрый монтаж?</strong> Да, за 3–4 часа, с пылесосом без пыли, гарантия по договору.</div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="bg-white pb-10 sm:pb-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="font-black text-[#1a3a5c] mb-3">Смотрите также</h3>
+          <div className="flex flex-wrap gap-2">
+            <Link to="/montazh-kondicionerov" className="px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-[#1a3a5c] hover:border-[#ff6b35] hover:text-[#ff6b35] transition">Монтаж кондиционеров — от 18 400 ₽ →</Link>
+            <Link to="/servis-kondicionerov" className="px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-[#1a3a5c] hover:border-[#ff6b35] hover:text-[#ff6b35] transition">Сервис и чистка кондиционеров — от 3 000 ₽ →</Link>
+            <Link to="/almaznoe-burenie" className="px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-[#1a3a5c] hover:border-[#ff6b35] hover:text-[#ff6b35] transition">Алмазное бурение →</Link>
           </div>
         </div>
       </section>

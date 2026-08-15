@@ -49,6 +49,22 @@
       "destination": "/api/page?path=/portfolio"
     },
     {
+      "source": "/montazh-kondicionerov",
+      "destination": "/api/page?path=/montazh-kondicionerov"
+    },
+    {
+      "source": "/montazh-okon",
+      "destination": "/api/page?path=/montazh-okon"
+    },
+    {
+      "source": "/servis-kondicionerov",
+      "destination": "/api/page?path=/servis-kondicionerov"
+    },
+    {
+      "source": "/osteklenie-balkonov",
+      "destination": "/api/page?path=/osteklenie-balkonov"
+    },
+    {
       "source": "/okna-v-homutovo",
       "destination": "/api/page?path=/okna-v-homutovo"
     },
