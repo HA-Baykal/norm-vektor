@@ -7,16 +7,6 @@ interface QuickBookingModalProps {
   calcDetails?: string;
 }
 
-const TELEGRAM_BOT_TOKEN = "8689073934:AAGt-XGBs6SEjVR_Uzy5vtThvGNc8IY9qAs";
-const TELEGRAM_CHAT_ID = "6567941949";
-
-function escapeHtml(str: string) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
 export default function QuickBookingModal({
   open,
   onClose,
@@ -73,40 +63,8 @@ export default function QuickBookingModal({
 
     setSubmitted(true);
 
-    const safeName = escapeHtml(name || "Не указано");
-    const safePhone = escapeHtml(formattedPhone);
-    const safeCity = escapeHtml(city);
-    const safeService = escapeHtml(serviceName);
-    const safeDetails = escapeHtml(calcDetails || "—");
-
-    const htmlMessage =
-      `🚨 <b>НОВАЯ ЗАЯВКА С САЙТА!</b>\n\n` +
-      `👤 <b>Имя:</b> ${safeName}\n` +
-      `📞 <b>Телефон:</b> ${safePhone}\n` +
-      `📍 <b>Город/Район:</b> ${safeCity}\n` +
-      `🛠 <b>Услуга:</b> ${safeService}\n` +
-      `💬 <b>Детали расчёта:</b> ${safeDetails}`;
-
-    try {
-      const beaconText = encodeURIComponent(
-        `🚨 НОВАЯ ЗАЯВКА\nИмя: ${name || "Не указано"}\nТел: ${formattedPhone}\nГород: ${city}\nУслуга: ${serviceName}\nДетали: ${calcDetails || "—"}`
-      );
-      const beacon = new Image();
-      beacon.src = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${beaconText}`;
-    } catch (err) {
-      console.error("Beacon error:", err);
-    }
-
-    fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text: htmlMessage,
-        parse_mode: "HTML",
-      }),
-    }).catch((err) => console.error("Telegram error:", err));
-
+    // Заявка отправляется только на серверный API: токен Telegram хранится
+    // в переменных окружения (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID) на Vercel.
     fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
