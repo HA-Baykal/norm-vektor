@@ -93,7 +93,13 @@ const seoSitemapAndApiGenerator = () => ({
         "brizer-ili-rekuperator-chto-vybrat",
         "pochemu-poteyut-plastikovye-okna",
         "nuzhno-li-obsluzhivat-konditsioner",
-        "top-10-konditsionerov-irkutsk-2026"
+        "top-10-konditsionerov-irkutsk-2026",
+        "almaznoe-burenie-tsena-i-tehnologiya",
+        "osteklenie-balkonov-tseny-po-variantam",
+        "montazh-konditsionera-po-gostu-chek-list",
+        "zapravka-konditsionera-freonom-kogda-i-skolko",
+        "ventilyatsiya-v-chastnom-dome",
+        "okna-dlya-doma-iz-brusa"
       ];
 
       let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
