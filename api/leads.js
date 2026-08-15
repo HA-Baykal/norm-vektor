@@ -3,8 +3,15 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
   const { name, phone, city = 'Иркутск', service = 'Заявка с сайта', details = '—' } = req.body || {};
-  const botToken = '8689073934:AAGt-XGBs6SEjVR_Uzy5vtThvGNc8IY9qAs';
-  const chatId = '6567941949';
+  // ВАЖНО: токен и chat_id хранятся в переменных окружения Vercel
+  // (Settings → Environment Variables: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID).
+  // Прежний токен был закоммичен в открытый репозиторий — ОТОЗОВИТЕ его в @BotFather!
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!botToken || !chatId) {
+    console.error('Vercel API leads: TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID не заданы в окружении');
+    return res.status(500).json({ error: 'Telegram credentials not configured' });
+  }
   const text = `🚨 НОВАЯ ЗАЯВКА С САЙТА! \n\n` +
     `👤 Имя: ${name || 'Не указано'}\n` +
     `📞 Телефон: ${phone}\n` +

@@ -596,7 +596,7 @@ export default function ConditionerPage() {
 
                 <div className="flex items-center justify-between pt-2 text-xs text-slate-400 font-semibold">
                   <Link to="/kondicionery" className="hover:text-[#ff6b35] transition flex items-center gap-1">
-                    <span>← Вернутся ко всем кондиционерам в каталоге</span>
+                    <span>← Вернуться ко всем кондиционерам в каталоге</span>
                   </Link>
                   <a href="tel:+79149146606" className="hover:text-[#1a3a5c] transition font-bold text-slate-600">
                     Т.: +7 (914) 914-66-06

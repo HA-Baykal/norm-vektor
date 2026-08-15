@@ -142,9 +142,9 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight mb-6">
-                Создаём идеальный климат и уют{" "}
+                Окна, кондиционеры и вентиляция{" "}
                 <span className="text-[#ff6b35] block mt-1">
-                  в вашем доме
+                  в Иркутске — под ключ
                 </span>
               </h1>
               <p className="text-base sm:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">

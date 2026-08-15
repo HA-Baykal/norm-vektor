@@ -7,7 +7,7 @@ import VentilationCalculator from "../components/VentilationCalculator";
 export default function Ventilation() {
     // Динамические мета-теги и Service микроразметка
   useEffect(() => {
-    const titleText = "Вентиляция в Иркутске — бризеры и рекуператоры | Вектор Комфорта";
+    const titleText = "Вентиляция в Иркутске — монтаж под ключ от 6 000 ₽ | Вектор Комфорта";
     const descText = "Вентиляция в Иркутске от 6 000 ₽. Бризеры Тион, рекуператоры Vakio, приточно-вытяжные системы. Монтаж под ключ, гарантия 2 года.";
     
     document.title = titleText;

@@ -9,7 +9,7 @@ import Reviews from "../components/Reviews";
 export default function AC() {
     // Динамические мета-теги и Service микроразметка
   useEffect(() => {
-    const titleText = "Кондиционеры в Иркутске — купить с установкой | Вектор Комфорта";
+    const titleText = "Кондиционеры в Иркутске от 16 636 ₽ — купить с установкой за 1 день | Вектор Комфорта";
     const descText = "Кондиционеры в Иркутске от 16 636 ₽. Инверторные и обычные сплит-системы Ballu, Electrolux, Royal Thermo, Daikin. Монтаж за 1 день, гарантия 3-5 лет.";
     
     document.title = titleText;
