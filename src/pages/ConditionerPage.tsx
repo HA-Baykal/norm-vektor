@@ -61,13 +61,20 @@ export default function ConditionerPage() {
   // Получаем уникальные официальные фотографии конкретной серии без дублирования исходного фото!
   const allImages = getOfficialPhotosForModel(item);
   const coverPhoto = getMainCoverPhoto(item);
-    // Динамические мета-теги и Product микроразметка для каждого кондиционера
+
+  // Полное имя модели без дублирования бренда: в каталоге поле name у большинства
+  // позиций уже начинается с бренда («SHUFT Berg SFTO» при brand «SHUFT»).
+  const fullName = item.name.trim().toLowerCase().startsWith(item.brand.trim().toLowerCase())
+    ? item.name.trim()
+    : `${item.brand} ${item.name}`.trim();
+
+  // Динамические мета-теги и Product микроразметка для каждого кондиционера
   useEffect(() => {
     if (!item) return;
     
     const variant = item.variants[0];
-    const titleText = `${item.brand} ${item.name} — купить в Иркутске | Вектор Комфорта`;
-    const descText = `${item.type} кондиционер ${item.brand} ${item.name}. Площадь до ${variant.area} м², ${variant.cooling} охлаждение, ${variant.heating} обогрев. Цена ${variant.price.toLocaleString("ru-RU")} ₽. Гарантия ${item.type === "Инверторный" ? "5" : "3"} лет.`;
+    const titleText = `Кондиционер ${fullName} — купить в Иркутске от ${variant.price.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`;
+    const descText = `${item.type} кондиционер ${fullName}. Площадь до ${variant.area} м², ${variant.cooling} охлаждение, ${variant.heating} обогрев. Цена ${variant.price.toLocaleString("ru-RU")} ₽. Гарантия ${item.type === "Инверторный" ? "5" : "3"} лет.`;
     
     // Устанавливаем title
     document.title = titleText;
@@ -95,7 +102,7 @@ export default function ConditionerPage() {
     const productSchema = {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": `${item.brand} ${item.name}`,
+      "name": `${fullName}`,
       "image": `https://www.vektor-komforta.ru/${item.image}`,
       "description": descText,
       "brand": {
@@ -174,7 +181,7 @@ export default function ConditionerPage() {
   // Динамический сброс SEO-заголовков и метатегов под ТОЧНУЮ ВЫБРАННУЮ МОЩНОСТЬ И ЦЕНУ!
   useEffect(() => {
     const variantPrice = variant.price;
-    const titleText = `${item.brand} ${item.name} (${selectedBtu} BTU, до ${variant.area} м²) — цена со склада ${formatRub(variantPrice)} | Вектор Комфорта`;
+    const titleText = `Кондиционер ${fullName} (${selectedBtu} BTU, до ${variant.area} м²) — купить в Иркутске от ${formatRub(variantPrice)} | Вектор Комфорта`;
     const descText = `${item.type} сплит-система ${item.name} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене ${formatRub(variantPrice)} со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия завода до 5 лет. Профессиональный монтаж без пыли!`;
     
     // Canonical URL БЕЗ параметра ?btu= (чтобы не было дублей в поиске)
@@ -214,7 +221,7 @@ export default function ConditionerPage() {
     const productSchema = {
       "@context": "https://schema.org/",
       "@type": "Product",
-      "name": `${item.brand} ${item.name} (${selectedBtu} BTU)`,
+      "name": `${fullName} (${selectedBtu} BTU)`,
       "image": allImages,
       "description": descText,
       "sku": `VK-${item.id}-${selectedBtu}`,
@@ -271,7 +278,7 @@ export default function ConditionerPage() {
   // Функция для кнопки "Поделиться" — вызывает системное меню мессенджеров на телефоне и ПК
   const handleShare = async () => {
     const shareData = {
-      title: `${item.brand} ${item.name} (${selectedBtu} BTU)`,
+      title: `${fullName} (${selectedBtu} BTU)`,
       text: `Сплит-система ${item.name} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене со склада: ${formatRub(variant.price)}. Вектор Комфорта Иркутск`,
       url: window.location.href,
     };
@@ -334,7 +341,7 @@ export default function ConditionerPage() {
                 )}
                 <img
                   src={allImages[activeImageIdx] || allImages[0]}
-                  alt={`${item.brand} ${item.name}`}
+                  alt={`${fullName}`}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-contain transition duration-300"
@@ -667,7 +674,7 @@ export default function ConditionerPage() {
             <QuickBookingModal
         open={bookingOpen}
         onClose={() => setBookingOpen(false)}
-        serviceName={`Заказ сплит-системы: ${item.brand} ${item.name}`}
+        serviceName={`Заказ сплит-системы: ${fullName}`}
         calcDetails={`Выбранная мощность: ${selectedBtu} BTU (до ${variant.area} м²), Стандартный монтаж: ${withInstall ? "Да (+18 000 ₽)" : "Нет"}, Итог: ${formatRub(totalPrice)}`}
       />
 
@@ -690,7 +697,7 @@ export default function ConditionerPage() {
 
           <img
             src={allImages[activeImageIdx]}
-            alt={`${item.brand} ${item.name}`}
+            alt={`${fullName}`}
             loading="lazy"
             decoding="async"
             className="max-h-[90vh] max-w-[95vw] object-contain"

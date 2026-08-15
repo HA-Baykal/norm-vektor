@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";
@@ -168,6 +168,69 @@ export default function Ventilation() {
                 <a href="tel:+79149146606" className="px-5 py-2.5 rounded-full bg-[#ff6b35] text-white font-black text-xs hover:bg-[#e95620]">📞 Позвонить</a>
                 <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full bg-[#1a3a5c] text-white font-black text-xs border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[8px] font-black mr-1">MAX</span> Написать в MAX</a>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="bg-white pb-10 sm:pb-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
+            <h3 className="font-black text-[#1a3a5c]">Цены на монтаж вентиляции в Иркутске</h3>
+            <p className="mt-1 text-xs leading-5 text-slate-500">Стоимость монтажных работ. Оборудование считается отдельно, точная смета — после бесплатного выезда инженера (0 ₽ до 50 км).</p>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-left text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-slate-200 text-[#1a3a5c]">
+                    <th className="py-2 pr-4 font-black">Работа</th>
+                    <th className="py-2 pr-4 font-black">Что входит</th>
+                    <th className="py-2 font-black">Цена</th>
+                  </tr>
+                </thead>
+                <tbody className="text-slate-700">
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4 font-semibold">Монтаж приточного клапана КИВ-125</td>
+                    <td className="py-2.5 pr-4 text-slate-500">алмазное бурение, утепление канала</td>
+                    <td className="py-2.5 font-semibold whitespace-nowrap">от 6 000 ₽</td>
+                  </tr>
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4 font-semibold">Монтаж бризера (Тион и аналоги)</td>
+                    <td className="py-2.5 pr-4 text-slate-500">бурение, подключение, пуск</td>
+                    <td className="py-2.5 font-semibold whitespace-nowrap">от 9 000 ₽</td>
+                  </tr>
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4 font-semibold">Монтаж рекуператора Vakio</td>
+                    <td className="py-2.5 pr-4 text-slate-500">бурение, монтаж, наладка</td>
+                    <td className="py-2.5 font-semibold whitespace-nowrap">от 12 000 ₽</td>
+                  </tr>
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4">Установка вытяжного вентилятора</td>
+                    <td className="py-2.5 pr-4 text-slate-500">санузел, кухня</td>
+                    <td className="py-2.5 font-semibold whitespace-nowrap">от 800 ₽</td>
+                  </tr>
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4">Установка обратного клапана</td>
+                    <td className="py-2.5 pr-4 text-slate-500">защита от запахов из шахты</td>
+                    <td className="py-2.5 font-semibold whitespace-nowrap">от 290 ₽</td>
+                  </tr>
+                  <tr className="border-b border-slate-100">
+                    <td className="py-2.5 pr-4">Монтаж воздуховода</td>
+                    <td className="py-2.5 pr-4 text-slate-500">крепёж, герметизация стыков</td>
+                    <td className="py-2.5 font-semibold whitespace-nowrap">от 1 200 ₽/п.м</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2.5 pr-4">Проектирование системы вентиляции</td>
+                    <td className="py-2.5 pr-4 text-slate-500">расчёт воздухообмена, схема, смета</td>
+                    <td className="py-2.5 font-semibold whitespace-nowrap">от 10 000 ₽</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 text-xs leading-5 text-slate-500">
+              В монтаж входит: алмазное бурение без пыли, герметизация и утепление стыков, балансировка системы, пуско-наладка, инструктаж и гарантия 2 года на работы.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <a href="tel:+79149146606" className="px-5 py-2.5 rounded-full bg-[#ff6b35] text-white font-black text-xs hover:bg-[#e95620]">📞 +7 (914) 914-66-06</a>
+              <a href="#calculator" className="px-5 py-2.5 rounded-full bg-[#1a3a5c] text-white font-black text-xs border border-white/10">🧮 Рассчитать вентиляцию</a>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";

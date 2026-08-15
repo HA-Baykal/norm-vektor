@@ -15,6 +15,10 @@ interface ServicePageProps {
   breadcrumbPath?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  /** Иконка блока с фотографиями работ (оставлено для совместимости страниц услуг) */
+  photosIcon?: string;
+  /** Заголовок блока с фотографиями работ (оставлено для совместимости страниц услуг) */
+  photosTitle?: string;
 }
 
 export default function ServicePage({

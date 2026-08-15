@@ -15,6 +15,7 @@ const PortfolioPage = lazy(() => import("./pages/PortfolioPage"));
 const Contact = lazy(() => import("./pages/Contact"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogArticle = lazy(() => import("./pages/BlogArticle"));
+const ServiceSubPage = lazy(() => import("./pages/ServiceSubPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
@@ -64,6 +65,11 @@ export default function App() {
             <Route path="/kondicionery-v-stolbovo" element={<LocalCityPage cityKey="stolbovo" serviceKey="kondicionery" />} />
             <Route path="/okna-v-listvyanke" element={<LocalCityPage cityKey="listvyanka" serviceKey="okna" />} />
             <Route path="/kondicionery-v-listvyanke" element={<LocalCityPage cityKey="listvyanka" serviceKey="kondicionery" />} />
+            {/* Посадочные страницы под-услуг (SEO) */}
+            <Route path="montazh-kondicionerov" element={<ServiceSubPage pageKey="montazh-kondicionerov" />} />
+            <Route path="montazh-okon" element={<ServiceSubPage pageKey="montazh-okon" />} />
+            <Route path="servis-kondicionerov" element={<ServiceSubPage pageKey="servis-kondicionerov" />} />
+            <Route path="osteklenie-balkonov" element={<ServiceSubPage pageKey="osteklenie-balkonov" />} />
             <Route path="ventilyaciya" element={<Ventilation />} />
             <Route path="almaznoe-burenie" element={<Drilling />} />
             <Route path="standarty" element={<StandartyPage />} />

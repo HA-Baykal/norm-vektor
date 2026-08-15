@@ -60,9 +60,16 @@ const seoSitemapAndApiGenerator = () => ({
         return [`okna-${prep}-${loc}`, `kondicionery-${prep}-${loc}`];
       });
 
+      // Посадочные страницы под-услуг (P4 SEO)
+      const servicePages = [
+        "montazh-kondicionerov", "montazh-okon",
+        "servis-kondicionerov", "osteklenie-balkonov"
+      ];
+
       const staticUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
         "portfolio", "standarty", "otzyv", "baza-znaniy", "kontakty",
+        ...servicePages,
         ...cityPages
       ];
 
@@ -142,7 +149,8 @@ const seoSitemapAndApiGenerator = () => ({
       const cityUrls = cityPages;
       const mainUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
-        "kontakty", "standarty", "otzyv", "baza-znaniy", "portfolio"
+        "kontakty", "standarty", "otzyv", "baza-znaniy", "portfolio",
+        ...servicePages
       ];
       const rewrites: any[] = [
         { source: "/kondicionery/:slug", destination: "/api/seo" },
