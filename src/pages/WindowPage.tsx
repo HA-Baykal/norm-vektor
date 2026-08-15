@@ -83,13 +83,6 @@ export default function WindowPage() {
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "seller": { "@type": "Organization", "name": "Вектор Комфорта Иркутск" }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "bestRating": "5",
-        "worstRating": "1",
-        "reviewCount": "15"
       }
     };
 
