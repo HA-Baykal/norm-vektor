@@ -1,4 +1,61 @@
 {
+  "redirects": [
+    {
+      "source": "/almaznoe-burenie-i-sverlenie",
+      "destination": "/almaznoe-burenie",
+      "permanent": true
+    },
+    {
+      "source": "/almaznaya-rezka",
+      "destination": "/almaznoe-burenie",
+      "permanent": true
+    },
+    {
+      "source": "/almaznoe-burenie-irkutsk",
+      "destination": "/almaznoe-burenie",
+      "permanent": true
+    },
+    {
+      "source": "/burenie-otverstij",
+      "destination": "/almaznoe-burenie",
+      "permanent": true
+    },
+    {
+      "source": "/ventilyatsiya",
+      "destination": "/ventilyaciya",
+      "permanent": true
+    },
+    {
+      "source": "/ventilyaciya-irkutsk",
+      "destination": "/ventilyaciya",
+      "permanent": true
+    },
+    {
+      "source": "/konditsionery",
+      "destination": "/kondicionery",
+      "permanent": true
+    },
+    {
+      "source": "/split-sistemy",
+      "destination": "/kondicionery",
+      "permanent": true
+    },
+    {
+      "source": "/plastikovye-okna",
+      "destination": "/okna",
+      "permanent": true
+    },
+    {
+      "source": "/okna-pvh",
+      "destination": "/okna",
+      "permanent": true
+    },
+    {
+      "source": "/articles/kak-vybrat-kondicioner",
+      "destination": "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/kondicionery/:slug",
@@ -73,12 +130,28 @@
       "destination": "/api/page?path=/kondicionery-v-homutovo"
     },
     {
+      "source": "/ventilyaciya-v-homutovo",
+      "destination": "/api/page?path=/ventilyaciya-v-homutovo"
+    },
+    {
+      "source": "/almaznoe-burenie-v-homutovo",
+      "destination": "/api/page?path=/almaznoe-burenie-v-homutovo"
+    },
+    {
       "source": "/okna-v-molodezhnom",
       "destination": "/api/page?path=/okna-v-molodezhnom"
     },
     {
       "source": "/kondicionery-v-molodezhnom",
       "destination": "/api/page?path=/kondicionery-v-molodezhnom"
+    },
+    {
+      "source": "/ventilyaciya-v-molodezhnom",
+      "destination": "/api/page?path=/ventilyaciya-v-molodezhnom"
+    },
+    {
+      "source": "/almaznoe-burenie-v-molodezhnom",
+      "destination": "/api/page?path=/almaznoe-burenie-v-molodezhnom"
     },
     {
       "source": "/okna-v-angarske",
@@ -89,12 +162,28 @@
       "destination": "/api/page?path=/kondicionery-v-angarske"
     },
     {
+      "source": "/ventilyaciya-v-angarske",
+      "destination": "/api/page?path=/ventilyaciya-v-angarske"
+    },
+    {
+      "source": "/almaznoe-burenie-v-angarske",
+      "destination": "/api/page?path=/almaznoe-burenie-v-angarske"
+    },
+    {
       "source": "/okna-v-shelehove",
       "destination": "/api/page?path=/okna-v-shelehove"
     },
     {
       "source": "/kondicionery-v-shelehove",
       "destination": "/api/page?path=/kondicionery-v-shelehove"
+    },
+    {
+      "source": "/ventilyaciya-v-shelehove",
+      "destination": "/api/page?path=/ventilyaciya-v-shelehove"
+    },
+    {
+      "source": "/almaznoe-burenie-v-shelehove",
+      "destination": "/api/page?path=/almaznoe-burenie-v-shelehove"
     },
     {
       "source": "/okna-v-solnechnom",
@@ -105,12 +194,28 @@
       "destination": "/api/page?path=/kondicionery-v-solnechnom"
     },
     {
+      "source": "/ventilyaciya-v-solnechnom",
+      "destination": "/api/page?path=/ventilyaciya-v-solnechnom"
+    },
+    {
+      "source": "/almaznoe-burenie-v-solnechnom",
+      "destination": "/api/page?path=/almaznoe-burenie-v-solnechnom"
+    },
+    {
       "source": "/okna-v-pervomaiskom",
       "destination": "/api/page?path=/okna-v-pervomaiskom"
     },
     {
       "source": "/kondicionery-v-pervomaiskom",
       "destination": "/api/page?path=/kondicionery-v-pervomaiskom"
+    },
+    {
+      "source": "/ventilyaciya-v-pervomaiskom",
+      "destination": "/api/page?path=/ventilyaciya-v-pervomaiskom"
+    },
+    {
+      "source": "/almaznoe-burenie-v-pervomaiskom",
+      "destination": "/api/page?path=/almaznoe-burenie-v-pervomaiskom"
     },
     {
       "source": "/okna-v-novolenino",
@@ -121,12 +226,28 @@
       "destination": "/api/page?path=/kondicionery-v-novolenino"
     },
     {
+      "source": "/ventilyaciya-v-novolenino",
+      "destination": "/api/page?path=/ventilyaciya-v-novolenino"
+    },
+    {
+      "source": "/almaznoe-burenie-v-novolenino",
+      "destination": "/api/page?path=/almaznoe-burenie-v-novolenino"
+    },
+    {
       "source": "/okna-v-yubileynom",
       "destination": "/api/page?path=/okna-v-yubileynom"
     },
     {
       "source": "/kondicionery-v-yubileynom",
       "destination": "/api/page?path=/kondicionery-v-yubileynom"
+    },
+    {
+      "source": "/ventilyaciya-v-yubileynom",
+      "destination": "/api/page?path=/ventilyaciya-v-yubileynom"
+    },
+    {
+      "source": "/almaznoe-burenie-v-yubileynom",
+      "destination": "/api/page?path=/almaznoe-burenie-v-yubileynom"
     },
     {
       "source": "/okna-v-akademgorodke",
@@ -137,12 +258,28 @@
       "destination": "/api/page?path=/kondicionery-v-akademgorodke"
     },
     {
+      "source": "/ventilyaciya-v-akademgorodke",
+      "destination": "/api/page?path=/ventilyaciya-v-akademgorodke"
+    },
+    {
+      "source": "/almaznoe-burenie-v-akademgorodke",
+      "destination": "/api/page?path=/almaznoe-burenie-v-akademgorodke"
+    },
+    {
       "source": "/okna-v-raduzhnom",
       "destination": "/api/page?path=/okna-v-raduzhnom"
     },
     {
       "source": "/kondicionery-v-raduzhnom",
       "destination": "/api/page?path=/kondicionery-v-raduzhnom"
+    },
+    {
+      "source": "/ventilyaciya-v-raduzhnom",
+      "destination": "/api/page?path=/ventilyaciya-v-raduzhnom"
+    },
+    {
+      "source": "/almaznoe-burenie-v-raduzhnom",
+      "destination": "/api/page?path=/almaznoe-burenie-v-raduzhnom"
     },
     {
       "source": "/okna-v-universitetskom",
@@ -153,12 +290,28 @@
       "destination": "/api/page?path=/kondicionery-v-universitetskom"
     },
     {
+      "source": "/ventilyaciya-v-universitetskom",
+      "destination": "/api/page?path=/ventilyaciya-v-universitetskom"
+    },
+    {
+      "source": "/almaznoe-burenie-v-universitetskom",
+      "destination": "/api/page?path=/almaznoe-burenie-v-universitetskom"
+    },
+    {
       "source": "/okna-na-baikalskom-trakte",
       "destination": "/api/page?path=/okna-na-baikalskom-trakte"
     },
     {
       "source": "/kondicionery-na-baikalskom-trakte",
       "destination": "/api/page?path=/kondicionery-na-baikalskom-trakte"
+    },
+    {
+      "source": "/ventilyaciya-na-baikalskom-trakte",
+      "destination": "/api/page?path=/ventilyaciya-na-baikalskom-trakte"
+    },
+    {
+      "source": "/almaznoe-burenie-na-baikalskom-trakte",
+      "destination": "/api/page?path=/almaznoe-burenie-na-baikalskom-trakte"
     },
     {
       "source": "/okna-na-golooustnenskom-trakte",
@@ -169,12 +322,28 @@
       "destination": "/api/page?path=/kondicionery-na-golooustnenskom-trakte"
     },
     {
+      "source": "/ventilyaciya-na-golooustnenskom-trakte",
+      "destination": "/api/page?path=/ventilyaciya-na-golooustnenskom-trakte"
+    },
+    {
+      "source": "/almaznoe-burenie-na-golooustnenskom-trakte",
+      "destination": "/api/page?path=/almaznoe-burenie-na-golooustnenskom-trakte"
+    },
+    {
       "source": "/okna-v-pivovarikhe",
       "destination": "/api/page?path=/okna-v-pivovarikhe"
     },
     {
       "source": "/kondicionery-v-pivovarikhe",
       "destination": "/api/page?path=/kondicionery-v-pivovarikhe"
+    },
+    {
+      "source": "/ventilyaciya-v-pivovarikhe",
+      "destination": "/api/page?path=/ventilyaciya-v-pivovarikhe"
+    },
+    {
+      "source": "/almaznoe-burenie-v-pivovarikhe",
+      "destination": "/api/page?path=/almaznoe-burenie-v-pivovarikhe"
     },
     {
       "source": "/okna-v-urike",
@@ -185,6 +354,14 @@
       "destination": "/api/page?path=/kondicionery-v-urike"
     },
     {
+      "source": "/ventilyaciya-v-urike",
+      "destination": "/api/page?path=/ventilyaciya-v-urike"
+    },
+    {
+      "source": "/almaznoe-burenie-v-urike",
+      "destination": "/api/page?path=/almaznoe-burenie-v-urike"
+    },
+    {
       "source": "/okna-v-stolbovo",
       "destination": "/api/page?path=/okna-v-stolbovo"
     },
@@ -193,12 +370,28 @@
       "destination": "/api/page?path=/kondicionery-v-stolbovo"
     },
     {
+      "source": "/ventilyaciya-v-stolbovo",
+      "destination": "/api/page?path=/ventilyaciya-v-stolbovo"
+    },
+    {
+      "source": "/almaznoe-burenie-v-stolbovo",
+      "destination": "/api/page?path=/almaznoe-burenie-v-stolbovo"
+    },
+    {
       "source": "/okna-v-listvyanke",
       "destination": "/api/page?path=/okna-v-listvyanke"
     },
     {
       "source": "/kondicionery-v-listvyanke",
       "destination": "/api/page?path=/kondicionery-v-listvyanke"
+    },
+    {
+      "source": "/ventilyaciya-v-listvyanke",
+      "destination": "/api/page?path=/ventilyaciya-v-listvyanke"
+    },
+    {
+      "source": "/almaznoe-burenie-v-listvyanke",
+      "destination": "/api/page?path=/almaznoe-burenie-v-listvyanke"
     },
     {
       "source": "/((?!api/).*)",

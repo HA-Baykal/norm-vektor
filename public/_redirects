@@ -1,1 +1,15 @@
-/* /index.html 200
+# 301-редиректы: склейка дублей и старых адресов
+/almaznoe-burenie-i-sverlenie  /almaznoe-burenie  301
+/almaznaya-rezka               /almaznoe-burenie  301
+/almaznoe-burenie-irkutsk      /almaznoe-burenie  301
+/burenie-otverstij             /almaznoe-burenie  301
+/ventilyatsiya                 /ventilyaciya      301
+/ventilyaciya-irkutsk          /ventilyaciya      301
+/konditsionery                 /kondicionery      301
+/split-sistemy                 /kondicionery      301
+/plastikovye-okna              /okna              301
+/okna-pvh                      /okna              301
+/articles/kak-vybrat-kondicioner  /baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi  301
+
+# SPA-fallback (отдаём index.html для всех маршрутов, кроме API и файлов)
+/*    /index.html   200

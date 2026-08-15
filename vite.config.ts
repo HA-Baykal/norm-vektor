@@ -57,7 +57,12 @@ const seoSitemapAndApiGenerator = () => ({
       ];
       const cityPages = cityLocations.flatMap((loc) => {
         const prep = loc.endsWith("-trakte") ? "na" : "v";
-        return [`okna-${prep}-${loc}`, `kondicionery-${prep}-${loc}`];
+        return [
+          `okna-${prep}-${loc}`,
+          `kondicionery-${prep}-${loc}`,
+          `ventilyaciya-${prep}-${loc}`,
+          `almaznoe-burenie-${prep}-${loc}`,
+        ];
       });
 
       // Посадочные страницы под-услуг (P4 SEO)
@@ -162,8 +167,30 @@ const seoSitemapAndApiGenerator = () => ({
       for (const c of cityUrls) {
         rewrites.push({ source: `/${c}`, destination: `/api/page?path=/${c}` });
       }
+      // 301-редиректы: склейка дублей и старых адресов.
+      // Vercel применяет redirects ДО rewrites, поэтому catch-all rewrite
+      // этим правилам не мешает.
+      const redirects = [
+        // Транслитерационные варианты услуги «алмазное бурение» → канонический slug
+        { source: "/almaznoe-burenie-i-sverlenie", destination: "/almaznoe-burenie", permanent: true },
+        { source: "/almaznaya-rezka", destination: "/almaznoe-burenie", permanent: true },
+        { source: "/almaznoe-burenie-irkutsk", destination: "/almaznoe-burenie", permanent: true },
+        { source: "/burenie-otverstij", destination: "/almaznoe-burenie", permanent: true },
+        // Варианты написания «вентиляция»
+        { source: "/ventilyatsiya", destination: "/ventilyaciya", permanent: true },
+        { source: "/ventilyaciya-irkutsk", destination: "/ventilyaciya", permanent: true },
+        // Кондиционеры — варианты транслита
+        { source: "/konditsionery", destination: "/kondicionery", permanent: true },
+        { source: "/split-sistemy", destination: "/kondicionery", permanent: true },
+        // Окна — варианты
+        { source: "/plastikovye-okna", destination: "/okna", permanent: true },
+        { source: "/okna-pvh", destination: "/okna", permanent: true },
+        // Старая статья блога переехала
+        { source: "/articles/kak-vybrat-kondicioner", destination: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi", permanent: true },
+      ];
+
       rewrites.push({ source: "/((?!api/).*)", destination: "/index.html" });
-      fs.writeFileSync(path.resolve(__dirname, "vercel.json"), JSON.stringify({ rewrites }, null, 2), "utf-8");
+      fs.writeFileSync(path.resolve(__dirname, "vercel.json"), JSON.stringify({ redirects, rewrites }, null, 2), "utf-8");
       console.log(`[Vercel Routes] Сгенерирован vercel.json (${rewrites.length} маршрутов)!`);
       console.log(`[SEO SITEMAP] Успешно сгенерирована карта сайта: включено ${staticUrls.length} основных страниц, ${parsedCatalog.length} карточек кондиционеров и ${windowsCatalogData.length} страниц остекления!`);
     } catch (err) {

@@ -53,6 +53,10 @@ function buildBreadcrumbJsonLd(path: string, page: Page): string {
       items.push({ name: "Пластиковые окна", item: "https://www.vektor-komforta.ru/okna" });
     } else if (path.startsWith("/kondicionery-")) {
       items.push({ name: "Кондиционеры", item: "https://www.vektor-komforta.ru/kondicionery" });
+    } else if (path.startsWith("/ventilyaciya-")) {
+      items.push({ name: "Вентиляция", item: "https://www.vektor-komforta.ru/ventilyaciya" });
+    } else if (path.startsWith("/almaznoe-burenie-")) {
+      items.push({ name: "Алмазное бурение", item: "https://www.vektor-komforta.ru/almaznoe-burenie" });
     }
     items.push({ name: BREADCRUMB_NAMES[path] || page.h1 });
   }
@@ -866,6 +870,111 @@ const PAGES: Record<string, Page> = {
 };
 
 // ============================================================
+// Гео-страницы вентиляции и алмазного бурения генерируются
+// программно (17 локаций × 2 услуги = 34 URL), чтобы не плодить
+// сотни строк ручного контента. Формат совпадает с ручными
+// гео-страницами окон/кондиционеров.
+// ============================================================
+interface GeoMeta {
+  name: string;       // "Хомутово"
+  loc: string;        // "в Хомутово"
+  where: string;      // "15 км от Иркутска"
+  visit: string;      // "в день обращения"
+  review: string;     // имя для отзыва
+}
+
+const GEO_CITIES: Record<string, GeoMeta> = {
+  homutovo: { name: "Хомутово", loc: "в Хомутово", where: "15 км от Иркутска", visit: "в день обращения", review: "Александр, Хомутово" },
+  molodezhnom: { name: "посёлке Молодёжный", loc: "в посёлке Молодёжный", where: "20 км от Иркутска", visit: "1–2 раза в неделю", review: "Ольга, п. Молодёжный" },
+  angarske: { name: "Ангарске", loc: "в Ангарске", where: "50 км от Иркутска", visit: "по предварительной заявке", review: "Дмитрий, Ангарск" },
+  shelehove: { name: "Шелехове", loc: "в Шелехове", where: "20 км от Иркутска", visit: "быстрый выезд", review: "Наталья, Шелехов" },
+  solnechnom: { name: "Солнечном", loc: "в Солнечном", where: "микрорайон Иркутска, 12 км от центра", visit: "в день обращения", review: "Анна, мкр. Солнечный" },
+  pervomaiskom: { name: "Первомайском", loc: "в Первомайском", where: "микрорайон Иркутска, 8 км от центра", visit: "в день обращения", review: "Светлана, мкр. Первомайский" },
+  novolenino: { name: "Ново-Ленино", loc: "в Ново-Ленино", where: "Ленинский район Иркутска, 10 км от центра", visit: "в день обращения", review: "Татьяна, Ново-Ленино" },
+  yubileynom: { name: "Юбилейном", loc: "в Юбилейном", where: "Свердловский район Иркутска", visit: "в день обращения", review: "Игорь, мкр. Юбилейный" },
+  akademgorodke: { name: "Академгородке", loc: "в Академгородке", where: "Свердловский район Иркутска, 7 км от центра", visit: "в день обращения", review: "Михаил, Академгородок" },
+  raduzhnom: { name: "Радужном", loc: "в Радужном", where: "Октябрьский район Иркутска, 15 км от центра", visit: "в день обращения", review: "Екатерина, мкр. Радужный" },
+  universitetskom: { name: "Университетском", loc: "в Университетском", where: "микрорайон Иркутска, 9 км от центра", visit: "в день обращения", review: "Павел, мкр. Университетский" },
+  "baikalskom-trakte": { name: "Байкальском тракте", loc: "на Байкальском тракте", where: "5–50 км от Иркутска", visit: "ежедневно", review: "Сергей, Байкальский тракт" },
+  "golooustnenskom-trakte": { name: "Голоустненском тракте", loc: "на Голоустненском тракте", where: "15–40 км от Иркутска", visit: "регулярно", review: "Андрей, Голоустненский тракт" },
+  pivovarikhe: { name: "Пивоварихе", loc: "в Пивоварихе", where: "12 км от Иркутска, Голоустненский тракт", visit: "в день обращения", review: "Марина, Пивовариха" },
+  urike: { name: "Урике", loc: "в Урике", where: "18 км от Иркутска", visit: "по записи", review: "Владимир, Урик" },
+  stolbovo: { name: "Столбова", loc: "в Столбова", where: "20 км от Иркутска, Голоустненский тракт", visit: "по записи", review: "Юрий, Столбова" },
+  listvyanke: { name: "Листвянке", loc: "в Листвянке", where: "70 км от Иркутска, Байкал", visit: "по Байкальскому тракту, по записи", review: "Галина, Листвянка" },
+};
+
+const GEO_SERVICE_TEMPLATES: Record<string, {
+  section: string; parent: string; titleWord: string; h1Word: string;
+  price: string; priceText: string; intro: string; points: string[];
+  review: string; breadcrumb: string;
+}> = {
+  ventilyaciya: {
+    section: "Вентиляция",
+    parent: "/ventilyaciya",
+    titleWord: "Вентиляция",
+    h1Word: "Вентиляция",
+    price: "от 6 000 ₽",
+    priceText: "<strong>от 6 000 ₽</strong> за приточный клапан КИВ-125; монтаж бризера — от 9 000 ₽; рекуператор Vakio — от 12 000 ₽. Приточно-вытяжные системы считаются по проекту.",
+    intro: "Проектируем и монтируем приточную и вытяжную вентиляцию под ключ. Устанавливаем бризеры <strong>Тион</strong>, рекуператоры <strong>Vakio</strong> и приточно-вытяжные системы для квартир, домов, офисов, ресторанов и производств. Воздуховоды изготавливаем на собственном производстве в Иркутске.",
+    points: [
+      "Проектирование и расчёт воздухообмена по нормам",
+      "Бризеры Тион с многоступенчатой очисткой воздуха (HEPA)",
+      "Рекуператоры Vakio с КПД до 80% — экономия на отоплении",
+      "Собственное производство воздуховодов — точная подгонка",
+      "Пуско-наладка, балансировка и инструктаж",
+    ],
+    review: "«Заказали бризер Тион. Инженер приехал, всё замерил, на следующий день смонтировали с алмазным бурением — чисто, без пыли. Воздух свежий даже зимой. Спасибо!»",
+    breadcrumb: "Вентиляция",
+  },
+  "almaznoe-burenie": {
+    section: "Алмазное бурение",
+    parent: "/almaznoe-burenie",
+    titleWord: "Алмазное бурение",
+    h1Word: "Алмазное бурение",
+    price: "от 2 000 ₽/точка",
+    priceText: "<strong>от 2 000 ₽/точка</strong>. Бурение под кондиционер (55–80 мм) — от 3 500 ₽, под бризер/вентиляцию (132 мм) — от 4 500 ₽, под трубы (32–250 мм) — от 2 000 ₽. Финальная цена зависит от диаметра, материала стены и количества отверстий.",
+    intro: "<strong>Алмазное бурение</strong> отверстий диаметром от 32 до 250 мм в бетоне, железобетоне и кирпиче. <strong>Сухое бурение с промышленным пылесосом</strong> — для готового ремонта, без пыли, сколов и трещин. Мокрое бурение — для больших диаметров и чернового ремонта.",
+    points: [
+      "Точность ±1 мм — ровные цилиндрические отверстия без сколов",
+      "Сухое бурение с пылесосом — чисто при чистовом ремонте",
+      "Диаметры 32–250 мм: под трубы, вентиляцию, кондиционеры, электрику",
+      "Бетон, железобетон, кирпич, блоки, натуральный камень",
+      "Уборка рабочей зоны после завершения работ",
+    ],
+    review: "«Бурили отверстие под кондиционер в квартире с готовым ремонтом. Приехали с пылесосом, ни пылинки, отверстие ровное. Цена как договорились. Рекомендую!»",
+    breadcrumb: "Алмазное бурение",
+  },
+};
+
+function buildGeoPage(path: string): Page | null {
+  // /ventilyaciya-v-<loc> или /almaznoe-burenie-v-<loc> / ...-na-...-trakte
+  let m = path.match(/^\/(ventilyaciya|almaznoe-burenie)-(?:v|na)-(.+)$/);
+  if (!m) return null;
+  const serviceKey = m[1];
+  const cityKey = m[2];
+  const city = GEO_CITIES[cityKey];
+  const tpl = GEO_SERVICE_TEMPLATES[serviceKey];
+  if (!city || !tpl) return null;
+
+  const title = `${tpl.titleWord} ${city.loc} — монтаж под ключ ${tpl.price} | Вектор Комфорта`;
+  const description = `${tpl.section} ${city.loc} (${city.where}). ${serviceKey === "ventilyaciya" ? "Бризеры Тион, рекуператоры Vakio, приточно-вытяжные системы под ключ. Проектирование и монтаж, гарантия 2 года." : "Отверстия 32–250 мм в бетоне и кирпиче. Сухое бурение с пылесосом — без пыли и трещин. Под кондиционеры, вентиляцию, трубы."} Выезд ${city.visit}. Цена ${tpl.price}.`;
+  const h1 = `${tpl.h1Word} ${city.loc}`;
+
+  const bodyHtml = `<p>${tpl.intro} Работаем ${city.loc} (${city.where}).</p>
+    <h2>${tpl.section} ${city.loc} — почему выбирают нас</h2>
+    <ul>
+      ${tpl.points.map((p) => `<li>${p}</li>`).join("\n      ")}
+      <li>Бесплатный выезд инженера/замерщика ${city.loc} — ${city.visit}</li>
+    </ul>
+    <h2>${tpl.section} ${city.loc} — цены</h2>
+    <p>${tpl.priceText}</p>
+    <h2>${tpl.section} ${city.loc} — отзывы клиентов</h2>
+    <p>${tpl.review} — ${city.review}.</p>`;
+
+  return { title, description, h1, bodyHtml };
+}
+
+// ============================================================
 // Edge-обработчик: отдаёт страницу с уникальными title/h1/текстом
 // для поисковых краулеров. Неизвестные пути → честный HTTP 404
 // с noindex (вместо "мягкого 404" на index.html).
@@ -875,7 +984,7 @@ export default async function handler(req: Request): Promise<Response> {
   let path = decodeURIComponent(url.pathname).toLowerCase();
   if (path !== "/" && path.endsWith("/")) path = path.slice(0, -1);
 
-  const page = PAGES[path];
+  const page = PAGES[path] || buildGeoPage(path);
   if (!page) {
     const notFoundHtml = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>Страница не найдена (404) — Вектор Комфорта, Иркутск</title><meta name="robots" content="noindex" /><meta name="description" content="Ошибка 404: страница не найдена. Окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта." /><link rel="canonical" href="https://www.vektor-komforta.ru${esc(path)}" /></head><body><h1>404 — страница не найдена</h1><p>Перейдите на <a href="https://www.vektor-komforta.ru/">главную</a> — окна, кондиционеры и вентиляция в Иркутске.</p></body></html>`;
     return new Response(notFoundHtml, {
