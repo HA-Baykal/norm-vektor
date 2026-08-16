@@ -16,7 +16,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 16636,
+          "price": 17351,
           "oldPrice": 17888
         },
         {
@@ -24,7 +24,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 17566,
+          "price": 18132,
           "oldPrice": 18888
         },
         {
@@ -32,7 +32,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 25006,
+          "price": 25812,
           "oldPrice": 26888
         },
         {
@@ -40,7 +40,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 43606,
+          "price": 45012,
           "oldPrice": 46888
         },
         {
@@ -48,7 +48,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 57556,
+          "price": 60031,
           "oldPrice": 61888
         },
         {
@@ -56,7 +56,7 @@
           "area": 100,
           "cooling": "10.5 кВт",
           "heating": "11.0 кВт",
-          "price": 75226,
+          "price": 79270,
           "oldPrice": 80888
         }
       ]
@@ -77,7 +77,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 19528,
+          "price": 20578,
           "oldPrice": 20998
         },
         {
@@ -85,7 +85,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 22309,
+          "price": 22789,
           "oldPrice": 23988
         },
         {
@@ -93,7 +93,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 30586,
+          "price": 32230,
           "oldPrice": 32888
         },
         {
@@ -101,7 +101,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 51325,
+          "price": 52429,
           "oldPrice": 55188
         },
         {
@@ -109,7 +109,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 66670,
+          "price": 68104,
           "oldPrice": 71688
         }
       ]
@@ -130,7 +130,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 22216,
+          "price": 22694,
           "oldPrice": 23888
         },
         {
@@ -138,7 +138,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 30586,
+          "price": 32230,
           "oldPrice": 32888
         },
         {
@@ -167,7 +167,7 @@
           "area": 23,
           "cooling": "2.34 кВт",
           "heating": "2.34 кВт",
-          "price": 23204,
+          "price": 24451,
           "oldPrice": 24950
         },
         {
@@ -175,7 +175,7 @@
           "area": 26,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 24747,
+          "price": 25546,
           "oldPrice": 26610
         }
       ]
@@ -196,7 +196,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 24822,
+          "price": 25622,
           "oldPrice": 26690
         },
         {
@@ -204,7 +204,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 26403,
+          "price": 27822,
           "oldPrice": 28390
         },
         {
@@ -212,7 +212,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 36354,
+          "price": 37136,
           "oldPrice": 39090
         },
         {
@@ -220,7 +220,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 61929,
+          "price": 63926,
           "oldPrice": 66590
         },
         {
@@ -228,7 +228,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 77553,
+          "price": 79221,
           "oldPrice": 83390
         }
       ]
@@ -249,7 +249,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 24822,
+          "price": 25622,
           "oldPrice": 26690
         },
         {
@@ -257,7 +257,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 36354,
+          "price": 37136,
           "oldPrice": 39090
         },
         {
@@ -265,7 +265,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 61929,
+          "price": 63926,
           "oldPrice": 66590
         }
       ]
@@ -285,7 +285,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 23622,
+          "price": 24638,
           "oldPrice": 25400
         },
         {
@@ -293,7 +293,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 26598,
+          "price": 28028,
           "oldPrice": 28600
         },
         {
@@ -301,7 +301,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 36131,
+          "price": 37296,
           "oldPrice": 38850
         },
         {
@@ -309,7 +309,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 58730,
+          "price": 59993,
           "oldPrice": 63150
         },
         {
@@ -317,7 +317,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 74400,
+          "price": 78400,
           "oldPrice": 80000
         }
       ]
@@ -337,21 +337,23 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 23990
+          "price": 22791,
+          "oldPrice": 23990
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 25990
+          "price": 25210,
+          "oldPrice": 25990
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 32541,
+          "price": 33590,
           "oldPrice": 34990
         },
         {
@@ -359,7 +361,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 55847,
+          "price": 58849,
           "oldPrice": 60050
         },
         {
@@ -367,7 +369,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 70866,
+          "price": 74676,
           "oldPrice": 76200
         }
       ]
@@ -388,7 +390,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 25101,
+          "price": 25910,
           "oldPrice": 26990
         },
         {
@@ -396,7 +398,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 27891,
+          "price": 29090,
           "oldPrice": 29990
         },
         {
@@ -404,7 +406,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 37191,
+          "price": 37991,
           "oldPrice": 39990
         }
       ]
@@ -425,7 +427,7 @@
           "area": 23,
           "cooling": "2.34 кВт",
           "heating": "2.34 кВт",
-          "price": 26961,
+          "price": 28410,
           "oldPrice": 28990
         },
         {
@@ -433,7 +435,7 @@
           "area": 26,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 29751,
+          "price": 30391,
           "oldPrice": 31990
         },
         {
@@ -441,7 +443,7 @@
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 40539,
+          "price": 41411,
           "oldPrice": 43590
         },
         {
@@ -449,7 +451,7 @@
           "area": 52,
           "cooling": "5.28 кВт",
           "heating": "5.57 кВт",
-          "price": 64161,
+          "price": 67610,
           "oldPrice": 68990
         },
         {
@@ -457,7 +459,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 79971,
+          "price": 83410,
           "oldPrice": 85990
         }
       ]
@@ -478,7 +480,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 29751,
+          "price": 30391,
           "oldPrice": 31990
         },
         {
@@ -486,7 +488,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 33471,
+          "price": 34191,
           "oldPrice": 35990
         },
         {
@@ -494,7 +496,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 45189,
+          "price": 47618,
           "oldPrice": 48590
         },
         {
@@ -502,7 +504,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 71601,
+          "price": 75450,
           "oldPrice": 76990
         },
         {
@@ -510,7 +512,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 88341,
+          "price": 91190,
           "oldPrice": 94990
         }
       ]
@@ -530,7 +532,7 @@
           "area": 80,
           "cooling": "8.8 кВт",
           "heating": "9.2 кВт",
-          "price": 103221,
+          "price": 106550,
           "oldPrice": 110990
         }
       ]
@@ -550,7 +552,7 @@
           "area": 20,
           "cooling": "2.34 кВт",
           "heating": "2.34 кВт",
-          "price": 25890,
+          "price": 25736,
           "oldPrice": 27090
         },
         {
@@ -558,7 +560,7 @@
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 28590,
+          "price": 28799,
           "oldPrice": 29690
         },
         {
@@ -566,7 +568,7 @@
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.72 кВт",
-          "price": 36890,
+          "price": 36850,
           "oldPrice": 37990
         },
         {
@@ -574,7 +576,7 @@
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.57 кВт",
-          "price": 63640,
+          "price": 63396,
           "oldPrice": 64690
         }
       ]
@@ -594,7 +596,7 @@
           "area": 20,
           "cooling": "2.34 кВт",
           "heating": "2.34 кВт",
-          "price": 25090,
+          "price": 25046,
           "oldPrice": 26090
         },
         {
@@ -602,7 +604,7 @@
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 27390,
+          "price": 27822,
           "oldPrice": 28390
         },
         {
@@ -610,7 +612,7 @@
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.56 кВт",
-          "price": 61090,
+          "price": 59702,
           "oldPrice": 62190
         }
       ]
@@ -630,7 +632,7 @@
           "area": 20,
           "cooling": "2.34 кВт",
           "heating": "2.34 кВт",
-          "price": 27890,
+          "price": 28410,
           "oldPrice": 28990
         },
         {
@@ -638,7 +640,7 @@
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 39790,
+          "price": 39974,
           "oldPrice": 40790
         },
         {
@@ -646,7 +648,7 @@
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.56 кВт",
-          "price": 67890,
+          "price": 67610,
           "oldPrice": 68990
         }
       ]
@@ -666,7 +668,7 @@
           "area": 25,
           "cooling": "2.49 кВт",
           "heating": "2.65 кВт",
-          "price": 24140,
+          "price": 24490,
           "oldPrice": 24990
         },
         {
@@ -674,7 +676,7 @@
           "area": 35,
           "cooling": "3.23 кВт",
           "heating": "3.52 кВт",
-          "price": 34290,
+          "price": 33526,
           "oldPrice": 35290
         }
       ]
@@ -694,7 +696,7 @@
           "area": 20,
           "cooling": "2.05 кВт",
           "heating": "2.2 кВт",
-          "price": 19690,
+          "price": 20374,
           "oldPrice": 20790
         },
         {
@@ -702,7 +704,7 @@
           "area": 25,
           "cooling": "2.49 кВт",
           "heating": "2.65 кВт",
-          "price": 21790,
+          "price": 21974,
           "oldPrice": 22890
         },
         {
@@ -710,7 +712,7 @@
           "area": 35,
           "cooling": "3.23 кВт",
           "heating": "3.52 кВт",
-          "price": 30090,
+          "price": 29631,
           "oldPrice": 31190
         },
         {
@@ -718,7 +720,7 @@
           "area": 50,
           "cooling": "4.99 кВт",
           "heating": "5.13 кВт",
-          "price": 50390,
+          "price": 48916,
           "oldPrice": 51490
         }
       ]
@@ -738,35 +740,40 @@
           "area": 20,
           "cooling": "2.2 кВт",
           "heating": "2.29 кВт",
-          "price": 30090
+          "price": 28886,
+          "oldPrice": 30090
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 31890
+          "price": 30296,
+          "oldPrice": 31890
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 35090
+          "price": 33336,
+          "oldPrice": 35090
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.42 кВт",
-          "price": 60890
+          "price": 59672,
+          "oldPrice": 60890
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.18 кВт",
-          "price": 77990
+          "price": 75650,
+          "oldPrice": 77990
         }
       ]
     },
@@ -786,7 +793,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 25471,
+          "price": 26019,
           "oldPrice": 27388
         },
         {
@@ -794,7 +801,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 27238,
+          "price": 28409,
           "oldPrice": 29288
         },
         {
@@ -802,7 +809,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 32539,
+          "price": 33588,
           "oldPrice": 34988
         },
         {
@@ -810,7 +817,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 56440,
+          "price": 59474,
           "oldPrice": 60688
         }
       ]
@@ -831,7 +838,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 30774,
+          "price": 32097,
           "oldPrice": 33090
         },
         {
@@ -839,7 +846,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 32169,
+          "price": 33206,
           "oldPrice": 34590
         },
         {
@@ -847,7 +854,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 39516,
+          "price": 40790,
           "oldPrice": 42490
         },
         {
@@ -855,7 +862,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 89364,
+          "price": 94168,
           "oldPrice": 96090
         }
       ]
@@ -875,7 +882,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 29844,
+          "price": 31448,
           "oldPrice": 32090
         },
         {
@@ -883,7 +890,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 40167,
+          "price": 41031,
           "oldPrice": 43190
         }
       ]
@@ -904,7 +911,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 45747,
+          "price": 47714,
           "oldPrice": 49190
         },
         {
@@ -912,7 +919,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 51234,
+          "price": 52336,
           "oldPrice": 55090
         }
       ]
@@ -932,28 +939,31 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 28900
+          "price": 28322,
+          "oldPrice": 28900
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 31800
+          "price": 30210,
+          "oldPrice": 31800
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 38490
+          "price": 36950,
+          "oldPrice": 38490
         },
         {
           "btu": 24000,
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 82761,
+          "price": 87210,
           "oldPrice": 88990
         }
       ]
@@ -974,7 +984,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 33387,
+          "price": 34105,
           "oldPrice": 35900
         },
         {
@@ -982,7 +992,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 36828,
+          "price": 37620,
           "oldPrice": 39600
         },
         {
@@ -990,7 +1000,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 42501,
+          "price": 44329,
           "oldPrice": 45700
         }
       ]
@@ -1011,7 +1021,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 39051,
+          "price": 40730,
           "oldPrice": 41990
         },
         {
@@ -1019,7 +1029,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 41841,
+          "price": 44090,
           "oldPrice": 44990
         },
         {
@@ -1027,7 +1037,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 48909,
+          "price": 51538,
           "oldPrice": 52590
         },
         {
@@ -1035,7 +1045,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 81831,
+          "price": 83591,
           "oldPrice": 87990
         },
         {
@@ -1043,7 +1053,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 100431,
+          "price": 102591,
           "oldPrice": 107990
         }
       ]
@@ -1064,7 +1074,7 @@
           "area": 20,
           "cooling": "2.1 кВт",
           "heating": "2.2 кВт",
-          "price": 46491,
+          "price": 48490,
           "oldPrice": 49990
         },
         {
@@ -1072,7 +1082,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 49281,
+          "price": 51930,
           "oldPrice": 52990
         },
         {
@@ -1080,7 +1090,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 56349,
+          "price": 59378,
           "oldPrice": 60590
         },
         {
@@ -1088,7 +1098,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 89271,
+          "price": 91191,
           "oldPrice": 95990
         },
         {
@@ -1096,7 +1106,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 110661,
+          "price": 114230,
           "oldPrice": 118990
         }
       ]
@@ -1117,7 +1127,7 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.7 кВт",
-          "price": 58581,
+          "price": 60470,
           "oldPrice": 62990
         },
         {
@@ -1125,7 +1135,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.6 кВт",
-          "price": 64161,
+          "price": 67610,
           "oldPrice": 68990
         },
         {
@@ -1133,7 +1143,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.4 кВт",
-          "price": 98571,
+          "price": 102810,
           "oldPrice": 105990
         },
         {
@@ -1141,7 +1151,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 119961,
+          "price": 126410,
           "oldPrice": 128990
         }
       ]
@@ -1162,7 +1172,8 @@
           "area": 20,
           "cooling": "2.0 кВт",
           "heating": "2.2 кВт",
-          "price": 75900
+          "price": 72105,
+          "oldPrice": 75900
         }
       ]
     },
@@ -1181,7 +1192,7 @@
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.93 кВт",
-          "price": 39140,
+          "price": 37896,
           "oldPrice": 39890
         },
         {
@@ -1189,7 +1200,7 @@
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 43590,
+          "price": 43894,
           "oldPrice": 44790
         }
       ]
@@ -1210,7 +1221,7 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.8 кВт",
-          "price": 64728,
+          "price": 67512,
           "oldPrice": 69600
         },
         {
@@ -1218,7 +1229,7 @@
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.6 кВт",
-          "price": 70494,
+          "price": 72010,
           "oldPrice": 75800
         },
         {
@@ -1226,7 +1237,7 @@
           "area": 60,
           "cooling": "7.0 кВт",
           "heating": "7.5 кВт",
-          "price": 92628,
+          "price": 94620,
           "oldPrice": 99600
         },
         {
@@ -1234,7 +1245,7 @@
           "area": 100,
           "cooling": "10.5 кВт",
           "heating": "11.2 кВт",
-          "price": 123504,
+          "price": 130144,
           "oldPrice": 132800
         },
         {
@@ -1242,7 +1253,7 @@
           "area": 140,
           "cooling": "14.0 кВт",
           "heating": "15.0 кВт",
-          "price": 151962,
+          "price": 155230,
           "oldPrice": 163400
         },
         {
@@ -1250,7 +1261,7 @@
           "area": 180,
           "cooling": "17.5 кВт",
           "heating": "18.5 кВт",
-          "price": 159867,
+          "price": 163305,
           "oldPrice": 171900
         }
       ]
@@ -1271,14 +1282,16 @@
           "area": 26,
           "cooling": "2.6 кВт",
           "heating": "3.2 кВт",
-          "price": 120000
+          "price": 117600,
+          "oldPrice": 120000
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "4.2 кВт",
-          "price": 130000
+          "price": 124800,
+          "oldPrice": 130000
         }
       ]
     },
@@ -1298,14 +1311,16 @@
           "area": 20,
           "cooling": "2.0 кВт",
           "heating": "2.4 кВт",
-          "price": 79800
+          "price": 75810,
+          "oldPrice": 79800
         },
         {
           "btu": 12000,
           "area": 40,
           "cooling": "4.2 кВт",
           "heating": "4.6 кВт",
-          "price": 216490
+          "price": 212160,
+          "oldPrice": 216490
         }
       ]
     },
@@ -1324,7 +1339,8 @@
           "area": 20,
           "cooling": "2.0 кВт",
           "heating": "2.4 кВт",
-          "price": 119700
+          "price": 113715,
+          "oldPrice": 119700
         }
       ]
     },
@@ -1343,14 +1359,16 @@
           "area": 20,
           "cooling": "2.0 кВт",
           "heating": "2.5 кВт",
-          "price": 101100
+          "price": 98067,
+          "oldPrice": 101100
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.5 кВт",
           "heating": "2.8 кВт",
-          "price": 103500
+          "price": 98325,
+          "oldPrice": 103500
         }
       ]
     },
@@ -1369,14 +1387,16 @@
           "area": 25,
           "cooling": "2.65 кВт",
           "heating": "2.8 кВт",
-          "price": 48600
+          "price": 47628,
+          "oldPrice": 48600
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.25 кВт",
           "heating": "5.55 кВт",
-          "price": 75800
+          "price": 72010,
+          "oldPrice": 75800
         }
       ]
     },
@@ -1396,7 +1416,8 @@
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "4.0 кВт",
-          "price": 205050
+          "price": 198899,
+          "oldPrice": 205050
         }
       ]
     },
@@ -1416,28 +1437,32 @@
           "area": 42,
           "cooling": "4.2 кВт",
           "heating": "5.4 кВт",
-          "price": 302700
+          "price": 290592,
+          "oldPrice": 302700
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.0 кВт",
           "heating": "5.8 кВт",
-          "price": 332800
+          "price": 326144,
+          "oldPrice": 332800
         },
         {
           "btu": 24000,
           "area": 60,
           "cooling": "6.0 кВт",
           "heating": "7.0 кВт",
-          "price": 378900
+          "price": 363744,
+          "oldPrice": 378900
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.1 кВт",
           "heating": "8.2 кВт",
-          "price": 395600
+          "price": 375820,
+          "oldPrice": 395600
         }
       ]
     },
@@ -1457,42 +1482,48 @@
           "area": 20,
           "cooling": "2.0 кВт",
           "heating": "2.5 кВт",
-          "price": 228900
+          "price": 224322,
+          "oldPrice": 228900
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.5 кВт",
           "heating": "2.8 кВт",
-          "price": 229300
+          "price": 222421,
+          "oldPrice": 229300
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.4 кВт",
           "heating": "4.0 кВт",
-          "price": 302300
+          "price": 290208,
+          "oldPrice": 302300
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.0 кВт",
           "heating": "5.8 кВт",
-          "price": 406300
+          "price": 390048,
+          "oldPrice": 406300
         },
         {
           "btu": 24000,
           "area": 60,
           "cooling": "6.0 кВт",
           "heating": "7.0 кВт",
-          "price": 429400
+          "price": 416518,
+          "oldPrice": 429400
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.1 кВт",
           "heating": "8.2 кВт",
-          "price": 482000
+          "price": 462720,
+          "oldPrice": 482000
         }
       ]
     },
@@ -1511,28 +1542,32 @@
           "area": 20,
           "cooling": "2.0 кВт",
           "heating": "2.5 кВт",
-          "price": 305000
+          "price": 295850,
+          "oldPrice": 305000
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.5 кВт",
           "heating": "2.8 кВт",
-          "price": 331200
+          "price": 314640,
+          "oldPrice": 331200
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.4 кВт",
           "heating": "4.0 кВт",
-          "price": 400400
+          "price": 392392,
+          "oldPrice": 400400
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.0 кВт",
           "heating": "5.8 кВт",
-          "price": 516400
+          "price": 506072,
+          "oldPrice": 516400
         }
       ]
     },
@@ -1551,7 +1586,8 @@
           "area": 50,
           "cooling": "5.0 кВт",
           "heating": "5.8 кВт",
-          "price": 416986
+          "price": 408646,
+          "oldPrice": 416986
         }
       ]
     },
@@ -1571,28 +1607,32 @@
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.5 кВт",
-          "price": 129190
+          "price": 125314,
+          "oldPrice": 129190
         },
         {
           "btu": 36000,
           "area": 105,
           "cooling": "10.55 кВт",
           "heating": "11.0 кВт",
-          "price": 168690
+          "price": 165316,
+          "oldPrice": 168690
         },
         {
           "btu": 48000,
           "area": 130,
           "cooling": "13.14 кВт",
           "heating": "13.5 кВт",
-          "price": 201490
+          "price": 195445,
+          "oldPrice": 201490
         },
         {
           "btu": 60000,
           "area": 160,
           "cooling": "16.12 кВт",
           "heating": "16.5 кВт",
-          "price": 223290
+          "price": 212126,
+          "oldPrice": 223290
         }
       ]
     },
@@ -1611,28 +1651,32 @@
           "area": 70,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 85990
+          "price": 83410,
+          "oldPrice": 85990
         },
         {
           "btu": 36000,
           "area": 105,
           "cooling": "10.55 кВт",
           "heating": "11.0 кВт",
-          "price": 114090
+          "price": 109526,
+          "oldPrice": 114090
         },
         {
           "btu": 48000,
           "area": 140,
           "cooling": "14.1 кВт",
           "heating": "14.5 кВт",
-          "price": 142290
+          "price": 136598,
+          "oldPrice": 142290
         },
         {
           "btu": 60000,
           "area": 176,
           "cooling": "16.12 кВт",
           "heating": "16.5 кВт",
-          "price": 148290
+          "price": 145324,
+          "oldPrice": 148290
         }
       ]
     },
@@ -1652,28 +1696,32 @@
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.5 кВт",
-          "price": 124239
+          "price": 121754,
+          "oldPrice": 124239
         },
         {
           "btu": 36000,
           "area": 105,
           "cooling": "10.55 кВт",
           "heating": "11.0 кВт",
-          "price": 176790
+          "price": 173254,
+          "oldPrice": 176790
         },
         {
           "btu": 48000,
           "area": 140,
           "cooling": "14.07 кВт",
           "heating": "14.5 кВт",
-          "price": 210990
+          "price": 202550,
+          "oldPrice": 210990
         },
         {
           "btu": 60000,
           "area": 155,
           "cooling": "15.24 кВт",
           "heating": "15.7 кВт",
-          "price": 233890
+          "price": 226873,
+          "oldPrice": 233890
         }
       ]
     },
@@ -1692,28 +1740,32 @@
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.3 кВт",
-          "price": 90290
+          "price": 86678,
+          "oldPrice": 90290
         },
         {
           "btu": 36000,
           "area": 105,
           "cooling": "10.55 кВт",
           "heating": "11.0 кВт",
-          "price": 119790
+          "price": 113801,
+          "oldPrice": 119790
         },
         {
           "btu": 48000,
           "area": 140,
           "cooling": "14.07 кВт",
           "heating": "14.5 кВт",
-          "price": 149390
+          "price": 144908,
+          "oldPrice": 149390
         },
         {
           "btu": 60000,
           "area": 160,
           "cooling": "16.12 кВт",
           "heating": "16.5 кВт",
-          "price": 155690
+          "price": 147906,
+          "oldPrice": 155690
         }
       ]
     },
@@ -1732,35 +1784,40 @@
           "area": 20,
           "cooling": "2.05 кВт",
           "heating": "2.2 кВт",
-          "price": 25990
+          "price": 25210,
+          "oldPrice": 25990
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.49 кВт",
           "heating": "2.65 кВт",
-          "price": 27990
+          "price": 26591,
+          "oldPrice": 27990
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.23 кВт",
           "heating": "3.52 кВт",
-          "price": 36390
+          "price": 35662,
+          "oldPrice": 36390
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "4.99 кВт",
           "heating": "5.13 кВт",
-          "price": 61690
+          "price": 59839,
+          "oldPrice": 61690
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "6.45 кВт",
           "heating": "6.74 кВт",
-          "price": 77690
+          "price": 75359,
+          "oldPrice": 77690
         }
       ]
     },
@@ -1779,35 +1836,40 @@
           "area": 20,
           "cooling": "2.2 кВт",
           "heating": "2.29 кВт",
-          "price": 35490
+          "price": 33716,
+          "oldPrice": 35490
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 38090
+          "price": 36566,
+          "oldPrice": 38090
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 43790
+          "price": 41601,
+          "oldPrice": 43790
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.42 кВт",
-          "price": 74290
+          "price": 71318,
+          "oldPrice": 74290
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.18 кВт",
-          "price": 95190
+          "price": 90431,
+          "oldPrice": 95190
         }
       ]
     },
@@ -1826,35 +1888,40 @@
           "area": 20,
           "cooling": "2.2 кВт",
           "heating": "2.2 кВт",
-          "price": 25990
+          "price": 25210,
+          "oldPrice": 25990
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 27990
+          "price": 26591,
+          "oldPrice": 27990
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 36390
+          "price": 35662,
+          "oldPrice": 36390
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.42 кВт",
-          "price": 61690
+          "price": 59839,
+          "oldPrice": 61690
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.33 кВт",
           "heating": "7.62 кВт",
-          "price": 77690
+          "price": 75359,
+          "oldPrice": 77690
         }
       ]
     },
@@ -1873,35 +1940,40 @@
           "area": 20,
           "cooling": "2.2 кВт",
           "heating": "2.35 кВт",
-          "price": 35490
+          "price": 33716,
+          "oldPrice": 35490
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 38090
+          "price": 36566,
+          "oldPrice": 38090
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 43790
+          "price": 41601,
+          "oldPrice": 43790
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.1 кВт",
           "heating": "5.13 кВт",
-          "price": 74290
+          "price": 71318,
+          "oldPrice": 74290
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "6.84 кВт",
           "heating": "7.05 кВт",
-          "price": 95190
+          "price": 90431,
+          "oldPrice": 95190
         }
       ]
     },
@@ -1920,35 +1992,40 @@
           "area": 20,
           "cooling": "2.35 кВт",
           "heating": "2.43 кВт",
-          "price": 33790
+          "price": 32776,
+          "oldPrice": 33790
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.93 кВт",
-          "price": 36690
+          "price": 35956,
+          "oldPrice": 36690
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.61 кВт",
           "heating": "3.71 кВт",
-          "price": 43890
+          "price": 41696,
+          "oldPrice": 43890
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.4 кВт",
-          "price": 77090
+          "price": 74777,
+          "oldPrice": 77090
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.33 кВт",
-          "price": 97290
+          "price": 94371,
+          "oldPrice": 97290
         }
       ]
     },
@@ -1967,35 +2044,40 @@
           "area": 20,
           "cooling": "2.3 кВт",
           "heating": "2.35 кВт",
-          "price": 30590
+          "price": 29366,
+          "oldPrice": 30590
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.5 кВт",
           "heating": "2.6 кВт",
-          "price": 33190
+          "price": 32194,
+          "oldPrice": 33190
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.3 кВт",
           "heating": "3.4 кВт",
-          "price": 42990
+          "price": 41270,
+          "oldPrice": 42990
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.1 кВт",
           "heating": "5.05 кВт",
-          "price": 72790
+          "price": 71334,
+          "oldPrice": 72790
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "6.2 кВт",
           "heating": "6.7 кВт",
-          "price": 91990
+          "price": 87391,
+          "oldPrice": 91990
         }
       ]
     },
@@ -2014,35 +2096,40 @@
           "area": 20,
           "cooling": "2.2 кВт",
           "heating": "2.4 кВт",
-          "price": 44690
+          "price": 43796,
+          "oldPrice": 44690
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.5 кВт",
           "heating": "2.8 кВт",
-          "price": 48190
+          "price": 47226,
+          "oldPrice": 48190
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.2 кВт",
           "heating": "3.4 кВт",
-          "price": 53990
+          "price": 52370,
+          "oldPrice": 53990
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "4.6 кВт",
           "heating": "5.2 кВт",
-          "price": 86990
+          "price": 83510,
+          "oldPrice": 86990
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "6.2 кВт",
           "heating": "6.5 кВт",
-          "price": 115990
+          "price": 110191,
+          "oldPrice": 115990
         }
       ]
     },
@@ -2061,28 +2148,32 @@
           "area": 25,
           "cooling": "2.7 кВт",
           "heating": "3.0 кВт",
-          "price": 57590
+          "price": 55862,
+          "oldPrice": 57590
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.81 кВт",
-          "price": 62690
+          "price": 60182,
+          "oldPrice": 62690
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.2 кВт",
           "heating": "5.6 кВт",
-          "price": 100090
+          "price": 98088,
+          "oldPrice": 100090
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.1 кВт",
           "heating": "7.8 кВт",
-          "price": 125590
+          "price": 121822,
+          "oldPrice": 125590
         }
       ]
     },
@@ -2101,28 +2192,32 @@
           "area": 25,
           "cooling": "2.7 кВт",
           "heating": "3.14 кВт",
-          "price": 58090
+          "price": 55766,
+          "oldPrice": 58090
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.96 кВт",
-          "price": 62590
+          "price": 60086,
+          "oldPrice": 62590
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.57 кВт",
-          "price": 89590
+          "price": 86902,
+          "oldPrice": 89590
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.0 кВт",
           "heating": "7.33 кВт",
-          "price": 116790
+          "price": 114454,
+          "oldPrice": 116790
         }
       ]
     },
@@ -2141,14 +2236,16 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.93 кВт",
-          "price": 67190
+          "price": 63831,
+          "oldPrice": 67190
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.81 кВт",
-          "price": 79090
+          "price": 75136,
+          "oldPrice": 79090
         }
       ]
     },
@@ -2167,14 +2264,16 @@
           "area": 25,
           "cooling": "2.7 кВт",
           "heating": "3.0 кВт",
-          "price": 75590
+          "price": 71811,
+          "oldPrice": 75590
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.51 кВт",
           "heating": "3.81 кВт",
-          "price": 82490
+          "price": 79190,
+          "oldPrice": 82490
         }
       ]
     },
@@ -2194,28 +2293,32 @@
           "area": 25,
           "cooling": "2.7 кВт",
           "heating": "3.5 кВт",
-          "price": 110190
+          "price": 105782,
+          "oldPrice": 110190
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.53 кВт",
           "heating": "4.2 кВт",
-          "price": 116790
+          "price": 114454,
+          "oldPrice": 116790
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "6.2 кВт",
-          "price": 148790
+          "price": 145814,
+          "oldPrice": 148790
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.03 кВт",
-          "price": 167490
+          "price": 159116,
+          "oldPrice": 167490
         }
       ]
     },
@@ -2234,7 +2337,8 @@
           "area": 60,
           "cooling": "6.2 кВт",
           "heating": "6.2 кВт",
-          "price": 79990
+          "price": 75991,
+          "oldPrice": 79990
         }
       ]
     },
@@ -2253,35 +2357,40 @@
           "area": 20,
           "cooling": "2.34 кВт",
           "heating": "2.34 кВт",
-          "price": 27990
+          "price": 26591,
+          "oldPrice": 27990
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 30590
+          "price": 29366,
+          "oldPrice": 30590
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 39590
+          "price": 37611,
+          "oldPrice": 39590
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.28 кВт",
-          "price": 66890
+          "price": 64214,
+          "oldPrice": 66890
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.33 кВт",
-          "price": 84690
+          "price": 82996,
+          "oldPrice": 84690
         }
       ]
     },
@@ -2300,35 +2409,40 @@
           "area": 20,
           "cooling": "2.34 кВт",
           "heating": "2.34 кВт",
-          "price": 32590
+          "price": 31938,
+          "oldPrice": 32590
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.78 кВт",
-          "price": 34990
+          "price": 33590,
+          "oldPrice": 34990
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 44790
+          "price": 43894,
+          "oldPrice": 44790
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.28 кВт",
-          "price": 71290
+          "price": 67726,
+          "oldPrice": 71290
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.33 кВт",
-          "price": 87490
+          "price": 83116,
+          "oldPrice": 87490
         }
       ]
     },
@@ -2348,35 +2462,40 @@
           "area": 20,
           "cooling": "2.35 кВт",
           "heating": "2.43 кВт",
-          "price": 46990
+          "price": 45110,
+          "oldPrice": 46990
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.93 кВт",
-          "price": 53090
+          "price": 51497,
+          "oldPrice": 53090
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.66 кВт",
-          "price": 59090
+          "price": 56136,
+          "oldPrice": 59090
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.57 кВт",
-          "price": 94890
+          "price": 91094,
+          "oldPrice": 94890
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.33 кВт",
-          "price": 123690
+          "price": 117506,
+          "oldPrice": 123690
         }
       ]
     },
@@ -2396,28 +2515,32 @@
           "area": 25,
           "cooling": "2.78 кВт",
           "heating": "2.93 кВт",
-          "price": 53590
+          "price": 51982,
+          "oldPrice": 53590
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.6 кВт",
           "heating": "3.8 кВт",
-          "price": 57390
+          "price": 55668,
+          "oldPrice": 57390
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.57 кВт",
-          "price": 79090
+          "price": 75136,
+          "oldPrice": 79090
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.33 кВт",
-          "price": 106690
+          "price": 102422,
+          "oldPrice": 106690
         }
       ]
     },
@@ -2437,14 +2560,16 @@
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "2.93 кВт",
-          "price": 74690
+          "price": 71702,
+          "oldPrice": 74690
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.81 кВт",
-          "price": 77890
+          "price": 75553,
+          "oldPrice": 77890
         }
       ]
     },
@@ -2464,28 +2589,32 @@
           "area": 25,
           "cooling": "2.93 кВт",
           "heating": "3.22 кВт",
-          "price": 71190
+          "price": 67631,
+          "oldPrice": 71190
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.66 кВт",
           "heating": "3.96 кВт",
-          "price": 74590
+          "price": 71606,
+          "oldPrice": 74590
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.45 кВт",
           "heating": "5.57 кВт",
-          "price": 141090
+          "price": 136857,
+          "oldPrice": 141090
         },
         {
           "btu": 24000,
           "area": 60,
           "cooling": "7.33 кВт",
           "heating": "7.77 кВт",
-          "price": 178890
+          "price": 171734,
+          "oldPrice": 178890
         }
       ]
     },
@@ -2504,14 +2633,16 @@
           "area": 25,
           "cooling": "2.64 кВт",
           "heating": "3.22 кВт",
-          "price": 78290
+          "price": 75158,
+          "oldPrice": 78290
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.81 кВт",
-          "price": 82090
+          "price": 78806,
+          "oldPrice": 82090
         }
       ]
     },
@@ -2530,35 +2661,40 @@
           "area": 20,
           "cooling": "2.05 кВт",
           "heating": "2.34 кВт",
-          "price": 37390
+          "price": 36268,
+          "oldPrice": 37390
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.78 кВт",
           "heating": "3.22 кВт",
-          "price": 40490
+          "price": 39680,
+          "oldPrice": 40490
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.52 кВт",
           "heating": "3.52 кВт",
-          "price": 48390
+          "price": 47422,
+          "oldPrice": 48390
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.28 кВт",
           "heating": "5.4 кВт",
-          "price": 85290
+          "price": 82731,
+          "oldPrice": 85290
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.03 кВт",
           "heating": "7.3 кВт",
-          "price": 107490
+          "price": 102116,
+          "oldPrice": 107490
         }
       ]
     },
@@ -2577,35 +2713,40 @@
           "area": 20,
           "cooling": "2.3 кВт",
           "heating": "2.3 кВт",
-          "price": 30990
+          "price": 29750,
+          "oldPrice": 30990
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.6 кВт",
-          "price": 34990
+          "price": 33590,
+          "oldPrice": 34990
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.5 кВт",
           "heating": "3.7 кВт",
-          "price": 41990
+          "price": 40730,
+          "oldPrice": 41990
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.3 кВт",
-          "price": 53190
+          "price": 51594,
+          "oldPrice": 53190
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 64890
+          "price": 63592,
+          "oldPrice": 64890
         }
       ]
     },
@@ -2624,21 +2765,24 @@
           "area": 20,
           "cooling": "2.2 кВт",
           "heating": "2.3 кВт",
-          "price": 46990
+          "price": 45110,
+          "oldPrice": 46990
         },
         {
           "btu": 9000,
           "area": 25,
           "cooling": "2.8 кВт",
           "heating": "3.2 кВт",
-          "price": 49990
+          "price": 48490,
+          "oldPrice": 49990
         },
         {
           "btu": 12000,
           "area": 35,
           "cooling": "3.4 кВт",
           "heating": "3.5 кВт",
-          "price": 56990
+          "price": 55850,
+          "oldPrice": 56990
         }
       ]
     },
@@ -2657,21 +2801,24 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "2.9 кВт",
-          "price": 40290
+          "price": 39484,
+          "oldPrice": 40290
         },
         {
           "btu": 18000,
           "area": 50,
           "cooling": "5.3 кВт",
           "heating": "5.6 кВт",
-          "price": 77290
+          "price": 74971,
+          "oldPrice": 77290
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.0 кВт",
           "heating": "7.3 кВт",
-          "price": 99690
+          "price": 94706,
+          "oldPrice": 99690
         }
       ]
     },
@@ -2691,14 +2838,16 @@
           "area": 25,
           "cooling": "2.6 кВт",
           "heating": "3.0 кВт",
-          "price": 67900
+          "price": 64505,
+          "oldPrice": 67900
         },
         {
           "btu": 24000,
           "area": 70,
           "cooling": "7.0 кВт",
           "heating": "7.5 кВт",
-          "price": 154490
+          "price": 148310,
+          "oldPrice": 154490
         }
       ]
     },
@@ -2718,14 +2867,16 @@
           "area": 50,
           "cooling": "5.0 кВт",
           "heating": "5.8 кВт",
-          "price": 360300
+          "price": 353094,
+          "oldPrice": 360300
         },
         {
           "btu": 24000,
           "area": 60,
           "cooling": "6.0 кВт",
           "heating": "7.0 кВт",
-          "price": 381800
+          "price": 370346,
+          "oldPrice": 381800
         }
       ]
     }

@@ -39,7 +39,7 @@ export default function NotFound() {
           <a href="tel:+79149146606" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#ff6b35] text-white font-black text-sm hover:bg-[#e95620]">📞 +7 (914) 914-66-06</a>
           <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1a3a5c] text-white font-black text-sm hover:bg-[#122943]"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[9px] font-black">MAX</span> Написать в MAX</a>
         </div>
-        <div className="mt-8 text-xs text-slate-400">Подсказка: проверьте адрес или перейдите в каталог — там подбор по площади и цены от 16 636 ₽</div>
+        <div className="mt-8 text-xs text-slate-400">Подсказка: проверьте адрес или перейдите в каталог — там подбор по площади и цены от 17 351 ₽</div>
       </div>
     </div>
   );

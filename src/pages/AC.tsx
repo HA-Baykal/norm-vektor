@@ -9,8 +9,8 @@ import Reviews from "../components/Reviews";
 export default function AC() {
     // Динамические мета-теги и Service микроразметка
   useEffect(() => {
-    const titleText = "Кондиционеры в Иркутске от 16 636 ₽ — купить с установкой за 1 день | Вектор Комфорта";
-    const descText = "Кондиционеры в Иркутске от 16 636 ₽. Инверторные и обычные сплит-системы Ballu, Electrolux, Royal Thermo, Daikin. Монтаж за 1 день, гарантия 3-5 лет.";
+    const titleText = "Кондиционеры в Иркутске от 17 351 ₽ — купить с установкой за 1 день | Вектор Комфорта";
+    const descText = "Кондиционеры в Иркутске от 17 351 ₽. Инверторные и обычные сплит-системы Ballu, Electrolux, Royal Thermo, Daikin. Монтаж за 1 день, гарантия 3-5 лет.";
     
     document.title = titleText;
     
@@ -58,7 +58,7 @@ export default function AC() {
       "serviceType": "Продажа и монтаж кондиционеров",
       "offers": {
         "@type": "Offer",
-        "price": "16636",
+        "price": "17351",
         "priceCurrency": "RUB",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock"
@@ -84,7 +84,7 @@ export default function AC() {
               "name": "Обычные кондиционеры (on/off)",
               "description": "Доступные сплит-системы для дачи и редкого использования"
             },
-            "price": "16636",
+            "price": "17351",
             "priceCurrency": "RUB"
           },
           {
@@ -119,7 +119,7 @@ export default function AC() {
   return (
     <>
       <ServicePage
-        title="Кондиционеры в Иркутске — купить с монтажом от 16 636 ₽"
+        title="Кондиционеры в Иркутске — купить с монтажом от 17 351 ₽"
         ctaLabel="🛒 Каталог моделей"
         ctaHref="#catalog"
         tagline="Продажа, профессиональный монтаж за 1 день, обслуживание, чистка и заправка фреона"
@@ -152,10 +152,10 @@ export default function AC() {
       />
       <section className="bg-white py-10 sm:py-14 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-[#1a3a5c]">Кондиционеры в Иркутске — купить с установкой от 16 636 ₽</h2>
+          <h2 className="text-2xl sm:text-3xl font-black text-[#1a3a5c]">Кондиционеры в Иркутске — купить с установкой от 17 351 ₽</h2>
           <div className="mt-6 grid lg:grid-cols-3 gap-6 text-sm leading-7 text-slate-700">
             <div className="space-y-3">
-                            <p><strong>Купить кондиционер в Иркутске</strong> в «Вектор Комфорта» — большой выбор <strong>Daikin, Ballu, Electrolux, Royal Thermo, Midea, Kentatsu, Bosch, Toshiba</strong> на складе в Иркутске. Инверторные сплит-системы с Wi-Fi и умным домом, стандартные — дешевле для дачи. Цена — <strong>от 16 636 ₽</strong>, инвертор — от 27 900 ₽. <strong>Монтаж за 1 день за 3–4 часа</strong> с вакуумированием трассы, гарантия 3–5 лет.</p>
+                            <p><strong>Купить кондиционер в Иркутске</strong> в «Вектор Комфорта» — большой выбор <strong>Daikin, Ballu, Electrolux, Royal Thermo, Midea, Kentatsu, Bosch, Toshiba</strong> на складе в Иркутске. Инверторные сплит-системы с Wi-Fi и умным домом, стандартные — дешевле для дачи. Цена — <strong>от 17 351 ₽</strong>, инвертор — от 27 900 ₽. <strong>Монтаж за 1 день за 3–4 часа</strong> с вакуумированием трассы, гарантия 3–5 лет.</p>
               <p>Подбор по площади: <strong>07 до 20 м², 09 до 25 м², 12 до 35 м², 18 до 50 м², 24 до 60 м²</strong>. На солнечную сторону, панорамные окна, высокие потолки — берём запас.</p>
             </div>
             <div className="space-y-3">

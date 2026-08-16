@@ -2185,7 +2185,7 @@ useEffect(() => {
                   "kak-vybrat-konditsioner-po-ploshchadi": [
                     {title: "→ Инверторный или обычный — что выбрать", to: "/baza-znaniy/invertornyy-ili-obychnyy-konditsioner"},
                     {title: "→ Сколько стоит установка кондиционера", to: "/baza-znaniy/skolko-stoit-ustanovka-konditsionera-irkutsk"},
-                    {title: "→ Каталог кондиционеров от 16 636 ₽", to: "/kondicionery"},
+                    {title: "→ Каталог кондиционеров от 17 351 ₽", to: "/kondicionery"},
                   ],
                   "mozhno-li-zabolet-ot-konditsionera": [
                     {title: "→ Нужно ли обслуживать кондиционер", to: "/baza-znaniy/nuzhno-li-obsluzhivat-konditsioner"},

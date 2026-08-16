@@ -47,7 +47,7 @@ const SERVICES: Record<string, {
   },
   kondicionery: {
     title: "Кондиционеры", titleGen: "кондиционеров", icon: "❄️",
-    price: "от 16 636 ₽", brands: "Daikin, Ballu, Electrolux, Midea, Kentatsu",
+    price: "от 17 351 ₽", brands: "Daikin, Ballu, Electrolux, Midea, Kentatsu",
     intro: "Продажа и монтаж кондиционеров. Инверторные и стандартные сплит-системы с гарантией до 5 лет. Монтаж за 1 день.",
     advantages: [
       { icon: "⚡", title: "Монтаж за 1 день", text: "Продажа и стандартный монтаж кондиционера — за один визит." },
@@ -113,8 +113,8 @@ export default function LocalCityPage({ cityKey, serviceKey }: LocalCityPageProp
       };
     }
     return {
-      title: `Кондиционеры ${loc} — продажа и монтаж от 16 636 ₽ | Вектор Комфорта`,
-      description: `Продажа и монтаж кондиционеров ${loc}: Daikin, Ballu, Electrolux, Midea, Kentatsu. Инверторные сплит-системы, монтаж за 1 день, гарантия до 5 лет. Цена от 16 636 ₽. Бесплатный замер.`,
+      title: `Кондиционеры ${loc} — продажа и монтаж от 17 351 ₽ | Вектор Комфорта`,
+      description: `Продажа и монтаж кондиционеров ${loc}: Daikin, Ballu, Electrolux, Midea, Kentatsu. Инверторные сплит-системы, монтаж за 1 день, гарантия до 5 лет. Цена от 17 351 ₽. Бесплатный замер.`,
     };
   })();
 
