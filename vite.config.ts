@@ -176,7 +176,24 @@ const seoSitemapAndApiGenerator = () => ({
       if (fs.existsSync(path.resolve(__dirname, "dist"))) {
         fs.writeFileSync(distSitemap, xml, "utf-8");
       }
-        // 3. Генерация vercel.json с маршрутами для SEO-функций
+      // 2.5. Экспорт статей базы знаний для RSS-ленты Дзена (api/rss.ts)
+      try {
+        const blogPath = path.resolve(__dirname, "src/pages/BlogArticle.tsx");
+        const blogSrc = fs.readFileSync(blogPath, "utf-8");
+        const artStartMarker = "const articleContent: Record<string, Article> = {";
+        const artStart = blogSrc.indexOf(artStartMarker);
+        const artEnd = blogSrc.indexOf("};\nexport default function BlogArticle");
+        if (artStart !== -1 && artEnd !== -1) {
+          const articleCode = blogSrc.slice(artStart + artStartMarker.length - 1, artEnd + 1);
+          const parsedArticles = eval(`(${articleCode})`);
+          const outTs = `// AUTO-GENERATED\nconst articlesData = ${JSON.stringify(parsedArticles)};\nexport default articlesData;\n`;
+          fs.writeFileSync(path.resolve(__dirname, "src/data/articlesData.ts"), outTs, "utf-8");
+          console.log(`[RSS] Экспортировано ${Object.keys(parsedArticles).length} статей для RSS-ленты Дзена`);
+        }
+      } catch (e) {
+        console.error("[RSS] Ошибка экспорта статей для RSS:", e);
+      }
+      // 3. Генерация vercel.json с маршрутами для SEO-функций
       const cityUrls = cityPages;
       const mainUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
@@ -185,6 +202,7 @@ const seoSitemapAndApiGenerator = () => ({
         ...servicePages
       ];
       const rewrites: any[] = [
+        { source: "/rss.xml", destination: "/api/rss" },
         { source: "/kondicionery/:slug", destination: "/api/seo" },
         { source: "/okna/:slug", destination: "/api/seo" }
       ];
