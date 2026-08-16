@@ -126,6 +126,10 @@
       "destination": "/api/page?path=/portfolio"
     },
     {
+      "source": "/sravnenie",
+      "destination": "/api/page?path=/sravnenie"
+    },
+    {
       "source": "/montazh-kondicionerov",
       "destination": "/api/page?path=/montazh-kondicionerov"
     },

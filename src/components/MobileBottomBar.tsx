@@ -5,8 +5,12 @@ const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITH
 export default function MobileBottomBar({ onOpenBooking }: MobileBottomBarProps) {
   const openChat = () => {
     // @ts-ignore
-    if (window.jivo_api && window.jivo_api.open) window.jivo_api.open();
-    else window.open("https://jivosite.com", "_blank");
+    if (window.jivo_api && window.jivo_api.open) {
+      // @ts-ignore
+      window.jivo_api.open();
+    } else {
+      window.open("https://jivosite.com", "_blank", "noopener,noreferrer");
+    }
   };
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur border-t border-slate-800 p-2.5 sm:hidden shadow-2xl">
