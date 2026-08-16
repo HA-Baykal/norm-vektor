@@ -8,6 +8,8 @@ export default function Contact() {
     "Контакты компании Вектор Комфорта в Иркутске: ☎ +7 (914) 914-66-06, +7 (3952) 66-99-30. Окна, кондиционеры, вентиляция и алмазное бурение. Пн–Сб 9:00–20:00, выезд по Иркутску и пригороду до 50 км."
   );
   const openChat = () => {
+    // Показываем виджет Jivo (CSS прячет его, пока на body нет класса jivo-open)
+    document.body.classList.add("jivo-open");
     // @ts-ignore
     if (window.jivo_api && window.jivo_api.open) {
       // @ts-ignore

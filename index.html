@@ -272,6 +272,8 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
+      // Jivo: виджет полностью скрыт через CSS (body без класса .jivo-open),
+      // пока чат не открыт кнопками сайта. Колбэки Jivo управляют классом.
       window.jivo_onLoadCallback = function () {
         try {
           if (window.jivo_api) {
@@ -279,15 +281,12 @@
             if (typeof jivo_api.autoOpen === "function") jivo_api.autoOpen(false);
           }
         } catch (e) {}
-        var hideJivo = function () {
-          var selectors = [".jivo-site-button", ".jivo-mobile-button", ".jivo-short-message", ".jivo_badge", ".jivo-btn", "[class*='jivo_badge']", "[class*='jivo-btn']", "[class*='jivo-bubble']"];
-          selectors.forEach(function (sel) {
-            try { document.querySelectorAll(sel).forEach(function (el) { el.style.display = "none"; }); } catch (e) {}
-          });
-        };
-        hideJivo();
-        setTimeout(hideJivo, 1000);
-        setTimeout(hideJivo, 3000);
+      };
+      window.jivo_onOpen = function () {
+        try { document.body.classList.add("jivo-open"); } catch (e) {}
+      };
+      window.jivo_onClose = function () {
+        try { document.body.classList.remove("jivo-open"); } catch (e) {}
       };
     </script>
     <script src="//code.jivo.ru/widget/ILXwcsQJNw" async></script>
