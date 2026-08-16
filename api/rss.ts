@@ -1,6 +1,6 @@
 // api/rss.ts — RSS-лента для Яндекс Дзена
+import articlesData from "../src/data/articlesData";
 export const config = { runtime: "edge" };
-import articlesData from "../src/data/articlesData.ts";
 const SITE = "https://www.vektor-komforta.ru";
 function esc(s: unknown): string {
   return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
