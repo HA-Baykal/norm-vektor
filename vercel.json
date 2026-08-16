@@ -83,6 +83,10 @@
   ],
   "rewrites": [
     {
+      "source": "/rss.xml",
+      "destination": "/api/rss"
+    },
+    {
       "source": "/kondicionery/:slug",
       "destination": "/api/seo"
     },
