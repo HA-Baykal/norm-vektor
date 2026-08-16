@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/(.*)/",
+      "destination": "/$1",
+      "permanent": true
+    },
+    {
       "source": "/almaznoe-burenie-i-sverlenie",
       "destination": "/almaznoe-burenie",
       "statusCode": 301
