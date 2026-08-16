@@ -198,6 +198,8 @@ const seoSitemapAndApiGenerator = () => ({
       // Vercel применяет redirects ДО rewrites, поэтому catch-all rewrite
       // этим правилам не мешает.
       const redirects = [
+        // Схлопываем дубли со слешем: /baza-znaniy/ → /baza-znaniy (Google видит их как две страницы)
+        { source: "/(.*)/", destination: "/$1", permanent: true },
         // Транслитерационные варианты услуги «алмазное бурение» → канонический slug
         { source: "/almaznoe-burenie-i-sverlenie", destination: "/almaznoe-burenie", statusCode: 301 },
         { source: "/almaznaya-rezka", destination: "/almaznoe-burenie", statusCode: 301 },

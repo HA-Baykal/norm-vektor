@@ -10,6 +10,7 @@ import FAQSection from "../components/FAQSection";
 import QuickBookingModal from "../components/QuickBookingModal";
 import MobileBottomBar from "../components/MobileBottomBar";
 import BazaZnaniyBanner from "../components/BazaZnaniyBanner";
+import GeoLinksBlock from "../components/GeoLinksBlock";
 import { useSeo } from "../utils/useSeo";
 
 const directions = [
@@ -317,6 +318,8 @@ export default function Home() {
       <Reviews />
       <FAQSection />
       <CTABanner />
+
+      <GeoLinksBlock />
 
       <Map />
 
