@@ -4,6 +4,8 @@ interface MobileBottomBarProps {
 const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
 export default function MobileBottomBar({ onOpenBooking }: MobileBottomBarProps) {
   const openChat = () => {
+    // Показываем виджет Jivo (CSS прячет его, пока на body нет класса jivo-open)
+    document.body.classList.add("jivo-open");
     // @ts-ignore
     if (window.jivo_api && window.jivo_api.open) {
       // @ts-ignore

@@ -71,16 +71,17 @@ section {
 .animate-counter {
   animation: counter 0.8s ease-out both;
 }
-/* Скрываем плавающий виджет Jivo (значок письма), но оставляем чат рабочим */
-[class*="jivo-btn"],
-[class*="jivo_badge"],
-[class*="jivo_bubble"],
-.jivo-shadow,
-div[class*="jivo"] > div:first-child {
+/* Jivo: полностью прячем виджет (плашку «Отправьте нам сообщение»,
+   плавающую кнопку и т.д.), пока чат не открыт кнопками сайта.
+   Современный виджет Jivo рендерится в кастомных тегах <jdiv>,
+   поэтому селекторы по классам его не ловят — прячем по тегу.
+   При открытии чата (openChat) на <body> вешается класс .jivo-open,
+   при закрытии чата класс снимается (window.jivo_onClose в index.html). */
+body:not(.jivo-open) jdiv,
+body:not(.jivo-open) #jivo-iframe-container,
+body:not(.jivo-open) [class*="jivo-btn"],
+body:not(.jivo-open) [class*="jivo_badge"],
+body:not(.jivo-open) [class*="jivo-bubble"],
+body:not(.jivo-open) iframe[src*="jivo"] {
   display: none !important;
-}
-
-/* Альтернативный способ - через iframe */
-iframe[src*="jivo"] {
-  pointer-events: none;
 }

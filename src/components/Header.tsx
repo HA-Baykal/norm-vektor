@@ -24,6 +24,8 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
   const openChat = () => {
+    // Показываем виджет Jivo (CSS прячет его, пока на body нет класса jivo-open)
+    document.body.classList.add("jivo-open");
     // @ts-ignore
     if (window.jivo_api && window.jivo_api.open) {
       // @ts-ignore
