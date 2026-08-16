@@ -9,7 +9,12 @@ export default function Contact() {
   );
   const openChat = () => {
     // @ts-ignore
-    if (window.jivo_api && window.jivo_api.open) window.jivo_api.open();
+    if (window.jivo_api && window.jivo_api.open) {
+      // @ts-ignore
+      window.jivo_api.open();
+    } else {
+      window.open("https://jivosite.com", "_blank", "noopener,noreferrer");
+    }
   };
 
   return (
@@ -79,7 +84,7 @@ export default function Contact() {
                 <div>
                   <div className="text-sm text-slate-500 dark:text-slate-400">Онлайн-чат Jivo</div>
                   <div className="text-xl font-bold text-slate-900 dark:text-white">Написать в чат →</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400">Ответим за 2 минуты</div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400">Ответим быстро, без звонков</div>
                 </div>
               </button>
 

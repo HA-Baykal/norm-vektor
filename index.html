@@ -271,22 +271,26 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/110599022" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-        <script>
-      // Jivo API - оставляем чат рабочим, но скрываем виджет
-      window.jivo_api = window.jivo_api || {};
-      window.jivo_api.onLoadCallback = function() {
-        // Скрываем плавающий виджет после загрузки
-        setTimeout(function() {
-          var jivoElements = document.querySelectorAll('[class*="jivo"]');
-          jivoElements.forEach(function(el) {
-            if (el.tagName !== 'IFRAME') {
-              el.style.display = 'none';
-            }
+    <script>
+      window.jivo_onLoadCallback = function () {
+        try {
+          if (window.jivo_api) {
+            if (typeof jivo_api.showProactiveInvitation === "function") jivo_api.showProactiveInvitation(false);
+            if (typeof jivo_api.autoOpen === "function") jivo_api.autoOpen(false);
+          }
+        } catch (e) {}
+        var hideJivo = function () {
+          var selectors = [".jivo-site-button", ".jivo-mobile-button", ".jivo-short-message", ".jivo_badge", ".jivo-btn", "[class*='jivo_badge']", "[class*='jivo-btn']", "[class*='jivo-bubble']"];
+          selectors.forEach(function (sel) {
+            try { document.querySelectorAll(sel).forEach(function (el) { el.style.display = "none"; }); } catch (e) {}
           });
-        }, 1000);
+        };
+        hideJivo();
+        setTimeout(hideJivo, 1000);
+        setTimeout(hideJivo, 3000);
       };
     </script>
-    <script src="//code.jivo.ru/widget/ILXwcsQJNw" async onload="if(window.jivo_api && window.jivo_api.onLoadCallback) window.jivo_api.onLoadCallback()"></script>
+    <script src="//code.jivo.ru/widget/ILXwcsQJNw" async></script>
   </body>
 </html>
  

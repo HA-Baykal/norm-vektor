@@ -25,8 +25,12 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
 
   const openChat = () => {
     // @ts-ignore
-    if (window.jivo_api && window.jivo_api.open) window.jivo_api.open();
-    else window.open("https://jivosite.com", "_blank");
+    if (window.jivo_api && window.jivo_api.open) {
+      // @ts-ignore
+      window.jivo_api.open();
+    } else {
+      window.open("https://jivosite.com", "_blank", "noopener,noreferrer");
+    }
   };
 
   return (

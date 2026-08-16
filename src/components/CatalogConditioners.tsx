@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import QuickBookingModal from "./QuickBookingModal";
 import { getMainCoverPhoto, getModelUrlSlug } from "../data/officialSpecsEngine";
+import { useCompare } from "../utils/useCompare";
 
 export const INSTALL_PRICE = 18000;
 export type PowerVariant = {
@@ -920,6 +921,7 @@ export default function CatalogConditioners() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [orderServiceName, setOrderServiceName] = useState("Заказ кондиционера");
   const [orderCalcDetails, setOrderCalcDetails] = useState("");
+  const compare = useCompare();
 
   const resetCount = () => setVisibleCount(9);
 
@@ -1049,6 +1051,8 @@ export default function CatalogConditioners() {
                   item={c}
                   areaFilter={area}
                   onOrder={handleOrderCard}
+                  isCompared={compare.isSelected(c.id)}
+                  onToggleCompare={compare.toggle}
                 />
               ))}
             </div>
@@ -1067,6 +1071,33 @@ export default function CatalogConditioners() {
         )}
       </div>
 
+      {compare.ids.length > 0 && (
+        <div className="fixed bottom-0 left-0 right-0 z-[60] border-t border-slate-200 bg-white shadow-[0_-8px_30px_rgba(15,23,42,0.15)]">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#ff6b35] text-xs font-black text-white">{compare.ids.length}</span>
+              <span className="text-sm font-black text-[#1a3a5c]">Выбрано для сравнения</span>
+            </div>
+            <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2">
+              {compare.selected.map((c) => (
+                <span key={c.id} className="flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-700">
+                  <span className="max-w-[10rem] truncate">{c.name}</span>
+                  <button type="button" onClick={() => compare.toggle(c.id)} className="text-slate-400 transition hover:text-red-500" aria-label={`Убрать ${c.name} из сравнения`}>✕</button>
+                </span>
+              ))}
+            </div>
+            <div className="flex shrink-0 items-center gap-2">
+              <button type="button" onClick={compare.clear} className="rounded-full px-4 py-2.5 text-xs font-black text-slate-500 transition hover:bg-slate-100 hover:text-slate-700">
+                Очистить
+              </button>
+              <Link to="/sravnenie" className="rounded-full bg-[#1a3a5c] px-6 py-2.5 text-xs font-black text-white transition hover:bg-[#122943]">
+                Сравнить →
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       <QuickBookingModal
         open={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
@@ -1081,10 +1112,14 @@ function ConditionerCard({
   item,
   areaFilter,
   onOrder,
+  isCompared,
+  onToggleCompare,
 }: {
   item: Conditioner;
   areaFilter: string;
   onOrder: (item: Conditioner, btu: number, withInstall: boolean, totalPrice: number) => void;
+  isCompared: boolean;
+  onToggleCompare: (id: number) => void;
 }) {
   const [imgError, setImgError] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -1119,7 +1154,13 @@ function ConditionerCard({
         )}
       </Link>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <div className="text-xs font-black uppercase tracking-wider text-[#ff6b35]">{item.brand}</div>
+        <div className="flex items-start justify-between gap-2">
+          <div className="text-xs font-black uppercase tracking-wider text-[#ff6b35]">{item.brand}</div>
+          <label className="flex shrink-0 cursor-pointer items-center gap-1.5 text-xs font-bold text-slate-500 transition hover:text-[#1a3a5c]">
+            <input type="checkbox" checked={isCompared} onChange={() => onToggleCompare(item.id)} className="h-4 w-4 shrink-0 accent-[#ff6b35]" />
+            Сравнить
+          </label>
+        </div>
         <Link to={`/kondicionery/${getModelUrlSlug(item)}`} className="block group-hover:text-[#ff6b35] transition">
           <h3 className="mt-1 text-lg font-black text-[#1a3a5c] hover:text-[#ff6b35] transition">{item.name}</h3>
         </Link>

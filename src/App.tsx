@@ -16,6 +16,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogArticle = lazy(() => import("./pages/BlogArticle"));
 const ServiceSubPage = lazy(() => import("./pages/ServiceSubPage"));
+const ComparePage = lazy(() => import("./pages/ComparePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
@@ -113,6 +114,7 @@ export default function App() {
             <Route path="baza-znaniy" element={<BlogPage />} />
             <Route path="baza-znaniy/:slug" element={<BlogArticle />} />
             <Route path="kontakty" element={<Contact />} />
+            <Route path="sravnenie" element={<ComparePage />} />
             <Route path="otzyv" element={<OtzyvPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
