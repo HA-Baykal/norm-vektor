@@ -276,12 +276,12 @@ export const windowsCatalogData: WindowProduct[] = [
   }
 ];
 
-export function getWindowProductBySlug(slug?: string): WindowProduct {
-  if (!slug) return windowsCatalogData[0];
+export function getWindowProductBySlug(slug?: string): WindowProduct | undefined {
+  if (!slug) return undefined;
   const decoded = decodeURIComponent(slug).toLowerCase().trim();
-  return windowsCatalogData.find(w => 
+  return windowsCatalogData.find(w =>
     w.slug.toLowerCase() === decoded ||
     w.id.toLowerCase() === decoded ||
     w.title.toLowerCase().replace(/\s+/g, "-") === decoded
-  ) || windowsCatalogData[0];
+  );
 }
