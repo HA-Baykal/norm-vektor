@@ -119,7 +119,8 @@ const seoSitemapAndApiGenerator = () => ({
         "klapan-brizer-ili-rekuperator",
         "pochemu-v-kvartire-dushno-co2",
         "vytyazhka-ne-rabotaet-i-zapahi-ot-sosedey",
-        "mozhno-li-sverlit-nesushchuyu-stenu"
+        "mozhno-li-sverlit-nesushchuyu-stenu",
+        "pochemu-montazh-okon-stoit-dorozhe"
       ];
 
       let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
