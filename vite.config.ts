@@ -122,6 +122,10 @@ const seoSitemapAndApiGenerator = () => ({
         "mozhno-li-sverlit-nesushchuyu-stenu",
         "pochemu-montazh-okon-stoit-dorozhe"
       ];
+      // Динамический список статей: в шаге 2.5 перезаписывается реальным
+      // списком из src/pages/BlogArticle.tsx — новые статьи автоматически
+      // получают серверную маршрутизацию /baza-znaniy/:slug
+      let articleSlugs: string[] = [...blogSlugs];
 
       let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
       xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
@@ -187,6 +191,7 @@ const seoSitemapAndApiGenerator = () => ({
         if (artStart !== -1 && artEnd !== -1) {
           const articleCode = blogSrc.slice(artStart + artStartMarker.length - 1, artEnd + 1);
           const parsedArticles = eval(`(${articleCode})`);
+          articleSlugs = Object.keys(parsedArticles);
           const outTs = `// AUTO-GENERATED\nconst articlesData = ${JSON.stringify(parsedArticles)};\nexport default articlesData;\n`;
           fs.writeFileSync(path.resolve(__dirname, "src/data/articlesData.ts"), outTs, "utf-8");
           console.log(`[RSS] Экспортировано ${Object.keys(parsedArticles).length} статей для RSS-ленты Дзена`);
@@ -212,6 +217,11 @@ const seoSitemapAndApiGenerator = () => ({
       }
       for (const c of cityUrls) {
         rewrites.push({ source: `/${c}`, destination: `/api/page?path=/${c}` });
+      }
+      // Статьи базы знаний — серверная отрисовка (иначе Яндекс считает
+      // их дублями главной и не индексирует)
+      for (const b of articleSlugs) {
+        rewrites.push({ source: `/baza-znaniy/${b}`, destination: `/api/page?path=/baza-znaniy/${b}` });
       }
       // 301-редиректы: склейка дублей и старых адресов.
       // Vercel применяет redirects ДО rewrites, поэтому catch-all rewrite

@@ -427,6 +427,166 @@
       "destination": "/api/page?path=/almaznoe-burenie-v-listvyanke"
     },
     {
+      "source": "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi",
+      "destination": "/api/page?path=/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi"
+    },
+    {
+      "source": "/baza-znaniy/mozhno-li-zabolet-ot-konditsionera",
+      "destination": "/api/page?path=/baza-znaniy/mozhno-li-zabolet-ot-konditsionera"
+    },
+    {
+      "source": "/baza-znaniy/okna-veka-vs-rehau-chto-luchshe-dlya-irkutska",
+      "destination": "/api/page?path=/baza-znaniy/okna-veka-vs-rehau-chto-luchshe-dlya-irkutska"
+    },
+    {
+      "source": "/baza-znaniy/top-10-konditsionerov-irkutsk-2026",
+      "destination": "/api/page?path=/baza-znaniy/top-10-konditsionerov-irkutsk-2026"
+    },
+    {
+      "source": "/baza-znaniy/invertornyy-ili-obychnyy-konditsioner",
+      "destination": "/api/page?path=/baza-znaniy/invertornyy-ili-obychnyy-konditsioner"
+    },
+    {
+      "source": "/baza-znaniy/kakie-plastikovye-okna-vybrat",
+      "destination": "/api/page?path=/baza-znaniy/kakie-plastikovye-okna-vybrat"
+    },
+    {
+      "source": "/baza-znaniy/brizer-ili-rekuperator-chto-vybrat",
+      "destination": "/api/page?path=/baza-znaniy/brizer-ili-rekuperator-chto-vybrat"
+    },
+    {
+      "source": "/baza-znaniy/pochemu-ventilyatsiya-stoit-dorogo",
+      "destination": "/api/page?path=/baza-znaniy/pochemu-ventilyatsiya-stoit-dorogo"
+    },
+    {
+      "source": "/baza-znaniy/zachem-nuzhna-ventilyatsiya",
+      "destination": "/api/page?path=/baza-znaniy/zachem-nuzhna-ventilyatsiya"
+    },
+    {
+      "source": "/baza-znaniy/invertornyy-konditsioner-stoit-li-pereplachivat",
+      "destination": "/api/page?path=/baza-znaniy/invertornyy-konditsioner-stoit-li-pereplachivat"
+    },
+    {
+      "source": "/baza-znaniy/skolko-stoit-ustanovka-konditsionera-irkutsk",
+      "destination": "/api/page?path=/baza-znaniy/skolko-stoit-ustanovka-konditsionera-irkutsk"
+    },
+    {
+      "source": "/baza-znaniy/skolko-stoyat-plastikovye-okna-irkutsk",
+      "destination": "/api/page?path=/baza-znaniy/skolko-stoyat-plastikovye-okna-irkutsk"
+    },
+    {
+      "source": "/baza-znaniy/pochemu-poteyut-plastikovye-okna",
+      "destination": "/api/page?path=/baza-znaniy/pochemu-poteyut-plastikovye-okna"
+    },
+    {
+      "source": "/baza-znaniy/nuzhno-li-obsluzhivat-konditsioner",
+      "destination": "/api/page?path=/baza-znaniy/nuzhno-li-obsluzhivat-konditsioner"
+    },
+    {
+      "source": "/baza-znaniy/almaznoe-burenie-tsena-i-tehnologiya",
+      "destination": "/api/page?path=/baza-znaniy/almaznoe-burenie-tsena-i-tehnologiya"
+    },
+    {
+      "source": "/baza-znaniy/osteklenie-balkonov-tseny-po-variantam",
+      "destination": "/api/page?path=/baza-znaniy/osteklenie-balkonov-tseny-po-variantam"
+    },
+    {
+      "source": "/baza-znaniy/montazh-konditsionera-po-gostu-chek-list",
+      "destination": "/api/page?path=/baza-znaniy/montazh-konditsionera-po-gostu-chek-list"
+    },
+    {
+      "source": "/baza-znaniy/zapravka-konditsionera-freonom-kogda-i-skolko",
+      "destination": "/api/page?path=/baza-znaniy/zapravka-konditsionera-freonom-kogda-i-skolko"
+    },
+    {
+      "source": "/baza-znaniy/ventilyatsiya-v-chastnom-dome",
+      "destination": "/api/page?path=/baza-znaniy/ventilyatsiya-v-chastnom-dome"
+    },
+    {
+      "source": "/baza-znaniy/okna-dlya-doma-iz-brusa",
+      "destination": "/api/page?path=/baza-znaniy/okna-dlya-doma-iz-brusa"
+    },
+    {
+      "source": "/baza-znaniy/duet-iz-plastikovogo-okna",
+      "destination": "/api/page?path=/baza-znaniy/duet-iz-plastikovogo-okna"
+    },
+    {
+      "source": "/baza-znaniy/okna-propyskayut-shum",
+      "destination": "/api/page?path=/baza-znaniy/okna-propyskayut-shum"
+    },
+    {
+      "source": "/baza-znaniy/zimniy-letniy-rezhim-okon",
+      "destination": "/api/page?path=/baza-znaniy/zimniy-letniy-rezhim-okon"
+    },
+    {
+      "source": "/baza-znaniy/energosberegayushchiy-steklopaket-i-steklo",
+      "destination": "/api/page?path=/baza-znaniy/energosberegayushchiy-steklopaket-i-steklo"
+    },
+    {
+      "source": "/baza-znaniy/mozhno-li-obedinit-balkon-s-komnatoi",
+      "destination": "/api/page?path=/baza-znaniy/mozhno-li-obedinit-balkon-s-komnatoi"
+    },
+    {
+      "source": "/baza-znaniy/kuda-veshat-konditsioner",
+      "destination": "/api/page?path=/baza-znaniy/kuda-veshat-konditsioner"
+    },
+    {
+      "source": "/baza-znaniy/konditsioner-na-obogrev-zimoy",
+      "destination": "/api/page?path=/baza-znaniy/konditsioner-na-obogrev-zimoy"
+    },
+    {
+      "source": "/baza-znaniy/konditsioner-ploho-holodit",
+      "destination": "/api/page?path=/baza-znaniy/konditsioner-ploho-holodit"
+    },
+    {
+      "source": "/baza-znaniy/zapah-iz-konditsionera",
+      "destination": "/api/page?path=/baza-znaniy/zapah-iz-konditsionera"
+    },
+    {
+      "source": "/baza-znaniy/kapaet-voda-iz-konditsionera",
+      "destination": "/api/page?path=/baza-znaniy/kapaet-voda-iz-konditsionera"
+    },
+    {
+      "source": "/baza-znaniy/tipy-konditsionerov-split-kassetnyy-kanalnyy",
+      "destination": "/api/page?path=/baza-znaniy/tipy-konditsionerov-split-kassetnyy-kanalnyy"
+    },
+    {
+      "source": "/baza-znaniy/mobilnyy-konditsioner-ili-split-sistema",
+      "destination": "/api/page?path=/baza-znaniy/mobilnyy-konditsioner-ili-split-sistema"
+    },
+    {
+      "source": "/baza-znaniy/pochemu-shumit-konditsioner",
+      "destination": "/api/page?path=/baza-znaniy/pochemu-shumit-konditsioner"
+    },
+    {
+      "source": "/baza-znaniy/brizer-chto-eto",
+      "destination": "/api/page?path=/baza-znaniy/brizer-chto-eto"
+    },
+    {
+      "source": "/baza-znaniy/brizer-ili-konditsioner",
+      "destination": "/api/page?path=/baza-znaniy/brizer-ili-konditsioner"
+    },
+    {
+      "source": "/baza-znaniy/klapan-brizer-ili-rekuperator",
+      "destination": "/api/page?path=/baza-znaniy/klapan-brizer-ili-rekuperator"
+    },
+    {
+      "source": "/baza-znaniy/pochemu-v-kvartire-dushno-co2",
+      "destination": "/api/page?path=/baza-znaniy/pochemu-v-kvartire-dushno-co2"
+    },
+    {
+      "source": "/baza-znaniy/vytyazhka-ne-rabotaet-i-zapahi-ot-sosedey",
+      "destination": "/api/page?path=/baza-znaniy/vytyazhka-ne-rabotaet-i-zapahi-ot-sosedey"
+    },
+    {
+      "source": "/baza-znaniy/mozhno-li-sverlit-nesushchuyu-stenu",
+      "destination": "/api/page?path=/baza-znaniy/mozhno-li-sverlit-nesushchuyu-stenu"
+    },
+    {
+      "source": "/baza-znaniy/pochemu-montazh-okon-stoit-dorozhe",
+      "destination": "/api/page?path=/baza-znaniy/pochemu-montazh-okon-stoit-dorozhe"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
