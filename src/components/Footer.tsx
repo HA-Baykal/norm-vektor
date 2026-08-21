@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-300 mt-20">
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4"><Logo className="w-12 h-12" /><div><div className="text-white font-extrabold text-lg">Вектор <span className="text-accent-400">Комфорта</span></div><div className="text-xs text-slate-400">Комфорт в каждом направлении</div></div></div>
             <p className="text-sm text-slate-400 leading-relaxed">Окна, кондиционеры, вентиляция и алмазное бурение. Собственное производство. Работаем в Иркутске и пригороде до 50 км.</p>
@@ -25,12 +25,22 @@ export default function Footer() {
                 <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white text-slate-900 font-bold hover:bg-slate-100 transition"><span className="w-6 h-6 rounded bg-[#1a3a5c] text-white grid place-items-center text-[10px] font-black">MAX</span> Написать в MAX</a>
                 <div className="text-xs text-slate-500 mt-1">Отвечаем за 5 минут, без звонков</div>
               </li>
-              <li className="text-slate-400">🕒 Пн–Сб 9:00–20:00</li>
-              <li className="text-slate-400">📍 Иркутск, Ангарск, Шелехов, Хомутово</li>
+              <li className="text-slate-400">🕒 Пн–Вс 7:00–20:00,</li>
+              <li className="text-slate-400">📍 г. Иркутск, Байкальская улица, 202/2 (цокольный этаж), 664075</li>
               <li><button onClick={openChat} className="text-accent-400 hover:text-accent-500 transition">💬 Написать в чат Jivo</button></li>
             </ul>
           </div>
           <div><h3 className="text-white font-semibold mb-4">Навигация</h3><ul className="space-y-2 text-sm"><li><Link to="/" className="hover:text-accent-400 transition">Главная</Link></li><li><Link to="/kontakty" className="hover:text-accent-400 transition">Контакты</Link></li><li><a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-lg bg-[#1a3a5c] hover:bg-[#122943] text-white font-semibold transition border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[9px] font-black">MAX</span> Написать в MAX</a></li><li><a href="tel:+79149146606" className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-lg bg-accent-500 hover:bg-accent-600 text-white font-semibold transition">📞 Позвонить сейчас</a></li></ul></div>
+          <div>
+            <h3 className="text-white font-semibold mb-4">Мы в соцсетях</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a href="https://vk.com/vektor_komforta" target="_blank" rel="noopener noreferrer" className="hover:text-accent-400 transition">VK</a></li>
+              <li><a href="https://ok.ru/vektor.komforta" target="_blank" rel="noopener noreferrer" className="hover:text-accent-400 transition">Одноклассники</a></li>
+              <li><a href="https://dzen.ru/vektor_komforta" target="_blank" rel="noopener noreferrer" className="hover:text-accent-400 transition">Дзен</a></li>
+              <li><a href="https://2gis.ru/irkutsk/firm/70000001115497655" target="_blank" rel="noopener noreferrer" className="hover:text-accent-400 transition">2ГИС</a></li>
+              <li><a href="https://yandex.ru/maps/org/vektor_komforta/117268889988/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-400 transition">Яндекс Карты</a></li>
+            </ul>
+          </div>
         </div>
         <div className="mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500"><div>© {new Date().getFullYear()} Вектор Комфорта. Все права защищены.</div><div>Иркутск · Ангарск · Шелехов · Хомутово · пригород до 50 км</div></div>
       </div>
