@@ -1,4 +1,5 @@
 // api/page.ts (Оптимизированная версия для ТОП-1 с уникализированным контентом)
+import articlesData from "../src/data/articlesData";
 export const config = { runtime: "edge" };
 
 function esc(s: string) {
@@ -58,6 +59,8 @@ function buildBreadcrumbJsonLd(path: string, page: Page): string {
       items.push({ name: "Вентиляция", item: "https://www.vektor-komforta.ru/ventilyaciya" });
     } else if (path.startsWith("/almaznoe-burenie-")) {
       items.push({ name: "Алмазное бурение", item: "https://www.vektor-komforta.ru/almaznoe-burenie" });
+    } else if (path.startsWith("/baza-znaniy/")) {
+      items.push({ name: "База знаний", item: "https://www.vektor-komforta.ru/baza-znaniy" });
     }
     items.push({ name: BREADCRUMB_NAMES[path] || page.h1 });
   }
@@ -982,6 +985,79 @@ function buildGeoPage(path: string): Page | null {
 }
 
 // ============================================================
+// Статьи базы знаний: серверная отрисовка для краулеров.
+// Без неё статья отдавалась с заголовком index.html
+// («Кондиционеры и пластиковые окна...» по умолчанию), из-за
+// чего Яндекс помечал её дублем главной и не индексировал.
+// Данные — из src/data/articlesData.ts (регенерируется при
+// сборке из src/pages/BlogArticle.tsx), т.е. новые статьи
+// подхватываются автоматически.
+// ============================================================
+interface ArticleBlock {
+  type: "p" | "h" | "list";
+  text?: string;
+  items?: string[];
+}
+
+interface Article {
+  title: string;
+  category: string;
+  summary?: string;
+  excerpt?: string;
+  content: ArticleBlock[];
+  faq?: { q: string; a: string }[];
+}
+
+function articleBlockToHtml(block: ArticleBlock): string {
+  if (block.type === "h") return `<h2>${esc(block.text || "")}</h2>`;
+  if (block.type === "list") {
+    const items = (block.items || []).map((i) => `<li>${esc(i)}</li>`).join("");
+    return `<ul>${items}</ul>`;
+  }
+  return `<p>${esc(block.text || "")}</p>`;
+}
+
+// Обрезка до 250 символов для meta description (по границе слова)
+function clipDescription(s: string): string {
+  if (s.length <= 250) return s;
+  let cut = s.slice(0, 249);
+  const lastSpace = cut.lastIndexOf(" ");
+  if (lastSpace > 200) cut = cut.slice(0, lastSpace);
+  return cut.replace(/\s…$/u, "") + "…";
+}
+
+function buildArticlePage(path: string): Page | null {
+  const m = path.match(/^\/baza-znaniy\/([a-z0-9-]+)$/);
+  if (!m) return null;
+  const article: Article | undefined = (articlesData as Record<string, Article>)[m[1]];
+  if (!article) return null;
+
+  // title совпадает с клиентским (document.title в BlogArticle.tsx)
+  const title = `${article.title} | Вектор Комфорта`;
+  const h1 = article.title;
+
+  // description: excerpt → summary → первый абзац (≤ 250 символов)
+  const firstParagraph = article.content.find((b) => b.type === "p");
+  const description = clipDescription(
+    article.excerpt || article.summary || firstParagraph?.text || article.title
+  );
+
+  let bodyHtml = "";
+  if (article.summary) {
+    bodyHtml += `<p><strong>Короткий ответ:</strong> ${esc(article.summary)}</p>`;
+  }
+  bodyHtml += article.content.map(articleBlockToHtml).join("\n");
+  if (article.faq && article.faq.length > 0) {
+    bodyHtml += "\n<h2>Частые вопросы</h2>\n";
+    for (const f of article.faq) {
+      bodyHtml += `<h3>${esc(f.q)}</h3>\n<p>${esc(f.a)}</p>\n`;
+    }
+  }
+
+  return { title, description, h1, bodyHtml };
+}
+
+// ============================================================
 // Edge-обработчик: отдаёт страницу с уникальными title/h1/текстом
 // для поисковых краулеров. Неизвестные пути → честный HTTP 404
 // с noindex (вместо "мягкого 404" на index.html).
@@ -991,7 +1067,7 @@ export default async function handler(req: Request): Promise<Response> {
   let path = decodeURIComponent(url.pathname).toLowerCase();
   if (path !== "/" && path.endsWith("/")) path = path.slice(0, -1);
 
-  const page = PAGES[path] || buildGeoPage(path);
+  const page = PAGES[path] || buildGeoPage(path) || buildArticlePage(path);
   if (!page) {
     const notFoundHtml = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>Страница не найдена (404) — Вектор Комфорта, Иркутск</title><meta name="robots" content="noindex" /><meta name="description" content="Ошибка 404: страница не найдена. Окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта." /><link rel="canonical" href="https://www.vektor-komforta.ru${esc(path)}" /></head><body><h1>404 — страница не найдена</h1><p>Перейдите на <a href="https://www.vektor-komforta.ru/">главную</a> — окна, кондиционеры и вентиляция в Иркутске.</p></body></html>`;
     return new Response(notFoundHtml, {
