@@ -122,10 +122,26 @@ const seoSitemapAndApiGenerator = () => ({
         "mozhno-li-sverlit-nesushchuyu-stenu",
         "pochemu-montazh-okon-stoit-dorozhe"
       ];
-      // Динамический список статей: в шаге 2.5 перезаписывается реальным
-      // списком из src/pages/BlogArticle.tsx — новые статьи автоматически
-      // получают серверную маршрутизацию /baza-znaniy/:slug
+      // Единственный источник для RSS, SSR-маршрутов и Sitemap — articleContent.
+      // Статический список выше остаётся безопасным fallback, если экспорт не удался.
       let articleSlugs: string[] = [...blogSlugs];
+      try {
+        const blogPath = path.resolve(__dirname, "src/pages/BlogArticle.tsx");
+        const blogSrc = fs.readFileSync(blogPath, "utf-8");
+        const artStartMarker = "const articleContent: Record<string, Article> = {";
+        const artStart = blogSrc.indexOf(artStartMarker);
+        const artEnd = blogSrc.indexOf("};\nexport default function BlogArticle");
+        if (artStart !== -1 && artEnd !== -1) {
+          const articleCode = blogSrc.slice(artStart + artStartMarker.length - 1, artEnd + 1);
+          const parsedArticles = eval(`(${articleCode})`);
+          articleSlugs = Object.keys(parsedArticles);
+          const outTs = `// AUTO-GENERATED\nconst articlesData = ${JSON.stringify(parsedArticles)};\nexport default articlesData;\n`;
+          fs.writeFileSync(path.resolve(__dirname, "src/data/articlesData.ts"), outTs, "utf-8");
+          console.log(`[RSS] Экспортировано ${articleSlugs.length} статей для RSS-ленты Дзена`);
+        }
+      } catch (e) {
+        console.error("[RSS] Ошибка экспорта статей для RSS:", e);
+      }
 
       let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
       xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
@@ -163,7 +179,7 @@ const seoSitemapAndApiGenerator = () => ({
       }
 
       // Добавляем статьи базы знаний в Sitemap
-      for (const b of blogSlugs) {
+      for (const b of articleSlugs) {
         xml += `  <url>\n`;
         xml += `    <loc>https://www.vektor-komforta.ru/baza-znaniy/${b}</loc>\n`;
         xml += `    <lastmod>${dateStr}</lastmod>\n`;
@@ -180,24 +196,6 @@ const seoSitemapAndApiGenerator = () => ({
       const distSitemap = path.resolve(__dirname, "dist/sitemap.xml");
       if (fs.existsSync(path.resolve(__dirname, "dist"))) {
         fs.writeFileSync(distSitemap, xml, "utf-8");
-      }
-      // 2.5. Экспорт статей базы знаний для RSS-ленты Дзена (api/rss.ts)
-      try {
-        const blogPath = path.resolve(__dirname, "src/pages/BlogArticle.tsx");
-        const blogSrc = fs.readFileSync(blogPath, "utf-8");
-        const artStartMarker = "const articleContent: Record<string, Article> = {";
-        const artStart = blogSrc.indexOf(artStartMarker);
-        const artEnd = blogSrc.indexOf("};\nexport default function BlogArticle");
-        if (artStart !== -1 && artEnd !== -1) {
-          const articleCode = blogSrc.slice(artStart + artStartMarker.length - 1, artEnd + 1);
-          const parsedArticles = eval(`(${articleCode})`);
-          articleSlugs = Object.keys(parsedArticles);
-          const outTs = `// AUTO-GENERATED\nconst articlesData = ${JSON.stringify(parsedArticles)};\nexport default articlesData;\n`;
-          fs.writeFileSync(path.resolve(__dirname, "src/data/articlesData.ts"), outTs, "utf-8");
-          console.log(`[RSS] Экспортировано ${Object.keys(parsedArticles).length} статей для RSS-ленты Дзена`);
-        }
-      } catch (e) {
-        console.error("[RSS] Ошибка экспорта статей для RSS:", e);
       }
       // 3. Генерация vercel.json с маршрутами для SEO-функций
       const cityUrls = cityPages;
