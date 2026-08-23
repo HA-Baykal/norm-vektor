@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useBreadcrumb } from "../utils/useSeo";
 
 type Block =
   | { type: "p"; text: string }
@@ -2663,6 +2664,14 @@ const articleContent: Record<string, Article> = {
 export default function BlogArticle() {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? articleContent[slug] : undefined;
+
+  // Хлебные крошки Schema.org BreadcrumbList (JSON-LD): Главная → База знаний → Статья.
+  // Совпадает с серверной разметкой из api/page.ts.
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    { name: "База знаний", path: "/baza-znaniy" },
+    ...(article ? [{ name: article.title }] : []),
+  ]);
   
  // Динамические мета-теги для каждой статьи
 useEffect(() => {

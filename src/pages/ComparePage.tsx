@@ -39,7 +39,10 @@ export default function ComparePage() {
     "Сравнение кондиционеров — полные характеристики и техпаспорт | Вектор Комфорта, Иркутск",
     "Подробное сравнение выбранных кондиционеров по всем характеристикам техпаспорта: компрессор, хладагент, шум, мощность, цена с монтажом. До 4 моделей одновременно."
   );
-  useBreadcrumb([{ name: "Сравнение кондиционеров", path: "/sravnenie" }]);
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    { name: "Сравнение кондиционеров", path: "/sravnenie" },
+  ]);
 
   const { selected, toggle, clear } = useCompare();
   const [onlyDiff, setOnlyDiff] = useState(false);

@@ -599,6 +599,10 @@
       "destination": "/api/page?path=/baza-znaniy/pochemu-montazh-okon-stoit-dorozhe"
     },
     {
+      "source": "/baza-znaniy/:slug",
+      "destination": "/api/page?path=/baza-znaniy/:slug"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }

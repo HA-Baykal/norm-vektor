@@ -1,12 +1,16 @@
 import Map from "../components/Map";
 import QuoteForm from "../components/QuoteForm";
-import { useSeo } from "../utils/useSeo";
+import { useSeo, useBreadcrumb } from "../utils/useSeo";
 
 export default function Contact() {
   useSeo(
     "Контакты — Вектор Комфорта в Иркутске | Окна, кондиционеры, вентиляция",
     "Контакты компании Вектор Комфорта в Иркутске: ☎ +7 (914) 914-66-06, +7 (3952) 66-99-30. Окна, кондиционеры, вентиляция и алмазное бурение. Пн–Сб 9:00–20:00, выезд по Иркутску и пригороду до 50 км."
   );
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    { name: "Контакты", path: "/kontakty" },
+  ]);
   const openChat = () => {
     // Показываем виджет Jivo (CSS прячет его, пока на body нет класса jivo-open)
     document.body.classList.add("jivo-open");

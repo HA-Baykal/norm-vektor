@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSeo } from "../utils/useSeo";
+import { useSeo, useBreadcrumb } from "../utils/useSeo";
 
 // ============================================================================
 // БАЗА ЗНАНИЙ — список статей
@@ -382,6 +382,10 @@ export default function BlogPage() {
     "База знаний — окна, кондиционеры и вентиляция | Вектор Комфорта, Иркутск",
     "Полезные статьи о выборе кондиционера по площади, пластиковых окнах VEKA, бризерах и рекуператорах, монтаже вентиляции. Простые советы от компании Вектор Комфорта, Иркутск."
   );
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    { name: "База знаний", path: "/baza-znaniy" },
+  ]);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   // Получаем уникальные категории

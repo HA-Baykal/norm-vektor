@@ -45,26 +45,33 @@ export interface BreadcrumbItem {
 /**
  * SEO-хук хлебных крошек: вставляет в <head> JSON-LD разметку
  * Schema.org BreadcrumbList (P2-3 SEO-аудита). Принимает массив
- * пунктов от главной до текущей страницы; у последнего пункта
- * ссылку можно не указывать. При уходе со страницы разметка удаляется.
+ * пунктов от главной до текущей страницы. У последнего пункта
+ * ссылку можно не указывать — тогда подставляется адрес текущей
+ * страницы (Яндекс допускает URL в последнем элементе цепочки,
+ * если домен совпадает с адресом сайта). При уходе со страницы
+ * разметка удаляется.
  */
 export function useBreadcrumb(items: BreadcrumbItem[]) {
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+
   useEffect(() => {
     if (!items.length) return;
 
     const schema = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      "itemListElement": items.map((item, i) => {
+      itemListElement: items.map((item, i) => {
         const listItem: Record<string, unknown> = {
           "@type": "ListItem",
-          "position": i + 1,
-          "name": item.name,
+          position: i + 1,
+          name: item.name,
         };
-        if (item.path) {
-          listItem.item = item.path.startsWith("http")
-            ? item.path
-            : `${SITE_ORIGIN}${item.path === "/" ? "/" : item.path}`;
+        // Последний пункт без явного path — это текущая страница
+        const path = item.path ?? (i === items.length - 1 ? pathname : undefined);
+        if (path) {
+          listItem.item = path.startsWith("http")
+            ? path
+            : `${SITE_ORIGIN}${path === "/" ? "/" : path}`;
         }
         return listItem;
       }),
@@ -84,5 +91,5 @@ export function useBreadcrumb(items: BreadcrumbItem[]) {
       const el = document.getElementById(SCRIPT_ID);
       if (el) el.remove();
     };
-  }, [JSON.stringify(items)]);
+  }, [JSON.stringify(items), pathname]);
 }
