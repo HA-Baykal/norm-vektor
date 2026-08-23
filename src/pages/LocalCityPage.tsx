@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import QuickBookingModal from "../components/QuickBookingModal";
-import { useSeo } from "../utils/useSeo";
+import { useSeo, useBreadcrumb } from "../utils/useSeo";
 
 interface LocalCityPageProps {
   cityKey: string;
@@ -83,6 +83,13 @@ const SERVICES: Record<string, {
   },
 };
 
+const SERVICE_PARENT_PATHS: Record<string, string> = {
+  okna: "/okna",
+  kondicionery: "/kondicionery",
+  ventilyaciya: "/ventilyaciya",
+  "almaznoe-burenie": "/almaznoe-burenie",
+};
+
 export default function LocalCityPage({ cityKey, serviceKey }: LocalCityPageProps) {
   const city = CITIES[cityKey];
   const service = SERVICES[serviceKey];
@@ -122,6 +129,14 @@ export default function LocalCityPage({ cityKey, serviceKey }: LocalCityPageProp
     seoData?.title ?? "Пластиковые окна и кондиционеры в Иркутске — Вектор Комфорта",
     seoData?.description ?? "Производство и монтаж окон, кондиционеров и вентиляции в Иркутске и пригороде."
   );
+
+  // Хлебные крошки Schema.org BreadcrumbList (JSON-LD): Главная → Раздел → Гео-страница.
+  // Совпадает с серверной разметкой из api/page.ts.
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    ...(service ? [{ name: service.title, path: SERVICE_PARENT_PATHS[serviceKey] }] : []),
+    ...(city && service ? [{ name: `${service.title} ${city.in}` }] : []),
+  ]);
 
   if (!city || !service) return null;
 

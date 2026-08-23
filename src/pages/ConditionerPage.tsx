@@ -261,11 +261,11 @@ export default function ConditionerPage() {
     };
   }, [item, officialSpecs, coverPhoto, allImages]);
 
-  // Хлебные крошки Schema.org (BreadcrumbList) — единый хук useBreadcrumb
+  // Хлебные крошки Schema.org (BreadcrumbList) — единый хук useBreadcrumb.
+  // Яндекс рекомендует до трёх пунктов, поэтому бренд не выносим отдельным звеном.
   useBreadcrumb([
     { name: "Главная", path: "/" },
     { name: "Кондиционеры", path: "/kondicionery" },
-    { name: item.brand, path: `/kondicionery?brand=${encodeURIComponent(item.brand)}` },
     { name: item.name },
   ]);
   // Ссылка MAX по вашему техническому заданию

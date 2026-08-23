@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSeo } from "../utils/useSeo";
+import { useSeo, useBreadcrumb } from "../utils/useSeo";
 
 // ============================================================================
 // СТРАНИЦА "ОСТАВИТЬ ОТЗЫВ"
@@ -58,6 +58,10 @@ export default function OtzyvPage() {
     "Отзывы клиентов — Вектор Комфорта, Иркутск",
     "Отзывы о компании Вектор Комфорта в Иркутске: пластиковые окна, кондиционеры, вентиляция, алмазное бурение. Рейтинг 5.0 на 2ГИС и Яндекс.Картах, более 3500 выполненных проектов за 15 лет."
   );
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    { name: "Отзывы", path: "/otzyv" },
+  ]);
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero */}

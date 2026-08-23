@@ -2,7 +2,7 @@
 import VideoGallery from "../components/VideoGallery";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useSeo } from "../utils/useSeo";
+import { useSeo, useBreadcrumb } from "../utils/useSeo";
 const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
 type Category = "all" | "windows" | "conditioners" | "ventilation" | "drilling";
 type PortfolioItem = { category: Exclude<Category, "all">; path: string; title: string; address: string; date: string; text: string; };
@@ -43,6 +43,10 @@ export default function PortfolioPage() {
     "Портфолио работ — окна, кондиционеры и вентиляция в Иркутске | Вектор Комфорта",
     "Портфолио компании Вектор Комфорта: остекление балконов и окон ПВХ, монтаж кондиционеров, вентиляция и алмазное бурение. Реальные объекты в Иркутске, Ангарске, Шелехове и пригороде."
   );
+  useBreadcrumb([
+    { name: "Главная", path: "/" },
+    { name: "Портфолио", path: "/portfolio" },
+  ]);
   const [filter, setFilter] = useState<Category>("all");
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
   const filtered = filter === "all" ? portfolioItems : portfolioItems.filter((i) => i.category === filter);

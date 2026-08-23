@@ -1,4 +1,20 @@
 // Vercel Serverless Function для 100% надёжного парсинга названий моделей и цен для Авито, Яндекс, MAX, CRM, WhatsApp и Google
+
+// Хлебные крошки (Schema.org BreadcrumbList) для карточек товаров.
+// Вставляются в серверный HTML, чтобы робот Яндекса видел разметку
+// без исполнения JS (условие формирования навигационной цепочки в сниппете).
+function breadcrumbLd(items) {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => {
+      const li = { "@type": "ListItem", position: i + 1, name: it.name };
+      if (it.item) li.item = it.item;
+      return li;
+    }),
+  });
+}
+
 export default async function handler(req, res) {
   const { slug = "", btu = "" } = req.query || {};
   const decodedSlug = decodeURIComponent(slug).toLowerCase().trim();
@@ -180,6 +196,13 @@ export default async function handler(req, res) {
         }
       }
     </script>
+    <script type="application/ld+json">
+      ${breadcrumbLd([
+        { name: "Главная", item: "https://www.vektor-komforta.ru/" },
+        { name: "Кондиционеры", item: "https://www.vektor-komforta.ru/kondicionery" },
+        { name: model.name, item: canonicalUrl },
+      ])}
+    </script>
 </head>`;
     html = html.replace("</head>", seoMetaTags);
   } else if (windowModel) {
@@ -225,6 +248,13 @@ export default async function handler(req, res) {
           "availability": "https://schema.org/InStock"
         }
       }
+    </script>
+    <script type="application/ld+json">
+      ${breadcrumbLd([
+        { name: "Главная", item: "https://www.vektor-komforta.ru/" },
+        { name: "Пластиковые окна", item: "https://www.vektor-komforta.ru/okna" },
+        { name: windowModel.title, item: canonicalUrl },
+      ])}
     </script>
 </head>`;
     html = html.replace("</head>", seoMetaTags);

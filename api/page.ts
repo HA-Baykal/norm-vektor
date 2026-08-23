@@ -62,7 +62,12 @@ function buildBreadcrumbJsonLd(path: string, page: Page): string {
     } else if (path.startsWith("/baza-znaniy/")) {
       items.push({ name: "База знаний", item: "https://www.vektor-komforta.ru/baza-znaniy" });
     }
-    items.push({ name: BREADCRUMB_NAMES[path] || page.h1 });
+    items.push({
+      name: BREADCRUMB_NAMES[path] || page.h1,
+      // URL последнего пункта (текущей страницы) — Яндекс допускает,
+      // если домен совпадает с адресом сайта
+      item: `https://www.vektor-komforta.ru${path}`,
+    });
   }
   const schema = {
     "@context": "https://schema.org",
