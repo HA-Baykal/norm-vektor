@@ -427,6 +427,18 @@
       "destination": "/api/page?path=/almaznoe-burenie-v-listvyanke"
     },
     {
+      "source": "/baza-znaniy/montazh-okon-osenyu-i-zimoy",
+      "destination": "/api/page?path=/baza-znaniy/montazh-okon-osenyu-i-zimoy"
+    },
+    {
+      "source": "/baza-znaniy/brizer-i-rekuperator-zimoy",
+      "destination": "/api/page?path=/baza-znaniy/brizer-i-rekuperator-zimoy"
+    },
+    {
+      "source": "/baza-znaniy/nuzhno-li-nakryvat-naruzhnyy-blok-konditsionera-zimoy",
+      "destination": "/api/page?path=/baza-znaniy/nuzhno-li-nakryvat-naruzhnyy-blok-konditsionera-zimoy"
+    },
+    {
       "source": "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi",
       "destination": "/api/page?path=/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi"
     },

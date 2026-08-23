@@ -1004,6 +1004,7 @@ interface Article {
   category: string;
   summary?: string;
   excerpt?: string;
+  metaDescription?: string;
   content: ArticleBlock[];
   faq?: { q: string; a: string }[];
 }
@@ -1036,10 +1037,10 @@ function buildArticlePage(path: string): Page | null {
   const title = `${article.title} | Вектор Комфорта`;
   const h1 = article.title;
 
-  // description: excerpt → summary → первый абзац (≤ 250 символов)
+  // description: явный metaDescription → excerpt → summary → первый абзац (≤ 250 символов)
   const firstParagraph = article.content.find((b) => b.type === "p");
   const description = clipDescription(
-    article.excerpt || article.summary || firstParagraph?.text || article.title
+    article.metaDescription || article.excerpt || article.summary || firstParagraph?.text || article.title
   );
 
   let bodyHtml = "";
