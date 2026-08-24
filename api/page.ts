@@ -1007,6 +1007,7 @@ interface ArticleBlock {
 interface Article {
   title: string;
   category: string;
+  date?: string;
   summary?: string;
   excerpt?: string;
   metaDescription?: string;
@@ -1108,6 +1109,14 @@ export default async function handler(req: Request): Promise<Response> {
   // Хлебные крошки Schema.org (BreadcrumbList) для краулеров
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(path, page);
   html = html.replace(/<\/head>/i, `${breadcrumbJsonLd}\n</head>`);
+
+  if (path.startsWith("/baza-znaniy/")) {
+    const slug = path.replace("/baza-znaniy/", "");
+    const art = (articlesData as Record<string, any>)[slug];
+    const pubDateIso = art?.date ? `${art.date}T08:00:00+08:00` : "2026-01-15T08:00:00+08:00";
+    const articleMeta = `<meta property="article:published_time" content="${pubDateIso}" />\n<meta property="article:modified_time" content="2026-08-24T08:00:00+08:00" />\n<meta property="article:author" content="Вектор Комфорта" />\n`;
+    html = html.replace(/<\/head>/i, `${articleMeta}</head>`);
+  }
 
   // Статический контент для краулеров без JS (клиентский React затем перерисует страницу)
   const seoBody = `<div id="root"><main><h1>${esc(page.h1)}</h1>${page.bodyHtml}</main></div>`;
