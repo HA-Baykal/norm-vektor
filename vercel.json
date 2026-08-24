@@ -87,6 +87,10 @@
       "destination": "/api/rss"
     },
     {
+      "source": "/rss-fresh.xml",
+      "destination": "/api/rss-fresh"
+    },
+    {
       "source": "/kondicionery/:slug",
       "destination": "/api/seo"
     },

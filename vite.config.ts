@@ -207,6 +207,7 @@ const seoSitemapAndApiGenerator = () => ({
       ];
       const rewrites: any[] = [
         { source: "/rss.xml", destination: "/api/rss" },
+        { source: "/rss-fresh.xml", destination: "/api/rss-fresh" },
         { source: "/kondicionery/:slug", destination: "/api/seo" },
         { source: "/okna/:slug", destination: "/api/seo" }
       ];
@@ -221,6 +222,7 @@ const seoSitemapAndApiGenerator = () => ({
       for (const b of articleSlugs) {
         rewrites.push({ source: `/baza-znaniy/${b}`, destination: `/api/page?path=/baza-znaniy/${b}` });
       }
+      rewrites.push({ source: "/baza-znaniy/:slug", destination: "/api/page?path=/baza-znaniy/:slug" });
       // 301-редиректы: склейка дублей и старых адресов.
       // Vercel применяет redirects ДО rewrites, поэтому catch-all rewrite
       // этим правилам не мешает.
