@@ -1162,18 +1162,58 @@
       "brand": "Toshiba",
       "type": "Инверторный",
       "smartHome": false,
-      "noise": "—",
+      "noise": "19 дБ",
       "country": "Таиланд",
-      "image": "images/catalog/toshiba-seiya.jpg",
+      "image": "https://rkcdn.ru/products/e90e8f4c-6304-11ef-b8db-00505601218a/main_big.jpg",
       "badge": "Премиум",
       "variants": [
         {
           "btu": 7000,
           "area": 20,
           "cooling": "2.0 кВт",
-          "heating": "2.2 кВт",
-          "price": 74571,
+          "heating": "2.5 кВт",
+          "price": 74380,
           "oldPrice": 75900
+        },
+        {
+          "btu": 10000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "3.2 кВт",
+          "price": 83200,
+          "oldPrice": 84900
+        },
+        {
+          "btu": 13000,
+          "area": 35,
+          "cooling": "3.3 кВт",
+          "heating": "3.6 кВт",
+          "price": 95940,
+          "oldPrice": 97900
+        },
+        {
+          "btu": 16000,
+          "area": 50,
+          "cooling": "4.6 кВт",
+          "heating": "5.4 кВт",
+          "price": 137100,
+          "oldPrice": 139900
+        },
+        {
+          "btu": 18000,
+          "area": 55,
+          "cooling": "5.0 кВт",
+          "heating": "5.4 кВт",
+          "price": 156700,
+          "oldPrice": 159900
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.5 кВт",
+          "heating": "7.0 кВт",
+          "price": 186100,
+          "oldPrice": 189900
         }
       ]
     },
@@ -4598,6 +4638,2379 @@
           "heating": "3.2 кВт",
           "price": 49221,
           "oldPrice": 49990
+        }
+      ]
+    },
+    {
+      "id": 820,
+      "name": "Electrolux Avalanche Super DC Inverter",
+      "brand": "Electrolux",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "25 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/971de017-6304-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Тепловой насос -25°C",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.7 кВт",
+          "heating": "3.0 кВт",
+          "price": 61730,
+          "oldPrice": 62990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.51 кВт",
+          "heating": "3.81 кВт",
+          "price": 68590,
+          "oldPrice": 69990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.6 кВт",
+          "price": 102890,
+          "oldPrice": 104990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.4 кВт",
+          "price": 127390,
+          "oldPrice": 129990
+        }
+      ]
+    },
+    {
+      "id": 821,
+      "name": "Electrolux Skandi DC Inverter",
+      "brand": "Electrolux",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/22006943-1b8b-11f0-b8de-00505601218a/main_big.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 20220,
+          "oldPrice": 20738
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 22170,
+          "oldPrice": 22738
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 25340,
+          "oldPrice": 25990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 48740,
+          "oldPrice": 49990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 63360,
+          "oldPrice": 64990
+        }
+      ]
+    },
+    {
+      "id": 822,
+      "name": "Electrolux Fusion 2.0 Super DC Inverter",
+      "brand": "Electrolux",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/188ca74d-5d3f-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Новинка",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 23990,
+          "oldPrice": 24488
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 26450,
+          "oldPrice": 26990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 34290,
+          "oldPrice": 34990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 58790,
+          "oldPrice": 59990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 75450,
+          "oldPrice": 76990
+        }
+      ]
+    },
+    {
+      "id": 823,
+      "name": "Electrolux Fusion 2.0",
+      "brand": "Electrolux",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/0262d489-d7bc-11ed-b733-005056013a69/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 19340,
+          "oldPrice": 19738
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 20690,
+          "oldPrice": 21113
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 29390,
+          "oldPrice": 29990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 48990,
+          "oldPrice": 49990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 63690,
+          "oldPrice": 64990
+        }
+      ]
+    },
+    {
+      "id": 824,
+      "name": "Electrolux Slide DC Inverter",
+      "brand": "Electrolux",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "21 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/88b54ba5-ffee-11ef-b8de-00505601218a/main_big.jpg",
+      "badge": "Ультратонкий",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 22770,
+          "oldPrice": 23238
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 24730,
+          "oldPrice": 25238
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 32820,
+          "oldPrice": 33490
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 56830,
+          "oldPrice": 57990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 72510,
+          "oldPrice": 73990
+        }
+      ]
+    },
+    {
+      "id": 825,
+      "name": "Electrolux Crystal Air Super DC Inverter",
+      "brand": "Electrolux",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "20 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/37efc26f-6304-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Премиум стекло",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.7 кВт",
+          "heating": "3.0 кВт",
+          "price": 77410,
+          "oldPrice": 78990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.8 кВт",
+          "price": 86230,
+          "oldPrice": 87990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.8 кВт",
+          "price": 122490,
+          "oldPrice": 124990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.5 кВт",
+          "price": 146990,
+          "oldPrice": 149990
+        }
+      ]
+    },
+    {
+      "id": 826,
+      "name": "Electrolux Enterprise Super DC Inverter",
+      "brand": "Electrolux",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "21 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/43c4c929-5d3e-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Флагман",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 55850,
+          "oldPrice": 56990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.8 кВт",
+          "price": 63690,
+          "oldPrice": 64990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.8 кВт",
+          "price": 97010,
+          "oldPrice": 98990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.5 кВт",
+          "price": 120530,
+          "oldPrice": 122990
+        }
+      ]
+    },
+    {
+      "id": 827,
+      "name": "Electrolux Air Gate 2 Black",
+      "brand": "Electrolux",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/55f47000-415a-11e8-a53a-ac162d7b6f40/main_big.jpg",
+      "badge": "Дизайн Black",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 23260,
+          "oldPrice": 23738
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 27430,
+          "oldPrice": 27990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 37230,
+          "oldPrice": 37990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 58790,
+          "oldPrice": 59990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 77410,
+          "oldPrice": 78990
+        }
+      ]
+    },
+    {
+      "id": 828,
+      "name": "Ballu iGreen Pro DC BSAGI",
+      "brand": "Ballu",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "21 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/b8dfa50a-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 20320,
+          "oldPrice": 20738
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 22280,
+          "oldPrice": 22738
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 32330,
+          "oldPrice": 32990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 55850,
+          "oldPrice": 56990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.2 кВт",
+          "price": 71530,
+          "oldPrice": 72990
+        }
+      ]
+    },
+    {
+      "id": 829,
+      "name": "Ballu Greenland BSGR",
+      "brand": "Ballu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "23 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/d7df3972-c8a2-11ed-b733-005056013a69/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 18120,
+          "oldPrice": 18490
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 19830,
+          "oldPrice": 20238
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 27920,
+          "oldPrice": 28490
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 48990,
+          "oldPrice": 49990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 62710,
+          "oldPrice": 63990
+        }
+      ]
+    },
+    {
+      "id": 830,
+      "name": "Ballu Boho DC BSHPI",
+      "brand": "Ballu",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "20 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/44754ba1-6304-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Тканевая панель",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.7 кВт",
+          "heating": "3.0 кВт",
+          "price": 58790,
+          "oldPrice": 59990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.8 кВт",
+          "price": 67610,
+          "oldPrice": 68990
+        }
+      ]
+    },
+    {
+      "id": 831,
+      "name": "Ballu Platinum Black DC BSNI",
+      "brand": "Ballu",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "19 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/8e6dbca9-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Black Edition",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 48990,
+          "oldPrice": 49990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.8 кВт",
+          "price": 55850,
+          "oldPrice": 56990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.6 кВт",
+          "price": 88190,
+          "oldPrice": 89990
+        }
+      ]
+    },
+    {
+      "id": 832,
+      "name": "Ballu Ice Peak DC BSPI",
+      "brand": "Ballu",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "19 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/32a9e14a-5b40-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Тепловой насос -30°C",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.7 кВт",
+          "heating": "3.2 кВт",
+          "price": 78390,
+          "oldPrice": 79990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.0 кВт",
+          "price": 88190,
+          "oldPrice": 89990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "6.0 кВт",
+          "price": 137190,
+          "oldPrice": 139990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.8 кВт",
+          "price": 166590,
+          "oldPrice": 169990
+        }
+      ]
+    },
+    {
+      "id": 833,
+      "name": "Royal Thermo Perfecto RTP",
+      "brand": "Royal Thermo",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/ae06a931-0c78-11ef-b8d8-00505601218a/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 18610,
+          "oldPrice": 18990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 19830,
+          "oldPrice": 20238
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 29390,
+          "oldPrice": 29990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 51440,
+          "oldPrice": 52490
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 66630,
+          "oldPrice": 67990
+        }
+      ]
+    },
+    {
+      "id": 834,
+      "name": "Royal Thermo Perfecto DC RTPI",
+      "brand": "Royal Thermo",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "21 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/55dfb0ae-5b40-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Новинка",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 28410,
+          "oldPrice": 28990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 31350,
+          "oldPrice": 31990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 37230,
+          "oldPrice": 37990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 61730,
+          "oldPrice": 62990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 78390,
+          "oldPrice": 79990
+        }
+      ]
+    },
+    {
+      "id": 835,
+      "name": "Royal Thermo Barocco DC Black RTBI-B",
+      "brand": "Royal Thermo",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/893adcb4-5b40-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Дизайн Black",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 51840,
+          "oldPrice": 52900
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 56050,
+          "oldPrice": 57200
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 88100,
+          "oldPrice": 89900
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 109760,
+          "oldPrice": 112000
+        }
+      ]
+    },
+    {
+      "id": 836,
+      "name": "SHUFT Soturai DC SFTHI",
+      "brand": "SHUFT",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/86923b1e-c51b-11ee-b8d6-00505601218a/main_big.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 18990,
+          "oldPrice": 19488
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 20950,
+          "oldPrice": 21488
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 23870,
+          "oldPrice": 24488
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 58790,
+          "oldPrice": 59990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 73490,
+          "oldPrice": 74990
+        }
+      ]
+    },
+    {
+      "id": 837,
+      "name": "SHUFT Tor DC SFTMI",
+      "brand": "SHUFT",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/649a37ee-cf98-11ed-b733-005056013a69/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 24490,
+          "oldPrice": 24990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 27430,
+          "oldPrice": 27990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 34290,
+          "oldPrice": 34990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 58790,
+          "oldPrice": 59990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 75450,
+          "oldPrice": 76990
+        }
+      ]
+    },
+    {
+      "id": 838,
+      "name": "Toshiba Shorai Edge RAS-B-G3KVS",
+      "brand": "Toshiba",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "19 дБ",
+      "country": "Таиланд",
+      "image": "https://rkcdn.ru/products/97b3992b-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Премиум A+++",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.0 кВт",
+          "heating": "2.5 кВт",
+          "price": 107700,
+          "oldPrice": 109900
+        },
+        {
+          "btu": 10000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "3.2 кВт",
+          "price": 122400,
+          "oldPrice": 124900
+        },
+        {
+          "btu": 13000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.2 кВт",
+          "price": 137100,
+          "oldPrice": 139900
+        },
+        {
+          "btu": 18000,
+          "area": 55,
+          "cooling": "5.0 кВт",
+          "heating": "6.0 кВт",
+          "price": 205700,
+          "oldPrice": 209900
+        },
+        {
+          "btu": 24000,
+          "area": 75,
+          "cooling": "7.0 кВт",
+          "heating": "8.0 кВт",
+          "price": 264500,
+          "oldPrice": 269900
+        }
+      ]
+    },
+    {
+      "id": 839,
+      "name": "Toshiba Haori RAS-B-N4KVR",
+      "brand": "Toshiba",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "19 дБ",
+      "country": "Таиланд",
+      "image": "https://rkcdn.ru/products/a19bf62d-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+      "badge": "Флагман Текстиль",
+      "variants": [
+        {
+          "btu": 10000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "3.2 кВт",
+          "price": 166500,
+          "oldPrice": 169900
+        },
+        {
+          "btu": 13000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.2 кВт",
+          "price": 186100,
+          "oldPrice": 189900
+        },
+        {
+          "btu": 16000,
+          "area": 50,
+          "cooling": "4.6 кВт",
+          "heating": "5.5 кВт",
+          "price": 235100,
+          "oldPrice": 239900
+        }
+      ]
+    },
+    {
+      "id": 840,
+      "name": "AC ELECTRIC PRO ACEM",
+      "brand": "AC ELECTRIC",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/5d503f92-8968-11f0-b8e0-00505601218a/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 15180,
+          "oldPrice": 15490
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 16150,
+          "oldPrice": 16488
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 21790,
+          "oldPrice": 22238
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 41150,
+          "oldPrice": 41990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 52910,
+          "oldPrice": 53990
+        }
+      ]
+    },
+    {
+      "id": 841,
+      "name": "AC ELECTRIC ACEMI",
+      "brand": "AC ELECTRIC",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/bbd22c2b-8966-11f0-b8e0-00505601218a/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 19590,
+          "oldPrice": 19990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 21050,
+          "oldPrice": 21488
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 23990,
+          "oldPrice": 24488
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 47030,
+          "oldPrice": 47990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 60750,
+          "oldPrice": 61990
+        }
+      ]
+    },
+    {
+      "id": 842,
+      "name": "ONE AIR OACT",
+      "brand": "ONE AIR",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "25 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/e29863ca-564d-11ef-b8d9-00505601218a/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 13700,
+          "oldPrice": 13988
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 14930,
+          "oldPrice": 15238
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 20560,
+          "oldPrice": 20988
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 37230,
+          "oldPrice": 37990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 48010,
+          "oldPrice": 48990
+        }
+      ]
+    },
+    {
+      "id": 843,
+      "name": "ONE AIR OATI",
+      "brand": "ONE AIR",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/7d8cae47-8d8f-11f0-b8e0-00505601218a/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 18610,
+          "oldPrice": 18990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 19590,
+          "oldPrice": 19990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 21540,
+          "oldPrice": 21988
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 44090,
+          "oldPrice": 44990
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 55850,
+          "oldPrice": 56990
+        }
+      ]
+    },
+    {
+      "id": 844,
+      "name": "RAPID RAM",
+      "brand": "RAPID",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "25 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/abb88eac-e2b1-11ee-b8d6-00505601218a/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 12360,
+          "oldPrice": 12613
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 13700,
+          "oldPrice": 13988
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 19340,
+          "oldPrice": 19738
+        }
+      ]
+    },
+    {
+      "id": 845,
+      "name": "RAPID RAMI",
+      "brand": "RAPID",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/a3a9c067-994f-11f0-b8e1-00505601218a/main_big.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 17630,
+          "oldPrice": 17990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 19100,
+          "oldPrice": 19490
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 20320,
+          "oldPrice": 20738
+        }
+      ]
+    },
+    {
+      "id": 846,
+      "name": "AURUS D DC Inverter",
+      "brand": "AURUS",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "15 дБ",
+      "country": "КНР",
+      "image": "https://rkcdn.ru/products/fa0289ba-d290-11ef-b8dc-00505601218a/main_big.jpg",
+      "badge": "Гарантия 7 лет",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 26,
+          "cooling": "2.6 кВт",
+          "heating": "3.2 кВт",
+          "price": 112700,
+          "oldPrice": 115000
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.2 кВт",
+          "price": 122500,
+          "oldPrice": 125000
+        },
+        {
+          "btu": 18000,
+          "area": 52,
+          "cooling": "5.3 кВт",
+          "heating": "5.8 кВт",
+          "price": 171500,
+          "oldPrice": 175000
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.8 кВт",
+          "price": 210700,
+          "oldPrice": 215000
+        }
+      ]
+    },
+    {
+      "id": 847,
+      "name": "Axioma Серия F R32",
+      "brand": "Axioma",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "23 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/e1c/s1d3l0r8cr4b6jjo8pdika7n8wgxp8xd/l7zeo3sfglb4hymp7a63xkj2wpei4m4r.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.1 кВт",
+          "price": 18610,
+          "oldPrice": 18990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "2.5 кВт",
+          "price": 20660,
+          "oldPrice": 21090
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.4 кВт",
+          "heating": "3.4 кВт",
+          "price": 26450,
+          "oldPrice": 26990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "4.8 кВт",
+          "heating": "4.8 кВт",
+          "price": 42130,
+          "oldPrice": 42990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.8 кВт",
+          "heating": "6.8 кВт",
+          "price": 53890,
+          "oldPrice": 54990
+        }
+      ]
+    },
+    {
+      "id": 848,
+      "name": "Axioma Серия F Инвертор R32",
+      "brand": "Axioma",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "21 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/dd6/1imp5g86l86iuzqj8p1k9g1lqpf84p2c/7xygyht1vt9twsadsrkn7owix2s8x0fw.jpg",
+      "badge": "Новинка",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.05 кВт",
+          "heating": "2.35 кВт",
+          "price": 26450,
+          "oldPrice": 26990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 28410,
+          "oldPrice": 28990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.4 кВт",
+          "heating": "3.4 кВт",
+          "price": 31350,
+          "oldPrice": 31990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "4.8 кВт",
+          "heating": "4.8 кВт",
+          "price": 54280,
+          "oldPrice": 55390
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.8 кВт",
+          "heating": "7.0 кВт",
+          "price": 68590,
+          "oldPrice": 69990
+        }
+      ]
+    },
+    {
+      "id": 849,
+      "name": "Daichi Айс 2 Инвертор",
+      "brand": "Daichi",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "21 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/be2/2vlp8zzvhir9rwbj1dkvy4baw7xzed7v/sd8epmyc0czjbblkmyv9lrhhefp7exuj.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 28410,
+          "oldPrice": 28990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 31350,
+          "oldPrice": 31990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.4 кВт",
+          "heating": "3.5 кВт",
+          "price": 35270,
+          "oldPrice": 35990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.1 кВт",
+          "heating": "5.3 кВт",
+          "price": 58790,
+          "oldPrice": 59990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.2 кВт",
+          "heating": "6.5 кВт",
+          "price": 107390,
+          "oldPrice": 109590
+        }
+      ]
+    },
+    {
+      "id": 850,
+      "name": "Daichi Миракл R32",
+      "brand": "Daichi",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/b79/yot70myx4tdiuon95zzhmdx1o4bu40k8/2f9npwq5u14p12vkykb3aue45yd8aour.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 25470,
+          "oldPrice": 25990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 27920,
+          "oldPrice": 28490
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 34290,
+          "oldPrice": 34990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.42 кВт",
+          "price": 69760,
+          "oldPrice": 71190
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.33 кВт",
+          "heating": "7.62 кВт",
+          "price": 85440,
+          "oldPrice": 87190
+        }
+      ]
+    },
+    {
+      "id": 851,
+      "name": "Daichi Миракл Инвертор",
+      "brand": "Daichi",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "21 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/a6e/1uurigj71opqxjp7yy00lf8yerbekoza/763qermcbm5uxmgp30unfz266i51yt0i.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 34290,
+          "oldPrice": 34990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 38210,
+          "oldPrice": 38990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.7 кВт",
+          "price": 44090,
+          "oldPrice": 44990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.6 кВт",
+          "price": 88190,
+          "oldPrice": 89990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.84 кВт",
+          "heating": "7.1 кВт",
+          "price": 132290,
+          "oldPrice": 134990
+        }
+      ]
+    },
+    {
+      "id": 852,
+      "name": "Daichi Альпайн Инвертор",
+      "brand": "Daichi",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "19 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/6d9/2jlnbdg639wa15tnyefxm26bmgy9ywfb/3eq3ztzu9wu0za9g8owg77dw5llyq91d.jpg",
+      "badge": "Премиум A+++",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.35 кВт",
+          "heating": "2.43 кВт",
+          "price": 40750,
+          "oldPrice": 41590
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.65 кВт",
+          "heating": "2.85 кВт",
+          "price": 45070,
+          "oldPrice": 45990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.75 кВт",
+          "price": 50950,
+          "oldPrice": 51990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.6 кВт",
+          "price": 83290,
+          "oldPrice": 84990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.4 кВт",
+          "price": 103870,
+          "oldPrice": 105990
+        }
+      ]
+    },
+    {
+      "id": 853,
+      "name": "Daichi Сибериа Инвертор",
+      "brand": "Daichi",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "20 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/288/b225irw1hbgje3dk2juz769bgfd9bapi/g9z241r74whuyceakbmrecid19k274oy.jpg",
+      "badge": "Тепловой насос -25°C",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.7 кВт",
+          "heating": "3.0 кВт",
+          "price": 63980,
+          "oldPrice": 65290
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.8 кВт",
+          "price": 71530,
+          "oldPrice": 72990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.8 кВт",
+          "price": 113670,
+          "oldPrice": 115990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.5 кВт",
+          "price": 143070,
+          "oldPrice": 145990
+        }
+      ]
+    },
+    {
+      "id": 854,
+      "name": "Daichi Эверест Инвертор",
+      "brand": "Daichi",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/7db/9345zuwtjj0x12p8i8h1hjc25p60kwx8/ffcceac8399e0f4dbb7c3f328a8e9963.jpg",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 34290,
+          "oldPrice": 34990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.7 кВт",
+          "price": 39190,
+          "oldPrice": 39990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.5 кВт",
+          "price": 73490,
+          "oldPrice": 74990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.2 кВт",
+          "price": 93090,
+          "oldPrice": 94990
+        }
+      ]
+    },
+    {
+      "id": 855,
+      "name": "Primera Лаунж 2",
+      "brand": "Primera",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/98d/yrrt0e99q0u77wss43qsg9xt4uuqjf1a/i70sjl39mm3js4r252zlmdkxy0qi347j.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 17630,
+          "oldPrice": 17990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 19400,
+          "oldPrice": 19799
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 24490,
+          "oldPrice": 24990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 41150,
+          "oldPrice": 41990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.2 кВт",
+          "price": 52910,
+          "oldPrice": 53990
+        }
+      ]
+    },
+    {
+      "id": 856,
+      "name": "Primera Лаунж Инвертор 2",
+      "brand": "Primera",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/492/gi6uuxg6sousfu2ogigxbb78z6x0wr3p/4w1305t3yl3kt7crxcn1girdoc3nhoi1.jpg",
+      "badge": "Новинка",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.35 кВт",
+          "price": 24690,
+          "oldPrice": 25199
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 27430,
+          "oldPrice": 27990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 31350,
+          "oldPrice": 31990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.5 кВт",
+          "price": 53890,
+          "oldPrice": 54990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.2 кВт",
+          "price": 67610,
+          "oldPrice": 68990
+        }
+      ]
+    },
+    {
+      "id": 857,
+      "name": "Primera Классик",
+      "brand": "Primera",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "25 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/98d/yrrt0e99q0u77wss43qsg9xt4uuqjf1a/i70sjl39mm3js4r252zlmdkxy0qi347j.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 16650,
+          "oldPrice": 16990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 18610,
+          "oldPrice": 18990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 23510,
+          "oldPrice": 23990
+        }
+      ]
+    },
+    {
+      "id": 858,
+      "name": "Midea Футура Инвертор",
+      "brand": "Midea",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "21 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/0a9/x7f17c8sj8ei8ototd0ge5lwucezdly8/0eebv7y1ywl56vq5335u7zzpr140cavt.jpg",
+      "badge": "Новинка",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.35 кВт",
+          "heating": "2.43 кВт",
+          "price": 29390,
+          "oldPrice": 29990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 32330,
+          "oldPrice": 32990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.52 кВт",
+          "heating": "3.66 кВт",
+          "price": 36250,
+          "oldPrice": 36990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.28 кВт",
+          "heating": "5.57 кВт",
+          "price": 62710,
+          "oldPrice": 63990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.03 кВт",
+          "heating": "7.33 кВт",
+          "price": 81330,
+          "oldPrice": 82990
+        }
+      ]
+    },
+    {
+      "id": 859,
+      "name": "Midea Форест",
+      "brand": "Midea",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/802/r76lm5kms1ksg6ia6i4e2sdes37o6rzq/u2evu5b1zizk5f1epp11nw3109a3p0bz.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 27430,
+          "oldPrice": 27990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 30370,
+          "oldPrice": 30990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 38210,
+          "oldPrice": 38990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 60750,
+          "oldPrice": 61990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.2 кВт",
+          "price": 77410,
+          "oldPrice": 78990
+        }
+      ]
+    },
+    {
+      "id": 860,
+      "name": "Midea Оазис Плюс Super DC",
+      "brand": "Midea",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "19 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/836/eq9zm8srdkc989b07ze95disks4h5ke1/on89axltbpjjggdaak9h7m5zdg587etj.jpg",
+      "badge": "Тепловой насос -30°C",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "3.5 кВт",
+          "price": 97010,
+          "oldPrice": 98990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.2 кВт",
+          "price": 112690,
+          "oldPrice": 114990
+        }
+      ]
+    },
+    {
+      "id": 861,
+      "name": "Kentatsu Кумо Инвертор",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/405/ybovzzallea6a5ro8r0kenwyqk9s6gzi/cj008w8jg37almzlj51ycds3nickqmpp.jpg",
+      "badge": "Хит",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 34290,
+          "oldPrice": 34990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 37230,
+          "oldPrice": 37990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 42130,
+          "oldPrice": 42990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.5 кВт",
+          "price": 70550,
+          "oldPrice": 71990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 88190,
+          "oldPrice": 89990
+        }
+      ]
+    },
+    {
+      "id": 862,
+      "name": "Kentatsu Браво",
+      "brand": "Kentatsu",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/b5b/1hqfxn4ys0c4lmr2ywtsiy4tiolljdp8/8ce21f2559b35cfefb695a159a64a75f.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 24490,
+          "oldPrice": 24990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 26940,
+          "oldPrice": 27490
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 34290,
+          "oldPrice": 34990
+        }
+      ]
+    },
+    {
+      "id": 863,
+      "name": "Kentatsu Рио Инвертор",
+      "brand": "Kentatsu",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "22 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/6a5/lvc3s5zzn9lkt2w0dp80rz1klz99o833/5zmzzsbkyns0vccq040tffxxzfl4w7sb.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.2 кВт",
+          "heating": "2.3 кВт",
+          "price": 33310,
+          "oldPrice": 33990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.8 кВт",
+          "price": 36250,
+          "oldPrice": 36990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 41150,
+          "oldPrice": 41990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.5 кВт",
+          "price": 68590,
+          "oldPrice": 69990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 87210,
+          "oldPrice": 88990
+        }
+      ]
+    },
+    {
+      "id": 864,
+      "name": "Bosch Climate 3000i Инвертор",
+      "brand": "Bosch",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "20 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/4a7/oiz3t120d0z43rf2hsciuldjayrxzsxw/ebc7f52c6f1eab116aa3591e43bba8d5.jpg",
+      "badge": "Bosch Немецкое качество",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.9 кВт",
+          "price": 48990,
+          "oldPrice": 49990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.8 кВт",
+          "price": 55850,
+          "oldPrice": 56990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.6 кВт",
+          "price": 88190,
+          "oldPrice": 89990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 117590,
+          "oldPrice": 119990
+        }
+      ]
+    },
+    {
+      "id": 865,
+      "name": "Bosch Climate 8000i Инвертор",
+      "brand": "Bosch",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "19 дБ",
+      "country": "Германия",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/d5e/y3yg6lpv4z50p0gd1gcovp5192deh7se/74e9e9a453eece99c3156ccb6a73714d.jpg",
+      "badge": "Премиум Стекло",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "3.2 кВт",
+          "price": 117590,
+          "oldPrice": 119990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.2 кВт",
+          "price": 137190,
+          "oldPrice": 139990
+        }
+      ]
+    },
+    {
+      "id": 866,
+      "name": "Daikin FTXF-E Sensira",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": false,
+      "noise": "20 дБ",
+      "country": "Чехия",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/a39/devwxp5hq2y8agyxddq5cf80ocwvx3ps/2n0zsjxvf2gbvt0iilv0ap3fadj658su.jpg",
+      "badge": "Премиум Daikin",
+      "variants": [
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "2.8 кВт",
+          "price": 118280,
+          "oldPrice": 120700
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.0 кВт",
+          "price": 136120,
+          "oldPrice": 138900
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.0 кВт",
+          "heating": "6.0 кВт",
+          "price": 194530,
+          "oldPrice": 198500
+        },
+        {
+          "btu": 24000,
+          "area": 65,
+          "cooling": "6.0 кВт",
+          "heating": "6.4 кВт",
+          "price": 240100,
+          "oldPrice": 245000
+        }
+      ]
+    },
+    {
+      "id": 867,
+      "name": "Daikin FTXJ Emura 3",
+      "brand": "Daikin",
+      "type": "Инверторный",
+      "smartHome": true,
+      "noise": "19 дБ",
+      "country": "Чехия",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/8e6/cs1pl0qf98lrmfmwhnv72usjedh0x6z8/e73201906a8558449947be23bc61cbec.jpg",
+      "badge": "Флагман Daikin",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.0 кВт",
+          "heating": "2.5 кВт",
+          "price": 234220,
+          "oldPrice": 239000
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.5 кВт",
+          "heating": "2.8 кВт",
+          "price": 254500,
+          "oldPrice": 259700
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "4.0 кВт",
+          "price": 293020,
+          "oldPrice": 299000
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.0 кВт",
+          "heating": "5.8 кВт",
+          "price": 381220,
+          "oldPrice": 389000
+        }
+      ]
+    },
+    {
+      "id": 868,
+      "name": "Coolup Genius",
+      "brand": "Coolup",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/445/2minqt2kfszs13uj6unopmi2d6dl9elm/484729bd6wx5925sp0xk88pq6ojjid07.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 16650,
+          "oldPrice": 16990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.7 кВт",
+          "price": 18610,
+          "oldPrice": 18990
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 24490,
+          "oldPrice": 24990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 42130,
+          "oldPrice": 42990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "6.45 кВт",
+          "heating": "6.74 кВт",
+          "price": 55550,
+          "oldPrice": 56690
+        }
+      ]
+    },
+    {
+      "id": 869,
+      "name": "Asita Асита",
+      "brand": "Asita",
+      "type": "Обычный",
+      "smartHome": false,
+      "noise": "24 дБ",
+      "country": "КНР",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/430/8uila3azm8ut8crfh3znaief5aehvbvs/j2thpji7c8bhey6wbaoqbzsvq95i15yb.jpg",
+      "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "2.2 кВт",
+          "price": 19590,
+          "oldPrice": 19990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.64 кВт",
+          "heating": "2.78 кВт",
+          "price": 21740,
+          "oldPrice": 22190
+        },
+        {
+          "btu": 12000,
+          "area": 35,
+          "cooling": "3.5 кВт",
+          "heating": "3.6 кВт",
+          "price": 28410,
+          "oldPrice": 28990
+        },
+        {
+          "btu": 18000,
+          "area": 50,
+          "cooling": "5.3 кВт",
+          "heating": "5.4 кВт",
+          "price": 46050,
+          "oldPrice": 46990
+        },
+        {
+          "btu": 24000,
+          "area": 70,
+          "cooling": "7.0 кВт",
+          "heating": "7.3 кВт",
+          "price": 58790,
+          "oldPrice": 59990
         }
       ]
     }

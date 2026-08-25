@@ -8,8 +8,12 @@ export default function ScrollToTop() {
   const { pathname } = useLocation();
   const [visible, setVisible] = useState(false);
 
-  // Сброс прокрутки вверх при каждом переходе между страницами или карточками
+  // Сброс прокрутки вверх при каждом переходе между страницами, если не восстанавливается позиция карточки в каталоге
   useEffect(() => {
+    const hasScrollTarget = sessionStorage.getItem("catalog_last_card_id");
+    if (hasScrollTarget && (pathname === "/kondicionery" || pathname === "/")) {
+      return;
+    }
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname]);
 
