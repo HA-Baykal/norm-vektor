@@ -51,8 +51,9 @@ export default function ConditionerPage() {
   const [bookingOpen, setBookingOpen] = useState(false);
 
   const variant = item.variants.find((v) => v.btu === selectedBtu) ?? item.variants[0];
-  const isCassette = item.type === "Полупромышленный";
-  const totalPrice = variant.price + (withInstall && !isCassette ? INSTALL_PRICE : 0);
+  const isMobile = item.type === "Мобильный";
+  const isInstallOnRequest = item.type === "Полупромышленный" || item.type === "Промышленный";
+  const totalPrice = variant.price + (withInstall && !isMobile && !isInstallOnRequest ? INSTALL_PRICE : 0);
   const discount = variant.oldPrice ? variant.oldPrice - variant.price : 0;
 
   // Генерируем полный профессиональный техпаспорт с баз Русклимат и Даичи
@@ -182,7 +183,12 @@ export default function ConditionerPage() {
   useEffect(() => {
     const variantPrice = variant.price;
     const titleText = `Кондиционер ${fullName} (${selectedBtu} BTU, до ${variant.area} м²) — купить в Иркутске от ${formatRub(variantPrice)} | Вектор Комфорта`;
-    const descText = `${item.type} сплит-система ${item.name} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене ${formatRub(variantPrice)} со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия завода до 5 лет. Профессиональный монтаж без пыли!`;
+    const installPhrase = isMobile
+      ? "Монтаж не требуется — достаточно розетки 220 В."
+      : isInstallOnRequest
+        ? "Монтаж рассчитывается индивидуально после осмотра объекта."
+        : "Профессиональный монтаж без пыли!";
+    const descText = `${item.type} сплит-система ${item.name} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене ${formatRub(variantPrice)} со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия завода до 5 лет. ${installPhrase}`;
     
     // Canonical URL БЕЗ параметра ?btu= (чтобы не было дублей в поиске)
     const cleanUrl = window.location.origin + window.location.pathname;
@@ -376,7 +382,9 @@ export default function ConditionerPage() {
                   <span className="text-emerald-600 shrink-0 ml-1">✓ В наличии</span>
                 </div>
                 <p className="leading-relaxed">
-                  Мы работаем со складами официальных дистрибьюторов в Иркутске. На всю климатическую технику предоставляется гарантия завода, а наш монтаж сопровождает эту гарантию на весь период гарантии сплит-системы.
+                  {isMobile
+                    ? "Мы работаем со складами официальных дистрибьюторов в Иркутске. На мобильный кондиционер предоставляется официальная гарантия завода."
+                    : "Мы работаем со складами официальных дистрибьюторов в Иркутске. На всю климатическую технику предоставляется гарантия завода, а наш монтаж сопровождает эту гарантию на весь период гарантии сплит-системы."}
                 </p>
               </div>
             </div>
@@ -442,10 +450,10 @@ export default function ConditionerPage() {
                   </div>
                 </div>
 
-                {/* Чекбокс стандартного монтажа */}
-                {isCassette ? (
+                {/* Условия монтажа */}
+                {isMobile ? null : isInstallOnRequest ? (
                   <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 text-sm font-bold text-slate-700">
-                    📐 Монтаж полупромышленных сплит-систем рассчитывается индивидуально после осмотра объекта в Иркутске
+                    📐 {item.type === "Промышленный" ? "Монтаж промышленных моноблоков" : "Монтаж полупромышленных сплит-систем"} рассчитывается индивидуально после осмотра объекта в Иркутске
                   </div>
                 ) : (
                   <label className="flex cursor-pointer items-center justify-between gap-3 rounded-2xl bg-slate-50 border border-slate-200 p-4 hover:border-[#ff6b35] transition">
@@ -470,7 +478,7 @@ export default function ConditionerPage() {
                 <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
                   <div>
                     <div className="text-xs font-bold text-slate-400 uppercase">
-                      {isCassette ? "Цена оборудования со склада" : withInstall ? "Кондиционер + установка" : "Цена кондиционера со склада"}
+                      {isInstallOnRequest ? "Цена оборудования со склада" : isMobile ? "Цена кондиционера со склада" : withInstall ? "Кондиционер + установка" : "Цена кондиционера со склада"}
                     </div>
                     <div className="flex items-end gap-3 mt-1">
                       <div className="text-3xl sm:text-4xl font-black text-[#1a3a5c]">
@@ -555,17 +563,17 @@ export default function ConditionerPage() {
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Тип и марка компрессора</span><span className="font-black text-blue-700 text-right max-w-[200px] sm:max-w-none truncate">{officialSpecs.compressorBrand}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Мощность охлаждения / обогрева</span><span className="font-black text-slate-800">{variant.cooling} / {variant.heating}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Индекс мощности в BTU</span><span className="font-black text-[#ff6b35]">{selectedBtu.toLocaleString("ru-RU")} BTU</span></li>
-                            <li className="flex justify-between pt-2"><span className="text-slate-500">Уровень шума внутреннего блока</span><span className="font-black text-emerald-600">{officialSpecs.minNoise}</span></li>
+                            <li className="flex justify-between pt-2"><span className="text-slate-500">{isMobile ? "Уровень шума" : "Уровень шума внутреннего блока"}</span><span className="font-black text-emerald-600">{officialSpecs.minNoise}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Класс энергоэффективности</span><span className="font-black text-slate-800">{officialSpecs.energyClass}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Хладагент (Тип фреона)</span><span className="font-black text-slate-800">{officialSpecs.refrigerant} (вес: {officialSpecs.freonWeight})</span></li>
-                            <li className="flex justify-between pt-2"><span className="text-slate-500">Диаметр труб медной трассы</span><span className="font-black text-slate-800">{officialSpecs.pipes}</span></li>
+                            <li className="flex justify-between pt-2"><span className="text-slate-500">{isMobile ? "Фреоновая трасса" : "Диаметр труб медной трассы"}</span><span className="font-black text-slate-800">{officialSpecs.pipes}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Поддерживаемый климат в помещении</span><span className="font-black text-slate-800">{officialSpecs.indoorTempRange}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Рабочий диапазон на обогрев зимой</span><span className="font-black text-slate-800">{officialSpecs.winterRange}</span></li>
-                            <li className="flex justify-between pt-2"><span className="text-slate-500">Уровень шума внешнего блока</span><span className="font-black text-slate-800">{officialSpecs.maxOutdoorNoise}</span></li>
+                            <li className="flex justify-between pt-2"><span className="text-slate-500">{isMobile ? "Наружный блок" : "Уровень шума внешнего блока"}</span><span className="font-black text-slate-800">{isMobile ? "Не требуется" : officialSpecs.maxOutdoorNoise}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Допустимое напряжение питания</span><span className="font-black text-slate-800">{officialSpecs.voltageRange}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Срок службы оборудования</span><span className="font-black text-slate-800">{officialSpecs.serviceLife}</span></li>
                             <li className="flex justify-between pt-2"><span className="text-slate-500">Страна сборки завода-изготовителя</span><span className="font-black text-slate-800">{item.country}</span></li>
-                            <li className="flex justify-between pt-2"><span className="text-slate-500">Гарантия на оборудование и монтаж</span><span className="font-black text-[#1a3a5c]">{officialSpecs.warrantyYears}</span></li>
+                            <li className="flex justify-between pt-2"><span className="text-slate-500">{isMobile ? "Гарантия на оборудование" : "Гарантия на оборудование и монтаж"}</span><span className="font-black text-[#1a3a5c]">{officialSpecs.warrantyYears}</span></li>
                           </ul>
                         </div>
 
@@ -586,7 +594,11 @@ export default function ConditionerPage() {
 
                         <div className="p-4 rounded-2xl bg-[#1a3a5c] text-white text-xs space-y-1">
                           <div className="font-extrabold text-amber-400">💡 Сервис «Вектор Комфорта» в Иркутске:</div>
-                          <div>Мы работаем со складами официальных дистрибьюторов в Иркутске. На всю климатическую технику предоставляется гарантия завода, а наш монтаж сопровождает эту гарантию на весь период гарантии сплит-системы.</div>
+                          <div>
+                            {isMobile
+                              ? "Мы работаем со складами официальных дистрибьюторов в Иркутске. На мобильный кондиционер предоставляется официальная гарантия завода."
+                              : "Мы работаем со складами официальных дистрибьюторов в Иркутске. На всю климатическую технику предоставляется гарантия завода, а наш монтаж сопровождает эту гарантию на весь период гарантии сплит-системы."}
+                          </div>
                         </div>
 
                       </div>
@@ -675,7 +687,7 @@ export default function ConditionerPage() {
         open={bookingOpen}
         onClose={() => setBookingOpen(false)}
         serviceName={`Заказ сплит-системы: ${fullName}`}
-        calcDetails={`Выбранная мощность: ${selectedBtu} BTU (до ${variant.area} м²), Стандартный монтаж: ${withInstall ? "Да (+18 000 ₽)" : "Нет"}, Итог: ${formatRub(totalPrice)}`}
+        calcDetails={`Выбранная мощность: ${selectedBtu} BTU (до ${variant.area} м²)${isMobile ? "" : isInstallOnRequest ? ", Монтаж: рассчитывается после осмотра объекта" : `, Стандартный монтаж: ${withInstall ? "Да (+18 000 ₽)" : "Нет"}`}, Итог: ${formatRub(totalPrice)}`}
       />
 
       {zoomOpen && allImages.length > 0 && (

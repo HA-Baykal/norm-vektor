@@ -1053,7 +1053,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/resize_cache/iblock/42c/5wl0fqjvbxhdliv5ji6fbh1rtgvn0rpo/640_440_1/ehf3fuc8ko80vmrjh5k8cc0jo0bbpocd.jpg",
+    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/42c/5wl791d9vk3o99pvxkixzmpdkeemkm0f/ehfss7ww5a43lcv5clyyk4armm4fk913.jpg",
     variants: [
       { btu: 7000, area: 20, cooling: "2.25 кВт", heating: "2.3 кВт", price: 26918, oldPrice: 28501 },
       { btu: 9000, area: 25, cooling: "2.55 кВт", heating: "2.65 кВт", price: 28550, oldPrice: 30229 },
@@ -1070,7 +1070,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/resize_cache/iblock/710/drwtr41sxpg3s3nms955bfin132y5dy1/640_440_1/ocobu8udxobthmgjlrlvkpgkv1olucch.jpg",
+    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/710/drwtr41sxpg3s3nms955bfin132y5dy1/ocobu8udxobthmgjlrlvkpgkv1olucch.jpg",
     variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.63 кВт", price: 31814, oldPrice: 33685 },
       { btu: 12000, area: 35, cooling: "3.4 кВт", heating: "3.42 кВт", price: 34976, oldPrice: 37033 },
@@ -1086,7 +1086,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/resize_cache/iblock/4fe/c58p0gwt6pyekq93fxkd29l92pdzo9hm/640_440_1/ka688tv5a1mpf9bt0xjvn7rqc2szix5g.jpg",
+    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/4fe/c58p0gwt6pyekq93fxkd29l92pdzo9hm/ka688tv5a1mpf9bt0xjvn7rqc2szix5g.jpg",
     variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.61 кВт", price: 50480, oldPrice: 53449 },
       { btu: 12000, area: 35, cooling: "3.4 кВт", heating: "3.42 кВт", price: 54560, oldPrice: 57769 },
@@ -1102,7 +1102,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/629/47fh7nuvm89kjevtvus0veigy97ak817/1472051cafa413bc982fbc6f387cb4c6.jpg",
+    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/629/vdooa3gzbcifmel6a9wfnp8trbirr569/b7fd74dec948d4af1f26bbb1b46f2016.jpg",
     variants: [
       { btu: 7000, area: 20, cooling: "2.3 кВт", heating: "2.3 кВт", price: 22226, oldPrice: 23533 },
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.8 кВт", price: 24266, oldPrice: 25693 },
@@ -1132,7 +1132,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/b47/5rx7jwm6ylcrcxw26kln1cl600q61zp4/pe2bqlidoj86vsns8vfvnx7t2xaoxuty.jpg",
+    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/cb7/qvtew425uo0gyy6a4g9g5gv78ipxpoma/91f97eae39a3423c610cd44648bac2dc.jpg",
     variants: [
       { btu: 36000, area: 100, cooling: "10.0 кВт", heating: "10.8 кВт", price: 157682, oldPrice: 166957 },
     ],
@@ -1159,17 +1159,17 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/resize_cache/iblock/6fd/tgfmmmrb6xlxl4pjcumptdzy1xyapolm/640_440_1/0a5b4ed4e7c31e4506c6191057cee8f4.jpg",
+    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/6fd/tgf3y3x5l56y8v1lvfksqsmebah5m3z5/0a5f716d339ce2deaf5a0c4cb6228030.jpg",
     variants: [
       { btu: 18000, area: 50, cooling: "5.28 кВт", heating: "5.57 кВт", price: 84446, oldPrice: 89413 },
       { btu: 24000, area: 70, cooling: "7.03 кВт", heating: "7.33 кВт", price: 106478, oldPrice: 112741 },
     ],
   },
 
-    // Мобильные и промышленные (B2B Русклимат + daichi.market), 25.08.2026
+// Мобильные и промышленные (B2B Русклимат + daichi.market), 25.08.2026
   {
     id: 754,
-    name: "Ballu Orbis BPAC-08",
+    name: "Ballu Orbis BPAC",
     brand: "Ballu",
     type: "Мобильный",
     smartHome: false,
@@ -1178,20 +1178,8 @@ export const conditioners: Conditioner[] = [
     image: "https://rkcdn.ru/products/ab3696a4-cc02-11ee-b8d6-00505601218a/main_big.jpg",
     badge: "Без монтажа",
     variants: [
+      { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 23611, oldPrice: 23990 },
       { btu: 8000, area: 22, cooling: "2.3 кВт", heating: "—", price: 28939, oldPrice: 29790 },
-    ],
-  },
-  {
-    id: 755,
-    name: "Ballu Orbis BPAC-09",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/2b25ce08-6ec1-11ef-b8db-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 26668, oldPrice: 26990 },
     ],
   },
@@ -1225,7 +1213,7 @@ export const conditioners: Conditioner[] = [
   },
   {
     id: 758,
-    name: "Ballu Eclipse BPAC-07 EPW white",
+    name: "Ballu Eclipse BPAC EPW white",
     brand: "Ballu",
     type: "Мобильный",
     smartHome: false,
@@ -1235,19 +1223,6 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 31228, oldPrice: 31990 },
-    ],
-  },
-  {
-    id: 759,
-    name: "Ballu Eclipse BPAC-10 EPW white",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/cf4e5270-b798-11ef-b8dc-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 10000, area: 27, cooling: "2.9 кВт", heating: "—", price: 35413, oldPrice: 35990 },
     ],
   },
@@ -1323,7 +1298,7 @@ export const conditioners: Conditioner[] = [
   },
   {
     id: 765,
-    name: "Ballu Stella BPAC-07",
+    name: "Ballu Stella BPAC",
     brand: "Ballu",
     type: "Мобильный",
     smartHome: false,
@@ -1333,25 +1308,12 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 23029, oldPrice: 23590 },
-    ],
-  },
-  {
-    id: 766,
-    name: "Ballu Stella BPAC-09",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/f6cfd23e-1058-11f0-b8de-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 25430, oldPrice: 25990 },
     ],
   },
   {
     id: 767,
-    name: "Ballu Selen BPAC-07",
+    name: "Ballu Selen BPAC",
     brand: "Ballu",
     type: "Мобильный",
     smartHome: false,
@@ -1361,33 +1323,7 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 24650, oldPrice: 24990 },
-    ],
-  },
-  {
-    id: 768,
-    name: "Ballu Selen BPAC-09",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/ad196063-d7d5-11ef-b8dc-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 27284, oldPrice: 27990 },
-    ],
-  },
-  {
-    id: 769,
-    name: "Ballu Selen BPAC-12",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/53b3a773-d7d6-11ef-b8dc-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 12000, area: 35, cooling: "3.5 кВт", heating: "—", price: 35169, oldPrice: 35990 },
     ],
   },
@@ -1435,7 +1371,7 @@ export const conditioners: Conditioner[] = [
   },
   {
     id: 773,
-    name: "Ballu Platinum X4 BPHS-09",
+    name: "Ballu Platinum X4 BPHS",
     brand: "Ballu",
     type: "Мобильный",
     smartHome: false,
@@ -1445,25 +1381,12 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.4 кВт", price: 36377, oldPrice: 36990 },
-    ],
-  },
-  {
-    id: 774,
-    name: "Ballu Platinum X4 BPHS-14",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/ababf433-1d67-11f1-b8e1-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 14000, area: 40, cooling: "4.1 кВт", heating: "3.7 кВт", price: 45153, oldPrice: 45990 },
     ],
   },
   {
     id: 775,
-    name: "Ballu Platinum X4 BPHS-09 + UniPort",
+    name: "Ballu Platinum X4 BPHS + UniPort",
     brand: "Ballu",
     type: "Мобильный",
     smartHome: false,
@@ -1473,39 +1396,13 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.4 кВт", price: 38255, oldPrice: 38990 },
-    ],
-  },
-  {
-    id: 776,
-    name: "Ballu Platinum X4 BPHS-12 + UniPort",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/4c153770-5dd5-11f1-b8e3-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 12000, area: 35, cooling: "3.5 кВт", heating: "3.2 кВт", price: 43377, oldPrice: 43990 },
-    ],
-  },
-  {
-    id: 777,
-    name: "Ballu Platinum X4 BPHS-14 + UniPort",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/4c153774-5dd5-11f1-b8e3-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 14000, area: 40, cooling: "4.1 кВт", heating: "3.7 кВт", price: 47119, oldPrice: 47990 },
     ],
   },
   {
     id: 778,
-    name: "Ballu Platinum Comfort BPHS-08H",
+    name: "Ballu Platinum Comfort BPHS-H",
     brand: "Ballu",
     type: "Мобильный",
     smartHome: false,
@@ -1515,53 +1412,13 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 8000, area: 22, cooling: "2.3 кВт", heating: "2.1 кВт", price: 33310, oldPrice: 33990 },
-    ],
-  },
-  {
-    id: 779,
-    name: "Ballu Platinum Comfort BPHS-11H",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/dfb0eaec-fada-11ed-b736-005056013a69/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 11000, area: 30, cooling: "3.2 кВт", heating: "3.0 кВт", price: 37922, oldPrice: 38990 },
-    ],
-  },
-  {
-    id: 780,
-    name: "Ballu Platinum Comfort BPHS-13H",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/dfb0eaee-fada-11ed-b736-005056013a69/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 13000, area: 35, cooling: "3.8 кВт", heating: "3.5 кВт", price: 42491, oldPrice: 42990 },
     ],
   },
   {
-    id: 781,
-    name: "Ballu Orbis BPAC-07",
-    brand: "Ballu",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/ab3696a4-cc02-11ee-b8d6-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
-      { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 23611, oldPrice: 23990 },
-    ],
-  },
-  {
     id: 782,
-    name: "Ballu Heavy Pro BGK5",
+    name: "Ballu Heavy Pro BGK",
     brand: "Ballu",
     type: "Промышленный",
     smartHome: false,
@@ -1571,53 +1428,14 @@ export const conditioners: Conditioner[] = [
     badge: "Промышленный",
     variants: [
       { btu: 18000, area: 50, cooling: "5.3 кВт", heating: "—", price: 152604, oldPrice: 155990 },
-    ],
-  },
-  {
-    id: 783,
-    name: "Ballu Heavy Pro BGK9",
-    brand: "Ballu",
-    type: "Промышленный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/6884d133-fa3a-11ed-b736-005056013a69/main_big.jpg",
-    badge: "Промышленный",
-    variants: [
-      { btu: 27000, area: 80, cooling: "7.9 кВт", heating: "—", price: 242298, oldPrice: 245990 },
-    ],
-  },
-  {
-    id: 784,
-    name: "Ballu Heavy Pro BGK8E",
-    brand: "Ballu",
-    type: "Промышленный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/d16b5c9d-1058-11f0-b8de-00505601218a/main_big.jpg",
-    badge: "Промышленный",
-    variants: [
       { btu: 24000, area: 70, cooling: "7.0 кВт", heating: "—", price: 386104, oldPrice: 395990 },
-    ],
-  },
-  {
-    id: 785,
-    name: "Ballu Heavy Pro BGK15",
-    brand: "Ballu",
-    type: "Промышленный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/fd5c96bc-ed2e-11ef-b8de-00505601218a/main_big.jpg",
-    badge: "Промышленный",
-    variants: [
+      { btu: 27000, area: 80, cooling: "7.9 кВт", heating: "—", price: 242298, oldPrice: 245990 },
       { btu: 44000, area: 130, cooling: "12.8 кВт", heating: "—", price: 728531, oldPrice: 735990 },
     ],
   },
   {
     id: 786,
-    name: "Electrolux Arizona EACM-07 AZ",
+    name: "Electrolux Arizona EACM AZ",
     brand: "Electrolux",
     type: "Мобильный",
     smartHome: false,
@@ -1627,25 +1445,12 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 28158, oldPrice: 28990 },
-    ],
-  },
-  {
-    id: 787,
-    name: "Electrolux Arizona EACM-09 AZ",
-    brand: "Electrolux",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/2b507b39-1264-11f1-b8e1-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 32386, oldPrice: 32990 },
     ],
   },
   {
     id: 788,
-    name: "Electrolux EACM-12 CLN 2.0",
+    name: "Electrolux EACM CLN 2.0",
     brand: "Electrolux",
     type: "Мобильный",
     smartHome: false,
@@ -1655,19 +1460,6 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 12000, area: 35, cooling: "3.5 кВт", heating: "—", price: 38488, oldPrice: 39590 },
-    ],
-  },
-  {
-    id: 789,
-    name: "Electrolux EACM-14 CLN 2.0",
-    brand: "Electrolux",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/034705d1-233b-11ef-b8d8-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 14000, area: 40, cooling: "4.1 кВт", heating: "—", price: 42895, oldPrice: 43590 },
     ],
   },
@@ -1687,7 +1479,7 @@ export const conditioners: Conditioner[] = [
   },
   {
     id: 791,
-    name: "Electrolux EACM-16 HP",
+    name: "Electrolux EACM HP",
     brand: "Electrolux",
     type: "Мобильный",
     smartHome: false,
@@ -1697,19 +1489,6 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 16000, area: 45, cooling: "4.7 кВт", heating: "4.2 кВт", price: 65281, oldPrice: 66990 },
-    ],
-  },
-  {
-    id: 792,
-    name: "Electrolux EACM-18 HP",
-    brand: "Electrolux",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/203d609d-05e6-11ee-b736-005056013a69/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 18000, area: 50, cooling: "5.3 кВт", heating: "4.8 кВт", price: 70854, oldPrice: 72990 },
     ],
   },
@@ -1729,7 +1508,7 @@ export const conditioners: Conditioner[] = [
   },
   {
     id: 794,
-    name: "Electrolux EACM-20 JK",
+    name: "Electrolux EACM JK",
     brand: "Electrolux",
     type: "Мобильный",
     smartHome: false,
@@ -1739,25 +1518,12 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 20000, area: 55, cooling: "5.9 кВт", heating: "—", price: 134277, oldPrice: 135990 },
-    ],
-  },
-  {
-    id: 795,
-    name: "Electrolux EACM-22 JK",
-    brand: "Electrolux",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/2c18919d-ce27-11ed-b733-005056013a69/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 22000, area: 60, cooling: "6.5 кВт", heating: "—", price: 143332, oldPrice: 145990 },
     ],
   },
   {
     id: 796,
-    name: "Electrolux Fusion Mobile EACM-07",
+    name: "Electrolux Fusion Mobile EACM",
     brand: "Electrolux",
     type: "Мобильный",
     smartHome: false,
@@ -1767,53 +1533,14 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 28205, oldPrice: 28990 },
-    ],
-  },
-  {
-    id: 797,
-    name: "Electrolux Fusion Mobile EACM-09",
-    brand: "Electrolux",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/4b6f3391-fe08-11ed-b736-005056013a69/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 31622, oldPrice: 31990 },
-    ],
-  },
-  {
-    id: 798,
-    name: "Electrolux Fusion Mobile EACM-12",
-    brand: "Electrolux",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/5825877a-1426-11ee-b736-005056013a69/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 12000, area: 35, cooling: "3.5 кВт", heating: "—", price: 38216, oldPrice: 38990 },
-    ],
-  },
-  {
-    id: 799,
-    name: "Electrolux Fusion Mobile EACM-14",
-    brand: "Electrolux",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/5825877c-1426-11ee-b736-005056013a69/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 14000, area: 40, cooling: "4.1 кВт", heating: "—", price: 40771, oldPrice: 41990 },
     ],
   },
   {
     id: 800,
-    name: "AC ELECTRIC ACE-07 FH",
+    name: "AC ELECTRIC ACE FH",
     brand: "AC ELECTRIC",
     type: "Мобильный",
     smartHome: false,
@@ -1823,25 +1550,12 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 17472, oldPrice: 17990 },
-    ],
-  },
-  {
-    id: 801,
-    name: "AC ELECTRIC ACE-09 FH",
-    brand: "AC ELECTRIC",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/587d9b7c-d287-11ef-b8dc-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 19645, oldPrice: 19990 },
     ],
   },
   {
     id: 802,
-    name: "AC ELECTRIC Diona ACE-07",
+    name: "AC ELECTRIC Diona ACE",
     brand: "AC ELECTRIC",
     type: "Мобильный",
     smartHome: false,
@@ -1851,104 +1565,67 @@ export const conditioners: Conditioner[] = [
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 20653, oldPrice: 20990 },
-    ],
-  },
-  {
-    id: 803,
-    name: "AC ELECTRIC Diona ACE-09",
-    brand: "AC ELECTRIC",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "https://rkcdn.ru/products/3abe29a9-3714-11f1-b8e1-00505601218a/main_big.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 23616, oldPrice: 23990 },
     ],
   },
   {
     id: 804,
-    name: "Airwave AWD-07PCW white",
+    name: "Airwave AWD-PCW white",
     brand: "Airwave",
     type: "Мобильный",
     smartHome: true,
     noise: "49–52 дБ",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/046/eyxe2msqlul6ed2y84lhkhqz7ftfygbu/cde4652d4a12613d69f77aca070e199e.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/046/eyxe2msqlul6ed2y84lhkhqz7ftfygbu/cde4652d4a12613d69f77aca070e199e.jpg",
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 23575, oldPrice: 23990 },
-    ],
-  },
-  {
-    id: 805,
-    name: "Airwave AWD-07PCB black",
-    brand: "Airwave",
-    type: "Мобильный",
-    smartHome: true,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/31b/hp4o6g5txgkq52etit1zil20qr87mwwp/Front.png",
-    badge: "Без монтажа",
-    variants: [
-      { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 23385, oldPrice: 23990 },
-    ],
-  },
-  {
-    id: 806,
-    name: "Airwave AWD-09PCW white",
-    brand: "Airwave",
-    type: "Мобильный",
-    smartHome: true,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/046/eyxe2msqlul6ed2y84lhkhqz7ftfygbu/cde4652d4a12613d69f77aca070e199e.jpg",
-    badge: "Без монтажа",
-    variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 26405, oldPrice: 26990 },
     ],
   },
   {
-    id: 807,
-    name: "Airwave AWD-09PCB black",
+    id: 805,
+    name: "Airwave AWD-PCB black",
     brand: "Airwave",
     type: "Мобильный",
     smartHome: true,
     noise: "49–52 дБ",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/31b/hp4o6g5txgkq52etit1zil20qr87mwwp/Front.png",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/31b/hp4o6g5txgkq52etit1zil20qr87mwwp/Front.png",
     badge: "Без монтажа",
     variants: [
+      { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 23385, oldPrice: 23990 },
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 26407, oldPrice: 26990 },
     ],
   },
   {
     id: 808,
-    name: "Midea MPPHAS-07CHN7",
+    name: "Midea MPPHAS-CHN7",
     brand: "Midea",
     type: "Мобильный",
     smartHome: false,
     noise: "49–52 дБ",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/5dc/f21e1ap3pbhlk05q84iemm3yejwo4iq8/MI_MPPHAS_07CH_001.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/5dc/f21e1ap3pbhlk05q84iemm3yejwo4iq8/MI_MPPHAS_07CH_001.jpg",
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "2.0 кВт", price: 27155, oldPrice: 27990 },
+      { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.4 кВт", price: 29321, oldPrice: 29990 },
     ],
   },
   {
     id: 809,
-    name: "Midea MPPH1-07CHN7",
+    name: "Midea MPPH1-CHN7",
     brand: "Midea",
     type: "Мобильный",
     smartHome: false,
     noise: "49–52 дБ",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/0a6/rjoe5l22oyi1kunuol02a5fpkwqg3wf1/waf6zgtuquybilc0ouc768eb5jk1e0cd.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/0a6/rjoe5l22oyi1kunuol02a5fpkwqg3wf1/waf6zgtuquybilc0ouc768eb5jk1e0cd.jpg",
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "2.0 кВт", price: 27593, oldPrice: 27990 },
+      { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.4 кВт", price: 29646, oldPrice: 29990 },
     ],
   },
   {
@@ -1959,38 +1636,10 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "49–52 дБ",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/855/zjj7w7tobmq9bzqfkdmqctebuggpknh0/624lhl2uwab0z5kbvpf4088w4aqmvub1.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/855/zjj7w7tobmq9bzqfkdmqctebuggpknh0/624lhl2uwab0z5kbvpf4088w4aqmvub1.jpg",
     badge: "Без монтажа",
     variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "—", price: 27679, oldPrice: 28499 },
-    ],
-  },
-  {
-    id: 811,
-    name: "Midea MPPHAS-09CHN7",
-    brand: "Midea",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/5dc/f21e1ap3pbhlk05q84iemm3yejwo4iq8/MI_MPPHAS_07CH_001.jpg",
-    badge: "Без монтажа",
-    variants: [
-      { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.4 кВт", price: 29321, oldPrice: 29990 },
-    ],
-  },
-  {
-    id: 812,
-    name: "Midea MPPH1-09CHN7",
-    brand: "Midea",
-    type: "Мобильный",
-    smartHome: false,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/0a6/rjoe5l22oyi1kunuol02a5fpkwqg3wf1/waf6zgtuquybilc0ouc768eb5jk1e0cd.jpg",
-    badge: "Без монтажа",
-    variants: [
-      { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.4 кВт", price: 29646, oldPrice: 29990 },
     ],
   },
   {
@@ -2001,7 +1650,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "49–52 дБ",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/922/itwfiahlrszix2n11lxtx8kz3v6i6n1p/20220330_170520.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/922/itwfiahlrszix2n11lxtx8kz3v6i6n1p/20220330_170520.jpg",
     badge: "Без монтажа",
     variants: [
       { btu: 7000, area: 20, cooling: "2.1 кВт", heating: "—", price: 29381, oldPrice: 29990 },
@@ -2009,29 +1658,16 @@ export const conditioners: Conditioner[] = [
   },
   {
     id: 814,
-    name: "Airwave AWP-12PHW",
+    name: "Airwave AWP-PHW",
     brand: "Airwave",
     type: "Мобильный",
     smartHome: true,
     noise: "49–52 дБ",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/7aa/1j9osebruh3dzlroo6f6vdg1bn48m8dg/A015E.png",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/7aa/1j9osebruh3dzlroo6f6vdg1bn48m8dg/A015E.png",
     badge: "Без монтажа",
     variants: [
       { btu: 12000, area: 35, cooling: "3.5 кВт", heating: "—", price: 39261, oldPrice: 39990 },
-    ],
-  },
-  {
-    id: 815,
-    name: "Airwave AWP-14PHW",
-    brand: "Airwave",
-    type: "Мобильный",
-    smartHome: true,
-    noise: "49–52 дБ",
-    country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/7aa/1j9osebruh3dzlroo6f6vdg1bn48m8dg/A015E.png",
-    badge: "Без монтажа",
-    variants: [
       { btu: 14000, area: 40, cooling: "4.1 кВт", heating: "—", price: 41171, oldPrice: 41990 },
     ],
   },
@@ -2057,7 +1693,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "49–52 дБ",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/487/1as2549pfjchomsbhzlksudk4nmw2k38/350_350_0/hvryk8e52kvsntcde30pjkp4ds7xz839.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/487/1as2549pfjchomsbhzlksudk4nmw2k38/hvryk8e52kvsntcde30pjkp4ds7xz839.jpg",
     badge: "Без монтажа",
     variants: [
       { btu: 12000, area: 35, cooling: "3.5 кВт", heating: "—", price: 44253, oldPrice: 44990 },
@@ -2076,7 +1712,8 @@ export const conditioners: Conditioner[] = [
     variants: [
       { btu: 12000, area: 35, cooling: "3.5 кВт", heating: "3.2 кВт", price: 49221, oldPrice: 49990 },
     ],
-  },];
+  },
+];
 
 export const AREA_TO_BTU: Record<string, number> = {
   "20": 7000, "25": 9000, "35": 12000, "50": 18000,
@@ -2088,11 +1725,14 @@ export function formatRub(value: number) {
 }
 // Автоматически генерирует описание и особенности модели по её данным
 export function getDescription(item: Conditioner): { intro: string; features: string[] } {
+  const isMobile = item.type === "Мобильный";
   const isInverter = item.type === "Инверторный";
   const isCassette = item.type === "Полупромышленный";
 
   let intro = "";
-  if (isCassette) {
+  if (isMobile) {
+    intro = `${item.name} — мобильный кондиционер-моноблок ${item.brand}. Его можно перемещать между комнатами и сразу подключать к обычной розетке 220 В. Стационарный монтаж не требуется.`;
+  } else if (isCassette) {
     intro = `${item.name} — полупромышленная кассетная сплит-система ${item.brand}. Идеально подходит для офисов, магазинов, кафе и просторных помещений. Равномерно распределяет воздух по всем направлениям благодаря потолочному расположению.`;
   } else if (isInverter) {
     intro = `${item.name} — инверторная сплит-система ${item.brand}. Плавно регулирует мощность, поддерживая ровную температуру без перепадов. Экономит до 40% электроэнергии, работает тихо и служит дольше обычных моделей.`;
@@ -2101,8 +1741,12 @@ export function getDescription(item: Conditioner): { intro: string; features: st
   }
 
   const features: string[] = [];
-  features.push("Режимы охлаждения и обогрева");
-  if (isInverter) {
+  features.push(isMobile ? "Охлаждение без наружного блока" : "Режимы охлаждения и обогрева");
+  if (isMobile) {
+    features.push("Стационарный монтаж не требуется");
+    features.push("Подключение к обычной розетке 220 В");
+    features.push("Колёсики для перемещения между комнатами");
+  } else if (isInverter) {
     features.push("Инверторный компрессор — экономия электроэнергии");
     features.push("Тихая работа без резких включений");
     features.push("Плавное поддержание температуры");
@@ -2122,7 +1766,7 @@ export function getDescription(item: Conditioner): { intro: string; features: st
   features.push("Многоступенчатая фильтрация воздуха");
   features.push("Ночной режим для комфортного сна");
   features.push("Авторестарт после отключения электричества");
-  features.push("Официальная гарантия и профессиональный монтаж");
+  features.push(isMobile ? "Официальная гарантия производителя" : "Официальная гарантия и профессиональный монтаж");
 
   return { intro, features };
 }
@@ -2168,7 +1812,14 @@ export default function CatalogConditioners() {
 
   const handleOrderCard = (item: Conditioner, btu: number, withInstall: boolean, totalPrice: number) => {
     const variant = item.variants.find((v) => v.btu === btu) || item.variants[0];
-    const details = `Модель: ${item.name} (${item.brand}), Мощность: ${btu} BTU (до ${variant.area} м²), Монтаж (+18 000 ₽): ${withInstall ? "Да" : "Нет"}, Итоговая цена: ${formatRub(totalPrice)}`;
+    const isMobile = item.type === "Мобильный";
+    const isInstallOnRequest = item.type === "Полупромышленный" || item.type === "Промышленный";
+    const installPart = isMobile
+      ? ""
+      : isInstallOnRequest
+        ? ", Монтаж: рассчитывается после осмотра объекта"
+        : `, Монтаж (+18 000 ₽): ${withInstall ? "Да" : "Нет"}`;
+    const details = `Модель: ${item.name} (${item.brand}), Мощность: ${btu} BTU (до ${variant.area} м²)${installPart}, Итоговая цена: ${formatRub(totalPrice)}`;
 
     setOrderServiceName(`Заказ кондиционера: ${item.name}`);
     setOrderCalcDetails(details);
@@ -2353,8 +2004,9 @@ function ConditionerCard({
   const [withInstall, setWithInstall] = useState(false);
   const variant = item.variants.find((v) => v.btu === selectedBtu) ?? item.variants[0];
   const discount = variant.oldPrice ? variant.oldPrice - variant.price : 0;
-  const isCassette = item.type === "Полупромышленный";
-  const totalPrice = variant.price + (withInstall && !isCassette ? INSTALL_PRICE : 0);
+  const isMobile = item.type === "Мобильный";
+  const isInstallOnRequest = item.type === "Полупромышленный" || item.type === "Промышленный";
+  const totalPrice = variant.price + (withInstall && !isMobile && !isInstallOnRequest ? INSTALL_PRICE : 0);
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-xl shadow-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:rounded-[2rem]">
@@ -2402,7 +2054,7 @@ function ConditionerCard({
           <li className="flex items-center justify-between border-b border-slate-100 pb-2"><span>Тип</span><span className="font-bold text-slate-800">{item.type}</span></li>
           <li className="flex items-center justify-between"><span>Страна</span><span className="font-bold text-slate-800">{item.country}</span></li>
         </ul>
-        {isCassette ? (
+        {isMobile ? null : isInstallOnRequest ? (
           <div className="mt-4 rounded-2xl bg-slate-50 p-3 text-sm font-bold text-slate-600">
             Монтаж рассчитывается после осмотра объекта
           </div>
@@ -2418,7 +2070,7 @@ function ConditionerCard({
             {variant.oldPrice && !withInstall && (<div className="mb-1 text-sm font-bold text-slate-400 line-through">{formatRub(variant.oldPrice)}</div>)}
           </div>
           <div className="text-xs font-semibold text-slate-400">
-            {isCassette ? "цена оборудования" : withInstall ? "кондиционер + монтаж" : "цена кондиционера"}
+            {isInstallOnRequest ? "цена оборудования" : isMobile ? "цена кондиционера (монтаж не требуется)" : withInstall ? "кондиционер + монтаж" : "цена кондиционера"}
           </div>
           <Link
             to={`/kondicionery/${getModelUrlSlug(item)}`}
@@ -2519,7 +2171,7 @@ function ConditionerCard({
                   {variant.oldPrice && (<div className="mb-1 text-sm font-bold text-slate-400 line-through">{formatRub(variant.oldPrice)}</div>)}
                 </div>
                 <div className="text-xs font-semibold text-slate-400">
-                  {isCassette ? "цена оборудования (монтаж после осмотра)" : "цена кондиционера (без монтажа)"}
+                  {isInstallOnRequest ? "цена оборудования (монтаж после осмотра)" : isMobile ? "цена кондиционера (монтаж не требуется)" : "цена кондиционера (без монтажа)"}
                 </div>
               </div>
 
