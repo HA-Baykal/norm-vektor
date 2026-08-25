@@ -22,7 +22,9 @@ export function buildCompareModel(item: Conditioner, btu?: number): CompareModel
 }
 
 export function totalWithInstall(m: CompareModel): number {
-  if (m.item.type === "Полупромышленный") return m.variant.price;
+  if (m.item.type === "Полупромышленный" || m.item.type === "Промышленный" || m.item.type === "Мобильный") {
+    return m.variant.price;
+  }
   return m.variant.price + INSTALL_PRICE;
 }
 
@@ -269,14 +271,18 @@ export function buildCompareGroups(models: CompareModel[]): CompareGroup[] {
       "max",
     ),
     mkRow(
-      "Стандартный монтаж",
+      "Монтаж",
       v((m) =>
-        m.item.type === "Полупромышленный"
-          ? "Рассчитывается по проекту"
-          : `${INSTALL_PRICE.toLocaleString("ru-RU")} ₽`,
+        m.item.type === "Мобильный"
+          ? "Не требуется"
+          : m.item.type === "Полупромышленный" || m.item.type === "Промышленный"
+            ? "Рассчитывается после осмотра"
+            : `${INSTALL_PRICE.toLocaleString("ru-RU")} ₽`,
       ),
       models.map((m) =>
-        m.item.type === "Полупромышленный" ? null : INSTALL_PRICE,
+        m.item.type === "Мобильный" || m.item.type === "Полупромышленный" || m.item.type === "Промышленный"
+          ? null
+          : INSTALL_PRICE,
       ),
       null,
     ),

@@ -20,8 +20,8 @@ export interface OfficialSpecification {
   officialModelPhotos: string[];
 }
 function proxyIfDaichi(url: string): string {
-  if (url.startsWith("https://daichi.business/")) {
-    return "/api/img-proxy?url=" + url;
+  if (url.startsWith("https://daichi.business/") || url.startsWith("https://daichi.market/")) {
+    return "/api/img-proxy?url=" + encodeURIComponent(url);
   }
   return url;
 }
@@ -468,6 +468,326 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "/images/catalog/axioma-h-inv.jpg",
   "/images/catalog/axioma-h-inv-2.jpg",
   "/images/catalog/axioma-h-inv-3.jpg"
+  ],
+
+  // === НОВЫЕ ЛИНЕЙКИ И МОБИЛЬНЫЕ/ПРОМЫШЛЕННЫЕ, 25.08.2026 ===
+  734: [ // Ballu Eco Smart DC BSYI — 11 фото
+    "https://rkcdn.ru/products/53e81bda-d25c-11ef-b8dc-00505601218a/main_big.jpg",
+    "https://rkcdn.ru/products/c964a56a-6304-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/9af46048-646f-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/9af4604a-646f-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/9af4604c-646f-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/c964a56c-6304-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/780377ce-04fe-11ee-b736-005056013a69/src.jpg",
+    "https://rkcdn.ru/products/c964a56e-6304-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/c964a570-6304-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/c964a572-6304-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/cf7f1984-6304-11ef-b8db-00505601218a/src.jpg"
+  ],
+  735: [ // Royal Thermo Barocco DC RTBI — 1 фото
+    "https://rkcdn.ru/products/fe7ca232-5b3f-11ef-b8db-00505601218a/main_big.jpg"
+  ],
+  736: [ // Ballu iGreen Pro BSAG — 10 фото
+    "https://rkcdn.ru/products/456a3a97-abdb-11ed-b733-005056013a69/main_big.jpg",
+    "https://rkcdn.ru/products/59d716ed-abd8-11ed-b733-005056013a69/src.jpg",
+    "https://rkcdn.ru/products/87cd5472-abd8-11ed-b733-005056013a69/src.jpg",
+    "https://rkcdn.ru/products/6985dab2-abd9-11ed-b733-005056013a69/src.jpg",
+    "https://rkcdn.ru/products/de4e4871-8771-11ed-b732-005056013a69/src.jpg",
+    "https://rkcdn.ru/products/e989b98d-8771-11ed-b732-005056013a69/src.jpg",
+    "https://rkcdn.ru/products/f5691db6-8771-11ed-b732-005056013a69/src.jpg",
+    "https://rkcdn.ru/products/897b0b9b-24e7-11ef-b8d8-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/55a126e6-24e7-11ef-b8d8-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/d6c7ef63-24e7-11ef-b8d8-00505601218a/src.jpg"
+  ],
+  737: [ // Ballu Defender BSHI — 1 фото
+    "https://rkcdn.ru/products/f8730e5a-4b96-11f0-b8df-00505601218a/main_big.jpg"
+  ],
+  738: [ // Ballu Greenland DC BSGRI — 7 фото
+    "https://rkcdn.ru/products/f645ceb8-5b3e-11ef-b8db-00505601218a/main_big.jpg",
+    "https://rkcdn.ru/products/f04d429a-5b3e-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/f645ceae-5b3e-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/f645ceb0-5b3e-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/f645ceb2-5b3e-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/f645ceb4-5b3e-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/f645ceb6-5b3e-11ef-b8db-00505601218a/src.jpg"
+  ],
+  739: [ // HITAIR HAM — 1 фото
+    "https://rkcdn.ru/products/d8bc9d48-1083-11f0-b8de-00505601218a/main_big.jpg"
+  ],
+  740: [ // NEOLINE NAM — 1 фото
+    "https://rkcdn.ru/products/ce995fdb-f100-11ee-b8d8-00505601218a/main_big.jpg"
+  ],
+  741: [ // Ballu Olympio Legend BSW — 16 фото
+    "https://rkcdn.ru/products/5480f405-6305-11ef-b8db-00505601218a/main_big.jpg",
+    "https://rkcdn.ru/products/5480f407-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5480f409-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5480f40b-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/2018dbc6-d27a-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/264371ae-d27a-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5480f40d-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5aa258a3-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5aa258a5-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5aa258a7-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5aa258a9-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5aa258ab-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5aa258ad-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5aa258af-6305-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/264371bc-d27a-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/5aa258b1-6305-11ef-b8db-00505601218a/src.jpg"
+  ],
+  742: [ // Ballu Maverick DC BSMI — 1 фото
+    "https://rkcdn.ru/products/13976ae5-ffef-11ef-b8de-00505601218a/main_big.jpg"
+  ],
+  743: [ // Electrolux Loft EACS-HAL/N8 — 16 фото
+    "https://rkcdn.ru/products/fef03f70-e2dc-11ee-b8d6-00505601218a/main_big.jpg",
+    "https://rkcdn.ru/products/fef03f72-e2dc-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f83418-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f8341a-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f8341c-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f8341e-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f83420-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f83422-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f83424-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/cea859b2-80c8-11ef-b8db-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f83428-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f8342a-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f8342c-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/04f8342e-e2dd-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/b0b3c5a6-1ec0-11f0-b8de-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/c168acb0-1ec0-11f0-b8de-00505601218a/src.jpg"
+  ],
+  744: [ // Electrolux Loft DC EACS/I-HAL/N8 — 1 фото
+    "https://rkcdn.ru/products/5f42727e-5d3c-11ef-b8db-00505601218a/main_big.jpg"
+  ],
+  745: [ // Electrolux Slide EACS-HSL/N8 — 11 фото
+    "https://rkcdn.ru/products/c4ca2dfc-d4d2-11ee-b8d6-00505601218a/main_big.jpg",
+    "https://rkcdn.ru/products/c4ca2dfe-d4d2-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/c4ca2e00-d4d2-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/cb0f4d29-d4d2-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/cb0f4d2b-d4d2-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/cb0f4d2d-d4d2-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/cb0f4d2f-d4d2-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/cb0f4d31-d4d2-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/cb0f4d33-d4d2-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/83e52380-1ec2-11f0-b8de-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/9b67b4c9-1ec2-11f0-b8de-00505601218a/src.jpg"
+  ],
+  746: [ // Daichi Айс (Ice) — 4 фото
+    "https://daichi.business/upload/iblock/42c/5wl791d9vk3o99pvxkixzmpdkeemkm0f/ehfss7ww5a43lcv5clyyk4armm4fk913.jpg",
+    "https://daichi.business/upload/iblock/843/eeplcdhud1xr9skt8x9p1v8ul7gjfapu/e7ef71a5d086046ae4471f4f11d916c5.jpg",
+    "https://daichi.business/upload/iblock/f2f/mtxqwl18bgiuolzr708pabipm71rjhr2/f32a2ab38100eb1bdf30aa7d736b06a3.jpg",
+    "https://daichi.business/upload/iblock/46a/5uf1raknxzxeea4xwecpuynedjsh59kc/00bb674fa54146289d3f75606d6e41fc.jpg"
+  ],
+  747: [ // Daichi Эйр Инвертор (Air) — 11 фото
+    "https://daichi.business/upload/iblock/710/drwtr41sxpg3s3nms955bfin132y5dy1/ocobu8udxobthmgjlrlvkpgkv1olucch.jpg",
+    "https://daichi.business/upload/iblock/825/8i3jj7ozlelh8vmpgtogllqqdzd5o9ox/7nar88jzl208b1o62k8i1kekxrukwile.jpg",
+    "https://daichi.business/upload/iblock/885/m1w6klns1z333y5o2nph0a22bdtfo56x/i1wobmrx9jmkyq1yofwf8449zl105zzr.jpg",
+    "https://daichi.business/upload/iblock/ce8/gymryewa4o30hkkr05lccariyb85ipvs/osakvfa8l3yld7jqhsv7lk19c4351emq.jpg",
+    "https://daichi.business/upload/iblock/957/8q2m6il6bx9bl3shom3fob5atjkgaoj5/e7ppkjup4xixgm76nysrq4lzrndvrqwa.jpg",
+    "https://daichi.business/upload/iblock/ad8/40fzjvmcv67tkb8sknduu1m2boo0kqfm/lk1t470nggk2rvo3lglv19b03qcpqbu8.jpg",
+    "https://daichi.business/upload/iblock/c28/8guum5zchhtlbdqq4fh4g7bs5ehjhoc5/mt5yi96jt9vjr2cxz4voojmwp2rciu88.jpg",
+    "https://daichi.business/upload/iblock/ea5/811ew6qcv8e5q3a99os250tthf60a2ku/01c3kc0td73eb71emj22rpaq0eff7x59.jpg",
+    "https://daichi.business/upload/iblock/c76/iowg0f9er7b1lchbe0cgr5g0ixbu9a5v/iwgsfyghkdszgfiomlb5gnftm3il3wl5.jpg",
+    "https://daichi.business/upload/iblock/1c1/cq9xrayntut5u2966h8ynhvj5b1b2aai/49aa64hohr7hjyp53lg46ypf7qtpbw2m.jpg",
+    "https://daichi.business/upload/iblock/03f/g3wqjh6sbopvckgcofdbj0ana4mo1u3f/7aawxg4n04nur6jx33pmn9opuyedgwhp.jpg"
+  ],
+  748: [ // Daichi Карбон Инвертор (Carbon) — 3 фото
+    "https://daichi.business/upload/iblock/4fe/c58p0gwt6pyekq93fxkd29l92pdzo9hm/ka688tv5a1mpf9bt0xjvn7rqc2szix5g.jpg",
+    "https://daichi.business/upload/iblock/334/mw1yaug3o6vqawt0jsut0t06obg2pfn9/4bfsjzujfirfsmxf7lq798pgerfcze33.jpg",
+    "https://daichi.business/upload/iblock/5ef/15hmc886w8tyh3evzpo0bdzho5wxz5t6/v25hclkunlf4gmt22153lsaa8fycn9ks.jpg"
+  ],
+  749: [ // Kentatsu Ичи (Ichi) — 5 фото
+    "https://daichi.business/upload/iblock/629/vdooa3gzbcifmel6a9wfnp8trbirr569/b7fd74dec948d4af1f26bbb1b46f2016.jpg",
+    "https://daichi.business/upload/iblock/92b/q091wd79snt2mxaf5dkpgar6qdyxs8ia/fa61c5a5e9aca81d1ecbfa2a88e11956.jpg",
+    "https://daichi.business/upload/iblock/0cb/4tv42w98j7i08p461uu924vc5dsfa0b6/dd2aaadd8426167941f8b28951216eb8.jpg",
+    "https://daichi.business/upload/iblock/ca1/t2qzp52s0wic4kn850k7yiniufl6dx1i/2feba730881e63b64ab0fe625bb90e23.jpg",
+    "https://daichi.business/upload/iblock/b55/t3sftedyqydy1j18g21dwgqfaazo1b60/8bba7ec111ea79ff392c6d3ec7dea17a.jpg"
+  ],
+  750: [ // Kentatsu Турин Инвертор (Turin) — 4 фото
+    "https://daichi.business/upload/iblock/6f4/8n29gsc41w42km8nisn9ky62q1wsrdh9/79e7fc7451fa77297d4028722945c75f.jpg",
+    "https://daichi.business/upload/iblock/2d8/34hmmunv39l219aa2yhwnjt7h2mykdd6/e5c6bad8707ae2e093e545fbe49a4cf1.jpg",
+    "https://daichi.business/upload/iblock/fa4/vm4rhlv8ygq8od3dbr8nv11kcwut01iu/6ead5132a06bf75f101431d96774a59f.jpg",
+    "https://daichi.business/upload/iblock/508/wapkk0xdkeypuu357cmafr4jhqko4l3z/e3731cb7516622ee7997f36c983dcf66.jpg"
+  ],
+  751: [ // Kentatsu Наоми (Naomi) — 11 фото
+    "https://daichi.business/upload/iblock/cb7/qvtew425uo0gyy6a4g9g5gv78ipxpoma/91f97eae39a3423c610cd44648bac2dc.jpg",
+    "https://daichi.business/upload/iblock/b47/5rx7jwm6ylcrcxw26kln1cl600q61zp4/pe2bqlidoj86vsns8vfvnx7t2xaoxuty.jpg",
+    "https://daichi.business/upload/iblock/122/8uy0jtwheud2oo6daeu4t2ynw4vqlq6c/zj3txkv38ixn3rgn1p470bu6yfom1b7k.jpg",
+    "https://daichi.business/upload/iblock/bba/lglzky5p07ijh5zwfdwzuyrzfidsrta9/4ctuyzuiliq3jicwcyz7xp87cek3pyg9.jpg",
+    "https://daichi.business/upload/iblock/05b/7cr4qf5bqh6fnyw8k5ohw341vy00y9cw/wpx7bp70f87eauvidyn98yc723b7mvi4.jpg",
+    "https://daichi.business/upload/iblock/45f/1bor4i9hsf6zehy5sky282lco3lbjd61/hzhjn26pax0lmximdb2qt4uoxinxw3fr.jpg",
+    "https://daichi.business/upload/iblock/767/nc7a1oozcl4v63qb267ec1xv7rx0q575/7box85kdlcsfu8oftoo5xn1b70n8pn7y.jpg",
+    "https://daichi.business/upload/iblock/263/uyr8scg9z06zrm135xqr90gqleluvx1q/qt8u81iowih16jzk3zho2ilcajauesgs.jpg",
+    "https://daichi.business/upload/iblock/a74/w7oj2ferwu6i60sz10p9qh6ed9d3treg/rft3hy5pl5yqmurej1klcjhrxuygq0wk.jpg",
+    "https://daichi.business/upload/iblock/309/6f397dn2b1m496jnagr3w0nbm78t9z9u/wfh3bsyydgge2xje4sykstdyxeoadp38.jpg",
+    "https://daichi.business/upload/iblock/217/zq569pa099f04v7lo6q0f2or558lay9b/zvrz8gldw013x47ytd4nd6uqcwbfdnui.jpg"
+  ],
+  752: [ // Midea Парамаунт Инвертор (Paramount Inverter) — 7 фото
+    "https://daichi.business/upload/iblock/dcf/pe2yithik9y9l9hkvgruxl4vkrkj3r6i/33w65kvis28egejlv5w2l38u7uqftwyi.jpg",
+    "https://daichi.business/upload/iblock/65b/8o1sh9pesqhpvsq82sj2t6kolaptjd5p/1tff7s93h63wmelarfk8gub3w8j2npss.jpg",
+    "https://daichi.business/upload/iblock/b07/43c4xrg530tjmp3p3shqz42qeaz7nc4w/p7830wxmf2jwhne1x1lgy60i8kptra8e.jpg",
+    "https://daichi.business/upload/iblock/f13/w2m7ei1zou8s4obf4k2txhudivhc6umx/vmbpahjuzyjoaq60xbwrin52i8o7rogo.jpg",
+    "https://daichi.business/upload/iblock/de8/ygxjr968s0xqudrdnuu5w5yi2zlgkdo7/2zp56rh8gu229cqgh2pe58r2nc12fh8c.jpg",
+    "https://daichi.business/upload/iblock/cc5/tp7qqvmfkkzl8mr633zcjmmrwsy0z1rf/86k7mdfaf8f422dzkuxrh5p9cx987jtc.jpg",
+    "https://daichi.business/upload/iblock/8b5/ehhw552go6ec4xxj1wd95e1dg3l3nh2m/595806b30e5248a08da35dcbde3e5b09.jpg"
+  ],
+  753: [ // Midea Анлимитед Инвертор (Unlimited Inverter) — 5 фото
+    "https://daichi.business/upload/iblock/6fd/tgf3y3x5l56y8v1lvfksqsmebah5m3z5/0a5f716d339ce2deaf5a0c4cb6228030.jpg",
+    "https://daichi.business/upload/iblock/79d/yj6m28qgqldf8535tlyickr7j6hp2sa2/d9f632f231deba92e73147d52709a614.jpg",
+    "https://daichi.business/upload/iblock/608/qjm63dvn514vkepyxwz4cvfug3gfxob7/5bf7d8b8f2c5cd0927e294f183d8ef73.jpg",
+    "https://daichi.business/upload/iblock/3f4/brhmyx6d4qs1xnlfknkeq7te1766mh46/3b88b8ec410e7c8a4df05fe8368b5c47.jpg",
+    "https://daichi.business/upload/iblock/070/5w8kmy7x3i7szc7kh48l1q59o6gomzlp/8d6ddb22b5420be8aa77ed3220b45c69.jpg"
+  ],
+  754: [ // Ballu Orbis BPAC — 1 фото
+    "https://rkcdn.ru/products/ab3696a4-cc02-11ee-b8d6-00505601218a/main_big.jpg"
+  ],
+  756: [ // Ballu Aura BPAC-09 24Y — 12 фото
+    "https://rkcdn.ru/products/9eb2515a-6e8e-11ef-b8db-00505601218a/main_big.jpg",
+    "https://rkcdn.ru/products/9c0c5e02-c5c8-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/ad47ba70-c5c8-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/c13148bb-c5c8-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/005629c1-c5c9-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/414b267a-ca47-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/67617b49-ca47-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/92755dc7-ca47-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/b38844a7-ca47-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/9f8fa656-ca48-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/c4d506b7-ca48-11ee-b8d6-00505601218a/src.jpg",
+    "https://rkcdn.ru/products/d6fe6b96-ca48-11ee-b8d6-00505601218a/src.jpg"
+  ],
+  757: [ // Ballu Aura BPAC-09 24Y + UniPort — 1 фото
+    "https://rkcdn.ru/products/829eaaca-5b5a-11f1-b8e3-00505601218a/main_big.jpg"
+  ],
+  758: [ // Ballu Eclipse BPAC EPW white — 1 фото
+    "https://rkcdn.ru/products/5f2330d7-e392-11ef-b8de-00505601218a/main_big.jpg"
+  ],
+  760: [ // Ballu Eclipse BPAC-10 EPB black — 1 фото
+    "https://rkcdn.ru/products/dc5d0d5b-6e91-11ef-b8db-00505601218a/main_big.jpg"
+  ],
+  761: [ // Ballu Twinkle BPAC-09 DWR Red — 1 фото
+    "https://rkcdn.ru/products/b8981469-1e32-11f1-b8e1-00505601218a/main_big.jpg"
+  ],
+  762: [ // Ballu Twinkle BPAC-09 DWR Red + UniPort — 1 фото
+    "https://rkcdn.ru/products/ef128d96-5ff1-11f1-b8e3-00505601218a/main_big.jpg"
+  ],
+  763: [ // Ballu Twinkle BPAC-09 DWB Blue — 1 фото
+    "https://rkcdn.ru/products/285622a0-1e33-11f1-b8e1-00505601218a/main_big.jpg"
+  ],
+  764: [ // Ballu Twinkle BPAC-09 DWB Blue + UniPort — 1 фото
+    "https://rkcdn.ru/products/9a32b2fd-5ff1-11f1-b8e3-00505601218a/main_big.jpg"
+  ],
+  765: [ // Ballu Stella BPAC — 1 фото
+    "https://rkcdn.ru/products/f0989a89-1058-11f0-b8de-00505601218a/main_big.jpg"
+  ],
+  767: [ // Ballu Selen BPAC — 1 фото
+    "https://rkcdn.ru/products/a45cc4f6-d7d5-11ef-b8dc-00505601218a/main_big.jpg"
+  ],
+  770: [ // Ballu Smart Wind BPAC-09 — 1 фото
+    "https://rkcdn.ru/products/a9acd3d0-f8a7-11ed-b736-005056013a69/main_big.jpg"
+  ],
+  771: [ // Ballu Velure BPAC-14 — 1 фото
+    "https://rkcdn.ru/products/4cb4934d-6e95-11ef-b8db-00505601218a/main_big.jpg"
+  ],
+  772: [ // Ballu BPAC-18 CE — 1 фото
+    "https://rkcdn.ru/products/c9aa0e15-09f6-11ee-b736-005056013a69/main_big.jpg"
+  ],
+  773: [ // Ballu Platinum X4 BPHS — 1 фото
+    "https://rkcdn.ru/products/ababf435-1d67-11f1-b8e1-00505601218a/main_big.jpg"
+  ],
+  775: [ // Ballu Platinum X4 BPHS + UniPort — 1 фото
+    "https://rkcdn.ru/products/4c153776-5dd5-11f1-b8e3-00505601218a/main_big.jpg"
+  ],
+  778: [ // Ballu Platinum Comfort BPHS-H — 1 фото
+    "https://rkcdn.ru/products/b827edde-fada-11ed-b736-005056013a69/main_big.jpg"
+  ],
+  782: [ // Ballu Heavy Pro BGK — 1 фото
+    "https://rkcdn.ru/products/15705e3e-027e-11ed-b732-005056013a69/main_big.jpg"
+  ],
+  786: [ // Electrolux Arizona EACM AZ — 1 фото
+    "https://rkcdn.ru/products/2b507b39-1264-11f1-b8e1-00505601218a/main_big.jpg"
+  ],
+  788: [ // Electrolux EACM CLN 2.0 — 1 фото
+    "https://rkcdn.ru/products/6097f25d-2962-11ef-b8d8-00505601218a/main_big.jpg"
+  ],
+  790: [ // Electrolux EACM-09 HR — 1 фото
+    "https://rkcdn.ru/products/e768de48-026f-11ef-b8d8-00505601218a/main_big.jpg"
+  ],
+  791: [ // Electrolux EACM HP — 1 фото
+    "https://rkcdn.ru/products/203d609f-05e6-11ee-b736-005056013a69/main_big.jpg"
+  ],
+  793: [ // Electrolux Nebula EACM-16 NB V2 — 1 фото
+    "https://rkcdn.ru/products/8b90aef1-dd4f-11ef-b8de-00505601218a/main_big.jpg"
+  ],
+  794: [ // Electrolux EACM JK — 1 фото
+    "https://rkcdn.ru/products/2c18919b-ce27-11ed-b733-005056013a69/main_big.jpg"
+  ],
+  796: [ // Electrolux Fusion Mobile EACM — 1 фото
+    "https://rkcdn.ru/products/4477cfe8-fe08-11ed-b736-005056013a69/main_big.jpg"
+  ],
+  800: [ // AC ELECTRIC ACE FH — 1 фото
+    "https://rkcdn.ru/products/54609bda-df14-11ef-b8de-00505601218a/main_big.jpg"
+  ],
+  802: [ // AC ELECTRIC Diona ACE — 1 фото
+    "https://rkcdn.ru/products/2f976677-3714-11f1-b8e1-00505601218a/main_big.jpg"
+  ],
+  804: [ // Airwave AWD-PCW white — 3 фото
+    "https://daichi.market/upload/iblock/046/eyxe2msqlul6ed2y84lhkhqz7ftfygbu/cde4652d4a12613d69f77aca070e199e.jpg",
+    "https://daichi.market/upload/iblock/8f5/2tg4x932igz293b1in6uzrr3xu00w88u/Right.png",
+    "https://daichi.market/upload/iblock/b38/hfjbpgdl8jjuay4yda4xxj6rs3vtkdrn/Top-Panel.png"
+  ],
+  805: [ // Airwave AWD-PCB black — 2 фото
+    "https://daichi.market/upload/iblock/31b/hp4o6g5txgkq52etit1zil20qr87mwwp/Front.png",
+    "https://daichi.market/upload/iblock/7f6/t3x92tvt89gaqpn0d65hutb09wbby4aa/Top-Panel.png"
+  ],
+  808: [ // Midea MPPHAS-CHN7 — 7 фото
+    "https://daichi.market/upload/iblock/5dc/f21e1ap3pbhlk05q84iemm3yejwo4iq8/MI_MPPHAS_07CH_001.jpg",
+    "https://daichi.market/upload/iblock/9f3/y02eba8owh5cfwav23imvtzq76usmsuz/MI_MPPHAS_07CH_002.jpg",
+    "https://daichi.market/upload/iblock/74e/2qg4ep0wciy8jz830e6yco1dj9zng99x/MI_MPPHAS_07CH_003.jpg",
+    "https://daichi.market/upload/iblock/506/uguaz6kcl15md169q7a9vkl5ia2cox8p/MI_MPPHAS_07CH_004.jpg",
+    "https://daichi.market/upload/iblock/9ca/tqx06u2fkvm0t9ndu9db3v4nyt3wym41/MI_MPPHAS_07CH_005.jpg",
+    "https://daichi.market/upload/iblock/bfb/ggrmkxq70thmp7ze7fcpd9kjt41uime4/MI_MPPHAS_07CH_006.jpg",
+    "https://daichi.market/upload/iblock/c80/w3rvuiouaa07r5oa8ptfkrlcekrkw1fn/MI_MPPHAS_07CH_007.jpg"
+  ],
+  809: [ // Midea MPPH1-CHN7 — 6 фото
+    "https://daichi.market/upload/iblock/0a6/rjoe5l22oyi1kunuol02a5fpkwqg3wf1/waf6zgtuquybilc0ouc768eb5jk1e0cd.jpg",
+    "https://daichi.market/upload/iblock/9ab/xmzpdo5a7d9hhtt4qh08mlfmrfoyyy9g/isd3qhd7ech2nv3b7xhl33hdi9azolm0.jpg",
+    "https://daichi.market/upload/iblock/1f2/klr8qu6pm7df81r9ruvv2bw69g5odn6a/2hvpnoihcokeu3sx7ay57y3eb8nfq5sn.jpg",
+    "https://daichi.market/upload/iblock/ee4/c5mfrni378f5esuf2q3ya8a17ydmq1wo/131ofz4csdzqrovau487hxhbs7em3jqj.jpg",
+    "https://daichi.market/upload/iblock/181/jklq1hv13csnnjr8ckz15kagm7f4679r/4llipp6b64fpizkghdkkhlkyzojhib39.jpg",
+    "https://daichi.market/upload/iblock/961/2qas1exqtrrrajl7ee18cc2okm7ytzsc/phv4lb590ow7xigaq52kypf2b0q7qtxi.jpg"
+  ],
+  810: [ // Primera PRMC-09JBNE — 10 фото
+    "https://daichi.market/upload/iblock/855/zjj7w7tobmq9bzqfkdmqctebuggpknh0/624lhl2uwab0z5kbvpf4088w4aqmvub1.jpg",
+    "https://daichi.market/upload/iblock/dda/vcb56hn2an2pq17vufva1624k08jmywy/Oblozhka_3kh4.jpg",
+    "https://daichi.market/upload/iblock/913/5k8pcqnbu7spjev1j6pq5wn36ma1qfnj/01_3kh4.jpg",
+    "https://daichi.market/upload/iblock/c05/dpy65ogrw2rb4vsts2yb13zcwn922jyo/02_3kh4.jpg",
+    "https://daichi.market/upload/iblock/48b/ul3sc8juh63u4govofpzn38jpq612spq/03_3kh4.jpg",
+    "https://daichi.market/upload/iblock/3bc/se2za7lqqn1q4m8rbloetd7gpxa3w1ll/04_3kh4.jpg",
+    "https://daichi.market/upload/iblock/53c/bkq3k4ay3poy60e1ngfne1qjjk5kawub/05_3kh4.jpg",
+    "https://daichi.market/upload/iblock/4bb/hewfi8arz7sf286f9gdiipl02qmp49xy/06_3kh4.jpg",
+    "https://daichi.market/upload/iblock/305/10mj3db97d0k1cfbxu3suj6gzdj7lbg6/07_3kh4.jpg",
+    "https://daichi.market/upload/iblock/0b8/vnd7vt0xp4xwdil1kqvsyyt4dsdg3qq7/08_3kh4.jpg"
+  ],
+  813: [ // Primera PRMC-07JGNA — 3 фото
+    "https://daichi.market/upload/iblock/922/itwfiahlrszix2n11lxtx8kz3v6i6n1p/20220330_170520.jpg",
+    "https://daichi.market/upload/iblock/a26/h3injd49tg0yha8z3betesd01wr3d828/20220330_170635.jpg",
+    "https://daichi.market/upload/iblock/fc5/vf4krvph2c5ok8olre2eiw8i3t9v0j4n/20220330_165715.jpg"
+  ],
+  814: [ // Airwave AWP-PHW — 4 фото
+    "https://daichi.market/upload/iblock/7aa/1j9osebruh3dzlroo6f6vdg1bn48m8dg/A015E.png",
+    "https://daichi.market/upload/iblock/e85/mfzrfucjvymp2h2xvy80zpoygz1x6hs1/A015E.1.png",
+    "https://daichi.market/upload/iblock/0c9/yv6expz2luuei6xps5202vl9z2yndq3p/A015E.2.png",
+    "https://daichi.market/upload/iblock/5b9/7q1v1ju2dg1zqp8v4au9fn0nx9ne63jh/A015E.3.png"
+  ],
+  816: [ // Midea MPPDA-09CRN7 — 1 фото
+    "https://daichi.market/upload/iblock/1dc/jyfoslybqzdfs0rzh2f5e5kvm2me17hl/e0464f027354da33b49e39dbccefdc65.jpg"
+  ],
+  817: [ // Midea MPPDB-12CRN7 — 2 фото
+    "https://daichi.market/upload/iblock/487/1as2549pfjchomsbhzlksudk4nmw2k38/hvryk8e52kvsntcde30pjkp4ds7xz839.jpg",
+    "https://daichi.market/upload/iblock/645/0uovnekb2mqfpb12vq32m9hfu5ofny9n/syg49w08ynczgtpl78jeebwv3g059zay.jpg"
+  ],
+  818: [ // Midea MPPDB-12HRN1 — 1 фото
+    "https://daichi.market/upload/iblock/1dc/jyfoslybqzdfs0rzh2f5e5kvm2me17hl/e0464f027354da33b49e39dbccefdc65.jpg"
   ]
 };
 
@@ -507,6 +827,7 @@ export function getOfficialPhotosForModel(item: Conditioner): string[] {
 export function getOfficialSpecification(item: Conditioner, selectedBtu: number): OfficialSpecification {
   const nameLower = item.name.toLowerCase();
   const brandUpper = item.brand.toUpperCase();
+  const isMobile = item.type === "Мобильный";
   const isInverter = item.type === "Инверторный" || nameLower.includes("inverter") || nameLower.includes("dc") || nameLower.includes("инвертор");
   const isCassette = item.type === "Полупромышленный" || nameLower.includes("кассетн");
 
@@ -565,7 +886,9 @@ export function getOfficialSpecification(item: Conditioner, selectedBtu: number)
 
   // Описание со спецификации завода-изготовителя
   let fullDescription = "";
-  if (isCassette) {
+  if (isMobile) {
+    fullDescription = `${item.brand} ${item.name} — мобильный кондиционер-моноблок: компрессор, испаритель и конденсатор размещены в одном корпусе. Стационарный монтаж и прокладка фреоновой трассы не требуются — достаточно подключить прибор к розетке 220 В и вывести гибкий воздуховод в окно. Колёса и ручки позволяют перемещать кондиционер между комнатами.`;
+  } else if (isCassette) {
     fullDescription = `${item.name} — профессиональная полупромышленная сплит-система, сертифицированная для российского рынка. Предназначена для монтажа в подвесной потолок торговых, офисных или коммерческих помещений в Иркутске. Равномерный 360-градусный круговой поток воздуха исключает образование сквозняков и застойных зон. Встроенный дренажный насос поднимает конденсат на высоту до 750 мм.`;
   } else if (brandUpper === "SHUFT") {
     fullDescription = `Дизайн-серия сплит-систем ${item.name} отличается лаконичными формами, органично сочетающимися с любыми стилями интерьеров. Главным отличием стала максимальная забота о создании здорового микроклимата: приборы оснащены ионизатором, насыщающим воздух полезными анионами и устраняющим пыль, бактерии и запахи. Функция I-Feel отслеживает температуру по пульту ДУ, а 3D-поток предотвращает сквозняки.`;
@@ -584,20 +907,33 @@ export function getOfficialSpecification(item: Conditioner, selectedBtu: number)
   }
 
   // Официальный список функциональности
-  const officialFeatures: string[] = [
-    `Марка компрессора: ${compressorBrand}`,
-    `Антикоррозийное покрытие теплообменника (Golden / Blue Fin)`,
-    `Встроенный ионизатор / система фильтрации воздуха от крупной пыли, бактерий и шерсти`,
-    `Климат-контроль I-Feel (поддержание температуры по месту нахождения пульта)`,
-    `3D / 4D управление направлением потока воздуха с пульта`,
-    `Режим комфортного ночного сна SLEEP (тихий режим крыльчатки)`,
-    `Турбо-режим моментального охлаждения или прогрева помещения`,
-    `Скрытый LED-дисплей на лицевой панели (с возможностью отключения ночью)`,
-    `Автоматическая самоочистка и осушение внутреннего блока от конденсата`,
-    `Авторестарт при отключении электроэнергии (сохранение настроек)`
-  ];
+  const officialFeatures: string[] = isMobile
+    ? [
+        `Моноблочная конструкция: все узлы размещены в одном мобильном корпусе`,
+        `Стационарный монтаж и фреоновая трасса не требуются`,
+        `Подключение к обычной розетке 220 В`,
+        `Гибкий воздуховод для отвода тёплого воздуха через окно`,
+        `Колёса и ручки для перемещения между комнатами`,
+        `Режим комфортного ночного сна SLEEP`,
+        `Турбо-режим быстрого охлаждения помещения`,
+        `LED-дисплей и пульт дистанционного управления`,
+        `Режим осушения воздуха`,
+        `Авторестарт при отключении электроэнергии (сохранение настроек)`
+      ]
+    : [
+        `Марка компрессора: ${compressorBrand}`,
+        `Антикоррозийное покрытие теплообменника (Golden / Blue Fin)`,
+        `Встроенный ионизатор / система фильтрации воздуха от крупной пыли, бактерий и шерсти`,
+        `Климат-контроль I-Feel (поддержание температуры по месту нахождения пульта)`,
+        `3D / 4D управление направлением потока воздуха с пульта`,
+        `Режим комфортного ночного сна SLEEP (тихий режим крыльчатки)`,
+        `Турбо-режим моментального охлаждения или прогрева помещения`,
+        `Скрытый LED-дисплей на лицевой панели (с возможностью отключения ночью)`,
+        `Автоматическая самоочистка и осушение внутреннего блока от конденсата`,
+        `Авторестарт при отключении электроэнергии (сохранение настроек)`
+      ];
 
-  if (isInverter) {
+  if (isInverter && !isMobile) {
     officialFeatures.splice(0, 0, "⚡ Плавное инверторное регулирование мощности DC Inverter (экономия тока до 40%)");
     officialFeatures.push(`❄️ Стабильная работа на обогрев при морозе на улице ${winterRange}`);
   }
@@ -612,10 +948,10 @@ export function getOfficialSpecification(item: Conditioner, selectedBtu: number)
     refrigerant,
     freonWeight,
     minNoise,
-    maxOutdoorNoise: "49 – 52.5 дБ",
+    maxOutdoorNoise: isMobile ? "Не применяется (единый корпус)" : "49 – 52.5 дБ",
     energyClass,
-    pipes,
-    maxPipeLength: selectedBtu >= 24000 ? "до 25 метров" : "до 15–20 метров",
+    pipes: isMobile ? "Не требуются (мобильный моноблок)" : pipes,
+    maxPipeLength: isMobile ? "Не применяется — используется гибкий воздуховод" : selectedBtu >= 24000 ? "до 25 метров" : "до 15–20 метров",
     winterRange,
     indoorTempRange: "+16 °С до +30 °С",
     voltageRange: "160 В – 250 В (система стабилизации и защиты от скачков в сети)",

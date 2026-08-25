@@ -3320,7 +3320,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/resize_cache/iblock/42c/5wl0fqjvbxhdliv5ji6fbh1rtgvn0rpo/640_440_1/ehf3fuc8ko80vmrjh5k8cc0jo0bbpocd.jpg",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/42c/5wl791d9vk3o99pvxkixzmpdkeemkm0f/ehfss7ww5a43lcv5clyyk4armm4fk913.jpg",
       "variants": [
         {
           "btu": 7000,
@@ -3372,7 +3372,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/resize_cache/iblock/710/drwtr41sxpg3s3nms955bfin132y5dy1/640_440_1/ocobu8udxobthmgjlrlvkpgkv1olucch.jpg",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/710/drwtr41sxpg3s3nms955bfin132y5dy1/ocobu8udxobthmgjlrlvkpgkv1olucch.jpg",
       "variants": [
         {
           "btu": 9000,
@@ -3416,7 +3416,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/resize_cache/iblock/4fe/c58p0gwt6pyekq93fxkd29l92pdzo9hm/640_440_1/ka688tv5a1mpf9bt0xjvn7rqc2szix5g.jpg",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/4fe/c58p0gwt6pyekq93fxkd29l92pdzo9hm/ka688tv5a1mpf9bt0xjvn7rqc2szix5g.jpg",
       "variants": [
         {
           "btu": 9000,
@@ -3460,7 +3460,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/629/47fh7nuvm89kjevtvus0veigy97ak817/1472051cafa413bc982fbc6f387cb4c6.jpg",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/629/vdooa3gzbcifmel6a9wfnp8trbirr569/b7fd74dec948d4af1f26bbb1b46f2016.jpg",
       "variants": [
         {
           "btu": 7000,
@@ -3532,7 +3532,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/b47/5rx7jwm6ylcrcxw26kln1cl600q61zp4/pe2bqlidoj86vsns8vfvnx7t2xaoxuty.jpg",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/cb7/qvtew425uo0gyy6a4g9g5gv78ipxpoma/91f97eae39a3423c610cd44648bac2dc.jpg",
       "variants": [
         {
           "btu": 36000,
@@ -3580,7 +3580,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/resize_cache/iblock/6fd/tgfmmmrb6xlxl4pjcumptdzy1xyapolm/640_440_1/0a5b4ed4e7c31e4506c6191057cee8f4.jpg",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/6fd/tgf3y3x5l56y8v1lvfksqsmebah5m3z5/0a5f716d339ce2deaf5a0c4cb6228030.jpg",
       "variants": [
         {
           "btu": 18000,
@@ -3602,7 +3602,7 @@
     },
     {
       "id": 754,
-      "name": "Ballu Orbis BPAC-08",
+      "name": "Ballu Orbis BPAC",
       "brand": "Ballu",
       "type": "Мобильный",
       "smartHome": false,
@@ -3612,26 +3612,21 @@
       "badge": "Без монтажа",
       "variants": [
         {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "—",
+          "price": 23611,
+          "oldPrice": 23990
+        },
+        {
           "btu": 8000,
           "area": 22,
           "cooling": "2.3 кВт",
           "heating": "—",
           "price": 28939,
           "oldPrice": 29790
-        }
-      ]
-    },
-    {
-      "id": 755,
-      "name": "Ballu Orbis BPAC-09",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/2b25ce08-6ec1-11ef-b8db-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 9000,
           "area": 25,
@@ -3686,7 +3681,7 @@
     },
     {
       "id": 758,
-      "name": "Ballu Eclipse BPAC-07 EPW white",
+      "name": "Ballu Eclipse BPAC EPW white",
       "brand": "Ballu",
       "type": "Мобильный",
       "smartHome": false,
@@ -3702,20 +3697,7 @@
           "heating": "—",
           "price": 31228,
           "oldPrice": 31990
-        }
-      ]
-    },
-    {
-      "id": 759,
-      "name": "Ballu Eclipse BPAC-10 EPW white",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/cf4e5270-b798-11ef-b8dc-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 10000,
           "area": 27,
@@ -3833,7 +3815,7 @@
     },
     {
       "id": 765,
-      "name": "Ballu Stella BPAC-07",
+      "name": "Ballu Stella BPAC",
       "brand": "Ballu",
       "type": "Мобильный",
       "smartHome": false,
@@ -3849,20 +3831,7 @@
           "heating": "—",
           "price": 23029,
           "oldPrice": 23590
-        }
-      ]
-    },
-    {
-      "id": 766,
-      "name": "Ballu Stella BPAC-09",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/f6cfd23e-1058-11f0-b8de-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 9000,
           "area": 25,
@@ -3875,7 +3844,7 @@
     },
     {
       "id": 767,
-      "name": "Ballu Selen BPAC-07",
+      "name": "Ballu Selen BPAC",
       "brand": "Ballu",
       "type": "Мобильный",
       "smartHome": false,
@@ -3891,20 +3860,7 @@
           "heating": "—",
           "price": 24650,
           "oldPrice": 24990
-        }
-      ]
-    },
-    {
-      "id": 768,
-      "name": "Ballu Selen BPAC-09",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/ad196063-d7d5-11ef-b8dc-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 9000,
           "area": 25,
@@ -3912,20 +3868,7 @@
           "heating": "—",
           "price": 27284,
           "oldPrice": 27990
-        }
-      ]
-    },
-    {
-      "id": 769,
-      "name": "Ballu Selen BPAC-12",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/53b3a773-d7d6-11ef-b8dc-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 12000,
           "area": 35,
@@ -4001,7 +3944,7 @@
     },
     {
       "id": 773,
-      "name": "Ballu Platinum X4 BPHS-09",
+      "name": "Ballu Platinum X4 BPHS",
       "brand": "Ballu",
       "type": "Мобильный",
       "smartHome": false,
@@ -4017,20 +3960,7 @@
           "heating": "2.4 кВт",
           "price": 36377,
           "oldPrice": 36990
-        }
-      ]
-    },
-    {
-      "id": 774,
-      "name": "Ballu Platinum X4 BPHS-14",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/ababf433-1d67-11f1-b8e1-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 14000,
           "area": 40,
@@ -4043,7 +3973,7 @@
     },
     {
       "id": 775,
-      "name": "Ballu Platinum X4 BPHS-09 + UniPort",
+      "name": "Ballu Platinum X4 BPHS + UniPort",
       "brand": "Ballu",
       "type": "Мобильный",
       "smartHome": false,
@@ -4059,20 +3989,7 @@
           "heating": "2.4 кВт",
           "price": 38255,
           "oldPrice": 38990
-        }
-      ]
-    },
-    {
-      "id": 776,
-      "name": "Ballu Platinum X4 BPHS-12 + UniPort",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/4c153770-5dd5-11f1-b8e3-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 12000,
           "area": 35,
@@ -4080,20 +3997,7 @@
           "heating": "3.2 кВт",
           "price": 43377,
           "oldPrice": 43990
-        }
-      ]
-    },
-    {
-      "id": 777,
-      "name": "Ballu Platinum X4 BPHS-14 + UniPort",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/4c153774-5dd5-11f1-b8e3-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 14000,
           "area": 40,
@@ -4106,7 +4010,7 @@
     },
     {
       "id": 778,
-      "name": "Ballu Platinum Comfort BPHS-08H",
+      "name": "Ballu Platinum Comfort BPHS-H",
       "brand": "Ballu",
       "type": "Мобильный",
       "smartHome": false,
@@ -4122,20 +4026,7 @@
           "heating": "2.1 кВт",
           "price": 33310,
           "oldPrice": 33990
-        }
-      ]
-    },
-    {
-      "id": 779,
-      "name": "Ballu Platinum Comfort BPHS-11H",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/dfb0eaec-fada-11ed-b736-005056013a69/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 11000,
           "area": 30,
@@ -4143,20 +4034,7 @@
           "heating": "3.0 кВт",
           "price": 37922,
           "oldPrice": 38990
-        }
-      ]
-    },
-    {
-      "id": 780,
-      "name": "Ballu Platinum Comfort BPHS-13H",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/dfb0eaee-fada-11ed-b736-005056013a69/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 13000,
           "area": 35,
@@ -4168,29 +4046,8 @@
       ]
     },
     {
-      "id": 781,
-      "name": "Ballu Orbis BPAC-07",
-      "brand": "Ballu",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/ab3696a4-cc02-11ee-b8d6-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
-        {
-          "btu": 7000,
-          "area": 20,
-          "cooling": "2.1 кВт",
-          "heating": "—",
-          "price": 23611,
-          "oldPrice": 23990
-        }
-      ]
-    },
-    {
       "id": 782,
-      "name": "Ballu Heavy Pro BGK5",
+      "name": "Ballu Heavy Pro BGK",
       "brand": "Ballu",
       "type": "Промышленный",
       "smartHome": false,
@@ -4206,41 +4063,7 @@
           "heating": "—",
           "price": 152604,
           "oldPrice": 155990
-        }
-      ]
-    },
-    {
-      "id": 783,
-      "name": "Ballu Heavy Pro BGK9",
-      "brand": "Ballu",
-      "type": "Промышленный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/6884d133-fa3a-11ed-b736-005056013a69/main_big.jpg",
-      "badge": "Промышленный",
-      "variants": [
-        {
-          "btu": 27000,
-          "area": 80,
-          "cooling": "7.9 кВт",
-          "heating": "—",
-          "price": 242298,
-          "oldPrice": 245990
-        }
-      ]
-    },
-    {
-      "id": 784,
-      "name": "Ballu Heavy Pro BGK8E",
-      "brand": "Ballu",
-      "type": "Промышленный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/d16b5c9d-1058-11f0-b8de-00505601218a/main_big.jpg",
-      "badge": "Промышленный",
-      "variants": [
+        },
         {
           "btu": 24000,
           "area": 70,
@@ -4248,20 +4071,15 @@
           "heating": "—",
           "price": 386104,
           "oldPrice": 395990
-        }
-      ]
-    },
-    {
-      "id": 785,
-      "name": "Ballu Heavy Pro BGK15",
-      "brand": "Ballu",
-      "type": "Промышленный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/fd5c96bc-ed2e-11ef-b8de-00505601218a/main_big.jpg",
-      "badge": "Промышленный",
-      "variants": [
+        },
+        {
+          "btu": 27000,
+          "area": 80,
+          "cooling": "7.9 кВт",
+          "heating": "—",
+          "price": 242298,
+          "oldPrice": 245990
+        },
         {
           "btu": 44000,
           "area": 130,
@@ -4274,7 +4092,7 @@
     },
     {
       "id": 786,
-      "name": "Electrolux Arizona EACM-07 AZ",
+      "name": "Electrolux Arizona EACM AZ",
       "brand": "Electrolux",
       "type": "Мобильный",
       "smartHome": false,
@@ -4290,20 +4108,7 @@
           "heating": "—",
           "price": 28158,
           "oldPrice": 28990
-        }
-      ]
-    },
-    {
-      "id": 787,
-      "name": "Electrolux Arizona EACM-09 AZ",
-      "brand": "Electrolux",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/2b507b39-1264-11f1-b8e1-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 9000,
           "area": 25,
@@ -4316,7 +4121,7 @@
     },
     {
       "id": 788,
-      "name": "Electrolux EACM-12 CLN 2.0",
+      "name": "Electrolux EACM CLN 2.0",
       "brand": "Electrolux",
       "type": "Мобильный",
       "smartHome": false,
@@ -4332,20 +4137,7 @@
           "heating": "—",
           "price": 38488,
           "oldPrice": 39590
-        }
-      ]
-    },
-    {
-      "id": 789,
-      "name": "Electrolux EACM-14 CLN 2.0",
-      "brand": "Electrolux",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/034705d1-233b-11ef-b8d8-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 14000,
           "area": 40,
@@ -4379,7 +4171,7 @@
     },
     {
       "id": 791,
-      "name": "Electrolux EACM-16 HP",
+      "name": "Electrolux EACM HP",
       "brand": "Electrolux",
       "type": "Мобильный",
       "smartHome": false,
@@ -4395,20 +4187,7 @@
           "heating": "4.2 кВт",
           "price": 65281,
           "oldPrice": 66990
-        }
-      ]
-    },
-    {
-      "id": 792,
-      "name": "Electrolux EACM-18 HP",
-      "brand": "Electrolux",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/203d609d-05e6-11ee-b736-005056013a69/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 18000,
           "area": 50,
@@ -4442,7 +4221,7 @@
     },
     {
       "id": 794,
-      "name": "Electrolux EACM-20 JK",
+      "name": "Electrolux EACM JK",
       "brand": "Electrolux",
       "type": "Мобильный",
       "smartHome": false,
@@ -4458,20 +4237,7 @@
           "heating": "—",
           "price": 134277,
           "oldPrice": 135990
-        }
-      ]
-    },
-    {
-      "id": 795,
-      "name": "Electrolux EACM-22 JK",
-      "brand": "Electrolux",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/2c18919d-ce27-11ed-b733-005056013a69/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 22000,
           "area": 60,
@@ -4484,7 +4250,7 @@
     },
     {
       "id": 796,
-      "name": "Electrolux Fusion Mobile EACM-07",
+      "name": "Electrolux Fusion Mobile EACM",
       "brand": "Electrolux",
       "type": "Мобильный",
       "smartHome": false,
@@ -4500,20 +4266,7 @@
           "heating": "—",
           "price": 28205,
           "oldPrice": 28990
-        }
-      ]
-    },
-    {
-      "id": 797,
-      "name": "Electrolux Fusion Mobile EACM-09",
-      "brand": "Electrolux",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/4b6f3391-fe08-11ed-b736-005056013a69/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 9000,
           "area": 25,
@@ -4521,20 +4274,7 @@
           "heating": "—",
           "price": 31622,
           "oldPrice": 31990
-        }
-      ]
-    },
-    {
-      "id": 798,
-      "name": "Electrolux Fusion Mobile EACM-12",
-      "brand": "Electrolux",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/5825877a-1426-11ee-b736-005056013a69/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 12000,
           "area": 35,
@@ -4542,20 +4282,7 @@
           "heating": "—",
           "price": 38216,
           "oldPrice": 38990
-        }
-      ]
-    },
-    {
-      "id": 799,
-      "name": "Electrolux Fusion Mobile EACM-14",
-      "brand": "Electrolux",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/5825877c-1426-11ee-b736-005056013a69/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 14000,
           "area": 40,
@@ -4568,7 +4295,7 @@
     },
     {
       "id": 800,
-      "name": "AC ELECTRIC ACE-07 FH",
+      "name": "AC ELECTRIC ACE FH",
       "brand": "AC ELECTRIC",
       "type": "Мобильный",
       "smartHome": false,
@@ -4584,20 +4311,7 @@
           "heating": "—",
           "price": 17472,
           "oldPrice": 17990
-        }
-      ]
-    },
-    {
-      "id": 801,
-      "name": "AC ELECTRIC ACE-09 FH",
-      "brand": "AC ELECTRIC",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/587d9b7c-d287-11ef-b8dc-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 9000,
           "area": 25,
@@ -4610,7 +4324,7 @@
     },
     {
       "id": 802,
-      "name": "AC ELECTRIC Diona ACE-07",
+      "name": "AC ELECTRIC Diona ACE",
       "brand": "AC ELECTRIC",
       "type": "Мобильный",
       "smartHome": false,
@@ -4626,20 +4340,7 @@
           "heating": "—",
           "price": 20653,
           "oldPrice": 20990
-        }
-      ]
-    },
-    {
-      "id": 803,
-      "name": "AC ELECTRIC Diona ACE-09",
-      "brand": "AC ELECTRIC",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "https://rkcdn.ru/products/3abe29a9-3714-11f1-b8e1-00505601218a/main_big.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 9000,
           "area": 25,
@@ -4652,13 +4353,13 @@
     },
     {
       "id": 804,
-      "name": "Airwave AWD-07PCW white",
+      "name": "Airwave AWD-PCW white",
       "brand": "Airwave",
       "type": "Мобильный",
       "smartHome": true,
       "noise": "49–52 дБ",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/046/eyxe2msqlul6ed2y84lhkhqz7ftfygbu/cde4652d4a12613d69f77aca070e199e.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/046/eyxe2msqlul6ed2y84lhkhqz7ftfygbu/cde4652d4a12613d69f77aca070e199e.jpg",
       "badge": "Без монтажа",
       "variants": [
         {
@@ -4668,41 +4369,7 @@
           "heating": "—",
           "price": 23575,
           "oldPrice": 23990
-        }
-      ]
-    },
-    {
-      "id": 805,
-      "name": "Airwave AWD-07PCB black",
-      "brand": "Airwave",
-      "type": "Мобильный",
-      "smartHome": true,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/31b/hp4o6g5txgkq52etit1zil20qr87mwwp/Front.png",
-      "badge": "Без монтажа",
-      "variants": [
-        {
-          "btu": 7000,
-          "area": 20,
-          "cooling": "2.1 кВт",
-          "heating": "—",
-          "price": 23385,
-          "oldPrice": 23990
-        }
-      ]
-    },
-    {
-      "id": 806,
-      "name": "Airwave AWD-09PCW white",
-      "brand": "Airwave",
-      "type": "Мобильный",
-      "smartHome": true,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/046/eyxe2msqlul6ed2y84lhkhqz7ftfygbu/cde4652d4a12613d69f77aca070e199e.jpg",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 9000,
           "area": 25,
@@ -4714,16 +4381,24 @@
       ]
     },
     {
-      "id": 807,
-      "name": "Airwave AWD-09PCB black",
+      "id": 805,
+      "name": "Airwave AWD-PCB black",
       "brand": "Airwave",
       "type": "Мобильный",
       "smartHome": true,
       "noise": "49–52 дБ",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/31b/hp4o6g5txgkq52etit1zil20qr87mwwp/Front.png",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/31b/hp4o6g5txgkq52etit1zil20qr87mwwp/Front.png",
       "badge": "Без монтажа",
       "variants": [
+        {
+          "btu": 7000,
+          "area": 20,
+          "cooling": "2.1 кВт",
+          "heating": "—",
+          "price": 23385,
+          "oldPrice": 23990
+        },
         {
           "btu": 9000,
           "area": 25,
@@ -4736,13 +4411,13 @@
     },
     {
       "id": 808,
-      "name": "Midea MPPHAS-07CHN7",
+      "name": "Midea MPPHAS-CHN7",
       "brand": "Midea",
       "type": "Мобильный",
       "smartHome": false,
       "noise": "49–52 дБ",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/5dc/f21e1ap3pbhlk05q84iemm3yejwo4iq8/MI_MPPHAS_07CH_001.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/5dc/f21e1ap3pbhlk05q84iemm3yejwo4iq8/MI_MPPHAS_07CH_001.jpg",
       "badge": "Без монтажа",
       "variants": [
         {
@@ -4752,18 +4427,26 @@
           "heating": "2.0 кВт",
           "price": 27155,
           "oldPrice": 27990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.4 кВт",
+          "price": 29321,
+          "oldPrice": 29990
         }
       ]
     },
     {
       "id": 809,
-      "name": "Midea MPPH1-07CHN7",
+      "name": "Midea MPPH1-CHN7",
       "brand": "Midea",
       "type": "Мобильный",
       "smartHome": false,
       "noise": "49–52 дБ",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/0a6/rjoe5l22oyi1kunuol02a5fpkwqg3wf1/waf6zgtuquybilc0ouc768eb5jk1e0cd.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/0a6/rjoe5l22oyi1kunuol02a5fpkwqg3wf1/waf6zgtuquybilc0ouc768eb5jk1e0cd.jpg",
       "badge": "Без монтажа",
       "variants": [
         {
@@ -4773,6 +4456,14 @@
           "heating": "2.0 кВт",
           "price": 27593,
           "oldPrice": 27990
+        },
+        {
+          "btu": 9000,
+          "area": 25,
+          "cooling": "2.6 кВт",
+          "heating": "2.4 кВт",
+          "price": 29646,
+          "oldPrice": 29990
         }
       ]
     },
@@ -4784,7 +4475,7 @@
       "smartHome": false,
       "noise": "49–52 дБ",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/855/zjj7w7tobmq9bzqfkdmqctebuggpknh0/624lhl2uwab0z5kbvpf4088w4aqmvub1.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/855/zjj7w7tobmq9bzqfkdmqctebuggpknh0/624lhl2uwab0z5kbvpf4088w4aqmvub1.jpg",
       "badge": "Без монтажа",
       "variants": [
         {
@@ -4798,48 +4489,6 @@
       ]
     },
     {
-      "id": 811,
-      "name": "Midea MPPHAS-09CHN7",
-      "brand": "Midea",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/5dc/f21e1ap3pbhlk05q84iemm3yejwo4iq8/MI_MPPHAS_07CH_001.jpg",
-      "badge": "Без монтажа",
-      "variants": [
-        {
-          "btu": 9000,
-          "area": 25,
-          "cooling": "2.6 кВт",
-          "heating": "2.4 кВт",
-          "price": 29321,
-          "oldPrice": 29990
-        }
-      ]
-    },
-    {
-      "id": 812,
-      "name": "Midea MPPH1-09CHN7",
-      "brand": "Midea",
-      "type": "Мобильный",
-      "smartHome": false,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/0a6/rjoe5l22oyi1kunuol02a5fpkwqg3wf1/waf6zgtuquybilc0ouc768eb5jk1e0cd.jpg",
-      "badge": "Без монтажа",
-      "variants": [
-        {
-          "btu": 9000,
-          "area": 25,
-          "cooling": "2.6 кВт",
-          "heating": "2.4 кВт",
-          "price": 29646,
-          "oldPrice": 29990
-        }
-      ]
-    },
-    {
       "id": 813,
       "name": "Primera PRMC-07JGNA",
       "brand": "Primera",
@@ -4847,7 +4496,7 @@
       "smartHome": false,
       "noise": "49–52 дБ",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/922/itwfiahlrszix2n11lxtx8kz3v6i6n1p/20220330_170520.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/922/itwfiahlrszix2n11lxtx8kz3v6i6n1p/20220330_170520.jpg",
       "badge": "Без монтажа",
       "variants": [
         {
@@ -4862,13 +4511,13 @@
     },
     {
       "id": 814,
-      "name": "Airwave AWP-12PHW",
+      "name": "Airwave AWP-PHW",
       "brand": "Airwave",
       "type": "Мобильный",
       "smartHome": true,
       "noise": "49–52 дБ",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/7aa/1j9osebruh3dzlroo6f6vdg1bn48m8dg/A015E.png",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/7aa/1j9osebruh3dzlroo6f6vdg1bn48m8dg/A015E.png",
       "badge": "Без монтажа",
       "variants": [
         {
@@ -4878,20 +4527,7 @@
           "heating": "—",
           "price": 39261,
           "oldPrice": 39990
-        }
-      ]
-    },
-    {
-      "id": 815,
-      "name": "Airwave AWP-14PHW",
-      "brand": "Airwave",
-      "type": "Мобильный",
-      "smartHome": true,
-      "noise": "49–52 дБ",
-      "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/7aa/1j9osebruh3dzlroo6f6vdg1bn48m8dg/A015E.png",
-      "badge": "Без монтажа",
-      "variants": [
+        },
         {
           "btu": 14000,
           "area": 40,
@@ -4931,7 +4567,7 @@
       "smartHome": false,
       "noise": "49–52 дБ",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.market/upload/resize_cache/iblock/487/1as2549pfjchomsbhzlksudk4nmw2k38/350_350_0/hvryk8e52kvsntcde30pjkp4ds7xz839.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/487/1as2549pfjchomsbhzlksudk4nmw2k38/hvryk8e52kvsntcde30pjkp4ds7xz839.jpg",
       "badge": "Без монтажа",
       "variants": [
         {
