@@ -511,7 +511,7 @@ export function getOfficialSpecification(item: Conditioner, selectedBtu: number)
   const isCassette = item.type === "Полупромышленный" || nameLower.includes("кассетн");
 
   let distributor: OfficialSpecification["distributor"] = "Русклимат (Rusklimat B2B)";
-  if (["KENTATSU", "MIDEA", "DAICHI", "AXIOMA", "DAIKIN", "BOSCH"].includes(brandUpper)) {
+  if (["KENTATSU", "MIDEA", "DAICHI", "AXIOMA", "DAIKIN", "BOSCH", "AIRWAVE", "PRIMERA"].includes(brandUpper)) {
     distributor = "Daichi (Даичи Бизнес)";
   }
 

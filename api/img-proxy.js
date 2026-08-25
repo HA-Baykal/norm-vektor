@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const url = req.query.url;
-  if (!url || !url.startsWith("https://daichi.business/")) {
+  if (!url || !url.startsWith("https://daichi.")) {
     return res.status(403).send("Forbidden");
   }
   try {
