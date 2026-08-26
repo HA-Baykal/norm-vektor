@@ -270,19 +270,23 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   ],
 
   // === MIDEA (ДАИЧИ) ===
-  109: [ // Midea Парамаунт R32 MSAG1 (Обычный)
-    "https://daichi.business/upload/iblock/a84/1jv0tyag8mhxoost9mrenn0rxno5m7zx/3qagaezojpctuc631r9cj5iqiok1zttl.jpg",
-    "https://daichi.business/upload/iblock/f41/c063762ueuzlmvo09rvct28upl5o9euy/mp00s3hy041cgxx6hippy3ja339axh3f.jpg",
-    "https://daichi.business/upload/iblock/308/u90ro506jc7hecxyg8q3c4unr0gbsv4u/r3eoab6ikdhnjngp7uh1i5m2t3bkdr98.jpg",
-    "https://daichi.business/upload/iblock/0dd/38u1km94xm9w7yodoozm69cogu46wp5g/pdhr71oxwwv6nabtl1v0hi12jqtk7q5u.jpg",
-    "https://daichi.business/upload/iblock/5a2/dwvou7r2cpwp45lm5di36iwjeb059zxe/6in6if6v7c0hhbb24zvardw8a2vbc8dk.jpg",
-    "https://daichi.business/upload/iblock/052/rsf02jctqrwrg3qtuz0ezdrk7lrbev1h/c9980a438ed156b5933b58c93896c5be.jpg"
+  109: [ // Midea Парамаунт R32 MSAG1 (Обычный) — официальные фото Daichi (daichi.market, серия Paramount R32)
+    "https://daichi.market/upload/iblock/df6/xtkqw1s6bpxqfff0nth0taddoaho4tf2/nt3xtnllw8tr7h7rwtrd1043akw2mlqq.jpg",
+    "https://daichi.market/upload/iblock/887/c2iu14bhtljggb9ygihvc5l8bhrr5jgz/4880b54c799e20acbff3d1e3ad41a356.jpg",
+    "https://daichi.market/upload/iblock/6d0/3sxy1bmi8nkxx6xxnc99p9qps5rllc7w/1390b6b47f459b425e0d0d454e29266b.jpg",
+    "https://daichi.market/upload/iblock/549/bq0khx222n2pi2zu7s16cynvp71lz8iw/uv0sko6qr5yfw3who7702sjaese3h9jp.jpg",
+    "https://daichi.market/upload/iblock/2f8/bs34a7l0k3gll9o64rn3iafg02jzg7yl/8bk8ravsbv72atoztubel4nqzayqbr55.jpg",
+    "https://daichi.market/upload/iblock/a70/2rorutzl0wu9t38vodu5g7y8zurz0lq0/hooj2ns23b68cdrvj36jrandq5eviiou.jpg"
   ],
-  720: [ // Midea Анлимитед (Unlimited) (Обычный)
-    "https://daichi.business/upload/iblock/258/bdlxz07diy2b2xmjl6d1045bva3ttd12/0ce9a9d3cffe27d8a1d15c1d56330c7e.jpg",
-    "https://daichi.business/upload/iblock/fef/2o7dbrfs1aj0p4dn6xyfzmlqk7awh7u2/79370b4a03e75ecd56f5e3d01ff3e21f.jpg",
-    "https://daichi.business/upload/iblock/b84/aj9udft2v9l6a7ts7n21f1tt039deiwa/ada4ae7deafae55528ddab3bfb898b54.jpg",
-    "https://daichi.business/upload/iblock/c16/vfuk236x52tx6gw932zc5illowq0b9g2/4d10325b401d67de6b11dfe8ee53ccf4.jpg"
+  720: [ // Midea Анлимитед (Unlimited) (Обычный) — официальные фото Daichi (daichi.market, серия Unlimited R32)
+    "https://daichi.market/upload/iblock/f6a/2whrub6z169jsog90r1lks95nqukc2bj/j2wi9m5sd3sha9ce189q09t2bb48a2bs.jpg",
+    "https://daichi.market/upload/iblock/fae/eqexs3ezeeby0acxdu63qlk2amdge2mv/ac7fbeee66f2f9d9394d6486d51baf12.jpg",
+    "https://daichi.market/upload/iblock/3f7/ob4uotupvcg6re3fk2e9vpjl8ru311nd/w9uhw2eg3w9mw3huyvuru1etfr1eg4pv.jpg",
+    "https://daichi.market/upload/iblock/bfd/uem0so12p2prmhyeq83erqmcdsy4jewi/9ybj5kbdug3yn1v6u9dyajznck27mi8j.jpg",
+    "https://daichi.market/upload/iblock/7e7/4xt2udpyj8jyubi8m3czxc5om2vrs7u4/890lelicik54spyu8t28c51d2qpuz74f.jpg",
+    "https://daichi.market/upload/iblock/47b/68doyoboo16proqq4shvrckd27dsgd9v/93f37f07d6f9a47b27a7c9c257f27ba9.jpg",
+    "https://daichi.market/upload/iblock/2f8/bs34a7l0k3gll9o64rn3iafg02jzg7yl/8bk8ravsbv72atoztubel4nqzayqbr55.jpg",
+    "https://daichi.market/upload/iblock/a70/2rorutzl0wu9t38vodu5g7y8zurz0lq0/hooj2ns23b68cdrvj36jrandq5eviiou.jpg"
   ],
   721: [ // Midea Персона (Persona) (Обычный)
     "/images/catalog/midea-persona.jpg",
