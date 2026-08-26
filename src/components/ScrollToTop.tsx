@@ -1,21 +1,106 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useLocation, useNavigationType } from "react-router-dom";
 
-// Компонент выполняет 2 важнейшие задачи: 
-// 1. При открытии любой страницы моментально сбрасывает скролл на самый верх
-// 2. Показывает удобную плавающую кнопку "↑ Наверх" при прокрутке страницы вниз
+// Отключаем встроенное восстановление скролла браузера — управляем позицией сами.
+// Иначе браузер «дёргает» страницу в SPA и при возврате назад кидает наверх.
+if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
+// Ключ, под которым храним позицию скролла конкретной записи истории браузера
+const posKey = (locationKey: string) => `scroll_pos:${locationKey}`;
+
+// Компонент выполняет 3 важнейшие задачи:
+// 1. Запоминает позицию прокрутки каждой страницы в истории браузера
+// 2. При нажатии «назад/вперёд» возвращает пользователя ровно туда, где он был
+//    (при обычном переходе по ссылке — наверх новой страницы)
+// 3. Показывает удобную плавающую кнопку "↑ Наверх" при прокрутке страницы вниз
 export default function ScrollToTop() {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const navigationType = useNavigationType();
   const [visible, setVisible] = useState(false);
 
-  // Сброс прокрутки вверх при каждом переходе между страницами, если не восстанавливается позиция карточки в каталоге
-  useEffect(() => {
+  // Восстановление / сброс прокрутки при каждой смене страницы
+  useLayoutEffect(() => {
+    // Возврат кнопкой «назад» или «вперёд» — восстанавливаем сохранённую позицию
+    if (navigationType === "POP") {
+      const saved = sessionStorage.getItem(posKey(location.key));
+      if (saved !== null) {
+        const target = parseInt(saved, 10) || 0;
+        let attempts = 0;
+        let raf = 0;
+
+        // Контент (карточки, фото) может дорисовываться — пробуем несколько кадров,
+        // пока страница не станет достаточно высокой для нужной позиции
+        const tryRestore = () => {
+          window.scrollTo({ top: target, left: 0, behavior: "instant" });
+          const achieved = Math.abs(window.scrollY - target) <= 2;
+          if (!achieved && attempts++ < 60) {
+            raf = requestAnimationFrame(tryRestore);
+          }
+        };
+
+        tryRestore();
+        return () => cancelAnimationFrame(raf);
+      }
+    }
+
+    // Переход по внутренней ссылке «Вернуться в каталог» с открытой карточки:
+    // каталог сам плавно подведёт к последней просмотренной карточке
     const hasScrollTarget = sessionStorage.getItem("catalog_last_card_id");
-    if (hasScrollTarget && (pathname === "/kondicionery" || pathname === "/")) {
+    if (hasScrollTarget && (location.pathname === "/kondicionery" || location.pathname === "/")) {
       return;
     }
+
+    // Переход по ссылке с якорем (например /kondicionery#catalog) — ведём к якорю
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      let attempts = 0;
+      let raf = 0;
+
+      const tryAnchor = () => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "instant", block: "start" });
+        } else if (attempts++ < 30) {
+          raf = requestAnimationFrame(tryAnchor);
+        }
+      };
+
+      tryAnchor();
+      return () => cancelAnimationFrame(raf);
+    }
+
+    // Обычный переход на новую страницу — начинаем с самого верха
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, [pathname]);
+  }, [location.key]);
+
+  // Постоянно запоминаем позицию прокрутки текущей записи истории (без лишних записей — через rAF)
+  useEffect(() => {
+    const key = posKey(location.key);
+    let raf = 0;
+
+    const save = () => {
+      raf = 0;
+      try {
+        sessionStorage.setItem(key, String(Math.round(window.scrollY)));
+      } catch {
+        /* sessionStorage может быть недоступен (приватный режим) — просто пропускаем */
+      }
+    };
+
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(save);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    save();
+
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [location.key]);
 
   // Отслеживание прокрутки вниз для появления кнопки
   useEffect(() => {
