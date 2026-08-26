@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect, useRef } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigationType } from "react-router-dom";
 import QuickBookingModal from "./QuickBookingModal";
 import { getMainCoverPhoto, getModelUrlSlug } from "../data/officialSpecsEngine";
 import { useCompare } from "../utils/useCompare";
@@ -2735,15 +2735,22 @@ export default function CatalogConditioners() {
     }
   };
 
-  // Автоматическое восстановление точного скролла к последней просмотренной карточке при возврате назад
+  // Возврат к последней просмотренной карточке:
+  // - при нажатии «назад» в браузере точную позицию скролла восстанавливает ScrollToTop,
+  //   поэтому здесь только подсвечиваем карточку, не трогая скролл;
+  // - при переходе по ссылке «Вернуться в каталог» дополнительно плавно подводим к карточке.
+  const navigationType = useNavigationType();
   useEffect(() => {
     const targetCardId = sessionStorage.getItem("catalog_last_card_id");
     if (targetCardId) {
+      const isBackNavigation = navigationType === "POP";
       // Даём React отрисовать страницу и карточки
       const timer = setTimeout(() => {
         const el = document.getElementById(`card-${targetCardId}`);
         if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          if (!isBackNavigation) {
+            el.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
           el.classList.add("ring-4", "ring-[#ff6b35]", "ring-offset-4");
           setTimeout(() => {
             el.classList.remove("ring-4", "ring-[#ff6b35]", "ring-offset-4");
