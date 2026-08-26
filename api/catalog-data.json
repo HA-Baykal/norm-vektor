@@ -2370,7 +2370,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "images/catalog/kentatsu-ichi-inv.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/596/j3nqso97cc4l509nq5lpzq2ucrle5qzn/yffgkm1gelxck0om3nan6znhe0iq6ok8.jpg",
       "variants": [
         {
           "btu": 24000,
@@ -2390,7 +2390,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "images/catalog/midea-unlimited.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/f6a/2whrub6z169jsog90r1lks95nqukc2bj/j2wi9m5sd3sha9ce189q09t2bb48a2bs.jpg",
       "variants": [
         {
           "btu": 7000,
@@ -3360,7 +3360,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/42c/5wl791d9vk3o99pvxkixzmpdkeemkm0f/ehfss7ww5a43lcv5clyyk4armm4fk913.jpg",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/843/eeplcdhud1xr9skt8x9p1v8ul7gjfapu/e7ef71a5d086046ae4471f4f11d916c5.jpg",
       "variants": [
         {
           "btu": 7000,
@@ -3500,7 +3500,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/629/vdooa3gzbcifmel6a9wfnp8trbirr569/b7fd74dec948d4af1f26bbb1b46f2016.jpg",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/92b/q091wd79snt2mxaf5dkpgar6qdyxs8ia/fa61c5a5e9aca81d1ecbfa2a88e11956.jpg",
       "variants": [
         {
           "btu": 7000,
@@ -3572,7 +3572,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/cb7/qvtew425uo0gyy6a4g9g5gv78ipxpoma/91f97eae39a3423c610cd44648bac2dc.jpg",
+      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/b47/5rx7jwm6ylcrcxw26kln1cl600q61zp4/pe2bqlidoj86vsns8vfvnx7t2xaoxuty.jpg",
       "variants": [
         {
           "btu": 36000,
@@ -3592,7 +3592,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/dcf/pe2yithik9y9l9hkvgruxl4vkrkj3r6i/33w65kvis28egejlv5w2l38u7uqftwyi.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/7f7/i7dr14qog7hxxf95170hjtmiu2hpu26k/11.jpg",
       "variants": [
         {
           "btu": 18000,
@@ -3620,7 +3620,7 @@
       "smartHome": false,
       "noise": "—",
       "country": "КНР",
-      "image": "/api/img-proxy?url=https://daichi.business/upload/iblock/6fd/tgf3y3x5l56y8v1lvfksqsmebah5m3z5/0a5f716d339ce2deaf5a0c4cb6228030.jpg",
+      "image": "/api/img-proxy?url=https://daichi.market/upload/iblock/889/lg8l2t6wzjhyor32bizvxyjr53b87vrw/11.jpg",
       "variants": [
         {
           "btu": 18000,
@@ -4905,7 +4905,7 @@
       "smartHome": true,
       "noise": "20 дБ",
       "country": "КНР",
-      "image": "https://rkcdn.ru/products/37efc26f-6304-11ef-b8db-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/a12d4138-1553-11f0-b8de-00505601218a/main_big.jpg",
       "badge": "Премиум стекло",
       "variants": [
         {
@@ -4950,7 +4950,7 @@
       "smartHome": true,
       "noise": "21 дБ",
       "country": "КНР",
-      "image": "https://rkcdn.ru/products/43c4c929-5d3e-11ef-b8db-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/7df4d468-ece7-11ee-b8d7-00505601218a/main_big.jpg",
       "badge": "Флагман",
       "variants": [
         {
@@ -5153,7 +5153,7 @@
       "smartHome": true,
       "noise": "20 дБ",
       "country": "КНР",
-      "image": "https://rkcdn.ru/products/44754ba1-6304-11ef-b8db-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/161329aa-5b3f-11ef-b8db-00505601218a/main_big.jpg",
       "badge": "Тканевая панель",
       "variants": [
         {
@@ -5182,7 +5182,7 @@
       "smartHome": true,
       "noise": "19 дБ",
       "country": "КНР",
-      "image": "https://rkcdn.ru/products/8e6dbca9-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/2f23eb1f-5b3f-11ef-b8db-00505601218a/main_big.jpg",
       "badge": "Black Edition",
       "variants": [
         {
@@ -5219,7 +5219,7 @@
       "smartHome": true,
       "noise": "19 дБ",
       "country": "КНР",
-      "image": "https://rkcdn.ru/products/32a9e14a-5b40-11ef-b8db-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/65c41f52-d287-11ef-b8dc-00505601218a/main_big.jpg",
       "badge": "Тепловой насос -30°C",
       "variants": [
         {
@@ -5316,7 +5316,7 @@
       "smartHome": false,
       "noise": "21 дБ",
       "country": "КНР",
-      "image": "https://rkcdn.ru/products/55dfb0ae-5b40-11ef-b8db-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/cef8f1d2-646b-11ef-b8db-00505601218a/main_big.jpg",
       "badge": "Новинка",
       "variants": [
         {
@@ -5369,7 +5369,7 @@
       "smartHome": false,
       "noise": "22 дБ",
       "country": "КНР",
-      "image": "https://rkcdn.ru/products/893adcb4-5b40-11ef-b8db-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/e3b6d9b9-d7d2-11ef-b8dc-00505601218a/main_big.jpg",
       "badge": "Дизайн Black",
       "variants": [
         {
@@ -5519,7 +5519,7 @@
       "smartHome": true,
       "noise": "19 дБ",
       "country": "Таиланд",
-      "image": "https://rkcdn.ru/products/97b3992b-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/ee2e1ff2-5d41-11ef-b8db-00505601218a/main_big.jpg",
       "badge": "Премиум A+++",
       "variants": [
         {
@@ -5572,7 +5572,7 @@
       "smartHome": true,
       "noise": "19 дБ",
       "country": "Таиланд",
-      "image": "https://rkcdn.ru/products/a19bf62d-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/afea4dd8-5d41-11ef-b8db-00505601218a/main_big.jpg",
       "badge": "Флагман Текстиль",
       "variants": [
         {
@@ -5889,7 +5889,7 @@
       "smartHome": true,
       "noise": "15 дБ",
       "country": "КНР",
-      "image": "https://rkcdn.ru/products/fa0289ba-d290-11ef-b8dc-00505601218a/main_big.jpg",
+      "image": "https://rkcdn.ru/products/939d0a6b-4ab0-11f1-b8e2-00505601218a/main_big.jpg",
       "badge": "Гарантия 7 лет",
       "variants": [
         {

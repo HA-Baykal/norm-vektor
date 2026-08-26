@@ -253,14 +253,12 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
    "/images/catalog/kentatsu-tokahi-inv.jpg"
   ],
   713: [ // Kentatsu Ичи Инвертор R32 (Ichi) (Инверторный)
-    "https://daichi.business/upload/iblock/629/47fh7nuvm89kjevtvus0veigy97ak817/1472051cafa413bc982fbc6f387cb4c6.jpg",
-    "https://daichi.business/upload/iblock/9c3/shxq6hyd7vjq09gc1pyvyeexh4rvljpp/ebf0063d2b57840878e70b2a8abd22db.jpg",
-    "https://daichi.business/upload/iblock/3ad/vii13r1ltbg3sazf2vwpks3f9wy077h5/019190a4df00a959e401747fdd4f2c9c.jpg"
+    "https://daichi.market/upload/iblock/596/j3nqso97cc4l509nq5lpzq2ucrle5qzn/yffgkm1gelxck0om3nan6znhe0iq6ok8.jpg",
+    "https://daichi.market/upload/iblock/386/5cb01d270fa420ce7ed7a9786a6b0051.jpg",
+    "https://daichi.market/upload/iblock/feb/4923fe9677bba06a7dd1d397f995e2c3.jpg"
   ],
   601: [ // Kentatsu кассетная KSVB Inverter (R32) (Полупромышленный)
-    "https://daichi.business/upload/iblock/bc2/vnbdycr4m92g4cgqqxin08a64435ys9b/h5hwvcm9l2ryn4aw3th4tcvfe3zo8sf7.jpg",
-    "https://daichi.business/upload/iblock/bce/l7typx5w5u537faavo319va38hxcttci/ocwct13w0jvxzf08qxvt6opw03jzq2xa.jpg",
-    "https://daichi.business/upload/iblock/81b/div4s40uwrcmeiq6s1mynnsm60px4yrk/mv1mrsgh9r6pb18uprgghpio9hclpfgb.jpg"
+    "/images/catalog/kentatsu-cassette-inv.jpg"
   ],
   602: [ // Kentatsu кассетная KSVT / KSVG (On/Off) (Полупромышленный)
     "/images/catalog/kentatsu-ksvt.jpg",
@@ -270,19 +268,23 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
   ],
 
   // === MIDEA (ДАИЧИ) ===
-  109: [ // Midea Парамаунт R32 MSAG1 (Обычный)
-    "https://daichi.business/upload/iblock/a84/1jv0tyag8mhxoost9mrenn0rxno5m7zx/3qagaezojpctuc631r9cj5iqiok1zttl.jpg",
-    "https://daichi.business/upload/iblock/f41/c063762ueuzlmvo09rvct28upl5o9euy/mp00s3hy041cgxx6hippy3ja339axh3f.jpg",
-    "https://daichi.business/upload/iblock/308/u90ro506jc7hecxyg8q3c4unr0gbsv4u/r3eoab6ikdhnjngp7uh1i5m2t3bkdr98.jpg",
-    "https://daichi.business/upload/iblock/0dd/38u1km94xm9w7yodoozm69cogu46wp5g/pdhr71oxwwv6nabtl1v0hi12jqtk7q5u.jpg",
-    "https://daichi.business/upload/iblock/5a2/dwvou7r2cpwp45lm5di36iwjeb059zxe/6in6if6v7c0hhbb24zvardw8a2vbc8dk.jpg",
-    "https://daichi.business/upload/iblock/052/rsf02jctqrwrg3qtuz0ezdrk7lrbev1h/c9980a438ed156b5933b58c93896c5be.jpg"
+  109: [ // Midea Парамаунт R32 MSAG1 (Обычный) — официальные фото Daichi (daichi.market, серия Paramount R32)
+    "https://daichi.market/upload/iblock/df6/xtkqw1s6bpxqfff0nth0taddoaho4tf2/nt3xtnllw8tr7h7rwtrd1043akw2mlqq.jpg",
+    "https://daichi.market/upload/iblock/887/c2iu14bhtljggb9ygihvc5l8bhrr5jgz/4880b54c799e20acbff3d1e3ad41a356.jpg",
+    "https://daichi.market/upload/iblock/6d0/3sxy1bmi8nkxx6xxnc99p9qps5rllc7w/1390b6b47f459b425e0d0d454e29266b.jpg",
+    "https://daichi.market/upload/iblock/549/bq0khx222n2pi2zu7s16cynvp71lz8iw/uv0sko6qr5yfw3who7702sjaese3h9jp.jpg",
+    "https://daichi.market/upload/iblock/2f8/bs34a7l0k3gll9o64rn3iafg02jzg7yl/8bk8ravsbv72atoztubel4nqzayqbr55.jpg",
+    "https://daichi.market/upload/iblock/a70/2rorutzl0wu9t38vodu5g7y8zurz0lq0/hooj2ns23b68cdrvj36jrandq5eviiou.jpg"
   ],
-  720: [ // Midea Анлимитед (Unlimited) (Обычный)
-    "https://daichi.business/upload/iblock/258/bdlxz07diy2b2xmjl6d1045bva3ttd12/0ce9a9d3cffe27d8a1d15c1d56330c7e.jpg",
-    "https://daichi.business/upload/iblock/fef/2o7dbrfs1aj0p4dn6xyfzmlqk7awh7u2/79370b4a03e75ecd56f5e3d01ff3e21f.jpg",
-    "https://daichi.business/upload/iblock/b84/aj9udft2v9l6a7ts7n21f1tt039deiwa/ada4ae7deafae55528ddab3bfb898b54.jpg",
-    "https://daichi.business/upload/iblock/c16/vfuk236x52tx6gw932zc5illowq0b9g2/4d10325b401d67de6b11dfe8ee53ccf4.jpg"
+  720: [ // Midea Анлимитед (Unlimited) (Обычный) — официальные фото Daichi (daichi.market, серия Unlimited R32)
+    "https://daichi.market/upload/iblock/f6a/2whrub6z169jsog90r1lks95nqukc2bj/j2wi9m5sd3sha9ce189q09t2bb48a2bs.jpg",
+    "https://daichi.market/upload/iblock/fae/eqexs3ezeeby0acxdu63qlk2amdge2mv/ac7fbeee66f2f9d9394d6486d51baf12.jpg",
+    "https://daichi.market/upload/iblock/3f7/ob4uotupvcg6re3fk2e9vpjl8ru311nd/w9uhw2eg3w9mw3huyvuru1etfr1eg4pv.jpg",
+    "https://daichi.market/upload/iblock/bfd/uem0so12p2prmhyeq83erqmcdsy4jewi/9ybj5kbdug3yn1v6u9dyajznck27mi8j.jpg",
+    "https://daichi.market/upload/iblock/7e7/4xt2udpyj8jyubi8m3czxc5om2vrs7u4/890lelicik54spyu8t28c51d2qpuz74f.jpg",
+    "https://daichi.market/upload/iblock/47b/68doyoboo16proqq4shvrckd27dsgd9v/93f37f07d6f9a47b27a7c9c257f27ba9.jpg",
+    "https://daichi.market/upload/iblock/2f8/bs34a7l0k3gll9o64rn3iafg02jzg7yl/8bk8ravsbv72atoztubel4nqzayqbr55.jpg",
+    "https://daichi.market/upload/iblock/a70/2rorutzl0wu9t38vodu5g7y8zurz0lq0/hooj2ns23b68cdrvj36jrandq5eviiou.jpg"
   ],
   721: [ // Midea Персона (Persona) (Обычный)
     "/images/catalog/midea-persona.jpg",
@@ -362,10 +364,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://daichi.business/upload/iblock/30b/wwtqo0w30x4s0gocfticnf2g6sh262qy/r5grgl4k0dsdrakxva0gvfgl33wvyvic.jpg"
   ],
   513: [ // Daikin FTXS (Инверторный)
-    "https://daichi.business/upload/iblock/0fc/z4dj26hjdhyuy2iqe7qxr53fuemdpr7j/96f81f5581e5a23877fded7dde9bd161.jpg",
-    "https://daichi.business/upload/iblock/6f7/jr740z9hmxbvy8kad1i0fit7n67mpord/8c509896d1fe7c03ce90adeb699d50d3.jpg",
-    "https://daichi.business/upload/iblock/21f/g016s2erzsmiuo12iik3fpvl4favs1wb/a763de6ec59de3e67514a6585903ebd6.jpg",
-    "https://daichi.business/upload/iblock/016/km7mm3bsjcsfsvs673hhyz8jeumopiqb/c9856db57f25cb61b14fdd11ee0494b1.jpg"
+    "/images/catalog/daikin-ftxs.jpg"
   ],
   514: [ // Daikin FTYN (On/Off) (Обычный)
     "https://daichi.business/upload/iblock/6fd/1h7ebge4871n6k5jlfdj4lftu1m8rr9y/9400fc8f20307af86600f9c5a6d7e74e.jpg",
@@ -398,9 +397,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://daichi.business/upload/iblock/f48/rpj2mpp1ba15toh4nz0nai4t573b7hiz/1c8f3a0w6z091l1ro0v7zjv413iog1ju.jpg"
   ],
   519: [ // Daikin FVXM/RXM (напольная) (Инверторный)
-    "https://daichi.business/upload/iblock/bdb/yhcea9l1iht209vok0q2jgea8qc9inv1/f2ad1aadbbc3e6e14b0c057d815ad5d2.jpg",
-    "https://daichi.business/upload/iblock/560/7bj2qfzjcnfrc363hf3hua74dmbeuj62/4719019ffd8125f0c30393e9e15b6b98.jpg",
-    "https://daichi.business/upload/iblock/14f/n3tbig11khwlrsua1o0y9ihadw2lru0b/ba3e4def2199b86723a3824a612ca4cd.jpg"
+    "/images/catalog/daikin-fvxm.jpg"
   ],
   520: [ // Daikin FDXM-F9 (канальная) (Инверторный)
     "https://daichi.business/upload/iblock/e5b/gip31spgtz0ffdub0pkfacoiy9pyuisy/66342be67326921674b2d43f50afa5db.jpg",
@@ -573,7 +570,6 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/9b67b4c9-1ec2-11f0-b8de-00505601218a/src.jpg"
   ],
   746: [ // Daichi Айс (Ice) — 4 фото
-    "https://daichi.business/upload/iblock/42c/5wl791d9vk3o99pvxkixzmpdkeemkm0f/ehfss7ww5a43lcv5clyyk4armm4fk913.jpg",
     "https://daichi.business/upload/iblock/843/eeplcdhud1xr9skt8x9p1v8ul7gjfapu/e7ef71a5d086046ae4471f4f11d916c5.jpg",
     "https://daichi.business/upload/iblock/f2f/mtxqwl18bgiuolzr708pabipm71rjhr2/f32a2ab38100eb1bdf30aa7d736b06a3.jpg",
     "https://daichi.business/upload/iblock/46a/5uf1raknxzxeea4xwecpuynedjsh59kc/00bb674fa54146289d3f75606d6e41fc.jpg"
@@ -597,46 +593,36 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://daichi.business/upload/iblock/5ef/15hmc886w8tyh3evzpo0bdzho5wxz5t6/v25hclkunlf4gmt22153lsaa8fycn9ks.jpg"
   ],
   749: [ // Kentatsu Ичи (Ichi) — 5 фото
-    "https://daichi.business/upload/iblock/629/vdooa3gzbcifmel6a9wfnp8trbirr569/b7fd74dec948d4af1f26bbb1b46f2016.jpg",
     "https://daichi.business/upload/iblock/92b/q091wd79snt2mxaf5dkpgar6qdyxs8ia/fa61c5a5e9aca81d1ecbfa2a88e11956.jpg",
     "https://daichi.business/upload/iblock/0cb/4tv42w98j7i08p461uu924vc5dsfa0b6/dd2aaadd8426167941f8b28951216eb8.jpg",
     "https://daichi.business/upload/iblock/ca1/t2qzp52s0wic4kn850k7yiniufl6dx1i/2feba730881e63b64ab0fe625bb90e23.jpg",
     "https://daichi.business/upload/iblock/b55/t3sftedyqydy1j18g21dwgqfaazo1b60/8bba7ec111ea79ff392c6d3ec7dea17a.jpg"
   ],
   750: [ // Kentatsu Турин Инвертор (Turin) — 4 фото
-    "https://daichi.business/upload/iblock/6f4/8n29gsc41w42km8nisn9ky62q1wsrdh9/79e7fc7451fa77297d4028722945c75f.jpg",
-    "https://daichi.business/upload/iblock/2d8/34hmmunv39l219aa2yhwnjt7h2mykdd6/e5c6bad8707ae2e093e545fbe49a4cf1.jpg",
-    "https://daichi.business/upload/iblock/fa4/vm4rhlv8ygq8od3dbr8nv11kcwut01iu/6ead5132a06bf75f101431d96774a59f.jpg",
-    "https://daichi.business/upload/iblock/508/wapkk0xdkeypuu357cmafr4jhqko4l3z/e3731cb7516622ee7997f36c983dcf66.jpg"
+    "https://daichi.business/upload/iblock/6f4/8n29gsc41w42km8nisn9ky62q1wsrdh9/79e7fc7451fa77297d4028722945c75f.jpg"
   ],
   751: [ // Kentatsu Наоми (Naomi) — 11 фото
-    "https://daichi.business/upload/iblock/cb7/qvtew425uo0gyy6a4g9g5gv78ipxpoma/91f97eae39a3423c610cd44648bac2dc.jpg",
-    "https://daichi.business/upload/iblock/b47/5rx7jwm6ylcrcxw26kln1cl600q61zp4/pe2bqlidoj86vsns8vfvnx7t2xaoxuty.jpg",
-    "https://daichi.business/upload/iblock/122/8uy0jtwheud2oo6daeu4t2ynw4vqlq6c/zj3txkv38ixn3rgn1p470bu6yfom1b7k.jpg",
-    "https://daichi.business/upload/iblock/bba/lglzky5p07ijh5zwfdwzuyrzfidsrta9/4ctuyzuiliq3jicwcyz7xp87cek3pyg9.jpg",
-    "https://daichi.business/upload/iblock/05b/7cr4qf5bqh6fnyw8k5ohw341vy00y9cw/wpx7bp70f87eauvidyn98yc723b7mvi4.jpg",
-    "https://daichi.business/upload/iblock/45f/1bor4i9hsf6zehy5sky282lco3lbjd61/hzhjn26pax0lmximdb2qt4uoxinxw3fr.jpg",
-    "https://daichi.business/upload/iblock/767/nc7a1oozcl4v63qb267ec1xv7rx0q575/7box85kdlcsfu8oftoo5xn1b70n8pn7y.jpg",
-    "https://daichi.business/upload/iblock/263/uyr8scg9z06zrm135xqr90gqleluvx1q/qt8u81iowih16jzk3zho2ilcajauesgs.jpg",
-    "https://daichi.business/upload/iblock/a74/w7oj2ferwu6i60sz10p9qh6ed9d3treg/rft3hy5pl5yqmurej1klcjhrxuygq0wk.jpg",
-    "https://daichi.business/upload/iblock/309/6f397dn2b1m496jnagr3w0nbm78t9z9u/wfh3bsyydgge2xje4sykstdyxeoadp38.jpg",
-    "https://daichi.business/upload/iblock/217/zq569pa099f04v7lo6q0f2or558lay9b/zvrz8gldw013x47ytd4nd6uqcwbfdnui.jpg"
+    "https://daichi.business/upload/iblock/b47/5rx7jwm6ylcrcxw26kln1cl600q61zp4/pe2bqlidoj86vsns8vfvnx7t2xaoxuty.jpg"
   ],
   752: [ // Midea Парамаунт Инвертор (Paramount Inverter) — 7 фото
-    "https://daichi.business/upload/iblock/dcf/pe2yithik9y9l9hkvgruxl4vkrkj3r6i/33w65kvis28egejlv5w2l38u7uqftwyi.jpg",
-    "https://daichi.business/upload/iblock/65b/8o1sh9pesqhpvsq82sj2t6kolaptjd5p/1tff7s93h63wmelarfk8gub3w8j2npss.jpg",
-    "https://daichi.business/upload/iblock/b07/43c4xrg530tjmp3p3shqz42qeaz7nc4w/p7830wxmf2jwhne1x1lgy60i8kptra8e.jpg",
-    "https://daichi.business/upload/iblock/f13/w2m7ei1zou8s4obf4k2txhudivhc6umx/vmbpahjuzyjoaq60xbwrin52i8o7rogo.jpg",
-    "https://daichi.business/upload/iblock/de8/ygxjr968s0xqudrdnuu5w5yi2zlgkdo7/2zp56rh8gu229cqgh2pe58r2nc12fh8c.jpg",
-    "https://daichi.business/upload/iblock/cc5/tp7qqvmfkkzl8mr633zcjmmrwsy0z1rf/86k7mdfaf8f422dzkuxrh5p9cx987jtc.jpg",
-    "https://daichi.business/upload/iblock/8b5/ehhw552go6ec4xxj1wd95e1dg3l3nh2m/595806b30e5248a08da35dcbde3e5b09.jpg"
+    "https://daichi.market/upload/iblock/7f7/i7dr14qog7hxxf95170hjtmiu2hpu26k/11.jpg",
+    "https://daichi.market/upload/iblock/d3b/x40nmd7887efzs0z3eyw56svbdud2nd4/01-_2_.jpg",
+    "https://daichi.market/upload/iblock/dde/wv4lpquw17b2rej3mrqymu81usv8umge/02.jpg",
+    "https://daichi.market/upload/iblock/5ee/y3srp5yqx2ykk9yc6td5p0dn3pm4070r/03.jpg",
+    "https://daichi.market/upload/iblock/581/n22rn6ge895qk2c1ttn1p15cehf401jr/04.jpg",
+    "https://daichi.market/upload/iblock/7ed/omtg52qfwjztv0dw0bsq31k41ur9kg2i/05.jpg",
+    "https://daichi.market/upload/iblock/bcd/5m3hxftcwijj5k1pqk23dre7vrsrxhmn/06.jpg",
+    "https://daichi.market/upload/iblock/5b0/k85y0vs7cnmwen12sn0vau5vsg0ney05/07.jpg"
   ],
   753: [ // Midea Анлимитед Инвертор (Unlimited Inverter) — 5 фото
-    "https://daichi.business/upload/iblock/6fd/tgf3y3x5l56y8v1lvfksqsmebah5m3z5/0a5f716d339ce2deaf5a0c4cb6228030.jpg",
-    "https://daichi.business/upload/iblock/79d/yj6m28qgqldf8535tlyickr7j6hp2sa2/d9f632f231deba92e73147d52709a614.jpg",
-    "https://daichi.business/upload/iblock/608/qjm63dvn514vkepyxwz4cvfug3gfxob7/5bf7d8b8f2c5cd0927e294f183d8ef73.jpg",
-    "https://daichi.business/upload/iblock/3f4/brhmyx6d4qs1xnlfknkeq7te1766mh46/3b88b8ec410e7c8a4df05fe8368b5c47.jpg",
-    "https://daichi.business/upload/iblock/070/5w8kmy7x3i7szc7kh48l1q59o6gomzlp/8d6ddb22b5420be8aa77ed3220b45c69.jpg"
+    "https://daichi.market/upload/iblock/889/lg8l2t6wzjhyor32bizvxyjr53b87vrw/11.jpg",
+    "https://daichi.market/upload/iblock/043/scps0w84dmeofrywh3h7lx7kkpup30n4/01-_3_.jpg",
+    "https://daichi.market/upload/iblock/e52/gqclqod195dk46hujubpj1mc75srcmlt/02.jpg",
+    "https://daichi.market/upload/iblock/c38/0w8je6uphz5cra9dq1e5gwqe0kd2tzfv/03.jpg",
+    "https://daichi.market/upload/iblock/107/jufl6xx4ai1xdao1mpw89npkrm9fxk4d/04.jpg",
+    "https://daichi.market/upload/iblock/ea8/lfh5bydmzh8hnx2tgbj5xij30t2bkmwv/05.jpg",
+    "https://daichi.market/upload/iblock/5ea/u3rmrjisqxnjyrhi03ritachtldemd2k/06.jpg",
+    "https://daichi.market/upload/iblock/932/cdr42n3wfvt87m4e1a35534hyqg7iy75/07.jpg"
   ],
   754: [ // Ballu Orbis BPAC — 1 фото
     "https://rkcdn.ru/products/ab3696a4-cc02-11ee-b8d6-00505601218a/main_big.jpg"
@@ -799,10 +785,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/971de01f-6304-11ef-b8db-00505601218a/main_big.jpg"
   ],
   821: [ // Electrolux Skandi DC Inverter (Electrolux)
-    "https://rkcdn.ru/products/22006943-1b8b-11f0-b8de-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/22006945-1b8b-11f0-b8de-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/22006947-1b8b-11f0-b8de-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/22006949-1b8b-11f0-b8de-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/22006943-1b8b-11f0-b8de-00505601218a/main_big.jpg"
   ],
   822: [ // Electrolux Fusion 2.0 Super DC Inverter (Electrolux)
     "https://rkcdn.ru/products/188ca74d-5d3f-11ef-b8db-00505601218a/main_big.jpg",
@@ -819,16 +802,13 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/88b54ba9-ffee-11ef-b8de-00505601218a/main_big.jpg"
   ],
   825: [ // Electrolux Crystal Air Super DC Inverter (Electrolux)
-    "https://rkcdn.ru/products/37efc26f-6304-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/37efc271-6304-11ef-b8db-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/a12d4138-1553-11f0-b8de-00505601218a/main_big.jpg"
   ],
   826: [ // Electrolux Enterprise Super DC Inverter (Electrolux)
-    "https://rkcdn.ru/products/43c4c929-5d3e-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/43c4c92b-5d3e-11ef-b8db-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/7df4d468-ece7-11ee-b8d7-00505601218a/main_big.jpg"
   ],
   827: [ // Electrolux Air Gate 2 Black (Electrolux)
-    "https://rkcdn.ru/products/55f47000-415a-11e8-a53a-ac162d7b6f40/main_big.jpg",
-    "https://rkcdn.ru/products/55f47002-415a-11e8-a53a-ac162d7b6f40/main_big.jpg"
+    "https://rkcdn.ru/products/55f47000-415a-11e8-a53a-ac162d7b6f40/main_big.jpg"
   ],
   828: [ // Ballu iGreen Pro DC BSAGI (Ballu)
     "https://rkcdn.ru/products/b8dfa50a-5b3f-11ef-b8db-00505601218a/main_big.jpg",
@@ -840,29 +820,23 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/d7df3974-c8a2-11ed-b733-005056013a69/main_big.jpg"
   ],
   830: [ // Ballu Boho DC BSHPI (Ballu)
-    "https://rkcdn.ru/products/44754ba1-6304-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/44754ba3-6304-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/44754ba5-6304-11ef-b8db-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/161329aa-5b3f-11ef-b8db-00505601218a/main_big.jpg"
   ],
   831: [ // Ballu Platinum Black DC BSNI (Ballu)
-    "https://rkcdn.ru/products/8e6dbca9-5b3f-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/8e6dbcab-5b3f-11ef-b8db-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/2f23eb1f-5b3f-11ef-b8db-00505601218a/main_big.jpg"
   ],
   832: [ // Ballu Ice Peak DC BSPI (Ballu)
-    "https://rkcdn.ru/products/32a9e14a-5b40-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/32a9e14c-5b40-11ef-b8db-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/65c41f52-d287-11ef-b8dc-00505601218a/main_big.jpg"
   ],
   833: [ // Royal Thermo Perfecto RTP (Royal Thermo)
     "https://rkcdn.ru/products/ae06a931-0c78-11ef-b8d8-00505601218a/main_big.jpg",
     "https://rkcdn.ru/products/ae06a933-0c78-11ef-b8d8-00505601218a/main_big.jpg"
   ],
   834: [ // Royal Thermo Perfecto DC RTPI (Royal Thermo)
-    "https://rkcdn.ru/products/55dfb0ae-5b40-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/55dfb0b0-5b40-11ef-b8db-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/cef8f1d2-646b-11ef-b8db-00505601218a/main_big.jpg"
   ],
   835: [ // Royal Thermo Barocco DC Black RTBI-B (Royal Thermo)
-    "https://rkcdn.ru/products/893adcb4-5b40-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/893adcb6-5b40-11ef-b8db-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/e3b6d9b9-d7d2-11ef-b8dc-00505601218a/main_big.jpg"
   ],
   836: [ // SHUFT Soturai DC SFTHI (SHUFT)
     "https://rkcdn.ru/products/86923b1e-c51b-11ee-b8d6-00505601218a/main_big.jpg",
@@ -872,13 +846,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/649a37ee-cf98-11ed-b733-005056013a69/main_big.jpg"
   ],
   838: [ // Toshiba Shorai Edge RAS-B-G3KVS (Toshiba)
-    "https://rkcdn.ru/products/97b3992b-5b3f-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/97b3992d-5b3f-11ef-b8db-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/ee2e1ff2-5d41-11ef-b8db-00505601218a/main_big.jpg"
   ],
   839: [ // Toshiba Haori RAS-B-N4KVR (Toshiba)
-    "https://rkcdn.ru/products/a19bf62d-5b3f-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/a19bf62f-5b3f-11ef-b8db-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/a19bf631-5b3f-11ef-b8db-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/afea4dd8-5d41-11ef-b8db-00505601218a/main_big.jpg"
   ],
   840: [ // AC ELECTRIC PRO ACEM (AC ELECTRIC)
     "https://rkcdn.ru/products/5d503f92-8968-11f0-b8e0-00505601218a/main_big.jpg",
@@ -903,8 +874,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/a3a9c067-994f-11f0-b8e1-00505601218a/main_big.jpg"
   ],
   846: [ // AURUS D DC Inverter (AURUS)
-    "https://rkcdn.ru/products/fa0289ba-d290-11ef-b8dc-00505601218a/main_big.jpg",
-    "https://rkcdn.ru/products/fa0289bc-d290-11ef-b8dc-00505601218a/main_big.jpg"
+    "https://rkcdn.ru/products/939d0a6b-4ab0-11f1-b8e2-00505601218a/main_big.jpg"
   ],
   847: [ // Axioma Серия F R32 (Axioma)
     "/api/img-proxy?url=https://daichi.business/upload/iblock/e1c/s1d3l0r8cr4b6jjo8pdika7n8wgxp8xd/l7zeo3sfglb4hymp7a63xkj2wpei4m4r.jpg",

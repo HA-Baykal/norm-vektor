@@ -643,7 +643,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "images/catalog/kentatsu-ichi-inv.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/596/j3nqso97cc4l509nq5lpzq2ucrle5qzn/yffgkm1gelxck0om3nan6znhe0iq6ok8.jpg",
     variants: [
       { btu: 24000, area: 60, cooling: "6.2 кВт", heating: "6.2 кВт", price: 75991, oldPrice: 79990 },
     ],
@@ -658,7 +658,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "images/catalog/midea-unlimited.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/f6a/2whrub6z169jsog90r1lks95nqukc2bj/j2wi9m5sd3sha9ce189q09t2bb48a2bs.jpg",
     variants: [
       { btu: 7000, area: 20, cooling: "2.34 кВт", heating: "2.34 кВт", price: 26591, oldPrice: 27990 },
       { btu: 9000, area: 25, cooling: "2.64 кВт", heating: "2.78 кВт", price: 29366, oldPrice: 30590 },
@@ -1058,7 +1058,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/42c/5wl791d9vk3o99pvxkixzmpdkeemkm0f/ehfss7ww5a43lcv5clyyk4armm4fk913.jpg",
+    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/843/eeplcdhud1xr9skt8x9p1v8ul7gjfapu/e7ef71a5d086046ae4471f4f11d916c5.jpg",
     variants: [
       { btu: 7000, area: 20, cooling: "2.25 кВт", heating: "2.3 кВт", price: 26918, oldPrice: 28501 },
       { btu: 9000, area: 25, cooling: "2.55 кВт", heating: "2.65 кВт", price: 28550, oldPrice: 30229 },
@@ -1107,7 +1107,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/629/vdooa3gzbcifmel6a9wfnp8trbirr569/b7fd74dec948d4af1f26bbb1b46f2016.jpg",
+    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/92b/q091wd79snt2mxaf5dkpgar6qdyxs8ia/fa61c5a5e9aca81d1ecbfa2a88e11956.jpg",
     variants: [
       { btu: 7000, area: 20, cooling: "2.3 кВт", heating: "2.3 кВт", price: 22226, oldPrice: 23533 },
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.8 кВт", price: 24266, oldPrice: 25693 },
@@ -1137,7 +1137,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/cb7/qvtew425uo0gyy6a4g9g5gv78ipxpoma/91f97eae39a3423c610cd44648bac2dc.jpg",
+    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/b47/5rx7jwm6ylcrcxw26kln1cl600q61zp4/pe2bqlidoj86vsns8vfvnx7t2xaoxuty.jpg",
     variants: [
       { btu: 36000, area: 100, cooling: "10.0 кВт", heating: "10.8 кВт", price: 157682, oldPrice: 166957 },
     ],
@@ -1150,7 +1150,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/dcf/pe2yithik9y9l9hkvgruxl4vkrkj3r6i/33w65kvis28egejlv5w2l38u7uqftwyi.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/7f7/i7dr14qog7hxxf95170hjtmiu2hpu26k/11.jpg",
     variants: [
       { btu: 18000, area: 50, cooling: "5.28 кВт", heating: "5.57 кВт", price: 84446, oldPrice: 89413 },
       { btu: 24000, area: 70, cooling: "7.03 кВт", heating: "7.33 кВт", price: 106478, oldPrice: 112741 },
@@ -1164,7 +1164,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "—",
     country: "КНР",
-    image: "/api/img-proxy?url=https://daichi.business/upload/iblock/6fd/tgf3y3x5l56y8v1lvfksqsmebah5m3z5/0a5f716d339ce2deaf5a0c4cb6228030.jpg",
+    image: "/api/img-proxy?url=https://daichi.market/upload/iblock/889/lg8l2t6wzjhyor32bizvxyjr53b87vrw/11.jpg",
     variants: [
       { btu: 18000, area: 50, cooling: "5.28 кВт", heating: "5.57 кВт", price: 84446, oldPrice: 89413 },
       { btu: 24000, area: 70, cooling: "7.03 кВт", heating: "7.33 кВт", price: 106478, oldPrice: 112741 },
@@ -1817,7 +1817,7 @@ export const conditioners: Conditioner[] = [
     smartHome: true,
     noise: "20 дБ",
     country: "КНР",
-    image: "https://rkcdn.ru/products/37efc26f-6304-11ef-b8db-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/a12d4138-1553-11f0-b8de-00505601218a/main_big.jpg",
     badge: "Премиум стекло",
     variants: [
       { btu: 9000, area: 25, cooling: "2.7 кВт", heating: "3.0 кВт", price: 77410, oldPrice: 78990 },
@@ -1834,7 +1834,7 @@ export const conditioners: Conditioner[] = [
     smartHome: true,
     noise: "21 дБ",
     country: "КНР",
-    image: "https://rkcdn.ru/products/43c4c929-5d3e-11ef-b8db-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/7df4d468-ece7-11ee-b8d7-00505601218a/main_big.jpg",
     badge: "Флагман",
     variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.8 кВт", price: 55850, oldPrice: 56990 },
@@ -1905,7 +1905,7 @@ export const conditioners: Conditioner[] = [
     smartHome: true,
     noise: "20 дБ",
     country: "КНР",
-    image: "https://rkcdn.ru/products/44754ba1-6304-11ef-b8db-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/161329aa-5b3f-11ef-b8db-00505601218a/main_big.jpg",
     badge: "Тканевая панель",
     variants: [
       { btu: 9000, area: 25, cooling: "2.7 кВт", heating: "3.0 кВт", price: 58790, oldPrice: 59990 },
@@ -1920,7 +1920,7 @@ export const conditioners: Conditioner[] = [
     smartHome: true,
     noise: "19 дБ",
     country: "КНР",
-    image: "https://rkcdn.ru/products/8e6dbca9-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/2f23eb1f-5b3f-11ef-b8db-00505601218a/main_big.jpg",
     badge: "Black Edition",
     variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.8 кВт", price: 48990, oldPrice: 49990 },
@@ -1936,7 +1936,7 @@ export const conditioners: Conditioner[] = [
     smartHome: true,
     noise: "19 дБ",
     country: "КНР",
-    image: "https://rkcdn.ru/products/32a9e14a-5b40-11ef-b8db-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/65c41f52-d287-11ef-b8dc-00505601218a/main_big.jpg",
     badge: "Тепловой насос -30°C",
     variants: [
       { btu: 9000, area: 25, cooling: "2.7 кВт", heating: "3.2 кВт", price: 78390, oldPrice: 79990 },
@@ -1971,7 +1971,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "21 дБ",
     country: "КНР",
-    image: "https://rkcdn.ru/products/55dfb0ae-5b40-11ef-b8db-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/cef8f1d2-646b-11ef-b8db-00505601218a/main_big.jpg",
     badge: "Новинка",
     variants: [
       { btu: 7000, area: 20, cooling: "2.2 кВт", heating: "2.3 кВт", price: 28410, oldPrice: 28990 },
@@ -1989,7 +1989,7 @@ export const conditioners: Conditioner[] = [
     smartHome: false,
     noise: "22 дБ",
     country: "КНР",
-    image: "https://rkcdn.ru/products/893adcb4-5b40-11ef-b8db-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/e3b6d9b9-d7d2-11ef-b8dc-00505601218a/main_big.jpg",
     badge: "Дизайн Black",
     variants: [
       { btu: 9000, area: 25, cooling: "2.6 кВт", heating: "2.7 кВт", price: 51840, oldPrice: 52900 },
@@ -2042,7 +2042,7 @@ export const conditioners: Conditioner[] = [
     smartHome: true,
     noise: "19 дБ",
     country: "Таиланд",
-    image: "https://rkcdn.ru/products/97b3992b-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/ee2e1ff2-5d41-11ef-b8db-00505601218a/main_big.jpg",
     badge: "Премиум A+++",
     variants: [
       { btu: 7000, area: 20, cooling: "2.0 кВт", heating: "2.5 кВт", price: 107700, oldPrice: 109900 },
@@ -2060,7 +2060,7 @@ export const conditioners: Conditioner[] = [
     smartHome: true,
     noise: "19 дБ",
     country: "Таиланд",
-    image: "https://rkcdn.ru/products/a19bf62d-5b3f-11ef-b8db-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/afea4dd8-5d41-11ef-b8db-00505601218a/main_big.jpg",
     badge: "Флагман Текстиль",
     variants: [
       { btu: 10000, area: 25, cooling: "2.5 кВт", heating: "3.2 кВт", price: 166500, oldPrice: 169900 },
@@ -2180,7 +2180,7 @@ export const conditioners: Conditioner[] = [
     smartHome: true,
     noise: "15 дБ",
     country: "КНР",
-    image: "https://rkcdn.ru/products/fa0289ba-d290-11ef-b8dc-00505601218a/main_big.jpg",
+    image: "https://rkcdn.ru/products/939d0a6b-4ab0-11f1-b8e2-00505601218a/main_big.jpg",
     badge: "Гарантия 7 лет",
     variants: [
       { btu: 9000, area: 26, cooling: "2.6 кВт", heating: "3.2 кВт", price: 112700, oldPrice: 115000 },
