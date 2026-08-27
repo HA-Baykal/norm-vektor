@@ -12,11 +12,21 @@ export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
   const prevPathnameRef = useRef<string | null>(null);
 
+  // Последняя ИСТИННАЯ позиция скролла текущей страницы.
+  // Обновляется синхронно слушателем scroll, пока страница реально открыта.
+  // Нельзя в cleanup при переходе читать window.scrollY напрямую: на этот момент
+  // React уже сменил DOM на новую страницу (карточка короче каталога, либо
+  // Suspense-fallback на 100vh), и браузер стягивает scrollY к высоте новой
+  // страницы — мы бы сохранили 0 вместо реальной позиции каталога.
+  const lastScrollYRef = useRef(0);
+
   useLayoutEffect(() => {
     const key = location.key;
     return () => {
       try {
-        sessionStorage.setItem(posKey(key), String(Math.round(window.scrollY)));
+        // Ключ — старый (страницы, с которой уходим), позиция — из рефа:
+        // это то, где страница была на самом деле до смены контента.
+        sessionStorage.setItem(posKey(key), String(Math.round(lastScrollYRef.current)));
       } catch {}
     };
   }, [location.key]);
@@ -99,14 +109,20 @@ export default function ScrollToTop() {
   useEffect(() => {
     const key = posKey(location.key);
     let raf = 0;
+    lastScrollYRef.current = window.scrollY;
     const save = () => {
       raf = 0;
+      lastScrollYRef.current = window.scrollY;
       try { sessionStorage.setItem(key, String(Math.round(window.scrollY))); } catch {}
     };
     const saveSync = () => {
+      lastScrollYRef.current = window.scrollY;
       try { sessionStorage.setItem(key, String(Math.round(window.scrollY))); } catch {}
     };
-    const onScroll = () => { if (!raf) raf = requestAnimationFrame(save); };
+    const onScroll = () => {
+      lastScrollYRef.current = window.scrollY;
+      if (!raf) raf = requestAnimationFrame(save);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("pagehide", saveSync);
     save();
