@@ -2800,6 +2800,9 @@ export default function CatalogConditioners() {
   const handleCardClick = (cardId: number) => {
     sessionStorage.setItem("catalog_last_card_id", String(cardId));
     sessionStorage.setItem("catalog_last_page", String(safeCurrentPage));
+    if (window.scrollY > 0) {
+      sessionStorage.setItem("catalog_scroll_pos", String(Math.round(window.scrollY)));
+    }
   };
 
   const selectClass =

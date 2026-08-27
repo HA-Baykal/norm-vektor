@@ -12,42 +12,88 @@ export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
   const prevPathnameRef = useRef<string | null>(null);
 
-  // Последняя ИСТИННАЯ позиция скролла текущей страницы.
-  // Обновляется синхронно слушателем scroll, пока страница реально открыта.
-  // Нельзя в cleanup при переходе читать window.scrollY напрямую: на этот момент
-  // React уже сменил DOM на новую страницу (карточка короче каталога, либо
-  // Suspense-fallback на 100vh), и браузер стягивает scrollY к высоте новой
-  // страницы — мы бы сохранили 0 вместо реальной позиции каталога.
+  // Последняя истинная позиция скролла текущей страницы
   const lastScrollYRef = useRef(0);
+  const isNavigatingRef = useRef(false);
 
+  // Pre-save cleanup при смене ключа/страницы: сохраняем истинную позицию,
+  // только если она > 0 (не затираем нулем при стягивании DOM браузером)
   useLayoutEffect(() => {
     const key = location.key;
+    const pathname = location.pathname;
     return () => {
       try {
-        // Ключ — старый (страницы, с которой уходим), позиция — из рефа:
-        // это то, где страница была на самом деле до смены контента.
-        sessionStorage.setItem(posKey(key), String(Math.round(lastScrollYRef.current)));
+        const y = Math.round(lastScrollYRef.current);
+        if (y > 0) {
+          sessionStorage.setItem(posKey(key), String(y));
+          if (pathname === "/kondicionery" || pathname === "/") {
+            sessionStorage.setItem("catalog_scroll_pos", String(y));
+          }
+        }
       } catch {}
     };
-  }, [location.key]);
+  }, [location.key, location.pathname]);
 
+  // Восстановление позиции при POP или скролл наверх при PUSH
   useLayoutEffect(() => {
     if (navigationType === "POP") {
-      const saved = sessionStorage.getItem(posKey(location.key));
-      if (saved !== null) {
-        const target = parseInt(saved, 10) || 0;
+      let saved = sessionStorage.getItem(posKey(location.key));
+      if (!saved || saved === "0") {
+        if (location.pathname === "/kondicionery" || location.pathname === "/") {
+          saved = sessionStorage.getItem("catalog_scroll_pos");
+        }
+      }
+      const target = saved !== null ? (parseInt(saved, 10) || 0) : 0;
+      const targetCardId = sessionStorage.getItem("catalog_last_card_id");
+
+      if (target > 0 || targetCardId) {
         let attempts = 0;
         let raf = 0;
+        let timer1: any = null;
+        let timer2: any = null;
+        let timer3: any = null;
+
         const tryRestore = () => {
-          window.scrollTo({ top: target, left: 0, behavior: "instant" });
-          const achieved = Math.abs(window.scrollY - target) <= 2;
-          if (!achieved && attempts++ < 60) {
+          let scrollTarget = target;
+          // Если точная позиция в пикселях была 0, но есть ID карточки — находим её в DOM
+          if (scrollTarget <= 0 && targetCardId) {
+            const cardEl = document.getElementById(`card-${targetCardId}`);
+            if (cardEl) {
+              const rect = cardEl.getBoundingClientRect();
+              scrollTarget = Math.max(0, Math.round(rect.top + window.scrollY - 120));
+            }
+          }
+
+          if (scrollTarget > 0) {
+            const html = document.documentElement;
+            const prevBehavior = html.style.scrollBehavior;
+            html.style.scrollBehavior = "auto";
+            window.scrollTo({ top: scrollTarget, left: 0, behavior: "instant" });
+            html.style.scrollBehavior = prevBehavior;
+
+            const achieved = Math.abs(window.scrollY - scrollTarget) <= 2;
+            if (!achieved && attempts++ < 90) {
+              raf = requestAnimationFrame(tryRestore);
+            } else {
+              lastScrollYRef.current = window.scrollY;
+            }
+          } else if (attempts++ < 90) {
             raf = requestAnimationFrame(tryRestore);
           }
         };
+
         tryRestore();
+        timer1 = setTimeout(tryRestore, 50);
+        timer2 = setTimeout(tryRestore, 150);
+        timer3 = setTimeout(tryRestore, 300);
+
         prevPathnameRef.current = location.pathname;
-        return () => cancelAnimationFrame(raf);
+        return () => {
+          cancelAnimationFrame(raf);
+          clearTimeout(timer1);
+          clearTimeout(timer2);
+          clearTimeout(timer3);
+        };
       }
     }
     if (prevPathnameRef.current !== null && prevPathnameRef.current === location.pathname) {
@@ -106,32 +152,70 @@ export default function ScrollToTop() {
     prevPathnameRef.current = location.pathname;
   }, [location.key, location.pathname, location.search, location.hash, navigationType]);
 
+  // Слушатель скролла и кликов по ссылкам
   useEffect(() => {
+    isNavigatingRef.current = false;
     const key = posKey(location.key);
+    const pathname = location.pathname;
     let raf = 0;
-    lastScrollYRef.current = window.scrollY;
+
+    if (window.scrollY > 0) {
+      lastScrollYRef.current = window.scrollY;
+    }
+
     const save = () => {
       raf = 0;
-      lastScrollYRef.current = window.scrollY;
-      try { sessionStorage.setItem(key, String(Math.round(window.scrollY))); } catch {}
+      if (isNavigatingRef.current) return;
+      const y = window.scrollY;
+      if (y > 0) {
+        lastScrollYRef.current = y;
+        try {
+          sessionStorage.setItem(key, String(Math.round(y)));
+          if (pathname === "/kondicionery" || pathname === "/") {
+            sessionStorage.setItem("catalog_scroll_pos", String(Math.round(y)));
+          }
+        } catch {}
+      }
     };
-    const saveSync = () => {
-      lastScrollYRef.current = window.scrollY;
-      try { sessionStorage.setItem(key, String(Math.round(window.scrollY))); } catch {}
-    };
+
     const onScroll = () => {
-      lastScrollYRef.current = window.scrollY;
-      if (!raf) raf = requestAnimationFrame(save);
+      if (isNavigatingRef.current) return;
+      const y = window.scrollY;
+      if (y > 0) {
+        lastScrollYRef.current = y;
+        if (!raf) raf = requestAnimationFrame(save);
+      }
     };
+
+    // При клике на карточку или ссылку фиксируем истинный скролл до любых смен DOM React'ом
+    const onPointerDown = (e: MouseEvent | TouchEvent) => {
+      const el = e.target as HTMLElement | null;
+      if (el?.closest?.("a") || el?.closest?.("button")) {
+        const y = window.scrollY;
+        if (y > 0) {
+          lastScrollYRef.current = y;
+          try {
+            sessionStorage.setItem(key, String(Math.round(y)));
+            if (pathname === "/kondicionery" || pathname === "/") {
+              sessionStorage.setItem("catalog_scroll_pos", String(Math.round(y)));
+            }
+          } catch {}
+        }
+      }
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("pagehide", saveSync);
-    save();
+    window.addEventListener("pointerdown", onPointerDown, { passive: true, capture: true });
+    window.addEventListener("pagehide", save);
+
     return () => {
+      isNavigatingRef.current = true;
       if (raf) cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("pagehide", saveSync);
+      window.removeEventListener("pointerdown", onPointerDown, { capture: true });
+      window.removeEventListener("pagehide", save);
     };
-  }, [location.key]);
+  }, [location.key, location.pathname]);
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 350);
