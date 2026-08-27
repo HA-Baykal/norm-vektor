@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { useLocation, useNavigationType } from "react-router-dom";
 
 // Отключаем встроенное восстановление скролла браузера — управляем позицией сами.
@@ -19,6 +19,7 @@ export default function ScrollToTop() {
   const location = useLocation();
   const navigationType = useNavigationType();
   const [visible, setVisible] = useState(false);
+  const prevPathnameRef = useRef<string | null>(null);
 
   // Восстановление / сброс прокрутки при каждой смене страницы
   useLayoutEffect(() => {
@@ -41,14 +42,69 @@ export default function ScrollToTop() {
         };
 
         tryRestore();
+        prevPathnameRef.current = location.pathname;
         return () => cancelAnimationFrame(raf);
       }
+    }
+
+    // query-only изменения внутри той же страницы (brand, area и другие фильтры через search params)
+    // и REPLACE-навигация внутри той же страницы не должны сбрасывать скролл.
+    if (prevPathnameRef.current !== null && prevPathnameRef.current === location.pathname) {
+      // Переход по якорю (#catalog) должен продолжать работать даже внутри той же страницы
+      if (location.hash) {
+        const id = location.hash.slice(1);
+        let attempts = 0;
+        let raf = 0;
+
+        const tryAnchor = () => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: "instant", block: "start" });
+          } else if (attempts++ < 30) {
+            raf = requestAnimationFrame(tryAnchor);
+          }
+        };
+
+        tryAnchor();
+        prevPathnameRef.current = location.pathname;
+        return () => cancelAnimationFrame(raf);
+      }
+
+      // Тот же pathname без якоря — сохраняем текущую позицию скролла
+      prevPathnameRef.current = location.pathname;
+      return;
+    }
+
+    // Явная проверка REPLACE внутри той же страницы (на случай если prevPathnameRef ещё не установлен)
+    if (navigationType === "REPLACE" && prevPathnameRef.current === location.pathname) {
+      if (location.hash) {
+        const id = location.hash.slice(1);
+        let attempts = 0;
+        let raf = 0;
+
+        const tryAnchor = () => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: "instant", block: "start" });
+          } else if (attempts++ < 30) {
+            raf = requestAnimationFrame(tryAnchor);
+          }
+        };
+
+        tryAnchor();
+        prevPathnameRef.current = location.pathname;
+        return () => cancelAnimationFrame(raf);
+      }
+
+      prevPathnameRef.current = location.pathname;
+      return;
     }
 
     // Переход по внутренней ссылке «Вернуться в каталог» с открытой карточки:
     // каталог сам плавно подведёт к последней просмотренной карточке
     const hasScrollTarget = sessionStorage.getItem("catalog_last_card_id");
     if (hasScrollTarget && (location.pathname === "/kondicionery" || location.pathname === "/")) {
+      prevPathnameRef.current = location.pathname;
       return;
     }
 
@@ -68,14 +124,16 @@ export default function ScrollToTop() {
       };
 
       tryAnchor();
+      prevPathnameRef.current = location.pathname;
       return () => cancelAnimationFrame(raf);
     }
 
-    // Обычный переход на новую страницу — начинаем с самого верха
+    // Обычный переход на другую страницу — начинаем с самого верха
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, [location.key]);
+    prevPathnameRef.current = location.pathname;
+  }, [location.key, location.pathname, location.search, location.hash, navigationType]);
 
-  // Постоянно запоминаем позицию прокрутки текущей записи истории (без лишних записей — через rAF)
+  // Постоянно запоминаем позицию прокрутки текущей записи истории (надёжно, включая pagehide)
   useEffect(() => {
     const key = posKey(location.key);
     let raf = 0;
@@ -89,16 +147,32 @@ export default function ScrollToTop() {
       }
     };
 
+    const saveSync = () => {
+      try {
+        sessionStorage.setItem(key, String(Math.round(window.scrollY)));
+      } catch {
+        /* ignore */
+      }
+    };
+
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(save);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("pagehide", saveSync);
     save();
 
     return () => {
       if (raf) cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("pagehide", saveSync);
+      // Финальное синхронное сохранение для этой записи истории
+      try {
+        sessionStorage.setItem(key, String(Math.round(window.scrollY)));
+      } catch {
+        /* ignore */
+      }
     };
   }, [location.key]);
 

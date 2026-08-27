@@ -2736,31 +2736,45 @@ export default function CatalogConditioners() {
   };
 
   // Возврат к последней просмотренной карточке:
-  // - при нажатии «назад» в браузере точную позицию скролла восстанавливает ScrollToTop,
-  //   поэтому здесь только подсвечиваем карточку, не трогая скролл;
-  // - при переходе по ссылке «Вернуться в каталог» дополнительно плавно подводим к карточке.
+  // - при POP (назад/вперёд) только подсвечиваем карточку и не скроллим страницу (скролл восстанавливает ScrollToTop);
+  // - при обычном возврате в каталог по ссылке — плавно подводим к карточке;
+  // - catalog_last_card_id не удаляем раньше времени, пока карточка реально не появилась в DOM;
+  // - эффект зависит от актуальных данных каталога.
   const navigationType = useNavigationType();
   useEffect(() => {
     const targetCardId = sessionStorage.getItem("catalog_last_card_id");
-    if (targetCardId) {
-      const isBackNavigation = navigationType === "POP";
-      // Даём React отрисовать страницу и карточки
-      const timer = setTimeout(() => {
-        const el = document.getElementById(`card-${targetCardId}`);
-        if (el) {
-          if (!isBackNavigation) {
-            el.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-          el.classList.add("ring-4", "ring-[#ff6b35]", "ring-offset-4");
-          setTimeout(() => {
-            el.classList.remove("ring-4", "ring-[#ff6b35]", "ring-offset-4");
-          }, 2500);
+    if (!targetCardId) return;
+
+    const isPop = navigationType === "POP";
+    let rafId = 0;
+    let attempts = 0;
+    let highlightTimer: number | undefined;
+    let initialTimer: number | undefined;
+
+    const tryFind = () => {
+      const el = document.getElementById(`card-${targetCardId}`);
+      if (el) {
+        if (!isPop) {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
         }
+        el.classList.add("ring-4", "ring-[#ff6b35]", "ring-offset-4");
+        highlightTimer = window.setTimeout(() => {
+          el.classList.remove("ring-4", "ring-[#ff6b35]", "ring-offset-4");
+        }, 2500);
         sessionStorage.removeItem("catalog_last_card_id");
-      }, 120);
-      return () => clearTimeout(timer);
-    }
-  }, []);
+      } else if (attempts++ < 60) {
+        rafId = requestAnimationFrame(tryFind);
+      }
+    };
+
+    initialTimer = window.setTimeout(tryFind, 80);
+
+    return () => {
+      if (initialTimer) clearTimeout(initialTimer);
+      if (rafId) cancelAnimationFrame(rafId);
+      if (highlightTimer) clearTimeout(highlightTimer);
+    };
+  }, [filtered, navigationType]);
 
   const visible = useMemo(() => {
     const start = (safeCurrentPage - 1) * ITEMS_PER_PAGE;
