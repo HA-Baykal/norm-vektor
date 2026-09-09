@@ -143,6 +143,10 @@
       "destination": "/api/page?path=/sravnenie"
     },
     {
+      "source": "/interier",
+      "destination": "/api/page?path=/interier"
+    },
+    {
       "source": "/montazh-kondicionerov",
       "destination": "/api/page?path=/montazh-kondicionerov"
     },

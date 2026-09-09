@@ -202,7 +202,7 @@ const seoSitemapAndApiGenerator = () => ({
       const mainUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
         "kontakty", "standarty", "otzyv", "baza-znaniy", "portfolio",
-        "sravnenie",
+        "sravnenie", "interier",
         ...servicePages
       ];
       const rewrites: any[] = [

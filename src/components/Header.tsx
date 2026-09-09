@@ -7,13 +7,13 @@ interface HeaderProps {
   toggleTheme: () => void;
 }
 
-const navItems = [
+const navItems: { to: string; label: string; mobileLabel?: string }[] = [
   { to: "/", label: "Главная" },
   { to: "/okna", label: "Окна" },
   { to: "/kondicionery", label: "Кондиционеры" },
   { to: "/ventilyaciya", label: "Вентиляция" },
   { to: "/almaznoe-burenie", label: "Алмазное бурение" },
-  { to: "/interier", label: "Interier" },
+  { to: "/interier", label: "Interier", mobileLabel: "Interier — дизайн интерьера по фото" },
   { to: "/baza-znaniy", label: "База знаний" },
   { to: "/standarty", label: "Стандарты Монтажа" },
   { to: "/kontakty", label: "Контакты" },
@@ -81,6 +81,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
                 key={item.to}
                 to={item.to}
                 end={item.to === "/"}
+                title={item.mobileLabel || item.label}
                 className={({ isActive }) =>
                   `px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                     isActive
@@ -176,7 +177,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
                     }`
                   }
                 >
-                  {item.label}
+                  {item.mobileLabel || item.label}
                 </NavLink>
               ))}
               {/* НОВОЕ: Кнопка MAX в телефоне */}
