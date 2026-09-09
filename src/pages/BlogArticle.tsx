@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useBreadcrumb } from "../utils/useSeo";
+import { InterierArticleCta } from "../components/InterierPromo";
 
 type Block =
   | { type: "p"; text: string }
@@ -2900,6 +2901,9 @@ useEffect(() => {
               </p>
             );
           })}
+          {(article.category === "Окна" || /ремонт|балкон|остеклен/i.test(article.title)) && (
+            <InterierArticleCta />
+          )}
           {article.faq && article.faq.length > 0 && (
             <div className="mt-12">
               <h2 className="text-xl font-black text-[#1a3a5c] sm:text-2xl">Частые вопросы</h2>
@@ -3046,7 +3050,7 @@ useEffect(() => {
                   ],
                   "osteklenie-balkonov-tseny-po-variantam": [
                     {title: "→ Сколько стоят пластиковые окна", to: "/baza-znaniy/skolko-stoyat-plastikovye-okna-irkutsk"},
-                    {title: "→ Окна для дома из бруса", to: "/baza-znaniy/okna-dlya-doma-iz-brusa"},
+                    {title: "→ Interier — дизайн интерьера по фото", to: "/interier"},
                     {title: "→ Остекление балконов под ключ", to: "/osteklenie-balkonov"},
                   ],
                   "montazh-konditsionera-po-gostu-chek-list": [
@@ -3073,7 +3077,7 @@ useEffect(() => {
                 const links = allLinks[slug || ""] || [
                   {title: "→ Каталог кондиционеров Иркутск", to: "/kondicionery"},
                   {title: "→ Окна VEKA Иркутск", to: "/okna"},
-                  {title: "→ Вентиляция и бризеры", to: "/ventilyaciya"},
+                  {title: "→ Interier — дизайн интерьера по фото", to: "/interier"},
                 ];
                 return links.map(l => <Link key={l.to} to={l.to} className="flex items-center gap-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-100 px-4 py-3 font-bold text-[#1a3a5c] transition">{l.title}</Link>);
               })()}
