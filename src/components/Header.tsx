@@ -13,6 +13,7 @@ const navItems = [
   { to: "/kondicionery", label: "Кондиционеры" },
   { to: "/ventilyaciya", label: "Вентиляция" },
   { to: "/almaznoe-burenie", label: "Алмазное бурение" },
+  { to: "/interier", label: "Interier" },
   { to: "/baza-znaniy", label: "База знаний" },
   { to: "/standarty", label: "Стандарты Монтажа" },
   { to: "/kontakty", label: "Контакты" },

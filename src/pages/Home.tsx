@@ -11,6 +11,7 @@ import QuickBookingModal from "../components/QuickBookingModal";
 import MobileBottomBar from "../components/MobileBottomBar";
 import BazaZnaniyBanner from "../components/BazaZnaniyBanner";
 import GeoLinksBlock from "../components/GeoLinksBlock";
+import InterierPromo, { DeveloperBio } from "../components/InterierPromo";
 import { useSeo } from "../utils/useSeo";
 
 const directions = [
@@ -267,6 +268,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <InterierPromo />
+      <DeveloperBio />
 
       {/* СТАНДАРТЫ МОНТАЖА */}
       <section className="py-20 bg-slate-900 text-white">

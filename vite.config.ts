@@ -74,7 +74,7 @@ const seoSitemapAndApiGenerator = () => ({
       const staticUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
         "portfolio", "standarty", "otzyv", "baza-znaniy", "kontakty",
-        "sravnenie",
+        "sravnenie", "interier",
         ...servicePages,
         ...cityPages
       ];
