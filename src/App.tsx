@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import MetrikaTracker from "./components/MetrikaTracker";
 import OtzyvPage from "./pages/OtzyvPage";
+const InterierPage = lazy(() => import("./pages/InterierPage"));
 const LocalCityPage = lazy(() => import("./pages/LocalCityPage"));
 const Home = lazy(() => import("./pages/Home"));
 const Windows = lazy(() => import("./pages/Windows"));
@@ -117,6 +118,7 @@ export default function App() {
             <Route path="kontakty" element={<Contact />} />
             <Route path="sravnenie" element={<ComparePage />} />
             <Route path="otzyv" element={<OtzyvPage />} />
+            <Route path="interier" element={<InterierPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
