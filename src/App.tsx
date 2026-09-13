@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import LegacyRedirect from "./components/LegacyRedirect";
 import MetrikaTracker from "./components/MetrikaTracker";
 import OtzyvPage from "./pages/OtzyvPage";
 const InterierPage = lazy(() => import("./pages/InterierPage"));
@@ -31,7 +32,8 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="okna" element={<Windows />} />
             <Route path="okna/:slug" element={<WindowPage />} />
-            <Route path="windows/:slug" element={<WindowPage />} />
+            {/* Алиас /windows/:slug убран: канонический адрес карточки — /okna/:slug.
+                Старые ссылки уводит LegacyRedirect (301 на сервере, см. redirects.ts) */}
             <Route path="kondicionery" element={<AC />} />
             <Route path="kondicionery/:slug" element={<ConditionerPage />} />
             <Route path="/okna-v-homutovo" element={<LocalCityPage cityKey="homutovo" serviceKey="okna" />} />
@@ -119,7 +121,9 @@ export default function App() {
             <Route path="sravnenie" element={<ComparePage />} />
             <Route path="otzyv" element={<OtzyvPage />} />
             <Route path="interier" element={<InterierPage />} />
-            <Route path="*" element={<NotFound />} />
+            {/* Старые и дубль-адреса уводим на канонические внутри SPA,
+                всё остальное — страница 404 (правила: src/constants/redirects.ts) */}
+            <Route path="*" element={<LegacyRedirect fallback={<NotFound />} />} />
           </Route>
         </Routes>
       </Suspense>

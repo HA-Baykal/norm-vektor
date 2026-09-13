@@ -1,5 +1,6 @@
 // api/page.ts (Оптимизированная версия для ТОП-1 с уникализированным контентом)
 import articlesData from "../src/data/articlesData";
+import { SITE_ORIGIN, normalizePath, resolveLegacyRedirect } from "../src/constants/redirects";
 export const config = { runtime: "edge" };
 
 function esc(s: string) {
@@ -1074,42 +1075,131 @@ function buildArticlePage(path: string): Page | null {
 }
 
 // ============================================================
+// Вспомогательные функции маршрутизации
+// ============================================================
+
+// Служебный параметр, который добавляет сам Vercel в destination rewrite'ов
+// (/okna -> /api/page?path=/okna). Это НЕ пользовательский фильтр: раньше
+// проверка «есть ли query» считала его фильтром и проставляла главным страницам
+// /okna и /kondicionery (и всем гео-страницам /okna-*, /kondicionery-*)
+// meta robots "noindex, follow" прямо в серверном HTML.
+const ROUTING_QUERY_PARAM = "path";
+
+/** Путь, по которому реально обратился краулер или пользователь. */
+function resolveRequestPath(url: URL): string {
+  // Обычно Vercel сохраняет исходный pathname при rewrite. Но если платформа
+  // передаст в функцию уже переписанный URL (/api/page), путь берётся из ?path=.
+  const fromQuery = url.searchParams.get(ROUTING_QUERY_PARAM);
+  const raw = url.pathname === "/api/page" && fromQuery ? fromQuery : url.pathname;
+  return normalizePath(raw);
+}
+
+/** Есть ли в URL пользовательские фильтры (?type=, ?brand=, ?page=, ?q= и т.п.). */
+function hasUserFilterParams(url: URL): boolean {
+  for (const key of url.searchParams.keys()) {
+    if (key !== ROUTING_QUERY_PARAM) return true;
+  }
+  return false;
+}
+
+/**
+ * Абсолютный Location для 301.
+ * На боевом домене — канонический https://www.vektor-komforta.ru,
+ * на preview-деплоях — относительный путь, чтобы не уводить на прод.
+ */
+function redirectLocation(req: Request, target: string): string {
+  const host = req.headers.get("host") || "";
+  const isProductionHost = /(^|\.)vektor-komforta\.ru$/i.test(host);
+  return isProductionHost ? `${SITE_ORIGIN}${target}` : target;
+}
+
+/** Оболочка SPA (index.html) — сохраняет разметку, скрипты и стили сайта. */
+async function fetchShell(req: Request): Promise<string> {
+  try {
+    const proto = req.headers.get("x-forwarded-proto") || "https";
+    const host = req.headers.get("host") || "www.vektor-komforta.ru";
+    const resp = await fetch(`${proto}://${host}/index.html`);
+    if (resp.ok) return await resp.text();
+  } catch (e) {
+    console.error("api/page fetch error:", e);
+  }
+  return "";
+}
+
+const NOT_FOUND_TITLE = "Страница не найдена (404) — Вектор Комфорта, Иркутск";
+const NOT_FOUND_DESCRIPTION =
+  "Ошибка 404: страница не найдена. Окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта.";
+
+// Запросы к несуществующим файлам (/favicon.ico, /wp-login.php, probe'ы ботов).
+// Реальные страницы сайта не содержат точки в последнем сегменте, поэтому по
+// расширению их не заденем. Таким адресам отдаём лёгкий 404 без подтягивания
+// оболочки SPA на 1.3 МБ — иначе каждый мусорный запрос стоит инвоксации
+// edge-функции и внутреннего fetch'а index.html.
+const ASSET_LIKE_PATH = /\.[a-z0-9]{2,5}$/i;
+
+function bareNotFound(path: string): string {
+  return `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>${esc(NOT_FOUND_TITLE)}</title><meta name="robots" content="noindex, follow" /><meta name="description" content="${esc(NOT_FOUND_DESCRIPTION)}" /><link rel="canonical" href="${SITE_ORIGIN}${esc(path)}" /></head><body><h1>404 — страница не найдена</h1><p>Перейдите на <a href="${SITE_ORIGIN}/">главную</a> — окна, кондиционеры и вентиляция в Иркутске.</p></body></html>`;
+}
+
+// ============================================================
 // Edge-обработчик: отдаёт страницу с уникальными title/h1/текстом
 // для поисковых краулеров. Неизвестные пути → честный HTTP 404
 // с noindex (вместо "мягкого 404" на index.html).
 // ============================================================
 export default async function handler(req: Request): Promise<Response> {
   const url = new URL(req.url);
-  let path = decodeURIComponent(url.pathname).toLowerCase();
-  if (path !== "/" && path.endsWith("/")) path = path.slice(0, -1);
+  const path = resolveRequestPath(url);
+
+  // Старые и дубль-адреса → честный HTTP 301 на канонический URL.
+  // Правила те же, что в vercel.json и public/_redirects (src/constants/redirects.ts),
+  // поэтому 301 сработает, даже если слой маршрутизации хостинга не применился.
+  const legacyTarget = resolveLegacyRedirect(path);
+  if (legacyTarget) {
+    return new Response(null, {
+      status: 301,
+      headers: {
+        Location: redirectLocation(req, legacyTarget),
+        "Cache-Control": "public, max-age=31536000",
+      },
+    });
+  }
 
   const page = PAGES[path] || buildGeoPage(path) || buildArticlePage(path);
   if (!page) {
-    const notFoundHtml = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>Страница не найдена (404) — Вектор Комфорта, Иркутск</title><meta name="robots" content="noindex" /><meta name="description" content="Ошибка 404: страница не найдена. Окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта." /><link rel="canonical" href="https://www.vektor-komforta.ru${esc(path)}" /></head><body><h1>404 — страница не найдена</h1><p>Перейдите на <a href="https://www.vektor-komforta.ru/">главную</a> — окна, кондиционеры и вентиляция в Иркутске.</p></body></html>`;
-    return new Response(notFoundHtml, {
+    // Честный 404: статус отдаёт сервер, а оболочку SPA сохраняем —
+    // React отрисует оформленную страницу «Такой страницы нет», а не голую заглушку.
+    const isAssetLike = ASSET_LIKE_PATH.test(path);
+    let html = isAssetLike ? "" : await fetchShell(req);
+    if (html) {
+      html = html.replace(/<title>.*?<\/title>/i, `<title>${esc(NOT_FOUND_TITLE)}</title>`);
+      html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${esc(NOT_FOUND_DESCRIPTION)}" />`);
+      html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${esc(NOT_FOUND_TITLE)}" />`);
+      html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${SITE_ORIGIN}${esc(path)}" />`);
+      // noindex, follow — совпадает с тем, что ставит клиентский NotFound.tsx
+      if (/<meta\s+name="robots"/i.test(html)) {
+        html = html.replace(/<meta\s+name="robots"\s+content=".*?"\s*\/?>/i, `<meta name="robots" content="noindex, follow" />`);
+      } else {
+        html = html.replace(/<\/head>/i, `<meta name="robots" content="noindex, follow" />\n</head>`);
+      }
+    } else {
+      html = bareNotFound(path);
+    }
+    return new Response(html, {
       status: 404,
       headers: { "Content-Type": "text/html; charset=utf-8" },
     });
   }
 
   // Берём базовый index.html, чтобы сохранить разметку, скрипты и стили
-  let html = "";
-  try {
-    const proto = req.headers.get("x-forwarded-proto") || "https";
-    const host = req.headers.get("host") || "www.vektor-komforta.ru";
-    const resp = await fetch(`${proto}://${host}/index.html`);
-    if (resp.ok) html = await resp.text();
-  } catch (e) {
-    console.error("api/page fetch error:", e);
-  }
+  let html = await fetchShell(req);
 
   if (!html) {
     html = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>${esc(page.title)}</title></head><body><div id="root"></div></body></html>`;
   }
 
-  const fullUrl = path === "/" ? "https://www.vektor-komforta.ru/" : `https://www.vektor-komforta.ru${path}`;
+  const fullUrl = path === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
   // Швейцарские часы: фильтры ?type=Мобильный и т.п. -> canonical на чистый URL + robots noindex,follow
-  const hasFilterParams = url.search.length > 0;
+  const hasFilterParams = hasUserFilterParams(url);
   const robotsForFilter = hasFilterParams && (path === "/kondicionery" || path === "/okna" || path.startsWith("/kondicionery-") || path.startsWith("/okna-")) ? "noindex, follow" : null;
 
   html = html.replace(/<title>.*?<\/title>/i, `<title>${esc(page.title)}</title>`);

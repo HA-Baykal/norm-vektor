@@ -3,7 +3,7 @@
     {
       "source": "/(.*)/",
       "destination": "/$1",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/almaznoe-burenie-i-sverlenie",
@@ -33,16 +33,6 @@
     {
       "source": "/standarty-montazha",
       "destination": "/standarty",
-      "statusCode": 301
-    },
-    {
-      "source": "/burenie-v-:slug*",
-      "destination": "/almaznoe-burenie",
-      "statusCode": 301
-    },
-    {
-      "source": "/burenie-na-:slug*",
-      "destination": "/almaznoe-burenie",
       "statusCode": 301
     },
     {
@@ -78,6 +68,21 @@
     {
       "source": "/articles/kak-vybrat-kondicioner",
       "destination": "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi",
+      "statusCode": 301
+    },
+    {
+      "source": "/burenie-v-:rest*",
+      "destination": "/almaznoe-burenie",
+      "statusCode": 301
+    },
+    {
+      "source": "/burenie-na-:rest*",
+      "destination": "/almaznoe-burenie",
+      "statusCode": 301
+    },
+    {
+      "source": "/windows/:slug",
+      "destination": "/okna/:slug",
       "statusCode": 301
     }
   ],
@@ -611,8 +616,72 @@
       "destination": "/api/page?path=/baza-znaniy/:slug"
     },
     {
+      "source": "/almaznoe-burenie-i-sverlenie",
+      "destination": "/api/page?path=/almaznoe-burenie-i-sverlenie"
+    },
+    {
+      "source": "/almaznaya-rezka",
+      "destination": "/api/page?path=/almaznaya-rezka"
+    },
+    {
+      "source": "/almaznoe-burenie-irkutsk",
+      "destination": "/api/page?path=/almaznoe-burenie-irkutsk"
+    },
+    {
+      "source": "/burenie-otverstij",
+      "destination": "/api/page?path=/burenie-otverstij"
+    },
+    {
+      "source": "/burenie",
+      "destination": "/api/page?path=/burenie"
+    },
+    {
+      "source": "/standarty-montazha",
+      "destination": "/api/page?path=/standarty-montazha"
+    },
+    {
+      "source": "/ventilyatsiya",
+      "destination": "/api/page?path=/ventilyatsiya"
+    },
+    {
+      "source": "/ventilyaciya-irkutsk",
+      "destination": "/api/page?path=/ventilyaciya-irkutsk"
+    },
+    {
+      "source": "/konditsionery",
+      "destination": "/api/page?path=/konditsionery"
+    },
+    {
+      "source": "/split-sistemy",
+      "destination": "/api/page?path=/split-sistemy"
+    },
+    {
+      "source": "/plastikovye-okna",
+      "destination": "/api/page?path=/plastikovye-okna"
+    },
+    {
+      "source": "/okna-pvh",
+      "destination": "/api/page?path=/okna-pvh"
+    },
+    {
+      "source": "/articles/kak-vybrat-kondicioner",
+      "destination": "/api/page?path=/articles/kak-vybrat-kondicioner"
+    },
+    {
+      "source": "/burenie-v-:rest*",
+      "destination": "/api/page"
+    },
+    {
+      "source": "/burenie-na-:rest*",
+      "destination": "/api/page"
+    },
+    {
+      "source": "/windows/:slug",
+      "destination": "/api/page"
+    },
+    {
       "source": "/((?!api/).*)",
-      "destination": "/index.html"
+      "destination": "/api/page?path=/$1"
     }
   ]
 }
