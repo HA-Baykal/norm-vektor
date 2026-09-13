@@ -1108,12 +1108,23 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   const fullUrl = path === "/" ? "https://www.vektor-komforta.ru/" : `https://www.vektor-komforta.ru${path}`;
+  // Швейцарские часы: фильтры ?type=Мобильный и т.п. -> canonical на чистый URL + robots noindex,follow
+  const hasFilterParams = url.search.length > 0;
+  const robotsForFilter = hasFilterParams && (path === "/kondicionery" || path === "/okna" || path.startsWith("/kondicionery-") || path.startsWith("/okna-")) ? "noindex, follow" : null;
+
   html = html.replace(/<title>.*?<\/title>/i, `<title>${esc(page.title)}</title>`);
   html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${esc(page.description)}" />`);
   html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${esc(page.title)}" />`);
   html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i, `<meta property="og:description" content="${esc(page.description)}" />`);
   html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${fullUrl}" />`);
   html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${fullUrl}" />`);
+  if (robotsForFilter) {
+    if (/<meta\s+name="robots"/i.test(html)) {
+      html = html.replace(/<meta\s+name="robots"\s+content=".*?"\s*\/?>/i, `<meta name="robots" content="${robotsForFilter}" />`);
+    } else {
+      html = html.replace(/<\/head>/i, `<meta name="robots" content="${robotsForFilter}" />\n</head>`);
+    }
+  }
 
   // Хлебные крошки Schema.org (BreadcrumbList) для краулеров
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(path, page);

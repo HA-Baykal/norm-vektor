@@ -41,11 +41,13 @@ export default function WindowPage() {
     }
   };
 
-  // Динамическое SEO для Яндекса и Google!
+  // Динамическое SEO — швейцарские часы: Title никогда не пустой, canonical чистый
   useEffect(() => {
-    const titleText = `${item.title} в Иркутске — цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ | Собственное производство Вектор Комфорта`;
+    const safeTitle = (item.title || "Пластиковые окна").trim();
+    const titleText = `${safeTitle} в Иркутске — цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ | Собственное производство Вектор Комфорта`;
     const descText = `${item.shortDesc} Цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ ${item.priceUnit}. Собственный сборочный цех в Иркутске, гарантия 5 лет, монтаж по ГОСТу с пароизоляцией!`;
-    const pageUrl = window.location.href;
+    const SITE_ORIGIN = "https://www.vektor-komforta.ru";
+    const cleanUrl = `${SITE_ORIGIN}/okna/${encodeURIComponent(slug || item.slug)}`;
 
     document.title = titleText;
 
@@ -59,14 +61,24 @@ export default function WindowPage() {
       }
       meta.content = content;
     };
+    const setCanonical = (href: string) => {
+      let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+      if (!link) {
+        link = document.createElement("link");
+        link.setAttribute("rel", "canonical");
+        document.head.appendChild(link);
+      }
+      link.href = href;
+    };
 
     updateMeta("description", descText);
     updateMeta("og:title", titleText, true);
     updateMeta("og:description", descText, true);
     updateMeta("og:image", item.image.startsWith("http") ? item.image : `https://www.vektor-komforta.ru${item.image}`, true);
-    updateMeta("og:url", pageUrl, true);
+    updateMeta("og:url", cleanUrl, true);
+    setCanonical(cleanUrl);
 
-    // Товарная SEO-микроразметка Schema.org/Product для Яндекса и Google
+    // Товарная SEO-микроразметка Schema.org/Product
     const productSchema = {
       "@context": "https://schema.org/",
       "@type": "Product",
@@ -77,7 +89,7 @@ export default function WindowPage() {
       "brand": { "@type": "Brand", "name": "Вектор Комфорта (VEKA / Alutech)" },
       "offers": {
         "@type": "Offer",
-        "url": pageUrl,
+        "url": cleanUrl,
         "priceCurrency": "RUB",
         "price": item.basePrice,
         "priceValidUntil": "2026-12-31",

@@ -5,15 +5,21 @@ import Counters from "../components/Counters";
 import CatalogConditioners from "../components/CatalogConditioners";
 import Reviews from "../components/Reviews";
 
+const SITE_ORIGIN = "https://www.vektor-komforta.ru";
+const CLEAN_CANONICAL = `${SITE_ORIGIN}/kondicionery`;
 
 export default function AC() {
-    // Динамические мета-теги и Service микроразметка
+  // SEO для /kondicionery — швейцарские часы: canonical всегда чистый, фильтры ?type= -> noindex,follow
   useEffect(() => {
     const titleText = "Кондиционеры в Иркутске от 17 351 ₽ — купить с установкой за 1 день | Вектор Комфорта";
     const descText = "Кондиционеры в Иркутске от 17 351 ₽. Инверторные и обычные сплит-системы Ballu, Electrolux, Royal Thermo, Daikin. Монтаж за 1 день, гарантия 3-5 лет.";
-    
+
+    const hasFilter = typeof window !== "undefined" && window.location.search.length > 0;
+    const canonical = CLEAN_CANONICAL;
+    const robots = hasFilter ? "noindex, follow" : undefined;
+
     document.title = titleText;
-    
+
     const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
       const attr = isProperty ? "property" : "name";
       let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
@@ -24,14 +30,39 @@ export default function AC() {
       }
       meta.content = content;
     };
-    
+    const setCanonical = (href: string) => {
+      let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+      if (!link) {
+        link = document.createElement("link");
+        link.setAttribute("rel", "canonical");
+        document.head.appendChild(link);
+      }
+      link.href = href;
+    };
+    const setRobots = (c: string) => {
+      let m = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+      if (!m) {
+        m = document.createElement("meta");
+        m.setAttribute("name", "robots");
+        document.head.appendChild(m);
+      }
+      m.content = c;
+    };
+    const removeRobots = () => {
+      const m = document.querySelector('meta[name="robots"]');
+      if (m) m.remove();
+    };
+
     updateMeta("description", descText);
     updateMeta("og:title", titleText, true);
     updateMeta("og:description", descText, true);
-    updateMeta("og:url", window.location.href, true);
+    updateMeta("og:url", canonical, true);
     updateMeta("og:type", "website", true);
-    
-    // Добавляем Service микроразметку Schema.org
+    setCanonical(canonical);
+    if (robots) setRobots(robots);
+    else removeRobots();
+
+    // Service микроразметка Schema.org
     const serviceSchema = {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -51,10 +82,7 @@ export default function AC() {
           "addressCountry": "RU"
         }
       },
-      "areaServed": {
-        "@type": "City",
-        "name": "Иркутск"
-      },
+      "areaServed": { "@type": "City", "name": "Иркутск" },
       "serviceType": "Продажа и монтаж кондиционеров",
       "offers": {
         "@type": "Offer",
@@ -100,7 +128,7 @@ export default function AC() {
         ]
       }
     };
-    
+
     let scriptTag = document.getElementById("seo-service-schema") as HTMLScriptElement;
     if (!scriptTag) {
       scriptTag = document.createElement("script");
@@ -109,13 +137,26 @@ export default function AC() {
       document.head.appendChild(scriptTag);
     }
     scriptTag.textContent = JSON.stringify(serviceSchema);
-    
+
+    const onPopState = () => {
+      // При изменении ?type= фильтров обновляем robots/canonical без перезагрузки
+      const nowHasFilter = window.location.search.length > 0;
+      setCanonical(CLEAN_CANONICAL);
+      updateMeta("og:url", CLEAN_CANONICAL, true);
+      if (nowHasFilter) setRobots("noindex, follow");
+      else removeRobots();
+    };
+    window.addEventListener("popstate", onPopState);
+
     return () => {
       document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
       const el = document.getElementById("seo-service-schema");
       if (el) el.remove();
+      removeRobots();
+      window.removeEventListener("popstate", onPopState);
     };
   }, []);
+
   return (
     <>
       <ServicePage
@@ -155,7 +196,7 @@ export default function AC() {
           <h2 className="text-2xl sm:text-3xl font-black text-[#1a3a5c]">Кондиционеры в Иркутске — купить с установкой от 17 351 ₽</h2>
           <div className="mt-6 grid lg:grid-cols-3 gap-6 text-sm leading-7 text-slate-700">
             <div className="space-y-3">
-                            <p><strong>Купить кондиционер в Иркутске</strong> в «Вектор Комфорта» — большой выбор <strong>Daikin, Ballu, Electrolux, Royal Thermo, Midea, Kentatsu, Bosch, Toshiba</strong> на складе в Иркутске. Инверторные сплит-системы с Wi-Fi и умным домом, стандартные — дешевле для дачи. Цена — <strong>от 17 351 ₽</strong>, инвертор — от 27 900 ₽. <strong>Монтаж за 1 день за 3–4 часа</strong> с вакуумированием трассы, гарантия 3–5 лет.</p>
+              <p><strong>Купить кондиционер в Иркутске</strong> в «Вектор Комфорта» — большой выбор <strong>Daikin, Ballu, Electrolux, Royal Thermo, Midea, Kentatsu, Bosch, Toshiba</strong> на складе в Иркутске. Инверторные сплит-системы с Wi-Fi и умным домом, стандартные — дешевле для дачи. Цена — <strong>от 17 351 ₽</strong>, инвертор — от 27 900 ₽. <strong>Монтаж за 1 день за 3–4 часа</strong> с вакуумированием трассы, гарантия 3–5 лет.</p>
               <p>Подбор по площади: <strong>07 до 20 м², 09 до 25 м², 12 до 35 м², 18 до 50 м², 24 до 60 м²</strong>. На солнечную сторону, панорамные окна, высокие потолки — берём запас.</p>
             </div>
             <div className="space-y-3">
@@ -232,10 +273,10 @@ export default function AC() {
           <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
             <h3 className="font-black text-[#1a3a5c]">Частые вопросы про кондиционеры в Иркутске</h3>
             <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
-                <div><strong>Сколько стоит установка?</strong> 07–12 от 18 400 ₽, 18–24 от 20 100 ₽ под ключ — трасса 3 м и вакуумирование.</div>
-                <div><strong>Инвертор или обычный?</strong> В квартиру на каждый день — инвертор (тише на 40%, экономит свет). На дачу эпизодически — обычный дешевле.</div>
-                <div><strong>Что выбрать на 35 м²?</strong> Берите 12 (3.5 кВт) — поищите фильтр «до 35 м²» в каталоге.</div>
-                <div><strong>Быстрый монтаж?</strong> Да, за 3–4 часа, с пылесосом без пыли, гарантия по договору.</div>
+              <div><strong>Сколько стоит установка?</strong> 07–12 от 18 400 ₽, 18–24 от 20 100 ₽ под ключ — трасса 3 м и вакуумирование.</div>
+              <div><strong>Инвертор или обычный?</strong> В квартиру на каждый день — инвертор (тише на 40%, экономит свет). На дачу эпизодически — обычный дешевле.</div>
+              <div><strong>Что выбрать на 35 м²?</strong> Берите 12 (3.5 кВт) — поищите фильтр «до 35 м²» в каталоге.</div>
+              <div><strong>Быстрый монтаж?</strong> Да, за 3–4 часа, с пылесосом без пыли, гарантия по договору.</div>
             </div>
           </div>
         </div>
@@ -250,7 +291,7 @@ export default function AC() {
           </div>
         </div>
       </section>
-        <CatalogConditioners />
+      <CatalogConditioners />
       <Counters />
       <Reviews />
     </>

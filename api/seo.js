@@ -260,10 +260,16 @@ export default async function handler(req, res) {
     html = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>Вектор Комфорта Иркутск</title></head><body><div id="root"></div></body></html>`;
   }
   
-  // Если запрос на кондиционер
+  // Если запрос на кондиционер — швейцарские часы: Title всегда заполнен по шаблону
   if (model) {
-    const title = `${model.name}${btuText}`.trim();
-    const desc = `${model.type} сплит-система ${model.brand} ${model.name}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет!`;
+    const safeName = (model.name || "Кондиционер").trim();
+    // Шаблон из ТЗ: "Royal Thermo Diamond DC — купить с установкой в Иркутске | Вектор Комфорта"
+    // Для BTU-варианта: с ценой и площадью
+    const baseTitle = `${safeName} — купить с установкой в Иркутске | Вектор Комфорта`;
+    const title = targetBtu > 0
+      ? `${safeName} (${targetBtu} BTU) — купить с установкой в Иркутске от ${exactPrice.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`
+      : baseTitle;
+    const desc = `${model.type} сплит-система ${model.brand} ${safeName}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет! Монтаж за 1 день.`;
     const pageUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURIComponent(slug)}${targetBtu > 0 ? `?btu=${targetBtu}` : ""}`;
     const priceStr = exactPrice.toString();
     const canonicalUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURIComponent(slug)}`;
@@ -314,8 +320,9 @@ export default async function handler(req, res) {
 </head>`;
     html = html.replace("</head>", seoMetaTags);
   } else if (windowModel) {
-    const title = `${windowModel.title}`;
-    const desc = `${windowModel.desc} Собственное производство в Иркутске, цена от ${windowModel.price} ₽ ${windowModel.unit}. Монтаж по ГОСТу, гарантия 5 лет!`;
+    const safeTitle = (windowModel.title || "Пластиковые окна").trim();
+    const title = `${safeTitle} в Иркутске — цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`;
+    const desc = `${windowModel.desc} Собственное производство в Иркутске, цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ ${windowModel.unit}. Монтаж по ГОСТу, гарантия 5 лет!`;
     const pageUrl = `https://www.vektor-komforta.ru/okna/${encodeURIComponent(slug)}`;
     const priceStr = windowModel.price.toString();
     const imgUrl = `https://www.vektor-komforta.ru${windowModel.img}`;
