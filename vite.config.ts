@@ -147,11 +147,15 @@ const seoSitemapAndApiGenerator = () => ({
       xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
       for (const u of staticUrls) {
+        // Швейцарские часы: /interier — отдельный проект, снижает тематичность. Держим с низким приоритетом, рекомендуем вынести на поддомен interier.vektor-komforta.ru
+        const isInterier = u === "interier";
+        const changefreq = isInterier ? "yearly" : (u === "" || u === "okna" || u === "kondicionery" ? "daily" : "weekly");
+        const priority = isInterier ? "0.3" : (u === "" ? "1.0" : "0.9");
         xml += `  <url>\n`;
         xml += `    <loc>https://www.vektor-komforta.ru/${u}</loc>\n`;
         xml += `    <lastmod>${dateStr}</lastmod>\n`;
-        xml += `    <changefreq>${u === "" || u === "okna" || u === "kondicionery" ? "daily" : "weekly"}</changefreq>\n`;
-        xml += `    <priority>${u === "" ? "1.0" : "0.9"}</priority>\n`;
+        xml += `    <changefreq>${changefreq}</changefreq>\n`;
+        xml += `    <priority>${priority}</priority>\n`;
         xml += `  </url>\n`;
       }
 

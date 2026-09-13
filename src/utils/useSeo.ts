@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 const DEFAULT_TITLE = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
+const SITE_ORIGIN = "https://www.vektor-komforta.ru";
 
 function setMeta(nameOrProperty: string, content: string, isProperty = false) {
   const attr = isProperty ? "property" : "name";
@@ -13,43 +14,73 @@ function setMeta(nameOrProperty: string, content: string, isProperty = false) {
   meta.content = content;
 }
 
+export function setCanonical(href: string) {
+  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+  }
+  link.href = href;
+}
+
+export function setRobots(content: string) {
+  let meta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute("name", "robots");
+    document.head.appendChild(meta);
+  }
+  meta.content = content;
+}
+
+function removeRobots() {
+  const meta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+  if (meta) meta.remove();
+}
+
+function getCleanUrl(): string {
+  if (typeof window === "undefined") return SITE_ORIGIN;
+  // pathname without search and hash, keep as is (no trailing slash normalization — handled by redirect)
+  return `${SITE_ORIGIN}${window.location.pathname}`;
+}
+
 /**
- * Единый SEO-хук: устанавливает <title>, meta description и Open Graph
- * для каждой страницы. Используется и клиентским рендером, и согласуется
- * с серверными meta в api/page.ts.
+ * Единый SEO-хук: устанавливает <title>, meta description, canonical, OG
+ * для каждой страницы. Canonical всегда без ?query — швейцарские часы.
  */
-export function useSeo(title: string, description: string) {
+export function useSeo(title: string, description: string, opts?: { canonical?: string; robots?: string; ogType?: string }) {
   useEffect(() => {
-    document.title = title;
-    setMeta("description", description);
-    setMeta("og:title", title, true);
-    setMeta("og:description", description, true);
-    setMeta("og:url", window.location.href, true);
-    setMeta("og:type", "website", true);
+    const safeTitle = title && title.trim() ? title.trim() : DEFAULT_TITLE;
+    const safeDesc = description && description.trim() ? description.trim() : "Пластиковые окна VEKA, кондиционеры и вентиляция в Иркутске — продажа и монтаж по ГОСТу от компании Вектор Комфорта.";
+    const canonical = opts?.canonical || getCleanUrl();
+    const robots = opts?.robots;
+    const ogType = opts?.ogType || "website";
+
+    document.title = safeTitle;
+    setMeta("description", safeDesc);
+    setMeta("og:title", safeTitle, true);
+    setMeta("og:description", safeDesc, true);
+    setMeta("og:url", canonical, true);
+    setMeta("og:type", ogType, true);
+    setCanonical(canonical);
+    if (robots) setRobots(robots);
+    else removeRobots();
 
     return () => {
       document.title = DEFAULT_TITLE;
+      removeRobots();
     };
-  }, [title, description]);
+  }, [title, description, opts?.canonical, opts?.robots, opts?.ogType]);
 }
 
-const SITE_ORIGIN = "https://www.vektor-komforta.ru";
-
 export interface BreadcrumbItem {
-  /** Название пункта («Главная», «Кондиционеры», «Ballu Eclipse»…) */
   name: string;
-  /** Путь от корня сайта («/», «/kondicionery»). У последнего пункта можно опустить. */
   path?: string;
 }
 
 /**
- * SEO-хук хлебных крошек: вставляет в <head> JSON-LD разметку
- * Schema.org BreadcrumbList (P2-3 SEO-аудита). Принимает массив
- * пунктов от главной до текущей страницы. У последнего пункта
- * ссылку можно не указывать — тогда подставляется адрес текущей
- * страницы (Яндекс допускает URL в последнем элементе цепочки,
- * если домен совпадает с адресом сайта). При уходе со страницы
- * разметка удаляется.
+ * SEO-хук хлебных крошек: вставляет JSON-LD BreadcrumbList
  */
 export function useBreadcrumb(items: BreadcrumbItem[]) {
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
@@ -66,12 +97,9 @@ export function useBreadcrumb(items: BreadcrumbItem[]) {
           position: i + 1,
           name: item.name,
         };
-        // Последний пункт без явного path — это текущая страница
         const path = item.path ?? (i === items.length - 1 ? pathname : undefined);
         if (path) {
-          listItem.item = path.startsWith("http")
-            ? path
-            : `${SITE_ORIGIN}${path === "/" ? "/" : path}`;
+          listItem.item = path.startsWith("http") ? path : `${SITE_ORIGIN}${path === "/" ? "/" : path}`;
         }
         return listItem;
       }),
@@ -93,3 +121,5 @@ export function useBreadcrumb(items: BreadcrumbItem[]) {
     };
   }, [JSON.stringify(items), pathname]);
 }
+
+export { SITE_ORIGIN, DEFAULT_TITLE };

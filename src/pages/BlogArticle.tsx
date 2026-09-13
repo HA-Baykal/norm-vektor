@@ -2733,12 +2733,12 @@ export default function BlogArticle() {
 useEffect(() => {
   if (!article) return;
   
-  // Устанавливаем уникальный title для каждой статьи
   const titleText = `${article.title} | Вектор Комфорта`;
   document.title = titleText;
   
-  // Устанавливаем уникальный description
   const descText = article.metaDescription || article.summary || article.excerpt || article.title;
+  const SITE_ORIGIN = "https://www.vektor-komforta.ru";
+  const cleanUrl = `${SITE_ORIGIN}/baza-znaniy/${encodeURIComponent(slug || "")}`;
   const updateMeta = (nameOrProperty: string, content: string, isProperty = false) => {
     const attr = isProperty ? "property" : "name";
     let meta = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement;
@@ -2749,11 +2749,21 @@ useEffect(() => {
     }
     meta.content = content;
   };
+  const setCanonical = (href: string) => {
+    let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!link) {
+      link = document.createElement("link");
+      link.setAttribute("rel", "canonical");
+      document.head.appendChild(link);
+    }
+    link.href = href;
+  };
   
   updateMeta("description", descText);
   updateMeta("og:title", titleText, true);
   updateMeta("og:description", descText, true);
-  updateMeta("og:url", window.location.href, true);
+  updateMeta("og:url", cleanUrl, true);
+  setCanonical(cleanUrl);
   updateMeta("og:type", "article", true);
   const pubDateIso = article.date ? `${article.date}T08:00:00+08:00` : "2026-01-15T08:00:00+08:00";
   updateMeta("article:published_time", pubDateIso, true);
@@ -2785,7 +2795,7 @@ useEffect(() => {
     "dateModified": "2026-08-24T08:00:00+08:00",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": window.location.href
+      "@id": cleanUrl
     },
     "articleSection": article.category,
     "keywords": `${article.category}, Иркутск, Вектор Комфорта`
