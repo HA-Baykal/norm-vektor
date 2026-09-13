@@ -1129,7 +1129,7 @@ export default async function handler(req: Request): Promise<Response> {
 
   // Статический контент для краулеров без JS (клиентский React затем перерисует страницу)
   const seoBody = `<div id="root"><main><h1>${esc(page.h1)}</h1>${page.bodyHtml}</main></div>`;
-  html = html.replace(/<div id="root"><\/div>/, seoBody);
+  html = html.replace(/<div id="root">[\s\S]*?<\/div>/, seoBody);
 
   return new Response(html, {
     status: 200,
