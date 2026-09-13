@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { viteSingleFile } from "vite-plugin-singlefile";
+import { LEGACY_PATTERN_REDIRECTS, LEGACY_REDIRECTS, toNetlifyPattern } from "./src/constants/redirects";
 import { windowsCatalogData } from "./src/data/windowsCatalog";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -227,39 +228,62 @@ const seoSitemapAndApiGenerator = () => ({
         rewrites.push({ source: `/baza-znaniy/${b}`, destination: `/api/page?path=/baza-znaniy/${b}` });
       }
       rewrites.push({ source: "/baza-znaniy/:slug", destination: "/api/page?path=/baza-znaniy/:slug" });
+
       // 301-редиректы: склейка дублей и старых адресов.
       // Vercel применяет redirects ДО rewrites, поэтому catch-all rewrite
-      // этим правилам не мешает.
-      const redirects = [
+      // этим правилам не мешает. Сами правила живут в src/constants/redirects.ts —
+      // оттуда же их берут api/page.ts (серверный 301) и src/App.tsx (клиентский).
+      const redirects: any[] = [
         // Схлопываем дубли со слешем: /baza-znaniy/ → /baza-znaniy (Google видит их как две страницы)
-        { source: "/(.*)/", destination: "/$1", permanent: true },
-        // Транслитерационные варианты услуги «алмазное бурение» → канонический slug
-        { source: "/almaznoe-burenie-i-sverlenie", destination: "/almaznoe-burenie", statusCode: 301 },
-        { source: "/almaznaya-rezka", destination: "/almaznoe-burenie", statusCode: 301 },
-        { source: "/almaznoe-burenie-irkutsk", destination: "/almaznoe-burenie", statusCode: 301 },
-        { source: "/burenie-otverstij", destination: "/almaznoe-burenie", statusCode: 301 },
-        // Мёртвые URL, уже заиндексированные Яндексом (из SEO-аудита)
-        { source: "/burenie", destination: "/almaznoe-burenie", statusCode: 301 },
-        { source: "/standarty-montazha", destination: "/standarty", statusCode: 301 },
-        // Старые гео-ссылки с префиксом /burenie-... → канонический раздел
-        { source: "/burenie-v-:slug*", destination: "/almaznoe-burenie", statusCode: 301 },
-        { source: "/burenie-na-:slug*", destination: "/almaznoe-burenie", statusCode: 301 },
-        // Варианты написания «вентиляция»
-        { source: "/ventilyatsiya", destination: "/ventilyaciya", statusCode: 301 },
-        { source: "/ventilyaciya-irkutsk", destination: "/ventilyaciya", statusCode: 301 },
-        // Кондиционеры — варианты транслита
-        { source: "/konditsionery", destination: "/kondicionery", statusCode: 301 },
-        { source: "/split-sistemy", destination: "/kondicionery", statusCode: 301 },
-        // Окна — варианты
-        { source: "/plastikovye-okna", destination: "/okna", statusCode: 301 },
-        { source: "/okna-pvh", destination: "/okna", statusCode: 301 },
-        // Старая статья блога переехала
-        { source: "/articles/kak-vybrat-kondicioner", destination: "/baza-znaniy/kak-vybrat-konditsioner-po-ploshchadi", statusCode: 301 },
+        { source: "/(.*)/", destination: "/$1", statusCode: 301 },
+        ...Object.entries(LEGACY_REDIRECTS).map(([source, destination]) => ({ source, destination, statusCode: 301 })),
+        ...LEGACY_PATTERN_REDIRECTS.map(({ source, destination }) => ({ source, destination, statusCode: 301 })),
       ];
 
-      rewrites.push({ source: "/((?!api/).*)", destination: "/index.html" });
+      // Страховка для старых адресов: если слой редиректов хостинга не сработал
+      // (устаревший vercel.json, другой хостинг, локальный preview), эти пути всё
+      // равно попадут в api/page.ts, который отдаст честный HTTP 301.
+      for (const [source] of Object.entries(LEGACY_REDIRECTS)) {
+        rewrites.push({ source, destination: `/api/page?path=${source}` });
+      }
+      for (const { source } of LEGACY_PATTERN_REDIRECTS) {
+        rewrites.push({ source, destination: "/api/page" });
+      }
+
+      // Все остальные пути, которых нет в файловой системе, уходят в api/page.ts:
+      // известные страницы — 200 с серверным SEO-контентом, неизвестные — честный
+      // HTTP 404 + noindex (раньше здесь был index.html со статусом 200, из-за чего
+      // Яндекс видел «мягкие 404» на любом мусорном адресе).
+      rewrites.push({ source: "/((?!api/).*)", destination: "/api/page?path=/$1" });
       fs.writeFileSync(path.resolve(__dirname, "vercel.json"), JSON.stringify({ redirects, rewrites }, null, 2), "utf-8");
-      console.log(`[Vercel Routes] Сгенерирован vercel.json (${rewrites.length} маршрутов)!`);
+      console.log(`[Vercel Routes] Сгенерирован vercel.json (${redirects.length} редиректов, ${rewrites.length} маршрутов)!`);
+
+      // 4. _redirects — те же правила для хостингов в стиле Netlify/Cloudflare Pages.
+      // Генерируем из того же источника, чтобы список не расходился с vercel.json.
+      const pad = (s: string, width: number) => s + " ".repeat(Math.max(1, width - s.length));
+      const exactLines = Object.entries(LEGACY_REDIRECTS);
+      const patternLines = LEGACY_PATTERN_REDIRECTS.map(({ source, destination }) => [
+        toNetlifyPattern(source),
+        toNetlifyPattern(destination),
+      ]);
+      const exactWidth = Math.max(...exactLines.map(([from]) => from.length)) + 2;
+      const patternWidth = Math.max(...patternLines.map(([from]) => from.length)) + 2;
+      const redirectsFile = [
+        "# AUTO-GENERATED из src/constants/redirects.ts — не править вручную",
+        "# 301-редиректы: склейка дублей и старых адресов",
+        ...exactLines.map(([from, to]) => `${pad(from, exactWidth)}${to}  301`),
+        "# Групповые правила (старые гео-ссылки и алиасы карточек)",
+        ...patternLines.map(([from, to]) => `${pad(from, patternWidth)}${to}  301`),
+        "",
+        "# SPA-fallback: отдаём index.html, клиентский роутер дорисует страницу",
+        "/*    /index.html   200",
+        "",
+      ].join("\n");
+      fs.writeFileSync(path.resolve(__dirname, "public/_redirects"), redirectsFile, "utf-8");
+      if (fs.existsSync(path.resolve(__dirname, "dist"))) {
+        fs.writeFileSync(path.resolve(__dirname, "dist/_redirects"), redirectsFile, "utf-8");
+      }
+      console.log(`[_redirects] Сгенерирован файл для Netlify/Cloudflare (${redirects.length - 1} правил)!`);
       console.log(`[SEO SITEMAP] Успешно сгенерирована карта сайта: включено ${staticUrls.length} основных страниц, ${parsedCatalog.length} карточек кондиционеров и ${windowsCatalogData.length} страниц остекления!`);
     } catch (err) {
       console.error("[SEO SITEMAP] Ошибка при генерации sitemap:", err);

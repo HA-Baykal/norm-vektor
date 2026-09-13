@@ -1,7 +1,7 @@
 import { useEffect } from "react";
+import { SITE_ORIGIN } from "../constants/redirects";
 
 const DEFAULT_TITLE = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
-const SITE_ORIGIN = "https://www.vektor-komforta.ru";
 
 function setMeta(nameOrProperty: string, content: string, isProperty = false) {
   const attr = isProperty ? "property" : "name";
