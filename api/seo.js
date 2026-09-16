@@ -20,6 +20,21 @@ function esc(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+// Тип модели в каталоге хранится в мужском роде («Инверторный»), а слово
+// «сплит-система» — женского. Для описаний нужно согласование, иначе в
+// meta-description и сниппеты уходит «Инверторный сплит-система».
+const TYPE_FEMININE = {
+  "Обычный": "Обычная",
+  "Инверторный": "Инверторная",
+  "Мобильный": "Мобильная",
+  "Полупромышленный": "Полупромышленная",
+  "Промышленный": "Промышленная",
+};
+
+function typeFem(t) {
+  return TYPE_FEMININE[t] || t;
+}
+
 export default async function handler(req, res) {
   const { slug = "", btu = "" } = req.query || {};
   const decodedSlug = decodeURIComponent(slug).toLowerCase().trim();
@@ -269,13 +284,21 @@ export default async function handler(req, res) {
   let seoBody = "";
   if (model) {
     const safeName = (model.name || "Кондиционер").trim();
+    // В каталоге name уже содержит бренд («SHUFT Berg SFTO»), поэтому склейка
+    // `${brand} ${name}` давала «SHUFT SHUFT Berg SFTO» во всех 177 описаниях.
+    // Клиент (ConditionerPage.tsx) бренд дедуплицирует — сервер обязан так же,
+    // иначе серверный сниппет и клиентский расходятся.
+    const safeBrand = (model.brand || "").trim();
+    const safeFullName = safeBrand && safeName.toLowerCase().startsWith(safeBrand.toLowerCase())
+      ? safeName
+      : `${safeBrand} ${safeName}`.trim();
     // Шаблон из ТЗ: "Royal Thermo Diamond DC — купить с установкой в Иркутске | Вектор Комфорта"
     // Для BTU-варианта: с ценой и площадью
     const baseTitle = `${safeName} — купить с установкой в Иркутске | Вектор Комфорта`;
     const title = targetBtu > 0
       ? `${safeName} (${targetBtu} BTU) — купить с установкой в Иркутске от ${exactPrice.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`
       : baseTitle;
-    const desc = `${model.type} сплит-система ${model.brand} ${safeName}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет! Монтаж за 1 день.`;
+    const desc = `${typeFem(model.type)} сплит-система ${safeFullName}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет! Монтаж за 1 день.`;
     const pageUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURI(slug)}${targetBtu > 0 ? `?btu=${targetBtu}` : ""}`;
     const priceStr = exactPrice.toString();
     const canonicalUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURI(slug)}`;
@@ -285,11 +308,11 @@ export default async function handler(req, res) {
     html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${title}" />`);
     html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i, `<meta property="og:description" content="${desc}" />`);
     html = html.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/i, `<meta property="og:image" content="${model.img}" />`);
+    html = html.replace(/<meta\s+property="og:type"\s+content=".*?"\s*\/?>/i, `<meta property="og:type" content="product" />`);
     html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${pageUrl}" />`);
     html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
     
     const seoMetaTags = `
-    <meta property="og:type" content="product" />
     <meta property="product:price:amount" content="${priceStr}" />
     <meta property="product:price:currency" content="RUB" />
     <meta property="og:price:amount" content="${priceStr}" />
@@ -327,7 +350,7 @@ export default async function handler(req, res) {
     html = html.replace("</head>", seoMetaTags);
     // P0-1: серверный текст карточки для краулеров без JS + внутренние ссылки (P0-3).
     const cardH1 = `${safeName}${targetBtu > 0 ? ` (${targetBtu} BTU)` : ""} — купить с установкой в Иркутске`;
-    seoBody = `<div id="root"><main><h1>${esc(cardH1)}</h1><p>${esc(desc)}</p><ul><li>Тип: ${esc(model.type)} сплит-система</li><li>Бренд: ${esc(model.brand)}</li><li>Цена: ${exactPrice.toLocaleString("ru-RU")} ₽${targetBtu > 0 ? ` (вариант ${targetBtu} BTU)` : ""}</li><li>Гарантия до 5 лет, монтаж за 1 день, доставка по Иркутску и пригороду до 50 км</li></ul><p>Смотрите также: <a href="/kondicionery">каталог кондиционеров</a>, <a href="/montazh-kondicionerov">монтаж кондиционеров под ключ</a>, <a href="/servis-kondicionerov">сервис и заправка фреоном</a>, <a href="/baza-znaniy">база знаний о выборе техники</a>.</p><p>Вектор Комфорта: <a href="/">главная</a>, <a href="/okna">пластиковые окна</a>, <a href="/ventilyaciya">вентиляция и бризеры</a>, <a href="/almaznoe-burenie">алмазное бурение</a>, <a href="/kontakty">контакты</a>.</p></main></div>`;
+    seoBody = `<div id="root"><main><h1>${esc(cardH1)}</h1><p>${esc(desc)}</p><ul><li>Тип: ${esc(typeFem(model.type))} сплит-система</li><li>Бренд: ${esc(model.brand)}</li><li>Цена: ${exactPrice.toLocaleString("ru-RU")} ₽${targetBtu > 0 ? ` (вариант ${targetBtu} BTU)` : ""}</li><li>Гарантия до 5 лет, монтаж за 1 день, доставка по Иркутску и пригороду до 50 км</li></ul><p>Смотрите также: <a href="/kondicionery">каталог кондиционеров</a>, <a href="/montazh-kondicionerov">монтаж кондиционеров под ключ</a>, <a href="/servis-kondicionerov">сервис и заправка фреоном</a>, <a href="/baza-znaniy">база знаний о выборе техники</a>.</p><p>Вектор Комфорта: <a href="/">главная</a>, <a href="/okna">пластиковые окна</a>, <a href="/ventilyaciya">вентиляция и бризеры</a>, <a href="/almaznoe-burenie">алмазное бурение</a>, <a href="/kontakty">контакты</a>.</p></main></div>`;
   } else if (windowModel) {
     const safeTitle = (windowModel.title || "Пластиковые окна").trim();
     const title = `${safeTitle} в Иркутске — цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`;
@@ -342,11 +365,11 @@ export default async function handler(req, res) {
     html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${title}" />`);
     html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i, `<meta property="og:description" content="${desc}" />`);
     html = html.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/i, `<meta property="og:image" content="${imgUrl}" />`);
+    html = html.replace(/<meta\s+property="og:type"\s+content=".*?"\s*\/?>/i, `<meta property="og:type" content="product" />`);
     html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i, `<meta property="og:url" content="${pageUrl}" />`);
     html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
     
     const seoMetaTags = `
-    <meta property="og:type" content="product" />
     <meta property="product:price:amount" content="${priceStr}" />
     <meta property="product:price:currency" content="RUB" />
     <meta property="og:price:amount" content="${priceStr}" />

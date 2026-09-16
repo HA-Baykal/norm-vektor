@@ -8,6 +8,16 @@ import FAQSection from "../components/FAQSection";
 
 const SITE_ORIGIN = "https://www.vektor-komforta.ru";
 
+// Тип в каталоге — мужского рода («Инверторный»), а «сплит-система» — женского:
+// для описаний нужно согласование («Инверторная сплит-система»).
+const TYPE_FEMININE: Record<string, string> = {
+  "Обычный": "Обычная",
+  "Инверторный": "Инверторная",
+  "Мобильный": "Мобильная",
+  "Полупромышленный": "Полупромышленная",
+  "Промышленный": "Промышленная",
+};
+
 export default function ConditionerPage() {
   const { slug } = useParams<{ slug: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -91,7 +101,8 @@ export default function ConditionerPage() {
         ? "Монтаж рассчитывается индивидуально после осмотра объекта."
         : "Профессиональный монтаж без пыли!";
 
-    const descText = `${item.type} сплит-система ${safeFullName} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене ${formatRub(variantPrice)} со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия завода до 5 лет. ${installPhrase}`;
+    const typeFem = TYPE_FEMININE[item.type] || item.type;
+    const descText = `${typeFem} сплит-система ${safeFullName} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене ${formatRub(variantPrice)} со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия завода до 5 лет. ${installPhrase}`;
 
     const cleanUrl = `${SITE_ORIGIN}/kondicionery/${encodeURI(slug || getModelUrlSlug(item))}`;
 
