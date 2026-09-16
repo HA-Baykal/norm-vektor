@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useSearchParams, Link, Navigate } from "react-router-dom";
+import { useParams, useSearchParams, Link } from "react-router-dom";
 import { conditioners, formatRub, INSTALL_PRICE } from "../components/CatalogConditioners";
 import { getOfficialSpecification, getOfficialPhotosForModel, getMainCoverPhoto, getModelUrlSlug } from "../data/officialSpecsEngine";
 import { useBreadcrumb } from "../utils/useSeo";
@@ -91,7 +91,6 @@ export default function ConditionerPage() {
     const variantPrice = variant.price;
     // Требуемый шаблон: "Royal Thermo Diamond DC — купить с установкой в Иркутске | Вектор Комфорта"
     // Расширенный вариант с BTU для точного соответствия мощности
-    const baseTitle = `${safeFullName} — купить с установкой в Иркутске | Вектор Комфорта`;
     const detailedTitle = `${safeFullName} (${selectedBtu} BTU, до ${variant.area} м²) — купить в Иркутске от ${formatRub(variantPrice)} | Вектор Комфорта`;
     const titleText = detailedTitle; // всегда заполнен, никогда не пустой
 
@@ -223,7 +222,7 @@ export default function ConditionerPage() {
                   {discount > 0 && <span className="rounded-full bg-green-600 px-3 py-1 text-[11px] font-black text-white shadow-sm w-fit">−{formatRub(discount)}</span>}
                 </div>
                 {item.smartHome && <span className="absolute right-3 top-3 z-10 rounded-full bg-[#1a3a5c] px-2.5 py-1 text-[11px] font-black text-white shadow-sm">🎙️ Умный дом</span>}
-                <img src={allImages[activeImageIdx] || allImages[0]} alt={`${fullName}`} loading="lazy" decoding="async" className="w-full h-full object-contain transition duration-300" />
+                <img src={allImages[activeImageIdx] || allImages[0]} alt={`${fullName}`} fetchPriority="high" decoding="async" className="w-full h-full object-contain transition duration-300" />
                 <span className="absolute bottom-2 right-2 z-20 rounded-lg bg-black/50 px-2 py-1 text-[10px] text-white">🔍 Увеличить</span>
               </button>
               {allImages.length > 1 && (
