@@ -15,6 +15,22 @@ function breadcrumbLd(items) {
   });
 }
 
+// Экранирование текста, вставляемого в серверный HTML
+function esc(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// Замена содержимого #root в оболочке SPA на серверный SEO-контент.
+// Функциональная форма replace — чтобы $-последовательности в данных
+// не трактовались как специальные шаблоны подстановки.
+function injectSeoBody(html, seoBody) {
+  return html.replace(/<div id="root">[\s\S]*?<\/div>/, () => seoBody);
+}
+
 export default async function handler(req, res) {
   const { slug = "", btu = "" } = req.query || {};
   const decodedSlug = decodeURIComponent(slug).toLowerCase().trim();
@@ -204,12 +220,12 @@ export default async function handler(req, res) {
   
   // Полная автономная база SEO-решений по остеклению
   const windowCatalog = [
-    { slug: "teploe-osteklenie-lodjii", id: "win-1", title: "Тёплое остекление лоджии и балкона под ключ", price: 38000, unit: "под ключ", desc: "Тёплое остекление пятикамерным профилем VEKA Softline с мультифункциональным стеклопакетом Solar.", img: "/images/windows/window-1.jpg" },
-    { slug: "osteklenie-v-dome", id: "win-2", title: "Остекление загородных домов и коттеджей", price: 12800, unit: "за м²", desc: "Специализируемся на остеклении коттеджей из бруса, газобетона и кирпича по трактам Иркутска до 50 км.", img: "/images/windows/window-2.jpg" },
-    { slug: "montazh-okon-i-dveri-veka", id: "win-3", title: "Пластиковые окна и балконные двери VEKA (в квартиру)", price: 11000, unit: "за м²", desc: "Замена старых сквозящих окон и балконных блоков на современные тёплые конструкции VEKA с микропроветриванием.", img: "/images/windows/window-3.jpg" },
-    { slug: "aluminievoe-osteklenie-doma", id: "win-4", title: "Алюминиевое остекление веранд и зимних садов", price: 14500, unit: "за м²", desc: "Проектирование и сборка алюминиевых конструкций для веранд, террас и беседок в Иркутской области.", img: "/images/windows/window-4.jpg" },
-    { slug: "okna-v-dom-panoramy", id: "win-5", title: "Панорамные окна и крупноформатное остекление", price: 16200, unit: "за м²", desc: "Изготовление широкоформатных окон с мультифункциональными энергосберегающими стеклами для коттеджей.", img: "/images/windows/window-5.jpg" },
-    { slug: "aluminievyie-konstruktsii", id: "win-6", title: "Алюминиевые входные группы, двери и перегородки", price: 15000, unit: "за м²", desc: "Износостойкие входные группы из теплого алюминия Alutech и усиленного профиля VEKA для бизнеса и коттеджей.", img: "/images/windows/window-6.jpg" }
+    { slug: "teploe-osteklenie-lodjii", siteSlug: "Teploe-osteklenie-lodjii", id: "win-1", title: "Тёплое остекление лоджии и балкона под ключ", price: 38000, unit: "под ключ", desc: "Тёплое остекление пятикамерным профилем VEKA Softline с мультифункциональным стеклопакетом Solar.", img: "/images/windows/window-1.jpg" },
+    { slug: "osteklenie-v-dome", siteSlug: "Osteklenie-v-dome", id: "win-2", title: "Остекление загородных домов и коттеджей", price: 12800, unit: "за м²", desc: "Специализируемся на остеклении коттеджей из бруса, газобетона и кирпича по трактам Иркутска до 50 км.", img: "/images/windows/window-2.jpg" },
+    { slug: "montazh-okon-i-dveri-veka", siteSlug: "Montazh-okon-i-dveri-VEKA", id: "win-3", title: "Пластиковые окна и балконные двери VEKA (в квартиру)", price: 11000, unit: "за м²", desc: "Замена старых сквозящих окон и балконных блоков на современные тёплые конструкции VEKA с микропроветриванием.", img: "/images/windows/window-3.jpg" },
+    { slug: "aluminievoe-osteklenie-doma", siteSlug: "Aluminievoe-osteklenie-doma", id: "win-4", title: "Алюминиевое остекление веранд и зимних садов", price: 14500, unit: "за м²", desc: "Проектирование и сборка алюминиевых конструкций для веранд, террас и беседок в Иркутской области.", img: "/images/windows/window-4.jpg" },
+    { slug: "okna-v-dom-panoramy", siteSlug: "Okna-v-dom-panoramy", id: "win-5", title: "Панорамные окна и крупноформатное остекление", price: 16200, unit: "за м²", desc: "Изготовление широкоформатных окон с мультифункциональными энергосберегающими стеклами для коттеджей.", img: "/images/windows/window-5.jpg" },
+    { slug: "aluminievyie-konstruktsii", siteSlug: "Aluminievyie-konstruktsii", id: "win-6", title: "Алюминиевые входные группы, двери и перегородки", price: 15000, unit: "за м²", desc: "Износостойкие входные группы из теплого алюминия Alutech и усиленного профиля VEKA для бизнеса и коттеджей.", img: "/images/windows/window-6.jpg" }
   ];
   
   // Ищем модель в базе
@@ -319,6 +335,34 @@ export default async function handler(req, res) {
     </script>
 </head>`;
     html = html.replace("</head>", seoMetaTags);
+
+    // Серверный SEO-контент карточки в исходный HTML: без него в <body>
+    // остаётся статический блок главной из index.html, и все 170+ карточек
+    // отдают краулеру одинаковое тело → Яндекс склеивает их в дубли
+    // (та же проблема, что была у статей базы знаний до api/page.ts).
+    const modelUrlSlug = (name) => name.replace(/\s+/g, "-").replace(/\//g, "-");
+    const relatedModels = seoCatalog
+      .filter((c) => c.brand === model.brand && c.name !== model.name)
+      .slice(0, 6);
+    const seoBody = `<div id="root"><main>`
+      + `<nav aria-label="breadcrumb"><a href="/">Главная</a> / <a href="/kondicionery">Кондиционеры в Иркутске</a> / ${esc(model.name)}</nav>`
+      + `<h1>${esc(model.name)}</h1>`
+      + `<p><strong>Цена: ${exactPrice.toLocaleString("ru-RU")} ₽</strong>${btuText ? ` — вариант${btuText}` : ""}. Стандартный монтаж под ключ: 18 000 ₽.</p>`
+      + `<p>${esc(desc)}</p>`
+      + `<ul>`
+      + `<li>Бренд: ${esc(model.brand)}</li>`
+      + `<li>Тип: ${esc(model.type)}</li>`
+      + `<li>Монтаж за 1 день: Иркутск, Ангарск, Шелехов и пригород до 50 км</li>`
+      + `<li>Гарантия до 5 лет на оборудование, 1 год на монтаж</li>`
+      + `</ul>`
+      + `<p>Заказ и бесплатный замер: <a href="tel:+79149146606">+7 (914) 914-66-06</a>. Все модели — в разделе <a href="/kondicionery">«Кондиционеры»</a>, установка — на странице <a href="/montazh-kondicionerov">«Монтаж кондиционеров»</a>.</p>`
+      + (relatedModels.length
+          ? `<h2>Похожие модели ${esc(model.brand)}</h2><ul>`
+            + relatedModels.map((c) => `<li><a href="/kondicionery/${encodeURI(modelUrlSlug(c.name))}">${esc(c.name)}</a> — ${c.price.toLocaleString("ru-RU")} ₽</li>`).join("")
+            + `</ul>`
+          : "")
+      + `</main></div>`;
+    html = injectSeoBody(html, seoBody);
   } else if (windowModel) {
     const safeTitle = (windowModel.title || "Пластиковые окна").trim();
     const title = `${safeTitle} в Иркутске — цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`;
@@ -373,6 +417,27 @@ export default async function handler(req, res) {
     </script>
 </head>`;
     html = html.replace("</head>", seoMetaTags);
+
+    // Серверный SEO-контент карточки остекления: без него в <body> остаётся
+    // статический блок главной из index.html, и все карточки окон получают
+    // одинаковое тело — дубли для Яндекса (как было со статьями до api/page.ts).
+    const otherWindows = windowCatalog.filter((w) => w.slug !== windowModel.slug);
+    const seoBody = `<div id="root"><main>`
+      + `<nav aria-label="breadcrumb"><a href="/">Главная</a> / <a href="/okna">Пластиковые окна</a> / ${esc(windowModel.title)}</nav>`
+      + `<h1>${esc(windowModel.title)}</h1>`
+      + `<p><strong>Цена: от ${windowModel.price.toLocaleString("ru-RU")} ₽ ${esc(windowModel.unit)}</strong>.</p>`
+      + `<p>${esc(desc)}</p>`
+      + `<ul>`
+      + `<li>Собственное производство в Иркутске, профиль VEKA / Alutech</li>`
+      + `<li>Монтаж по ГОСТ 30971-2012 за 1 день</li>`
+      + `<li>Бесплатный замер, выезд по Иркутску и пригороду до 50 км</li>`
+      + `<li>Гарантия 5 лет</li>`
+      + `</ul>`
+      + `<p>Заказ и консультация: <a href="tel:+79149146606">+7 (914) 914-66-06</a>. Все решения — в разделе <a href="/okna">«Пластиковые окна»</a>, стандарты работ — на странице <a href="/standarty">«Стандарты монтажа»</a>.</p>`
+      + `<h2>Другие решения по остеклению</h2><ul>`
+      + otherWindows.map((w) => `<li><a href="/okna/${encodeURI(w.siteSlug)}">${esc(w.title)}</a> — от ${w.price.toLocaleString("ru-RU")} ₽ ${esc(w.unit)}</li>`).join("")
+      + `</ul></main></div>`;
+    html = injectSeoBody(html, seoBody);
   }
   
   res.setHeader("Content-Type", "text/html; charset=utf-8");
