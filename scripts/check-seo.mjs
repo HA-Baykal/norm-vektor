@@ -142,6 +142,12 @@ async function checkPage(path) {
     // 8. OG-теги
     if (!/<meta[^>]+property=["']og:title["']/i.test(html)) row.warn.push("нет og:title");
 
+    // 8b. Дубль og:type: api/seo добавлял <meta property="og:type" content="product">,
+    // не заменяя website из оболочки — парсеры брали первый (website) и скидочные
+    // product-теги игнорировались. Регрессия от 2026-09-16.
+    const ogTypeCount = (html.match(/<meta[^>]+property=["']og:type["']/gi) || []).length;
+    if (ogTypeCount > 1) row.issues.push(`дубли og:type (${ogTypeCount})`);
+
     // 9. Регрессия 2026-09-13: noindex на страницах, которые должны индексироваться
     const robotsMeta = html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']*)["']/i)?.[1] || "";
     if (/noindex/i.test(robotsMeta)) row.issues.push(`meta robots: ${robotsMeta}`);
