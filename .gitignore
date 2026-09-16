@@ -1,5 +1,2 @@
-node_modules/
-dist/
-.next/
-build/
-.env.localscripts/.local/
+.env.local
+scripts/.local/
