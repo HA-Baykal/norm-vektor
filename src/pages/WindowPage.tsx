@@ -146,7 +146,7 @@ export default function WindowPage() {
                 <img
                   src={item.gallery[activeImageIdx] || item.image}
                   alt={`${item.title} Иркутск`}
-                  loading="lazy"
+                  fetchPriority="high"
                   decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />

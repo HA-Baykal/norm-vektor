@@ -4,7 +4,6 @@ import fs from "fs";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import { viteSingleFile } from "vite-plugin-singlefile";
 import { LEGACY_PATTERN_REDIRECTS, LEGACY_REDIRECTS, toNetlifyPattern } from "./src/constants/redirects";
 import { windowsCatalogData } from "./src/data/windowsCatalog";
 
@@ -46,7 +45,8 @@ const seoSitemapAndApiGenerator = () => ({
       }
 
       // 2. Генерация карты сайта Sitemap.xml (Яндекс и Google)
-      const dateStr = new Date().toISOString().split("T")[0];
+      // Не указываем lastmod: эта сборка не ведёт журнал изменений отдельных URL,
+      // поэтому дата сборки была бы недостоверным сигналом свежести для всех страниц.
 
       // Все локальные страницы: 17 локаций × (окна + кондиционеры) = 34 URL
       const cityLocations = [
@@ -154,7 +154,6 @@ const seoSitemapAndApiGenerator = () => ({
         const priority = isInterier ? "0.3" : (u === "" ? "1.0" : "0.9");
         xml += `  <url>\n`;
         xml += `    <loc>https://www.vektor-komforta.ru/${u}</loc>\n`;
-        xml += `    <lastmod>${dateStr}</lastmod>\n`;
         xml += `    <changefreq>${changefreq}</changefreq>\n`;
         xml += `    <priority>${priority}</priority>\n`;
         xml += `  </url>\n`;
@@ -166,7 +165,6 @@ const seoSitemapAndApiGenerator = () => ({
           const slug = c.name.replace(/\s+/g, "-").replace(/\//g, "-");
           xml += `  <url>\n`;
           xml += `    <loc>https://www.vektor-komforta.ru/kondicionery/${encodeURI(slug)}</loc>\n`;
-          xml += `    <lastmod>${dateStr}</lastmod>\n`;
           xml += `    <changefreq>weekly</changefreq>\n`;
           xml += `    <priority>0.85</priority>\n`;
           xml += `  </url>\n`;
@@ -177,7 +175,6 @@ const seoSitemapAndApiGenerator = () => ({
       for (const w of windowsCatalogData) {
         xml += `  <url>\n`;
         xml += `    <loc>https://www.vektor-komforta.ru/okna/${encodeURI(w.slug)}</loc>\n`;
-        xml += `    <lastmod>${dateStr}</lastmod>\n`;
         xml += `    <changefreq>weekly</changefreq>\n`;
         xml += `    <priority>0.88</priority>\n`;
         xml += `  </url>\n`;
@@ -187,7 +184,6 @@ const seoSitemapAndApiGenerator = () => ({
       for (const b of articleSlugs) {
         xml += `  <url>\n`;
         xml += `    <loc>https://www.vektor-komforta.ru/baza-znaniy/${b}</loc>\n`;
-        xml += `    <lastmod>${dateStr}</lastmod>\n`;
         xml += `    <changefreq>monthly</changefreq>\n`;
         xml += `    <priority>0.7</priority>\n`;
         xml += `  </url>\n`;
@@ -295,7 +291,6 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    viteSingleFile(),
     seoSitemapAndApiGenerator(),
   ],
   resolve: {

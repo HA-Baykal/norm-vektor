@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect, useRef } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link, useSearchParams, useNavigationType } from "react-router-dom";
 import QuickBookingModal from "./QuickBookingModal";
 import { getMainCoverPhoto, getModelUrlSlug } from "../data/officialSpecsEngine";
@@ -3083,7 +3083,6 @@ function ConditionerCard({
   onCardNavigate?: (id: number) => void;
 }) {
   const [imgError, setImgError] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
   const [selectedBtu, setSelectedBtu] = useState(() => {
     if (areaFilter !== "all" && AREA_TO_BTU[areaFilter]) {
       const wanted = AREA_TO_BTU[areaFilter];
