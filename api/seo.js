@@ -284,13 +284,21 @@ export default async function handler(req, res) {
   let seoBody = "";
   if (model) {
     const safeName = (model.name || "Кондиционер").trim();
+    // В каталоге name уже содержит бренд («SHUFT Berg SFTO»), поэтому склейка
+    // `${brand} ${name}` давала «SHUFT SHUFT Berg SFTO» во всех 177 описаниях.
+    // Клиент (ConditionerPage.tsx) бренд дедуплицирует — сервер обязан так же,
+    // иначе серверный сниппет и клиентский расходятся.
+    const safeBrand = (model.brand || "").trim();
+    const safeFullName = safeBrand && safeName.toLowerCase().startsWith(safeBrand.toLowerCase())
+      ? safeName
+      : `${safeBrand} ${safeName}`.trim();
     // Шаблон из ТЗ: "Royal Thermo Diamond DC — купить с установкой в Иркутске | Вектор Комфорта"
     // Для BTU-варианта: с ценой и площадью
     const baseTitle = `${safeName} — купить с установкой в Иркутске | Вектор Комфорта`;
     const title = targetBtu > 0
       ? `${safeName} (${targetBtu} BTU) — купить с установкой в Иркутске от ${exactPrice.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`
       : baseTitle;
-    const desc = `${typeFem(model.type)} сплит-система ${model.brand} ${safeName}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет! Монтаж за 1 день.`;
+    const desc = `${typeFem(model.type)} сплит-система ${safeFullName}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет! Монтаж за 1 день.`;
     const pageUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURI(slug)}${targetBtu > 0 ? `?btu=${targetBtu}` : ""}`;
     const priceStr = exactPrice.toString();
     const canonicalUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURI(slug)}`;

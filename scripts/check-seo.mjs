@@ -148,6 +148,29 @@ async function checkPage(path) {
     const ogTypeCount = (html.match(/<meta[^>]+property=["']og:type["']/gi) || []).length;
     if (ogTypeCount > 1) row.issues.push(`дубли og:type (${ogTypeCount})`);
 
+    // 8c. Регрессии 2026-09-16, найденные на проде (вебмастер-данные их не видели).
+    const metaDesc = html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1] || "";
+    // (а) Удвоение бренда: api/seo.js склеивал brand + name, а name уже содержит
+    //     бренд → «SHUFT SHUFT Berg SFTO» в описаниях всех 177 карточек.
+    //     Бренд берём из JSON-LD самой страницы и ищем его повтор целиком —
+    //     проверка «соседних слов» пропускала многословные бренды
+    //     (Royal Thermo, AC ELECTRIC, ONE AIR).
+    const ldBrand = html.match(/"brand"\s*:\s*\{\s*"@type"\s*:\s*"Brand"\s*,\s*"name"\s*:\s*"([^"]+)"/i)?.[1]?.trim() || "";
+    if (ldBrand.length > 1) {
+      const doubled = `${ldBrand} ${ldBrand}`.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      if (new RegExp(doubled, "i").test(metaDesc)) {
+        row.issues.push(`удвоенный бренд в description: «${ldBrand} ${ldBrand}»`);
+      }
+    }
+    // (б) Согласование рода: «сплит-система» — женского, тип в каталоге мужского.
+    //     Проверяем только связку «<тип> сплит-система» — иначе ловим ложные
+    //     срабатывания («Мобильный кондиционер … сплит-система» в базе знаний,
+    //     где «мобильный» относится к кондиционеру и род верный).
+    //     \b в JS не работает с кириллицей — границей служит «дальше не буква».
+    if (/^(Обычный|Инверторный|Мобильный|Полупромышленный|Промышленный)(?![\p{L}])\s+сплит-система/iu.test(metaDesc.trim())) {
+      row.issues.push(`несогласованный род в description: «${metaDesc.slice(0, 40)}…»`);
+    }
+
     // 9. Регрессия 2026-09-13: noindex на страницах, которые должны индексироваться
     const robotsMeta = html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']*)["']/i)?.[1] || "";
     if (/noindex/i.test(robotsMeta)) row.issues.push(`meta robots: ${robotsMeta}`);
