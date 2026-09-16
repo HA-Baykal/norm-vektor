@@ -47,7 +47,7 @@ export default function WindowPage() {
     const titleText = `${safeTitle} в Иркутске — цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ | Собственное производство Вектор Комфорта`;
     const descText = `${item.shortDesc} Цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ ${item.priceUnit}. Собственный сборочный цех в Иркутске, гарантия 5 лет, монтаж по ГОСТу с пароизоляцией!`;
     const SITE_ORIGIN = "https://www.vektor-komforta.ru";
-    const cleanUrl = `${SITE_ORIGIN}/okna/${encodeURIComponent(slug || item.slug)}`;
+    const cleanUrl = `${SITE_ORIGIN}/okna/${encodeURI(slug || item.slug)}`;
 
     document.title = titleText;
 

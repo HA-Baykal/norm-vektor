@@ -15,6 +15,11 @@ function breadcrumbLd(items) {
   });
 }
 
+// Экранирование HTML для серверного body карточки.
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
 export default async function handler(req, res) {
   const { slug = "", btu = "" } = req.query || {};
   const decodedSlug = decodeURIComponent(slug).toLowerCase().trim();
@@ -261,6 +266,7 @@ export default async function handler(req, res) {
   }
   
   // Если запрос на кондиционер — швейцарские часы: Title всегда заполнен по шаблону
+  let seoBody = "";
   if (model) {
     const safeName = (model.name || "Кондиционер").trim();
     // Шаблон из ТЗ: "Royal Thermo Diamond DC — купить с установкой в Иркутске | Вектор Комфорта"
@@ -270,9 +276,9 @@ export default async function handler(req, res) {
       ? `${safeName} (${targetBtu} BTU) — купить с установкой в Иркутске от ${exactPrice.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`
       : baseTitle;
     const desc = `${model.type} сплит-система ${model.brand} ${safeName}${btuText} по оптовой цене со склада в Иркутске. Цена: ${exactPrice.toLocaleString("ru-RU")} ₽. Официальная гарантия до 5 лет! Монтаж за 1 день.`;
-    const pageUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURIComponent(slug)}${targetBtu > 0 ? `?btu=${targetBtu}` : ""}`;
+    const pageUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURI(slug)}${targetBtu > 0 ? `?btu=${targetBtu}` : ""}`;
     const priceStr = exactPrice.toString();
-    const canonicalUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURIComponent(slug)}`;
+    const canonicalUrl = `https://www.vektor-komforta.ru/kondicionery/${encodeURI(slug)}`;
     
     html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
     html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${desc}" />`);
@@ -319,14 +325,17 @@ export default async function handler(req, res) {
     </script>
 </head>`;
     html = html.replace("</head>", seoMetaTags);
+    // P0-1: серверный текст карточки для краулеров без JS + внутренние ссылки (P0-3).
+    const cardH1 = `${safeName}${targetBtu > 0 ? ` (${targetBtu} BTU)` : ""} — купить с установкой в Иркутске`;
+    seoBody = `<div id="root"><main><h1>${esc(cardH1)}</h1><p>${esc(desc)}</p><ul><li>Тип: ${esc(model.type)} сплит-система</li><li>Бренд: ${esc(model.brand)}</li><li>Цена: ${exactPrice.toLocaleString("ru-RU")} ₽${targetBtu > 0 ? ` (вариант ${targetBtu} BTU)` : ""}</li><li>Гарантия до 5 лет, монтаж за 1 день, доставка по Иркутску и пригороду до 50 км</li></ul><p>Смотрите также: <a href="/kondicionery">каталог кондиционеров</a>, <a href="/montazh-kondicionerov">монтаж кондиционеров под ключ</a>, <a href="/servis-kondicionerov">сервис и заправка фреоном</a>, <a href="/baza-znaniy">база знаний о выборе техники</a>.</p><p>Вектор Комфорта: <a href="/">главная</a>, <a href="/okna">пластиковые окна</a>, <a href="/ventilyaciya">вентиляция и бризеры</a>, <a href="/almaznoe-burenie">алмазное бурение</a>, <a href="/kontakty">контакты</a>.</p></main></div>`;
   } else if (windowModel) {
     const safeTitle = (windowModel.title || "Пластиковые окна").trim();
     const title = `${safeTitle} в Иркутске — цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`;
     const desc = `${windowModel.desc} Собственное производство в Иркутске, цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ ${windowModel.unit}. Монтаж по ГОСТу, гарантия 5 лет!`;
-    const pageUrl = `https://www.vektor-komforta.ru/okna/${encodeURIComponent(slug)}`;
+    const pageUrl = `https://www.vektor-komforta.ru/okna/${encodeURI(slug)}`;
     const priceStr = windowModel.price.toString();
     const imgUrl = `https://www.vektor-komforta.ru${windowModel.img}`;
-    const canonicalUrl = `https://www.vektor-komforta.ru/okna/${encodeURIComponent(slug)}`;
+    const canonicalUrl = `https://www.vektor-komforta.ru/okna/${encodeURI(slug)}`;
     
     html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
     html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${desc}" />`);
@@ -373,8 +382,20 @@ export default async function handler(req, res) {
     </script>
 </head>`;
     html = html.replace("</head>", seoMetaTags);
+    // P0-1/P0-3: серверный текст карточки окна для краулеров без JS.
+    const cardH1 = `${safeTitle} в Иркутске — цена от ${windowModel.price.toLocaleString("ru-RU")} ₽`;
+    seoBody = `<div id="root"><main><h1>${esc(cardH1)}</h1><p>${esc(desc)}</p><ul><li>Профиль VEKA / алюминиевые системы, фурнитура MACO</li><li>Собственное производство в Иркутске — 5–7 рабочих дней</li><li>Монтаж по ГОСТ 30971-2012, гарантия 5 лет</li></ul><p>Смотрите также: <a href="/okna">пластиковые окна</a>, <a href="/montazh-okon">монтаж окон ПВХ</a>, <a href="/osteklenie-balkonov">остекление балконов</a>, <a href="/baza-znaniy">база знаний об окнах</a>.</p><p>Вектор Комфорта: <a href="/">главная</a>, <a href="/kondicionery">кондиционеры</a>, <a href="/ventilyaciya">вентиляция и бризеры</a>, <a href="/almaznoe-burenie">алмазное бурение</a>, <a href="/kontakty">контакты</a>.</p></main></div>`;
   }
   
+  // P0-1: карточки раньше отдавали пустой #root — краулер без JS видел только
+  // мета-теги и JSON-LD. Теперь в серверном HTML есть h1, описание и ссылки;
+  // клиентский React при загрузке заменяет этот блок на полную страницу товара.
+  if (seoBody) {
+    html = html.replace(/<div id="root">[\s\S]*?<\/div>/, seoBody);
+  }
+
   res.setHeader("Content-Type", "text/html; charset=utf-8");
+  // P1-2: кэш на CDN, чтобы не инвокировать функцию на каждый заход краулера.
+  res.setHeader("Cache-Control", "public, max-age=600, s-maxage=86400");
   return res.status(200).send(html);
 }

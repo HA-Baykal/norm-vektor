@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve:local": "node scripts/serve-local.mjs",
+    "check:seo": "node scripts/check-seo.mjs",
+    "check:seo:local": "node scripts/check-seo.mjs http://localhost:4173"
   },
   "dependencies": {
     "clsx": "2.1.1",

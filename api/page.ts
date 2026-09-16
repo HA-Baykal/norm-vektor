@@ -89,6 +89,38 @@ function buildBreadcrumbJsonLd(path: string, page: Page): string {
   return `<script id="seo-breadcrumb-schema" type="application/ld+json">${JSON.stringify(schema)}</script>`;
 }
 
+// ============================================================
+// Навигационный блок внутренних ссылок (P0-3 SEO-аудита).
+// Краулер, который не исполняет JS, из серверного HTML раньше видел
+// только текст страницы без единой внутренней ссылки — обход сайта
+// держался на одном sitemap. Блок добавляется в конец серверного
+// body каждой страницы; клиентский React при загрузке его заменяет.
+// Ссылки без вложенных <div>, чтобы regex-замена #root в этом же
+// файле продолжала находить закрывающий тег.
+// ============================================================
+const SITE_NAV: { href: string; label: string }[] = [
+  { href: "/", label: "Главная" },
+  { href: "/okna", label: "Пластиковые окна" },
+  { href: "/kondicionery", label: "Кондиционеры" },
+  { href: "/ventilyaciya", label: "Вентиляция и бризеры" },
+  { href: "/almaznoe-burenie", label: "Алмазное бурение" },
+  { href: "/montazh-okon", label: "Монтаж окон ПВХ" },
+  { href: "/montazh-kondicionerov", label: "Монтаж кондиционеров" },
+  { href: "/osteklenie-balkonov", label: "Остекление балконов" },
+  { href: "/servis-kondicionerov", label: "Сервис кондиционеров" },
+  { href: "/baza-znaniy", label: "База знаний" },
+  { href: "/portfolio", label: "Портфолио" },
+  { href: "/standarty", label: "Стандарты монтажа" },
+  { href: "/otzyv", label: "Отзывы" },
+  { href: "/kontakty", label: "Контакты" },
+];
+
+function buildSiteNavHtml(currentPath: string): string {
+  const links = SITE_NAV.filter((l) => l.href !== currentPath)
+    .map((l) => `<a href="${l.href}">${l.label}</a>`);
+  return `<nav><h2>Разделы сайта</h2><p>${links.join(" · ")}</p></nav>`;
+}
+
 const PAGES: Record<string, Page> = {
   "/": {
     title: "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта",
@@ -97,13 +129,22 @@ const PAGES: Record<string, Page> = {
     bodyHtml: `<p>4 направления под одной крышей: пластиковые окна (собственное производство, профиль VEKA), кондиционеры (продажа и монтаж за 1 день), вентиляция и бризеры (Тион, Vakio) и алмазное бурение. Работаем в Иркутске и пригороде до 50 км.</p>
     <h2>Наши услуги</h2>
     <ul>
-      <li>Пластиковые окна и остекление балконов — от 11 000 ₽/м²</li>
-      <li>Кондиционеры (продажа и монтаж) — от 17 351 ₽</li>
-      <li>Вентиляция и бризеры — от 6 000 ₽</li>
-      <li>Алмазное бурение — от 2 000 ₽/точка</li>
+      <li><a href="/okna">Пластиковые окна и остекление балконов</a> — от 11 000 ₽/м²</li>
+      <li><a href="/kondicionery">Кондиционеры: продажа и монтаж</a> — от 17 351 ₽</li>
+      <li><a href="/ventilyaciya">Вентиляция и бризеры</a> — от 6 000 ₽</li>
+      <li><a href="/almaznoe-burenie">Алмазное бурение</a> — от 2 000 ₽/точка</li>
     </ul>
+    <h2>Монтаж и сервис</h2>
+    <ul>
+      <li><a href="/montazh-okon">Монтаж окон ПВХ по ГОСТ 30971-2012</a> — от 2 400 ₽ за окно</li>
+      <li><a href="/montazh-kondicionerov">Монтаж кондиционеров под ключ</a> — от 18 400 ₽</li>
+      <li><a href="/osteklenie-balkonov">Остекление балконов и лоджий</a> — от 38 000 ₽</li>
+      <li><a href="/servis-kondicionerov">Сервис, чистка и заправка кондиционеров</a> — от 3 000 ₽</li>
+    </ul>
+    <h2>О компании</h2>
+    <p>«Вектор Комфорта»: собственное производство окон, монтаж по ГОСТу, гарантия до 5 лет, более 3500 выполненных проектов. Бесплатный замер и выезд в Иркутске, Ангарске, Шелехове, Хомутово и пригороде до 50 км. Читайте <a href="/baza-znaniy">базу знаний</a>, смотрите <a href="/portfolio">портфолио работ</a> и <a href="/otzyv">отзывы клиентов</a>, изучите наши <a href="/standarty">стандарты монтажа</a> и <a href="/kontakty">контакты</a>.</p>
     <h2>Interier — увидите свой интерьер до ремонта</h2>
-    <p>Дизайн интерьера по фото: загрузите снимок комнаты и получите первый дизайн-проект бесплатно. Онлайн-сервис <a href="https://www.vektor-komforta.ru/interier">Interier</a> работает с телефона и компьютера.</p>`
+    <p>Дизайн интерьера по фото: загрузите снимок комнаты и получите первый дизайн-проект бесплатно. Онлайн-сервис <a href="/interier">Interier</a> работает с телефона и компьютера.</p>`
   },
   "/okna": {
     title: "Пластиковые окна VEKA в Иркутске — купить с монтажом | Вектор Комфорта",
@@ -1186,7 +1227,12 @@ export default async function handler(req: Request): Promise<Response> {
     }
     return new Response(html, {
       status: 404,
-      headers: { "Content-Type": "text/html; charset=utf-8" },
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+        // Мусорные адресы кэшируем недолго: статус 404 + noindex стабильны для
+        // конкретного URL, а вес обработки перекладываем на CDN.
+        "Cache-Control": "public, max-age=600, s-maxage=3600",
+      },
     });
   }
 
@@ -1228,12 +1274,20 @@ export default async function handler(req: Request): Promise<Response> {
     html = html.replace(/<\/head>/i, `${articleMeta}</head>`);
   }
 
-  // Статический контент для краулеров без JS (клиентский React затем перерисует страницу)
-  const seoBody = `<div id="root"><main><h1>${esc(page.h1)}</h1>${page.bodyHtml}</main></div>`;
+  // Статический контент для краулеров без JS (клиентский React затем перерисует страницу).
+  // В конец — навигационный блок ссылок: краулер без JS видит структуру сайта (P0-3).
+  const seoBody = `<div id="root"><main><h1>${esc(page.h1)}</h1>${page.bodyHtml}${buildSiteNavHtml(path)}</main></div>`;
   html = html.replace(/<div id="root">[\s\S]*?<\/div>/, seoBody);
 
   return new Response(html, {
     status: 200,
-    headers: { "Content-Type": "text/html; charset=utf-8" },
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      // P1-2 SEO-аудита: кэшируем HTML на CDN, чтобы каждый заход краулера
+      // не порождал инвокацию edge-функции и внутренний fetch оболочки на 1.3 МБ.
+      // Браузерам — короткий TTL (10 минут), CDN — сутки: обновления контента
+      // доезжают не дольше чем за день.
+      "Cache-Control": "public, max-age=600, s-maxage=86400",
+    },
   });
 }

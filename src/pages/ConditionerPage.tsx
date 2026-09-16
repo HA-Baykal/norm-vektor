@@ -93,7 +93,7 @@ export default function ConditionerPage() {
 
     const descText = `${item.type} сплит-система ${safeFullName} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене ${formatRub(variantPrice)} со склада в Иркутске. Уровень шума: ${officialSpecs.minNoise}, гарантия завода до 5 лет. ${installPhrase}`;
 
-    const cleanUrl = `${SITE_ORIGIN}/kondicionery/${encodeURIComponent(slug || getModelUrlSlug(item))}`;
+    const cleanUrl = `${SITE_ORIGIN}/kondicionery/${encodeURI(slug || getModelUrlSlug(item))}`;
 
     document.title = titleText;
 
@@ -174,7 +174,7 @@ export default function ConditionerPage() {
     const shareData = {
       title: `${fullName} (${selectedBtu} BTU)`,
       text: `Сплит-система ${item.name} (${selectedBtu} BTU, площадь до ${variant.area} м²) по цене со склада: ${formatRub(variant.price)}. Вектор Комфорта Иркутск`,
-      url: `${SITE_ORIGIN}/kondicionery/${encodeURIComponent(slug || getModelUrlSlug(item))}`,
+      url: `${SITE_ORIGIN}/kondicionery/${encodeURI(slug || getModelUrlSlug(item))}`,
     };
     if (navigator.share) {
       try { await navigator.share(shareData); } catch {}
