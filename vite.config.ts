@@ -82,6 +82,7 @@ const seoSitemapAndApiGenerator = () => ({
 
       // Статьи базы знаний
       const blogSlugs = [
+        "vakio-pritochno-vytyazhnaya-ustanovka",
         "kak-vybrat-konditsioner-po-ploshchadi",
         "invertornyy-ili-obychnyy-konditsioner",
         "okna-veka-vs-rehau-chto-luchshe-dlya-irkutska",
