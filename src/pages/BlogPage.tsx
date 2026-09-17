@@ -456,6 +456,15 @@ export const articles = [
     category: 'Окна',
     icon: 'FileText',
     readTime: '8 мин',
+  },
+  {
+    slug: 'pritochnaya-ventilyaciya-dlya-kvartiry-v-irkutske-kak-izbavitsya-ot-duhoty-i-kondensata-na',
+    date: '2026-09-17',
+    title: 'Приточная вентиляция для квартиры в Иркутске: как избавиться от духоты и конденсата на окнах',
+    excerpt: 'Пластиковые окна сделали своё дело: в квартирах стало теплее и тише. Но вместе с этим появилась другая проблема — душно, окна «плачут», а по углам зимой расползается плесень. Знакомо? Тогда эта статья для вас. Разберёмся, почему так происхо',
+    category: 'вентиляция',
+    icon: 'FileText',
+    readTime: '7 мин',
   }
 ];
 
