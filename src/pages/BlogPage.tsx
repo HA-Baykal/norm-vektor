@@ -447,6 +447,15 @@ export const articles = [
     category: 'Окна',
     icon: 'FileText',
     readTime: '5 мин',
+  },
+  {
+    slug: 'energosberegayushhie-okna-dlya-sibiri-kak-vybrat-chtoby-ne-merznut-i-ne-pereplachivat-za-o',
+    date: '2026-09-17',
+    title: 'Энергосберегающие окна для Сибири: как выбрать, чтобы не мёрзнуть и не переплачивать за отопление',
+    excerpt: 'Каждую зиму в Иркутске, Ангарске и Шелехове одна и та же картина: на стёклах наледь, от подоконника тянет холодом, а счета за отопление растут. Многие грешат на морозы. А виноваты окна — точнее, стеклопакет и профиль, которые просто не расс',
+    category: 'Окна',
+    icon: 'FileText',
+    readTime: '8 мин',
   }
 ];
 
