@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import QuickBookingModal from "./QuickBookingModal";
 
 function formatRub(value: number) {
@@ -189,7 +190,7 @@ export default function DrillingCalculator() {
           <div className="mt-6 grid lg:grid-cols-3 gap-6 text-sm leading-7 text-slate-700">
             <div className="space-y-3">
               <p><strong>Алмазное бурение в Иркутске</strong> от «Вектор Комфорта» — безударное сверление отверстий диаметром от 32 до 250 мм в бетоне, железобетоне и кирпиче. Цена — <strong>от 2 000 ₽ за точку</strong> при заказе от 20 отверстий. Одно отверстие — 4 500 ₽, два — по 4 000 ₽, три — по 3 500 ₽. Чем больше точек — тем дешевле. Гарантия качества.</p>
-              <p>Бурим под кондиционеры, вентиляцию, бризеры, трубы водоснабжения и канализации, электрокабели, приточные клапаны. Работаем в квартирах, домах, офисах, магазинах, производственных помещениях. Сухое бурение с промышленным пылесосом — без пыли и грязи, идеально для готового ремонта.</p>
+              <p>Бурим под <Link to="/kondicionery" className="font-semibold text-[#1a3a5c] underline decoration-[#ff6b35] decoration-2 underline-offset-2 hover:text-[#ff6b35]">кондиционеры</Link>, <Link to="/ventilyaciya" className="font-semibold text-[#1a3a5c] underline decoration-[#ff6b35] decoration-2 underline-offset-2 hover:text-[#ff6b35]">вентиляцию</Link> и бризеры, трубы водоснабжения и канализации, электрокабели, приточные клапаны. Работаем в квартирах, домах, офисах, магазинах, производственных помещениях. Сухое бурение с промышленным пылесосом — без пыли и грязи, идеально для готового ремонта.</p>
             </div>
             <div className="space-y-3">
               <p><strong>Сухое бурение с пылесосом</strong> — используем промышленный пылесос, который собирает 99% пыли. Идеально для квартир с готовым ремонтом: обои, ламинат, мебель остаются чистыми. Бурим без ударов и вибрации — стена не трескается, арматура не повреждается.</p>

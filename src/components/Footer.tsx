@@ -21,6 +21,7 @@ export default function Footer() {
               <li><a href="tel:+79149146606" className="hover:text-accent-400 transition block">📞 +7 (914) 914-66-06</a></li>
               <li><a href="tel:+73952669930" className="hover:text-accent-400 transition block">📞 66-99-30</a></li>
               <li><a href="tel:+79086401166" className="hover:text-accent-400 transition block">📞 +7 (908) 640-11-66</a></li>
+              <li><a href="mailto:montaj138@mail.ru" className="hover:text-accent-400 transition block">✉️ montaj138@mail.ru</a></li>
               <li>
                 <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white text-slate-900 font-bold hover:bg-slate-100 transition"><span className="w-6 h-6 rounded bg-[#1a3a5c] text-white grid place-items-center text-[10px] font-black">MAX</span> Написать в MAX</a>
                 <div className="text-xs text-slate-500 mt-1">Отвечаем за 5 минут, без звонков</div>

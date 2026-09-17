@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";
@@ -158,7 +159,7 @@ export default function Ventilation() {
             </div>
             <div className="space-y-3">
               <p><strong>Монтаж вентиляции в Иркутске — цена:</strong> установка приточного клапана КИВ-125 — <strong>от 6 000 ₽</strong>; монтаж бризера — <strong>от 9 000 ₽</strong> с прокладкой трассы; рекуператор Vakio — <strong>от 12 000 ₽</strong>; монтаж приточной установки и воздуховодов — по проекту.</p>
-              <p>Что входит в монтаж: алмазное бурение без пыли, герметизация стыков, утепление холодных участков, балансировка системы, инструктаж. <strong>Гарантия 2 года</strong> на работы по договору.</p>
+              <p>Что входит в монтаж: <Link to="/almaznoe-burenie" className="font-semibold text-[#1a3a5c] underline decoration-[#ff6b35] decoration-2 underline-offset-2 hover:text-[#ff6b35]">алмазное бурение</Link> без пыли, герметизация стыков, утепление холодных участков, балансировка системы, инструктаж. <strong>Гарантия 2 года</strong> на работы по договору.</p>
               <p><strong>География:</strong> Иркутск, Ангарск, Шелехов, Хомутово, Молодёжный и пригород — выезд 0 ₽ до 50 км. Замер и расчёт — за 15 минут. Срок монтажа — 1 день.</p>
             </div>
             <div className="space-y-3">

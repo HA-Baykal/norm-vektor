@@ -90,6 +90,46 @@ function buildBreadcrumbJsonLd(path: string, page: Page): string {
 }
 
 // ============================================================
+// Общие JSON-LD оболочки (LocalBusiness и FAQPage) относятся только к
+// главной. Если отдавать их на каждом внутреннем URL, поисковик видит
+// одну и ту же компанию и один и тот же набор вопросов на сотнях
+// страниц — причём без соответствующего видимого контента. Поэтому на
+// внутренних страницах эти два блока вырезаются из оболочки, а
+// BreadcrumbList (собирается выше отдельно под каждый маршрут) и
+// page-specific схемы остаются нетронутыми.
+//
+// Важно: вырезаем по содержимому блока (@type), а не «по соседству с
+// </head>» — так регулярка не может съесть весь <head> или чужой
+// JSON-LD (Product/Breadcrumb/Article, которые добавляют функции).
+// ============================================================
+const GENERIC_SHELL_SCHEMA_TYPES = ["LocalBusiness", "FAQPage"];
+const JSON_LD_BLOCK_RE = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi;
+
+function stripGenericShellSchema(html: string): string {
+  return html.replace(JSON_LD_BLOCK_RE, (block) => {
+    // Свою же разметку хлебных крошек не трогаем.
+    if (/id=["']seo-breadcrumb-schema["']/i.test(block)) return block;
+    const raw = block
+      .replace(/^<script\b[^>]*>/i, "")
+      .replace(/<\/script>$/i, "")
+      .trim();
+    let data: unknown;
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      // Блок не распознан — оставляем как есть: лучше лишняя схема,
+      // чем повреждённый HTML.
+      return block;
+    }
+    const nodes = Array.isArray(data) ? data : [data];
+    const types = nodes
+      .map((node) => (node && typeof node === "object" ? (node as Record<string, unknown>)["@type"] : undefined))
+      .filter((t): t is string => typeof t === "string");
+    return types.some((t) => GENERIC_SHELL_SCHEMA_TYPES.includes(t)) ? "" : block;
+  });
+}
+
+// ============================================================
 // Навигационный блок внутренних ссылок (P0-3 SEO-аудита).
 // Краулер, который не исполняет JS, из серверного HTML раньше видел
 // только текст страницы без единой внутренней ссылки — обход сайта
@@ -296,7 +336,9 @@ const PAGES: Record<string, Page> = {
     title: "Контакты — Вектор Комфорта в Иркутске | Окна, кондиционеры, вентиляция",
     description: "Контакты компании Вектор Комфорта в Иркутске: ☎ +7 (914) 914-66-06, +7 (3952) 66-99-30. Окна, кондиционеры, вентиляция и алмазное бурение. Пн–Сб 9:00–20:00, выезд по Иркутску и пригороду до 50 км.",
     h1: "Контакты — Вектор Комфорта, Иркутск",
-    bodyHtml: `<p>Телефоны: +7 (914) 914-66-06, 66-99-30, +7 (908) 640-11-66. E-mail: montaj138@mail.ru. Адрес: Иркутск, Байкальская улица, 202/2. Режим работы: Пн–Сб 9:00–20:00.</p>`
+    // NAP (телефон, e-mail, адрес, часы) — текстом и ссылками, без JS-модалок:
+    // краулер без JavaScript должен видеть те же контакты, что и пользователь.
+    bodyHtml: `<p>Телефоны: <a href="tel:+79149146606">+7 (914) 914-66-06</a>, <a href="tel:+73952669930">+7 (3952) 66-99-30</a>, <a href="tel:+79086401166">+7 (908) 640-11-66</a>. E-mail: <a href="mailto:montaj138@mail.ru">montaj138@mail.ru</a>. Написать в мессенджере: <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" rel="noopener">MAX — отвечаем за 5 минут</a>.</p><p>Адрес: Иркутск, Байкальская улица, 202/2, цокольный этаж, 664075. Режим работы: Пн–Сб 9:00–20:00, воскресенье — по договорённости. Выезд на замер бесплатный: Иркутск, Ангарск, Шелехов, Хомутово и пригород до 50 км.</p><p>Наши направления: <a href="/okna">пластиковые окна и остекление балконов</a>, <a href="/kondicionery">кондиционеры — продажа и монтаж</a>, <a href="/ventilyaciya">вентиляция и бризеры</a>, <a href="/almaznoe-burenie">алмазное бурение</a>.</p>`
   },
   "/standarty": {
     title: "Стандарты монтажа окон и кондиционеров в Иркутске — по ГОСТу | Вектор Комфорта",
@@ -1212,6 +1254,8 @@ export default async function handler(req: Request): Promise<Response> {
     const isAssetLike = ASSET_LIKE_PATH.test(path);
     let html = isAssetLike ? "" : await fetchShell(req);
     if (html) {
+      // 404 — не главная: общие схемы компании и FAQ здесь недостоверны.
+      html = stripGenericShellSchema(html);
       html = html.replace(/<title>.*?<\/title>/i, `<title>${esc(NOT_FOUND_TITLE)}</title>`);
       html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/i, `<meta name="description" content="${esc(NOT_FOUND_DESCRIPTION)}" />`);
       html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i, `<meta property="og:title" content="${esc(NOT_FOUND_TITLE)}" />`);
@@ -1241,6 +1285,11 @@ export default async function handler(req: Request): Promise<Response> {
 
   if (!html) {
     html = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>${esc(page.title)}</title></head><body><div id="root"></div></body></html>`;
+  } else if (path !== "/") {
+    // LocalBusiness и общий FAQPage живут только на главной. На внутренних
+    // страницах оставляем BreadcrumbList (добавляется ниже) и page-specific
+    // разметку, которую добавляют сами функции.
+    html = stripGenericShellSchema(html);
   }
 
   const fullUrl = path === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;

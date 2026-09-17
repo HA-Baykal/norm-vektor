@@ -1,6 +1,20 @@
+import { Link } from "react-router-dom";
 import Map from "../components/Map";
 import QuoteForm from "../components/QuoteForm";
 import { useSeo, useBreadcrumb } from "../utils/useSeo";
+
+// Тот же профиль MAX, что в шапке, футере и форме заявки.
+const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
+// Адрес офиса: ссылка на карточку организации в Яндекс Картах (та же, что в sameAs).
+const YANDEX_MAPS_LINK = "https://yandex.ru/maps/org/vektor_komforta/117268889988/";
+
+// Основные направления — видимые внутренние ссылки со страницы контактов.
+const SERVICE_LINKS: { to: string; icon: string; title: string; note: string }[] = [
+  { to: "/okna", icon: "🪟", title: "Окна и остекление", note: "собственное производство, профиль VEKA" },
+  { to: "/kondicionery", icon: "❄️", title: "Кондиционеры", note: "продажа, монтаж, сервис, заправка фреоном" },
+  { to: "/ventilyaciya", icon: "💨", title: "Вентиляция", note: "Тион, Vakio, рекуператоры, проекты" },
+  { to: "/almaznoe-burenie", icon: "🔩", title: "Алмазное бурение", note: "отверстия 32–250 мм, без пыли" },
+];
 
 export default function Contact() {
   useSeo(
@@ -79,6 +93,41 @@ export default function Contact() {
                   <div className="text-2xl font-extrabold text-slate-900 dark:text-white">+7 (908) 640-11-66</div>
                 </div>
               </a>
+
+              {/* E-mail: виден в HTML без открытия модалок (контактный сигнал NAP) */}
+              <a
+                  href="mailto:montaj138@mail.ru"
+                  className="flex items-center gap-5 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-400 dark:hover:border-accent-500 hover:shadow-xl transition group"
+              >
+                <div
+                    className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-2xl text-white group-hover:scale-110 transition">
+                  ✉️
+                </div>
+                <div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400">Электронная почта</div>
+                  <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white break-all">montaj138@mail.ru</div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400">Ответим в течение рабочего дня</div>
+                </div>
+              </a>
+
+              {/* MAX: мессенджер компании, та же ссылка, что в шапке и футере */}
+              <a
+                  href={MAX_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-5 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-400 dark:hover:border-accent-500 hover:shadow-xl transition group"
+              >
+                <div
+                    className="w-14 h-14 rounded-xl bg-[#1a3a5c] flex items-center justify-center text-white group-hover:scale-110 transition">
+                  <span className="w-8 h-8 rounded bg-white text-[#1a3a5c] grid place-items-center text-[11px] font-black">MAX</span>
+                </div>
+                <div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400">Мессенджер MAX</div>
+                  <div className="text-xl font-bold text-slate-900 dark:text-white">Написать в MAX →</div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400">Отвечаем за 5 минут, можно прислать фото объекта</div>
+                </div>
+              </a>
+
               <button
                   onClick={openChat}
                   className="flex items-center gap-5 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-400 dark:hover:border-accent-500 hover:shadow-xl transition group w-full text-left"
@@ -93,6 +142,28 @@ export default function Contact() {
                   <div className="text-sm text-slate-500 dark:text-slate-400">Ответим быстро, без звонков</div>
                 </div>
               </button>
+
+              {/* Адрес офиса: виден в HTML, ссылка ведёт на карточку в Яндекс Картах */}
+              <a
+                  href={YANDEX_MAPS_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-5 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-400 dark:hover:border-accent-500 hover:shadow-xl transition group"
+              >
+                <div
+                    className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center text-2xl text-white group-hover:scale-110 transition shrink-0">
+                  📍
+                </div>
+                <div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400">Адрес офиса и производства</div>
+                  <div className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">
+                    Иркутск, Байкальская улица, 202/2, цокольный этаж
+                  </div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                    664075 · показать на Яндекс Картах →
+                  </div>
+                </div>
+              </a>
 
               <div className="grid grid-cols-2 gap-4">
                 <div
@@ -112,12 +183,25 @@ export default function Contact() {
               </div>
 
               <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-700 to-slate-900 text-white">
-                <h3 className="font-bold text-xl mb-2">Наши направления</h3>
-                <ul className="space-y-2 text-brand-100">
-                  <li>🪟 Окна и остекление — собственное производство</li>
-                  <li>❄️ Кондиционеры — продажа, монтаж, сервис, фреон</li>
-                  <li>💨 Вентиляция — Тион, Vakio, рекуператоры</li>
-                  <li>🔩 Алмазное бурение — 32–250 мм, без пыли</li>
+                <h2 className="font-bold text-xl mb-1">Наши направления</h2>
+                <p className="text-sm text-brand-100/80 mb-4">
+                  По каждому направлению — замер, расчёт и монтаж. Выберите раздел, чтобы посмотреть цены и работы.
+                </p>
+                <ul className="space-y-2">
+                  {SERVICE_LINKS.map((s) => (
+                    <li key={s.to}>
+                      <Link
+                        to={s.to}
+                        className="flex items-start gap-3 rounded-xl px-3 py-2.5 bg-white/10 hover:bg-white/20 transition text-brand-100"
+                      >
+                        <span aria-hidden className="text-lg leading-none mt-0.5">{s.icon}</span>
+                        <span>
+                          <span className="block font-bold text-white">{s.title} →</span>
+                          <span className="block text-xs text-brand-100/80">{s.note}</span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
