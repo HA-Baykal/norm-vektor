@@ -20,6 +20,40 @@ function esc(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+// Общие JSON-LD оболочки (LocalBusiness и FAQPage) относятся только к главной.
+// Карточка товара — внутренняя страница: без вырезания этих блоков на каждом
+// из ~300 URL дублируется одна и та же компания и тот же общий FAQ, причём
+// в серверном HTML карточки нет соответствующего видимого текста вопросов.
+// Product и BreadcrumbList карточки добавляются ниже и остаются нетронутыми.
+// Логика та же, что в api/page.ts (функции собираются раздельно, поэтому
+// helper дублируется — как уже дублируется breadcrumbLd).
+const GENERIC_SHELL_SCHEMA_TYPES = ["LocalBusiness", "FAQPage"];
+
+function stripGenericShellSchema(html) {
+  return String(html).replace(
+    /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,
+    (block) => {
+      if (/id=["']seo-breadcrumb-schema["']/i.test(block)) return block;
+      const raw = block
+        .replace(/^<script\b[^>]*>/i, "")
+        .replace(/<\/script>$/i, "")
+        .trim();
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch {
+        // Не распознали блок — оставляем как есть (HTML важнее чистоты схемы).
+        return block;
+      }
+      const nodes = Array.isArray(data) ? data : [data];
+      const types = nodes
+        .map((node) => (node && typeof node === "object" ? node["@type"] : undefined))
+        .filter((t) => typeof t === "string");
+      return types.some((t) => GENERIC_SHELL_SCHEMA_TYPES.includes(t)) ? "" : block;
+    },
+  );
+}
+
 // Тип модели в каталоге хранится в мужском роде («Инверторный»), а слово
 // «сплит-система» — женского. Для описаний нужно согласование, иначе в
 // meta-description и сниппеты уходит «Инверторный сплит-система».
@@ -278,6 +312,10 @@ export default async function handler(req, res) {
   
   if (!html) {
     html = `<!doctype html><html lang="ru"><head><meta charset="UTF-8" /><title>Вектор Комфорта Иркутск</title></head><body><div id="root"></div></body></html>`;
+  } else {
+    // Карточка — внутренняя страница: общие LocalBusiness/FAQPage из оболочки
+    // убираем до вставки Product и BreadcrumbList этой карточки.
+    html = stripGenericShellSchema(html);
   }
   
   // Если запрос на кондиционер — швейцарские часы: Title всегда заполнен по шаблону

@@ -83,6 +83,13 @@ export default function ServicePage({
               >
                 📞 +7 (908) 640-11-66
               </a>
+              {/* Перелинковка услуга → контакты: адрес, почта и MAX на одной странице */}
+              <Link
+                  to="/kontakty"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-white/30 hover:border-white text-white font-semibold transition"
+              >
+                Контакты и адрес →
+              </Link>
             </div>
           </div>
           <div className="relative hidden lg:flex justify-center">
