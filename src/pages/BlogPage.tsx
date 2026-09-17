@@ -439,6 +439,15 @@ export const articles = [
     icon: "🪟",
     readTime: "8 мин",
   },
+  {
+    slug: 'zamena-okon-osenyu-i-zimoj-pochemu-eto-vygodno-i-kak-ne-zamerznut-vo-vremya-montazha',
+    date: '2026-09-17',
+    title: 'Замена окон осенью и зимой: почему это выгодно и как не замёрзнуть во время монтажа',
+    excerpt: '«Зимой окна не меняют» — миф, из-за которого жители Иркутска, Ангарска и Шелехова мёрзнут ещё одну зиму: с продуванием, наледью на стёклах и счетами за отопление. На самом деле современные технологии монтажа позволяют ставить окна даже при ',
+    category: 'Окна',
+    icon: 'FileText',
+    readTime: '5 мин',
+  }
 ];
 
 export default function BlogPage() {
