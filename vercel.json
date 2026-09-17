@@ -440,6 +440,10 @@
       "destination": "/api/page?path=/almaznoe-burenie-v-listvyanke"
     },
     {
+      "source": "/baza-znaniy/vakio-pritochno-vytyazhnaya-ustanovka",
+      "destination": "/api/page?path=/baza-znaniy/vakio-pritochno-vytyazhnaya-ustanovka"
+    },
+    {
       "source": "/baza-znaniy/montazh-okon-osenyu-i-zimoy",
       "destination": "/api/page?path=/baza-znaniy/montazh-okon-osenyu-i-zimoy"
     },
