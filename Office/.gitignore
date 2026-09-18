@@ -1,0 +1,7 @@
+config.json
+office_state.json
+office_memory.json
+office_users.sqlite
+workspace/
+__pycache__/
+*.pyc
