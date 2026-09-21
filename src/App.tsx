@@ -21,6 +21,7 @@ const BlogArticle = lazy(() => import("./pages/BlogArticle"));
 const ServiceSubPage = lazy(() => import("./pages/ServiceSubPage"));
 const ComparePage = lazy(() => import("./pages/ComparePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const LegalPage = lazy(() => import("./pages/LegalPage"));
 
 export default function App() {
   return (
@@ -121,6 +122,10 @@ export default function App() {
             <Route path="sravnenie" element={<ComparePage />} />
             <Route path="otzyv" element={<OtzyvPage />} />
             <Route path="interier" element={<InterierPage />} />
+            {/* Юридические страницы: тексты в src/data/legal.ts */}
+            <Route path="politika-konfidencialnosti" element={<LegalPage />} />
+            <Route path="soglasie-na-obrabotku-pd" element={<LegalPage />} />
+            <Route path="rekvizity" element={<LegalPage />} />
             {/* Старые и дубль-адреса уводим на канонические внутри SPA,
                 всё остальное — страница 404 (правила: src/constants/redirects.ts) */}
             <Route path="*" element={<LegacyRedirect fallback={<NotFound />} />} />

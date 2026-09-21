@@ -1,4 +1,5 @@
 import { useEffect, useState, FormEvent } from "react";
+import ConsentCheckbox from "./ConsentCheckbox";
 
 interface QuickBookingModalProps {
   open: boolean;
@@ -18,6 +19,7 @@ export default function QuickBookingModal({
   const [phoneError, setPhoneError] = useState("");
   const [city, setCity] = useState("Иркутск");
   const [submitted, setSubmitted] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -60,6 +62,8 @@ export default function QuickBookingModal({
       setPhoneError("Проверьте номер! Введите ровно 10 цифр вашего номера (без +7)");
       return;
     }
+    // Согласие на обработку ПДн (152-ФЗ ст. 9) — без галочки заявка не уходит.
+    if (!consent) return;
 
     setSubmitted(true);
 
@@ -201,16 +205,15 @@ export default function QuickBookingModal({
                 </select>
               </div>
 
+              <ConsentCheckbox checked={consent} onChange={setConsent} id="pd-consent-modal" />
+
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black text-sm transition shadow-lg shadow-orange-500/20"
+                disabled={!consent}
+                className="w-full py-4 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#ff6b35] text-white font-black text-sm transition shadow-lg shadow-orange-500/20"
               >
                 Отправить заявку
               </button>
-
-              <p className="text-[11px] text-center text-slate-500 dark:text-slate-500 leading-tight">
-                Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
-              </p>
             </form>
           </div>
         )}

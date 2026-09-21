@@ -152,6 +152,18 @@
       "destination": "/api/page?path=/interier"
     },
     {
+      "source": "/politika-konfidencialnosti",
+      "destination": "/api/page?path=/politika-konfidencialnosti"
+    },
+    {
+      "source": "/soglasie-na-obrabotku-pd",
+      "destination": "/api/page?path=/soglasie-na-obrabotku-pd"
+    },
+    {
+      "source": "/rekvizity",
+      "destination": "/api/page?path=/rekvizity"
+    },
+    {
       "source": "/montazh-kondicionerov",
       "destination": "/api/page?path=/montazh-kondicionerov"
     },
@@ -614,6 +626,38 @@
     {
       "source": "/baza-znaniy/pochemu-montazh-okon-stoit-dorozhe",
       "destination": "/api/page?path=/baza-znaniy/pochemu-montazh-okon-stoit-dorozhe"
+    },
+    {
+      "source": "/baza-znaniy/zamena-okon-osenyu-i-zimoj-pochemu-eto-vygodno-i-kak-ne-zamerznut-vo-vremya-montazha",
+      "destination": "/api/page?path=/baza-znaniy/zamena-okon-osenyu-i-zimoj-pochemu-eto-vygodno-i-kak-ne-zamerznut-vo-vremya-montazha"
+    },
+    {
+      "source": "/baza-znaniy/energosberegayushhie-okna-dlya-sibiri-kak-vybrat-chtoby-ne-merznut-i-ne-pereplachivat-za-o",
+      "destination": "/api/page?path=/baza-znaniy/energosberegayushhie-okna-dlya-sibiri-kak-vybrat-chtoby-ne-merznut-i-ne-pereplachivat-za-o"
+    },
+    {
+      "source": "/baza-znaniy/pritochnaya-ventilyaciya-dlya-kvartiry-v-irkutske-kak-izbavitsya-ot-duhoty-i-kondensata-na",
+      "destination": "/api/page?path=/baza-znaniy/pritochnaya-ventilyaciya-dlya-kvartiry-v-irkutske-kak-izbavitsya-ot-duhoty-i-kondensata-na"
+    },
+    {
+      "source": "/baza-znaniy/ventilyaciya-v-kafe-i-magazine-v-irkutske-trebovaniya-oshibki-montazha-i-kak-ih-izbezhat",
+      "destination": "/api/page?path=/baza-znaniy/ventilyaciya-v-kafe-i-magazine-v-irkutske-trebovaniya-oshibki-montazha-i-kak-ih-izbezhat"
+    },
+    {
+      "source": "/baza-znaniy/osteklenie-balkonov-i-lodzhij-v-irkutske-teplyj-ili-holodnyj-variant-chto-vybrat",
+      "destination": "/api/page?path=/baza-znaniy/osteklenie-balkonov-i-lodzhij-v-irkutske-teplyj-ili-holodnyj-variant-chto-vybrat"
+    },
+    {
+      "source": "/baza-znaniy/obogrev-kondicionerom-zimoj-v-sibiri-realno-li-sekonomit-na-otoplenii",
+      "destination": "/api/page?path=/baza-znaniy/obogrev-kondicionerom-zimoj-v-sibiri-realno-li-sekonomit-na-otoplenii"
+    },
+    {
+      "source": "/baza-znaniy/ventilyaciya-v-novostrojke-irkutska-zimoj-pochemu-zastrojshhik-sdal-kanaly-a-tyagi-net-i-c",
+      "destination": "/api/page?path=/baza-znaniy/ventilyaciya-v-novostrojke-irkutska-zimoj-pochemu-zastrojshhik-sdal-kanaly-a-tyagi-net-i-c"
+    },
+    {
+      "source": "/baza-znaniy/kislorodnoe-golodanie-zimoj-pochemu-v-zakrytoj-kvartire-bolit-golova-i-kak-eto-svyazano-s-",
+      "destination": "/api/page?path=/baza-znaniy/kislorodnoe-golodanie-zimoj-pochemu-v-zakrytoj-kvartire-bolit-golova-i-kak-eto-svyazano-s-"
     },
     {
       "source": "/baza-znaniy/:slug",

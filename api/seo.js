@@ -392,7 +392,7 @@ export default async function handler(req, res) {
   } else if (windowModel) {
     const safeTitle = (windowModel.title || "Пластиковые окна").trim();
     const title = `${safeTitle} в Иркутске — цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`;
-    const desc = `${windowModel.desc} Собственное производство в Иркутске, цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ ${windowModel.unit}. Монтаж по ГОСТу, гарантия 5 лет!`;
+    const desc = `${windowModel.desc} Изготовление на заказ в Иркутске, цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ ${windowModel.unit}. Монтаж по ГОСТу, гарантия 5 лет!`;
     const pageUrl = `https://www.vektor-komforta.ru/okna/${encodeURI(slug)}`;
     const priceStr = windowModel.price.toString();
     const imgUrl = `https://www.vektor-komforta.ru${windowModel.img}`;
@@ -445,7 +445,7 @@ export default async function handler(req, res) {
     html = html.replace("</head>", seoMetaTags);
     // P0-1/P0-3: серверный текст карточки окна для краулеров без JS.
     const cardH1 = `${safeTitle} в Иркутске — цена от ${windowModel.price.toLocaleString("ru-RU")} ₽`;
-    seoBody = `<div id="root"><main><h1>${esc(cardH1)}</h1><p>${esc(desc)}</p><ul><li>Профиль VEKA / алюминиевые системы, фурнитура MACO</li><li>Собственное производство в Иркутске — 5–7 рабочих дней</li><li>Монтаж по ГОСТ 30971-2012, гарантия 5 лет</li></ul><p>Смотрите также: <a href="/okna">пластиковые окна</a>, <a href="/montazh-okon">монтаж окон ПВХ</a>, <a href="/osteklenie-balkonov">остекление балконов</a>, <a href="/baza-znaniy">база знаний об окнах</a>.</p><p>Вектор Комфорта: <a href="/">главная</a>, <a href="/kondicionery">кондиционеры</a>, <a href="/ventilyaciya">вентиляция и бризеры</a>, <a href="/almaznoe-burenie">алмазное бурение</a>, <a href="/kontakty">контакты</a>.</p></main></div>`;
+    seoBody = `<div id="root"><main><h1>${esc(cardH1)}</h1><p>${esc(desc)}</p><ul><li>Профиль VEKA / алюминиевые системы, фурнитура MACO</li><li>Изготовление на заказ в Иркутске — 5–7 рабочих дней</li><li>Монтаж по ГОСТ 30971-2012, гарантия 5 лет</li></ul><p>Смотрите также: <a href="/okna">пластиковые окна</a>, <a href="/montazh-okon">монтаж окон ПВХ</a>, <a href="/osteklenie-balkonov">остекление балконов</a>, <a href="/baza-znaniy">база знаний об окнах</a>.</p><p>Вектор Комфорта: <a href="/">главная</a>, <a href="/kondicionery">кондиционеры</a>, <a href="/ventilyaciya">вентиляция и бризеры</a>, <a href="/almaznoe-burenie">алмазное бурение</a>, <a href="/kontakty">контакты</a>.</p></main></div>`;
   }
   
   // P0-1: карточки раньше отдавали пустой #root — краулер без JS видел только
