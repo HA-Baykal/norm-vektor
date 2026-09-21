@@ -44,7 +44,7 @@ export default function WindowPage() {
   // Динамическое SEO — швейцарские часы: Title никогда не пустой, canonical чистый
   useEffect(() => {
     const safeTitle = (item.title || "Пластиковые окна").trim();
-    const titleText = `${safeTitle} в Иркутске — цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ | Собственное производство Вектор Комфорта`;
+    const titleText = `${safeTitle} в Иркутске — цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`;
     const descText = `${item.shortDesc} Цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ ${item.priceUnit}. Собственный сборочный цех в Иркутске, гарантия 5 лет, монтаж по ГОСТу с пароизоляцией!`;
     const SITE_ORIGIN = "https://www.vektor-komforta.ru";
     const cleanUrl = `${SITE_ORIGIN}/okna/${encodeURI(slug || item.slug)}`;
@@ -180,11 +180,11 @@ export default function WindowPage() {
               {/* Блок доверия и гарантии завода */}
               <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm text-xs text-slate-600 space-y-2 max-w-sm mx-auto">
                 <div className="flex items-center justify-between font-black text-[#1a3a5c] text-sm">
-                  <span>Собственное производство в Иркутске</span>
+                  <span>Изготовление на заказ в Иркутске</span>
                   <span className="text-emerald-600 shrink-0">✓ Свой цех</span>
                 </div>
                 <p className="leading-relaxed">
-                  Мы изготавливаем окна без посредников на современной автоматизированой линии в Иркутске. Применяем только замкнутое стальное армирование 1.5 мм и немецкий профиль VEKA Класса «А» с гарантией 5 лет.
+                  Окна изготавливаются на заказ по вашим размерам на современной автоматизированной линии в Иркутске. Применяем только замкнутое стальное армирование 1.5 мм и немецкий профиль VEKA Класса «А» с гарантией 5 лет.
                 </p>
               </div>
             </div>

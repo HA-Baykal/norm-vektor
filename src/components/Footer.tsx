@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4"><Logo className="w-12 h-12" /><div><div className="text-white font-extrabold text-lg">Вектор <span className="text-accent-400">Комфорта</span></div><div className="text-xs text-slate-400">Комфорт в каждом направлении</div></div></div>
-            <p className="text-sm text-slate-400 leading-relaxed">Окна, кондиционеры, вентиляция и алмазное бурение. Собственное производство. Работаем в Иркутске и пригороде до 50 км.</p>
+            <p className="text-sm text-slate-400 leading-relaxed">Окна, кондиционеры, вентиляция и алмазное бурение. Изготовление на заказ. Работаем в Иркутске и пригороде до 50 км.</p>
           </div>
           <div><h3 className="text-white font-semibold mb-4">Услуги</h3><ul className="space-y-2 text-sm"><li><Link to="/okna" className="hover:text-accent-400 transition">Окна и остекление</Link></li><li><Link to="/kondicionery" className="hover:text-accent-400 transition">Кондиционеры</Link></li><li><Link to="/ventilyaciya" className="hover:text-accent-400 transition">Вентиляция</Link></li><li><Link to="/almaznoe-burenie" className="hover:text-accent-400 transition">Алмазное бурение</Link></li><li><Link to="/interier" className="hover:text-accent-400 transition">Interier — дизайн интерьера по фото</Link></li></ul></div>
           <div>
