@@ -1,4 +1,5 @@
 import { useState, FormEvent } from "react";
+import ConsentCheckbox from "./ConsentCheckbox";
 
 interface QuoteFormProps {
   serviceDefault?: string;
@@ -14,6 +15,7 @@ export default function QuoteForm({
 }: QuoteFormProps) {
   const [name, setName] = useState("");
   const [rawPhone, setRawPhone] = useState("");
+  const [consent, setConsent] = useState(false);
   const [phoneError, setPhoneError] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -41,6 +43,8 @@ export default function QuoteForm({
       setPhoneError("Проверьте номер! Введите ровно 10 цифр вашего номера (без +7)");
       return;
     }
+    // Согласие на обработку ПДн (152-ФЗ ст. 9) — без галочки заявка не уходит.
+    if (!consent) return;
     setSubmitted(true);
     // Заявка отправляется только на серверный API: токен Telegram хранится
     // в переменных окружения (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID) на Vercel.
@@ -54,6 +58,7 @@ export default function QuoteForm({
       setName("");
       setRawPhone("");
       setPhoneError("");
+      setConsent(false);
     }, 4000);
   };
 
@@ -85,7 +90,9 @@ export default function QuoteForm({
           {phoneError && <p className="mt-1 text-xs font-bold text-red-500">⚠️ {phoneError}</p>}
         </div>
 
-        <button type="submit" className="w-full px-4 py-3.5 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] text-white font-black transition shadow-lg shadow-orange-500/20 text-sm">
+        <ConsentCheckbox checked={consent} onChange={setConsent} id={`pd-consent-${compact ? "compact" : "full"}`} />
+
+        <button type="submit" disabled={!consent} className="w-full px-4 py-3.5 rounded-xl bg-[#ff6b35] hover:bg-[#e95620] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#ff6b35] text-white font-black transition shadow-lg shadow-orange-500/20 text-sm">
           Получить консультацию
         </button>
 

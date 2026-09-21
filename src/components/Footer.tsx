@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import { LEGAL_NAV, FOOTER_REQUISITES } from "../data/legal";
 const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
 export default function Footer() {
   const openChat = () => {
@@ -9,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-300 mt-20">
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4"><Logo className="w-12 h-12" /><div><div className="text-white font-extrabold text-lg">Вектор <span className="text-accent-400">Комфорта</span></div><div className="text-xs text-slate-400">Комфорт в каждом направлении</div></div></div>
             <p className="text-sm text-slate-400 leading-relaxed">Окна, кондиционеры, вентиляция и алмазное бурение. Изготовление на заказ. Работаем в Иркутске и пригороде до 50 км.</p>
@@ -31,7 +32,15 @@ export default function Footer() {
               <li><button onClick={openChat} className="text-accent-400 hover:text-accent-500 transition">💬 Написать в чат Jivo</button></li>
             </ul>
           </div>
-          <div><h3 className="text-white font-semibold mb-4">Навигация</h3><ul className="space-y-2 text-sm"><li><Link to="/" className="hover:text-accent-400 transition">Главная</Link></li><li><Link to="/kontakty" className="hover:text-accent-400 transition">Контакты</Link></li><li><a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-lg bg-[#1a3a5c] hover:bg-[#122943] text-white font-semibold transition border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[9px] font-black">MAX</span> Написать в MAX</a></li><li><a href="tel:+79149146606" className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-lg bg-accent-500 hover:bg-accent-600 text-white font-semibold transition">📞 Позвонить сейчас</a></li></ul></div>
+          <div><h3 className="text-white font-semibold mb-4">Навигация</h3><ul className="space-y-2 text-sm"><li><Link to="/" className="hover:text-accent-400 transition">Главная</Link></li><li><Link to="/kontakty" className="hover:text-accent-400 transition">Контакты</Link></li><li><Link to="/standarty" className="hover:text-accent-400 transition">Стандарты монтажа</Link></li><li><a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-lg bg-[#1a3a5c] hover:bg-[#122943] text-white font-semibold transition border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[9px] font-black">MAX</span> Написать в MAX</a></li><li><a href="tel:+79149146606" className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-lg bg-accent-500 hover:bg-accent-600 text-white font-semibold transition">📞 Позвонить сейчас</a></li></ul></div>
+          <div>
+            <h3 className="text-white font-semibold mb-4">Информация</h3>
+            <ul className="space-y-2 text-sm">
+              {LEGAL_NAV.map((l) => (
+                <li key={l.href}><Link to={l.href} className="hover:text-accent-400 transition">{l.label}</Link></li>
+              ))}
+            </ul>
+          </div>
           <div>
             <h3 className="text-white font-semibold mb-4">Мы в соцсетях</h3>
             <ul className="space-y-2 text-sm">
@@ -44,6 +53,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500"><div>© {new Date().getFullYear()} Вектор Комфорта. Все права защищены.</div><div>Иркутск · Ангарск · Шелехов · Хомутово · пригород до 50 км</div></div>
+        <div className="mt-3 text-xs text-slate-500 text-center md:text-left">{FOOTER_REQUISITES} · <Link to="/rekvizity" className="underline hover:text-accent-400">все реквизиты</Link></div>
       </div>
     </footer>
   );

@@ -1,6 +1,7 @@
 // api/page.ts (Оптимизированная версия для ТОП-1 с уникализированным контентом)
 import articlesData from "../src/data/articlesData";
 import { SITE_ORIGIN, normalizePath, resolveLegacyRedirect } from "../src/constants/redirects";
+import { LEGAL_DOCS, legalDocToHtml } from "../src/data/legal";
 export const config = { runtime: "edge" };
 
 function esc(s: string) {
@@ -35,6 +36,9 @@ const BREADCRUMB_NAMES: Record<string, string> = {
   "/servis-kondicionerov": "Сервис кондиционеров",
   "/osteklenie-balkonov": "Остекление балконов",
   "/interier": "Interier — дизайн интерьера по фото",
+  "/politika-konfidencialnosti": "Политика конфиденциальности",
+  "/soglasie-na-obrabotku-pd": "Согласие на обработку данных",
+  "/rekvizity": "Реквизиты",
 };
 
 // Родительский раздел для посадочных страниц под-услуг
@@ -153,6 +157,8 @@ const SITE_NAV: { href: string; label: string }[] = [
   { href: "/standarty", label: "Стандарты монтажа" },
   { href: "/otzyv", label: "Отзывы" },
   { href: "/kontakty", label: "Контакты" },
+  { href: "/rekvizity", label: "Реквизиты" },
+  { href: "/politika-konfidencialnosti", label: "Политика конфиденциальности" },
 ];
 
 function buildSiteNavHtml(currentPath: string): string {
@@ -1169,6 +1175,14 @@ function buildArticlePage(path: string): Page | null {
 const ROUTING_QUERY_PARAM = "path";
 
 /** Путь, по которому реально обратился краулер или пользователь. */
+// Юридические страницы (политика, согласие, реквизиты): тексты — src/data/legal.ts,
+// общие с клиентом. Робот Яндекса получает полный текст документа без JS.
+function buildLegalPage(path: string): Page | null {
+  const doc = LEGAL_DOCS[path];
+  if (!doc) return null;
+  return { title: doc.title, description: doc.description, h1: doc.h1, bodyHtml: legalDocToHtml(doc) };
+}
+
 function resolveRequestPath(url: URL): string {
   // Обычно Vercel сохраняет исходный pathname при rewrite. Но если платформа
   // передаст в функцию уже переписанный URL (/api/page), путь берётся из ?path=.
@@ -1247,7 +1261,7 @@ export default async function handler(req: Request): Promise<Response> {
     });
   }
 
-  const page = PAGES[path] || buildGeoPage(path) || buildArticlePage(path);
+  const page = PAGES[path] || buildLegalPage(path) || buildGeoPage(path) || buildArticlePage(path);
   if (!page) {
     // Честный 404: статус отдаёт сервер, а оболочку SPA сохраняем —
     // React отрисует оформленную страницу «Такой страницы нет», а не голую заглушку.

@@ -10,7 +10,7 @@ const YANDEX_MAPS_LINK = "https://yandex.ru/maps/org/vektor_komforta/11726888998
 
 // Основные направления — видимые внутренние ссылки со страницы контактов.
 const SERVICE_LINKS: { to: string; icon: string; title: string; note: string }[] = [
-  { to: "/okna", icon: "🪟", title: "Окна и остекление", note: "собственное производство, профиль VEKA" },
+  { to: "/okna", icon: "🪟", title: "Окна и остекление", note: "изготовление на заказ, профиль VEKA" },
   { to: "/kondicionery", icon: "❄️", title: "Кондиционеры", note: "продажа, монтаж, сервис, заправка фреоном" },
   { to: "/ventilyaciya", icon: "💨", title: "Вентиляция", note: "Тион, Vakio, рекуператоры, проекты" },
   { to: "/almaznoe-burenie", icon: "🔩", title: "Алмазное бурение", note: "отверстия 32–250 мм, без пыли" },

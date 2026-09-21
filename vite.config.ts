@@ -72,10 +72,14 @@ const seoSitemapAndApiGenerator = () => ({
         "servis-kondicionerov", "osteklenie-balkonov"
       ];
 
+      // Юридические страницы (src/data/legal.ts) — индексируются, Яндекс учитывает их как коммерческий фактор
+      const legalPages = ["politika-konfidencialnosti", "soglasie-na-obrabotku-pd", "rekvizity"];
+
       const staticUrls = [
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
         "portfolio", "standarty", "otzyv", "baza-znaniy", "kontakty",
         "sravnenie", "interier",
+        ...legalPages,
         ...servicePages,
         ...cityPages
       ];
@@ -151,8 +155,9 @@ const seoSitemapAndApiGenerator = () => ({
       for (const u of staticUrls) {
         // Швейцарские часы: /interier — отдельный проект, снижает тематичность. Держим с низким приоритетом, рекомендуем вынести на поддомен interier.vektor-komforta.ru
         const isInterier = u === "interier";
-        const changefreq = isInterier ? "yearly" : (u === "" || u === "okna" || u === "kondicionery" ? "daily" : "weekly");
-        const priority = isInterier ? "0.3" : (u === "" ? "1.0" : "0.9");
+        const isLegal = legalPages.includes(u);
+        const changefreq = isInterier || isLegal ? "yearly" : (u === "" || u === "okna" || u === "kondicionery" ? "daily" : "weekly");
+        const priority = isInterier ? "0.3" : isLegal ? "0.4" : (u === "" ? "1.0" : "0.9");
         xml += `  <url>\n`;
         xml += `    <loc>https://www.vektor-komforta.ru/${u}</loc>\n`;
         xml += `    <changefreq>${changefreq}</changefreq>\n`;
@@ -205,6 +210,7 @@ const seoSitemapAndApiGenerator = () => ({
         "", "okna", "kondicionery", "ventilyaciya", "almaznoe-burenie",
         "kontakty", "standarty", "otzyv", "baza-znaniy", "portfolio",
         "sravnenie", "interier",
+        ...legalPages,
         ...servicePages
       ];
       const rewrites: any[] = [

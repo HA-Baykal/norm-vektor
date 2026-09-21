@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ScrollToTop from "./ScrollToTop"; 
 import Header from "./Header";
 import Footer from "./Footer";
+import CookieBanner from "./CookieBanner";
 
 export default function Layout() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -34,6 +35,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }

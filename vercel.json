@@ -152,6 +152,18 @@
       "destination": "/api/page?path=/interier"
     },
     {
+      "source": "/politika-konfidencialnosti",
+      "destination": "/api/page?path=/politika-konfidencialnosti"
+    },
+    {
+      "source": "/soglasie-na-obrabotku-pd",
+      "destination": "/api/page?path=/soglasie-na-obrabotku-pd"
+    },
+    {
+      "source": "/rekvizity",
+      "destination": "/api/page?path=/rekvizity"
+    },
+    {
       "source": "/montazh-kondicionerov",
       "destination": "/api/page?path=/montazh-kondicionerov"
     },
