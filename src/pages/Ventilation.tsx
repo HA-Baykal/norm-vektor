@@ -4,8 +4,14 @@ import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";
 import VentilationCalculator from "../components/VentilationCalculator";
+import { AI_ANSWERS } from "../data/aiAnswers";
+import { useFaqSchema } from "../utils/useSeo";
+
+const VENTILYACIYA = AI_ANSWERS["/ventilyaciya"];
 
 export default function Ventilation() {
+  // FAQPage: вопросы видимого блока ниже — тот же массив, что уходит в разметку
+  useFaqSchema(VENTILYACIYA.faq);
     // Динамические мета-теги и Service микроразметка
   useEffect(() => {
     const titleText = "Вентиляция в Иркутске — монтаж под ключ от 6 000 ₽ | Вектор Комфорта";
@@ -34,6 +40,9 @@ export default function Ventilation() {
     const serviceSchema = {
       "@context": "https://schema.org",
       "@type": "Service",
+      // @id совпадает с серверной разметкой (api/page.ts) — поисковик
+      // склеивает клиентскую и серверную схему в одну сущность
+      "@id": "https://www.vektor-komforta.ru/ventilyaciya#service",
       "name": "Вентиляция в Иркутске",
       "description": "Приточно-вытяжная вентиляция, бризеры Тион и Vakio, рекуператоры. Монтаж под ключ, гарантия 2 года.",
       "provider": {
@@ -126,6 +135,9 @@ export default function Ventilation() {
         intro="Системы приточно-вытяжной вентиляции: продажа и монтаж рекуператоров, бризеров, Тион, Vakio. Проектирование, изготовление воздуховодов, монтаж для квартир, домов, производственных помещений, ресторанов и офисов."
         breadcrumb="Вентиляция в Иркутске"
         breadcrumbPath="/ventilyaciya"
+        shortAnswer={VENTILYACIYA.shortAnswer}
+        facts={VENTILYACIYA.facts}
+        answerUpdated={VENTILYACIYA.updated}
         advantages={[
           { icon: "🎯", title: "Проектирование", text: "Расчёт воздухообмена по нормам, подбор оборудования под объект" },
           { icon: "🏭", title: "Своё производство воздуховодов", text: "Изготавливаем воздуховоды под размеры объекта — точная подгонка" },
@@ -241,10 +253,9 @@ export default function Ventilation() {
           <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
             <h3 className="font-black text-[#1a3a5c]">Частые вопросы про вентиляцию в Иркутске</h3>
             <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
-              <div><strong>Сколько стоит установка бризера?</strong> Монтаж бризера — от 9 000 ₽ вместе с алмазным бурением. Сам бризер — от 39 000 ₽.</div>
-              <div><strong>Чем бризер отличается от кондиционера?</strong> Бризер подаёт свежий воздух с улицы с очисткой и подогревом, а кондиционер только охлаждает/нагревает воздух в помещении.</div>
-              <div><strong>Поможет ли вентиляция от конденсата на окнах?</strong> Да, именно недостаток вентиляции — главная причина конденсата и плесени на окнах. Приток свежего воздуха решает проблему.</div>
-              <div><strong>За сколько делаете монтаж?</strong> Монтаж КИВ-125 или бризера — 1 день. Приточно-вытяжную систему — от 2–3 дней по проекту.</div>
+              {VENTILYACIYA.faq.map((item) => (
+                <div key={item.q}><strong>{item.q}</strong> {item.a}</div>
+              ))}
             </div>
           </div>
         </div>

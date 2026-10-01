@@ -122,4 +122,56 @@ export function useBreadcrumb(items: BreadcrumbItem[]) {
   }, [JSON.stringify(items), pathname]);
 }
 
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+const EMPTY_FAQ: FaqItem[] = [];
+
+/**
+ * JSON-LD FAQPage для страниц услуг.
+ *
+ * Требование поисковиков и генеративных ответов (Яндекс Нейро, Google AI
+ * Overviews): разметка должна описывать вопросы, которые реально видит
+ * человек на странице. Поэтому items берётся из того же массива, который
+ * рендерится в видимом блоке «Частые вопросы», а не выдумывается отдельно.
+ */
+export function useFaqSchema(items: FaqItem[] = EMPTY_FAQ) {
+  const key = JSON.stringify(items);
+
+  useEffect(() => {
+    if (!items.length) return;
+
+    const pageUrl = `${SITE_ORIGIN}${window.location.pathname}`;
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      // Тот же @id, что у серверной разметки (api/page.ts) — дубли не плодятся
+      "@id": `${pageUrl}#faq`,
+      mainEntity: items.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    };
+
+    const SCRIPT_ID = "seo-faq-schema";
+    let script = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = SCRIPT_ID;
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(schema);
+
+    return () => {
+      const el = document.getElementById(SCRIPT_ID);
+      if (el) el.remove();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+}
+
 export { SITE_ORIGIN, DEFAULT_TITLE };

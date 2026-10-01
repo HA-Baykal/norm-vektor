@@ -660,6 +660,14 @@
       "destination": "/api/page?path=/baza-znaniy/kislorodnoe-golodanie-zimoj-pochemu-v-zakrytoj-kvartire-bolit-golova-i-kak-eto-svyazano-s-"
     },
     {
+      "source": "/baza-znaniy/montazhnyj-shov-pochemu-on-tak-vazhen-pri-montazhe-okon",
+      "destination": "/api/page?path=/baza-znaniy/montazhnyj-shov-pochemu-on-tak-vazhen-pri-montazhe-okon"
+    },
+    {
+      "source": "/baza-znaniy/remont-okon-v-irkutske-kogda-deshevle-pochinit-chem-menyat",
+      "destination": "/api/page?path=/baza-znaniy/remont-okon-v-irkutske-kogda-deshevle-pochinit-chem-menyat"
+    },
+    {
       "source": "/baza-znaniy/:slug",
       "destination": "/api/page?path=/baza-znaniy/:slug"
     },

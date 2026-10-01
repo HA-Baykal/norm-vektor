@@ -5,8 +5,15 @@ import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";
 import WindowCalculator from "../components/WindowCalculator";
 import WindowsGallery from "../components/WindowsGallery";
+import { AI_ANSWERS } from "../data/aiAnswers";
+import { useFaqSchema } from "../utils/useSeo";
+
+const OKNA = AI_ANSWERS["/okna"];
 
 export default function Windows() {
+  // FAQPage: вопросы видимого блока ниже — тот же массив, что уходит в разметку
+  useFaqSchema(OKNA.faq);
+
     // Динамические мета-теги и Service микроразметка
   useEffect(() => {
     const titleText = "Пластиковые окна VEKA в Иркутске — купить с монтажом | Вектор Комфорта";
@@ -35,6 +42,9 @@ export default function Windows() {
     const serviceSchema = {
       "@context": "https://schema.org",
       "@type": "Service",
+      // @id совпадает с серверной разметкой (api/page.ts) — поисковик
+      // склеивает клиентскую и серверную схему в одну сущность
+      "@id": "https://www.vektor-komforta.ru/okna#service",
       "name": "Пластиковые окна VEKA в Иркутске",
       "description": "Изготовление на заказ и монтаж пластиковых окон VEKA в Иркутске. монтаж по ГОСТу, гарантия 5 лет.",
       "provider": {
@@ -147,8 +157,11 @@ process={[
 { step: "03", title: "Производство", text: "Изготовление на собственном цехе от 5 дней" },
 { step: "04", title: "Монтаж", text: "Установка по ГОСТу, уборка, сдача по акту" },
 ]}
-photosIcon="🪟"
-photosTitle="Наши работы по остеклению"
+        photosIcon="🪟"
+        photosTitle="Наши работы по остеклению"
+        shortAnswer={OKNA.shortAnswer}
+        facts={OKNA.facts}
+        answerUpdated={OKNA.updated}
 />
 <section className="bg-white py-10 sm:py-14 border-t border-slate-100">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -283,10 +296,9 @@ photosTitle="Наши работы по остеклению"
       <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
         <h3 className="font-black text-[#1a3a5c]">Частые вопросы про окна в Иркутске</h3>
         <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
-          <div><strong>Сколько стоят окна VEKA?</strong> От 11 000 ₽/м². Окно 1300×1400 с монтажем — от 14 900 ₽ под ключ после замера.</div>
-          <div><strong>За сколько делаете?</strong> 5–7 дней на своём цехе, ламинация +3 дня. Монтаж — 1 день с уборкой.</div>
-          <div><strong>Чем VEKA лучше?</strong> Класс А, стенка 3 мм, глянец из первичного ПВХ не желтеет 25 лет, замкнутое армирование не ведёт створку.</div>
-          <div><strong>Делаете в деревянном доме?</strong> Да, с обсадой (окосячкой), учётом усадки и гидроизоляцией.</div>
+          {OKNA.faq.map((item) => (
+            <div key={item.q}><strong>{item.q}</strong> {item.a}</div>
+          ))}
         </div>
       </div>
     </div>

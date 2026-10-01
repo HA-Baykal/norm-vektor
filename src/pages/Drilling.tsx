@@ -3,6 +3,9 @@ import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";
 import DrillingCalculator from "../components/DrillingCalculator";
+import { AI_ANSWERS } from "../data/aiAnswers";
+
+const BURENIE = AI_ANSWERS["/almaznoe-burenie"];
 
 export default function Drilling() {
   // Динамические мета-теги и Service микроразметка
@@ -33,6 +36,9 @@ export default function Drilling() {
     const serviceSchema = {
       "@context": "https://schema.org",
       "@type": "Service",
+      // @id совпадает с серверной разметкой (api/page.ts) — поисковик
+      // склеивает клиентскую и серверную схему в одну сущность
+      "@id": "https://www.vektor-komforta.ru/almaznoe-burenie#service",
       "name": "Алмазное бурение в Иркутске",
       "description": "Алмазное бурение отверстий 32-250 мм в бетоне и кирпиче. Сухой способ с пылесосом, без пыли и трещин.",
       "provider": {
@@ -126,6 +132,10 @@ export default function Drilling() {
         intro="Алмазное бурение отверстий диаметром от 32 до 250 мм в бетоне, железобетоне, кирпиче. Сухое бурение с пылесосом — для готового ремонта, без пыли и грязи. Мокрое с подачей воды — для чернового ремонта и больших диаметров."
         breadcrumb="Алмазное бурение"
         breadcrumbPath="/almaznoe-burenie"
+        shortAnswer={BURENIE.shortAnswer}
+        facts={BURENIE.facts}
+        answerUpdated={BURENIE.updated}
+        faq={BURENIE.faq}
         advantages={[
           { icon: "🎯", title: "Точность ±1 мм", text: "Ровные цилиндрические отверстия. Никаких сколов, трещин и вибрации" },
           { icon: "🧹", title: "Сухое бурение", text: "С промышленным пылесосом — идеально для чистового ремонта" },
