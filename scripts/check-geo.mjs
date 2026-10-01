@@ -7,6 +7,7 @@
 // то, что рисует браузер после исполнения JavaScript:
 //   • robots.txt: не закрыты ли ИИ-краулеры и Яндекс;
 //   • /llms.txt: есть ли карта сайта для языковых моделей;
+//   • IndexNow: опубликован ли файл ключа и совпадает ли его содержимое с ключом;
 //   • главные страницы услуг: есть ли «цитируемый» фрагмент — короткий ответ,
 //     таблица цен, пары «вопрос → ответ»;
 //   • JSON-LD: FAQPage, Service/Offer, BreadcrumbList, Article;
@@ -38,6 +39,7 @@ const flags = new Map(
 const BASE = (args[0] || "https://www.vektor-komforta.ru").replace(/\/$/, "");
 const QUIET = Boolean(flags.get("quiet"));
 const TIMEOUT = 25_000;
+const INDEXNOW_KEY = String(flags.get("key") || process.env.INDEXNOW_KEY || "0f5329cd354566f96c0ccb6fdc4a86ac");
 
 const UA_YANDEX = "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)";
 const UA_GPT = "Mozilla/5.0 (compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot)";
@@ -174,7 +176,7 @@ function check(name, ok, detail = "") {
 
 // ----------------------------- robots.txt ----------------------------------
 
-if (!QUIET) console.log(`\nПроверяем ${BASE}\n\nrobots.txt и llms.txt`);
+if (!QUIET) console.log(`\nПроверяем ${BASE}\n\nrobots.txt, llms.txt и IndexNow`);
 /**
  * Закрыт ли бот в robots.txt: либо своя секция с «Disallow: /», либо секция
  * «*» с полным запретом и отсутствием собственной секции у бота.
@@ -201,6 +203,18 @@ function botBlocked(robots, bot) {
   const { status, text } = await fetchText("/llms.txt", UA_GPT);
   check("llms.txt отвечает 200", status === 200, `HTTP ${status}`);
   check("llms.txt содержит карту услуг", /Кондиционеры|вентиляц/i.test(text));
+}
+
+{
+  const keyPath = `/${INDEXNOW_KEY}.txt`;
+  const { status, text } = await fetchText(keyPath);
+  const body = text.trim();
+  check(`IndexNow: файл ключа (${keyPath}) отвечает 200`, status === 200, `HTTP ${status}`);
+  check(
+    "IndexNow: содержимое файла совпадает с ключом",
+    status === 200 && body === INDEXNOW_KEY,
+    body === INDEXNOW_KEY ? `${BASE}${keyPath}` : body.slice(0, 40) || "пусто",
+  );
 }
 
 // ------------------------- страницы и статьи --------------------------------
