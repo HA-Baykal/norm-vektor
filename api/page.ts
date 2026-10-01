@@ -1,5 +1,6 @@
 // api/page.ts (Оптимизированная версия для ТОП-1 с уникализированным контентом)
 import articlesData from "../src/data/articlesData";
+import { AI_ANSWERS, type AiAnswer } from "../src/data/aiAnswers";
 import { SITE_ORIGIN, normalizePath, resolveLegacyRedirect } from "../src/constants/redirects";
 import { LEGAL_DOCS, legalDocToHtml } from "../src/data/legal";
 export const config = { runtime: "edge" };
@@ -91,6 +92,162 @@ function buildBreadcrumbJsonLd(path: string, page: Page): string {
   // id совпадает с клиентским хуком useBreadcrumb — React перезапишет
   // этот же тег, а не создаст дубль разметки
   return `<script id="seo-breadcrumb-schema" type="application/ld+json">${JSON.stringify(schema)}</script>`;
+}
+
+// ============================================================
+// «Цитируемые» блоки для ИИ-поиска (Яндекс Нейро, Алиса, ChatGPT Search,
+// Perplexity, Google AI Overviews).
+//
+// Генеративный ответ собирается из короткого самодостаточного фрагмента:
+// определение + проверяемые цифры + пары «вопрос → ответ». Поэтому для
+// главных коммерческих страниц (/okna, /kondicionery, /ventilyaciya,
+// /almaznoe-burenie) в серверный HTML добавляются:
+//   1) абзац «Короткий ответ» первым экраном;
+//   2) таблица «Цены и сроки» с цифрами;
+//   3) блок частых вопросов;
+//   4) JSON-LD FAQPage (вопросы совпадают с видимым текстом) и Service/Offer.
+// Источник текста — src/data/aiAnswers.ts: тот же материал рендерится
+// человеку на странице услуги, требование поисковиков соблюдено.
+// ============================================================
+
+const BUSINESS_ID = SITE_ORIGIN;
+
+function aiFactsTableHtml(ai: AiAnswer): string {
+  const rows = ai.facts
+    .map((f) => `<tr><th>${esc(f.label)}</th><td>${esc(f.value)}</td></tr>`)
+    .join("\n        ");
+  return `<h2>Цены и сроки</h2>
+      <table>
+        <tr><th>Параметр</th><th>Значение</th></tr>
+        ${rows}
+      </table>`;
+}
+
+function aiFaqHtml(ai: AiAnswer): string {
+  const items = ai.faq.map((f) => `<h3>${esc(f.q)}</h3>\n      <p>${esc(f.a)}</p>`).join("\n      ");
+  return `<h2>Частые вопросы</h2>
+      ${items}
+      <p>Цены и сроки актуальны на ${esc(ai.updated)}. Точную смету называем после бесплатного замера.</p>`;
+}
+
+function enrichPageWithAiAnswer(page: Page, ai: AiAnswer): Page {
+  return {
+    ...page,
+    bodyHtml: `<p><strong>Короткий ответ:</strong> ${esc(ai.shortAnswer)}</p>\n    ${page.bodyHtml}\n    ${aiFactsTableHtml(ai)}\n    ${aiFaqHtml(ai)}`,
+  };
+}
+
+/**
+ * JSON-LD для страницы услуги: FAQPage (по видимым вопросам) и Service
+ * с ценой «от», географией и ссылкой на LocalBusiness главной (@id).
+ */
+function buildFaqPageJsonLd(path: string, items: { q: string; a: string }[]): string {
+  const url = `${SITE_ORIGIN}${path}`;
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${url}#faq`,
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  });
+}
+
+interface ServiceSpec {
+  name: string;
+  serviceType: string;
+  priceFrom: number;
+  priceCurrency?: string;
+}
+
+/** JSON-LD Service с ценой «от», географией и ссылкой на карточку компании. */
+function buildServiceJsonLd(path: string, spec: ServiceSpec): string {
+  const url = `${SITE_ORIGIN}${path}`;
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: spec.name,
+    serviceType: spec.serviceType,
+    url,
+    provider: { "@id": BUSINESS_ID },
+    areaServed: [
+      { "@type": "City", name: "Иркутск" },
+      { "@type": "City", name: "Ангарск" },
+      { "@type": "City", name: "Шелехов" },
+      { "@type": "AdministrativeArea", name: "Иркутский район" },
+    ],
+    offers: {
+      "@type": "Offer",
+      price: spec.priceFrom,
+      priceCurrency: spec.priceCurrency || "RUB",
+      availability: "https://schema.org/InStock",
+      url,
+    },
+  });
+}
+
+/**
+ * Посадочные страницы под-услуг: у них нет ИИ-блока с вопросами (там своя
+ * структура), но Service/Offer для генеративного поиска нужен — по этим
+ * запросам ИИ отвечает «сколько стоит монтаж окон / чистка кондиционера».
+ */
+const SUB_SERVICE_SCHEMAS: Record<string, ServiceSpec> = {
+  "/montazh-okon": {
+    name: "Монтаж ПВХ окон в Иркутске",
+    serviceType: "Монтаж пластиковых окон по ГОСТ 30971-2012",
+    priceFrom: 2400,
+  },
+  "/montazh-kondicionerov": {
+    name: "Монтаж кондиционеров в Иркутске",
+    serviceType: "Монтаж сплит-систем под ключ",
+    priceFrom: 18400,
+  },
+  "/servis-kondicionerov": {
+    name: "Сервис и чистка кондиционеров в Иркутске",
+    serviceType: "Обслуживание и ремонт кондиционеров",
+    priceFrom: 3000,
+  },
+  "/osteklenie-balkonov": {
+    name: "Остекление балконов и лоджий в Иркутске",
+    serviceType: "Остекление балконов под ключ",
+    priceFrom: 38000,
+  },
+};
+
+/** JSON-LD Article для статей базы знаний (совпадает по @id с клиентским). */
+function buildArticleJsonLd(path: string, article: Article): string {
+  const url = `${SITE_ORIGIN}${path}`;
+  const pubDate = article.date ? `${article.date}T08:00:00+08:00` : "2026-01-15T08:00:00+08:00";
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": url,
+    headline: article.title,
+    description: article.metaDescription || article.excerpt || article.summary || "",
+    image: `${SITE_ORIGIN}/images/hero-bg.jpg`,
+    author: { "@type": "Organization", name: "Вектор Комфорта", url: SITE_ORIGIN },
+    publisher: {
+      "@type": "Organization",
+      name: "Вектор Комфорта",
+      logo: { "@type": "ImageObject", url: `${SITE_ORIGIN}/favicon.png` },
+    },
+    datePublished: pubDate,
+    dateModified: "2026-08-24T08:00:00+08:00",
+    articleSection: article.category,
+    keywords: `${article.category}, Иркутск, Вектор Комфорта`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+  });
+}
+
+function buildAiJsonLd(path: string, ai: AiAnswer): string {
+  const url = `${SITE_ORIGIN}${path}`;
+  const faqPage = JSON.parse(buildFaqPageJsonLd(path, ai.faq));
+
+  return `<script type="application/ld+json">${JSON.stringify(faqPage)}</script>
+<script type="application/ld+json">${buildServiceJsonLd(path, ai.schema)}</script>`;
 }
 
 // ============================================================
@@ -1261,8 +1418,8 @@ export default async function handler(req: Request): Promise<Response> {
     });
   }
 
-  const page = PAGES[path] || buildLegalPage(path) || buildGeoPage(path) || buildArticlePage(path);
-  if (!page) {
+  const basePage = PAGES[path] || buildLegalPage(path) || buildGeoPage(path) || buildArticlePage(path);
+  if (!basePage) {
     // Честный 404: статус отдаёт сервер, а оболочку SPA сохраняем —
     // React отрисует оформленную страницу «Такой страницы нет», а не голую заглушку.
     const isAssetLike = ASSET_LIKE_PATH.test(path);
@@ -1293,6 +1450,11 @@ export default async function handler(req: Request): Promise<Response> {
       },
     });
   }
+
+  // ИИ-блоки: короткий ответ + цифры + частые вопросы для главных услуг.
+  // Тот же материал виден человеку на странице (src/data/aiAnswers.ts).
+  const aiAnswer = AI_ANSWERS[path];
+  const page = aiAnswer ? enrichPageWithAiAnswer(basePage, aiAnswer) : basePage;
 
   // Берём базовый index.html, чтобы сохранить разметку, скрипты и стили
   let html = await fetchShell(req);
@@ -1329,12 +1491,33 @@ export default async function handler(req: Request): Promise<Response> {
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(path, page);
   html = html.replace(/<\/head>/i, `${breadcrumbJsonLd}\n</head>`);
 
+  // FAQPage + Service/Offer для главных услуг (разметка по видимым вопросам)
+  if (aiAnswer) {
+    html = html.replace(/<\/head>/i, `${buildAiJsonLd(path, aiAnswer)}\n</head>`);
+  } else if (SUB_SERVICE_SCHEMAS[path]) {
+    const ld = `<script type="application/ld+json">${buildServiceJsonLd(path, SUB_SERVICE_SCHEMAS[path])}</script>`;
+    html = html.replace(/<\/head>/i, `${ld}\n</head>`);
+  }
+
   if (path.startsWith("/baza-znaniy/")) {
     const slug = path.replace("/baza-znaniy/", "");
     const art = (articlesData as Record<string, any>)[slug];
     const pubDateIso = art?.date ? `${art.date}T08:00:00+08:00` : "2026-01-15T08:00:00+08:00";
     const articleMeta = `<meta property="article:published_time" content="${pubDateIso}" />\n<meta property="article:modified_time" content="2026-08-24T08:00:00+08:00" />\n<meta property="article:author" content="Вектор Комфорта" />\n`;
     html = html.replace(/<\/head>/i, `${articleMeta}</head>`);
+
+    // Article для краулеров (совпадает по @id с клиентской разметкой)
+    if (art) {
+      const articleLd = `<script type="application/ld+json">${buildArticleJsonLd(path, art as Article)}</script>`;
+      html = html.replace(/<\/head>/i, `${articleLd}\n</head>`);
+    }
+
+    // FAQPage для статей: вопросы уже видны в статье (BlogArticle.tsx),
+    // разметка помогает Нейро и AI Overviews забирать пары «вопрос → ответ»
+    if (art?.faq?.length) {
+      const faqLd = `<script type="application/ld+json">${buildFaqPageJsonLd(path, art.faq)}</script>`;
+      html = html.replace(/<\/head>/i, `${faqLd}\n</head>`);
+    }
   }
 
   // Статический контент для краулеров без JS (клиентский React затем перерисует страницу).

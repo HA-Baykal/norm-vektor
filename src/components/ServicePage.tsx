@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
-import { useBreadcrumb } from "../utils/useSeo";
+import { useBreadcrumb, useFaqSchema } from "../utils/useSeo";
 
 interface ServicePageProps {
   title: string;
@@ -19,6 +19,21 @@ interface ServicePageProps {
   photosIcon?: string;
   /** Заголовок блока с фотографиями работ (оставлено для совместимости страниц услуг) */
   photosTitle?: string;
+  /**
+   * «Короткий ответ» для ИИ-поиска: 200–450 знаков с ценой, сроком и гео.
+   * Данные — src/data/aiAnswers.ts (тот же текст уходит в серверный HTML).
+   */
+  shortAnswer?: string;
+  /** Цифры под коротким ответом: цена, срок, гарантия, география. */
+  facts?: { label: string; value: string }[];
+  /**
+   * Пары «вопрос → ответ». Если переданы — рендерится видимый блок
+   * «Частые вопросы» и JSON-LD FAQPage. Если у страницы уже есть свой блок
+   * вопросов, faq не передаём: страница сама вызывает useFaqSchema().
+   */
+  faq?: { q: string; a: string }[];
+  /** Дата сверки цифр, показывается под коротким ответом. */
+  answerUpdated?: string;
 }
 
 export default function ServicePage({
@@ -33,12 +48,19 @@ export default function ServicePage({
   breadcrumbPath,
   ctaLabel,
   ctaHref,
+  shortAnswer,
+  facts,
+  faq,
+  answerUpdated,
 }: ServicePageProps) {
   // JSON-LD хлебные крошки (Schema.org BreadcrumbList) — P2-3 SEO-аудита
   useBreadcrumb([
     { name: "Главная", path: "/" },
     { name: breadcrumb, path: breadcrumbPath },
   ]);
+
+  // JSON-LD FAQPage — только когда вопросы реально видны на странице
+  useFaqSchema(faq);
 
   return (
     <>
@@ -104,6 +126,46 @@ export default function ServicePage({
         </div>
       </section>
 
+      {/* Короткий ответ для ИИ-поиска и людей: цена, срок, гарантия, гео.
+          Тот же текст уходит краулеру в серверном HTML (api/page.ts). */}
+      {shortAnswer && (
+        <section className="bg-white border-b border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-7">
+              <p className="text-xs font-black uppercase tracking-widest text-[#ff6b35]">
+                Короткий ответ
+              </p>
+              <p className="mt-2 text-base sm:text-lg leading-8 text-slate-800">{shortAnswer}</p>
+              {facts && facts.length > 0 && (
+                <dl className="mt-5 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {facts.map((f) => (
+                    <div key={f.label} className="rounded-xl bg-white border border-slate-200 px-4 py-3">
+                      <dt className="text-[11px] font-bold uppercase tracking-wide text-slate-500">
+                        {f.label}
+                      </dt>
+                      <dd className="mt-1 text-sm font-bold text-[#1a3a5c]">{f.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              {answerUpdated && (
+                <p className="mt-4 text-xs text-slate-500">
+                  Цены и сроки актуальны на{" "}
+                  {new Date(answerUpdated).toLocaleDateString("ru-RU", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                    // Иркутск: дата не должна «уезжать» на день назад в других часовых поясах
+                    timeZone: "Asia/Irkutsk",
+                  })}{" "}
+                  Точную смету называем после бесплатного замера.
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Преимущества */}
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4">
@@ -167,6 +229,31 @@ export default function ServicePage({
           </div>
         </div>
       </section>
+
+      {/* Частые вопросы: видимый блок + JSON-LD FAQPage (useFaqSchema выше).
+          Страницы, у которых уже есть свой блок вопросов, faq не передают. */}
+      {faq && faq.length > 0 && (
+        <section className="py-16 md:py-20 bg-slate-50 dark:bg-slate-900/50">
+          <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white text-center mb-10">
+              Частые вопросы
+            </h2>
+            <div className="space-y-4">
+              {faq.map((item) => (
+                <div
+                  key={item.q}
+                  className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
+                >
+                  <h3 className="font-bold text-slate-900 dark:text-white">{item.q}</h3>
+                  <p className="mt-2 text-sm sm:text-base leading-7 text-slate-600 dark:text-slate-400">
+                    {item.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA с формой */}
       <section className="py-16 md:py-20">

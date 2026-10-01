@@ -1610,4 +1610,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/baza-znaniy/montazhnyj-shov-pochemu-on-tak-vazhen-pri-montazhe-okon</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vektor-komforta.ru/baza-znaniy/remont-okon-v-irkutske-kogda-deshevle-pochinit-chem-menyat</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -4,11 +4,17 @@ import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import CatalogConditioners from "../components/CatalogConditioners";
 import Reviews from "../components/Reviews";
+import { AI_ANSWERS } from "../data/aiAnswers";
+import { useFaqSchema } from "../utils/useSeo";
+
+const KONDICIONERY = AI_ANSWERS["/kondicionery"];
 
 const SITE_ORIGIN = "https://www.vektor-komforta.ru";
 const CLEAN_CANONICAL = `${SITE_ORIGIN}/kondicionery`;
 
 export default function AC() {
+  // FAQPage: вопросы видимого блока ниже — тот же массив, что уходит в разметку
+  useFaqSchema(KONDICIONERY.faq);
   // SEO для /kondicionery — швейцарские часы: canonical всегда чистый, фильтры ?type= -> noindex,follow
   useEffect(() => {
     const titleText = "Кондиционеры в Иркутске от 17 351 ₽ — купить с установкой за 1 день | Вектор Комфорта";
@@ -66,6 +72,9 @@ export default function AC() {
     const serviceSchema = {
       "@context": "https://schema.org",
       "@type": "Service",
+      // @id совпадает с серверной разметкой (api/page.ts) — поисковик
+      // склеивает клиентскую и серверную схему в одну сущность
+      "@id": "https://www.vektor-komforta.ru/kondicionery#service",
       "name": "Установка кондиционеров в Иркутске",
       "description": "Продажа и монтаж кондиционеров в Иркутске. Инверторные и обычные сплит-системы. Гарантия 3-5 лет.",
       "provider": {
@@ -168,6 +177,9 @@ export default function AC() {
         intro="Продажа большого выбора моделей кондиционеров и профессиональный монтаж. Монтируем в квартирах, домах, магазинах, офисах и коммерческих зданиях. Выполняем обслуживание, чистку, диагностику и заправку фреона."
         breadcrumb="Кондиционеры в Иркутске"
         breadcrumbPath="/kondicionery"
+        shortAnswer={KONDICIONERY.shortAnswer}
+        facts={KONDICIONERY.facts}
+        answerUpdated={KONDICIONERY.updated}
         advantages={[
           { icon: "🏅", title: "Подбор модели", text: "Поможем выбрать кондиционер по площади, уровню шума, бюджету и режимам работы" },
           { icon: "📦", title: "Большой выбор", text: "Настенные, кассетные, канальные, мульти-сплит, VRF/VRV. Под любой бюджет" },
@@ -273,10 +285,9 @@ export default function AC() {
           <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
             <h3 className="font-black text-[#1a3a5c]">Частые вопросы про кондиционеры в Иркутске</h3>
             <div className="mt-3 grid sm:grid-cols-2 gap-4 text-xs leading-6 text-slate-700">
-              <div><strong>Сколько стоит установка?</strong> 07–12 от 18 400 ₽, 18–24 от 20 100 ₽ под ключ — трасса 3 м и вакуумирование.</div>
-              <div><strong>Инвертор или обычный?</strong> В квартиру на каждый день — инвертор (тише на 40%, экономит свет). На дачу эпизодически — обычный дешевле.</div>
-              <div><strong>Что выбрать на 35 м²?</strong> Берите 12 (3.5 кВт) — поищите фильтр «до 35 м²» в каталоге.</div>
-              <div><strong>Быстрый монтаж?</strong> Да, за 3–4 часа, с пылесосом без пыли, гарантия по договору.</div>
+              {KONDICIONERY.faq.map((item) => (
+                <div key={item.q}><strong>{item.q}</strong> {item.a}</div>
+              ))}
             </div>
           </div>
         </div>
