@@ -1,6 +1,7 @@
 // api/page.ts (Оптимизированная версия для ТОП-1 с уникализированным контентом)
 import articlesData from "../src/data/articlesData";
 import blogIndexData, { type BlogIndexEntry } from "../src/data/blogIndexData";
+import { relatedFor } from "../src/data/articleLinks";
 import { AI_ANSWERS, type AiAnswer } from "../src/data/aiAnswers";
 import { SITE_ORIGIN, normalizePath, resolveLegacyRedirect } from "../src/constants/redirects";
 import { LEGAL_DOCS, legalDocToHtml } from "../src/data/legal";
@@ -1335,6 +1336,17 @@ function buildArticlePage(path: string): Page | null {
     for (const f of article.faq) {
       bodyHtml += `<h3>${esc(f.q)}</h3>\n<p>${esc(f.a)}</p>\n`;
     }
+  }
+
+  // Перелинковка — тот же список, что и в браузере (src/data/articleLinks.ts):
+  // раньше ссылки рисовались только в JavaScript, и краулер их не видел.
+  const related = relatedFor(m[1]);
+  if (related.length > 0) {
+    bodyHtml += "\n<h2>Читайте также</h2>\n<ul>\n";
+    for (const link of related) {
+      bodyHtml += `<li><a href="${esc(link.to)}">${esc(link.title.replace(/^→\s*/u, ""))}</a></li>\n`;
+    }
+    bodyHtml += "</ul>\n";
   }
 
   return { title, description, h1, bodyHtml };

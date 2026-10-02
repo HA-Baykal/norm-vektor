@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "serve:local": "node scripts/serve-local.mjs",
+    "audit:baza": "node scripts/audit-baza-znaniy.mjs",
     "check:seo": "node scripts/check-seo.mjs",
     "check:seo:local": "node scripts/check-seo.mjs http://localhost:4173",
     "indexnow": "node scripts/indexnow.mjs"

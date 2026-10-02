@@ -1,113 +1,38 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
-import { runInNewContext } from "node:vm";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { LEGACY_PATTERN_REDIRECTS, LEGACY_REDIRECTS, toNetlifyPattern } from "./src/constants/redirects";
 import { windowsCatalogData } from "./src/data/windowsCatalog";
+import { conditioners } from "./src/data/conditioners";
+import { readArticleContent, syncGeneratedFiles } from "./scripts/lib/baza-znaniy.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-function makeBlogIndexEntries(parsedArticles: Record<string, any>) {
-  const categoryIcons: Record<string, string> = {
-    "Окна": "🪟",
-    "Кондиционеры": "❄️",
-    "Вентиляция": "💨",
-    "Алмазное бурение": "🔩",
-  };
-
-  return Object.entries(parsedArticles)
-    .map(([slug, article]) => {
-      if (!article.title || !article.date || !article.category) {
-        throw new Error(`У статьи ${slug} отсутствуют обязательные поля title/date/category`);
-      }
-      const contentText = (article.content || [])
-        .flatMap((block: any) => block.type === "list" ? block.items || [] : [block.text || ""])
-        .join(" ");
-      const wordCount = `${article.summary || ""} ${contentText}`.match(/[\p{L}\p{N}]+/gu)?.length || 0;
-      const sourceExcerpt = article.excerpt || article.summary || contentText || article.title;
-      const excerpt = sourceExcerpt.length > 220
-        ? `${sourceExcerpt.slice(0, 219).replace(/\s+\S*$/u, "").trimEnd()}…`
-        : sourceExcerpt;
-
-      return {
-        slug,
-        date: article.date,
-        title: article.title,
-        excerpt,
-        category: article.category,
-        icon: categoryIcons[article.category] || "📘",
-        readTime: `${Math.max(1, Math.ceil(wordCount / 180))} мин`,
-      };
-    })
-    .sort((a, b) => (b.date || "").localeCompare(a.date || "") || a.slug.localeCompare(b.slug));
-}
-
-function writeBlogIndexData(parsedArticles: Record<string, any>) {
-  const entries = makeBlogIndexEntries(parsedArticles);
-  const out = `// AUTO-GENERATED from src/pages/BlogArticle.tsx; do not edit by hand.\nexport interface BlogIndexEntry { slug: string; date: string; title: string; excerpt: string; category: string; icon: string; readTime: string }\nconst blogIndexData: BlogIndexEntry[] = ${JSON.stringify(entries)};\nexport default blogIndexData;\n`;
-  fs.writeFileSync(path.resolve(__dirname, "src/data/blogIndexData.ts"), out, "utf-8");
-}
-
-function generateBlogIndexData() {
-  const blogPath = path.resolve(__dirname, "src/pages/BlogArticle.tsx");
-  const blogSrc = fs.readFileSync(blogPath, "utf-8");
-  const marker = "const articleContent: Record<string, Article> = {";
-  const start = blogSrc.indexOf(marker);
-  const end = blogSrc.indexOf("};\nexport default function BlogArticle", start);
-  if (start === -1 || end === -1) throw new Error("Не найден блок articleContent в BlogArticle.tsx");
-  const objectCode = blogSrc.slice(start + marker.length - 1, end + 1);
-  const parsedArticles = runInNewContext(`(${objectCode})`) as Record<string, any>;
-  writeBlogIndexData(parsedArticles);
-}
-
-const blogIndexDataGenerator = () => ({
-  name: "blog-index-data-generator",
-  buildStart() {
-    try {
-      generateBlogIndexData();
-    } catch (error) {
-      console.error("[Blog index] Не удалось сгенерировать список статей:", error);
-      throw error;
-    }
-  },
-});
 
 // Автоматический SEO-генератор карты сайта (Sitemap.xml) и базы для Vercel API
 const seoSitemapAndApiGenerator = () => ({
   name: "seo-sitemap-and-api-generator",
   closeBundle() {
     try {
-      const catPath = path.resolve(__dirname, "src/components/CatalogConditioners.tsx");
-      if (!fs.existsSync(catPath)) return;
-      const content = fs.readFileSync(catPath, "utf-8");
-
-      // 1. Экспорт всех моделей кондиционеров в JSON для Vercel API
-      const startMarker = "export const conditioners: Conditioner[] = ";
-      const startIndex = content.indexOf(startMarker);
-      let parsedCatalog: any[] = [];
-      if (startIndex !== -1) {
-        const afterStart = content.slice(startIndex + startMarker.length);
-        const endIndex = afterStart.indexOf("];\n");
-        if (endIndex !== -1) {
-          const arrayCode = afterStart.slice(0, endIndex + 1);
-          try {
-            parsedCatalog = eval(`(${arrayCode})`);
-            const apiDataPath = path.resolve(__dirname, "api/catalog-data.json");
-            if (fs.existsSync(path.dirname(apiDataPath))) {
-              fs.writeFileSync(apiDataPath, JSON.stringify({
-                conditioners: parsedCatalog,
-                windows: windowsCatalogData
-              }, null, 2), "utf-8");
-              console.log(`[Vercel API Data] Успешно обновлена серверная база (${parsedCatalog.length} кондиционеров и ${windowsCatalogData.length} решений по окнам)!`);
-            }
-          } catch (e) {
-            console.error("[Vercel API Data] Ошибка экспорта данных для Vercel:", e);
-          }
-        }
+      // 1. Экспорт всех моделей кондиционеров в JSON для Vercel API.
+      // Данные берём импортом из src/data/conditioners.ts: раньше массив
+      // выковыривался из компонента текстовым поиском строки "];" и на файле
+      // с CRLF молча выходил пустым — из карты сайта пропадали 177 карточек,
+      // а серверная база оставалась старой.
+      const parsedCatalog: any[] = conditioners;
+      if (!parsedCatalog.length) {
+        throw new Error("Каталог кондиционеров пуст — проверьте src/data/conditioners.ts");
+      }
+      const apiDataPath = path.resolve(__dirname, "api/catalog-data.json");
+      if (fs.existsSync(path.dirname(apiDataPath))) {
+        fs.writeFileSync(apiDataPath, JSON.stringify({
+          conditioners: parsedCatalog,
+          windows: windowsCatalogData
+        }, null, 2), "utf-8");
+        console.log(`[Vercel API Data] Обновлена серверная база (${parsedCatalog.length} кондиционеров и ${windowsCatalogData.length} решений по окнам)`);
       }
 
       // 2. Генерация карты сайта Sitemap.xml (Яндекс и Google)
@@ -150,77 +75,25 @@ const seoSitemapAndApiGenerator = () => ({
         ...cityPages
       ];
 
-      // Статьи базы знаний
-      const blogSlugs = [
-        "vakio-pritochno-vytyazhnaya-ustanovka",
-        "kak-vybrat-konditsioner-po-ploshchadi",
-        "invertornyy-ili-obychnyy-konditsioner",
-        "okna-veka-vs-rehau-chto-luchshe-dlya-irkutska",
-        "kakie-plastikovye-okna-vybrat",
-        "pochemu-ventilyatsiya-stoit-dorogo",
-        "zachem-nuzhna-ventilyatsiya",
-        "mozhno-li-zabolet-ot-konditsionera",
-        "invertornyy-konditsioner-stoit-li-pereplachivat",
-        "skolko-stoit-ustanovka-konditsionera-irkutsk",
-        "skolko-stoyat-plastikovye-okna-irkutsk",
-        "brizer-ili-rekuperator-chto-vybrat",
-        "pochemu-poteyut-plastikovye-okna",
-        "nuzhno-li-obsluzhivat-konditsioner",
-        "top-10-konditsionerov-irkutsk-2026",
-        "almaznoe-burenie-tsena-i-tehnologiya",
-        "osteklenie-balkonov-tseny-po-variantam",
-        "montazh-konditsionera-po-gostu-chek-list",
-        "zapravka-konditsionera-freonom-kogda-i-skolko",
-        "ventilyatsiya-v-chastnom-dome",
-        "okna-dlya-doma-iz-brusa",
-        "duet-iz-plastikovogo-okna",
-        "okna-propyskayut-shum",
-        "zimniy-letniy-rezhim-okon",
-        "energosberegayushchiy-steklopaket-i-steklo",
-        "mozhno-li-obedinit-balkon-s-komnatoi",
-        "kuda-veshat-konditsioner",
-        "konditsioner-na-obogrev-zimoy",
-        "konditsioner-ploho-holodit",
-        "zapah-iz-konditsionera",
-        "kapaet-voda-iz-konditsionera",
-        "tipy-konditsionerov-split-kassetnyy-kanalnyy",
-        "mobilnyy-konditsioner-ili-split-sistema",
-        "pochemu-shumit-konditsioner",
-        "brizer-chto-eto",
-        "brizer-ili-konditsioner",
-        "klapan-brizer-ili-rekuperator",
-        "pochemu-v-kvartire-dushno-co2",
-        "vytyazhka-ne-rabotaet-i-zapahi-ot-sosedey",
-        "mozhno-li-sverlit-nesushchuyu-stenu",
-        "pochemu-montazh-okon-stoit-dorozhe"
-      ];
-      // Единственный источник для RSS, SSR-маршрутов и Sitemap — articleContent.
-      // Статический список выше остаётся безопасным fallback, если экспорт не удался.
-      let articleSlugs: string[] = [...blogSlugs];
-      let articleModifiedDates: Record<string, string> = {};
-      try {
-        const blogPath = path.resolve(__dirname, "src/pages/BlogArticle.tsx");
-        const blogSrc = fs.readFileSync(blogPath, "utf-8");
-        const artStartMarker = "const articleContent: Record<string, Article> = {";
-        const artStart = blogSrc.indexOf(artStartMarker);
-        const artEnd = blogSrc.indexOf("};\nexport default function BlogArticle");
-        if (artStart !== -1 && artEnd !== -1) {
-          const articleCode = blogSrc.slice(artStart + artStartMarker.length - 1, artEnd + 1);
-          const parsedArticles = eval(`(${articleCode})`);
-          articleSlugs = Object.keys(parsedArticles);
-          articleModifiedDates = Object.fromEntries(
-            Object.entries(parsedArticles)
-              .filter(([, article]: [string, any]) => /^\d{4}-\d{2}-\d{2}$/u.test(article.modifiedDate || ""))
-              .map(([slug, article]: [string, any]) => [slug, article.modifiedDate])
-          );
-          const outTs = `// AUTO-GENERATED\nconst articlesData = ${JSON.stringify(parsedArticles)};\nexport default articlesData;\n`;
-          fs.writeFileSync(path.resolve(__dirname, "src/data/articlesData.ts"), outTs, "utf-8");
-          writeBlogIndexData(parsedArticles);
-          console.log(`[RSS] Экспортировано ${articleSlugs.length} статей для RSS-ленты Дзена`);
-        }
-      } catch (e) {
-        console.error("[RSS] Ошибка экспорта статей для RSS:", e);
+      // Статьи базы знаний. Единственный источник для RSS, SSR-маршрутов,
+      // карточек списка и Sitemap — articleContent. Разбор общий с проверкой
+      // (scripts/lib/baza-znaniy.mjs) и не зависит от переводов строк: раньше
+      // граница объекта искалась строкой с "\n" и на файле с CRLF статьи
+      // молча пропадали из карты сайта.
+      const parsedArticles: Record<string, any> = readArticleContent();
+      const articleSlugs: string[] = Object.keys(parsedArticles);
+      if (!articleSlugs.length) {
+        // Без статей сборка оставила бы сайт со старым списком и старой картой
+        // сайта — лучше не собраться вовсе.
+        throw new Error("В src/pages/BlogArticle.tsx не нашлось ни одной статьи");
       }
+      const articleModifiedDates: Record<string, string> = Object.fromEntries(
+        Object.entries(parsedArticles)
+          .filter(([, article]: [string, any]) => /^\d{4}-\d{2}-\d{2}$/u.test(article.modifiedDate || ""))
+          .map(([slug, article]: [string, any]) => [slug, article.modifiedDate])
+      );
+      const built = syncGeneratedFiles();
+      console.log(`[Blog] ${built.articles} статей выгружено, ${built.cards} карточек собрано`);
 
       let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
       xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
@@ -370,7 +243,6 @@ const seoSitemapAndApiGenerator = () => ({
 
 export default defineConfig({
   plugins: [
-    blogIndexDataGenerator(),
     react(),
     tailwindcss(),
     seoSitemapAndApiGenerator(),
