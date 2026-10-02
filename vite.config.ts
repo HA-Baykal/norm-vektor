@@ -111,8 +111,8 @@ const seoSitemapAndApiGenerator = () => ({
       }
 
       // 2. Генерация карты сайта Sitemap.xml (Яндекс и Google)
-      // Не указываем lastmod: эта сборка не ведёт журнал изменений отдельных URL,
-      // поэтому дата сборки была бы недостоверным сигналом свежести для всех страниц.
+      // Для статей указываем lastmod только при наличии даты реального редактирования;
+      // дату сборки для остальных URL не подставляем, чтобы не создавать ложный сигнал свежести.
 
       // Все локальные страницы: 17 локаций × (окна + кондиционеры) = 34 URL
       const cityLocations = [
@@ -197,6 +197,7 @@ const seoSitemapAndApiGenerator = () => ({
       // Единственный источник для RSS, SSR-маршрутов и Sitemap — articleContent.
       // Статический список выше остаётся безопасным fallback, если экспорт не удался.
       let articleSlugs: string[] = [...blogSlugs];
+      let articleModifiedDates: Record<string, string> = {};
       try {
         const blogPath = path.resolve(__dirname, "src/pages/BlogArticle.tsx");
         const blogSrc = fs.readFileSync(blogPath, "utf-8");
@@ -207,6 +208,11 @@ const seoSitemapAndApiGenerator = () => ({
           const articleCode = blogSrc.slice(artStart + artStartMarker.length - 1, artEnd + 1);
           const parsedArticles = eval(`(${articleCode})`);
           articleSlugs = Object.keys(parsedArticles);
+          articleModifiedDates = Object.fromEntries(
+            Object.entries(parsedArticles)
+              .filter(([, article]: [string, any]) => /^\d{4}-\d{2}-\d{2}$/u.test(article.modifiedDate || ""))
+              .map(([slug, article]: [string, any]) => [slug, article.modifiedDate])
+          );
           const outTs = `// AUTO-GENERATED\nconst articlesData = ${JSON.stringify(parsedArticles)};\nexport default articlesData;\n`;
           fs.writeFileSync(path.resolve(__dirname, "src/data/articlesData.ts"), outTs, "utf-8");
           writeBlogIndexData(parsedArticles);
@@ -253,10 +259,11 @@ const seoSitemapAndApiGenerator = () => ({
         xml += `  </url>\n`;
       }
 
-      // Добавляем статьи базы знаний в Sitemap
+      // Добавляем статьи базы знаний в Sitemap; lastmod есть только у обновлённых статей.
       for (const b of articleSlugs) {
         xml += `  <url>\n`;
         xml += `    <loc>https://www.vektor-komforta.ru/baza-znaniy/${b}</loc>\n`;
+        if (articleModifiedDates[b]) xml += `    <lastmod>${articleModifiedDates[b]}</lastmod>\n`;
         xml += `    <changefreq>monthly</changefreq>\n`;
         xml += `    <priority>0.7</priority>\n`;
         xml += `  </url>\n`;
