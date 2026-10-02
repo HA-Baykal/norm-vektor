@@ -1,5 +1,6 @@
 // api/page.ts (Оптимизированная версия для ТОП-1 с уникализированным контентом)
 import articlesData from "../src/data/articlesData";
+import blogIndexData, { type BlogIndexEntry } from "../src/data/blogIndexData";
 import { AI_ANSWERS, type AiAnswer } from "../src/data/aiAnswers";
 import { SITE_ORIGIN, normalizePath, resolveLegacyRedirect } from "../src/constants/redirects";
 import { LEGAL_DOCS, legalDocToHtml } from "../src/data/legal";
@@ -220,7 +221,7 @@ const SUB_SERVICE_SCHEMAS: Record<string, ServiceSpec> = {
 /** JSON-LD Article для статей базы знаний (совпадает по @id с клиентским). */
 function buildArticleJsonLd(path: string, article: Article): string {
   const url = `${SITE_ORIGIN}${path}`;
-  const pubDate = article.date ? `${article.date}T08:00:00+08:00` : "2026-01-15T08:00:00+08:00";
+  const pubDate = article.date ? `${article.date}T08:00:00+08:00` : undefined;
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
@@ -234,8 +235,8 @@ function buildArticleJsonLd(path: string, article: Article): string {
       name: "Вектор Комфорта",
       logo: { "@type": "ImageObject", url: `${SITE_ORIGIN}/favicon.png` },
     },
-    datePublished: pubDate,
-    dateModified: "2026-08-24T08:00:00+08:00",
+    ...(pubDate ? { datePublished: pubDate } : {}),
+    ...(article.modifiedDate ? { dateModified: `${article.modifiedDate}T08:00:00+08:00` } : {}),
     articleSection: article.category,
     keywords: `${article.category}, Иркутск, Вектор Комфорта`,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -524,7 +525,7 @@ const PAGES: Record<string, Page> = {
   "/baza-znaniy": {
     title: "База знаний — окна, кондиционеры и вентиляция | Вектор Комфорта, Иркутск",
     description: "Полезные статьи о выборе кондиционера по площади, пластиковых окнах VEKA, бризерах и рекуператорах, монтаже вентиляции. Простые советы от компании Вектор Комфорта, Иркутск.",
-    h1: "База знаний — Вектор Комфорта, Иркутск",
+    h1: "База знаний",
     bodyHtml: `<p>Полезные статьи об окнах, кондиционерах, вентиляции и алмазном бурении от компании «Вектор Комфорта» в Иркутске.</p>`
   },
   "/interier": {
@@ -1264,6 +1265,7 @@ interface Article {
   title: string;
   category: string;
   date?: string;
+  modifiedDate?: string;
   summary?: string;
   excerpt?: string;
   metaDescription?: string;
@@ -1271,13 +1273,31 @@ interface Article {
   faq?: { q: string; a: string }[];
 }
 
+function articleInlineToHtml(text: string): string {
+  const renderPlain = (value: string) => esc(value).replace(/\*\*(.+?)\*\*/gu, "<strong>$1</strong>");
+  const linkPattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+|\/(?!\/)[^\s)]+)\)/gu;
+  let html = "";
+  let lastIndex = 0;
+  for (const match of text.matchAll(linkPattern)) {
+    const start = match.index ?? 0;
+    const label = match[1];
+    const href = match[2];
+    html += renderPlain(text.slice(lastIndex, start));
+    const isExternal = /^https?:\/\//i.test(href);
+    html += `<a href="${esc(href)}"${isExternal ? ' target="_blank" rel="noopener noreferrer"' : ""}>${renderPlain(label)}</a>`;
+    lastIndex = start + match[0].length;
+  }
+  return html + renderPlain(text.slice(lastIndex));
+}
+
 function articleBlockToHtml(block: ArticleBlock): string {
-  if (block.type === "h") return `<h2>${esc(block.text || "")}</h2>`;
+  if (block.type === "h") return `<h2>${articleInlineToHtml(block.text || "")}</h2>`;
   if (block.type === "list") {
-    const items = (block.items || []).map((i) => `<li>${esc(i)}</li>`).join("");
+    const items = (block.items || []).map((item) => `<li>${articleInlineToHtml(item)}</li>`).join("");
     return `<ul>${items}</ul>`;
   }
-  return `<p>${esc(block.text || "")}</p>`;
+  if ((block.text || "").trim() === "---") return `<hr />`;
+  return `<p>${articleInlineToHtml(block.text || "")}</p>`;
 }
 
 // Обрезка до 250 символов для meta description (по границе слова)
@@ -1318,6 +1338,88 @@ function buildArticlePage(path: string): Page | null {
   }
 
   return { title, description, h1, bodyHtml };
+}
+
+function formatRussianDate(dateStr?: string): string {
+  if (!dateStr) return "";
+  const [year, month, day] = dateStr.split("-");
+  const months = [
+    "января", "февраля", "марта", "апреля", "мая", "июня",
+    "июля", "августа", "сентября", "октября", "ноября", "декабря",
+  ];
+  const monthIndex = Number(month) - 1;
+  if (!year || !day || monthIndex < 0 || monthIndex > 11) return dateStr;
+  return `${Number(day)} ${months[monthIndex]} ${year}`;
+}
+
+/** Полный серверный каталог: статьи доступны обычными HTML-ссылками без JavaScript. */
+function buildBlogIndexPage(): Page {
+  const basePage = PAGES["/baza-znaniy"];
+  const grouped = new Map<string, BlogIndexEntry[]>();
+  for (const article of blogIndexData) {
+    const category = article.category || "Полезные материалы";
+    const items = grouped.get(category) || [];
+    items.push(article);
+    grouped.set(category, items);
+  }
+
+  const categories = Array.from(grouped.entries());
+  const categoryNav = `<nav aria-label="Темы базы знаний" style="display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 32px">${categories
+    .map(([category, items], index) => `<a href="#kb-category-${index}" style="display:inline-block;border:1px solid #cbd5e1;border-radius:999px;padding:8px 14px;color:#1a3a5c;text-decoration:none;font-weight:600">${esc(category)} <span style="color:#64748b">${items.length}</span></a>`)
+    .join("")}</nav>`;
+
+  const sections = categories.map(([category, items], index) => {
+    const cards = items.map((article) => {
+      const articleUrl = `/baza-znaniy/${article.slug}`;
+      const dateLabel = formatRussianDate(article.date);
+      const dateHtml = dateLabel
+        ? `<time datetime="${esc(article.date)}" style="color:#64748b;font-size:14px">${esc(dateLabel)}</time>`
+        : "";
+      return `<li style="list-style:none;border:1px solid #e2e8f0;border-radius:18px;background:#fff;padding:20px;box-shadow:0 4px 18px rgba(15,23,42,.05)">
+        <article>
+          <h3 style="margin:0 0 10px;font-size:20px;line-height:1.35"><a href="${esc(articleUrl)}" style="color:#1a3a5c;text-decoration:none">${esc(article.title)}</a></h3>
+          <p style="margin:0 0 14px;color:#475569;line-height:1.65">${esc(article.excerpt)}</p>
+          <p style="display:flex;gap:12px;align-items:center;margin:0;color:#64748b;font-size:14px">${dateHtml}<span>${esc(article.readTime)}</span></p>
+        </article>
+      </li>`;
+    }).join("\n");
+
+    return `<section id="kb-category-${index}" aria-labelledby="kb-category-heading-${index}" style="margin:40px 0">
+      <h2 id="kb-category-heading-${index}" style="margin:0 0 16px;color:#1a3a5c;font-size:28px">${esc(category)}</h2>
+      <ul style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin:0;padding:0">${cards}</ul>
+    </section>`;
+  }).join("\n");
+
+  const bodyHtml = `<section style="max-width:1120px;margin:0 auto;padding:24px 20px;color:#1e293b;font-family:Arial,sans-serif">
+    <p style="max-width:780px;margin:0;color:#475569;font-size:18px;line-height:1.7">В базе знаний — ${blogIndexData.length} практических статей об окнах, кондиционерах, вентиляции и алмазном бурении. Разбираем частые неисправности, выбор оборудования и монтаж в условиях Иркутска.</p>
+    ${categoryNav}
+    ${sections}
+  </section>`;
+
+  return { ...basePage, h1: "База знаний", bodyHtml };
+}
+
+function buildBlogIndexJsonLd(): string {
+  const url = `${SITE_ORIGIN}/baza-znaniy`;
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": url,
+    url,
+    name: "База знаний — окна, кондиционеры и вентиляция | Вектор Комфорта, Иркутск",
+    description: PAGES["/baza-znaniy"].description,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListOrder: "https://schema.org/ItemListOrderDescending",
+      numberOfItems: blogIndexData.length,
+      itemListElement: blogIndexData.map((article, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: article.title,
+        url: `${SITE_ORIGIN}/baza-znaniy/${article.slug}`,
+      })),
+    },
+  });
 }
 
 // ============================================================
@@ -1418,7 +1520,9 @@ export default async function handler(req: Request): Promise<Response> {
     });
   }
 
-  const basePage = PAGES[path] || buildLegalPage(path) || buildGeoPage(path) || buildArticlePage(path);
+  const basePage = path === "/baza-znaniy"
+    ? buildBlogIndexPage()
+    : PAGES[path] || buildLegalPage(path) || buildGeoPage(path) || buildArticlePage(path);
   if (!basePage) {
     // Честный 404: статус отдаёт сервер, а оболочку SPA сохраняем —
     // React отрисует оформленную страницу «Такой страницы нет», а не голую заглушку.
@@ -1491,6 +1595,11 @@ export default async function handler(req: Request): Promise<Response> {
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(path, page);
   html = html.replace(/<\/head>/i, `${breadcrumbJsonLd}\n</head>`);
 
+  if (path === "/baza-znaniy") {
+    const blogIndexLd = `<script id="seo-blog-index-schema" type="application/ld+json">${buildBlogIndexJsonLd()}</script>`;
+    html = html.replace(/<\/head>/i, `${blogIndexLd}\n</head>`);
+  }
+
   // FAQPage + Service/Offer для главных услуг (разметка по видимым вопросам)
   if (aiAnswer) {
     html = html.replace(/<\/head>/i, `${buildAiJsonLd(path, aiAnswer)}\n</head>`);
@@ -1502,20 +1611,24 @@ export default async function handler(req: Request): Promise<Response> {
   if (path.startsWith("/baza-znaniy/")) {
     const slug = path.replace("/baza-znaniy/", "");
     const art = (articlesData as Record<string, any>)[slug];
-    const pubDateIso = art?.date ? `${art.date}T08:00:00+08:00` : "2026-01-15T08:00:00+08:00";
-    const articleMeta = `<meta property="article:published_time" content="${pubDateIso}" />\n<meta property="article:modified_time" content="2026-08-24T08:00:00+08:00" />\n<meta property="article:author" content="Вектор Комфорта" />\n`;
+    const pubDateMeta = art?.date
+      ? `<meta property="article:published_time" content="${art.date}T08:00:00+08:00" />\n`
+      : "";
+    const modifiedMeta = art?.modifiedDate
+      ? `<meta property="article:modified_time" content="${art.modifiedDate}T08:00:00+08:00" />\n`
+      : "";
+    const articleMeta = `${pubDateMeta}${modifiedMeta}<meta property="article:author" content="Вектор Комфорта" />\n`;
     html = html.replace(/<\/head>/i, `${articleMeta}</head>`);
 
-    // Article для краулеров (совпадает по @id с клиентской разметкой)
+    // Структурированные данные создаются сервером; id позволяет клиенту обновить тот же блок без дубликата.
     if (art) {
-      const articleLd = `<script type="application/ld+json">${buildArticleJsonLd(path, art as Article)}</script>`;
+      const articleLd = `<script id="seo-article-schema" type="application/ld+json">${buildArticleJsonLd(path, art as Article)}</script>`;
       html = html.replace(/<\/head>/i, `${articleLd}\n</head>`);
     }
 
-    // FAQPage для статей: вопросы уже видны в статье (BlogArticle.tsx),
-    // разметка помогает Нейро и AI Overviews забирать пары «вопрос → ответ»
+    // FAQPage для статей: вопросы уже видны в статье (BlogArticle.tsx).
     if (art?.faq?.length) {
-      const faqLd = `<script type="application/ld+json">${buildFaqPageJsonLd(path, art.faq)}</script>`;
+      const faqLd = `<script id="seo-faq-schema" type="application/ld+json">${buildFaqPageJsonLd(path, art.faq)}</script>`;
       html = html.replace(/<\/head>/i, `${faqLd}\n</head>`);
     }
   }

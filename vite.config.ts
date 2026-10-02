@@ -1,6 +1,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
+import { runInNewContext } from "node:vm";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -9,6 +10,71 @@ import { windowsCatalogData } from "./src/data/windowsCatalog";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+function makeBlogIndexEntries(parsedArticles: Record<string, any>) {
+  const categoryIcons: Record<string, string> = {
+    "Окна": "🪟",
+    "Кондиционеры": "❄️",
+    "Вентиляция": "💨",
+    "Алмазное бурение": "🔩",
+  };
+
+  return Object.entries(parsedArticles)
+    .map(([slug, article]) => {
+      if (!article.title || !article.date || !article.category) {
+        throw new Error(`У статьи ${slug} отсутствуют обязательные поля title/date/category`);
+      }
+      const contentText = (article.content || [])
+        .flatMap((block: any) => block.type === "list" ? block.items || [] : [block.text || ""])
+        .join(" ");
+      const wordCount = `${article.summary || ""} ${contentText}`.match(/[\p{L}\p{N}]+/gu)?.length || 0;
+      const sourceExcerpt = article.excerpt || article.summary || contentText || article.title;
+      const excerpt = sourceExcerpt.length > 220
+        ? `${sourceExcerpt.slice(0, 219).replace(/\s+\S*$/u, "").trimEnd()}…`
+        : sourceExcerpt;
+
+      return {
+        slug,
+        date: article.date,
+        title: article.title,
+        excerpt,
+        category: article.category,
+        icon: categoryIcons[article.category] || "📘",
+        readTime: `${Math.max(1, Math.ceil(wordCount / 180))} мин`,
+      };
+    })
+    .sort((a, b) => (b.date || "").localeCompare(a.date || "") || a.slug.localeCompare(b.slug));
+}
+
+function writeBlogIndexData(parsedArticles: Record<string, any>) {
+  const entries = makeBlogIndexEntries(parsedArticles);
+  const out = `// AUTO-GENERATED from src/pages/BlogArticle.tsx; do not edit by hand.\nexport interface BlogIndexEntry { slug: string; date: string; title: string; excerpt: string; category: string; icon: string; readTime: string }\nconst blogIndexData: BlogIndexEntry[] = ${JSON.stringify(entries)};\nexport default blogIndexData;\n`;
+  fs.writeFileSync(path.resolve(__dirname, "src/data/blogIndexData.ts"), out, "utf-8");
+}
+
+function generateBlogIndexData() {
+  const blogPath = path.resolve(__dirname, "src/pages/BlogArticle.tsx");
+  const blogSrc = fs.readFileSync(blogPath, "utf-8");
+  const marker = "const articleContent: Record<string, Article> = {";
+  const start = blogSrc.indexOf(marker);
+  const end = blogSrc.indexOf("};\nexport default function BlogArticle", start);
+  if (start === -1 || end === -1) throw new Error("Не найден блок articleContent в BlogArticle.tsx");
+  const objectCode = blogSrc.slice(start + marker.length - 1, end + 1);
+  const parsedArticles = runInNewContext(`(${objectCode})`) as Record<string, any>;
+  writeBlogIndexData(parsedArticles);
+}
+
+const blogIndexDataGenerator = () => ({
+  name: "blog-index-data-generator",
+  buildStart() {
+    try {
+      generateBlogIndexData();
+    } catch (error) {
+      console.error("[Blog index] Не удалось сгенерировать список статей:", error);
+      throw error;
+    }
+  },
+});
 
 // Автоматический SEO-генератор карты сайта (Sitemap.xml) и базы для Vercel API
 const seoSitemapAndApiGenerator = () => ({
@@ -45,8 +111,8 @@ const seoSitemapAndApiGenerator = () => ({
       }
 
       // 2. Генерация карты сайта Sitemap.xml (Яндекс и Google)
-      // Не указываем lastmod: эта сборка не ведёт журнал изменений отдельных URL,
-      // поэтому дата сборки была бы недостоверным сигналом свежести для всех страниц.
+      // Для статей указываем lastmod только при наличии даты реального редактирования;
+      // дату сборки для остальных URL не подставляем, чтобы не создавать ложный сигнал свежести.
 
       // Все локальные страницы: 17 локаций × (окна + кондиционеры) = 34 URL
       const cityLocations = [
@@ -131,6 +197,7 @@ const seoSitemapAndApiGenerator = () => ({
       // Единственный источник для RSS, SSR-маршрутов и Sitemap — articleContent.
       // Статический список выше остаётся безопасным fallback, если экспорт не удался.
       let articleSlugs: string[] = [...blogSlugs];
+      let articleModifiedDates: Record<string, string> = {};
       try {
         const blogPath = path.resolve(__dirname, "src/pages/BlogArticle.tsx");
         const blogSrc = fs.readFileSync(blogPath, "utf-8");
@@ -141,8 +208,14 @@ const seoSitemapAndApiGenerator = () => ({
           const articleCode = blogSrc.slice(artStart + artStartMarker.length - 1, artEnd + 1);
           const parsedArticles = eval(`(${articleCode})`);
           articleSlugs = Object.keys(parsedArticles);
+          articleModifiedDates = Object.fromEntries(
+            Object.entries(parsedArticles)
+              .filter(([, article]: [string, any]) => /^\d{4}-\d{2}-\d{2}$/u.test(article.modifiedDate || ""))
+              .map(([slug, article]: [string, any]) => [slug, article.modifiedDate])
+          );
           const outTs = `// AUTO-GENERATED\nconst articlesData = ${JSON.stringify(parsedArticles)};\nexport default articlesData;\n`;
           fs.writeFileSync(path.resolve(__dirname, "src/data/articlesData.ts"), outTs, "utf-8");
+          writeBlogIndexData(parsedArticles);
           console.log(`[RSS] Экспортировано ${articleSlugs.length} статей для RSS-ленты Дзена`);
         }
       } catch (e) {
@@ -186,10 +259,11 @@ const seoSitemapAndApiGenerator = () => ({
         xml += `  </url>\n`;
       }
 
-      // Добавляем статьи базы знаний в Sitemap
+      // Добавляем статьи базы знаний в Sitemap; lastmod есть только у обновлённых статей.
       for (const b of articleSlugs) {
         xml += `  <url>\n`;
         xml += `    <loc>https://www.vektor-komforta.ru/baza-znaniy/${b}</loc>\n`;
+        if (articleModifiedDates[b]) xml += `    <lastmod>${articleModifiedDates[b]}</lastmod>\n`;
         xml += `    <changefreq>monthly</changefreq>\n`;
         xml += `    <priority>0.7</priority>\n`;
         xml += `  </url>\n`;
@@ -296,6 +370,7 @@ const seoSitemapAndApiGenerator = () => ({
 
 export default defineConfig({
   plugins: [
+    blogIndexDataGenerator(),
     react(),
     tailwindcss(),
     seoSitemapAndApiGenerator(),
