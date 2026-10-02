@@ -1,6 +1,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
+import { runInNewContext } from "node:vm";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -9,6 +10,71 @@ import { windowsCatalogData } from "./src/data/windowsCatalog";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+function makeBlogIndexEntries(parsedArticles: Record<string, any>) {
+  const categoryIcons: Record<string, string> = {
+    "Окна": "🪟",
+    "Кондиционеры": "❄️",
+    "Вентиляция": "💨",
+    "Алмазное бурение": "🔩",
+  };
+
+  return Object.entries(parsedArticles)
+    .map(([slug, article]) => {
+      if (!article.title || !article.date || !article.category) {
+        throw new Error(`У статьи ${slug} отсутствуют обязательные поля title/date/category`);
+      }
+      const contentText = (article.content || [])
+        .flatMap((block: any) => block.type === "list" ? block.items || [] : [block.text || ""])
+        .join(" ");
+      const wordCount = `${article.summary || ""} ${contentText}`.match(/[\p{L}\p{N}]+/gu)?.length || 0;
+      const sourceExcerpt = article.excerpt || article.summary || contentText || article.title;
+      const excerpt = sourceExcerpt.length > 220
+        ? `${sourceExcerpt.slice(0, 219).replace(/\s+\S*$/u, "").trimEnd()}…`
+        : sourceExcerpt;
+
+      return {
+        slug,
+        date: article.date,
+        title: article.title,
+        excerpt,
+        category: article.category,
+        icon: categoryIcons[article.category] || "📘",
+        readTime: `${Math.max(1, Math.ceil(wordCount / 180))} мин`,
+      };
+    })
+    .sort((a, b) => (b.date || "").localeCompare(a.date || "") || a.slug.localeCompare(b.slug));
+}
+
+function writeBlogIndexData(parsedArticles: Record<string, any>) {
+  const entries = makeBlogIndexEntries(parsedArticles);
+  const out = `// AUTO-GENERATED from src/pages/BlogArticle.tsx; do not edit by hand.\nexport interface BlogIndexEntry { slug: string; date: string; title: string; excerpt: string; category: string; icon: string; readTime: string }\nconst blogIndexData: BlogIndexEntry[] = ${JSON.stringify(entries)};\nexport default blogIndexData;\n`;
+  fs.writeFileSync(path.resolve(__dirname, "src/data/blogIndexData.ts"), out, "utf-8");
+}
+
+function generateBlogIndexData() {
+  const blogPath = path.resolve(__dirname, "src/pages/BlogArticle.tsx");
+  const blogSrc = fs.readFileSync(blogPath, "utf-8");
+  const marker = "const articleContent: Record<string, Article> = {";
+  const start = blogSrc.indexOf(marker);
+  const end = blogSrc.indexOf("};\nexport default function BlogArticle", start);
+  if (start === -1 || end === -1) throw new Error("Не найден блок articleContent в BlogArticle.tsx");
+  const objectCode = blogSrc.slice(start + marker.length - 1, end + 1);
+  const parsedArticles = runInNewContext(`(${objectCode})`) as Record<string, any>;
+  writeBlogIndexData(parsedArticles);
+}
+
+const blogIndexDataGenerator = () => ({
+  name: "blog-index-data-generator",
+  buildStart() {
+    try {
+      generateBlogIndexData();
+    } catch (error) {
+      console.error("[Blog index] Не удалось сгенерировать список статей:", error);
+      throw error;
+    }
+  },
+});
 
 // Автоматический SEO-генератор карты сайта (Sitemap.xml) и базы для Vercel API
 const seoSitemapAndApiGenerator = () => ({
@@ -143,6 +209,7 @@ const seoSitemapAndApiGenerator = () => ({
           articleSlugs = Object.keys(parsedArticles);
           const outTs = `// AUTO-GENERATED\nconst articlesData = ${JSON.stringify(parsedArticles)};\nexport default articlesData;\n`;
           fs.writeFileSync(path.resolve(__dirname, "src/data/articlesData.ts"), outTs, "utf-8");
+          writeBlogIndexData(parsedArticles);
           console.log(`[RSS] Экспортировано ${articleSlugs.length} статей для RSS-ленты Дзена`);
         }
       } catch (e) {
@@ -296,6 +363,7 @@ const seoSitemapAndApiGenerator = () => ({
 
 export default defineConfig({
   plugins: [
+    blogIndexDataGenerator(),
     react(),
     tailwindcss(),
     seoSitemapAndApiGenerator(),

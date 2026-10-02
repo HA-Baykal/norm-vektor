@@ -168,16 +168,16 @@ process={[
     <h2 className="text-2xl sm:text-3xl font-black text-[#1a3a5c]">Пластиковые окна в Иркутске — цена, VEKA, монтаж по ГОСТу</h2>
     <div className="mt-6 grid lg:grid-cols-3 gap-6 text-sm leading-7 text-slate-700">
       <div className="space-y-3">
-        <p><strong>Пластиковые окна в Иркутске</strong> от «Вектор Комфорта» — изготовление на заказ по вашим размерам, немецкий профиль <strong>VEKA Softline / WHS 70 мм, 4–5 камер</strong>, замкнутое армирование 1.5 мм, фурнитура <strong>MACO с микропроветриванием</strong>. Цена — <strong>от 11 000 ₽/м²</strong>, балкон под ключ — от 38 000 ₽. Изготовление 5–7 дней, монтаж за 1 день.</p>
+        <p><strong>Пластиковые окна в Иркутске</strong> от «Вектор Комфорта» изготавливаются на заказ. В зависимости от выбранной системы доступны профили VEKA и фурнитура MACO. Цена конструкции начинается от <strong>11 000 ₽/м²</strong>; монтаж рассчитывается отдельно. Точные профиль, стеклопакет, фурнитуру, сроки и состав работ фиксируем в предложении после замера.</p>
         <p>Делаем: одно-, двух-, трёхстворчатые окна, панорамные системы, алюминиевое остекление, крашеные окна RAL 9005, ламинацию золотой дуб/махагон, остекление балконов и лоджий под ключ с утеплением, входные и межкомнатные двери ПВХ и алюминий, витражи и перегородки.</p>
       </div>
       <div className="space-y-3">
-        <p><strong>Почему наш монтаж стоит дороже дешёвых:</strong> ставим на пластиковые клинья (не бруски), шов — три слоя: пена + пароизоляция изнутри + паропроницаемая лента снаружи по ГОСТ 30971, откосы — тёплый сэндвич 10 мм, подоконник — глянцевый. Исключаем продувание и плесень на десятилетия. Бригады — стаж от 7 лет.</p>
-        <p><strong>Стеклопакет для Сибири:</strong> двухкамерный 40 мм с мультифункциональным Solar и аргоном, сопротивление 0.78 м²·°C/Вт (класс А+). Шумоизоляция до 38–42 дБ — улица не слышна. Зимой тепло, летом не жарко.</p>
+        <p><strong>Что важно в монтаже:</strong> в смете и договоре должны быть указаны способ крепления рамы, подготовка проёма, материалы монтажного шва и отделочные работы. Состав узла подбирают под стену и условия объекта; корректный монтаж снижает риск проблем, но не может гарантировать отсутствие конденсата при любых условиях помещения.</p>
+        <p><strong>Стеклопакет подбираем по задаче:</strong> доступны варианты с разными формулами и покрытиями. Теплоизоляция и защита от шума зависят от конкретного стеклопакета и всего оконного блока, а также от примыкания к стене. Перед заказом запросите спецификацию с характеристиками выбранной конструкции.</p>
       </div>
       <div className="space-y-3">
         <p><strong>География:</strong> Иркутск, Ангарск, Шелехов, Хомутово, Молодёжный, Маркова, Грановщина, Карлук, Смоленщина — выезд замерщика 0 ₽ до 50 км. Пн–Сб 9:00–20:00. Замер — 30 минут, расчёт — 15 минут.</p>
-        <p><strong>Гарантия:</strong> 5 лет на профиль, стеклопакет и монтаж по договору. Постгарантийный сервис: регулировка, замена уплотнителей и стеклопакетов. Рассрочка. Звоните +7 (914) 914-66-06 или пишите в MAX — отвечаем за 5 минут.</p>
+        <p><strong>Гарантия:</strong> 5 лет на оконную конструкцию и 1 год на монтажные работы согласно опубликованным условиям. Доступен постгарантийный сервис: регулировка, замена уплотнителей и стеклопакетов. Условия рассрочки уточняйте при оформлении заказа.</p>
         <div className="flex flex-wrap gap-2 pt-2">
           <a href="tel:+79149146606" className="px-5 py-2.5 rounded-full bg-[#ff6b35] text-white font-black text-xs hover:bg-[#e95620]">📞 Позвонить</a>
           <a href="https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full bg-[#1a3a5c] text-white font-black text-xs border border-white/10"><span className="w-5 h-5 rounded bg-white text-[#1a3a5c] grid place-items-center text-[8px] font-black mr-1">MAX</span> Написать в MAX</a>
@@ -186,109 +186,12 @@ process={[
     </div>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
       <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
-        <h3 className="font-black text-[#1a3a5c]">Окна ПВХ под ключ — цена за типовой размер</h3>
-        <p className="mt-1 text-xs leading-5 text-slate-500">Профиль VEKA 70 мм, двухкамерный энергосберегающий стеклопакет, фурнитура MACO. Цена под ключ: изготовление, доставка, монтаж по ГОСТ 30971, откосы, подоконник и отлив.</p>
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full text-left text-xs sm:text-sm">
-            <thead>
-              <tr className="border-b border-slate-200 text-[#1a3a5c]">
-                <th className="py-2 pr-4 font-black">Конструкция</th>
-                <th className="py-2 pr-4 font-black">Размер, мм</th>
-                <th className="py-2 font-black">Цена под ключ</th>
-              </tr>
-            </thead>
-            <tbody className="text-slate-700">
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Одностворчатое окно (поворотно-откидное)</td>
-                <td className="py-2.5 pr-4 text-slate-500">800 × 1400</td>
-                <td className="py-2.5 font-semibold whitespace-nowrap">от 11 900 ₽</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Двухстворчатое окно</td>
-                <td className="py-2.5 pr-4 text-slate-500">1300 × 1400</td>
-                <td className="py-2.5 font-semibold whitespace-nowrap text-[#ff6b35]">от 14 900 ₽</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Окно на кухню</td>
-                <td className="py-2.5 pr-4 text-slate-500">1500 × 1400</td>
-                <td className="py-2.5 font-semibold whitespace-nowrap">от 16 900 ₽</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Трёхстворчатое окно</td>
-                <td className="py-2.5 pr-4 text-slate-500">2000 × 1400</td>
-                <td className="py-2.5 font-semibold whitespace-nowrap">от 21 900 ₽</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Балконный блок (окно + дверь)</td>
-                <td className="py-2.5 pr-4 text-slate-500">2100 × 2100</td>
-                <td className="py-2.5 font-semibold whitespace-nowrap">от 25 900 ₽</td>
-              </tr>
-              <tr>
-                <td className="py-2.5 pr-4">Панорамное окно / остекление лоджии</td>
-                <td className="py-2.5 pr-4 text-slate-500">3000 × 1400</td>
-                <td className="py-2.5 font-semibold whitespace-nowrap">от 32 900 ₽</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p className="mt-3 text-xs leading-5 text-slate-500">Цены указаны для типовых проёмов панельных домов Иркутска. Ламинация, крашеный профиль RAL и нестандартная геометрия считаются отдельно — точную смету даёт замерщик бесплатно.</p>
-      </div>
-    </div>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-      <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
-        <h3 className="font-black text-[#1a3a5c]">Цены на монтаж окон в Иркутске</h3>
-        <p className="mt-1 text-xs leading-5 text-slate-500">Стоимость под ключ с материалами и работой. Точная цена — после бесплатного замера, выезд 0 ₽ до 50 км.</p>
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full text-left text-xs sm:text-sm">
-            <thead>
-              <tr className="border-b border-slate-200 text-[#1a3a5c]">
-                <th className="py-2 pr-4 font-black">Работа</th>
-                <th className="py-2 font-black">Цена</th>
-              </tr>
-            </thead>
-            <tbody className="text-slate-700">
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Монтаж пластикового окна</td>
-                <td className="py-2.5 font-semibold">от 2 400 ₽/шт</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Балконный блок с подоконником и отливом</td>
-                <td className="py-2.5 font-semibold">от 3 700 ₽</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Откосы (сэндвич / ПВХ)</td>
-                <td className="py-2.5 font-semibold">от 500 ₽/п.м</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Подоконник</td>
-                <td className="py-2.5 font-semibold">от 700 ₽/п.м</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Отлив</td>
-                <td className="py-2.5 font-semibold">от 200 ₽/п.м</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Демонтаж старого окна</td>
-                <td className="py-2.5 font-semibold text-[#ff6b35]">0 ₽ при заказе</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Регулировка фурнитуры (зима/лето)</td>
-                <td className="py-2.5 font-semibold">от 800 ₽</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Замена уплотнителя</td>
-                <td className="py-2.5 font-semibold">от 290 ₽/п.м</td>
-              </tr>
-              <tr className="border-b border-slate-100">
-                <td className="py-2.5 pr-4">Москитная сетка</td>
-                <td className="py-2.5 font-semibold">от 1 500 ₽</td>
-              </tr>
-              <tr>
-                <td className="py-2.5 pr-4">Детский замок на створку</td>
-                <td className="py-2.5 font-semibold">от 560 ₽</td>
-              </tr>
-            </tbody>
-          </table>
+        <h3 className="font-black text-[#1a3a5c]">Как рассчитывается стоимость окна</h3>
+        <p className="mt-2 text-sm leading-6 text-slate-600">Опубликованная стартовая цена оконной конструкции — от 11 000 ₽/м². Монтаж рассчитывается отдельно — от 2 400 ₽ за окно. Подоконник, отлив, откосы, доставка, демонтаж и нестандартная комплектация могут влиять на итоговую смету.</p>
+        <p className="mt-2 text-sm leading-6 text-slate-600">Рассчитайте предварительную стоимость в калькуляторе и уточните состав предложения после замера: стартовые цены по отдельным работам не равны цене окна под ключ.</p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <a href="#calculator" className="inline-flex rounded-full bg-[#ff6b35] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#e95620]">Рассчитать предварительную стоимость</a>
+          <Link to="/montazh-okon" className="inline-flex rounded-full border border-slate-300 px-5 py-2.5 text-sm font-bold text-[#1a3a5c] hover:border-[#ff6b35]">Цены и состав монтажа</Link>
         </div>
       </div>
     </div>

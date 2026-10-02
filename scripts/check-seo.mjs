@@ -253,6 +253,35 @@ async function checkSiteLevel() {
     add("sitemap.xml валиден", false, e.message);
   }
 
+  // 7. База знаний должна публиковать обычные HTML-ссылки на каждую статью.
+  try {
+    const [sitemapRes, blogRes] = await Promise.all([
+      fetchWithTimeout(`${BASE}/sitemap.xml`),
+      fetchWithTimeout(`${BASE}/baza-znaniy`),
+    ]);
+    const sitemapXml = await sitemapRes.text();
+    const blogHtml = await blogRes.text();
+    const expectedPaths = [...new Set([...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+      .map((m) => new URL(m[1]).pathname)
+      .filter((path) => /^\/baza-znaniy\/[a-z0-9-]+$/.test(path)))];
+    const actualPaths = new Set(extractInternalLinks(blogHtml)
+      .filter((path) => /^\/baza-znaniy\/[a-z0-9-]+$/.test(path)));
+    const missing = expectedPaths.filter((path) => !actualPaths.has(path));
+    const itemListScript = blogHtml.match(/<script[^>]*id=["']seo-blog-index-schema["'][^>]*>([\s\S]*?)<\/script>/i)?.[1];
+    let itemListCount = 0;
+    try {
+      itemListCount = JSON.parse(itemListScript || "{}").mainEntity?.numberOfItems || 0;
+    } catch {
+      // Counts as missing/invalid below.
+    }
+    const ok = blogRes.status === 200 && expectedPaths.length > 0 && missing.length === 0
+      && actualPaths.size === expectedPaths.length && itemListCount === expectedPaths.length;
+    const detail = `HTTP ${blogRes.status}, HTML ${actualPaths.size}/${expectedPaths.length} article links, ItemList ${itemListCount}${missing.length ? `; missing: ${missing.slice(0, 3).join(", ")}` : ""}`;
+    add("ссылки базы знаний на все статьи в сыром HTML", ok, detail);
+  } catch (e) {
+    add("ссылки базы знаний на все статьи в сыром HTML", false, e.message);
+  }
+
   return rows;
 }
 

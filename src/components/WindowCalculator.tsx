@@ -2,8 +2,8 @@ import { useMemo, useState } from "react";
 import QuickBookingModal from "./QuickBookingModal";
 
 const PRICE_WINDOW_M2 = 11000;
-const PRICE_INSTALL_M2 = 2100;
-const PRICE_SLOPES_SILL_MM = 1900;
+const PRICE_INSTALL_PER_WINDOW = 2400;
+const PRICE_SLOPES_AND_SILL_PER_M = 1400;
 const PRICE_DELIVERY = 3000;
 
 const MIN_WIDTH = 400;
@@ -50,8 +50,8 @@ export default function WindowCalculator() {
     const perimeterM = (2 * (width + height)) / 1000;
 
     const windowPrice = areaM2 * PRICE_WINDOW_M2;
-    const installPrice = withInstall ? areaM2 * PRICE_INSTALL_M2 : 0;
-    const slopesSillPrice = withSlopesSill ? perimeterM * PRICE_SLOPES_SILL_MM : 0;
+    const installPrice = withInstall ? PRICE_INSTALL_PER_WINDOW : 0;
+    const slopesSillPrice = withSlopesSill ? perimeterM * PRICE_SLOPES_AND_SILL_PER_M : 0;
 
     const onePiece = windowPrice + installPrice + slopesSillPrice;
     const total = onePiece * quantity + (withDelivery ? PRICE_DELIVERY : 0);
@@ -111,13 +111,13 @@ export default function WindowCalculator() {
             <div className="space-y-3">
               <CheckOption
                 label="Монтаж окна"
-                sub={`${formatRub(PRICE_INSTALL_M2)} за м²`}
+                sub={`${formatRub(PRICE_INSTALL_PER_WINDOW)} за окно`}
                 checked={withInstall}
                 onChange={setWithInstall}
               />
               <CheckOption
                 label="Откосы + подоконник"
-                sub={`${formatRub(PRICE_SLOPES_SILL_MM)} за пог. м`}
+                sub={`${formatRub(PRICE_SLOPES_AND_SILL_PER_M)} за пог. м`}
                 checked={withSlopesSill}
                 onChange={setWithSlopesSill}
               />
