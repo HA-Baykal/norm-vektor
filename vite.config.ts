@@ -15,6 +15,19 @@ const __dirname = path.dirname(__filename);
 // Автоматический SEO-генератор карты сайта (Sitemap.xml) и базы для Vercel API
 const seoSitemapAndApiGenerator = () => ({
   name: "seo-sitemap-and-api-generator",
+  buildStart() {
+    // Данные для списка статей и серверной отрисовки собираются ДО бандла.
+    // Если генерировать их только в closeBundle, в сборку попадают файлы,
+    // закоммиченные прошлым выпуском: статья, добавленная в BlogArticle.tsx,
+    // открывается по прямой ссылке, но в списке её нет. Здесь генератор
+    // успевает переписать src/data до того, как Vite прочитает её.
+    try {
+      const built = syncGeneratedFiles();
+      console.log(`[Blog] до сборки: ${built.articles} статей, ${built.cards} карточек`);
+    } catch (err) {
+      console.error("[Blog] Не удалось пересобрать данные статей до сборки:", err);
+    }
+  },
   closeBundle() {
     try {
       // 1. Экспорт всех моделей кондиционеров в JSON для Vercel API.
