@@ -14,7 +14,7 @@ export default function Ventilation() {
   useFaqSchema(VENTILYACIYA.faq);
     // Динамические мета-теги и Service микроразметка
   useEffect(() => {
-    const titleText = "Вентиляция в Иркутске — монтаж под ключ от 6 000 ₽ | Вектор Комфорта";
+    const titleText = "Вентиляция и бризеры в Иркутске — монтаж под ключ от 6 000 ₽";
     const descText = "Вентиляция в Иркутске от 6 000 ₽. Бризеры Тион, рекуператоры Vakio, приточно-вытяжные системы. Монтаж под ключ, гарантия 2 года.";
     
     document.title = titleText;
@@ -119,7 +119,7 @@ export default function Ventilation() {
     scriptTag.textContent = JSON.stringify(serviceSchema);
     
     return () => {
-      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
+      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске";
       const el = document.getElementById("seo-service-schema");
       if (el) el.remove();
     };

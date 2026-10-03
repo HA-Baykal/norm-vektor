@@ -115,7 +115,7 @@ export default function Drilling() {
     scriptTag.textContent = JSON.stringify(serviceSchema);
     
     return () => {
-      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
+      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске";
       const el = document.getElementById("seo-service-schema");
       if (el) el.remove();
     };

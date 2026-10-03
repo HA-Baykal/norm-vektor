@@ -166,7 +166,7 @@ export default function ConditionerPage() {
     scriptTag.textContent = JSON.stringify(productSchema);
 
     return () => {
-      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
+      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске";
       const el = document.getElementById("seo-product-schema");
       if (el) el.remove();
     };

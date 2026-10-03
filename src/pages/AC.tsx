@@ -17,7 +17,7 @@ export default function AC() {
   useFaqSchema(KONDICIONERY.faq);
   // SEO для /kondicionery — швейцарские часы: canonical всегда чистый, фильтры ?type= -> noindex,follow
   useEffect(() => {
-    const titleText = "Кондиционеры в Иркутске от 17 351 ₽ — купить с установкой за 1 день | Вектор Комфорта";
+    const titleText = "Кондиционеры в Иркутске — купить с установкой от 17 351 ₽";
     const descText = "Кондиционеры в Иркутске от 17 351 ₽. Инверторные и обычные сплит-системы Ballu, Electrolux, Royal Thermo, Daikin. Монтаж за 1 день, гарантия 3-5 лет.";
 
     const hasFilter = typeof window !== "undefined" && window.location.search.length > 0;
@@ -158,7 +158,7 @@ export default function AC() {
     window.addEventListener("popstate", onPopState);
 
     return () => {
-      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
+      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске";
       const el = document.getElementById("seo-service-schema");
       if (el) el.remove();
       removeRobots();

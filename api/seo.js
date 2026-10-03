@@ -391,7 +391,10 @@ export default async function handler(req, res) {
     seoBody = `<div id="root"><main><h1>${esc(cardH1)}</h1><p>${esc(desc)}</p><ul><li>Тип: ${esc(typeFem(model.type))} сплит-система</li><li>Бренд: ${esc(model.brand)}</li><li>Цена: ${exactPrice.toLocaleString("ru-RU")} ₽${targetBtu > 0 ? ` (вариант ${targetBtu} BTU)` : ""}</li><li>Гарантия до 5 лет, монтаж за 1 день, доставка по Иркутску и пригороду до 50 км</li></ul><p>Смотрите также: <a href="/kondicionery">каталог кондиционеров</a>, <a href="/montazh-kondicionerov">монтаж кондиционеров под ключ</a>, <a href="/servis-kondicionerov">сервис и заправка фреоном</a>, <a href="/baza-znaniy">база знаний о выборе техники</a>.</p><p>Вектор Комфорта: <a href="/">главная</a>, <a href="/okna">пластиковые окна</a>, <a href="/ventilyaciya">вентиляция и бризеры</a>, <a href="/almaznoe-burenie">алмазное бурение</a>, <a href="/kontakty">контакты</a>.</p></main></div>`;
   } else if (windowModel) {
     const safeTitle = (windowModel.title || "Пластиковые окна").trim();
-    const title = `${safeTitle} в Иркутске — цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`;
+    // Заголовок держим до 70 знаков: длинные Бинг обрезает. Если имя товара
+    // длинное, хвост с ценой не влезает — остаётся короткий вариант с городом.
+    const fullTitle = `${safeTitle} в Иркутске — от ${windowModel.price.toLocaleString("ru-RU")} ₽`;
+    const title = fullTitle.length <= 69 ? fullTitle : `${safeTitle} в Иркутске`;
     const desc = `${windowModel.desc} Изготовление на заказ в Иркутске, цена от ${windowModel.price.toLocaleString("ru-RU")} ₽ ${windowModel.unit}. Монтаж по ГОСТу, гарантия 5 лет!`;
     const pageUrl = `https://www.vektor-komforta.ru/okna/${encodeURI(slug)}`;
     const priceStr = windowModel.price.toString();

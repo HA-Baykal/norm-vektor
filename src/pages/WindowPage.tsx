@@ -44,7 +44,9 @@ export default function WindowPage() {
   // Динамическое SEO — швейцарские часы: Title никогда не пустой, canonical чистый
   useEffect(() => {
     const safeTitle = (item.title || "Пластиковые окна").trim();
-    const titleText = `${safeTitle} в Иркутске — цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ | Вектор Комфорта`;
+    // Зеркало api/seo.js: заголовок до 70 знаков, длинные имена без цены в хвосте.
+    const fullTitle = `${safeTitle} в Иркутске — от ${item.basePrice.toLocaleString("ru-RU")} ₽`;
+    const titleText = fullTitle.length <= 69 ? fullTitle : `${safeTitle} в Иркутске`;
     const descText = `${item.shortDesc} Цена от ${item.basePrice.toLocaleString("ru-RU")} ₽ ${item.priceUnit}. Собственный сборочный цех в Иркутске, гарантия 5 лет, монтаж по ГОСТу с пароизоляцией!`;
     const SITE_ORIGIN = "https://www.vektor-komforta.ru";
     const cleanUrl = `${SITE_ORIGIN}/okna/${encodeURI(slug || item.slug)}`;
@@ -108,7 +110,7 @@ export default function WindowPage() {
     scriptTag.textContent = JSON.stringify(productSchema);
 
     return () => {
-      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске — Вектор Комфорта";
+      document.title = "Пластиковые окна, кондиционеры и вентиляция в Иркутске";
       const el = document.getElementById("seo-window-schema");
       if (el) el.remove();
     };
