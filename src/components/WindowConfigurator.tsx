@@ -249,6 +249,11 @@ export default function WindowConfigurator() {
     return { count, rate, goods, discounted, total: discounted + (delivery ? PRICE_DELIVERY : 0) };
   }, [positions, delivery]);
 
+  // Цена текущей позиции со скидкой — по тому же числу изделий, что будет
+  // в расчёте после «Добавить позицию» (как в программе расчёта цеха).
+  const rateNow = discountRate(totals.count + quantity);
+  const priceWithDiscount = calc.total * (1 - rateNow / 100);
+
   const kindName = KINDS.find((k) => k.id === kind)?.name || "Окно";
 
   function positionTitle() {
@@ -287,11 +292,11 @@ export default function WindowConfigurator() {
     ? `Здравствуйте! Расчёт из конструктора: ${positions
         .map((p, i) => `${i + 1}) ${p.title}, ${p.subtitle} — ${p.qty} шт.`)
         .join("; ")}. Ориентировочная стоимость ${formatRub(totals.total)}${delivery ? " (доставка включена)" : ""}`
-    : `Здравствуйте! Расчёт из конструктора: ${positionTitle()} (${positionSubtitle()}), ${quantity} шт. Ориентировочная стоимость ${formatRub(calc.total)}`;
+    : `Здравствуйте! Расчёт из конструктора: ${positionTitle()} (${positionSubtitle()}), ${quantity} шт. Ориентировочно со скидкой ${rateNow}% — ${formatRub(priceWithDiscount)} (без скидки ${formatRub(calc.total)})`;
 
   const calcDetails = positions.length
     ? `Позиции: ${positions.map((p, i) => `${i + 1}) ${p.title} — ${p.qty} шт. (${p.subtitle})`).join("; ")}. Скидка ${totals.rate}%. Ориентировочно: ${formatRub(totals.total)}${delivery ? ", доставка включена" : ""}`
-    : `${positionTitle()} (${positionSubtitle()}), ${quantity} шт. Площадь ${calc.area.toFixed(2)} м². Ориентировочно: ${formatRub(calc.total)}`;
+    : `${positionTitle()} (${positionSubtitle()}), ${quantity} шт. Площадь ${calc.area.toFixed(2)} м². Скидка ${rateNow}%. Ориентировочно: ${formatRub(priceWithDiscount)} (без скидки ${formatRub(calc.total)})`;
 
   // --- отрисовка схемы ---
   const MAX_W = 270;
@@ -729,8 +734,14 @@ export default function WindowConfigurator() {
               {/* Цена текущей позиции */}
               <div className="rounded-2xl bg-[#1a3a5c] p-5 text-white">
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="text-sm font-semibold text-slate-300">Ориентировочная стоимость</span>
-                  <span className="text-3xl font-black text-[#ff6b35]">{formatRub(calc.total)}</span>
+                  <span className="text-sm font-semibold text-slate-300">
+                    Ориентировочная стоимость
+                    <span className="mt-0.5 block text-[11px] font-bold uppercase tracking-wide text-emerald-300">скидка {rateNow}%</span>
+                  </span>
+                  <span className="text-right">
+                    <span className="block text-xs font-semibold text-slate-400 line-through">{formatRub(calc.total)}</span>
+                    <span className="text-3xl font-black text-[#ff6b35]">{formatRub(priceWithDiscount)}</span>
+                  </span>
                 </div>
                 <ul className="mt-3 space-y-1 text-xs text-slate-300">
                   <li className="flex justify-between">
@@ -779,9 +790,14 @@ export default function WindowConfigurator() {
                       <span>{formatRub(calc.mosquitoRub * quantity)}</span>
                     </li>
                   )}
+                  <li className="flex justify-between border-t border-white/10 pt-1.5 font-bold text-emerald-300">
+                    <span>Скидка {rateNow}%</span>
+                    <span>−{formatRub(calc.total - priceWithDiscount)}</span>
+                  </li>
                 </ul>
                 <p className="mt-3 text-[11px] leading-snug text-slate-400">
-                  Расчёт ориентировочный, без скидки за объём. Точную цену назовёт замерщик — выезд бесплатный.
+                  Скидка {rateNow}% — как за {totals.count + quantity} изделий в заказе; от 5 изделий — 40%. Расчёт
+                  ориентировочный, точную цену назовёт замерщик — выезд бесплатный.
                 </p>
                 <button
                   type="button"
