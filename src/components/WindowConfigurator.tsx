@@ -472,10 +472,11 @@ export default function WindowConfigurator() {
                   <span className="text-3xl font-black text-[#ff6b35]">{formatRub(calc.total)}</span>
                 </div>
                 <ul className="mt-3 space-y-1 text-xs text-slate-300">
-                  <li className="flex justify-between"><span>Конструкция ({calc.areaM2.toFixed(2)} м²)</span><span>{formatRub(calc.windowPrice)}</span></li>
-                  {calc.installPrice > 0 && <li className="flex justify-between"><span>Монтаж</span><span>{formatRub(calc.installPrice)}</span></li>}
-                  {calc.slopesPrice > 0 && <li className="flex justify-between"><span>Подоконник и откосы</span><span>{formatRub(calc.slopesPrice)}</span></li>}
-                  {calc.mosquitoPrice > 0 && <li className="flex justify-between"><span>Москитная сетка</span><span>{formatRub(calc.mosquitoPrice)}</span></li>}
+                  <li className="flex justify-between"><span>Конструкция ({calc.areaM2.toFixed(2)} м²{quantity > 1 ? ` × ${quantity}` : ""})</span><span>{formatRub(calc.windowPrice * quantity)}</span></li>
+                  {calc.installPrice > 0 && <li className="flex justify-between"><span>Монтаж{quantity > 1 ? ` × ${quantity}` : ""}</span><span>{formatRub(calc.installPrice * quantity)}</span></li>}
+                  {calc.slopesPrice > 0 && <li className="flex justify-between"><span>Подоконник и откосы{quantity > 1 ? ` × ${quantity}` : ""}</span><span>{formatRub(calc.slopesPrice * quantity)}</span></li>}
+                  {calc.mosquitoPrice > 0 && <li className="flex justify-between"><span>Москитная сетка{quantity > 1 ? ` × ${quantity}` : ""}</span><span>{formatRub(calc.mosquitoPrice * quantity)}</span></li>}
+                  {delivery && <li className="flex justify-between"><span>Доставка</span><span>{formatRub(PRICE_DELIVERY)}</span></li>}
                 </ul>
                 <p className="mt-3 text-[11px] leading-snug text-slate-400">
                   Расчёт ориентировочный. Точную цену назовёт замерщик — выезд бесплатный.
