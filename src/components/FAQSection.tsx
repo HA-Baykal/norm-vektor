@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Reveal from "./Reveal";
 
 const faqItems = [
   {
@@ -69,8 +70,8 @@ export default function FAQSection() {
           {faqItems.map((item, idx) => {
             const isOpen = openIndex === idx;
             return (
+              <Reveal key={idx} delay={Math.min(idx, 4) * 50}>
               <div
-                key={idx}
                 className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 overflow-hidden transition duration-200"
               >
                 <button
@@ -93,6 +94,7 @@ export default function FAQSection() {
                   </div>
                 )}
               </div>
+              </Reveal>
             );
           })}
         </div>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Reveal from "./Reveal";
 
 interface CounterProps {
   value: number;
@@ -70,8 +71,10 @@ export default function Counters() {
           </p>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {stats.map((s) => (
-            <Counter key={s.label} {...s} />
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 70} className="h-full">
+              <Counter {...s} />
+            </Reveal>
           ))}
         </div>
       </div>

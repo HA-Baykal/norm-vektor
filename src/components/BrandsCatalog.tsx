@@ -1,4 +1,5 @@
 import { LineIcon } from "./LineIcon";
+import Reveal from "./Reveal";
 
 const brands = [
   { name: "VEKA", logo: "images/brands/veka.svg" },
@@ -35,8 +36,8 @@ export default function BrandsCatalog() {
 
         <div className="mt-10 grid grid-cols-2 gap-4 sm:mt-12 sm:grid-cols-3 lg:grid-cols-5">
           {brands.map((brand, index) => (
+            <Reveal key={brand.name} delay={(index % 5) * 60} className="h-full">
             <div
-              key={brand.name}
               className="group flex h-24 flex-col items-center justify-center rounded-2xl border border-slate-200 bg-slate-50/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-[#ff6b35] hover:bg-white hover:shadow-xl"
               style={{ transitionDelay: `${index * 20}ms` }}
             >
@@ -66,6 +67,7 @@ export default function BrandsCatalog() {
                 </div>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
 

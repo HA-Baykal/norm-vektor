@@ -12,6 +12,9 @@ import MobileBottomBar from "../components/MobileBottomBar";
 import BazaZnaniyBanner from "../components/BazaZnaniyBanner";
 import GeoLinksBlock from "../components/GeoLinksBlock";
 import InterierPromo, { DeveloperBio } from "../components/InterierPromo";
+import Reveal from "../components/Reveal";
+import BeforeAfterSlider from "../components/BeforeAfterSlider";
+import { beforeAfterPairs } from "../data/beforeAfter";
 import { useSeo } from "../utils/useSeo";
 
 const directions = [
@@ -131,6 +134,14 @@ export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden bg-slate-950 text-white pt-8 pb-16 md:pt-16 md:pb-24">
+        {/* Живой фон: фото медленно «дышит» (см. hero-media в index.css).
+            Когда появится короткое видео (8–12 сек, без звука, до 3 МБ) —
+            положить его в public/media/hero.mp4, закомментировать <img>
+            и раскомментировать <video> ниже. Атрибуты уже готовы. */}
+        <div className="hero-media" aria-hidden>
+          <img src="/images/windows/window-4.webp" alt="" fetchPriority="high" />
+          {/* <video src="/media/hero.mp4" autoPlay muted loop playsInline poster="/images/windows/window-4.webp" /> */}
+        </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center gap-3 mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs sm:text-sm font-semibold text-slate-200">
@@ -232,12 +243,12 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {directions.map((d) => (
-              <Link
-                key={d.to}
-                to={d.to}
-                className="group flex flex-col justify-between overflow-hidden rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 hover:shadow-2xl transition duration-300"
-              >
+            {directions.map((d, index) => (
+              <Reveal key={d.to} className="h-full" delay={index * 90}>
+                <Link
+                  to={d.to}
+                  className="group flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 hover:shadow-2xl transition duration-300"
+                >
                 <div>
                   <div className="flex items-start justify-between mb-6">
                     <div className="w-16 h-16 rounded-2xl bg-[#1a3a5c] flex items-center justify-center text-4xl text-white">
@@ -263,7 +274,8 @@ export default function Home() {
                 <div className="mt-6 flex items-center gap-2 text-sm font-extrabold text-[#1a3a5c] dark:text-amber-400">
                   Подробнее об услуге <span>→</span>
                 </div>
-              </Link>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -293,29 +305,56 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {standardHighlights.map((sh) => (
-              <div
-                key={sh.title}
-                className="p-6 rounded-3xl bg-slate-800 border border-slate-700"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-3xl">{sh.icon}</span>
-                  <span className="px-3 py-1 rounded-full bg-slate-900 text-xs font-bold text-slate-300">
-                    {sh.tag}
-                  </span>
+            {standardHighlights.map((sh, index) => (
+              <Reveal key={sh.title} className="h-full" delay={index * 80}>
+                <div className="h-full p-6 rounded-3xl bg-slate-800 border border-slate-700">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-3xl">{sh.icon}</span>
+                    <span className="px-3 py-1 rounded-full bg-slate-900 text-xs font-bold text-slate-300">
+                      {sh.tag}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-extrabold text-white mb-2">
+                    {sh.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    {sh.text}
+                  </p>
                 </div>
-                <h3 className="text-lg font-extrabold text-white mb-2">
-                  {sh.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  {sh.text}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
       <BazaZnaniyBanner />
+      {/* «До и после»: пока демо-пары (см. src/data/beforeAfter.ts) —
+          заменить на снимки одного объекта до/после работ. */}
+      <section className="py-14 sm:py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <span className="text-xs sm:text-sm font-black uppercase tracking-[0.18em] sm:tracking-[0.2em] text-[#ff6b35]">
+              До и после
+            </span>
+            <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#1a3a5c]">
+              Потяните ползунок — увидите разницу
+            </h2>
+            <p className="mt-4 text-base sm:text-lg leading-7 text-slate-600">
+              Сравните, как выглядел объект до работ и после. Каждый слайдер — реальный этап монтажа.
+            </p>
+          </div>
+          <div className="mt-8 lg:mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {beforeAfterPairs.map((pair, index) => (
+              <Reveal key={pair.title} delay={index * 80}>
+                <BeforeAfterSlider before={pair.before} after={pair.after} alt={pair.title} />
+                <div className="mt-3">
+                  <div className="font-black text-[#1a3a5c]">{pair.title}</div>
+                  <div className="text-sm text-slate-500">{pair.note}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
       <VideoGallery />
       <BrandsCatalog />
       <Counters />

@@ -5,6 +5,7 @@ import {
   GIS_REVIEW_COUNT,
   GIS_REVIEWS_URL,
 } from "../data/reviews2Gis";
+import Reveal from "./Reveal";
 
 export default function Reviews() {
   const [visible, setVisible] = useState(6);
@@ -27,9 +28,9 @@ export default function Reviews() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews2Gis.slice(0, visible).map((r, i) => (
+            <Reveal key={i} delay={(i % 3) * 70} className="h-full">
             <div
-              key={i}
-              className="flex flex-col p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:border-brand-300 dark:hover:border-accent-500 transition"
+              className="flex flex-col h-full p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:border-brand-300 dark:hover:border-accent-500 transition"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div
@@ -71,6 +72,7 @@ export default function Reviews() {
                 </a>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
 
