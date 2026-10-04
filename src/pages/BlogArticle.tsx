@@ -9380,6 +9380,8 @@ useEffect(() => {
             <img
               src={article.coverImage}
               alt={article.title}
+              loading="lazy"
+              decoding="async"
               className="mt-8 w-full rounded-[1.5rem] object-cover"
             />
           )}

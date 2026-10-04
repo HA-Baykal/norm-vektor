@@ -191,7 +191,7 @@ export default function ComparePage() {
                       onClick={() => { toggle(c.id); setShowAddDropdown(false); }}
                       className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-bold text-slate-700 transition hover:bg-slate-50"
                     >
-                      <img src={getMainCoverPhoto(c)} alt="" className="h-8 w-10 rounded-lg object-cover" />
+                      <img src={getMainCoverPhoto(c)} alt="" loading="lazy" decoding="async" className="h-8 w-10 rounded-lg object-cover" />
                       <span>{c.brand} {c.name}</span>
                     </button>
                   ))
@@ -264,6 +264,8 @@ export default function ComparePage() {
                   <img
                     src={getMainCoverPhoto(m.item)}
                     alt={m.item.name}
+                    loading="lazy"
+                    decoding="async"
                     className="h-16 w-16 rounded-xl object-cover"
                   />
                   <div className="min-w-0 flex-1">

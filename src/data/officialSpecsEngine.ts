@@ -162,95 +162,95 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
 
   // === KENTATSU (ДАИЧИ) ===
   102: [
-  "/images/catalog/kentatsu-kumo.jpg",
-  "/images/catalog/kentatsu-kumo-2.jpg",
-  "/images/catalog/kentatsu-kumo-3.jpg"
+  "/images/catalog/kentatsu-kumo.webp",
+  "/images/catalog/kentatsu-kumo-2.webp",
+  "/images/catalog/kentatsu-kumo-3.webp"
 ],
   105: [
-    "/images/catalog/kentatsu-kanami-wifi.jpg",
-    "/images/catalog/kentatsu-kanami-wifi-2.jpg",
-    "/images/catalog/kentatsu-kanami-wifi-3.jpg",
-    "/images/catalog/kentatsu-kanami-wifi-4.jpg",
-    "/images/catalog/kentatsu-kanami-wifi-5.jpg",
-    "/images/catalog/kentatsu-kanami-wifi-6.jpg"
+    "/images/catalog/kentatsu-kanami-wifi.webp",
+    "/images/catalog/kentatsu-kanami-wifi-2.webp",
+    "/images/catalog/kentatsu-kanami-wifi-3.webp",
+    "/images/catalog/kentatsu-kanami-wifi-4.webp",
+    "/images/catalog/kentatsu-kanami-wifi-5.webp",
+    "/images/catalog/kentatsu-kanami-wifi-6.webp"
   ],
   
   107:  [
-  "/images/catalog/kentatsu-kanami.jpg",
-  "/images/catalog/kentatsu-kanami-2.jpg",
-  "/images/catalog/kentatsu-kanami-3.jpg",
-  "/images/catalog/kentatsu-kanami-4.jpg"
+  "/images/catalog/kentatsu-kanami.webp",
+  "/images/catalog/kentatsu-kanami-2.webp",
+  "/images/catalog/kentatsu-kanami-3.webp",
+  "/images/catalog/kentatsu-kanami-4.webp"
 ],
   701: [ // Kentatsu Атама (Atama) (Обычный)
-  "/images/catalog/kentatsu-atama.jpg",
-  "/images/catalog/kentatsu-atama-2.jpg",
-  "/images/catalog/kentatsu-atama-3.jpg",
-  "/images/catalog/kentatsu-atama-4.jpg"
+  "/images/catalog/kentatsu-atama.webp",
+  "/images/catalog/kentatsu-atama-2.webp",
+  "/images/catalog/kentatsu-atama-3.webp",
+  "/images/catalog/kentatsu-atama-4.webp"
   ],
   702: [ // Kentatsu Атама Инвертор (Atama Inverter) (Инверторный)
-    "/images/catalog/kentatsu-atama-invertor.jpg",
-  "/images/catalog/kentatsu-atama-invertor-2.jpg",
-  "/images/catalog/kentatsu-atama-invertor-3.jpg",
-  "/images/catalog/kentatsu-atama-invertor-4.jpg"
+    "/images/catalog/kentatsu-atama-invertor.webp",
+  "/images/catalog/kentatsu-atama-invertor-2.webp",
+  "/images/catalog/kentatsu-atama-invertor-3.webp",
+  "/images/catalog/kentatsu-atama-invertor-4.webp"
   ],
   703: [ // Kentatsu Харуки (Haruki) (Обычный)
-    "/images/catalog/kentatsu-haruki.jpg",
-  "/images/catalog/kentatsu-haruki-2.jpg",
-  "/images/catalog/kentatsu-haruki-3.jpg",
-  "/images/catalog/kentatsu-haruki-4.jpg"
+    "/images/catalog/kentatsu-haruki.webp",
+  "/images/catalog/kentatsu-haruki-2.webp",
+  "/images/catalog/kentatsu-haruki-3.webp",
+  "/images/catalog/kentatsu-haruki-4.webp"
   ],
   704: [ // Kentatsu Харуки Инвертор (Haruki Inverter)
-    "/images/catalog/kentatsu-haruki-inv.jpg",
-  "/images/catalog/kentatsu-haruki-inv-2.jpg",
-  "/images/catalog/kentatsu-haruki-inv-3.jpg",
-  "/images/catalog/kentatsu-haruki-inv-4.jpg"
+    "/images/catalog/kentatsu-haruki-inv.webp",
+  "/images/catalog/kentatsu-haruki-inv-2.webp",
+  "/images/catalog/kentatsu-haruki-inv-3.webp",
+  "/images/catalog/kentatsu-haruki-inv-4.webp"
   ],
   705: [ // Kentatsu Юки Инвертор (Yuki) (Инверторный)
-    "/images/catalog/kentatsu-yuki-inv.jpg",
-  "/images/catalog/kentatsu-yuki-inv-2.jpg",
-  "/images/catalog/kentatsu-yuki-inv-3.jpg",
-  "/images/catalog/kentatsu-yuki-inv-4.jpg"
+    "/images/catalog/kentatsu-yuki-inv.webp",
+  "/images/catalog/kentatsu-yuki-inv-2.webp",
+  "/images/catalog/kentatsu-yuki-inv-3.webp",
+  "/images/catalog/kentatsu-yuki-inv-4.webp"
   ],
   706: [ // Kentatsu Тиба (Tiba) (Обычный)
-    "/images/catalog/kentatsu-tiba.jpg",
-  "/images/catalog/kentatsu-tiba-2.jpg",
-  "/images/catalog/kentatsu-tiba-3.jpg",
-  "/images/catalog/kentatsu-tiba-4.jpg",
-  "/images/catalog/kentatsu-tiba-5.jpg"
+    "/images/catalog/kentatsu-tiba.webp",
+  "/images/catalog/kentatsu-tiba-2.webp",
+  "/images/catalog/kentatsu-tiba-3.webp",
+  "/images/catalog/kentatsu-tiba-4.webp",
+  "/images/catalog/kentatsu-tiba-5.webp"
   ],
   707: [ // Kentatsu Тиба Инвертор (Tiba Inverter) (Инверторный)
-    "/images/catalog/kentatsu-tiba-inv.jpg",
-  "/images/catalog/kentatsu-tiba-inv-2.jpg",
-  "/images/catalog/kentatsu-tiba-inv-3.jpg",
-  "/images/catalog/kentatsu-tiba-inv-4.jpg"
+    "/images/catalog/kentatsu-tiba-inv.webp",
+  "/images/catalog/kentatsu-tiba-inv-2.webp",
+  "/images/catalog/kentatsu-tiba-inv-3.webp",
+  "/images/catalog/kentatsu-tiba-inv-4.webp"
   ],
   708: [ // Kentatsu Отари Инвертор (Otari) (Инверторный)
-     "/images/catalog/kentatsu-otari-inv.jpg",
-  "/images/catalog/kentatsu-otari-inv-2.jpg",
-  "/images/catalog/kentatsu-otari-inv-3.jpg",
-  "/images/catalog/kentatsu-otari-inv-4.jpg"
+     "/images/catalog/kentatsu-otari-inv.webp",
+  "/images/catalog/kentatsu-otari-inv-2.webp",
+  "/images/catalog/kentatsu-otari-inv-3.webp",
+  "/images/catalog/kentatsu-otari-inv-4.webp"
   ],
   709: [ // Kentatsu Семпай Инвертор (Sempai) (Инверторный)
-     "/images/catalog/kentatsu-sempai-inv.jpg",
-  "/images/catalog/kentatsu-sempai-inv-2.jpg",
-  "/images/catalog/kentatsu-sempai-inv-3.jpg",
-  "/images/catalog/kentatsu-sempai-inv-4.jpg",
-  "/images/catalog/kentatsu-sempai-inv-5.jpg"
+     "/images/catalog/kentatsu-sempai-inv.webp",
+  "/images/catalog/kentatsu-sempai-inv-2.webp",
+  "/images/catalog/kentatsu-sempai-inv-3.webp",
+  "/images/catalog/kentatsu-sempai-inv-4.webp",
+  "/images/catalog/kentatsu-sempai-inv-5.webp"
   ],
   710: [ // Kentatsu Омори Инвертор (Omori) (Инверторный)
-    "/images/catalog/kentatsu-omori-inv.jpg",
-  "/images/catalog/kentatsu-omori-inv-2.jpg",
-  "/images/catalog/kentatsu-omori-inv-3.jpg",
-  "/images/catalog/kentatsu-omori-inv-4.jpg"
+    "/images/catalog/kentatsu-omori-inv.webp",
+  "/images/catalog/kentatsu-omori-inv-2.webp",
+  "/images/catalog/kentatsu-omori-inv-3.webp",
+  "/images/catalog/kentatsu-omori-inv-4.webp"
   ],
   711: [ // Kentatsu Тамаши Инвертор (Tamashi) (Инверторный)
-    "/images/catalog/kentatsu-tamahi-inv.jpg",
-  "/images/catalog/kentatsu-tamahi-inv-2.jpg",
-  "/images/catalog/kentatsu-tamahi-inv-3.jpg",
-  "/images/catalog/kentatsu-tamahi-inv-4.jpg"
+    "/images/catalog/kentatsu-tamahi-inv.webp",
+  "/images/catalog/kentatsu-tamahi-inv-2.webp",
+  "/images/catalog/kentatsu-tamahi-inv-3.webp",
+  "/images/catalog/kentatsu-tamahi-inv-4.webp"
   ],
   712: [ // Kentatsu Токачи Инвертор (Tokachi) (Инверторный)
-   "/images/catalog/kentatsu-tokahi-inv.jpg"
+   "/images/catalog/kentatsu-tokahi-inv.webp"
   ],
   713: [ // Kentatsu Ичи Инвертор R32 (Ichi) (Инверторный)
     "https://daichi.market/upload/iblock/596/j3nqso97cc4l509nq5lpzq2ucrle5qzn/yffgkm1gelxck0om3nan6znhe0iq6ok8.jpg",
@@ -258,13 +258,13 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://daichi.market/upload/iblock/feb/4923fe9677bba06a7dd1d397f995e2c3.jpg"
   ],
   601: [ // Kentatsu кассетная KSVB Inverter (R32) (Полупромышленный)
-    "/images/catalog/kentatsu-cassette-inv.jpg"
+    "/images/catalog/kentatsu-cassette-inv.webp"
   ],
   602: [ // Kentatsu кассетная KSVT / KSVG (On/Off) (Полупромышленный)
-    "/images/catalog/kentatsu-ksvt.jpg",
-  "/images/catalog/kentatsu-ksvt-2.jpg",
-  "/images/catalog/kentatsu-ksvt-3.jpg",
-  "/images/catalog/kentatsu-ksvt-4.jpg"
+    "/images/catalog/kentatsu-ksvt.webp",
+  "/images/catalog/kentatsu-ksvt-2.webp",
+  "/images/catalog/kentatsu-ksvt-3.webp",
+  "/images/catalog/kentatsu-ksvt-4.webp"
   ],
 
   // === MIDEA (ДАИЧИ) ===
@@ -287,67 +287,67 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://daichi.market/upload/iblock/a70/2rorutzl0wu9t38vodu5g7y8zurz0lq0/hooj2ns23b68cdrvj36jrandq5eviiou.jpg"
   ],
   721: [ // Midea Персона (Persona) (Обычный)
-    "/images/catalog/midea-persona.jpg",
-  "/images/catalog/midea-persona-2.jpg",
-  "/images/catalog/midea-persona-3.jpg",
-  "/images/catalog/midea-persona-4.jpg"
+    "/images/catalog/midea-persona.webp",
+  "/images/catalog/midea-persona-2.webp",
+  "/images/catalog/midea-persona-3.webp",
+  "/images/catalog/midea-persona-4.webp"
   ],
   722: [ // Midea Персона Инвертор Wi-Fi (Persona) (Инверторный)
-    "/images/catalog/midea-persona-inv.jpg",
-  "/images/catalog/midea-persona-inv-2.jpg",
-  "/images/catalog/midea-persona-inv-3.jpg",
-  "/images/catalog/midea-persona-inv-4.jpg",
-  "/images/catalog/midea-persona-inv-5.jpg"
+    "/images/catalog/midea-persona-inv.webp",
+  "/images/catalog/midea-persona-inv-2.webp",
+  "/images/catalog/midea-persona-inv-3.webp",
+  "/images/catalog/midea-persona-inv-4.webp",
+  "/images/catalog/midea-persona-inv-5.webp"
   ],
   723: [ // Midea Breezeless E (Инверторный)
-    "/images/catalog/midea-brezel.jpg",
-  "/images/catalog/midea-brezel-2.jpg",
-  "/images/catalog/midea-brezel-3.jpg",
-  "/images/catalog/midea-brezel-4.jpg"
+    "/images/catalog/midea-brezel.webp",
+  "/images/catalog/midea-brezel-2.webp",
+  "/images/catalog/midea-brezel-3.webp",
+  "/images/catalog/midea-brezel-4.webp"
   ],
   724: [ // Midea Breezeless Wi-Fi (Инверторный)
-     "/images/catalog/midea-brezel-wifi.jpg",
-     "/images/catalog/midea-brezel-wifi-2.jpg",
-     "/images/catalog/midea-brezel-wifi-3.jpg",
-    "/images/catalog/midea-brezel-wifi-4.jpg",
-    "/images/catalog/midea-brezel-wifi-5.jpg",
-    "/images/catalog/midea-brezel-wifi-6.jpg",
-    "/images/catalog/midea-brezel-wifi-7.jpg",
-    "/images/catalog/midea-brezel-wifi-8.jpg",
-    "/images/catalog/midea-brezel-wifi-9.jpg",
-  "/images/catalog/midea-brezel-wifi-10.jpg"
+     "/images/catalog/midea-brezel-wifi.webp",
+     "/images/catalog/midea-brezel-wifi-2.webp",
+     "/images/catalog/midea-brezel-wifi-3.webp",
+    "/images/catalog/midea-brezel-wifi-4.webp",
+    "/images/catalog/midea-brezel-wifi-5.webp",
+    "/images/catalog/midea-brezel-wifi-6.webp",
+    "/images/catalog/midea-brezel-wifi-7.webp",
+    "/images/catalog/midea-brezel-wifi-8.webp",
+    "/images/catalog/midea-brezel-wifi-9.webp",
+  "/images/catalog/midea-brezel-wifi-10.webp"
   ],
   725: [ // Midea ХитФорс (HeatForce) (Инверторный - 100% подтверждено!)
-   "/images/catalog/midea-force.jpg",
-  "/images/catalog/midea-force-2.jpg",
-  "/images/catalog/midea-force-3.jpg",
-  "/images/catalog/midea-force-4.jpg"
+   "/images/catalog/midea-force.webp",
+  "/images/catalog/midea-force-2.webp",
+  "/images/catalog/midea-force-3.webp",
+  "/images/catalog/midea-force-4.webp"
   ],
   726: [ // Midea Гайа (Gaia) (Инверторный)
-   "/images/catalog/midea-gaia.jpg",
-  "/images/catalog/midea-gaia-2.jpg",
-  "/images/catalog/midea-gaia-3.jpg",
-  "/images/catalog/midea-gaia-4.jpg"
+   "/images/catalog/midea-gaia.webp",
+  "/images/catalog/midea-gaia-2.webp",
+  "/images/catalog/midea-gaia-3.webp",
+  "/images/catalog/midea-gaia-4.webp"
   ],
   727: [ // Midea Изи Инвертор (Easy Inverter) (Инверторный)
-    "/images/catalog/midea-easy.jpg",
-  "/images/catalog/midea-easy-2.jpg",
-  "/images/catalog/midea-easy-3.jpg",
-    "/images/catalog/midea-easy-4.jpg",
-    "/images/catalog/midea-easy-5.jpg",
-  "/images/catalog/midea-easy-6.jpg"
+    "/images/catalog/midea-easy.webp",
+  "/images/catalog/midea-easy-2.webp",
+  "/images/catalog/midea-easy-3.webp",
+    "/images/catalog/midea-easy-4.webp",
+    "/images/catalog/midea-easy-5.webp",
+  "/images/catalog/midea-easy-6.webp"
   ],
   603: [ // Midea кассетная MCD Inverter (R32) (Полупромышленный)
-     "/images/catalog/midea-mcd.jpg",
-  "/images/catalog/midea-mcd-2.jpg",
-  "/images/catalog/midea-mcd-3.jpg",
-  "/images/catalog/midea-mcd-4.jpg"
+     "/images/catalog/midea-mcd.webp",
+  "/images/catalog/midea-mcd-2.webp",
+  "/images/catalog/midea-mcd-3.webp",
+  "/images/catalog/midea-mcd-4.webp"
   ],
   604: [ // Midea кассетная MCD (On/Off, R410A) (Полупромышленный)
-      "/images/catalog/midea-mcd-ne.jpg",
-  "/images/catalog/midea-mcd-ne-2.jpg",
-  "/images/catalog/midea-mcd-ne-3.jpg",
-  "/images/catalog/midea-mcd-ne-4.jpg"
+      "/images/catalog/midea-mcd-ne.webp",
+  "/images/catalog/midea-mcd-ne-2.webp",
+  "/images/catalog/midea-mcd-ne-3.webp",
+  "/images/catalog/midea-mcd-ne-4.webp"
   ],
 
   // === DAIKIN (ДАИЧИ) ===
@@ -364,7 +364,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://daichi.business/upload/iblock/30b/wwtqo0w30x4s0gocfticnf2g6sh262qy/r5grgl4k0dsdrakxva0gvfgl33wvyvic.jpg"
   ],
   513: [ // Daikin FTXS (Инверторный)
-    "/images/catalog/daikin-ftxs.jpg"
+    "/images/catalog/daikin-ftxs.webp"
   ],
   514: [ // Daikin FTYN (On/Off) (Обычный)
     "https://daichi.business/upload/iblock/6fd/1h7ebge4871n6k5jlfdj4lftu1m8rr9y/9400fc8f20307af86600f9c5a6d7e74e.jpg",
@@ -397,7 +397,7 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://daichi.business/upload/iblock/f48/rpj2mpp1ba15toh4nz0nai4t573b7hiz/1c8f3a0w6z091l1ro0v7zjv413iog1ju.jpg"
   ],
   519: [ // Daikin FVXM/RXM (напольная) (Инверторный)
-    "/images/catalog/daikin-fvxm.jpg"
+    "/images/catalog/daikin-fvxm.webp"
   ],
   520: [ // Daikin FDXM-F9 (канальная) (Инверторный)
     "https://daichi.business/upload/iblock/e5b/gip31spgtz0ffdub0pkfacoiy9pyuisy/66342be67326921674b2d43f50afa5db.jpg",
@@ -407,28 +407,28 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
 
   // === BOSCH (ДАИЧИ) ===
   730: [ // Bosch Climate Line 2000 (Обычный)
-    "/images/catalog/bosh-2000.jpg",
-  "/images/catalog/bosh-2000-2.jpg",
-  "/images/catalog/bosh-2000-3.jpg",
-  "/images/catalog/bosh-2000-4.jpg"
+    "/images/catalog/bosh-2000.webp",
+  "/images/catalog/bosh-2000-2.webp",
+  "/images/catalog/bosh-2000-3.webp",
+  "/images/catalog/bosh-2000-4.webp"
   ],
   731: [ // Bosch Climate Line 5000 Инвертор (Инверторный)
-  "/images/catalog/bosh-line-5000.jpg",
-  "/images/catalog/bosh-line-5000-2.jpg",
-  "/images/catalog/bosh-line-5000-3.jpg",
-  "/images/catalog/bosh-line-5000-4.jpg"
+  "/images/catalog/bosh-line-5000.webp",
+  "/images/catalog/bosh-line-5000-2.webp",
+  "/images/catalog/bosh-line-5000-3.webp",
+  "/images/catalog/bosh-line-5000-4.webp"
   ],
   732: [ // Bosch Climate 5000 Инвертор (Инверторный)
-    "/images/catalog/bosh-cline-5000.jpg",
-  "/images/catalog/bosh-cline-5000-2.jpg",
-  "/images/catalog/bosh-cline-5000-3.jpg",
-  "/images/catalog/bosh-cline-5000-4.jpg"
+    "/images/catalog/bosh-cline-5000.webp",
+  "/images/catalog/bosh-cline-5000-2.webp",
+  "/images/catalog/bosh-cline-5000-3.webp",
+  "/images/catalog/bosh-cline-5000-4.webp"
   ],
   733: [ // Bosch Climate 6000i Инвертор (Инверторный)
-     "/images/catalog/bosh-cline-6000.jpg",
-  "/images/catalog/bosh-cline-6000-2.jpg",
-  "/images/catalog/bosh-cline-6000-3.jpg",
-  "/images/catalog/bosh-cline-6000-4.jpg"
+     "/images/catalog/bosh-cline-6000.webp",
+  "/images/catalog/bosh-cline-6000-2.webp",
+  "/images/catalog/bosh-cline-6000-3.webp",
+  "/images/catalog/bosh-cline-6000-4.webp"
   ],
 
   // === TOSHIBA & DAICHI EVEREST & AURUS & AXIOMA ===
@@ -441,10 +441,10 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/e90e8f5a-6304-11ef-b8db-00505601218a/main_big.jpg"
   ],
   108: [ // Daichi Эверест R32 DA-EVQ1R (Обычный)
-  "/images/catalog/daichi-ever.jpg",
-  "/images/catalog/daichi-ever-2.jpg",
-  "/images/catalog/daichi-ever-3.jpg",
-  "/images/catalog/daichi-ever-4.jpg"
+  "/images/catalog/daichi-ever.webp",
+  "/images/catalog/daichi-ever-2.webp",
+  "/images/catalog/daichi-ever-3.webp",
+  "/images/catalog/daichi-ever-4.webp"
   ],
   501: [ // AURUS A DC AAI (Инверторный)
     "https://rkcdn.ru/products/80073bb2-4ab0-11f1-b8e2-00505601218a/main_big.jpg",
@@ -457,14 +457,14 @@ const EXACT_OFFICIAL_PHOTOS_BY_ID: Record<number, string[]> = {
     "https://rkcdn.ru/products/e1b35564-2294-11ef-b8d8-00505601218a/main_big.jpg"
   ],
   106: [ // Axioma Серия H R32 ASX-H1R (Обычный)
-    "/images/catalog/axioma-h.jpg",
-  "/images/catalog/axioma-h-2.jpg",
-  "/images/catalog/axioma-h-3.jpg"
+    "/images/catalog/axioma-h.webp",
+  "/images/catalog/axioma-h-2.webp",
+  "/images/catalog/axioma-h-3.webp"
   ],
   502: [ // Axioma Серия H Инвертор R32 (Инверторный)
-    "/images/catalog/axioma-h-inv.jpg",
-  "/images/catalog/axioma-h-inv-2.jpg",
-  "/images/catalog/axioma-h-inv-3.jpg"
+    "/images/catalog/axioma-h-inv.webp",
+  "/images/catalog/axioma-h-inv-2.webp",
+  "/images/catalog/axioma-h-inv-3.webp"
   ],
 
   // === НОВЫЕ ЛИНЕЙКИ И МОБИЛЬНЫЕ/ПРОМЫШЛЕННЫЕ, 25.08.2026 ===

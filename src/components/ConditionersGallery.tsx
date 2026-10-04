@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 const photos = [
-  { src: "/images/conditioners/ac-1.jpg", title: "Монтаж кондиционера в квартире" },
-  { src: "/images/conditioners/ac-2.jpg", title: "Установка сплит-системы" },
-  { src: "/images/conditioners/ac-3.jpg", title: "Кондиционер в спальне" },
-  { src: "/images/conditioners/ac-4.jpg", title: "Монтаж наружного блока" },
-  { src: "/images/conditioners/ac-5.jpg", title: "Кондиционер в частном доме" },
-  { src: "/images/conditioners/ac-6.jpg", title: "Чистый монтаж трассы" },
+  { src: "/images/conditioners/ac-1.webp", title: "Монтаж кондиционера в квартире" },
+  { src: "/images/conditioners/ac-2.webp", title: "Установка сплит-системы" },
+  { src: "/images/conditioners/ac-3.webp", title: "Кондиционер в спальне" },
+  { src: "/images/conditioners/ac-4.webp", title: "Монтаж наружного блока" },
+  { src: "/images/conditioners/ac-5.webp", title: "Кондиционер в частном доме" },
+  { src: "/images/conditioners/ac-6.webp", title: "Чистый монтаж трассы" },
 ];
 
 function GalleryItem({ src, title }: { src: string; title: string }) {
