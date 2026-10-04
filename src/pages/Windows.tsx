@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";
-import WindowCalculator from "../components/WindowCalculator";
 import WindowConfigurator from "../components/WindowConfigurator";
 import WindowsGallery from "../components/WindowsGallery";
 import { AI_ANSWERS } from "../data/aiAnswers";
@@ -18,7 +17,7 @@ export default function Windows() {
     // Динамические мета-теги и Service микроразметка
   useEffect(() => {
     const titleText = "Пластиковые окна VEKA в Иркутске — купить с монтажом | Вектор Комфорта";
-    const descText = "Пластиковые окна VEKA в Иркутске от 11 000 ₽/м². Изготовление на заказ, монтаж по ГОСТу, гарантия 5 лет. Бесплатный замер.";
+    const descText = "Пластиковые окна VEKA в Иркутске от 7 000 ₽/м² со скидкой. Изготовление на заказ, монтаж по ГОСТу, гарантия 5 лет. Бесплатный замер.";
     
     document.title = titleText;
     
@@ -69,7 +68,7 @@ export default function Windows() {
       "serviceType": "Производство и монтаж пластиковых окон",
       "offers": {
         "@type": "Offer",
-        "price": "11000",
+        "price": "7000",
         "priceCurrency": "RUB",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock"
@@ -132,8 +131,8 @@ return (
   <ServicePage
 title="Пластиковые окна ПВХ в Иркутске — купить с установкой"
 ctaLabel="🧮 Расчёт окна онлайн"
-ctaHref="#calculator"
-tagline="Изготовление на заказ. Монтаж по ГОСТу. Гарантия 5 лет. Цена от 11 000 ₽/м²"
+ctaHref="#konstruktor"
+tagline="Изготовление на заказ. Монтаж по ГОСТу. Гарантия 5 лет. Цена от 7 000 ₽/м² со скидкой"
 heroIcon="🪟"
 intro="Изготавливаем и устанавливаем ПВХ и алюминиевые конструкции любой сложности: окна, двери, балконы, лоджии, витражи, стеклянные перегородки. Регулируем, ремонтируем, меняем стеклопакеты."
 breadcrumb="Пластиковые окна ПВХ в Иркутске"
@@ -169,7 +168,7 @@ process={[
     <h2 className="text-2xl sm:text-3xl font-black text-[#1a3a5c]">Пластиковые окна в Иркутске — цена, VEKA, монтаж по ГОСТу</h2>
     <div className="mt-6 grid lg:grid-cols-3 gap-6 text-sm leading-7 text-slate-700">
       <div className="space-y-3">
-        <p><strong>Пластиковые окна в Иркутске</strong> от «Вектор Комфорта» изготавливаются на заказ. В зависимости от выбранной системы доступны профили VEKA и фурнитура MACO. Цена конструкции начинается от <strong>11 000 ₽/м²</strong>; монтаж рассчитывается отдельно. Точные профиль, стеклопакет, фурнитуру, сроки и состав работ фиксируем в предложении после замера.</p>
+        <p><strong>Пластиковые окна в Иркутске</strong> от «Вектор Комфорта» изготавливаются на заказ. В зависимости от выбранной системы доступны профили VEKA и фурнитура MACO. Цена конструкции начинается от <strong>7 000 ₽/м² со скидкой</strong>; монтаж считается отдельно. Точные профиль, стеклопакет, фурнитуру, сроки и состав работ фиксируем в предложении после замера.</p>
         <p>Делаем: одно-, двух-, трёхстворчатые окна, панорамные системы, алюминиевое остекление, крашеные окна RAL 9005, ламинацию золотой дуб/махагон, остекление балконов и лоджий под ключ с утеплением, входные и межкомнатные двери ПВХ и алюминий, витражи и перегородки.</p>
       </div>
       <div className="space-y-3">
@@ -188,10 +187,10 @@ process={[
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
       <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 sm:p-6">
         <h3 className="font-black text-[#1a3a5c]">Как рассчитывается стоимость окна</h3>
-        <p className="mt-2 text-sm leading-6 text-slate-600">Опубликованная стартовая цена оконной конструкции — от 11 000 ₽/м². Монтаж рассчитывается отдельно — от 2 400 ₽ за окно. Подоконник, отлив, откосы, доставка, демонтаж и нестандартная комплектация могут влиять на итоговую смету.</p>
-        <p className="mt-2 text-sm leading-6 text-slate-600">Рассчитайте предварительную стоимость в калькуляторе и уточните состав предложения после замера: стартовые цены по отдельным работам не равны цене окна под ключ.</p>
+        <p className="mt-2 text-sm leading-6 text-slate-600">Опубликованная стартовая цена оконной конструкции — от 7 000 ₽/м² со скидкой. Монтаж считается по площади — от 2 400 ₽/м²; монтаж сборной лоджии — 3 000 ₽/м². Подоконник, отлив, откосы, доставка, демонтаж и нестандартная комплектация могут влиять на итоговую смету.</p>
+        <p className="mt-2 text-sm leading-6 text-slate-600">Рассчитайте предварительную стоимость в конструкторе и уточните состав предложения после замера: стартовые цены по отдельным работам не равны цене окна под ключ.</p>
         <div className="mt-4 flex flex-wrap gap-3">
-          <a href="#calculator" className="inline-flex rounded-full bg-[#ff6b35] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#e95620]">Рассчитать предварительную стоимость</a>
+          <a href="#konstruktor" className="inline-flex rounded-full bg-[#ff6b35] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#e95620]">Рассчитать предварительную стоимость</a>
           <Link to="/montazh-okon" className="inline-flex rounded-full border border-slate-300 px-5 py-2.5 text-sm font-bold text-[#1a3a5c] hover:border-[#ff6b35]">Цены и состав монтажа</Link>
         </div>
       </div>
@@ -209,7 +208,7 @@ process={[
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
       <h3 className="font-black text-[#1a3a5c] mb-3">Смотрите также</h3>
       <div className="flex flex-wrap gap-2">
-        <Link to="/montazh-okon" className="px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-[#1a3a5c] hover:border-[#ff6b35] hover:text-[#ff6b35] transition">Монтаж окон ПВХ — от 2 400 ₽ →</Link>
+        <Link to="/montazh-okon" className="px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-[#1a3a5c] hover:border-[#ff6b35] hover:text-[#ff6b35] transition">Монтаж окон ПВХ — от 2 400 ₽/м² →</Link>
         <Link to="/osteklenie-balkonov" className="px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-[#1a3a5c] hover:border-[#ff6b35] hover:text-[#ff6b35] transition">Остекление балконов — от 38 000 ₽ →</Link>
         <Link to="/standarty" className="px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-[#1a3a5c] hover:border-[#ff6b35] hover:text-[#ff6b35] transition">Стандарты монтажа по ГОСТ →</Link>
       </div>
@@ -218,7 +217,6 @@ process={[
 </section>
 <WindowsGallery />
 <Counters />
-<WindowCalculator />
 <WindowConfigurator />
 <Reviews />
 </>
