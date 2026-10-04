@@ -15,6 +15,8 @@ const Ventilation = lazy(() => import("./pages/Ventilation"));
 const Drilling = lazy(() => import("./pages/Drilling"));
 const StandartyPage = lazy(() => import("./pages/StandartyPage"));
 const PortfolioPage = lazy(() => import("./pages/PortfolioPage"));
+const ProductionPage = lazy(() => import("./pages/ProductionPage"));
+const CooperationPage = lazy(() => import("./pages/CooperationPage"));
 const Contact = lazy(() => import("./pages/Contact"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogArticle = lazy(() => import("./pages/BlogArticle"));
@@ -116,6 +118,8 @@ export default function App() {
             <Route path="almaznoe-burenie" element={<Drilling />} />
             <Route path="standarty" element={<StandartyPage />} />
             <Route path="portfolio" element={<PortfolioPage />} />
+            <Route path="proizvodstvo" element={<ProductionPage />} />
+            <Route path="sotrudnichestvo" element={<CooperationPage />} />
             <Route path="baza-znaniy" element={<BlogPage />} />
             <Route path="baza-znaniy/:slug" element={<BlogArticle />} />
             <Route path="kontakty" element={<Contact />} />

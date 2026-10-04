@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import VideoReviews from "../components/VideoReviews";
 import { useSeo, useBreadcrumb } from "../utils/useSeo";
 
 // ============================================================================
@@ -82,6 +83,7 @@ export default function OtzyvPage() {
       </section>
 
       {/* Площадки */}
+      <VideoReviews />
       <section className="px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <div className="space-y-4">

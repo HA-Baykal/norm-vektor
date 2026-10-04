@@ -1,5 +1,6 @@
 
 import VideoGallery from "../components/VideoGallery";
+import WorksMap from "../components/WorksMap";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSeo, useBreadcrumb } from "../utils/useSeo";
@@ -7,17 +8,17 @@ const MAX_LINK = "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITH
 type Category = "all" | "windows" | "conditioners" | "ventilation" | "drilling";
 type PortfolioItem = { category: Exclude<Category, "all">; path: string; title: string; address: string; date: string; text: string; };
 const portfolioItems: PortfolioItem[] = [
-  { category: "windows", path: "images/windows/window-1.jpg", title: "Тёплое остекление лоджии", address: "Иркутск, мкр Солнечный, ул. Байкальская 250", date: "Июнь 2025", text: "Была холодная лоджия. VEKA Softline 70 + Solar, утеплили и отделали под ключ. Теперь кабинет, зимой +22°." },
-  { category: "windows", path: "images/windows/window-2.jpg", title: "Окна под ключ-весь дом", address: "Иркутск - Новокшонова 25", date: "Май 2024", text: "Дом из бруса. VEKA WHS 60, пароизоляция по ГОСТу. откосы. за 2 дня." },
-  { category: "windows", path: "images/windows/window-3.jpg", title: "Установка 2 окон и входная дверь в беседку", address: "Иркутск, Байкальский тракт - Роял Парк", date: "Апрель 2025", text: "Черный рал(9005)  VEKA + MACO, монтаж за 1 день с уборкой." },
-  { category: "conditioners", path: "images/conditioners/ac-1.jpg", title: "2 кондиционера в 2-комнатной", address: "Иркутск, Багратиона 46/6", date: "Июль 2026", text: "09BTU+12BTU на 50м², трасса 7м, вакуумирование, запуск за 6 часов." },
-  { category: "conditioners", path: "images/conditioners/ac-2.jpg", title: "Кассетный Ballu в офисе 80м²", address: "Ангарск, 182 квартал", date: "Июнь 2026", text: "Кассетник 36 BTU в Армстронг, тихо на весь офис." },
-  { category: "conditioners", path: "images/conditioners/ac-3.jpg", title: "Чистка и обслуживание Electrolux 07", address: "Шелехов, 3 мкр 25", date: "Май 2025", text: "Полная чистка внутреннего блока, мойка фильтров и заправка фреона, за 1 час без снятия." },
-  { category: "ventilation", path: "images/ventilation/vent-1.jpg", title: "Приточно вытяжная вентиляция", address: "Иркутск, ЖК Сити Парк", date: "Июнь 2026", text: "Приточно вытяжная вентиляция по всей квартире + 2 прибора Vakio - Экономия на отоплении, проветривание без потери тепла." },
-  { category: "ventilation", path: "images/ventilation/vent-4.jpg", title: "Вентиляция кафе 120м²", address: "Иркутск, К. Маркса 40", date: "Февраль 2025", text: "Приточно-вытяжная с рекуперацией, спрятали за потолком." },
-  { category: "drilling", path: "images/drilling/drill-1.jpg", title: "Отверстие 132мм под бризер", address: "Иркутск, Радужный", date: "Июнь 2025", text: "Сухое 132мм в монолите 350мм с пылесосом — ни пылинки." },
-  { category: "drilling", path: "images/drilling/drill-2.jpg", title: "Отверстие 132мм под вытяжку", address: "Тункинская долина - отель", date: "Май 2026", text: "сухое под вентиляцию за 20 мин, стена целая." },
-  { category: "drilling", path: "images/drilling/drill-3.jpg", title: "Проход 200мм под вытяжку", address: "Иркутск, Карла Либнехта 202", date: "Апрель 2026", text: "Мокрое 250мм в железобетоне 200мм за час." },
+  { category: "windows", path: "images/windows/window-1.webp", title: "Тёплое остекление лоджии", address: "Иркутск, мкр Солнечный, ул. Байкальская 250", date: "Июнь 2025", text: "Была холодная лоджия. VEKA Softline 70 + Solar, утеплили и отделали под ключ. Теперь кабинет, зимой +22°." },
+  { category: "windows", path: "images/windows/window-2.webp", title: "Окна под ключ-весь дом", address: "Иркутск - Новокшонова 25", date: "Май 2024", text: "Дом из бруса. VEKA WHS 60, пароизоляция по ГОСТу. откосы. за 2 дня." },
+  { category: "windows", path: "images/windows/window-3.webp", title: "Установка 2 окон и входная дверь в беседку", address: "Иркутск, Байкальский тракт - Роял Парк", date: "Апрель 2025", text: "Черный рал(9005)  VEKA + MACO, монтаж за 1 день с уборкой." },
+  { category: "conditioners", path: "images/conditioners/ac-1.webp", title: "2 кондиционера в 2-комнатной", address: "Иркутск, Багратиона 46/6", date: "Июль 2026", text: "09BTU+12BTU на 50м², трасса 7м, вакуумирование, запуск за 6 часов." },
+  { category: "conditioners", path: "images/conditioners/ac-2.webp", title: "Кассетный Ballu в офисе 80м²", address: "Ангарск, 182 квартал", date: "Июнь 2026", text: "Кассетник 36 BTU в Армстронг, тихо на весь офис." },
+  { category: "conditioners", path: "images/conditioners/ac-3.webp", title: "Чистка и обслуживание Electrolux 07", address: "Шелехов, 3 мкр 25", date: "Май 2025", text: "Полная чистка внутреннего блока, мойка фильтров и заправка фреона, за 1 час без снятия." },
+  { category: "ventilation", path: "images/ventilation/vent-1.webp", title: "Приточно вытяжная вентиляция", address: "Иркутск, ЖК Сити Парк", date: "Июнь 2026", text: "Приточно вытяжная вентиляция по всей квартире + 2 прибора Vakio - Экономия на отоплении, проветривание без потери тепла." },
+  { category: "ventilation", path: "images/ventilation/vent-4.webp", title: "Вентиляция кафе 120м²", address: "Иркутск, К. Маркса 40", date: "Февраль 2025", text: "Приточно-вытяжная с рекуперацией, спрятали за потолком." },
+  { category: "drilling", path: "images/drilling/drill-1.webp", title: "Отверстие 132мм под бризер", address: "Иркутск, Радужный", date: "Июнь 2025", text: "Сухое 132мм в монолите 350мм с пылесосом — ни пылинки." },
+  { category: "drilling", path: "images/drilling/drill-2.webp", title: "Отверстие 132мм под вытяжку", address: "Тункинская долина - отель", date: "Май 2026", text: "сухое под вентиляцию за 20 мин, стена целая." },
+  { category: "drilling", path: "images/drilling/drill-3.webp", title: "Проход 200мм под вытяжку", address: "Иркутск, Карла Либнехта 202", date: "Апрель 2026", text: "Мокрое 250мм в железобетоне 200мм за час." },
 ];
 const filters: { key: Category; label: string }[] = [
   { key: "all", label: "Все работы" },
@@ -67,6 +68,7 @@ export default function PortfolioPage() {
         </div>
       </section>
       <VideoGallery />
+      <WorksMap />
       <section className="px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap gap-2 sm:gap-3">

@@ -4,6 +4,7 @@ import ServicePage from "../components/ServicePage";
 import Counters from "../components/Counters";
 import Reviews from "../components/Reviews";
 import WindowCalculator from "../components/WindowCalculator";
+import WindowConfigurator from "../components/WindowConfigurator";
 import WindowsGallery from "../components/WindowsGallery";
 import { AI_ANSWERS } from "../data/aiAnswers";
 import { useFaqSchema } from "../utils/useSeo";
@@ -218,6 +219,7 @@ process={[
 <WindowsGallery />
 <Counters />
 <WindowCalculator />
+<WindowConfigurator />
 <Reviews />
 </>
 );
