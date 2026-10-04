@@ -74,7 +74,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
           </Link>
 
           {/* Desktop nav: с xl; на ноутбуках 1024–1279 хватает бургер-меню */}
-          <nav className="hidden xl:flex items-center gap-0.5">
+          <nav className="hidden xl:flex items-center">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
@@ -82,7 +82,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
                 end={item.to === "/"}
                 title={item.mobileLabel || item.label}
                 className={({ isActive }) =>
-                  `px-2.5 py-2 text-[13px] font-medium rounded-lg transition-colors ${
+                  `px-2 py-2 text-xs font-medium rounded-lg transition-colors ${
                     isActive
                       ? "text-brand-700 dark:text-accent-400 bg-brand-50 dark:bg-slate-800"
                       : "text-slate-700 dark:text-slate-300 hover:text-brand-700 dark:hover:text-accent-400 hover:bg-slate-100 dark:hover:bg-slate-800"
