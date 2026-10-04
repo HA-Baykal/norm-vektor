@@ -1,5 +1,26 @@
-import { useEffect, useState, FormEvent } from "react";
+import { useEffect, useMemo, useState, FormEvent } from "react";
 import ConsentCheckbox from "./ConsentCheckbox";
+
+// Ближайшие 14 дней для онлайн-записи на замер (компания работает ежедневно).
+function buildDays(): { value: string; weekday: string; day: string; month: string }[] {
+  const WEEKDAYS = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+  const MONTHS = ["янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
+  const days = [];
+  for (let i = 0; i < 14; i++) {
+    const d = new Date();
+    d.setDate(d.getDate() + i);
+    const value = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    days.push({
+      value,
+      weekday: i === 0 ? "сегодня" : i === 1 ? "завтра" : WEEKDAYS[d.getDay()],
+      day: String(d.getDate()),
+      month: MONTHS[d.getMonth()],
+    });
+  }
+  return days;
+}
+
+const TIME_SLOTS = ["09:00–12:00", "12:00–15:00", "15:00–18:00", "18:00–20:00"];
 
 interface QuickBookingModalProps {
   open: boolean;
@@ -20,6 +41,9 @@ export default function QuickBookingModal({
   const [city, setCity] = useState("Иркутск");
   const [submitted, setSubmitted] = useState(false);
   const [consent, setConsent] = useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedSlot, setSelectedSlot] = useState("");
+  const days = useMemo(buildDays, []);
 
   useEffect(() => {
     if (!open) return;
@@ -67,6 +91,12 @@ export default function QuickBookingModal({
 
     setSubmitted(true);
 
+    // Выбранное время замера уходит в details рядом с параметрами заказа.
+    const bookingInfo = selectedDate
+      ? `\nЖелаемое время замера: ${selectedDate.split("-").reverse().join(".")}${selectedSlot ? `, ${selectedSlot}` : ""}`
+      : "";
+    const detailsFull = `${calcDetails || ""}${bookingInfo}`.trim();
+
     // Заявка отправляется только на серверный API: токен Telegram хранится
     // в переменных окружения (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID) на Vercel.
     fetch("/api/leads", {
@@ -77,7 +107,7 @@ export default function QuickBookingModal({
         phone: formattedPhone,
         city,
         service: serviceName,
-        details: calcDetails || "",
+        details: detailsFull,
       }),
     }).catch(() => {});
 
@@ -86,6 +116,8 @@ export default function QuickBookingModal({
       setName("");
       setRawPhone("");
       setPhoneError("");
+      setSelectedDate("");
+      setSelectedSlot("");
       onClose();
     }, 3000);
   };
@@ -203,6 +235,51 @@ export default function QuickBookingModal({
                   <option value="Хомутово">Хомутово</option>
                   <option value="Пригород (до 50 км)">Пригород (до 50 км)</option>
                 </select>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    Удобный день замера
+                  </label>
+                  <span className="text-[11px] text-slate-400 font-medium">необязательно</span>
+                </div>
+                <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1">
+                  {days.map((d) => (
+                    <button
+                      key={d.value}
+                      type="button"
+                      onClick={() => setSelectedDate(selectedDate === d.value ? "" : d.value)}
+                      className={`shrink-0 w-16 rounded-xl border-2 px-2 py-2 text-center transition ${
+                        selectedDate === d.value
+                          ? "border-[#ff6b35] bg-orange-50 dark:bg-orange-500/10"
+                          : "border-slate-200 dark:border-slate-700 hover:border-slate-300"
+                      }`}
+                    >
+                      <div className={`text-[10px] font-bold uppercase ${selectedDate === d.value ? "text-[#ff6b35]" : "text-slate-400"}`}>
+                        {d.weekday}
+                      </div>
+                      <div className="text-base font-black text-slate-800 dark:text-white leading-tight">{d.day}</div>
+                      <div className="text-[10px] font-semibold text-slate-400">{d.month}</div>
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {TIME_SLOTS.map((slot) => (
+                    <button
+                      key={slot}
+                      type="button"
+                      onClick={() => setSelectedSlot(selectedSlot === slot ? "" : slot)}
+                      className={`rounded-full px-4 py-2 text-xs font-bold transition ${
+                        selectedSlot === slot
+                          ? "bg-[#1a3a5c] text-white"
+                          : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                      }`}
+                    >
+                      {slot}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <ConsentCheckbox checked={consent} onChange={setConsent} id="pd-consent-modal" />

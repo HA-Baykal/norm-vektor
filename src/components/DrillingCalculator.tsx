@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import QuickBookingModal from "./QuickBookingModal";
+import SendQuoteButtons from "./SendQuoteButtons";
 
 function formatRub(value: number) {
   return `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
@@ -179,6 +180,10 @@ export default function DrillingCalculator() {
               <p className="mt-3 text-center text-xs text-slate-400">
                 Предварительный расчёт. Точную цену назовём после уточнения диаметра и материала стен.
               </p>
+            </div>
+
+            <div className="rounded-[1.5rem] bg-slate-50 p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
+              <SendQuoteButtons quoteText={`Здравствуйте! Расчёт с сайта: ${calcDetailsText}`} />
             </div>
           </div>
         </div>

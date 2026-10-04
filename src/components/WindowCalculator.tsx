@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import QuickBookingModal from "./QuickBookingModal";
+import SendQuoteButtons from "./SendQuoteButtons";
 
 const PRICE_WINDOW_M2 = 11000;
 const PRICE_INSTALL_PER_WINDOW = 2400;
@@ -187,6 +188,10 @@ export default function WindowCalculator() {
               <p className="mt-3 text-center text-xs text-slate-400">
                 Предварительный расчёт. Точную цену назовём после бесплатного замера.
               </p>
+            </div>
+
+            <div className="rounded-[1.5rem] bg-slate-50 p-5 shadow-sm sm:rounded-[2rem] sm:p-7">
+              <SendQuoteButtons quoteText={`Здравствуйте! Расчёт с сайта: окно ${width}×${height} мм, ${quantity} шт., ${withInstall ? "с монтажом" : "без монтажа"}, ${withSlopesSill ? "откосы и подоконник" : "без откосов"}, итого ориентировочно ${formatRub(calc.total)}`} />
             </div>
           </div>
         </div>
