@@ -73,8 +73,8 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Desktop nav: с xl; на ноутбуках 1024–1279 хватает бургер-меню */}
+          <nav className="hidden xl:flex items-center gap-0.5">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
@@ -82,7 +82,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
                 end={item.to === "/"}
                 title={item.mobileLabel || item.label}
                 className={({ isActive }) =>
-                  `px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                  `px-2.5 py-2 text-[13px] font-medium rounded-lg transition-colors ${
                     isActive
                       ? "text-brand-700 dark:text-accent-400 bg-brand-50 dark:bg-slate-800"
                       : "text-slate-700 dark:text-slate-300 hover:text-brand-700 dark:hover:text-accent-400 hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -95,7 +95,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <button
               onClick={toggleTheme}
               aria-label="Переключить тему"
@@ -143,7 +143,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
               href={MAX_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a3a5c] hover:bg-[#122943] text-white text-sm font-bold transition shadow-md border border-white/10"
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#1a3a5c] hover:bg-[#122943] text-white text-sm font-bold transition shadow-md border border-white/10"
             >
               <span className="w-6 h-6 rounded bg-white text-[#1a3a5c] grid place-items-center text-[10px] font-black leading-none">MAX</span>
               Написать
@@ -151,7 +151,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
 
             <a
               href="tel:+79149146606"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold transition shadow-lg shadow-brand-600/20"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold transition shadow-lg shadow-brand-600/20"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.2L8.1 10.6a11 11 0 005.3 5.3l1.22-2.13a1 1 0 011.2-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.7 21 3 14.3 3 6V5z" />
@@ -160,17 +160,18 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
             </a>
             <button
               onClick={openChat}
-              className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold transition shadow-lg shadow-accent-500/20"
+              aria-label="Открыть онлайн-чат"
+              title="Онлайн-чат"
+              className="hidden md:inline-flex items-center justify-center w-9 h-9 rounded-lg bg-accent-500 hover:bg-accent-600 text-white transition shadow-md"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Написать
             </button>
 
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="xl:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
               aria-label="Меню"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -186,7 +187,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
 
         {/* Mobile nav */}
         {open && (
-          <nav className="lg:hidden py-4 border-t border-slate-200 dark:border-slate-800">
+          <nav className="xl:hidden py-4 border-t border-slate-200 dark:border-slate-800">
             <div className="flex flex-col gap-1">
               {navItems.map((item) => (
                 <NavLink
