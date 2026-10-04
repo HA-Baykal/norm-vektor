@@ -103,6 +103,14 @@ function discountRate(count: number) {
   return 32;
 }
 
+function itemsWord(n: number) {
+  const d = n % 10;
+  const dd = n % 100;
+  if (d === 1 && dd !== 11) return `${n} изделие`;
+  if (d >= 2 && d <= 4 && (dd < 12 || dd > 14)) return `${n} изделия`;
+  return `${n} изделий`;
+}
+
 function clamp(value: number, min: number, max: number) {
   if (Number.isNaN(value)) return min;
   return Math.min(Math.max(value, min), max);
@@ -796,7 +804,7 @@ export default function WindowConfigurator() {
                   </li>
                 </ul>
                 <p className="mt-3 text-[11px] leading-snug text-slate-400">
-                  Скидка {rateNow}% — как за {totals.count + quantity} изделий в заказе; от 5 изделий — 40%. Расчёт
+                  Скидка {rateNow}% — как за {itemsWord(totals.count + quantity)} в заказе; от 5 изделий — 40%. Расчёт
                   ориентировочный, точную цену назовёт замерщик — выезд бесплатный.
                 </p>
                 <button
