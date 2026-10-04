@@ -9,9 +9,10 @@ export const PHONE_MAIN_PRETTY = "+7 (914) 914-66-06";
 export const MAX_LINK =
   "https://max.ru/u/f9LHodD0cOIbMOqTBdWMtjtwwW7JyWEldW-Tz3JENfITHpjVmqPbiKibF0U";
 
-// WhatsApp — чат по основному номеру, текст подставляется заранее.
+// WhatsApp — чат по отдельному номеру (там же, где WhatsApp у владельца),
+// текст подставляется заранее.
 export const WHATSAPP_LINK =
-  "https://wa.me/79149146606?text=" +
+  "https://wa.me/79247116610?text=" +
   encodeURIComponent("Здравствуйте! Пишу с сайта vektor-komforta.ru");
 
 // Telegram — открывает чат с номером компании прямо в приложении.
