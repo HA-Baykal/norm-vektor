@@ -14,7 +14,6 @@ const navItems: { to: string; label: string; mobileLabel?: string }[] = [
   { to: "/kondicionery", label: "Кондиционеры" },
   { to: "/ventilyaciya", label: "Вентиляция" },
   { to: "/almaznoe-burenie", label: "Алмазное бурение" },
-  { to: "/interier", label: "Interier", mobileLabel: "Interier — дизайн интерьера по фото" },
   { to: "/baza-znaniy", label: "База знаний" },
   { to: "/standarty", label: "Стандарты Монтажа" },
   { to: "/kontakty", label: "Контакты" },
