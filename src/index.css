@@ -82,21 +82,10 @@ body:not(.jivo-open) iframe[src*="jivo"] {
   display: none !important;
 }
 
-.interier-promo { background: #f5f7fa; }
-.interier-promo-card { position: relative; overflow: hidden; display: flex; align-items: center; gap: 3rem; padding: clamp(1.5rem, 4vw, 3.5rem); border-radius: 2rem; color: white; background: radial-gradient(circle at 85% 20%, rgba(83,180,255,.35), transparent 30%), linear-gradient(120deg, #122943 0%, #1d4167 52%, #284f78 100%); box-shadow: 0 20px 45px rgba(18,41,67,.2); }
-.interier-promo-copy { position: relative; z-index: 1; max-width: 850px; }
 .interier-badge { display: inline-flex; padding: .45rem .8rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; background: rgba(255,255,255,.1); color: #ffd6a8; font-size: .75rem; font-weight: 800; letter-spacing: .01em; }
-.interier-promo h2 { margin: 1rem 0 .8rem; font-size: clamp(1.65rem, 3vw, 2.7rem); line-height: 1.1; font-weight: 900; }
-.interier-lead { max-width: 760px; color: #dbeafe; line-height: 1.65; }
-.interier-benefits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem 1.5rem; margin: 1.35rem 0; color: #f1f5f9; font-size: .92rem; }
 .interier-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1.4rem; }
 .interier-primary { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; padding: .9rem 1.3rem; border: 0; border-radius: .9rem; background: #ff6b35; color: white; font-weight: 800; cursor: pointer; box-shadow: 0 8px 20px rgba(255,107,53,.25); transition: background .2s, transform .2s; }
 .interier-primary:hover { background: #e95620; transform: translateY(-1px); }
-.interier-secondary { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
-.interier-microcopy { display: block; margin-top: 1rem; color: #b9cee1; }
-.interier-orbit { flex: 0 0 210px; height: 210px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; background: rgba(255,255,255,.07); color: #bde3ff; font-size: .68rem; letter-spacing: .2em; transform: rotate(-12deg); }
-.interier-orbit-icon { grid-area: 1 / 1; width: 84px; height: 84px; display: grid; place-items: center; border-radius: 24px; background: #ff6b35; color: white; font-size: 2.5rem; box-shadow: 0 0 45px rgba(255,107,53,.5); }
-.interier-orbit span { grid-area: 1 / 1; } .interier-orbit span:nth-of-type(1) { transform: translateY(-88px); } .interier-orbit span:nth-of-type(2) { transform: translateX(88px); } .interier-orbit span:nth-of-type(3) { transform: translateY(88px); }
 .developer-bio { display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 1.5rem; border: 1px solid #dbe3ec; border-radius: 1.25rem; background: #f8fafc; }
 .dark .developer-bio { border-color: #1e293b; background: #0f172a; } .developer-bio-icon { flex: 0 0 3rem; width: 3rem; height: 3rem; display: grid; place-items: center; border-radius: .9rem; background: #1a3a5c; color: #ffb08d; font-weight: 900; }
 .developer-bio h2 { margin-bottom: .3rem; color: #122943; font-size: 1.05rem; font-weight: 850; } .dark .developer-bio h2 { color: white; } .developer-bio p { color: #64748b; font-size: .82rem; line-height: 1.55; } .developer-bio-cta { flex: 0 0 auto; padding: .75rem 1rem; border-radius: .75rem; background: #1a3a5c; color: white; font-size: .85rem; font-weight: 800; white-space: nowrap; }
@@ -134,11 +123,8 @@ body:not(.jivo-open) iframe[src*="jivo"] {
 .interier-article-cta p { margin-top: .35rem; color: #dbeafe; font-size: .9rem; line-height: 1.5; }
 .interier-article-cta a { display: inline-flex; padding: .75rem 1rem; border-radius: .8rem; background: #ff6b35; color: white; font-weight: 800; white-space: nowrap; }
 @media (max-width: 767px) {
-  .interier-promo-card { border-radius: 1.25rem; }
-  .interier-benefits { grid-template-columns: 1fr; font-size: .86rem; }
-  .interier-orbit { display: none; }
   .interier-actions { align-items: stretch; flex-direction: column; }
-  .interier-primary, .interier-secondary { width: 100%; text-align: center; }
+  .interier-primary { width: 100%; text-align: center; }
   .developer-bio { align-items: flex-start; flex-wrap: wrap; }
   .developer-bio-cta { width: 100%; text-align: center; }
   .interier-modal-backdrop { padding: 0; }
